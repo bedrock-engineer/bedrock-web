@@ -1,8 +1,7 @@
-<p styl="center">
-  <img src="https://bedrock.engineer/public/Bedrock_TextRight.png" alt="Bedrock logo" width="75%"/>
-</p>
 
-<h3 styl="center">Bedrock, the Open Source Foundation for Ground Investigation Data</h3>
+<img src="https://bedrock.engineer/public/Bedrock_TextRight.png" alt="Bedrock logo" width="75%" style="margin-inline: auto; display: block;" />
+
+# Bedrock, the Open Source Foundation for Ground Investigation Data
 
 ---
 
