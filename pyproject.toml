@@ -8,6 +8,7 @@ dependencies = [
     "bedrock-gi>=0.0.1",
     "geopandas>=1.0.1",
     "jupyter>=1.1.1",
+    "matplotlib>=3.10.1",
     "pdfplumber>=0.11.4",
     "specklepy>=2.19.6",
 ]
