@@ -1,47 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://bedrock.engineer/sandbox/ags_data_dict_from_pdf_to_json.html</loc>
-    <lastmod>2024-10-01T19:56:49.977Z</lastmod>
+    <loc>https://bedrock.engineer/articles.html</loc>
+    <lastmod>2025-04-10T08:34:23.609Z</lastmod>
   </url>
   <url>
     <loc>https://bedrock.engineer/faq.html</loc>
-    <lastmod>2024-08-20T01:52:10.544Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bedrock.engineer/docs/index.html</loc>
-    <lastmod>2024-10-25T16:10:46.833Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bedrock.engineer/community.html</loc>
-    <lastmod>2024-08-20T01:52:08.860Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bedrock.engineer/articles/2024-08-18-bedrock-loves-quarto/index.html</loc>
-    <lastmod>2024-09-26T13:30:57.841Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bedrock.engineer/about.html</loc>
-    <lastmod>2024-10-25T14:07:23.063Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bedrock.engineer/articles/2024-08-17-welcome/index.html</loc>
-    <lastmod>2024-10-30T18:59:41.092Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bedrock.engineer/articles.html</loc>
-    <lastmod>2024-07-21T10:19:13.466Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bedrock.engineer/docs/getting-started.html</loc>
-    <lastmod>2024-10-25T15:33:43.073Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bedrock.engineer/docs/tutorials/ags3_to_gis_and_speckle.html</loc>
-    <lastmod>2024-10-10T17:56:53.789Z</lastmod>
+    <lastmod>2025-04-10T08:34:23.616Z</lastmod>
   </url>
   <url>
     <loc>https://bedrock.engineer/index.html</loc>
-    <lastmod>2024-10-31T09:25:26.047Z</lastmod>
+    <lastmod>2025-04-10T08:34:23.616Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bedrock.engineer/docs/getting-started.html</loc>
+    <lastmod>2025-04-10T08:34:23.615Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bedrock.engineer/community.html</loc>
+    <lastmod>2025-04-10T08:34:23.615Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bedrock.engineer/articles/2025-04-14-ags/index.html</loc>
+    <lastmod>2025-04-14T09:41:48.735Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bedrock.engineer/docs/index.html</loc>
+    <lastmod>2025-04-10T08:34:23.616Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bedrock.engineer/docs/Tutorials/ags3_to_gis_and_speckle.html</loc>
+    <lastmod>2025-04-10T08:34:23.615Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bedrock.engineer/about.html</loc>
+    <lastmod>2025-04-14T09:50:07.421Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bedrock.engineer/sandbox/ags_data_dict_from_pdf_to_json.html</loc>
+    <lastmod>2025-04-10T08:34:23.715Z</lastmod>
   </url>
 </urlset>

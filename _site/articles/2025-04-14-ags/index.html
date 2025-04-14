@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.22">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jules Blom">
+<meta name="dcterms.date" content="2025-04-14">
+<meta name="description" content="A brief introduction to AGS.">
+
+<title>AGS4 Reference – Bedrock</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../public/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b4406b7675125bc2ba204020e191172.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-e6c1898912765b4220a963566674e4ac.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": true,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+
+<meta property="og:title" content="AGS4 Reference – Bedrock">
+<meta property="og:description" content="A brief introduction to AGS.">
+<meta property="og:image" content="https://bedrock.engineer/articles/2025-04-14-ags/public/Bedrock_inCircle.png">
+<meta property="og:site_name" content="Bedrock">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../public/Bedrock.png" alt="Bedrock" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Bedrock</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../docs/index.html"> 
+<span class="menu-text">Documentation</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../articles.html"> 
+<span class="menu-text">Articles</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/bedrock-gi/bedrock-gi/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report a Bug</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/orgs/bedrock-gi/discussions"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Ask Bedrock a Question</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://speckle.community/"><i class="bi bi-question-square-fill" role="img">
+</i> 
+ <span class="dropdown-text">Ask Speckle a Question</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+    <a href="https://github.com/bedrock-gi/bedrock-gi" title="Bedrock's GitHub" class="quarto-navigation-tool px-1" aria-label="Bedrock's GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/company/bedrock-gi/" title="Bedrock's LinkedIn" class="quarto-navigation-tool px-1" aria-label="Bedrock's LinkedIn"><i class="bi bi-linkedin"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">AGS4 Reference</h1>
+                  <div>
+        <div class="description">
+          A brief introduction to AGS.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">ags</div>
+                <div class="quarto-category">ags4</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Jules Blom </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 14, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#groups" id="toc-groups" class="nav-link active" data-scroll-target="#groups">Groups</a></li>
+  <li><a href="#headings" id="toc-headings" class="nav-link" data-scroll-target="#headings">Headings</a></li>
+  </ul>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/bedrock-gi/bedrock-web/blob/main/articles/2025-04-14-ags/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/bedrock-gi/bedrock-web/edit/main/articles/2025-04-14-ags/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/bedrock-gi/bedrock-gi/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p><a href="https://www.ags.org.uk/data-format/ags4-data-format/">AGS4</a> is a standardized text file format specifically designed for exchanging geotechnical information between different software systems used in geotechnical engineering. It organizes borehole logs, laboratory test results, and field measurements into structured data tables with validation rules to ensure consistent data quality across the geotechnical industry.</p>
+<section id="groups" class="level2">
+<h2 class="anchored" data-anchor-id="groups">Groups</h2>
+<p>In the AGS4 format, <strong>Groups</strong> are organizational containers that structure geotechnical data. Each Group represents a specific aspect of geotechnical investigation, for example, project information (PROJ), location details (LOCA), sample information (SAMP), or specific test types like Standard Penetration Tests (ISPT).</p>
+<p>AGS4 Groups are organised in a hierarchical manner. Each <strong>sample</strong> (SAMP) belongs to a <strong>location</strong> (LOCA). Each <strong>location</strong> belongs to a <strong>project</strong> (PROJ).</p>
+<p>Here’s a visual of the hierarchy of groups commonly found in an AGS4 file.</p>
+<svg width="928" height="384" viewbox="-12,-24,928,384" style="max-width: 100%; height: auto; font: 13px sans-serif; overflow: visible;" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g fill="none" stroke="#999"><path d="
+M0,0
+V24
+h24
+"></path><path d="
+M0,0
+V264
+h24
+"></path><path d="
+M0,0
+V288
+h24
+"></path><path d="
+M0,0
+V312
+h24
+      "></path><path d="
+M0,0
+V336
+h24
+"></path><path d="
+M24,24
+V48
+h24
+"></path><path d="
+M24,24
+V144
+h24
+"></path><path d="
+M24,24
+V192
+h24
+"></path><path d="
+M24,24
+V216
+h24
+"></path><path d="
+M24,24
+V240
+h24
+"></path><path d="
+M48,48
+V72
+h24
+"></path><path d="
+M48,48
+V120
+h24
+"></path><path d="
+M48,144
+V168
+h24
+"></path><path d="
+M72,72
+V96
+h24
+"></path></g><g><g transform="translate(0,0)"><circle cx="0" r="2.5"></circle><text dy="0.32em" x="6"><tspan font-weight="600">PROJ</tspan><tspan dx="2">Project information</tspan></text>
+<title>
+PROJ
+</title>
+</g><g transform="translate(0,24)"><circle cx="24" r="2.5"></circle><text dy="0.32em" x="30"><tspan font-weight="600">LOCA</tspan><tspan dx="2">Location details</tspan></text>
+<title>
+PROJ/LOCA
+</title>
+</g><g transform="translate(0,264)"><circle cx="24" r="2.5" fill="#999"></circle><text dy="0.32em" x="30"><tspan font-weight="600">ABBR</tspan><tspan dx="2">Abbreviation Definitions</tspan></text>
+<title>
+PROJ/ABBR
+</title>
+</g><g transform="translate(0,288)"><circle cx="24" r="2.5" fill="#999"></circle><text dy="0.32em" x="30"><tspan font-weight="600">TRAN</tspan><tspan dx="2">Data File Transmission Information / Data Status</tspan></text>
+<title>
+PROJ/TRAN
+</title>
+</g><g transform="translate(0,312)"><circle cx="24" r="2.5" fill="#999"></circle><text dy="0.32em" x="30"><tspan font-weight="600">TYPE</tspan><tspan dx="2">Definition of Data Types</tspan></text>
+<title>
+PROJ/TYPE
+</title>
+</g><g transform="translate(0,336)"><circle cx="24" r="2.5" fill="#999"></circle><text dy="0.32em" x="30"><tspan font-weight="600">UNIT</tspan><tspan dx="2">Definition of Units</tspan></text>
+<title>
+PROJ/UNIT
+</title>
+</g><g transform="translate(0,48)"><circle cx="48" r="2.5"></circle><text dy="0.32em" x="54"><tspan font-weight="600">SAMP</tspan><tspan dx="2">Sample information</tspan></text>
+<title>
+PROJ/LOCA/SAMP
+</title>
+</g><g transform="translate(0,144)"><circle cx="48" r="2.5"></circle><text dy="0.32em" x="54"><tspan font-weight="600">IPRG</tspan><tspan dx="2">Insitu permeability</tspan></text>
+<title>
+PROJ/LOCA/IPRG
+</title>
+</g><g transform="translate(0,192)"><circle cx="48" r="2.5" fill="#999"></circle><text dy="0.32em" x="54"><tspan font-weight="600">GEOL</tspan><tspan dx="2">Geological descriptions</tspan></text>
+<title>
+PROJ/LOCA/GEOL
+</title>
+</g><g transform="translate(0,216)"><circle cx="48" r="2.5" fill="#999"></circle><text dy="0.32em" x="54"><tspan font-weight="600">BKFL</tspan><tspan dx="2">Backfill details</tspan></text>
+<title>
+PROJ/LOCA/BKFL
+</title>
+</g><g transform="translate(0,240)"><circle cx="48" r="2.5" fill="#999"></circle><text dy="0.32em" x="54"><tspan font-weight="600">ISPT</tspan><tspan dx="2">Standard Penetration Test</tspan></text>
+<title>
+PROJ/LOCA/ISPT
+</title>
+</g><g transform="translate(0,72)"><circle cx="72" r="2.5"></circle><text dy="0.32em" x="78"><tspan font-weight="600">GRAG</tspan><tspan dx="2">Particle size distribution analysis</tspan></text>
+<title>
+PROJ/LOCA/SAMP/GRAG
+</title>
+</g><g transform="translate(0,120)"><circle cx="72" r="2.5" fill="#999"></circle><text dy="0.32em" x="78"><tspan font-weight="600">LNMC</tspan><tspan dx="2">Water content</tspan></text>
+<title>
+PROJ/LOCA/SAMP/LNMC
+</title>
+</g><g transform="translate(0,168)"><circle cx="72" r="2.5" fill="#999"></circle><text dy="0.32em" x="78"><tspan font-weight="600">IPRT</tspan><tspan dx="2">Insitu permeability data</tspan></text>
+<title>
+PROJ/LOCA/IPRG/IPRT
+</title>
+</g><g transform="translate(0,96)"><circle cx="96" r="2.5" fill="#999"></circle><text dy="0.32em" x="102"><tspan font-weight="600">GRAT</tspan><tspan dx="2">Particle size distribution analysis data</tspan></text>
+<title>
+PROJ/LOCA/SAMP/GRAG/GRAT
+</title>
+</g></g>
+</svg>
+<details>
+<summary>
+All Groups Hierarchy Tree
+</summary>
+<p>While AGS defines a load of groups, not all of them are used in every project. For reference, here is the full hierarchy tree of all groups.</p>
+<svg width="928" height="1264" viewbox="-8,-12,928,1264" style="max-width: 100%; height: auto; font: 10px sans-serif; overflow: visible;" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g fill="none" stroke="#999"><path d="
+ M0,0
+ V16
+ h16
+"></path><path d="
+ M0,0
+ V1152
+ h16
+"></path><path d="
+ M0,0
+ V1168
+ h16
+ "></path><path d="
+ M0,0
+ V1184
+ h16
+ "></path><path d="
+ M0,0
+ V1200
+ h16
+ "></path><path d="
+ M0,0
+ V1216
+ h16
+ "></path><path d="
+ M0,0
+ V1232
+ h16
+ "></path><path d="
+ M16,16
+ V32
+ h16
+ "></path><path d="
+ M32,32
+ V48
+ h16
+ "></path><path d="
+ M32,32
+ V576
+ h16
+ "></path><path d="
+ M32,32
+ V592
+ h16
+ "></path><path d="
+ M32,32
+ V608
+ h16
+ "></path><path d="
+ M32,32
+ V624
+ h16
+ "></path><path d="
+ M32,32
+ V640
+ h16
+ "></path><path d="
+ M32,32
+ V672
+ h16
+ "></path><path d="
+ M32,32
+ V688
+ h16
+ "></path><path d="
+ M32,32
+ V704
+ h16
+ "></path><path d="
+ M32,32
+ V720
+ h16
+ "></path><path d="
+ M32,32
+ V736
+ h16
+ "></path><path d="
+ M32,32
+ V768
+ h16
+ "></path><path d="
+ M32,32
+ V784
+ h16
+ "></path><path d="
+ M32,32
+ V848
+ h16
+ "></path><path d="
+ M32,32
+ V864
+ h16
+ "></path><path d="
+ M32,32
+ V880
+ h16
+ "></path><path d="
+ M32,32
+ V896
+ h16
+ "></path><path d="
+ M32,32
+ V912
+ h16
+ "></path><path d="
+ M32,32
+ V928
+ h16
+ "></path><path d="
+ M32,32
+ V944
+ h16
+ "></path><path d="
+ M32,32
+ V960
+ h16
+ "></path><path d="
+ M32,32
+ V976
+ h16
+ "></path><path d="
+ M32,32
+ V992
+ h16
+ "></path><path d="
+ M32,32
+ V1008
+ h16
+ "></path><path d="
+ M32,32
+ V1024
+ h16
+ "></path><path d="
+ M32,32
+ V1056
+ h16
+ "></path><path d="
+ M32,32
+ V1072
+ h16
+ "></path><path d="
+ M32,32
+ V1088
+ h16
+ "></path><path d="
+ M32,32
+ V1120
+ h16
+ "></path><path d="
+ M32,32
+ V1136
+ h16
+ "></path><path d="
+ M48,48
+ V64
+ h16
+ "></path><path d="
+ M48,48
+ V80
+ h16
+ "></path><path d="
+ M48,48
+ V96
+ h16
+ "></path><path d="
+ M48,48
+ V112
+ h16
+ "></path><path d="
+ M48,48
+ V128
+ h16
+ "></path><path d="
+ M48,48
+ V144
+ h16
+ "></path><path d="
+ M48,48
+ V160
+ h16
+ "></path><path d="
+ M48,48
+ V176
+ h16
+ "></path><path d="
+ M48,48
+ V192
+ h16
+ "></path><path d="
+ M48,48
+ V208
+ h16
+ "></path><path d="
+ M48,48
+ V224
+ h16
+ "></path><path d="
+ M48,48
+ V240
+ h16
+ "></path><path d="
+ M48,48
+ V272
+ h16
+ "></path><path d="
+ M48,48
+ V288
+ h16
+ "></path><path d="
+ M48,48
+ V320
+ h16
+ "></path><path d="
+ M48,48
+ V352
+ h16
+ "></path><path d="
+ M48,48
+ V432
+ h16
+ "></path><path d="
+ M48,48
+ V448
+ h16
+ "></path><path d="
+ M48,48
+ V464
+ h16
+ "></path><path d="
+ M48,48
+ V480
+ h16
+ "></path><path d="
+ M48,48
+ V512
+ h16
+ "></path><path d="
+ M48,48
+ V528
+ h16
+ "></path><path d="
+ M48,48
+ V544
+ h16
+ "></path><path d="
+ M48,640
+ V656
+ h16
+ "></path><path d="
+ M48,736
+ V752
+ h16
+ "></path><path d="
+ M48,784
+ V800
+ h16
+ "></path><path d="
+ M48,784
+ V832
+ h16
+ "></path><path d="
+ M48,1024
+ V1040
+ h16
+ "></path><path d="
+ M48,1088
+ V1104
+ h16
+ "></path><path d="
+ M64,240
+ V256
+ h16
+ "></path><path d="
+ M64,288
+ V304
+ h16
+ "></path><path d="
+ M64,320
+ V336
+ h16
+ "></path><path d="
+ M64,352
+ V368
+ h16
+ "></path><path d="
+ M64,352
+ V416
+ h16
+ "></path><path d="
+ M64,480
+ V496
+ h16
+ "></path><path d="
+ M64,544
+ V560
+ h16
+ "></path><path d="
+ M64,800
+ V816
+ h16
+ "></path><path d="
+ M80,368
+ V384
+ h16
+"></path><path d="
+ M96,384
+ V400
+ h16
+"></path></g><g><g transform="translate(0,0)"><circle cx="0" r="2"></circle><text dy="0.32em" x="6"><tspan font-weight="600">AGS4 file</tspan><tspan dx="2">-</tspan></text>
+<title>
+AGS4 file
+</title>
+</g><g transform="translate(0,16)"><circle cx="16" r="2"></circle><text dy="0.32em" x="22"><tspan font-weight="600">PROJ</tspan><tspan dx="2">Project Information</tspan></text>
+<title>
+AGS4 file/PROJ
+</title>
+</g><g transform="translate(0,1152)"><circle cx="16" r="2"></circle><text dy="0.32em" x="22"><tspan font-weight="600">ABBR</tspan><tspan dx="2">Abbreviation Definitions</tspan></text>
+<title>
+AGS4 file/ABBR
+</title>
+</g><g transform="translate(0,1168)"><circle cx="16" r="2"></circle><text dy="0.32em" x="22"><tspan font-weight="600">DICT</tspan><tspan dx="2">User Defined Groups and Headings</tspan></text>
+<title>
+AGS4 file/DICT
+</title>
+</g><g transform="translate(0,1184)"><circle cx="16" r="2"></circle><text dy="0.32em" x="22"><tspan font-weight="600">FILE</tspan><tspan dx="2">Associated Files</tspan></text>
+<title>
+AGS4 file/FILE
+</title>
+</g><g transform="translate(0,1200)"><circle cx="16" r="2"></circle><text dy="0.32em" x="22"><tspan font-weight="600">TRAN</tspan><tspan dx="2">Data File Transmission Information / Data Status</tspan></text>
+<title>
+AGS4 file/TRAN
+</title>
+</g><g transform="translate(0,1216)"><circle cx="16" r="2"></circle><text dy="0.32em" x="22"><tspan font-weight="600">TYPE</tspan><tspan dx="2">Definition of Data Types</tspan></text>
+<title>
+AGS4 file/TYPE
+</title>
+</g><g transform="translate(0,1232)"><circle cx="16" r="2"></circle><text dy="0.32em" x="22"><tspan font-weight="600">UNIT</tspan><tspan dx="2">Definition of Units</tspan></text>
+<title>
+AGS4 file/UNIT
+</title>
+</g><g transform="translate(0,32)"><circle cx="32" r="2"></circle><text dy="0.32em" x="38"><tspan font-weight="600">LOCA</tspan><tspan dx="2">Location Details</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA
+</title>
+</g><g transform="translate(0,48)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">SAMP</tspan><tspan dx="2">Sample Information</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP
+</title>
+</g><g transform="translate(0,576)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">BKFL</tspan><tspan dx="2">Exploratory Hole Backfill Details</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/BKFL
+</title>
+</g><g transform="translate(0,592)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">CDIA</tspan><tspan dx="2">Casing Diameter by Depth</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/CDIA
+</title>
+</g><g transform="translate(0,608)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">CHIS</tspan><tspan dx="2">Chiselling Details</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/CHIS
+</title>
+</g><g transform="translate(0,624)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">CORE</tspan><tspan dx="2">Coring Information</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/CORE
+</title>
+</g><g transform="translate(0,640)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">DCPG</tspan><tspan dx="2">Dynamic Cone Penetrometer Tests - General</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/DCPG
+</title>
+</g><g transform="translate(0,672)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">DETL</tspan><tspan dx="2">Stratum Detail Descriptions</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/DETL
+</title>
+</g><g transform="translate(0,688)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">DISC</tspan><tspan dx="2">Discontinuity Data</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/DISC
+</title>
+</g><g transform="translate(0,704)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">DLOG</tspan><tspan dx="2">Driller Geological Description</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/DLOG
+</title>
+</g><g transform="translate(0,720)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">DOBS</tspan><tspan dx="2">Drilling/Advancement Observations &amp; Parameters</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/DOBS
+</title>
+</g><g transform="translate(0,736)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">DPRG</tspan><tspan dx="2">Dynamic Probe Tests - General</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/DPRG
+</title>
+</g><g transform="translate(0,768)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">DREM</tspan><tspan dx="2">Depth Related Remarks</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/DREM
+</title>
+</g><g transform="translate(0,784)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">FGHG</tspan><tspan dx="2">Field Geohydraulic Testing - General</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/FGHG
+</title>
+</g><g transform="translate(0,848)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">FLSH</tspan><tspan dx="2">Drilling Flush Details</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/FLSH
+</title>
+</g><g transform="translate(0,864)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">FRAC</tspan><tspan dx="2">Fracture Spacing</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/FRAC
+</title>
+</g><g transform="translate(0,880)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">GEOL</tspan><tspan dx="2">Field Geological Descriptions</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/GEOL
+</title>
+</g><g transform="translate(0,896)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">HDIA</tspan><tspan dx="2">Hole Diameter by Depth</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/HDIA
+</title>
+</g><g transform="translate(0,912)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">HDPH</tspan><tspan dx="2">Depth Related Exploratory Hole Information</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/HDPH
+</title>
+</g><g transform="translate(0,928)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">HORN</tspan><tspan dx="2">Exploratory Hole Orientation and Inclination</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/HORN
+</title>
+</g><g transform="translate(0,944)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">ICBR</tspan><tspan dx="2">In Situ California Bearing Ratio Tests</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/ICBR
+</title>
+</g><g transform="translate(0,960)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">IDEN</tspan><tspan dx="2">In Situ Density Tests</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/IDEN
+</title>
+</g><g transform="translate(0,976)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">IFID</tspan><tspan dx="2">On Site Volatile Headspace Testing Using Flame Ionisation Detector</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/IFID
+</title>
+</g><g transform="translate(0,992)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">IPEN</tspan><tspan dx="2">In Situ Hand Penetrometer Tests</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/IPEN
+</title>
+</g><g transform="translate(0,1008)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">IPID</tspan><tspan dx="2">On Site Volatile Headspace Testing by Photo Ionisation Detector</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/IPID
+</title>
+</g><g transform="translate(0,1024)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">IPRG</tspan><tspan dx="2">In Situ Permeability Tests - General</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/IPRG
+</title>
+</g><g transform="translate(0,1056)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">IRDX</tspan><tspan dx="2">In Situ Redox Tests</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/IRDX
+</title>
+</g><g transform="translate(0,1072)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">IRES</tspan><tspan dx="2">In Situ Resistivity Tests</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/IRES
+</title>
+</g><g transform="translate(0,1088)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">ISAG</tspan><tspan dx="2">Soakaway Tests - General</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/ISAG
+</title>
+</g><g transform="translate(0,1120)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">ISPT</tspan><tspan dx="2">Standard Penetration Test Results</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/ISPT
+</title>
+</g><g transform="translate(0,1136)"><circle cx="48" r="2"></circle><text dy="0.32em" x="54"><tspan font-weight="600">IVAN</tspan><tspan dx="2">In Situ Vane Tests</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/IVAN
+</title>
+</g><g transform="translate(0,64)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">AAVT</tspan><tspan dx="2">Aggregate Abrasion Tests</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/AAVT
+</title>
+</g><g transform="translate(0,80)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">ACVT</tspan><tspan dx="2">Aggregate Crushing Value Tests</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/ACVT
+</title>
+</g><g transform="translate(0,96)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">AELO </tspan><tspan dx="2">-</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/AELO
+</title>
+</g><g transform="translate(0,112)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">AFLK</tspan><tspan dx="2">Aggregate Flakiness Tests</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/AFLK
+</title>
+</g><g transform="translate(0,128)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">AIVT</tspan><tspan dx="2">Aggregate Impact Value Tests</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/AIVT
+</title>
+</g><g transform="translate(0,144)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">ALOS</tspan><tspan dx="2">Los Angeles Abrasion Tests</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/ALOS
+</title>
+</g><g transform="translate(0,160)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">APSV</tspan><tspan dx="2">Aggregate Polished Stone Tests</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/APSV
+</title>
+</g><g transform="translate(0,176)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">ARTW</tspan><tspan dx="2">Aggregate Determination of the Resistance to Wear (micro-Deval)</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/ARTW
+</title>
+</g><g transform="translate(0,192)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">ASDI</tspan><tspan dx="2">Slake Durability Index Tests</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/ASDI
+</title>
+</g><g transform="translate(0,208)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">ASNS</tspan><tspan dx="2">Aggregate Soundness Tests</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/ASNS
+</title>
+</g><g transform="translate(0,224)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">AWAD</tspan><tspan dx="2">Aggregate Water Absorption Tests</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/AWAD
+</title>
+</g><g transform="translate(0,240)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">CBRG</tspan><tspan dx="2">California Bearing Ratio Tests - General</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/CBRG
+</title>
+</g><g transform="translate(0,272)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">CHOC</tspan><tspan dx="2">Chain of Custody Information</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/CHOC
+</title>
+</g><g transform="translate(0,288)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">CMPG</tspan><tspan dx="2">Compaction Tests - General</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/CMPG
+</title>
+</g><g transform="translate(0,320)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">CONG</tspan><tspan dx="2">Consolidation Tests - General</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/CONG
+</title>
+</g><g transform="translate(0,352)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">CTRG</tspan><tspan dx="2">Cyclic Triaxial Test - General</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/CTRG
+</title>
+</g><g transform="translate(0,432)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">ECTN</tspan><tspan dx="2">Sample Container Details</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/ECTN
+</title>
+</g><g transform="translate(0,448)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">ELRG</tspan><tspan dx="2">Environmental Laboratory Reporting</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/ELRG
+</title>
+</g><g transform="translate(0,464)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">ERES</tspan><tspan dx="2">Environmental Contaminant Testing</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/ERES
+</title>
+</g><g transform="translate(0,480)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">ESCG</tspan><tspan dx="2">Effective Stress Consolidation Tests - General</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/ESCG
+</title>
+</g><g transform="translate(0,512)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">FRST</tspan><tspan dx="2">Frost Susceptibility Tests</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/FRST
+</title>
+</g><g transform="translate(0,528)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">GCHM</tspan><tspan dx="2">Geotechnical Chemistry Testing</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/GCHM
+</title>
+</g><g transform="translate(0,544)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">GRAG</tspan><tspan dx="2">Particle Size Distribution Analysis - General</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/GRAG
+</title>
+</g><g transform="translate(0,656)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">DCPT</tspan><tspan dx="2">Dynamic Cone Penetrometer Tests - Data</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/DCPG/DCPT
+</title>
+</g><g transform="translate(0,752)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">DPRB</tspan><tspan dx="2">Dynamic Probe Tests - Data</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/DPRG/DPRB
+</title>
+</g><g transform="translate(0,800)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">FGHI</tspan><tspan dx="2">Field Geohydraulic Testing - Instrumentation Details</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/FGHG/FGHI
+</title>
+</g><g transform="translate(0,832)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">FGHS</tspan><tspan dx="2">Field Geohydraulic Testing - Test Results (per stage)</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/FGHG/FGHS
+</title>
+</g><g transform="translate(0,1040)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">IPRT</tspan><tspan dx="2">In Situ Permeability Tests - Data</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/IPRG/IPRT
+</title>
+</g><g transform="translate(0,1104)"><circle cx="64" r="2"></circle><text dy="0.32em" x="70"><tspan font-weight="600">ISAT</tspan><tspan dx="2">Soakaway Tests - Data</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/ISAG/ISAT
+</title>
+</g><g transform="translate(0,256)"><circle cx="80" r="2"></circle><text dy="0.32em" x="86"><tspan font-weight="600">CBRT</tspan><tspan dx="2">California Bearing Ratio Tests - Data</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/CBRG/CBRT
+</title>
+</g><g transform="translate(0,304)"><circle cx="80" r="2"></circle><text dy="0.32em" x="86"><tspan font-weight="600">CMPT</tspan><tspan dx="2">Compaction Tests - Data</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/CMPG/CMPT
+</title>
+</g><g transform="translate(0,336)"><circle cx="80" r="2"></circle><text dy="0.32em" x="86"><tspan font-weight="600">CONS</tspan><tspan dx="2">Consolidation Tests - Data</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/CONG/CONS
+</title>
+</g><g transform="translate(0,368)"><circle cx="80" r="2"></circle><text dy="0.32em" x="86"><tspan font-weight="600">CTRC</tspan><tspan dx="2">Cyclic Triaxial Tests - Consolidation</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/CTRG/CTRC
+</title>
+</g><g transform="translate(0,416)"><circle cx="80" r="2"></circle><text dy="0.32em" x="86"><tspan font-weight="600">CTRS</tspan><tspan dx="2">Cyclic Triaxial Test - Saturation</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/CTRG/CTRS
+</title>
+</g><g transform="translate(0,496)"><circle cx="80" r="2"></circle><text dy="0.32em" x="86"><tspan font-weight="600">ESCT</tspan><tspan dx="2">Effective Stress Consolidation Tests - Data</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/ESCG/ESCT
+</title>
+</g><g transform="translate(0,560)"><circle cx="80" r="2"></circle><text dy="0.32em" x="86"><tspan font-weight="600">GRAT</tspan><tspan dx="2">Particle Size Distribution Analysis - Data</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/GRAG/GRAT
+</title>
+</g><g transform="translate(0,816)"><circle cx="80" r="2"></circle><text dy="0.32em" x="86"><tspan font-weight="600">FGHT</tspan><tspan dx="2">Field Geohydraulic Testing - Data</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/FGHG/FGHI/FGHT
+</title>
+</g><g transform="translate(0,384)"><circle cx="96" r="2"></circle><text dy="0.32em" x="102"><tspan font-weight="600">CTRP</tspan><tspan dx="2">Cyclic Triaxial Test - Derived Parameters</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/CTRG/CTRC/CTRP
+</title>
+</g><g transform="translate(0,400)"><circle cx="112" r="2"></circle><text dy="0.32em" x="118"><tspan font-weight="600">CTRD</tspan><tspan dx="2">Cyclic Triaxial Tests - Data</tspan></text>
+<title>
+AGS4 file/PROJ/LOCA/SAMP/CTRG/CTRC/CTRP/CTRD
+</title>
+</g></g>
+</svg>
+</details>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" data-startfrom="34" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 33;"><span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>viewof groupSearch <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">search</span>(ags4<span class="op">,</span> {</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"Search groups..."</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2" data-startfrom="40" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 39;"><span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>viewof groupTable <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">table</span>(groupSearch<span class="op">,</span> {</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  <span class="dt">format</span><span class="op">:</span> { <span class="dt">headings</span><span class="op">:</span> (d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="fu">map</span>((h) <span class="kw">=&gt;</span> h<span class="op">.</span><span class="at">heading</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>) }<span class="op">,</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="dt">multiple</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="dt">layout</span><span class="op">:</span> <span class="st">"auto"</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3" data-startfrom="48" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 47;"><span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>ags4 <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"ags4_data_dictionary.json"</span>)<span class="op">.</span><span class="fu">json</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</section>
+<section id="headings" class="level2">
+<h2 class="anchored" data-anchor-id="headings">Headings</h2>
+<p>Headings are the specific data fields (i.e.&nbsp;the columns) within each group that define individual data items. Each heading represents a specific piece of information that can be recorded during geotechnical investigations, such as sample depth, moisture content, or test result values</p>
+<p>Headings follow a standardized naming pattern, typically beginning with the group name as a prefix (e.g., “PROJ_ID” for project identifier in the PROJ group). Some headings are marked as required (*R or R), indicating that they must be populated in a valid AGS file to maintain data integrity. Headings include additional information like units of measurement, descriptions, and example values to help users understand their purpose.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4" data-startfrom="61" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 60;"><span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>groupTable <span class="op">?</span> <span class="fu">md</span><span class="vs">`### </span><span class="sc">${</span>groupTable<span class="op">.</span><span class="at">group_name</span><span class="sc">}\n${</span>groupTable<span class="op">.</span><span class="at">group_description</span><span class="sc">}</span><span class="vs">`</span> <span class="op">:</span> <span class="fu">md</span><span class="vs">`### Select a group in the table above to view its headings.`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5" data-startfrom="65" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 64;"><span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>groupTable</span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>  <span class="op">?</span> Inputs<span class="op">.</span><span class="fu">table</span>(groupTable<span class="op">.</span><span class="at">headings</span><span class="op">,</span> {</span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>      <span class="dt">layout</span><span class="op">:</span> <span class="st">"auto"</span><span class="op">,</span></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>      <span class="dt">columns</span><span class="op">:</span> [<span class="st">"heading"</span><span class="op">,</span> <span class="st">"description"</span><span class="op">,</span> <span class="st">"type"</span><span class="op">,</span> <span class="st">"unit"</span><span class="op">,</span> <span class="st">"example"</span>]<span class="op">,</span></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>      <span class="dt">format</span><span class="op">:</span> {</span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>        <span class="dt">type</span><span class="op">:</span> (d) <span class="kw">=&gt;</span> (d <span class="kw">in</span> types <span class="op">?</span> types[d] <span class="op">:</span> d)<span class="op">,</span></span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>        <span class="dt">status</span><span class="op">:</span> (d) <span class="kw">=&gt;</span> {</span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>          <span class="cf">switch</span> (d) {</span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>            <span class="cf">case</span> <span class="st">"*"</span><span class="op">:</span></span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>              <span class="cf">return</span> <span class="st">"KEY"</span><span class="op">;</span></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>            <span class="cf">case</span> <span class="st">"R"</span><span class="op">:</span></span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>              <span class="cf">return</span> <span class="st">"Required"</span><span class="op">;</span></span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>            <span class="cf">default</span><span class="op">:</span></span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>              <span class="cf">return</span> <span class="st">""</span><span class="op">;</span></span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>          }</span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>  <span class="op">:</span> <span class="kw">null</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-5" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6" data-startfrom="88" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 87;"><span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>types <span class="op">=</span> ({</span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>  <span class="op">...</span><span class="bu">Object</span><span class="op">.</span><span class="fu">fromEntries</span>(</span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>    <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({ <span class="dt">length</span><span class="op">:</span> <span class="dv">5</span> }<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> i)<span class="op">.</span><span class="fu">map</span>((i) <span class="kw">=&gt;</span> [</span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>      <span class="vs">`</span><span class="sc">${</span>i<span class="sc">}</span><span class="vs">DP`</span><span class="op">,</span></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>      <span class="vs">`Value with </span><span class="sc">${</span>i<span class="sc">}</span><span class="vs"> required decimal places`</span></span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>    ])</span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a>  )<span class="op">,</span></span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a>  <span class="op">...</span><span class="bu">Object</span><span class="op">.</span><span class="fu">fromEntries</span>(</span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>    <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({ <span class="dt">length</span><span class="op">:</span> <span class="dv">4</span> }<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> i)<span class="op">.</span><span class="fu">map</span>((i) <span class="kw">=&gt;</span> [</span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a>      <span class="vs">`</span><span class="sc">${</span>i<span class="sc">}</span><span class="vs">SF`</span><span class="op">,</span></span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a>      <span class="vs">`</span><span class="sc">${</span>i<span class="sc">}</span><span class="vs"> sign. figures`</span></span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a>    ])</span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a>  )<span class="op">,</span></span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a>  <span class="dt">DT</span><span class="op">:</span> <span class="st">"Datetime"</span><span class="op">,</span></span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a>  <span class="dt">T</span><span class="op">:</span> <span class="st">"Time elapsed"</span><span class="op">,</span></span>
+<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a>  <span class="dt">X</span><span class="op">:</span> <span class="st">"Text"</span><span class="op">,</span></span>
+<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a>  <span class="dt">YN</span><span class="op">:</span> <span class="st">"Yes/no"</span><span class="op">,</span></span>
+<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a>  <span class="dt">ID</span><span class="op">:</span> <span class="st">"Unique Identifier"</span><span class="op">,</span></span>
+<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a>  <span class="dt">XN</span><span class="op">:</span> <span class="st">"Text/numeric"</span><span class="op">,</span></span>
+<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a>  <span class="dt">PA</span><span class="op">:</span> <span class="st">"Text listed in ABBR Group"</span><span class="op">,</span></span>
+<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a>  <span class="dt">PU</span><span class="op">:</span> <span class="st">"Text listed in UNIT Group"</span><span class="op">,</span></span>
+<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a>  <span class="dt">U</span><span class="op">:</span> <span class="st">"Value with a variable format"</span></span>
+<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBncm91cFNlYXJjaCA9IElucHV0cy5zZWFyY2goYWdzNCwge1xuICBwbGFjZWhvbGRlcjogXCJTZWFyY2ggZ3JvdXBzLi4uXCJcbn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgZ3JvdXBUYWJsZSA9IElucHV0cy50YWJsZShncm91cFNlYXJjaCwge1xuICBmb3JtYXQ6IHsgaGVhZGluZ3M6IChkKSA9PiBkLm1hcCgoaCkgPT4gaC5oZWFkaW5nKS5qb2luKFwiLCBcIikgfSxcbiAgbXVsdGlwbGU6IGZhbHNlLFxuICBsYXlvdXQ6IFwiYXV0b1wiXG59KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiYWdzNCA9IEZpbGVBdHRhY2htZW50KFwiYWdzNF9kYXRhX2RpY3Rpb25hcnkuanNvblwiKS5qc29uKClcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Imdyb3VwVGFibGUgPyBtZGAjIyMgJHtncm91cFRhYmxlLmdyb3VwX25hbWV9XFxuJHtncm91cFRhYmxlLmdyb3VwX2Rlc2NyaXB0aW9ufWAgOiBtZGAjIyMgU2VsZWN0IGEgZ3JvdXAgaW4gdGhlIHRhYmxlIGFib3ZlIHRvIHZpZXcgaXRzIGhlYWRpbmdzLmBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Imdyb3VwVGFibGVcbiAgPyBJbnB1dHMudGFibGUoZ3JvdXBUYWJsZS5oZWFkaW5ncywge1xuICAgICAgbGF5b3V0OiBcImF1dG9cIixcbiAgICAgIGNvbHVtbnM6IFtcImhlYWRpbmdcIiwgXCJkZXNjcmlwdGlvblwiLCBcInR5cGVcIiwgXCJ1bml0XCIsIFwiZXhhbXBsZVwiXSxcbiAgICAgIGZvcm1hdDoge1xuICAgICAgICB0eXBlOiAoZCkgPT4gKGQgaW4gdHlwZXMgPyB0eXBlc1tkXSA6IGQpLFxuICAgICAgICBzdGF0dXM6IChkKSA9PiB7XG4gICAgICAgICAgc3dpdGNoIChkKSB7XG4gICAgICAgICAgICBjYXNlIFwiKlwiOlxuICAgICAgICAgICAgICByZXR1cm4gXCJLRVlcIjtcbiAgICAgICAgICAgIGNhc2UgXCJSXCI6XG4gICAgICAgICAgICAgIHJldHVybiBcIlJlcXVpcmVkXCI7XG4gICAgICAgICAgICBkZWZhdWx0OlxuICAgICAgICAgICAgICByZXR1cm4gXCJcIjtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9KVxuICA6IG51bGxcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InR5cGVzID0gKHtcbiAgLi4uT2JqZWN0LmZyb21FbnRyaWVzKFxuICAgIEFycmF5LmZyb20oeyBsZW5ndGg6IDUgfSwgKF8sIGkpID0+IGkpLm1hcCgoaSkgPT4gW1xuICAgICAgYCR7aX1EUGAsXG4gICAgICBgVmFsdWUgd2l0aCAke2l9IHJlcXVpcmVkIGRlY2ltYWwgcGxhY2VzYFxuICAgIF0pXG4gICksXG4gIC4uLk9iamVjdC5mcm9tRW50cmllcyhcbiAgICBBcnJheS5mcm9tKHsgbGVuZ3RoOiA0IH0sIChfLCBpKSA9PiBpKS5tYXAoKGkpID0+IFtcbiAgICAgIGAke2l9U0ZgLFxuICAgICAgYCR7aX0gc2lnbi4gZmlndXJlc2BcbiAgICBdKVxuICApLFxuICBEVDogXCJEYXRldGltZVwiLFxuICBUOiBcIlRpbWUgZWxhcHNlZFwiLFxuICBYOiBcIlRleHRcIixcbiAgWU46IFwiWWVzL25vXCIsXG4gIElEOiBcIlVuaXF1ZSBJZGVudGlmaWVyXCIsXG4gIFhOOiBcIlRleHQvbnVtZXJpY1wiLFxuICBQQTogXCJUZXh0IGxpc3RlZCBpbiBBQkJSIEdyb3VwXCIsXG4gIFBVOiBcIlRleHQgbGlzdGVkIGluIFVOSVQgR3JvdXBcIixcbiAgVTogXCJWYWx1ZSB3aXRoIGEgdmFyaWFibGUgZm9ybWF0XCJcbn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2dyb3VwU2VhcmNoJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2dyb3VwVGFibGUnKSJ9XX0=
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../articles/2025-04-14-ags";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/bedrock\.engineer");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+        for (let i=0; i<annoteTargets.length; i++) {
+          const annoteTarget = annoteTargets[i];
+          const targetCell = annoteTarget.getAttribute("data-target-cell");
+          const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+          const contentFn = () => {
+            const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+            if (content) {
+              const tipContent = content.cloneNode(true);
+              tipContent.classList.add("code-annotation-tip-content");
+              return tipContent.outerHTML;
+            }
+          }
+          const config = {
+            allowHTML: true,
+            content: contentFn,
+            onShow: (instance) => {
+              selectCodeLines(instance.reference);
+              instance.reference.classList.add('code-annotation-active');
+              window.tippy.hideAll();
+            },
+            onHide: (instance) => {
+              unselectCodeLines();
+              instance.reference.classList.remove('code-annotation-active');
+            },
+            maxWidth: 300,
+            delay: [50, 0],
+            duration: [200, 0],
+            offset: [5, 10],
+            arrow: true,
+            appendTo: function(el) {
+              return el.parentElement.parentElement.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'quarto',
+            placement: 'right',
+            popperOptions: {
+              modifiers: [
+              {
+                name: 'flip',
+                options: {
+                  flipVariations: false, // true by default
+                  allowedAutoPlacements: ['right'],
+                  fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                },
+              },
+              {
+                name: 'preventOverflow',
+                options: {
+                  mainAxis: false,
+                  altAxis: false
+                }
+              }
+              ]        
+            }      
+          };
+          window.tippy(annoteTarget, config); 
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bedrock-gi/bedrock-web/blob/main/articles/2025-04-14-ags/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/bedrock-gi/bedrock-web/edit/main/articles/2025-04-14-ags/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/bedrock-gi/bedrock-gi/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/bedrock-gi/bedrock-gi">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/company/bedrock-gi/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
