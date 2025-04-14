@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Joost Gevaert">
+<meta name="dcterms.date" content="2024-08-17">
+<meta name="description" content="An introduction to Bedrock and Bedrock’s website.">
 
-<title>Articles – Bedrock</title>
+<title>Welcome to Bedrock – Bedrock</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +26,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./public/favicon.ico" rel="icon">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b4406b7675125bc2ba204020e191172.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e6c1898912765b4220a963566674e4ac.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../public/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b4406b7675125bc2ba204020e191172.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-e6c1898912765b4220a963566674e4ac.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,68 +71,11 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<meta property="og:title" content="Articles – Bedrock">
-<meta property="og:image" content="https://bedrock.engineer/articles/2024-08-18-bedrock-loves-quarto/quarto.png">
+<meta property="og:title" content="Welcome to Bedrock – Bedrock">
+<meta property="og:description" content="An introduction to Bedrock and Bedrock’s website.">
+<meta property="og:image" content="https://bedrock.engineer/articles/2024-08-17-welcome/Bedrock_TextRight.png">
 <meta property="og:site_name" content="Bedrock">
 <meta property="og:image:height" content="120">
 <meta property="og:image:width" content="360">
@@ -144,10 +88,10 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./public/Bedrock.png" alt="Bedrock" class="navbar-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../public/Bedrock.png" alt="Bedrock" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Bedrock</span>
     </a>
   </div>
@@ -158,11 +102,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./docs/index.html"> 
+    <a class="nav-link" href="../../docs/index.html"> 
 <span class="menu-text">Documentation</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./articles.html" aria-current="page"> 
+    <a class="nav-link" href="../../articles.html"> 
 <span class="menu-text">Articles</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -188,7 +132,7 @@ window.Quarto = {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -203,134 +147,193 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Articles</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Welcome to Bedrock</h1>
+                  <div>
+        <div class="description">
+          An introduction to Bedrock and Bedrock’s website.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">news</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Joost Gevaert </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 17, 2024</p>
+      </div>
+    </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">August 20, 2023</p>
+      </div>
+    </div>
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="YWdz">ags <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YWdzNA==">ags4 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmV3cw==">news <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cXVhcnRv">quarto <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#read-write-ground-investigation-gi-data-in-different-formats" id="toc-read-write-ground-investigation-gi-data-in-different-formats" class="nav-link active" data-scroll-target="#read-write-ground-investigation-gi-data-in-different-formats">📖 Read / write Ground Investigation (GI) data in different formats</a></li>
+  <li><a href="#validate-your-gi-data" id="toc-validate-your-gi-data" class="nav-link" data-scroll-target="#validate-your-gi-data">✅ Validate your GI data</a></li>
+  <li><a href="#put-your-gi-data-from-multiple-files-into-a-single-3d-gis-database" id="toc-put-your-gi-data-from-multiple-files-into-a-single-3d-gis-database" class="nav-link" data-scroll-target="#put-your-gi-data-from-multiple-files-into-a-single-3d-gis-database">🗺️ Put your GI data from multiple files into a single 3D GIS database</a></li>
+  <li><a href="#put-your-gi-data-into-speckle" id="toc-put-your-gi-data-into-speckle" class="nav-link" data-scroll-target="#put-your-gi-data-into-speckle">🟦 Put your GI data into Speckle</a></li>
+  <li><a href="#free-and-open-source-software" id="toc-free-and-open-source-software" class="nav-link" data-scroll-target="#free-and-open-source-software">🔓 Free and Open Source Software</a></li>
+  <li><a href="#feedback" id="toc-feedback" class="nav-link" data-scroll-target="#feedback">💭 Feedback</a></li>
+  <li><a href="#contributing" id="toc-contributing" class="nav-link" data-scroll-target="#contributing">👷 Contributing</a></li>
+  </ul>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/bedrock-gi/bedrock-web/blob/main/articles/2024-08-17-welcome/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/bedrock-gi/bedrock-web/edit/main/articles/2024-08-17-welcome/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/bedrock-gi/bedrock-gi/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="YWdzJTJDYWdzNA==" data-listing-date-sort="1744581600000" data-listing-file-modified-sort="1744623708735" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2060">
-<div class="thumbnail"><a href="./articles/2025-04-14-ags/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./articles/2025-04-14-ags/index.html" class="no-external">AGS4 Reference</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('YWdz'); return false;">ags</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YWdzNA=='); return false;">ags4</div>
-
+<section id="read-write-ground-investigation-gi-data-in-different-formats" class="level2">
+<h2 class="anchored" data-anchor-id="read-write-ground-investigation-gi-data-in-different-formats">📖 Read / write Ground Investigation (GI) data in different formats</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Data Format</th>
+<th>Read</th>
+<th>Write</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AGS 3</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr class="even">
+<td>AGS 4</td>
+<td>Soon</td>
+<td><a href="https://pypi.org/project/python-AGS4/">python-ags4</a></td>
+</tr>
+<tr class="odd">
+<td>Excel</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>CSV</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>JSON</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>GeoJSON</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p>What do you need? <a href="https://diggsml.org/">DIGGS</a>? <a href="https://www.ngu.no/geologisk-kartlegging/om-nadag-nasjonal-database-grunnundersokelser">NADAG</a>? <a href="https://publicwiki.deltares.nl/display/STREAM/Dutch+National+GEF+Standards">GEF</a>? Something else?<br>
+Let us know by creating an <a href="https://github.com/bedrock-gi/bedrock-gi/issues">issue</a> or starting a <a href="https://github.com/orgs/bedrock-gi/discussions">discussion</a> 💭</p>
+<p>Also, if you have a project with publicly available GI data, please share that in a <a href="https://github.com/orgs/bedrock-gi/discussions">discussion</a>, such that we can create a tutorial from it 🤩</p>
+</section>
+<section id="validate-your-gi-data" class="level2">
+<h2 class="anchored" data-anchor-id="validate-your-gi-data">✅ Validate your GI data</h2>
+<p><code>bedrock-gi</code> comes with data validation to make sure that you can combine Ground Investigation data from multiple files into a single GIS database with consistent relationships between GI locations, samples, in-situ measurements and lab tests.</p>
+<p>This data validation mechanism (based on <a href="https://pandera.readthedocs.io/en/stable/"><code>pandera</code></a>) is easily extensible, giving you the power to add your own data validation criteria 💪</p>
+</section>
+<section id="put-your-gi-data-from-multiple-files-into-a-single-3d-gis-database" class="level2">
+<h2 class="anchored" data-anchor-id="put-your-gi-data-from-multiple-files-into-a-single-3d-gis-database">🗺️ Put your GI data from multiple files into a single 3D GIS database</h2>
+<p>For example, you can take GI data from 100 AGS files and combine them into a single a <a href="https://en.wikipedia.org/wiki/GeoPackage">GeoPackage</a> (<a href="http://switchfromshapefile.org/">like a Shapefile, but then waaay better</a>). Such a GeoPackage can then be loaded into ArcGIS, such that you can visualize your GI data in 3D, and perform analyses:</p>
+<p align="center">
+<img src="https://bedrock.engineer/public/images/KaiTak_BrGI_ArcGIS.gif" alt="GI data visualization .gif in 3D in ArcGIS" width="90%">
+</p>
+</section>
+<section id="put-your-gi-data-into-speckle" class="level2">
+<h2 class="anchored" data-anchor-id="put-your-gi-data-into-speckle">🟦 Put your GI data into Speckle</h2>
+<p>Once you have your GI data inside <a href="https://speckle.systems/">Speckle</a>, it’s super easy to visualize GI data together with civil engineering designs:</p>
+<p align="center">
+<img src="https://bedrock.engineer/public/images/KaiTak_BrGI_Speckle.png" alt="Kai Tak, Hong Kong, data from many sources." width="56%"> <img src="https://bedrock.engineer/public/images/BPFoundation.png" alt="Bored Pile foundation design." width="40%"> <a href="https://app.speckle.systems/projects/013aaf06e7/models/0fa0287ba8@dfbec71408,1cbe68ed69@d3c4a34cff,44c8d1ecae@b962e2f29d,7f9d99cae2@bbed7cf165,9535541c2b@fafe06f9c0,a739490298@e858cc8cb3,ff81bfa02b@dda7c2f981" target="_blank">Click here to go to the Kai Tak Speckle project from the left image</a>
+</p>
+<p>Moreover, your GI data becomes available in all the software that <a href="https://app.speckle.systems/downloads">Speckle has connectors for</a>.</p>
+</section>
+<section id="free-and-open-source-software" class="level2">
+<h2 class="anchored" data-anchor-id="free-and-open-source-software">🔓 Free and Open Source Software</h2>
+<p>Free and Open Source Software (FOSS) gives you full access to the code, which means you can customize <code>bedrock-gi</code> to integrate with other tools and fit your workflows &amp; project needs.</p>
+<p>As the name implies, FOSS is free to use, so you’re not tied to expensive software licenses or locked into a specific software vendor ⛓️‍💥</p>
+<p>You can give <a href="#-feedback">feedback</a> and <a href="#-contributing">contribute</a>, such that together we together can build the tools we’ve always wanted and needed 🤝</p>
+<p><br></p>
+</section>
+<section id="feedback" class="level2">
+<h2 class="anchored" data-anchor-id="feedback">💭 Feedback</h2>
+<p>Got some feedback, a great idea, running into problems when working with Bedrock or just want to ask some questions?</p>
+<p>Please feel free to:</p>
+<ol type="1">
+<li>open an issue for feature requests or bug reports: <a href="https://github.com/bedrock-gi/bedrock-gi/issues"><code>bedrock-gi</code> issues</a>,</li>
+<li>start a discussion in this GitHub repo: <a href="https://github.com/orgs/bedrock-gi/discussions">Bedrock discussions</a>,</li>
+<li>or start a discussion on the Speckle community forum if that’s more appropriate: <a href="https://speckle.community/">Speckle community forum</a></li>
+</ol>
+<p>All feedback and engagement with the Bedrock community is welcome 🤗</p>
+</section>
+<section id="contributing" class="level2">
+<h2 class="anchored" data-anchor-id="contributing">👷 Contributing</h2>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="delink listing-description"><a href="./articles/2025-04-14-ags/index.html" class="no-external">
-<p>A brief introduction to AGS.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./articles/2025-04-14-ags/index.html" class="no-external">
-<div class="listing-date">
-Apr 14, 2025
-</div>
-<div class="listing-author">
-Jules Blom
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="cXVhcnRv" data-listing-date-sort="1723932000000" data-listing-file-modified-sort="1744624375221" data-listing-date-modified-sort="1692655200000" data-listing-reading-time-sort="6" data-listing-word-count-sort="1119">
-<div class="thumbnail"><a href="./articles/2024-08-18-bedrock-loves-quarto/index.html" class="no-external">
-
-<img loading="lazy" src="./articles/2024-08-18-bedrock-loves-quarto/quarto.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./articles/2024-08-18-bedrock-loves-quarto/index.html" class="no-external">Bedrock ❤️ Quarto</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('cXVhcnRv'); return false;">quarto</div>
-
-</div>
-<div class="delink listing-description"><a href="./articles/2024-08-18-bedrock-loves-quarto/index.html" class="no-external">
-</a><p><a href="./articles/2024-08-18-bedrock-loves-quarto/index.html" class="no-external">Why I chose </a><a href="https://quarto.org/">Quarto</a> for building this website.</p>
-</div>
-</div>
-<div class="metadata">
-<a href="./articles/2024-08-18-bedrock-loves-quarto/index.html" class="no-external">
-<div class="listing-date">
-Aug 18, 2024
-</div>
-<div class="listing-author">
-Joost Gevaert
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="bmV3cw==" data-listing-date-sort="1723845600000" data-listing-file-modified-sort="1744624373199" data-listing-date-modified-sort="1692482400000" data-listing-reading-time-sort="4" data-listing-word-count-sort="655">
-<div class="thumbnail"><a href="./articles/2024-08-17-welcome/index.html" class="no-external">
-
-<img loading="lazy" src="./articles/2024-08-17-welcome/Bedrock_TextRight.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./articles/2024-08-17-welcome/index.html" class="no-external">Welcome to Bedrock</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">news</div>
-
-</div>
-<div class="delink listing-description"><a href="./articles/2024-08-17-welcome/index.html" class="no-external">
-<p>An introduction to Bedrock and Bedrock’s website.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./articles/2024-08-17-welcome/index.html" class="no-external">
-<div class="listing-date">
-Aug 17, 2024
-</div>
-<div class="listing-author">
-Joost Gevaert
-</div>
-</a>
+<div class="callout-title-container flex-fill">
+Caution
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p>Wait, please read this too!</p>
 </div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</div>
+<p>Contributing isn’t scary 😄</p>
+<p>Contributing isn’t just about writing code:</p>
+<ul>
+<li>Use Bedrock and provide <a href="#-feedback">feedback</a> 🪲</li>
+<li>Share how you use Bedrock 🏗️</li>
+<li>Help each other out, e.g.&nbsp;by replying to questions in the <a href="https://github.com/orgs/bedrock-gi/discussions">discussions</a> or <a href="https://github.com/bedrock-gi/bedrock-gi/issues"><code>bedrock-gi</code> issues</a> 🤝</li>
+<li>Spread the word about Bedrock 🤩</li>
+<li>Documentation and tutorials 📃</li>
+<li>Most pages on the <a href="https://bedrock.engineer/">bedrock.engineer</a> website can be edited, so if you see a spelling mistake or have a suggestion on how to explain something better, please smash that button! 🖱️💥</li>
+</ul>
+<p align="center">
+<img src="https://bedrock.engineer/public/images/EditThisPage.png" alt="Edit this page on GitHub button on bedrock.engineer" width="20%">
+</p>
+<ul>
+<li>If you would like to contribute code, AWESOME! 💖<br>
+Please create an issue for what you’d like to contribute. If you don’t know how to get started, please indicate this in your issue, and we’ll help you out.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -784,7 +787,7 @@ Joost Gevaert
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/bedrock-gi/bedrock-web/blob/main/articles.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/bedrock-gi/bedrock-web/edit/main/articles.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/bedrock-gi/bedrock-gi/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bedrock-gi/bedrock-web/blob/main/articles/2024-08-17-welcome/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/bedrock-gi/bedrock-web/edit/main/articles/2024-08-17-welcome/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/bedrock-gi/bedrock-gi/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

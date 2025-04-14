@@ -4,7 +4,7 @@
     "href": "articles.html",
     "title": "Articles",
     "section": "",
-    "text": "AGS4 Reference\n\n\n\nags\n\nags4\n\n\n\nA brief introduction to AGS.\n\n\n\n\n\nApr 14, 2025\n\n\nJules Blom\n\n\n\n\n\nNo matching items"
+    "text": "AGS4 Reference\n\n\n\nags\n\nags4\n\n\n\nA brief introduction to AGS.\n\n\n\n\n\nApr 14, 2025\n\n\nJules Blom\n\n\n\n\n\n\n\n\n\n\n\n\nBedrock ❤️ Quarto\n\n\n\nquarto\n\n\n\nWhy I chose Quarto for building this website.\n\n\n\n\n\nAug 18, 2024\n\n\nJoost Gevaert\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome to Bedrock\n\n\n\nnews\n\n\n\nAn introduction to Bedrock and Bedrock’s website.\n\n\n\n\n\nAug 17, 2024\n\n\nJoost Gevaert\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "faq.html",
@@ -84,11 +84,116 @@
     "text": "In case you’re using uv, you can add bedrock-gi to your Python project and install it in your project’s virtual environment by running:\nuv add bedrock-gi\nI would highly recommend anyone to start using uv (Unified Virtual Environment Manager) if you’re not already doing so. Some of the advantages (Source: uv):\n\n🖥️ uv Python projects will work on Windows, macOS and Linux.\n🐍 uv installs and manages Python versions.\n🗂️ uv provides comprehensive project management, with a universal lockfile. This means no more headaches about virtual environments (or having to explain what on earth a virtual env is), or people running different versions of Python or Python packages on the same project, causing errors and other problems.\nIn short, 🚀 uv is a single tool to replace pip, pip-tools, pipx, poetry, pyenv, virtualenv, conda and more…\n\nIt’s of course also possible to install bedrock-gi from PyPI (Python Packaging Index) using pip:\npip install bedrock-gi"
   },
   {
+    "objectID": "articles/2024-08-18-bedrock-loves-quarto/index.html",
+    "href": "articles/2024-08-18-bedrock-loves-quarto/index.html",
+    "title": "Bedrock ❤️ Quarto",
+    "section": "",
+    "text": "Quarto makes it really easy to set up a smoothly working and beautiful website. It took me less than 3 days to set up Bedrock’s website with:\nQuarto makes it easy to implement many features that are essential for modern (docs) websites, see below 🤩. Building all these features from without handy tooling is, … daunting.\nOther tools I looked at:"
+  },
+  {
+    "objectID": "articles/2024-08-18-bedrock-loves-quarto/index.html#quarto",
+    "href": "articles/2024-08-18-bedrock-loves-quarto/index.html#quarto",
+    "title": "Bedrock ❤️ Quarto",
+    "section": "Quarto?",
+    "text": "Quarto?\n\nNice intro, but … Quarto?\n\n\nWhat\nHow: pandoc\nWhy\nWho: Posix + Community\nWhen"
+  },
+  {
+    "objectID": "articles/2024-08-18-bedrock-loves-quarto/index.html#markdown",
+    "href": "articles/2024-08-18-bedrock-loves-quarto/index.html#markdown",
+    "title": "Bedrock ❤️ Quarto",
+    "section": "Markdown",
+    "text": "Markdown\nMarkdown is an easy to read and write text format:\n\nIt’s plain text so works well with version control\nIt can be rendered into HTML (this website), PDF, Word (.docx), PowerPoint (.pptx) presentation and more…\nMany very useful basic features, see below.\nLearn more at: https://quarto.org/docs/authoring/\n\n\nEquations\nUse LaTeX to write equations: \\[\nx = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}\n\\tag{1}\\]\n\n\nSource Code\nSee Static Code, Computed Code & Interactive Docs below.\n\n\nLists\nQuarto’s docs list some pretty awesome lists that I wasn’t aware of, and creative ways of using them. My highlight, definitions:\n\nterm or symbol, e.g. \\(\\alpha\\)\n\ndefinition\n\n\n\n\nFootnotes\nFootnotes in a Quarto website get a hover preview 🤩1\n\n\n“Raw Content”\nA somewhat cryptic way of saying that you can use this to to say that this is how you can embed other websites . For example:\n```{=html}\n&lt;iframe title=\"Kai Tak - Speckle\" src=\"https://app.speckle.systems/projects/013aaf06e7/models/0fa0287ba8,a739490298,c59c767566#embed=%7B%22isEnabled%22%3Atrue%7D\" width=\"100%\" height=\"500\" frameborder=\"0\"&gt;&lt;/iframe&gt;\n```\nembeds ⬇️"
+  },
+  {
+    "objectID": "articles/2024-08-18-bedrock-loves-quarto/index.html#static-code-computed-code-interactivity",
+    "href": "articles/2024-08-18-bedrock-loves-quarto/index.html#static-code-computed-code-interactivity",
+    "title": "Bedrock ❤️ Quarto",
+    "section": "Static Code, Computed Code & Interactivity",
+    "text": "Static Code, Computed Code & Interactivity\nA Quarto Website project produces HTML documents (see _site directory) as output from the Quarto (.qmd), Markdown (.md), or Jupyter Notebook (.ipynb) files, which are then put together into a website with all the features a modern (docs) site needs by Quarto. Code blocks in these HTML documents comes in 2 types:\n\nStatic Code. Static code is not executed by Quarto when the website is generated, and can therefore not produce output such as figures. Static code blocks can be generated like this:\n  ```{.python}\n  print(\"This is a static code block. The code in this block will not be executed.\")\n  ```\nResult 👇\n\nprint(\"This is a static code block. The code in this block will not be executed.\")\n\nComputed Code. Computed code is executed by Quarto when the website it generated, and can therefore produce output such as figures. These figures can also be made interactive when you use a library such as plotly. Computed code blocks can be generated like this:\n  ```{python}\n  print(\"This is a computed code block. The code block will be executed.\")\n  ```\nResult 👇\n\n\n\nCode\nprint(\"This is a computed code block. The code block will be executed.\")\n\n\nThis is a computed code block. The code block will be executed.\n\n\nAs you can see, this is a bit tricky, because the difference between a code block being static ({.python}) and computed ({python}) is only a single “.”.\nBelow a little more exciting example of a computed Python code block. Figure 1 actually comes from Quarto’s Get Started Guide.\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\nFigure 1: A line plot on a polar axis\n\n\n\n\n\n\nCode Annotations\nQuarto also has beatiful code annotations:\n{\n  \"location\": {\n    \"attributes\": {},\n1    \"geometry\": \"Point / 3D LineString\",\n    \"children\": {}\n  }\n}\n\n1\n\nThe geometry of a borehole location is best represented by a “3D LineString”. However, when visualizing the locations for which GI data is available on a 2D map, vertical lines vanish, in such cases using “Point” geometry for the GI location is better."
+  },
+  {
+    "objectID": "articles/2024-08-18-bedrock-loves-quarto/index.html#awesome-features-for-modern-websites",
+    "href": "articles/2024-08-18-bedrock-loves-quarto/index.html#awesome-features-for-modern-websites",
+    "title": "Bedrock ❤️ Quarto",
+    "section": "Awesome Features for Modern Websites",
+    "text": "Awesome Features for Modern Websites\nSo, Markdown provides a great developer i.e. contributor experience, and the Code & Interactivity features make Quarto documentation useful and engaging, but that doesn’t give you a good website yet. Therefore, this section highlights some of the awesome Quarto features that are essential for modern (docs) websites.\n\nWebsite Navigation\n\nNavBar\n\nLogo. Lacks Quarto docs though, so see the Quarto config of this website _quarto.yml on GitHub.\nHelp ▼ menu\nGitHub & Socials\nWebsite Search\n\nRight Sidebar\n\nSee “On this Page”, and Table of Contents in the Quarto docs.\nPage specific GitHub Links\n\nLeft Sidebar\nRelevant for Bedrock’s Documentation, but not yet implemented. Look at Hybrid Navigation, meaning Sidebar Navigation for inside the Documentation part of the website only, while maintaining the NavBar.\n\n\n\n\n\n\n\nWarning 1: 🐞 No Search Placeholder\n\n\n\nWhen editing the search appearance when using a search textbox, the “Search” placeholder is not showing up in the website.\n\n\n\n\nCross-References with Hover Preview\nThe way that cross-referencing is implemented in Quarto is very slick as well:\n\nCallout Blocks, e.g. Warning 1\nFigures:, e.g. Figure 1\nEquations, e.g. Equation 1\nThe list above only highlights some of the basics of cross-referencing with Quarto. Learn more at: Options, Div Syntaz, Custom Floats"
+  },
+  {
+    "objectID": "articles/2024-08-18-bedrock-loves-quarto/index.html#promising-features",
+    "href": "articles/2024-08-18-bedrock-loves-quarto/index.html#promising-features",
+    "title": "Bedrock ❤️ Quarto",
+    "section": "Promising Features",
+    "text": "Promising Features\nSeveral other Quarto features that I like and (might) want to make use of in the future:\n\nTabsets\nDark Mode\nDiagrams\nIn addition to Reference Popups, i.e. hover previews for footnotes and cross-references, Quarto also has reference popups for citations.\nLinks to Source Notebooks, such that you can open up a docs page that’s based on a Jupyter Notebook directly in Google Colab (see Notebook Embed # View Options & Reference &gt; Formats &gt; HTML Options # Links notebook-view).\nOpen Graph config for richer sharing of links to specific pages of websites.\nquartodoc is a Python package for generating API reference documentation of a Python package with proper docstrings that is based on, and integrates with Quarto.\nCommenting such that you all can leave your thoughts right here 👇"
+  },
+  {
+    "objectID": "articles/2024-08-18-bedrock-loves-quarto/index.html#footnotes",
+    "href": "articles/2024-08-18-bedrock-loves-quarto/index.html#footnotes",
+    "title": "Bedrock ❤️ Quarto",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nHey, that tickles 🤣↩︎"
+  },
+  {
     "objectID": "community.html",
     "href": "community.html",
     "title": "Community",
     "section": "",
     "text": "Under Construction 🏗️\n\n\n\nThis page of Bedrock’s website is still under construction.\n\n\nThe community of Bedrock has its home in the SWUNG (Software Underground) community.\nHowever, because Bedrock also has a strong link with Speckle - to make it possible to use ground investigation easily in all the software that are commonly used in the AEC (Architecture, Engineering & Construction) industry - you may want to post your questions on the Speckle community forum."
+  },
+  {
+    "objectID": "articles/2024-08-17-welcome/index.html",
+    "href": "articles/2024-08-17-welcome/index.html",
+    "title": "Welcome to Bedrock",
+    "section": "",
+    "text": "Data Format\nRead\nWrite\n\n\n\n\nAGS 3\n✅\n❌\n\n\nAGS 4\nSoon\npython-ags4\n\n\nExcel\n✅\n✅\n\n\nCSV\n✅\n✅\n\n\nJSON\n✅\n✅\n\n\nGeoJSON\n✅\n✅\n\n\n\nWhat do you need? DIGGS? NADAG? GEF? Something else?\nLet us know by creating an issue or starting a discussion 💭\nAlso, if you have a project with publicly available GI data, please share that in a discussion, such that we can create a tutorial from it 🤩"
+  },
+  {
+    "objectID": "articles/2024-08-17-welcome/index.html#read-write-ground-investigation-gi-data-in-different-formats",
+    "href": "articles/2024-08-17-welcome/index.html#read-write-ground-investigation-gi-data-in-different-formats",
+    "title": "Welcome to Bedrock",
+    "section": "",
+    "text": "Data Format\nRead\nWrite\n\n\n\n\nAGS 3\n✅\n❌\n\n\nAGS 4\nSoon\npython-ags4\n\n\nExcel\n✅\n✅\n\n\nCSV\n✅\n✅\n\n\nJSON\n✅\n✅\n\n\nGeoJSON\n✅\n✅\n\n\n\nWhat do you need? DIGGS? NADAG? GEF? Something else?\nLet us know by creating an issue or starting a discussion 💭\nAlso, if you have a project with publicly available GI data, please share that in a discussion, such that we can create a tutorial from it 🤩"
+  },
+  {
+    "objectID": "articles/2024-08-17-welcome/index.html#validate-your-gi-data",
+    "href": "articles/2024-08-17-welcome/index.html#validate-your-gi-data",
+    "title": "Welcome to Bedrock",
+    "section": "✅ Validate your GI data",
+    "text": "✅ Validate your GI data\nbedrock-gi comes with data validation to make sure that you can combine Ground Investigation data from multiple files into a single GIS database with consistent relationships between GI locations, samples, in-situ measurements and lab tests.\nThis data validation mechanism (based on pandera) is easily extensible, giving you the power to add your own data validation criteria 💪"
+  },
+  {
+    "objectID": "articles/2024-08-17-welcome/index.html#put-your-gi-data-from-multiple-files-into-a-single-3d-gis-database",
+    "href": "articles/2024-08-17-welcome/index.html#put-your-gi-data-from-multiple-files-into-a-single-3d-gis-database",
+    "title": "Welcome to Bedrock",
+    "section": "🗺️ Put your GI data from multiple files into a single 3D GIS database",
+    "text": "🗺️ Put your GI data from multiple files into a single 3D GIS database\nFor example, you can take GI data from 100 AGS files and combine them into a single a GeoPackage (like a Shapefile, but then waaay better). Such a GeoPackage can then be loaded into ArcGIS, such that you can visualize your GI data in 3D, and perform analyses:"
+  },
+  {
+    "objectID": "articles/2024-08-17-welcome/index.html#put-your-gi-data-into-speckle",
+    "href": "articles/2024-08-17-welcome/index.html#put-your-gi-data-into-speckle",
+    "title": "Welcome to Bedrock",
+    "section": "🟦 Put your GI data into Speckle",
+    "text": "🟦 Put your GI data into Speckle\nOnce you have your GI data inside Speckle, it’s super easy to visualize GI data together with civil engineering designs:\n\n  Click here to go to the Kai Tak Speckle project from the left image\n\nMoreover, your GI data becomes available in all the software that Speckle has connectors for."
+  },
+  {
+    "objectID": "articles/2024-08-17-welcome/index.html#free-and-open-source-software",
+    "href": "articles/2024-08-17-welcome/index.html#free-and-open-source-software",
+    "title": "Welcome to Bedrock",
+    "section": "🔓 Free and Open Source Software",
+    "text": "🔓 Free and Open Source Software\nFree and Open Source Software (FOSS) gives you full access to the code, which means you can customize bedrock-gi to integrate with other tools and fit your workflows & project needs.\nAs the name implies, FOSS is free to use, so you’re not tied to expensive software licenses or locked into a specific software vendor ⛓️‍💥\nYou can give feedback and contribute, such that together we together can build the tools we’ve always wanted and needed 🤝"
+  },
+  {
+    "objectID": "articles/2024-08-17-welcome/index.html#feedback",
+    "href": "articles/2024-08-17-welcome/index.html#feedback",
+    "title": "Welcome to Bedrock",
+    "section": "💭 Feedback",
+    "text": "💭 Feedback\nGot some feedback, a great idea, running into problems when working with Bedrock or just want to ask some questions?\nPlease feel free to:\n\nopen an issue for feature requests or bug reports: bedrock-gi issues,\nstart a discussion in this GitHub repo: Bedrock discussions,\nor start a discussion on the Speckle community forum if that’s more appropriate: Speckle community forum\n\nAll feedback and engagement with the Bedrock community is welcome 🤗"
+  },
+  {
+    "objectID": "articles/2024-08-17-welcome/index.html#contributing",
+    "href": "articles/2024-08-17-welcome/index.html#contributing",
+    "title": "Welcome to Bedrock",
+    "section": "👷 Contributing",
+    "text": "👷 Contributing\n\n\n\n\n\n\nCaution\n\n\n\nWait, please read this too!\n\n\nContributing isn’t scary 😄\nContributing isn’t just about writing code:\n\nUse Bedrock and provide feedback 🪲\nShare how you use Bedrock 🏗️\nHelp each other out, e.g. by replying to questions in the discussions or bedrock-gi issues 🤝\nSpread the word about Bedrock 🤩\nDocumentation and tutorials 📃\nMost pages on the bedrock.engineer website can be edited, so if you see a spelling mistake or have a suggestion on how to explain something better, please smash that button! 🖱️💥\n\n\n\n\n\nIf you would like to contribute code, AWESOME! 💖\nPlease create an issue for what you’d like to contribute. If you don’t know how to get started, please indicate this in your issue, and we’ll help you out."
   },
   {
     "objectID": "articles/2025-04-14-ags/index.html",
