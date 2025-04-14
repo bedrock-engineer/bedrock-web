@@ -12,7 +12,7 @@ format:
 
 ## ⬇️ Installation
 
-In case you're using `uv`, you can add `bedrock-gi` to your Python project and install it in your project's virtual environment by running:
+Using `uv`, you can add `bedrock-gi` to your Python project and install it in your project's virtual environment by running:
 
 ```bash
 uv add bedrock-gi

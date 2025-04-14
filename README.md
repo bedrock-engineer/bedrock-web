@@ -1,8 +1,8 @@
-<p align="center">
+<p styl="center">
   <img src="https://bedrock.engineer/public/Bedrock_TextRight.png" alt="Bedrock logo" width="75%"/>
 </p>
 
-<h3 align="center">Bedrock, the Open Source Foundation for Ground Investigation Data</h3>
+<h3 styl="center">Bedrock, the Open Source Foundation for Ground Investigation Data</h3>
 
 ---
 
@@ -27,7 +27,7 @@
 | Data Format | Read | Write |
 |-------------|------|-------|
 | AGS 3       | ✅  | ❌    |
-| AGS 4       | Soon | [python-ags4](https://pypi.org/project/python-AGS4/) |
+| AGS 4       | ✅  | ✅ |
 | Excel       | ✅  | ✅    |
 | CSV         | ✅  | ✅    |
 | JSON        | ✅  | ✅    |

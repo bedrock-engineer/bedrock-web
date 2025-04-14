@@ -20,32 +20,27 @@ format:
 >
 > Sources: [[1] Bedrock | Cambridge Dictionary](https://dictionary.cambridge.org/us/dictionary/english/bedrock), [[2] Bedrock | Wikipedia](https://en.wikipedia.org/wiki/Bedrock)
 
-Bedrock, this open source software project, forms the foundation for for ground investigation data, subsurface modelling and Geo-BIM.
+Bedrock is an open-source Python library that forms the foundation for for ground investigation data, subsurface modelling and Geo-BIM.
 
-With Bedrock you can get your data from any Ground Investigation data format into a GIS database 🗺️, from a GIS database into Speckle 🟦, and from Speckle into all the software we work with in the AEC industry 🏗️.
+Ground Investigation data is often stored in specialized file formats that are not easily accessible for modern (geospatial) analysis and visualization workflows.
+Bedrock transforms this GI data into structured Python objects, enabling you to analyze it, and export it to GIS databases. This enable integration of GI data with other software and workflows used in the AEC industry.
+
 
 The purpose of Bedrock is NOT to become THE standard for geotechnical data, because we don't need 15 instead of 14 competing standards:
 
-<p align="center">
+<figure style="margin-block: 16px; margin-inline: auto; text-align: center;">
   <img src="https://bedrock.engineer/public/images/14Become15Standards.png" alt="14 competing standards become 15 competing standards | xkcd.com/927" width="60%"/>
-  <br>
-  Source: <a href="https://xkcd.com/927/" target="_blank">https://xkcd.com/927</a>
-</p>  
+  <figcaption>Source: <a href="https://xkcd.com/927/" target="_blank">https://xkcd.com/927</a></figcaption>
+</figure> 
 
-For example, us geotechnical engineers who are used to working with AGS data know that the "ISPT group" is a table that describes an In-Situ Standard Penetration Test and we know what headings, i.e. columns that AGS group, i.e. table has. Therefore, Bedrock doesn't change that the naming of those columns. Bedrock just makes sure that the data is structured in a sensible way, such that Ground Investigation data from multiple sources can be converted into a GIS database.
+For example, us geotechnical engineers who are used to working with AGS data know that the "ISPT group" is a table that describes an In-Situ Standard Penetration Test and we know what headings, i.e. columns that AGS group, i.e. table has. Therefore, Bedrock doesn't change the naming of those columns. Bedrock just makes sure that the data is structured in a sensible way, such that Ground Investigation data from multiple sources can be converted into a single GIS database.
 
 A GIS database with Ground Investigation data contains tables that describe the Ground Investigation `'Project'`, the `'Location'`s where GI data was collected, the `'Sample'`s and `'InSitu'` measurements taken at these `'Location'`s, and the `'Lab'` tests that were performed on the collected `'Sample'`s.
 
 The `'Project'`, `'Location'`, `'Sample'`, `'InSitu'` measurement and `'Lab'` test tables are related to each other: each lab test belongs to a sample, which belongs to a GI location, which belongs to a project. These relationships can be visualized in a hierarchy like this:
 
-```bash
-'Project'
- └───'Location'
-     ├───'InSitu'
-     └───'Sample'
-          └───'Lab'
-```
+<svg width="928" height="144" viewBox="-12,-24,928,144" style="max-width: 100%; height: auto; font: 13px sans-serif; overflow: visible;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g fill="none" stroke="#999"><path d="&#10;M0,0&#10;V24&#10;h24&#10;"/><path d="&#10;M24,24&#10;V48&#10;h24&#10;"/><path d="&#10;M24,24&#10;V72&#10;h24&#10;"/><path d="&#10;M48,72&#10;V96&#10;h24&#10;"/></g><g><g transform="translate(0,0)"><circle cx="0" r="2.5"/><text dy="0.32em" x="6"><tspan font-weight="600">Project</tspan><tspan dx="2"/></text><title>Project</title></g><g transform="translate(0,24)"><circle cx="24" r="2.5"/><text dy="0.32em" x="30"><tspan font-weight="600">Location</tspan><tspan dx="2"/></text><title>Project/Location</title></g><g transform="translate(0,48)"><circle cx="48" r="2.5"/><text dy="0.32em" x="54"><tspan font-weight="600">InSitu</tspan><tspan dx="2"/></text><title>Project/Location/InSitu</title></g><g transform="translate(0,72)"><circle cx="48" r="2.5"/><text dy="0.32em" x="54"><tspan font-weight="600">Sample</tspan><tspan dx="2"/></text><title>Project/Location/Sample</title></g><g transform="translate(0,96)"><circle cx="72" r="2.5"/><text dy="0.32em" x="78"><tspan font-weight="600">Lab</tspan><tspan dx="2"/></text><title>Project/Location/Sample/Lab</title></g></g></svg>
 
-These relationships are represented in the database tables with so-called "foreign keys". For example, the results of an Atterberg Limits Lab test, i.e. Liquid Limit and Plastic Limit tests, that originated from an AGS file would be in stored in the `'Lab_LLPL'` table. Each row in this table represents the Atterberg Limit test results performed on a specific sample. Each row knows to which project, GI location and sample it belongs through its `project_uid`, `location_uid` and `sample_uid` respectively.
+These relationships are represented in the database tables with so-called "foreign keys". For example, the results of an Atterberg Limits Lab test (i.e. Liquid Limit and Plastic Limit tests) that originated from an AGS file would be in stored in the `'Lab_LLPL'` table. Each row in this table represents the Atterberg Limit test results performed on a specific sample. Each row knows to which project, GI location and sample it belongs through its `project_uid`, `location_uid` and `sample_uid` respectively.
 
-This relational database ([linked tables](https://en.wikipedia.org/wiki/Relational_database)) with Ground Investigation data becomes a GIS database by assigning a (3D) GIS geometry to each of the rows in each of the database tables (except for the `'Project'` table).
+This relational database with Ground Investigation data becomes a GIS database by assigning a (3D) GIS geometry to each of the rows in each of the database tables (except for the `'Project'` table).
