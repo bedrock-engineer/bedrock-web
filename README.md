@@ -1,7 +1,7 @@
 
 <img src="https://bedrock.engineer/public/Bedrock_TextRight.png" alt="Bedrock logo" width="75%" style="margin-inline: auto; display: block;" />
 
-# Bedrock, the Open Source Foundation for Ground Investigation Data
+# Bedrock, the Open Source Foundation for Geotechnical Engineering
 
 ---
 
@@ -9,13 +9,13 @@
 
 📃 **Documentation:** <https://bedrock.engineer/docs>
 
-🖥️ **Source Code:** <https://github.com/bedrock-gi/bedrock-gi>
+🖥️ **Source Code:** <https://github.com/bedrock-engineer/bedrock-ge>
 
-🐍 **`bedrock-gi` on PyPI:** <https://pypi.org/project/bedrock-gi/>
+🐍 **`bedrock-ge` on PyPI:** <https://pypi.org/project/bedrock-ge/>
 
 🌐 **Website:** <https://bedrock.engineer/>
 
-🔗 **LinkedIn:** <https://www.linkedin.com/company/bedrock-gi>
+🔗 **LinkedIn:** <https://www.linkedin.com/company/bedrock-ge>
 
 ---
 
@@ -33,13 +33,13 @@
 | GeoJSON     | ✅  | ✅    |
 
 What do you need? [DIGGS](https://diggsml.org/)? [NADAG](https://www.ngu.no/geologisk-kartlegging/om-nadag-nasjonal-database-grunnundersokelser)? [GEF](https://publicwiki.deltares.nl/display/STREAM/Dutch+National+GEF+Standards)?  Something else?  
-Let us know by creating an [issue](https://github.com/bedrock-gi/bedrock-gi/issues) or starting a [discussion](https://github.com/orgs/bedrock-gi/discussions) 💭
+Let us know by creating an [issue](https://github.com/bedrock-engineer/bedrock-ge/issues) or starting a [discussion](https://github.com/orgs/bedrock-ge/discussions) 💭
 
-Also, if you have a project with publicly available GI data, please share that in a [discussion](https://github.com/orgs/bedrock-gi/discussions), such that we can create a tutorial from it 🤩
+Also, if you have a project with publicly available GI data, please share that in a [discussion](https://github.com/orgs/bedrock-ge/discussions), such that we can create a tutorial from it 🤩
 
 ### ✅ Validate your GI data
 
-`bedrock-gi` comes with data validation to make sure that you can combine Ground Investigation data from multiple files into a single GIS database with consistent relationships between GI locations, samples, in-situ measurements and lab tests.
+`bedrock-ge` comes with data validation to make sure that you can combine Ground Investigation data from multiple files into a single GIS database with consistent relationships between GI locations, samples, in-situ measurements and lab tests.
 
 This data validation mechanism (based on [`pandera`](https://pandera.readthedocs.io/en/stable/)) is easily extensible, giving you the power to add your own data validation criteria 💪
 
@@ -65,7 +65,7 @@ And your GI data becomes available in all the software that [Speckle has connect
 
 ### 🔓 Free and Open Source Software
 
-Free and Open Source Software (FOSS) gives you full access to the code, which means you can customize `bedrock-gi` to integrate with other tools and fit your workflows & project needs.
+Free and Open Source Software (FOSS) gives you full access to the code, which means you can customize `bedrock-ge` to integrate with other tools and fit your workflows & project needs.
 
 As the name implies, FOSS is free to use, so you're not tied to expensive software licenses or locked into a specific software vendor ⛓️‍💥
 
@@ -83,7 +83,7 @@ You can give [feedback](#-feedback) and [contribute](#-contributing), such that 
 >
 > Sources: [[1] Bedrock | Cambridge Dictionary](https://dictionary.cambridge.org/us/dictionary/english/bedrock), [[2] Bedrock | Wikipedia](https://en.wikipedia.org/wiki/Bedrock)
 
-Bedrock, this open source software project, forms the foundation for for ground investigation data, subsurface modelling and Geo-BIM.
+Bedrock, this open source software project, forms the foundation for for Geotechnical Engineering, subsurface modelling and Geo-BIM.
 
 With Bedrock you can get your data from any Ground Investigation data format into a GIS database 🗺️, from a GIS database into Speckle 🟦, and from Speckle into all the software we work with in the AEC industry 🏗️.
 
@@ -93,8 +93,8 @@ Got some feedback, a great idea, running into problems when working with Bedrock
 
 Please feel free to:
 
-1. open an issue for feature requests or bug reports: [`bedrock-gi` issues](https://github.com/bedrock-gi/bedrock-gi/issues),
-2. start a discussion in this GitHub repo: [Bedrock discussions](https://github.com/orgs/bedrock-gi/discussions),
+1. open an issue for feature requests or bug reports: [`bedrock-ge` issues](https://github.com/bedrock-engineer/bedrock-ge/issues),
+2. start a discussion in this GitHub repo: [Bedrock discussions](https://github.com/orgs/bedrock-ge/discussions),
 3. or start a discussion on the Speckle community forum if that's more appropriate: [Speckle community forum](https://speckle.community/)
 
 All feedback and engagement with the Bedrock community is welcome 🤗
@@ -109,7 +109,7 @@ Contributing isn't just about writing code:
 
 - Use Bedrock and provide [feedback](#-feedback) 🪲
 - Share how you use Bedrock 🏗️
-- Help each other out, e.g. by replying to questions in the [discussions](https://github.com/orgs/bedrock-gi/discussions) or [`bedrock-gi` issues](https://github.com/bedrock-gi/bedrock-gi/issues) 🤝
+- Help each other out, e.g. by replying to questions in the [discussions](https://github.com/orgs/bedrock-ge/discussions) or [`bedrock-ge` issues](https://github.com/bedrock-engineer/bedrock-ge/issues) 🤝
 - Spread the word about Bedrock 🤩
 - Documentation and tutorials 📃
 - Most pages on the [bedrock.engineer](https://bedrock.engineer/) website can be edited, so if you see a spelling mistake or have a suggestion on how to explain something better, please smash that button! 🖱️💥

@@ -20,7 +20,7 @@ format:
 >
 > Sources: [[1] Bedrock | Cambridge Dictionary](https://dictionary.cambridge.org/us/dictionary/english/bedrock), [[2] Bedrock | Wikipedia](https://en.wikipedia.org/wiki/Bedrock)
 
-Bedrock is an open-source Python library that forms the foundation for for ground investigation data, subsurface modelling and Geo-BIM.
+Bedrock is an open-source Python library that forms the foundation for for Geotechnical Engineering, subsurface modelling and Geo-BIM.
 
 Ground Investigation data is often stored in specialized file formats that are not easily accessible for modern (geospatial) analysis and visualization workflows.
 Bedrock transforms this GI data into structured Python objects, enabling you to analyze it, and export it to GIS databases. This enable integration of GI data with other software and workflows used in the AEC industry.

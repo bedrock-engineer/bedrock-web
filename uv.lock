@@ -153,7 +153,7 @@ wheels = [
 ]
 
 [[package]]
-name = "bedrock-gi"
+name = "bedrock-ge"
 version = "0.0.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
@@ -169,7 +169,7 @@ name = "bedrock-web"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "bedrock-gi" },
+    { name = "bedrock-ge" },
     { name = "geopandas" },
     { name = "jupyter" },
     { name = "pdfplumber" },
@@ -178,7 +178,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "bedrock-gi", specifier = ">=0.0.1" },
+    { name = "bedrock-ge", specifier = ">=0.0.1" },
     { name = "geopandas", specifier = ">=1.0.1" },
     { name = "jupyter", specifier = ">=1.1.1" },
     { name = "pdfplumber", specifier = ">=0.11.4" },
