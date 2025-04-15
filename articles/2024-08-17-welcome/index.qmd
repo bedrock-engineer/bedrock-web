@@ -21,13 +21,13 @@ image: "Bedrock_TextRight.png"
 | GeoJSON     | ✅  | ✅    |
 
 What do you need? [DIGGS](https://diggsml.org/)? [NADAG](https://www.ngu.no/geologisk-kartlegging/om-nadag-nasjonal-database-grunnundersokelser)? [GEF](https://publicwiki.deltares.nl/display/STREAM/Dutch+National+GEF+Standards)?  Something else?  
-Let us know by creating an [issue](https://github.com/bedrock-gi/bedrock-gi/issues) or starting a [discussion](https://github.com/orgs/bedrock-gi/discussions) 💭
+Let us know by creating an [issue](https://github.com/bedrock-engineer/bedrock-ge/issues) or starting a [discussion](https://github.com/orgs/bedrock-ge/discussions) 💭
 
-Also, if you have a project with publicly available GI data, please share that in a [discussion](https://github.com/orgs/bedrock-gi/discussions), such that we can create a tutorial from it 🤩
+Also, if you have a project with publicly available GI data, please share that in a [discussion](https://github.com/orgs/bedrock-ge/discussions), such that we can create a tutorial from it 🤩
 
 ## ✅ Validate your GI data
 
-`bedrock-gi` comes with data validation to make sure that you can combine Ground Investigation data from multiple files into a single GIS database with consistent relationships between GI locations, samples, in-situ measurements and lab tests.
+`bedrock-ge` comes with data validation to make sure that you can combine Ground Investigation data from multiple files into a single GIS database with consistent relationships between GI locations, samples, in-situ measurements and lab tests.
 
 This data validation mechanism (based on [`pandera`](https://pandera.readthedocs.io/en/stable/)) is easily extensible, giving you the power to add your own data validation criteria 💪
 
@@ -35,25 +35,23 @@ This data validation mechanism (based on [`pandera`](https://pandera.readthedocs
 
 For example, you can take GI data from 100 AGS files and combine them into a single a [GeoPackage](https://en.wikipedia.org/wiki/GeoPackage) ([like a Shapefile, but then waaay better](http://switchfromshapefile.org/)). Such a GeoPackage can then be loaded into ArcGIS, such that you can visualize your GI data in 3D, and perform analyses:
 
-<p align="center">
-  <img src="https://bedrock.engineer/public/images/KaiTak_BrGI_ArcGIS.gif" alt="GI data visualization .gif in 3D in ArcGIS" width="90%"/>
-</p>
+<img src="https://bedrock.engineer/public/images/KaiTak_BrGI_ArcGIS.gif" alt="GI data visualization .gif in 3D in ArcGIS" width="90%" style="display: block; margin-inline: auto;" />
 
 ## 🟦 Put your GI data into Speckle
 
 Once you have your GI data inside [Speckle](https://speckle.systems/), it's super easy to visualize GI data together with civil engineering designs:
 
-<p align="center">
+<div style="margin-inline:auto;">
   <img src="https://bedrock.engineer/public/images/KaiTak_BrGI_Speckle.png" alt="Kai Tak, Hong Kong, data from many sources." width="56%" />
   <img src="https://bedrock.engineer/public/images/BPFoundation.png" alt="Bored Pile foundation design." width="40%" />
   <a href="https://app.speckle.systems/projects/013aaf06e7/models/0fa0287ba8@dfbec71408,1cbe68ed69@d3c4a34cff,44c8d1ecae@b962e2f29d,7f9d99cae2@bbed7cf165,9535541c2b@fafe06f9c0,a739490298@e858cc8cb3,ff81bfa02b@dda7c2f981" target="_blank">Click here to go to the Kai Tak Speckle project from the left image</a>
-</p>
+</div>
 
 Moreover, your GI data becomes available in all the software that [Speckle has connectors for](https://app.speckle.systems/downloads).
 
 ## 🔓 Free and Open Source Software
 
-Free and Open Source Software (FOSS) gives you full access to the code, which means you can customize `bedrock-gi` to integrate with other tools and fit your workflows & project needs.
+Free and Open Source Software (FOSS) gives you full access to the code, which means you can customize `bedrock-ge` to integrate with other tools and fit your workflows & project needs.
 
 As the name implies, FOSS is free to use, so you're not tied to expensive software licenses or locked into a specific software vendor ⛓️‍💥
 
@@ -67,8 +65,8 @@ Got some feedback, a great idea, running into problems when working with Bedrock
 
 Please feel free to:
 
-1. open an issue for feature requests or bug reports: [`bedrock-gi` issues](https://github.com/bedrock-gi/bedrock-gi/issues),
-2. start a discussion in this GitHub repo: [Bedrock discussions](https://github.com/orgs/bedrock-gi/discussions),
+1. open an issue for feature requests or bug reports: [`bedrock-ge` issues](https://github.com/bedrock-engineer/bedrock-ge/issues),
+2. start a discussion in this GitHub repo: [Bedrock discussions](https://github.com/orgs/bedrock-ge/discussions),
 3. or start a discussion on the Speckle community forum if that's more appropriate: [Speckle community forum](https://speckle.community/)
 
 All feedback and engagement with the Bedrock community is welcome 🤗
@@ -87,14 +85,12 @@ Contributing isn't just about writing code:
 
 - Use Bedrock and provide [feedback](#-feedback) 🪲
 - Share how you use Bedrock 🏗️
-- Help each other out, e.g. by replying to questions in the [discussions](https://github.com/orgs/bedrock-gi/discussions) or [`bedrock-gi` issues](https://github.com/bedrock-gi/bedrock-gi/issues) 🤝
+- Help each other out, e.g. by replying to questions in the [discussions](https://github.com/orgs/bedrock-ge/discussions) or [`bedrock-ge` issues](https://github.com/bedrock-engineer/bedrock-ge/issues) 🤝
 - Spread the word about Bedrock 🤩
 - Documentation and tutorials 📃
 - Most pages on the [bedrock.engineer](https://bedrock.engineer/) website can be edited, so if you see a spelling mistake or have a suggestion on how to explain something better, please smash that button! 🖱️💥
   
-<p align="center">
-  <img src="https://bedrock.engineer/public/images/EditThisPage.png" alt="Edit this page on GitHub button on bedrock.engineer" width="20%"/>
-</p>
+<img src="https://bedrock.engineer/public/images/EditThisPage.png" alt="Edit this page on GitHub button on bedrock.engineer" width="20%" style="display: block; margin-inline: auto;" />
 
 - If you would like to contribute code, AWESOME! 💖  
   Please create an issue for what you'd like to contribute. If you don't know how to get started, please indicate this in your issue, and we'll help you out.
