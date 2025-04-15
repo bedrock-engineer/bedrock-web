@@ -4,7 +4,7 @@
     "href": "articles.html",
     "title": "Articles",
     "section": "",
-    "text": "Bedrock ❤️ Quarto\n\n\n\nquarto\n\n\n\nWhy I chose Quarto for building this website.\n\n\n\n\n\nAug 18, 2024\n\n\nJoost Gevaert\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome to Bedrock\n\n\n\nnews\n\n\n\nAn introduction to Bedrock and Bedrock’s website.\n\n\n\n\n\nAug 17, 2024\n\n\nJoost Gevaert\n\n\n\n\n\nNo matching items"
+    "text": "AGS4 Reference\n\n\n\nags\n\nags4\n\n\n\nA brief introduction to AGS.\n\n\n\n\n\nApr 14, 2025\n\n\nJules Blom\n\n\n\n\n\n\n\n\n\n\n\n\nBedrock ❤️ Quarto\n\n\n\nquarto\n\n\n\nWhy I chose Quarto for building this website.\n\n\n\n\n\nAug 18, 2024\n\n\nJoost Gevaert\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome to Bedrock\n\n\n\nnews\n\n\n\nAn introduction to Bedrock and Bedrock’s website.\n\n\n\n\n\nAug 17, 2024\n\n\nJoost Gevaert\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "faq.html",
@@ -84,69 +84,6 @@
     "text": "Using uv, you can add bedrock-ge to your Python project and install it in your project’s virtual environment by running:\nuv add bedrock-ge\nI would highly recommend anyone to start using uv (Unified Virtual Environment Manager) if you’re not already doing so. Some of the advantages (Source: uv):\n\n🖥️ uv Python projects will work on Windows, macOS and Linux.\n🐍 uv installs and manages Python versions.\n🗂️ uv provides comprehensive project management, with a universal lockfile. This means no more headaches about virtual environments (or having to explain what on earth a virtual env is), or people running different versions of Python or Python packages on the same project, causing errors and other problems.\nIn short, 🚀 uv is a single tool to replace pip, pip-tools, pipx, poetry, pyenv, virtualenv, conda and more…\n\nIt’s of course also possible to install bedrock-ge from PyPI (Python Packaging Index) using pip:\npip install bedrock-ge"
   },
   {
-    "objectID": "articles/2024-08-17-welcome/index.html",
-    "href": "articles/2024-08-17-welcome/index.html",
-    "title": "Welcome to Bedrock",
-    "section": "",
-    "text": "Data Format\nRead\nWrite\n\n\n\n\nAGS 3\n✅\n❌\n\n\nAGS 4\nSoon\npython-ags4\n\n\nExcel\n✅\n✅\n\n\nCSV\n✅\n✅\n\n\nJSON\n✅\n✅\n\n\nGeoJSON\n✅\n✅\n\n\n\nWhat do you need? DIGGS? NADAG? GEF? Something else?\nLet us know by creating an issue or starting a discussion 💭\nAlso, if you have a project with publicly available GI data, please share that in a discussion, such that we can create a tutorial from it 🤩"
-  },
-  {
-    "objectID": "articles/2024-08-17-welcome/index.html#read-write-ground-investigation-gi-data-in-different-formats",
-    "href": "articles/2024-08-17-welcome/index.html#read-write-ground-investigation-gi-data-in-different-formats",
-    "title": "Welcome to Bedrock",
-    "section": "",
-    "text": "Data Format\nRead\nWrite\n\n\n\n\nAGS 3\n✅\n❌\n\n\nAGS 4\nSoon\npython-ags4\n\n\nExcel\n✅\n✅\n\n\nCSV\n✅\n✅\n\n\nJSON\n✅\n✅\n\n\nGeoJSON\n✅\n✅\n\n\n\nWhat do you need? DIGGS? NADAG? GEF? Something else?\nLet us know by creating an issue or starting a discussion 💭\nAlso, if you have a project with publicly available GI data, please share that in a discussion, such that we can create a tutorial from it 🤩"
-  },
-  {
-    "objectID": "articles/2024-08-17-welcome/index.html#validate-your-gi-data",
-    "href": "articles/2024-08-17-welcome/index.html#validate-your-gi-data",
-    "title": "Welcome to Bedrock",
-    "section": "✅ Validate your GI data",
-    "text": "✅ Validate your GI data\nbedrock-ge comes with data validation to make sure that you can combine Ground Investigation data from multiple files into a single GIS database with consistent relationships between GI locations, samples, in-situ measurements and lab tests.\nThis data validation mechanism (based on pandera) is easily extensible, giving you the power to add your own data validation criteria 💪"
-  },
-  {
-    "objectID": "articles/2024-08-17-welcome/index.html#put-your-gi-data-from-multiple-files-into-a-single-3d-gis-database",
-    "href": "articles/2024-08-17-welcome/index.html#put-your-gi-data-from-multiple-files-into-a-single-3d-gis-database",
-    "title": "Welcome to Bedrock",
-    "section": "🗺️ Put your GI data from multiple files into a single 3D GIS database",
-    "text": "🗺️ Put your GI data from multiple files into a single 3D GIS database\nFor example, you can take GI data from 100 AGS files and combine them into a single a GeoPackage (like a Shapefile, but then waaay better). Such a GeoPackage can then be loaded into ArcGIS, such that you can visualize your GI data in 3D, and perform analyses:"
-  },
-  {
-    "objectID": "articles/2024-08-17-welcome/index.html#put-your-gi-data-into-speckle",
-    "href": "articles/2024-08-17-welcome/index.html#put-your-gi-data-into-speckle",
-    "title": "Welcome to Bedrock",
-    "section": "🟦 Put your GI data into Speckle",
-    "text": "🟦 Put your GI data into Speckle\nOnce you have your GI data inside Speckle, it’s super easy to visualize GI data together with civil engineering designs:\n\n  Click here to go to the Kai Tak Speckle project from the left image\n\nMoreover, your GI data becomes available in all the software that Speckle has connectors for.\n\n🔓 Free and Open Source Software\nFree and Open Source Software (FOSS) gives you full access to the code, which means you can customize bedrock-ge to integrate with other tools and fit your workflows & project needs.\nAs the name implies, FOSS is free to use, so you’re not tied to expensive software licenses or locked into a specific software vendor ⛓️‍💥\nYou can give feedback and contribute, such that together we together can build the tools we’ve always wanted and needed 🤝\n\n\n\n💭 Feedback\nGot some feedback, a great idea, running into problems when working with Bedrock or just want to ask some questions?\nPlease feel free to:\n\nopen an issue for feature requests or bug reports: bedrock-ge issues,\nstart a discussion in this GitHub repo: Bedrock discussions,\nor start a discussion on the Speckle community forum if that’s more appropriate: Speckle community forum\n\nAll feedback and engagement with the Bedrock community is welcome 🤗\n\n\n👷 Contributing\n\n\n\n\n\n\nCaution\n\n\n\nWait, please read this too!\n\n\nContributing isn’t scary 😄\nContributing isn’t just about writing code:\n\nUse Bedrock and provide feedback 🪲\nShare how you use Bedrock 🏗️\nHelp each other out, e.g. by replying to questions in the discussions or bedrock-ge issues 🤝\nSpread the word about Bedrock 🤩\nDocumentation and tutorials 📃\nMost pages on the bedrock.engineer website can be edited, so if you see a spelling mistake or have a suggestion on how to explain something better, please smash that button! 🖱️💥\n\n\n\nIf you would like to contribute code, AWESOME! 💖\nPlease create an issue for what you’d like to contribute. If you don’t know how to get started, please indicate this in your issue, and we’ll help you out."
-  },
-  {
-    "objectID": "articles/2024-08-17-welcome/index.html#free-and-open-source-software",
-    "href": "articles/2024-08-17-welcome/index.html#free-and-open-source-software",
-    "title": "Welcome to Bedrock",
-    "section": "🔓 Free and Open Source Software",
-    "text": "🔓 Free and Open Source Software\nFree and Open Source Software (FOSS) gives you full access to the code, which means you can customize bedrock-ge to integrate with other tools and fit your workflows & project needs.\nAs the name implies, FOSS is free to use, so you’re not tied to expensive software licenses or locked into a specific software vendor ⛓️‍💥\nYou can give feedback and contribute, such that together we together can build the tools we’ve always wanted and needed 🤝"
-  },
-  {
-    "objectID": "articles/2024-08-17-welcome/index.html#feedback",
-    "href": "articles/2024-08-17-welcome/index.html#feedback",
-    "title": "Welcome to Bedrock",
-    "section": "💭 Feedback",
-    "text": "💭 Feedback\nGot some feedback, a great idea, running into problems when working with Bedrock or just want to ask some questions?\nPlease feel free to:\n\nopen an issue for feature requests or bug reports: bedrock-ge issues,\nstart a discussion in this GitHub repo: Bedrock discussions,\nor start a discussion on the Speckle community forum if that’s more appropriate: Speckle community forum\n\nAll feedback and engagement with the Bedrock community is welcome 🤗"
-  },
-  {
-    "objectID": "articles/2024-08-17-welcome/index.html#contributing",
-    "href": "articles/2024-08-17-welcome/index.html#contributing",
-    "title": "Welcome to Bedrock",
-    "section": "👷 Contributing",
-    "text": "👷 Contributing\n\n\n\n\n\n\nCaution\n\n\n\nWait, please read this too!\n\n\nContributing isn’t scary 😄\nContributing isn’t just about writing code:\n\nUse Bedrock and provide feedback 🪲\nShare how you use Bedrock 🏗️\nHelp each other out, e.g. by replying to questions in the discussions or bedrock-ge issues 🤝\nSpread the word about Bedrock 🤩\nDocumentation and tutorials 📃\nMost pages on the bedrock.engineer website can be edited, so if you see a spelling mistake or have a suggestion on how to explain something better, please smash that button! 🖱️💥\n\n\n\nIf you would like to contribute code, AWESOME! 💖\nPlease create an issue for what you’d like to contribute. If you don’t know how to get started, please indicate this in your issue, and we’ll help you out."
-  },
-  {
-    "objectID": "community.html",
-    "href": "community.html",
-    "title": "Community",
-    "section": "",
-    "text": "Under Construction 🏗️\n\n\n\nThis page of Bedrock’s website is still under construction.\n\n\nThe community of Bedrock has its home in the SWUNG (Software Underground) community.\nHowever, because Bedrock also has a strong link with Speckle - to make it possible to use ground investigation easily in all the software that are commonly used in the AEC (Architecture, Engineering & Construction) industry - you may want to post your questions on the Speckle community forum."
-  },
-  {
     "objectID": "articles/2024-08-18-bedrock-loves-quarto/index.html",
     "href": "articles/2024-08-18-bedrock-loves-quarto/index.html",
     "title": "Bedrock ❤️ Quarto",
@@ -196,6 +133,90 @@
     "text": "Footnotes\n\n\nHey, that tickles 🤣↩︎"
   },
   {
+    "objectID": "community.html",
+    "href": "community.html",
+    "title": "Community",
+    "section": "",
+    "text": "Under Construction 🏗️\n\n\n\nThis page of Bedrock’s website is still under construction.\n\n\nThe community of Bedrock has its home in the SWUNG (Software Underground) community.\nHowever, because Bedrock also has a strong link with Speckle - to make it possible to use ground investigation easily in all the software that are commonly used in the AEC (Architecture, Engineering & Construction) industry - you may want to post your questions on the Speckle community forum."
+  },
+  {
+    "objectID": "articles/2024-08-17-welcome/index.html",
+    "href": "articles/2024-08-17-welcome/index.html",
+    "title": "Welcome to Bedrock",
+    "section": "",
+    "text": "Data Format\nRead\nWrite\n\n\n\n\nAGS 3\n✅\n❌\n\n\nAGS 4\nSoon\npython-ags4\n\n\nExcel\n✅\n✅\n\n\nCSV\n✅\n✅\n\n\nJSON\n✅\n✅\n\n\nGeoJSON\n✅\n✅\n\n\n\nWhat do you need? DIGGS? NADAG? GEF? Something else?\nLet us know by creating an issue or starting a discussion 💭\nAlso, if you have a project with publicly available GI data, please share that in a discussion, such that we can create a tutorial from it 🤩"
+  },
+  {
+    "objectID": "articles/2024-08-17-welcome/index.html#read-write-ground-investigation-gi-data-in-different-formats",
+    "href": "articles/2024-08-17-welcome/index.html#read-write-ground-investigation-gi-data-in-different-formats",
+    "title": "Welcome to Bedrock",
+    "section": "",
+    "text": "Data Format\nRead\nWrite\n\n\n\n\nAGS 3\n✅\n❌\n\n\nAGS 4\nSoon\npython-ags4\n\n\nExcel\n✅\n✅\n\n\nCSV\n✅\n✅\n\n\nJSON\n✅\n✅\n\n\nGeoJSON\n✅\n✅\n\n\n\nWhat do you need? DIGGS? NADAG? GEF? Something else?\nLet us know by creating an issue or starting a discussion 💭\nAlso, if you have a project with publicly available GI data, please share that in a discussion, such that we can create a tutorial from it 🤩"
+  },
+  {
+    "objectID": "articles/2024-08-17-welcome/index.html#validate-your-gi-data",
+    "href": "articles/2024-08-17-welcome/index.html#validate-your-gi-data",
+    "title": "Welcome to Bedrock",
+    "section": "✅ Validate your GI data",
+    "text": "✅ Validate your GI data\nbedrock-ge comes with data validation to make sure that you can combine Ground Investigation data from multiple files into a single GIS database with consistent relationships between GI locations, samples, in-situ measurements and lab tests.\nThis data validation mechanism (based on pandera) is easily extensible, giving you the power to add your own data validation criteria 💪"
+  },
+  {
+    "objectID": "articles/2024-08-17-welcome/index.html#put-your-gi-data-from-multiple-files-into-a-single-3d-gis-database",
+    "href": "articles/2024-08-17-welcome/index.html#put-your-gi-data-from-multiple-files-into-a-single-3d-gis-database",
+    "title": "Welcome to Bedrock",
+    "section": "🗺️ Put your GI data from multiple files into a single 3D GIS database",
+    "text": "🗺️ Put your GI data from multiple files into a single 3D GIS database\nFor example, you can take GI data from 100 AGS files and combine them into a single a GeoPackage (like a Shapefile, but then waaay better). Such a GeoPackage can then be loaded into ArcGIS, such that you can visualize your GI data in 3D, and perform analyses:"
+  },
+  {
+    "objectID": "articles/2024-08-17-welcome/index.html#put-your-gi-data-into-speckle",
+    "href": "articles/2024-08-17-welcome/index.html#put-your-gi-data-into-speckle",
+    "title": "Welcome to Bedrock",
+    "section": "🟦 Put your GI data into Speckle",
+    "text": "🟦 Put your GI data into Speckle\nOnce you have your GI data inside Speckle, it’s super easy to visualize GI data together with civil engineering designs:\n\n  Click here to go to the Kai Tak Speckle project from the left image\n\nMoreover, your GI data becomes available in all the software that Speckle has connectors for."
+  },
+  {
+    "objectID": "articles/2024-08-17-welcome/index.html#free-and-open-source-software",
+    "href": "articles/2024-08-17-welcome/index.html#free-and-open-source-software",
+    "title": "Welcome to Bedrock",
+    "section": "🔓 Free and Open Source Software",
+    "text": "🔓 Free and Open Source Software\nFree and Open Source Software (FOSS) gives you full access to the code, which means you can customize bedrock-ge to integrate with other tools and fit your workflows & project needs.\nAs the name implies, FOSS is free to use, so you’re not tied to expensive software licenses or locked into a specific software vendor ⛓️‍💥\nYou can give feedback and contribute, such that together we together can build the tools we’ve always wanted and needed 🤝"
+  },
+  {
+    "objectID": "articles/2024-08-17-welcome/index.html#feedback",
+    "href": "articles/2024-08-17-welcome/index.html#feedback",
+    "title": "Welcome to Bedrock",
+    "section": "💭 Feedback",
+    "text": "💭 Feedback\nGot some feedback, a great idea, running into problems when working with Bedrock or just want to ask some questions?\nPlease feel free to:\n\nopen an issue for feature requests or bug reports: bedrock-ge issues,\nstart a discussion in this GitHub repo: Bedrock discussions,\nor start a discussion on the Speckle community forum if that’s more appropriate: Speckle community forum\n\nAll feedback and engagement with the Bedrock community is welcome 🤗"
+  },
+  {
+    "objectID": "articles/2024-08-17-welcome/index.html#contributing",
+    "href": "articles/2024-08-17-welcome/index.html#contributing",
+    "title": "Welcome to Bedrock",
+    "section": "👷 Contributing",
+    "text": "👷 Contributing\n\n\n\n\n\n\nCaution\n\n\n\nWait, please read this too!\n\n\nContributing isn’t scary 😄\nContributing isn’t just about writing code:\n\nUse Bedrock and provide feedback 🪲\nShare how you use Bedrock 🏗️\nHelp each other out, e.g. by replying to questions in the discussions or bedrock-ge issues 🤝\nSpread the word about Bedrock 🤩\nDocumentation and tutorials 📃\nMost pages on the bedrock.engineer website can be edited, so if you see a spelling mistake or have a suggestion on how to explain something better, please smash that button! 🖱️💥\n\n\n\nIf you would like to contribute code, AWESOME! 💖\nPlease create an issue for what you’d like to contribute. If you don’t know how to get started, please indicate this in your issue, and we’ll help you out."
+  },
+  {
+    "objectID": "articles/2025-04-14-ags/index.html",
+    "href": "articles/2025-04-14-ags/index.html",
+    "title": "AGS4 Reference",
+    "section": "",
+    "text": "AGS4 is a standardized text file format specifically designed for exchanging geotechnical information between different software systems used in geotechnical engineering. It organizes borehole logs, laboratory test results, and field measurements into structured data tables with validation rules to ensure consistent data quality across the geotechnical industry."
+  },
+  {
+    "objectID": "articles/2025-04-14-ags/index.html#groups",
+    "href": "articles/2025-04-14-ags/index.html#groups",
+    "title": "AGS4 Reference",
+    "section": "Groups",
+    "text": "Groups\nIn the AGS4 format, Groups are organizational containers that structure geotechnical data. Each Group represents a specific aspect of geotechnical investigation, for example, project information (PROJ), location details (LOCA), sample information (SAMP), or specific test types like Standard Penetration Tests (ISPT).\nAGS4 Groups are organised in a hierarchical manner. Each sample (SAMP) belongs to a location (LOCA). Each location belongs to a project (PROJ).\nHere’s a visual of the hierarchy of groups commonly found in an AGS4 file.\n\nPROJProject information\n\nPROJ\n\nLOCALocation details\n\nPROJ/LOCA\n\nABBRAbbreviation Definitions\n\nPROJ/ABBR\n\nTRANData File Transmission Information / Data Status\n\nPROJ/TRAN\n\nTYPEDefinition of Data Types\n\nPROJ/TYPE\n\nUNITDefinition of Units\n\nPROJ/UNIT\n\nSAMPSample information\n\nPROJ/LOCA/SAMP\n\nIPRGInsitu permeability\n\nPROJ/LOCA/IPRG\n\nGEOLGeological descriptions\n\nPROJ/LOCA/GEOL\n\nBKFLBackfill details\n\nPROJ/LOCA/BKFL\n\nISPTStandard Penetration Test\n\nPROJ/LOCA/ISPT\n\nGRAGParticle size distribution analysis\n\nPROJ/LOCA/SAMP/GRAG\n\nLNMCWater content\n\nPROJ/LOCA/SAMP/LNMC\n\nIPRTInsitu permeability data\n\nPROJ/LOCA/IPRG/IPRT\n\nGRATParticle size distribution analysis data\n\nPROJ/LOCA/SAMP/GRAG/GRAT\n\n\n\n\n\nAll Groups Hierarchy Tree\n\nWhile AGS defines a load of groups, not all of them are used in every project. For reference, here is the full hierarchy tree of all groups.\n\nAGS4 file-\n\nAGS4 file\n\nPROJProject Information\n\nAGS4 file/PROJ\n\nABBRAbbreviation Definitions\n\nAGS4 file/ABBR\n\nDICTUser Defined Groups and Headings\n\nAGS4 file/DICT\n\nFILEAssociated Files\n\nAGS4 file/FILE\n\nTRANData File Transmission Information / Data Status\n\nAGS4 file/TRAN\n\nTYPEDefinition of Data Types\n\nAGS4 file/TYPE\n\nUNITDefinition of Units\n\nAGS4 file/UNIT\n\nLOCALocation Details\n\nAGS4 file/PROJ/LOCA\n\nSAMPSample Information\n\nAGS4 file/PROJ/LOCA/SAMP\n\nBKFLExploratory Hole Backfill Details\n\nAGS4 file/PROJ/LOCA/BKFL\n\nCDIACasing Diameter by Depth\n\nAGS4 file/PROJ/LOCA/CDIA\n\nCHISChiselling Details\n\nAGS4 file/PROJ/LOCA/CHIS\n\nCORECoring Information\n\nAGS4 file/PROJ/LOCA/CORE\n\nDCPGDynamic Cone Penetrometer Tests - General\n\nAGS4 file/PROJ/LOCA/DCPG\n\nDETLStratum Detail Descriptions\n\nAGS4 file/PROJ/LOCA/DETL\n\nDISCDiscontinuity Data\n\nAGS4 file/PROJ/LOCA/DISC\n\nDLOGDriller Geological Description\n\nAGS4 file/PROJ/LOCA/DLOG\n\nDOBSDrilling/Advancement Observations & Parameters\n\nAGS4 file/PROJ/LOCA/DOBS\n\nDPRGDynamic Probe Tests - General\n\nAGS4 file/PROJ/LOCA/DPRG\n\nDREMDepth Related Remarks\n\nAGS4 file/PROJ/LOCA/DREM\n\nFGHGField Geohydraulic Testing - General\n\nAGS4 file/PROJ/LOCA/FGHG\n\nFLSHDrilling Flush Details\n\nAGS4 file/PROJ/LOCA/FLSH\n\nFRACFracture Spacing\n\nAGS4 file/PROJ/LOCA/FRAC\n\nGEOLField Geological Descriptions\n\nAGS4 file/PROJ/LOCA/GEOL\n\nHDIAHole Diameter by Depth\n\nAGS4 file/PROJ/LOCA/HDIA\n\nHDPHDepth Related Exploratory Hole Information\n\nAGS4 file/PROJ/LOCA/HDPH\n\nHORNExploratory Hole Orientation and Inclination\n\nAGS4 file/PROJ/LOCA/HORN\n\nICBRIn Situ California Bearing Ratio Tests\n\nAGS4 file/PROJ/LOCA/ICBR\n\nIDENIn Situ Density Tests\n\nAGS4 file/PROJ/LOCA/IDEN\n\nIFIDOn Site Volatile Headspace Testing Using Flame Ionisation Detector\n\nAGS4 file/PROJ/LOCA/IFID\n\nIPENIn Situ Hand Penetrometer Tests\n\nAGS4 file/PROJ/LOCA/IPEN\n\nIPIDOn Site Volatile Headspace Testing by Photo Ionisation Detector\n\nAGS4 file/PROJ/LOCA/IPID\n\nIPRGIn Situ Permeability Tests - General\n\nAGS4 file/PROJ/LOCA/IPRG\n\nIRDXIn Situ Redox Tests\n\nAGS4 file/PROJ/LOCA/IRDX\n\nIRESIn Situ Resistivity Tests\n\nAGS4 file/PROJ/LOCA/IRES\n\nISAGSoakaway Tests - General\n\nAGS4 file/PROJ/LOCA/ISAG\n\nISPTStandard Penetration Test Results\n\nAGS4 file/PROJ/LOCA/ISPT\n\nIVANIn Situ Vane Tests\n\nAGS4 file/PROJ/LOCA/IVAN\n\nAAVTAggregate Abrasion Tests\n\nAGS4 file/PROJ/LOCA/SAMP/AAVT\n\nACVTAggregate Crushing Value Tests\n\nAGS4 file/PROJ/LOCA/SAMP/ACVT\n\nAELO -\n\nAGS4 file/PROJ/LOCA/SAMP/AELO\n\nAFLKAggregate Flakiness Tests\n\nAGS4 file/PROJ/LOCA/SAMP/AFLK\n\nAIVTAggregate Impact Value Tests\n\nAGS4 file/PROJ/LOCA/SAMP/AIVT\n\nALOSLos Angeles Abrasion Tests\n\nAGS4 file/PROJ/LOCA/SAMP/ALOS\n\nAPSVAggregate Polished Stone Tests\n\nAGS4 file/PROJ/LOCA/SAMP/APSV\n\nARTWAggregate Determination of the Resistance to Wear (micro-Deval)\n\nAGS4 file/PROJ/LOCA/SAMP/ARTW\n\nASDISlake Durability Index Tests\n\nAGS4 file/PROJ/LOCA/SAMP/ASDI\n\nASNSAggregate Soundness Tests\n\nAGS4 file/PROJ/LOCA/SAMP/ASNS\n\nAWADAggregate Water Absorption Tests\n\nAGS4 file/PROJ/LOCA/SAMP/AWAD\n\nCBRGCalifornia Bearing Ratio Tests - General\n\nAGS4 file/PROJ/LOCA/SAMP/CBRG\n\nCHOCChain of Custody Information\n\nAGS4 file/PROJ/LOCA/SAMP/CHOC\n\nCMPGCompaction Tests - General\n\nAGS4 file/PROJ/LOCA/SAMP/CMPG\n\nCONGConsolidation Tests - General\n\nAGS4 file/PROJ/LOCA/SAMP/CONG\n\nCTRGCyclic Triaxial Test - General\n\nAGS4 file/PROJ/LOCA/SAMP/CTRG\n\nECTNSample Container Details\n\nAGS4 file/PROJ/LOCA/SAMP/ECTN\n\nELRGEnvironmental Laboratory Reporting\n\nAGS4 file/PROJ/LOCA/SAMP/ELRG\n\nERESEnvironmental Contaminant Testing\n\nAGS4 file/PROJ/LOCA/SAMP/ERES\n\nESCGEffective Stress Consolidation Tests - General\n\nAGS4 file/PROJ/LOCA/SAMP/ESCG\n\nFRSTFrost Susceptibility Tests\n\nAGS4 file/PROJ/LOCA/SAMP/FRST\n\nGCHMGeotechnical Chemistry Testing\n\nAGS4 file/PROJ/LOCA/SAMP/GCHM\n\nGRAGParticle Size Distribution Analysis - General\n\nAGS4 file/PROJ/LOCA/SAMP/GRAG\n\nDCPTDynamic Cone Penetrometer Tests - Data\n\nAGS4 file/PROJ/LOCA/DCPG/DCPT\n\nDPRBDynamic Probe Tests - Data\n\nAGS4 file/PROJ/LOCA/DPRG/DPRB\n\nFGHIField Geohydraulic Testing - Instrumentation Details\n\nAGS4 file/PROJ/LOCA/FGHG/FGHI\n\nFGHSField Geohydraulic Testing - Test Results (per stage)\n\nAGS4 file/PROJ/LOCA/FGHG/FGHS\n\nIPRTIn Situ Permeability Tests - Data\n\nAGS4 file/PROJ/LOCA/IPRG/IPRT\n\nISATSoakaway Tests - Data\n\nAGS4 file/PROJ/LOCA/ISAG/ISAT\n\nCBRTCalifornia Bearing Ratio Tests - Data\n\nAGS4 file/PROJ/LOCA/SAMP/CBRG/CBRT\n\nCMPTCompaction Tests - Data\n\nAGS4 file/PROJ/LOCA/SAMP/CMPG/CMPT\n\nCONSConsolidation Tests - Data\n\nAGS4 file/PROJ/LOCA/SAMP/CONG/CONS\n\nCTRCCyclic Triaxial Tests - Consolidation\n\nAGS4 file/PROJ/LOCA/SAMP/CTRG/CTRC\n\nCTRSCyclic Triaxial Test - Saturation\n\nAGS4 file/PROJ/LOCA/SAMP/CTRG/CTRS\n\nESCTEffective Stress Consolidation Tests - Data\n\nAGS4 file/PROJ/LOCA/SAMP/ESCG/ESCT\n\nGRATParticle Size Distribution Analysis - Data\n\nAGS4 file/PROJ/LOCA/SAMP/GRAG/GRAT\n\nFGHTField Geohydraulic Testing - Data\n\nAGS4 file/PROJ/LOCA/FGHG/FGHI/FGHT\n\nCTRPCyclic Triaxial Test - Derived Parameters\n\nAGS4 file/PROJ/LOCA/SAMP/CTRG/CTRC/CTRP\n\nCTRDCyclic Triaxial Tests - Data\n\nAGS4 file/PROJ/LOCA/SAMP/CTRG/CTRC/CTRP/CTRD\n\n\n\n\n\n\nCode\nviewof groupSearch = Inputs.search(ags4, {\n  placeholder: \"Search groups...\"\n})\n\n\n\n\n\n\n\n\n\nCode\nviewof groupTable = Inputs.table(groupSearch, {\n  format: { headings: (d) =&gt; d.map((h) =&gt; h.heading).join(\", \") },\n  multiple: false,\n  layout: \"auto\"\n})\n\n\n\n\n\n\n\n\n\nCode\nags4 = FileAttachment(\"ags4_data_dictionary.json\").json()"
+  },
+  {
+    "objectID": "articles/2025-04-14-ags/index.html#headings",
+    "href": "articles/2025-04-14-ags/index.html#headings",
+    "title": "AGS4 Reference",
+    "section": "Headings",
+    "text": "Headings\nHeadings are the specific data fields (i.e. the columns) within each group that define individual data items. Each heading represents a specific piece of information that can be recorded during geotechnical investigations, such as sample depth, moisture content, or test result values\nHeadings follow a standardized naming pattern, typically beginning with the group name as a prefix (e.g., “PROJ_ID” for project identifier in the PROJ group). Some headings are marked as required (*R or R), indicating that they must be populated in a valid AGS file to maintain data integrity. Headings include additional information like units of measurement, descriptions, and example values to help users understand their purpose.\n\n\nCode\ngroupTable ? md`### ${groupTable.group_name}\\n${groupTable.group_description}` : md`### Select a group in the table above to view its headings.`\n\n\n\n\n\n\n\n\n\nCode\ngroupTable\n  ? Inputs.table(groupTable.headings, {\n      layout: \"auto\",\n      columns: [\"heading\", \"description\", \"type\", \"unit\", \"example\"],\n      format: {\n        type: (d) =&gt; (d in types ? types[d] : d),\n        status: (d) =&gt; {\n          switch (d) {\n            case \"*\":\n              return \"KEY\";\n            case \"R\":\n              return \"Required\";\n            default:\n              return \"\";\n          }\n        }\n      }\n    })\n  : md`In the table above, select a group on the left side to view its headings here.`\n\n\n\n\n\n\n\n\n\nCode\ntypes = ({\n  ...Object.fromEntries(\n    Array.from({ length: 5 }, (_, i) =&gt; i).map((i) =&gt; [\n      `${i}DP`,\n      `Value with ${i} required decimal places`\n    ])\n  ),\n  ...Object.fromEntries(\n    Array.from({ length: 4 }, (_, i) =&gt; i).map((i) =&gt; [\n      `${i}SF`,\n      `${i} sign. figures`\n    ])\n  ),\n  DT: \"Datetime\",\n  T: \"Time elapsed\",\n  X: \"Text\",\n  YN: \"Yes/no\",\n  ID: \"Unique Identifier\",\n  XN: \"Text/numeric\",\n  PA: \"Text listed in ABBR Group\",\n  PU: \"Text listed in UNIT Group\",\n  U: \"Value with a variable format\"\n})"
+  },
+  {
     "objectID": "docs/index.html",
     "href": "docs/index.html",
     "title": "Documentation",
@@ -214,7 +235,21 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Hi, I’m Joost Gevaert 👋\nI studied geotechnical engineering and applied geophysics and then worked for Arup for 4 as a geotechnical engineer an computational designer.\nDuring my time at Arup I worked a lot on bringing computational design into the world of geotechnical engineering, and on bridging the gaps between geotechnical engineering and structural engineering.\nBedrock is the Free and Open Source Software (FOSS) that I wish existed when I worked as a geotechnical engineer at Arup.\n\nComputational design is a field that involves the use of computer algorithms, simulations, and data analysis to support and enhance the design process. It enables designers to explore vast design spaces, to find solutions to complex design problems, and to make informed decisions based on data-driven insights.\nSource: Computational design | Arup"
+    "text": "Hi, I’m Joost Gevaert 👋\nI studied geotechnical engineering and applied geophysics and then worked for Arup for 4 years as a geotechnical engineer an computational designer.\nDuring my time at Arup I worked a lot on bringing computational design into the world of geotechnical engineering, and on bridging the gaps between geotechnical engineering and structural engineering.\nBedrock is the Free and Open Source Software (FOSS) that I wish existed when I worked as a geotechnical engineer at Arup.\n\nComputational design is a field that involves the use of computer algorithms, simulations, and data analysis to support and enhance the design process. It enables designers to explore vast design spaces, to find solutions to complex design problems, and to make informed decisions based on data-driven insights.\nSource: Computational design | Arup"
+  },
+  {
+    "objectID": "about.html#joost-gevaert",
+    "href": "about.html#joost-gevaert",
+    "title": "About",
+    "section": "",
+    "text": "Hi, I’m Joost Gevaert 👋\nI studied geotechnical engineering and applied geophysics and then worked for Arup for 4 years as a geotechnical engineer an computational designer.\nDuring my time at Arup I worked a lot on bringing computational design into the world of geotechnical engineering, and on bridging the gaps between geotechnical engineering and structural engineering.\nBedrock is the Free and Open Source Software (FOSS) that I wish existed when I worked as a geotechnical engineer at Arup.\n\nComputational design is a field that involves the use of computer algorithms, simulations, and data analysis to support and enhance the design process. It enables designers to explore vast design spaces, to find solutions to complex design problems, and to make informed decisions based on data-driven insights.\nSource: Computational design | Arup"
+  },
+  {
+    "objectID": "about.html#jules-blom",
+    "href": "about.html#jules-blom",
+    "title": "About",
+    "section": "Jules Blom",
+    "text": "Jules Blom\nHi, my name is Jules. I studied Applied Geoscience (Petroleum Engineering Reservoir Geology) but frustration with technical software led me to learn to code and as a result, I mostly worked in software development.\nOver the past 5 years, I’ve worked on data-rich applications across various domains, specifically frontend development. My primary interest is figuring out how to build tools for more thoughtful display and processing of technical information, geoscience in particular."
   },
   {
     "objectID": "sandbox/ags_data_dict_from_pdf_to_json.html",
