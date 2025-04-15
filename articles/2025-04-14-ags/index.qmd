@@ -81,7 +81,7 @@ groupTable
         }
       }
     })
-  : null
+  : md`In the table above, select a group on the left side to view its headings here.`
 ```
 
 
