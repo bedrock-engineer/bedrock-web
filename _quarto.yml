@@ -57,6 +57,9 @@ website:
   search:
     type: textbox
     show-item-context: true
+  google-analytics:
+    tracking-id: "G-JH73EGWYL6"
+    anonymize-ip: true
 
 language: 
   search-box-placeholder: Search
