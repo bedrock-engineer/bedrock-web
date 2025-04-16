@@ -1,0 +1,12 @@
+{
+  "hash": "48422dddab2c358074d5eb67760acc9e",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ndraft: true\n\n# Front Matter\ntitle: \"`UV`ing Python the Easy Way\"\ndescription: \"Setting up Python the easy way without having to think about \"\nauthor: \"Joost Gevaert\"\ndate: \"2024-09-20\"\ncategories: [python]\nimage: \"uv.png\"\n\n# Quarto settings\njupyter: python3\nexecute:\n  eval: true\nformat:\n  html:\n    code-fold: true\n    code-annotations: true\n---\n\n## Setting Up Python with Erik op MacOS\n\nPython is a program that reads Python script files and executes them.\n\n1. Install VS Code and Jupyter and Ruff VS Code Extensions\n2. Open the terminal: Command + Space, then type \"Terminal\"\n3. Install and run `uv`: https://docs.astral.sh/uv/getting-started/installation/\n   1. `curl -LsSf https://astral.sh/uv/install.sh | sh`\n   2. Close terminal\n   3. Run `uv`\n4. Create a place for your Python projects / scripts\n5. [Working on Projects](https://docs.astral.sh/uv/guides/projects/)\n6. `uv add jupyter pandas`\n7. In VS Code, Click 🔎 at the top, then start typing `> Create: New Jupyter Notebook`\n\nCommon commands\n- ls: list directories and files at your cwd\n- cd: Change Directory\n- \n\n### FAQ\n\n- What is command prompt / a shell?\n  - Not a text file, it displays a history of executed commands and the resulting output. Running commands from the command prompt / shell is similar to doing stuff with the mouse. With the mouse you actually initiate commands.\n- \n\nThis article helps you set up Python and the tools you need for developing and running Python scripts quickly. Links are provided to background info.\n\n### Scoop\n[Scoop](https://scoop.sh/) is a command-line installer for Windows. \n\n- Eliminates permission popup windows, because programs are installed for users\n- Hides GUI wizard-style installers\n- Prevents PATH pollution from installing lots of programs\n- Avoids unexpected side-effects from installing and uninstalling programs\n- Finds and installs dependencies automatically\n- Performs all the extra setup steps itself to get a working program\n\n## Learn Python on your way to work\nIf you want to refresh or learn the basics of Python on your phone with a Duolingo-like app, there a several options\n- Mimo\n- SoloLearn\n- Codecademy\n- FreeCodeCamp?\n- DataCamp\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

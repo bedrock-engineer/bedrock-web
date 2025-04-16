@@ -7,7 +7,7 @@
 
 # quarto output directories
 /.quarto/
-/_freeze/
+/_site/
 
 # Python
 /.venv/

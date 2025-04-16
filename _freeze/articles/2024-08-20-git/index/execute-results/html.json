@@ -1,0 +1,12 @@
+{
+  "hash": "07e40eae57f4ac9b9682ad930ec7cb04",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ndraft: true\n\n# Front Matter\ntitle: \"WTH is `git`\"\ndescription: \"What the heck is `git`? What about GitHub? And why should an AEC professional care about it?\"\nauthor: \"Joost Gevaert\"\ndate: \"2024-10-20\"\ncategories: [git]\nimage: \"git.png\"\n\n# Quarto settings\njupyter: python3\nexecute:\n  eval: true\nformat:\n  html:\n    code-fold: true\n    code-annotations: true\n---\n\n## WTH is `git`?\n- [`git`](https://git-scm.com/)\n\n## Setup\n### Credentials\n- https://github.com/git-ecosystem/git-credential-manager\n- Installation: scoop or https://github.com/git-ecosystem/git-credential-manager/blob/release/docs/install.md\n- WSL: https://github.com/git-ecosystem/git-credential-manager/blob/release/docs/wsl.md\n\n```{.bash filename=\"Terminal\"}\ngit-credential-manager github login\n```\n\nConfigure the git-credential-manager as the system and global git credential manager, such that this annoying GitCredentialHelperSelector pop-up doesn't show up anymore:\n```{.bash filename=\"Terminal\"}\ngit credential-manager configure --system\ngit credential-manager configure\n```\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
