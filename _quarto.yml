@@ -46,14 +46,14 @@ website:
         href: https://github.com/bedrock-engineer/bedrock-ge
         text: Bedrock's GitHub
       - icon: linkedin
-        href: https://www.linkedin.com/company/bedrock-ge/
+        href: https://www.linkedin.com/company/bedrock-gi/
         text: Bedrock's LinkedIn
   page-footer: 
     right:
       - icon: github
         href: https://github.com/bedrock-engineer/bedrock-ge
       - icon: linkedin
-        href: https://www.linkedin.com/company/bedrock-ge/
+        href: https://www.linkedin.com/company/bedrock-gi/
   search:
     type: textbox
     show-item-context: true

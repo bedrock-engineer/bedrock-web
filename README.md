@@ -15,7 +15,7 @@
 
 🌐 **Website:** <https://bedrock.engineer/>
 
-🔗 **LinkedIn:** <https://www.linkedin.com/company/bedrock-ge>
+🔗 **LinkedIn:** <https://www.linkedin.com/company/bedrock-gi>
 
 ---
 
