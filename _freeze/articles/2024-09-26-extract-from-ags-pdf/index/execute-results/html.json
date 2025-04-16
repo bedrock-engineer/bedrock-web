@@ -1,0 +1,12 @@
+{
+  "hash": "206c478cc6fc229f560ceda92e040c5e",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ndraft: true\n\n# Front Matter\ntitle: \"Data Dictionaries from AGS.pdf's\"\ndescription: \"Using ChatGPT and Python to extract AGS 3 and AGS 4 data dictionaries from their corresponding .pdf documentation.\"\nauthor: \"Joost Gevaert\"\ndate: \"2024-09-26\"\ndate-modified: \"2023-09-26\"\ncategories: [python, ags, ags3, ags4]\nimage: \"ags_pdf.png\"\n\n# Quarto settings\njupyter: python3\nexecute:\n  eval: true\nformat:\n  html:\n    code-fold: true\n    code-annotations: true\n---\n\n\\>> upload the AGS3-3-1-2005.pdf\n\n> Put the Groups and Headings table in a CSV with columns group_name,contents,notes,parent_group  \n> The Groups and Headings table starts at the bottom of page 13 and finishes on page 17.\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
