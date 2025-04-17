@@ -3,6 +3,23 @@ project:
   resources:
     - "public/**/*"
 
+format:
+  html:
+    theme:
+      light: [cosmo, theme.scss]
+    # There are 3 types of navigation in Quarto:
+    # 1. Top Navigation - navbar: - https://quarto.org/docs/websites/website-navigation.html#top-navigation
+    # 2. Side Navigation (left of page content) - sidebar: - https://quarto.org/docs/websites/website-navigation.html#side-navigation
+    # 3. On Page Navigation (right of page content) - toc: - https://quarto.org/docs/reference/formats/html.html#table-of-contents
+    toc: true
+    toc-depth: 2
+    link-external-icon: true
+    link-external-newwindow: true
+    jupyter: python3
+    code-copy: true
+    code-fold: true
+    code-annotations: hover
+
 website:
   title: "Bedrock"
   description: "Bedrock, the Open Source Foundation for Geotechnical Engineering"
@@ -13,13 +30,14 @@ website:
   repo-url: https://github.com/bedrock-engineer/bedrock-web
   issue-url: https://github.com/bedrock-engineer/bedrock-ge/issues/new/choose
   repo-actions: [source, edit, issue]
+  
   page-navigation: true
   bread-crumbs: true
   navbar:
     logo: "public/Bedrock.png"
     logo-alt: "Bedrock"
     left:
-      - text: "Documentation"
+      - text: "Docs"
         href: docs/index.qmd
       - text: "Articles"
         href: articles.qmd
@@ -48,12 +66,38 @@ website:
       - icon: linkedin
         href: https://www.linkedin.com/company/bedrock-engineer
         text: Bedrock's LinkedIn
-  page-footer: 
-    right:
-      - icon: github
-        href: https://github.com/bedrock-engineer/bedrock-ge
-      - icon: linkedin
-        href: https://www.linkedin.com/company/bedrock-engineer
+  sidebar:
+    id: docs
+    style: "floating"
+    contents:
+      - text: "Overview"
+        href: docs/index.qmd
+      - text: "Getting Started"
+        href: docs/getting-started.qmd
+      - section: "Tutorials"
+        href: docs/tutorials/index.qmd
+        contents: 
+        - text: "AGS 3 to GIS"
+          href: docs/tutorials/ags3_to_gis_and_speckle.ipynb
+      - text: "How-To"
+        href: docs/how-to/index.qmd
+      - text: "Explanations"
+        href: docs/explanations/index.qmd
+      - section: "Reference"
+        href: docs/reference/index.qmd
+        contents:
+        - text: "Glossary"
+          href: docs/reference/glossary.qmd
+        - text: "Sources"
+          href: docs/reference/sources.qmd
+    
+  # page-footer: 
+  #   right:
+  #     - icon: github
+  #       href: https://github.com/bedrock-gi/bedrock-gi
+  #     - icon: linkedin
+  #       href: https://www.linkedin.com/company/bedrock-gi/
+  
   search:
     type: textbox
     show-item-context: true
@@ -66,44 +110,3 @@ execute:
 
 language: 
   search-box-placeholder: Search
-
-# options specified here will apply to all pages in this folder
-# https://quarto.org/docs/websites/website-navigation.html#side-navigation
-# Sidebar Navigation goes into _quarto.yml, not here in the _metadata.yml
-# quarto.org uses id's to identify sections
-
-# website:
-#   sidebar:
-#     style: "floating"
-#     contents:
-#       - text: "Documentation"
-#         href: index.qmd
-#       - section: "Getting Started"
-#         href: getting-started.qmd
-#         contents:
-#           - index.qmd
-#           - basics-knitr.qmd
-#           - basics-jupyter.qmd
-#       - section: "Layout"
-#         contents:
-#           - layout.qmd
-#           - layout-knitr.qmd
-#           - layout-jupyter.qmd
-#       - section: advanced.qmd
-#         contents:
-#           - raw-code.qmd
-#           - custom-theme.qmd
-#       - acknowlegment.qmd
-
-format:
-  html:
-    theme:
-      light: [cosmo, theme.scss]
-    toc: true
-    toc-depth: 2
-    link-external-icon: true
-    link-external-newwindow: true
-    jupyter: python3
-    code-copy: true
-    code-fold: true
-    code-annotations: hover

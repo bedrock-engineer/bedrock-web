@@ -6,6 +6,8 @@ $bedrock-gray: #868b85;
 
 /*-- scss:defaults --*/
 // Overwrite bootstrap _variables.scss
+// See https://quarto.org/docs/output-formats/html-themes.html#sass-variables
+// for a list of all Sass variables used by Reveal themes.
 $link-color: $bedrock-green;
 $code-color: $bedrock-teal;
 $text-muted: $bedrock-gray;
@@ -14,4 +16,35 @@ $text-muted: $bedrock-gray;
 // Define custom CSS rules for CSS selectors such as .classes and #ids here
 a.external::after {
   background-size: 0.5em;
+}
+
+/* Target cross-references and footnotes */
+.quarto-xref, .footnote-ref {
+  border-radius: 0.2rem;
+  padding: 0.02rem 0.2rem;
+  background-color: $progress-bg;
+  text-decoration: none;    /* Remove underline */
+}
+
+.quarto-xref:hover, .footnote-ref:hover {
+  color: $code-bg;
+  background-color: $link-color;
+}
+
+a.quarto-xref[href*="#sec-glossary-"] {
+  vertical-align: super;
+  font-size: 0.75em;
+}
+
+// Reset <sup> styling when a child of .footnote-ref 
+.footnote-ref sup {
+  position: static;
+  top: auto;
+  vertical-align: baseline;
+  font-size: inherit;
+}
+
+.footnote-ref {
+  vertical-align: sub;
+  font-size: 0.75em;
 }

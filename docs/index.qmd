@@ -1,7 +1,7 @@
 ---
 # Front Matter
-title: "Documentation"
-description: "Documentation for Bedrock."
+title: "Overview"
+description: "Overview of Bedrock's Documentation."
 
 # Quarto settings
 format:
