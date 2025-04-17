@@ -169,7 +169,7 @@ So, [Markdown](#markdown) provides a great developer i.e. contributor experience
 ### Website Navigation
 
 - NavBar
-  - [Logo](https://quarto.org/docs/reference/projects/websites.html#navbar). Lacks Quarto docs though, so see the Quarto config of this website [`_quarto.yml`](https://github.com/bedrock-gi/bedrock-web/blob/main/_quarto.yml) on GitHub.
+  - [Logo](https://quarto.org/docs/reference/projects/websites.html#navbar). Lacks Quarto docs though, so see the Quarto config of this website [`_quarto.yml`](https://github.com/bedrock-engineer/bedrock-web/blob/main/_quarto.yml) on GitHub.
   - [Help ▼ menu](https://quarto.org/docs/websites/website-navigation.html#top-navigation)
   - [GitHub & Socials](https://quarto.org/docs/websites/website-navigation.html#navbar-tools)
   - [Website Search](https://quarto.org/docs/websites/website-search.html)
@@ -206,5 +206,5 @@ Several other Quarto features that I like and (might) want to make use of in the
 - In addition to [Reference Popups](https://quarto.org/docs/output-formats/html-basics.html#reference-popups), i.e. hover previews for [footnotes](#footnotes) and [cross-references](#cross-references-with-hover-preview), Quarto also has reference popups for citations.
 - [Links to Source Notebooks](https://quarto.org/docs/authoring/notebook-embed.html#linked-source-notebooks), such that you can open up a docs page that's based on a Jupyter Notebook directly in Google Colab (see [Notebook Embed # View Options](https://quarto.org/docs/authoring/notebook-embed.html#view-options) & [Reference > Formats > HTML Options # Links `notebook-view`](https://quarto.org/docs/reference/formats/html.html#links)).
 - [Open Graph](https://quarto.org/docs/websites/website-tools.html#open-graph) config for richer sharing of links to specific pages of websites.
-- [`quartodoc`](https://machow.github.io/quartodoc/get-started/overview.html) is a Python package for generating API reference documentation of a Python package with proper `docstrings` that is based on, and integrates with Quarto.
+- [`quartodoc`](https://machow.github.io/quartodoc/get-started/overview.html) w package for generating API reference documentation of a Python package with proper `docstrings` that is based on, and integrates with Quarto.
 - [Commenting](https://quarto.org/docs/output-formats/html-basics.html#commenting) such that you all can leave your thoughts right here 👇

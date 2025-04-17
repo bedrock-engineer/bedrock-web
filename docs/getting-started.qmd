@@ -12,10 +12,10 @@ format:
 
 ## ⬇️ Installation
 
-In case you're using `uv`, you can add `bedrock-gi` to your Python project and install it in your project's virtual environment by running:
+Using `uv`, you can add `bedrock-ge` to your Python project and install it in your project's virtual environment by running:
 
 ```bash
-uv add bedrock-gi
+uv add bedrock-ge
 ```
 
 I would highly recommend anyone to start using [`uv`](https://docs.astral.sh/uv/) (Unified Virtual Environment Manager) if you're not already doing so. Some of the advantages (Source: [`uv`](https://docs.astral.sh/uv/)):
@@ -25,8 +25,8 @@ I would highly recommend anyone to start using [`uv`](https://docs.astral.sh/uv/
 - 🗂️ `uv` provides [comprehensive project management](https://docs.astral.sh/uv/#project-management), with a [universal lockfile](https://docs.astral.sh/uv/concepts/projects/#project-lockfile). This means no more headaches about virtual environments (or having to explain what on earth a virtual env is), or people running different versions of Python or Python packages on the same project, causing errors and other problems.
 - In short, 🚀 `uv` is a single tool to replace `pip`, `pip-tools`, `pipx`, `poetry`, `pyenv`, `virtualenv`, `conda` and more...
 
-It's of course also possible to install `bedrock-gi` from [PyPI](https://pypi.org/project/bedrock-gi/) (Python Packaging Index) using `pip`:
+It's of course also possible to install `bedrock-ge` from [PyPI](https://pypi.org/project/bedrock-ge/) (Python Packaging Index) using `pip`:
 
 ```bash
-pip install bedrock-gi
+pip install bedrock-ge
 ```

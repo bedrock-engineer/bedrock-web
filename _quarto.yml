@@ -5,13 +5,13 @@ project:
 
 website:
   title: "Bedrock"
-  description: "Bedrock, the Open Source Foundation for Ground Investigation Data"
+  description: "Bedrock, the Open Source Foundation for Geotechnical Engineering"
   image: "public/Bedrock_inCircle.png"
   favicon: "public/favicon.ico"
   open-graph: true
   site-url: https://bedrock.engineer
-  repo-url: https://github.com/bedrock-gi/bedrock-web
-  issue-url: https://github.com/bedrock-gi/bedrock-gi/issues/new/choose
+  repo-url: https://github.com/bedrock-engineer/bedrock-web
+  issue-url: https://github.com/bedrock-engineer/bedrock-ge/issues/new/choose
   repo-actions: [source, edit, issue]
   page-navigation: true
   bread-crumbs: true
@@ -29,10 +29,10 @@ website:
         menu:
           - text: "Report a Bug"
             icon: "bug"
-            href: "https://github.com/bedrock-gi/bedrock-gi/issues"
+            href: "https://github.com/bedrock-engineer/bedrock-ge/issues"
           - text: "Ask Bedrock a Question"
             icon: "chat-right-text"
-            href: "https://github.com/orgs/bedrock-gi/discussions"
+            href: "https://github.com/orgs/bedrock-ge/discussions"
           - text: "Ask Speckle a Question"
             icon: "question-square-fill"
             href: "https://speckle.community/"
@@ -43,7 +43,7 @@ website:
         href: about.qmd
     tools:
       - icon: github
-        href: https://github.com/bedrock-gi/bedrock-gi
+        href: https://github.com/bedrock-engineer/bedrock-ge
         text: Bedrock's GitHub
       - icon: linkedin
         href: https://www.linkedin.com/company/bedrock-gi/
@@ -51,12 +51,18 @@ website:
   page-footer: 
     right:
       - icon: github
-        href: https://github.com/bedrock-gi/bedrock-gi
+        href: https://github.com/bedrock-engineer/bedrock-ge
       - icon: linkedin
         href: https://www.linkedin.com/company/bedrock-gi/
   search:
     type: textbox
     show-item-context: true
+  google-analytics:
+    tracking-id: "G-JH73EGWYL6"
+    anonymize-ip: true
+
+execute:
+  freeze: auto
 
 language: 
   search-box-placeholder: Search

@@ -1,0 +1,12 @@
+{
+  "hash": "28ec70c82c5532690c3225aa57dbd393",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ndraft: true\n\n# Front Matter\ntitle: \"3D Visualization of GI Data in ArcGIS Pro\"\ndescription: \"Setting up Python the easy way without having to think about \"\nauthor: \"Joost Gevaert\"\ndate: \"2024-10-21\"\ncategories: [ArcGIS]\nimage: \"arcgis.png\"\n\n# Quarto settings\njupyter: python3\nexecute:\n  eval: true\nformat:\n  html:\n    code-fold: true\n    code-annotations: true\n---\n\n## Connect GeoPackage\n\nhttps://www.esri.com/arcgis-blog/products/product/data-management/how-to-use-ogc-geopackages-in-arcgis-pro/\n\n## Symbology\n\n### Make 3D Tubes\n\n![ArcGIS Pro 3D Tube Symbology from 3D Lines](3DTubes.png)\n\n## Depth Priority\n\nhttps://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/set-depth-priority-for-a-3d-layer.htm\n\n## Navigate Underground\n\n![Allow to Navigate Underground in ArcGIS Pro](NavigateUnderground.png)\n\n## Further Reading\n\n- [Voxel of Dutch Polders](https://learn.arcgis.com/en/projects/explore-and-animate-geological-data-with-voxels/)\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
