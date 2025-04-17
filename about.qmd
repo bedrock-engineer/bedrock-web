@@ -6,7 +6,7 @@ about:
   links:
     - icon: linkedin
       text: Bedrock LinkedIn
-      href: https://www.linkedin.com/company/bedrock-gi/
+      href: https://www.linkedin.com/company/bedrock-engineer
     - icon: linkedin
       text: LinkedIn
       href: https://linkedin.com/in/joost-gevaert
@@ -38,4 +38,3 @@ Hi, my name is Jules. I studied Applied Geoscience (Petroleum Engineering Reserv
 
 Over the past 5 years, I've worked on data-rich applications across various domains, specifically frontend development.
 My primary interest is figuring out how to build tools for more thoughtful display and processing of technical information, geoscience in particular.
-
