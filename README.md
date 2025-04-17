@@ -11,11 +11,11 @@
 
 🖥️ **Source Code:** <https://github.com/bedrock-engineer/bedrock-ge>
 
-🐍 **`bedrock-ge` on PyPI:** <https://pypi.org/project/bedrock-ge/>
+🐍 **`bedrock-ge` on PyPI:** <https://pypi.org/project/bedrock-ge>
 
-🌐 **Website:** <https://bedrock.engineer/>
+🌐 **Website:** <https://bedrock.engineer>
 
-🔗 **LinkedIn:** <https://www.linkedin.com/company/bedrock-gi>
+🔗 **LinkedIn:** <https://www.linkedin.com/company/bedrock-engineer>
 
 ---
 
