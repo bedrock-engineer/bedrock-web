@@ -24,7 +24,7 @@ Kai Tak, Hong Kong 3D GI data visualization in ArcGIS. <a href="https://arcg.is/
 </figcaption>
 </figure>
 
-[View the marimo notebook in your browser](https://marimo.app/https://github.com/bedrock-engineer/bedrock-ge/blob/main/examples%2Fhk_kaitak_ags3%2Fhk_kaitak_ags3_to_brgi_geodb.py).
+View the marimo [notebook in the browser](https://marimo.app/https://github.com/bedrock-engineer/bedrock-ge/blob/main/examples%2Fhk_kaitak_ags3%2Fhk_kaitak_ags3_to_brgi_geodb.py) that uses `bedrock-ge` to transform the data shown in these examples.
 
 ### Speckle
 

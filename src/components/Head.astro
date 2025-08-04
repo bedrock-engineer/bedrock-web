@@ -1,0 +1,15 @@
+---
+// This component automatically adds OG images for guides, explanations, and reference pages
+const { pathname } = Astro.url;
+const isDocPage = pathname.startsWith('/guides/') || 
+                  pathname.startsWith('/explanation/') || 
+                  pathname.startsWith('/reference/');
+
+const ogImageUrl = isDocPage 
+  ? new URL(pathname + 'og.png', Astro.site).toString()
+  : new URL('/og-default.png', Astro.site).toString();
+---
+
+{isDocPage && (
+  <meta property="og:image" content={ogImageUrl} />
+)}

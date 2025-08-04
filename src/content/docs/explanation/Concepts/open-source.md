@@ -8,7 +8,7 @@ The geotechnical industry traditionally relies on proprietary software and speci
 
 `bedrock-ge` is Free and Open Source Software (FOSS), meaning it gives you full access to the code, and you can customize `bedrock-ge` to integrate with other tools and fit your workflows and project needs.
 
-As the name implies, FOSS is free to use, so you’re not tied to expensive software licenses or locked into a specific software vendor.
+As the name implies, FOSS is free to use, so you're not tied to expensive software licenses or locked into a specific software vendor.
 <!-- You can give feedback and contribute, such that together we can build the tools we’ve always wanted and needed. -->
 
 ## What is Open-source?
