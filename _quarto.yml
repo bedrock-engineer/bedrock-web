@@ -4,7 +4,7 @@ project:
   render:
     - "src/content/**/*.qmd"
   post-render:
-    - "uv run python fix-callouts.py src/content/docs/examples/quarto.md"
+    - "uv run python ./scripts/quarto/fix-callouts.py src/content/docs/examples/quarto.md"
 
 format:
   commonmark:

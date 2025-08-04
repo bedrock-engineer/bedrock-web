@@ -6,5 +6,4 @@ readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
     "bedrock-ge>=0.2.4",
-    "pydoc-markdown>=4.8.2",
 ]

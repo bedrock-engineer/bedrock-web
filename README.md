@@ -58,14 +58,13 @@ All commands are run from the root of the project, from a terminal:
 
 ## API Reference Generation
 
-The API reference documentation in `src/content/docs/reference/` is auto-generated from the bedrock-ge Python package using pydoc-markdown.
+The API reference documentation in `src/content/docs/reference/api/` is auto-generated from the bedrock-ge Python package using a custom zero-dependency Python script.
 
 ### Prerequisites
 
-1. Ensure Python environment is set up:
+1. Ensure the bedrock-ge package is installed in your environment:
    ```bash
-   uv init --python 3.9  # Only needed once
-   uv add pydoc-markdown bedrock-ge  # Install dependencies
+   uv add bedrock-ge  # Install the package to document
    ```
 
 ### Generating API Documentation
@@ -73,23 +72,39 @@ The API reference documentation in `src/content/docs/reference/` is auto-generat
 To regenerate the API reference documentation:
 
 ```bash
-uv run pydoc-markdown
-uv run python update_frontmatter.py
+npm run docs:generate
 ```
 
-These commands:
+This command runs `scripts/docs/generate_api_docs.py` which:
 
-1. **Generate docs**: Reads the configuration from `pydoc-markdown.yml`, extracts docstrings from bedrock-ge, and creates markdown files in `src/content/docs/reference/`
-2. **Update frontmatter**: Adds `prev: false` and `next: false` to all generated files for better Starlight navigation
+1. **Auto-discovers modules**: Automatically finds all modules in the bedrock-ge package
+2. **Extracts documentation**: Reads docstrings, type annotations, and signatures using Python's `inspect` module
+3. **Generates enhanced markdown**: Creates professional documentation with:
+   - Parameter tables including **Type**, **Default**, and **Description** columns
+   - Return type information with type annotations
+   - Filtered content (excludes inherited methods from base classes like Pydantic/Pandera)
+   - Starlight-compatible frontmatter with navigation disabled
+4. **Outputs clean files**: Saves markdown files to `src/content/docs/reference/api/`
 
-**Note**: You may see warnings about deprecated `pkg_resources` and unknown configuration options - these are harmless and the generation will complete successfully.
+### Features
+
+The generated documentation includes:
+
+- **Professional styling**: Clean parameter tables with type hints and defaults
+- **Auto-discovery**: No need to manually maintain module lists
+- **Type annotations**: Full type information extracted from function signatures  
+- **Filtered inheritance**: Only shows methods/attributes defined in your classes, not inherited framework code
+- **Zero dependencies**: Uses only Python standard library (`inspect`, `importlib`, `pathlib`)
+- **Starlight integration**: Perfect integration with navigation and theming
 
 ### Configuration
 
-The generation is controlled by `pydoc-markdown.yml`:
+The generation script is located at `scripts/docs/generate_api_docs.py` and requires no external configuration files. It automatically:
 
-- **Filters**: Excludes private members (starting with `_`), special members, and common imports
-- **Output**: Creates individual markdown files per module
-- **Format**: Generates Starlight-compatible frontmatter and structure
+- Discovers all modules in the bedrock-ge package
+- Filters out private members (starting with `_`)
+- Excludes inherited methods from base classes
+- Formats type annotations for readability
+- Adds proper Starlight frontmatter
 
-The generated files automatically integrate with Starlight's navigation via the `autogenerate: { directory: "reference" }` setting in `astro.config.mjs`.
+The generated files automatically integrate with Starlight's navigation via the "API Reference" link in the sidebar and the `autogenerate: { directory: "reference" }` setting in `astro.config.mjs`.

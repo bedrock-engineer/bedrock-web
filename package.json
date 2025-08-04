@@ -10,7 +10,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "quarto:render": "quarto render",
-    "docs:generate": "cd ../bedrock-ge && uv run python generate_docs.py",
+    "docs:generate": "uv run python ./scripts/docs/generate_api_docs.py",
     "deploy": "npx astro build && npx wrangler deploy"
   },
   "dependencies": {

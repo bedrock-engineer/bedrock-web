@@ -13,8 +13,6 @@ const ogImageUrl = isDocPage
   : "og-default.png";
 ---
 
-<!-- Include all default Starlight head content -->
 <StarlightHead {...Astro.props} />
 
-<!-- Add our custom OG image meta tag -->
 {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
