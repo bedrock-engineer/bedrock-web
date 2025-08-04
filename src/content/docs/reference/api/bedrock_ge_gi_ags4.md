@@ -8,7 +8,7 @@ editUrl: false
 
 ## Functions
 
-### `ags4_to_dfs(source)`
+### `ags4_to_dfs`
 
 Converts AGS 4 data to a dictionary of pandas DataFrames.
 

@@ -8,7 +8,7 @@ editUrl: false
 
 ## Functions
 
-### `ags_to_brgi_db_mapping(source, projected_crs, vertical_crs, encoding)`
+### `ags_to_brgi_db_mapping`
 
 Map AGS 3 or AGS 4 data to the Bedrock GI data model.
 

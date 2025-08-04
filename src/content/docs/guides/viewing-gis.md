@@ -69,7 +69,15 @@ When working with multiple AGS files from the same project:
 ```python
 import zipfile
 from pathlib import Path
+from pyproj import CRS
+from bedrock_ge.gi.mapper import map_to_brgi_db
+from bedrock_ge.gi.ags import ags_to_brgi_db_mapping
+from bedrock_ge.gi.geospatial import create_brgi_geodb
+from bedrock_ge.gi.write import write_brgi_db_to_file
 from bedrock_ge.gi.db_operations import merge_dbs
+
+projected_crs = CRS("EPSG:2326")
+vertical_crs = CRS("EPSG:5738")
 
 folder_path = Path("./ags_files")
 ags_files = list(folder_path.glob("*.ags"))

@@ -199,7 +199,7 @@ def generate_class_docs(cls, level=2):
             try:
                 method = getattr(cls, method_name)
                 sig = format_signature(method)
-                docs.append(f"{'#' * (level + 2)} `{method_name}{sig}`")
+                docs.append(f"{'#' * (level + 2)} `{method_name}`")
                 docs.append("")
                 
                 if method.__doc__:
@@ -266,7 +266,7 @@ def generate_function_docs(func, level=2):
     header = "#" * level
     sig = format_signature(func)
     
-    docs = [f"{header} `{func.__name__}{sig}`", ""]
+    docs = [f"{header} `{func.__name__}`", ""]
     
     # Extract parameter and return type info from signature
     sig_params, return_type = extract_param_info(func)
@@ -367,12 +367,15 @@ def generate_module_docs(module_name: str) -> str:
         if classes:
             docs.append("**Classes:**")
             for name, cls in sorted(classes):
-                docs.append(f"- [`{name}`](#{name.lower()})")
+                # Generate heading ID that matches Starlight's pattern: "class-classname"
+                heading_id = f"class-{name.lower()}"
+                docs.append(f"- [`{name}`](#{heading_id})")
             docs.append("")
         
         if functions:
             docs.append("**Functions:**")
             for name, func in sorted(functions):
+                # Function headings don't have "class" prefix, just the function name
                 docs.append(f"- [`{name}`](#{name.lower()})")
             docs.append("")
         

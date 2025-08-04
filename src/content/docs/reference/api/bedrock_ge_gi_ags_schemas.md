@@ -9,22 +9,22 @@ editUrl: false
 ## Overview
 
 **Classes:**
-- [`Ags3CORE`](#ags3core)
-- [`Ags3GEOL`](#ags3geol)
-- [`Ags3HOLE`](#ags3hole)
-- [`Ags3ISPT`](#ags3ispt)
-- [`Ags3SAMP`](#ags3samp)
-- [`Ags3WETH`](#ags3weth)
-- [`Ags4CORE`](#ags4core)
-- [`Ags4GEOL`](#ags4geol)
-- [`Ags4ISPT`](#ags4ispt)
-- [`Ags4SAMP`](#ags4samp)
-- [`Ags4WETH`](#ags4weth)
-- [`BaseCORE`](#basecore)
-- [`BaseGEOL`](#basegeol)
-- [`BaseISPT`](#baseispt)
-- [`BaseSAMP`](#basesamp)
-- [`BaseWETH`](#baseweth)
+- [`Ags3CORE`](#class-ags3core)
+- [`Ags3GEOL`](#class-ags3geol)
+- [`Ags3HOLE`](#class-ags3hole)
+- [`Ags3ISPT`](#class-ags3ispt)
+- [`Ags3SAMP`](#class-ags3samp)
+- [`Ags3WETH`](#class-ags3weth)
+- [`Ags4CORE`](#class-ags4core)
+- [`Ags4GEOL`](#class-ags4geol)
+- [`Ags4ISPT`](#class-ags4ispt)
+- [`Ags4SAMP`](#class-ags4samp)
+- [`Ags4WETH`](#class-ags4weth)
+- [`BaseCORE`](#class-basecore)
+- [`BaseGEOL`](#class-basegeol)
+- [`BaseISPT`](#class-baseispt)
+- [`BaseSAMP`](#class-basesamp)
+- [`BaseWETH`](#class-baseweth)
 
 **Functions:**
 - [`check_ags_proj_group`](#check_ags_proj_group)
@@ -184,7 +184,7 @@ editUrl: false
 
 ## Functions
 
-### `check_ags_proj_group(ags_proj)`
+### `check_ags_proj_group`
 
 Checks if the AGS 3 or AGS 4 PROJ group is correct.
 

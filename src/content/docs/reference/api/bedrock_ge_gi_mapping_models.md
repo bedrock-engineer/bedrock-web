@@ -24,7 +24,7 @@ editUrl: false
 
 #### Methods
 
-##### `validate_at_least_one_depth_column()`
+##### `validate_at_least_one_depth_column`
 
 ---
 

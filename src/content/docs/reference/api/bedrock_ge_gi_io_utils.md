@@ -29,7 +29,7 @@ Utility functions for reading, parsing and writing data.
 
 ## Functions
 
-### `brgi_db_to_dfs(brgi_db)`
+### `brgi_db_to_dfs`
 
 Converts a Bedrock GI (geospatial) database to a dictionary of DataFrames.
 
@@ -47,7 +47,7 @@ A dictionary where the keys are the Bedrock GI table names and the values are th
 
 ---
 
-### `coerce_string(string)`
+### `coerce_string`
 
 Converts a string to an appropriate Python data type.
 
@@ -65,7 +65,7 @@ None if the string is 'none', 'null', or empty. bool if the string is 'true' or 
 
 ---
 
-### `convert_object_col_content_to_string(df, in_place)`
+### `convert_object_col_content_to_string`
 
 Therefore, this function converts all the data in columns with the object dtype to strings, and then back to the object dtype.
 
@@ -84,7 +84,7 @@ The modified DataFrame with object dtypes converted to string dtypes.
 
 ---
 
-### `detect_encoding(source)`
+### `detect_encoding`
 
 Detect the character encoding of various input types.
 
@@ -102,7 +102,7 @@ The detected encoding name (e.g., 'utf-8', 'iso-8859-1', 'ascii', etc.)
 
 ---
 
-### `geodf_to_df(geodf)`
+### `geodf_to_df`
 
 Convenience function to convert GeoDataFrames to DataFrames for nicer display in notebook environments like marimo.
 
@@ -118,7 +118,7 @@ Convenience function to convert GeoDataFrames to DataFrames for nicer display in
 
 ---
 
-### `open_text_data_source(source, encoding)`
+### `open_text_data_source`
 
 Opens or wraps a given source for reading AGS (text-based) data.
 

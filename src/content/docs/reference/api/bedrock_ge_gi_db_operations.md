@@ -8,7 +8,7 @@ editUrl: false
 
 ## Functions
 
-### `merge_dbs(brgi_dbs)`
+### `merge_dbs`
 
 The function concatenates the pandas DataFrames of the second dict of DataFrames to the first dict of DataFrames for the keys they have in common. Keys that are unique to either dictionary will be included in the final concatenated dictionary.
 

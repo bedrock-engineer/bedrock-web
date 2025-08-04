@@ -8,7 +8,7 @@ editUrl: false
 
 ## Functions
 
-### `ags3_to_brgi_db_mapping(source, projected_crs, vertical_crs, encoding)`
+### `ags3_to_brgi_db_mapping`
 
 Map AGS 3 data to the Bedrock GI data model.
 
@@ -29,7 +29,7 @@ Object that maps AGS 3 data to Bedrock GI data model.
 
 ---
 
-### `ags3_to_dfs(source, encoding)`
+### `ags3_to_dfs`
 
 Also strips '?' from non-standard AGS 3 group and header names, in order to make the rest of the code more generic.
 

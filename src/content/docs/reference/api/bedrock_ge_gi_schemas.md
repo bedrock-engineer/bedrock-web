@@ -37,9 +37,9 @@ pandera schemas for Bedrock GI data. Base schemas refer to schemas that have no 
 
 #### Methods
 
-##### `depth_column_completeness(df)`
+##### `depth_column_completeness`
 
-##### `top_above_base(df)`
+##### `top_above_base`
 
 If either column is missing, this check passes (nothing to compare). If both columns are present, the check fails if any row has depth_to_top > depth_to_base.
 

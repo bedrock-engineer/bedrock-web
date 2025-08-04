@@ -8,7 +8,7 @@ editUrl: false
 
 ## Functions
 
-### `map_to_brgi_db(brgi_db_mapping)`
+### `map_to_brgi_db`
 
 This function takes a BedrockGIDatabaseMapping, which contains various table mappings for project, location, in-situ tests, samples, lab tests, and other tables, and converts it into a BedrockGIDatabase object. It creates pandas DataFrames for each table, validates them against their respective schemas, and constructs the final BedrockGIDatabase object.
 
