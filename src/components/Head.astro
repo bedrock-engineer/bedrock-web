@@ -1,15 +1,20 @@
 ---
-// This component automatically adds OG images for guides, explanations, and reference pages
-const { pathname } = Astro.url;
-const isDocPage = pathname.startsWith('/guides/') || 
-                  pathname.startsWith('/explanation/') || 
-                  pathname.startsWith('/reference/');
+import StarlightHead from "@astrojs/starlight/components/Head.astro";
 
-const ogImageUrl = isDocPage 
-  ? new URL(pathname + 'og.png', Astro.site).toString()
-  : new URL('/og-default.png', Astro.site).toString();
+// This component extends Starlight's default Head with custom OG images
+const { pathname } = Astro.url;
+const isDocPage =
+  pathname.startsWith("/guides/") ||
+  pathname.startsWith("/explanation/") ||
+  pathname.startsWith("/reference/");
+
+const ogImageUrl = isDocPage
+  ? new URL(pathname + "og.png", Astro.site).toString()
+  : "og-default.png";
 ---
 
-{isDocPage && (
-  <meta property="og:image" content={ogImageUrl} />
-)}
+<!-- Include all default Starlight head content -->
+<StarlightHead {...Astro.props} />
+
+<!-- Add our custom OG image meta tag -->
+{ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
