@@ -26,7 +26,13 @@ Calculate cumulative distances along a 3D LineString.
 
 ### `create_brgi_geodb`
 
-Creates a Bedrock GI geospatial database by performing the following steps: 1. Creates a geospatial DataFrame for the Location table using the `create_location_geodf` function. 2. Creates a geospatial DataFrame for the LonLatHeight table using the `create_lon_lat_height_geodf` function. 3. Creates a dictionary of geospatial DataFrames for the In-Situ test tables using the `interpolate_gi_geometry` function. 4. Creates a geospatial DataFrame for the Sample table using the `interpolate_gi_geometry` function, if the Sample table exists. 5. Returns a BedrockGIGeospatialDatabase object.
+Creates a Bedrock GI geospatial database by performing the following steps:
+
+1. Creates a geospatial DataFrame for the Location table using the `create_location_geodf` function.
+2. Creates a geospatial DataFrame for the LonLatHeight table using the `create_lon_lat_height_geodf` function.
+3. Creates a dictionary of geospatial DataFrames for the In-Situ test tables using the `interpolate_gi_geometry` function.
+4. Creates a geospatial DataFrame for the Sample table using the `interpolate_gi_geometry` function, if the Sample table exists.
+5. Returns a BedrockGIGeospatialDatabase object.
 
 **Parameters:**
 

@@ -99,7 +99,7 @@ def parse_docstring(docstring: str) -> dict:
             if line:
                 description_lines.append(line)
             elif description_lines:  # Empty line after description
-                result["description"] = " ".join(description_lines)
+                result["description"] = format_description_with_lists(" ".join(description_lines))
                 description_lines = []
         
         elif current_section == "parameters":
@@ -121,8 +121,55 @@ def parse_docstring(docstring: str) -> dict:
     
     # Handle case where description continues to end
     if description_lines:
-        result["description"] = " ".join(description_lines)
+        result["description"] = format_description_with_lists(" ".join(description_lines))
     
+    return result
+
+def format_description_with_lists(description: str) -> str:
+    """Format description text to convert inline lists to proper markdown lists."""
+    import re
+    
+    # Look for patterns like "tables: - Item1 - Item2 - Item3"
+    # This regex finds text followed by colon and then multiple items starting with " - "
+    bullet_list_pattern = r'([^:]+:\s*)-\s*([^-]+(?:\s*-\s*[^-]+)*)'
+    
+    # Look for patterns like "steps: 1. Step1 2. Step2 3. Step3"
+    # This regex finds text followed by colon and then multiple numbered items
+    numbered_list_pattern = r'([^:]+:\s*)(\d+\.\s*[^0-9]+(?:\s*\d+\.\s*[^0-9]+)*)'
+    
+    def replace_bullet_list(match):
+        prefix = match.group(1).strip()
+        items_text = match.group(2)
+        
+        # Split on " - " and clean up each item
+        items = [item.strip() for item in items_text.split(' - ') if item.strip()]
+        
+        if len(items) <= 1:
+            return match.group(0)  # Return original if not a real list
+            
+        # Format as markdown list
+        formatted_items = '\n'.join(f'- {item}' for item in items)
+        return f'{prefix}\n\n{formatted_items}'
+    
+    def replace_numbered_list(match):
+        prefix = match.group(1).strip()
+        items_text = match.group(2)
+        
+        # Split on number patterns and clean up each item
+        import re
+        items = re.split(r'\s*\d+\.\s*', items_text)
+        items = [item.strip() for item in items if item.strip()]
+        
+        if len(items) <= 1:
+            return match.group(0)  # Return original if not a real list
+            
+        # Format as markdown numbered list
+        formatted_items = '\n'.join(f'{i+1}. {item}' for i, item in enumerate(items))
+        return f'{prefix}\n\n{formatted_items}'
+    
+    # Apply both transformations
+    result = re.sub(bullet_list_pattern, replace_bullet_list, description)
+    result = re.sub(numbered_list_pattern, replace_numbered_list, result)
     return result
 
 def format_docstring(docstring: str) -> str:

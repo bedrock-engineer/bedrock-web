@@ -75,3 +75,13 @@ a:active {
   text-decoration: underline;
   text-decoration-color: var(--color-brand-green);
 }
+
+.sl-markdown-content {
+  ol {
+    list-style: decimal inside;
+  }
+
+  ul {
+    list-style: circle inside;
+  }
+}

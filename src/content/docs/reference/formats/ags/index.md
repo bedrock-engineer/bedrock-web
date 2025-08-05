@@ -1,10 +1,11 @@
 ---
-# Front Matter
 title: "AGS4 Reference"
 description: "A brief introduction to the AGS4 geotechnical data format."
 author: "Jules Blom"
 date: "2025-04-14"
 categories: [ags, ags4]
+prev: false
+next: false
 ---
 
 [AGS4](https://www.ags.org.uk/data-format/ags4-data-format/) is a standardized text file format specifically designed for exchanging geotechnical information between different software systems used in geotechnical engineering. It organizes borehole logs, laboratory test results, and field measurements into structured data tables with validation rules to ensure consistent data quality across the geotechnical industry.
@@ -16,7 +17,7 @@ In the AGS4 format, **Groups** are organizational containers that structure geot
 AGS4 Groups are organised in a hierarchical manner.
 Each **sample** (SAMP) belongs to a **location** (LOCA). Each **location** belongs to a **project** (PROJ).
 
-Here’s a visual of the hierarchy of groups commonly found in an AGS4 file.
+Here’s a an indented tree diagram showing the hierarchy of groups commonly found in an AGS4 file.
 
 <svg xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;font:13px sans-serif; max-width: 450px;"  viewBox="-12 -24 402 424">
 <g fill="none" stroke="currentColor">

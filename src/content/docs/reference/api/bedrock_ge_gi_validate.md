@@ -10,7 +10,13 @@ editUrl: false
 
 ### `check_brgi_db`
 
-This function performs the same validation as `check_brgi_geodb`, but uses schemas that don't require geospatial geometry. It validates the following tables: - Project (never has geospatial geometry) - Location (without geospatial geometry) - All In-Situ test tables (without geospatial geometry) - Sample (without geospatial geometry) - All Lab test tables (never has geospatial geometry)
+This function performs the same validation as `check_brgi_geodb`, but uses schemas that don't require geospatial geometry. It validates the following tables:
+
+- Project (never has geospatial geometry)
+- Location (without geospatial geometry)
+- All In-Situ test tables (without geospatial geometry)
+- Sample (without geospatial geometry)
+- All Lab test tables (never has geospatial geometry)
 
 **Parameters:**
 
@@ -26,7 +32,14 @@ True if all tables are valid and relationships are properly maintained.
 
 ### `check_brgi_geodb`
 
-This function checks that all tables in the BrGI geospatialdatabase conform to their respective schemas and that all foreign key relationships are properly maintained. It validates the following tables: - Project - Location - LonLatHeight - All In-Situ test tables - Sample - All Lab test tables
+This function checks that all tables in the BrGI geospatialdatabase conform to their respective schemas and that all foreign key relationships are properly maintained. It validates the following tables:
+
+- Project
+- Location
+- LonLatHeight
+- All In-Situ test tables
+- Sample
+- All Lab test tables
 
 **Parameters:**
 
