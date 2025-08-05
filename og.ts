@@ -154,7 +154,7 @@ export const og = (): AstroIntegration => ({
           // 3. Locate the source file for this resolved page
           const filename = pathname.slice(folderPath.length + 1, -1);
           console.log(
-            `Looking for file: src/content/docs/${folderPath}/${filename}.md`
+            `Looking for file: src/content/docs/${folderPath}/${filename}.md or .mdx`
           );
 
           if (!filename) {
@@ -164,15 +164,23 @@ export const og = (): AstroIntegration => ({
 
           let filePath = `src/content/docs/${folderPath}/${filename}.md`;
 
-          // Check if the file exists, if not try index.md
+          // Check if the file exists, if not try .mdx, then index files
           if (!fs.existsSync(filePath)) {
-            filePath = `src/content/docs/${folderPath}/${filename}/index.md`;
-            console.log(`Trying index.md: ${filePath}`);
+            filePath = `src/content/docs/${folderPath}/${filename}.mdx`;
+            console.log(`Trying .mdx: ${filePath}`);
             if (!fs.existsSync(filePath)) {
-              console.log(
-                `Neither ${filename}.md nor ${filename}/index.md exists, skipping`
-              );
-              continue;
+              filePath = `src/content/docs/${folderPath}/${filename}/index.md`;
+              console.log(`Trying index.md: ${filePath}`);
+              if (!fs.existsSync(filePath)) {
+                filePath = `src/content/docs/${folderPath}/${filename}/index.mdx`;
+                console.log(`Trying index.mdx: ${filePath}`);
+                if (!fs.existsSync(filePath)) {
+                  console.log(
+                    `Neither ${filename}.md/.mdx nor ${filename}/index.md/index.mdx exists, skipping`
+                  );
+                  continue;
+                }
+              }
             }
           }
 
