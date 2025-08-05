@@ -63,11 +63,11 @@ a {
   border-radius: 2px;
 }
 
-a:hover {
+.link:hover {
   color: oklch(57.106% 0.06103 140.969);
 }
 
-a:active {
+.link:active {
   color: var(--color-green-700);
 }
 
