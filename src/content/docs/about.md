@@ -3,7 +3,7 @@ title: About
 description: Who is Bedrock?
 ---
 
-Bedrock is the company behind bedrock-ge.
+Bedrock is the company behind `bedrock-ge`. It consists of the
 
 ## Joost Gevaert
 
@@ -20,13 +20,13 @@ Bedrock is the Free and Open Source Software (FOSS) that I wish existed when I w
 
 ## Jules Blom
 
-Hi, my name is [Jules Blom](https://julesblom.com/). I studied Applied Geoscience (Petroleum Engineering Reservoir Geology) but frustration with technical software led me to learn to code and as a result, I mostly worked in software development.
+Hi, my name is [Jules Blom](https://julesblom.com/). I studied Applied Geoscience, specifically Petroleum Engineering, but frustration with technical software led me to learn to code. As a result, I pivoted to software development and mostly worked in that.
 
-Over the past 5 years, I've worked on data-rich applications across various domains, specifically frontend development.
+Over the past 5 years, I've worked on data-rich applications across various domains, focusing on developing UI's.
 My primary interest is figuring out how to build tools for more thoughtful processing and display of technical information, for geoscience in particular.
 
-## Contributors
+<!-- ## Contributors
 
 We thank the following people for their contributions to Bedrock:
 
-TODO
+TODO -->
