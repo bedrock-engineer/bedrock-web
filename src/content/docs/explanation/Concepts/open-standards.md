@@ -8,8 +8,6 @@ description: Understanding open geospatial standards, and their benefits for geo
 VIDEO COMPRESSION TECHNIQUES FOR XARRAY FOR EXAMPLE.
  -->
 
-## Open standards
-
 Open standards are publicly available specifications for data formats, protocols, or interfaces. They are:
 
 - **Publicly documented**: Complete specifications freely available
@@ -17,7 +15,7 @@ Open standards are publicly available specifications for data formats, protocols
 - **Royalty-free**: Can be implemented without licensing fees
 - **Interoperable**: Enable different software systems to work together
 
-Open standars are all around us, you make use of them everyday. Think of USB-C, HDMI, tile sizes, wooden beam size, railway tracks, metric system.
+Open standards are all around us, you make use of them everyday. Think of USB-C, HDMI, tile sizes, wooden beam sizes, railway tracks, or the metric system.
 <!-- Agreed upon ways to do something -->
 
 ## The Open Geospatial Consortium (OGC)

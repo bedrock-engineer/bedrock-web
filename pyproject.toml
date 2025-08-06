@@ -5,6 +5,5 @@ description = "Bedrock's website & docs site"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "bedrock-ge>=0.3.2",
-    "pdoc>=15.0.4",
+    "bedrock-ge>=0.2.4",
 ]

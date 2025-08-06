@@ -6,7 +6,7 @@ import { GeologicalModel } from "../model/block-model.jsx";
 ---
 
 <header class="landing-section">
-  <div class="py-2 flex justify-end items-center">
+  <div class="py-2 mx-1 flex justify-end items-center">
     <code class="block font-mono text-sm text-right">uv add bedrock-ge</code>
     <!-- TODO add copy button -->
   </div>
@@ -27,7 +27,7 @@ import { GeologicalModel } from "../model/block-model.jsx";
         electronic devices.
       </p>
 
-      <div class="flex flex-wrap space-between gap-2 my-6 ">
+      <div class="flex flex-wrap space-between gap-2 my-6">
         <Button href="/getting-started">Get started</Button>
         <Button href="/examples">Examples</Button>
         <Button href="/professional-support">Professional support</Button>
@@ -41,9 +41,10 @@ import { GeologicalModel } from "../model/block-model.jsx";
 <style>
   header {
     display: grid;
-    height: clamp(fit-content, 100svh - 238px, 800px);
     grid-template-rows: min-content 1fr;
-    background-image: url("607.svg");
+    height: min(calc(100svh - 238px), 800px);
+    min-height: min-content;
+    background-image: url("/607.svg");
     background-size: 80px;
   }
 

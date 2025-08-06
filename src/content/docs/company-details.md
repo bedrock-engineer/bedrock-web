@@ -13,4 +13,4 @@ Our company details for your accountant.
 <dt>Address:</dt>
 <dt>VAT ID:</dt>
 <dt>KvK nummer:</dt>
-</dk>
+</dl>

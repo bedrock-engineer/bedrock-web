@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Clean up docusaurus-md output to make it compatible with Astro/Starlight.
+Clean up docusaurus-md output from Quarto to make it compatible with Astro/Starlight.
 Removes React-specific elements while preserving the correct callout syntax.
 """
 

@@ -5,10 +5,10 @@ sidebar:
   order: 1
 ---
 
-If you've ever worked with Ground Investigation (GI) data, you've probably encountered it in Excel spreadsheets, PDF reports, or specialized file formats like AGS or GEF.
+If you've ever worked with Ground Investigation (GI) data, you've probably encountered it in Excel spreadsheets, PDF reports, or specialized file formats like [AGS](https://duckduckgo.com/?q=ags+file+format&ia=web) or [GEF](https://publicwiki.deltares.nl/spaces/STREAM/pages/102204333/GEF-CPT).
 These formats are not easily accessible for modern (geospatial) analysis and visualization workflows.
 Bedrock lets you transform this GI data into structured objects in Python.
-This enables you to analyze it, and export it to geospatial databases, which enables integration of GI data with other software and workflows used in the AEC industry.
+This enables you to analyze it, and export it to geospatial databases or other geospatial formats, which enables integration of GI data with other software and workflows used in the AEC industry.
 
 <!-- While these formats work for sharing data, they often make it frustrating to actually analyze and combine information from multiple sources.
 You're not alone, it might be the industry's biggest bottleneck. -->

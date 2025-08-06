@@ -11,10 +11,12 @@ const { divider = false } = Astro.props;
 </section>
 
 <style>
-
   .two-columns {
     p {
       max-width: 45ch;
+    }
+    figure {
+      margin-block-start: 16px;
     }
   }
 
@@ -22,6 +24,12 @@ const { divider = false } = Astro.props;
     .two-columns {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+      > div:first-of-type {
+        figure {
+          margin-inline-end: 8px;
+        }
+      }
 
       > div:not(:first-of-type) {
         padding-inline-start: 24px;

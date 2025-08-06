@@ -8,6 +8,7 @@ import { defineConfig } from "astro/config";
 import remarkDefinitionList from "remark-definition-list";
 import starlightLinksValidator from "starlight-links-validator";
 import cloudflare from "@astrojs/cloudflare";
+import { og } from "./og";
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,6 +17,9 @@ export default defineConfig({
     starlight({
       plugins: [starlightLinksValidator()],
       title: "Bedrock",
+      components: {
+        Head: './src/components/Head.astro',
+      },
       customCss: [
         // Relative path to your custom CSS file
         "./src/styles/custom.css",
@@ -86,6 +90,7 @@ export default defineConfig({
       optimize: true,
     }),
     react({ experimentalReactChildren: true }),
+    og(),
   ],
 
   markdown: {
