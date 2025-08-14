@@ -3,7 +3,7 @@ title: Viewing Geotechnical Data in QGIS
 description: Learn how to transform specialized geotechnical files into GeoPackage format for viewing in QGIS
 ---
 
-In this guide, you will convert AGS files into a GeoPackage format that can be opened and visualized in QGIS. This process transforms specialized geotechnical data into standardized geospatial features that GIS software can understand.
+In this guide, you will convert AGS files into a GeoPackage format that can be opened and visualized in [QGIS](https://qgis.org/). This process transforms specialized geotechnical data into standardized geospatial features that GIS software can understand.
 
 ## Prerequisites
 
