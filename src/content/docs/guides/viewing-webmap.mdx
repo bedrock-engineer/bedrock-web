@@ -1,0 +1,621 @@
+---
+title: Viewing Geotechnical Data on a Web Map
+description: Learn how to transform geotechnical files for viewing on a web map using MapLibre GL JS
+todo:
+  - Add downloadable AGS files zip
+  - Repo for this demo? Folder inside bedrock-ge? Or downloadable zip
+  - Add link to marimo notebook
+  - Later: Marimo islands
+---
+
+import { FileTree, LinkButton } from '@astrojs/starlight/components';
+
+
+**What you'll build:** An interactive web map that displays your geotechnical investigation data, making it accessible to anyone with a web browser.
+
+**You'll learn to:** Transform AGS files into web-friendly formats and create a clickable map showing borehole locations with detailed information popups.
+
+**Time needed:** 30-45 minutes  
+
+**Result:** A single web page stakeholders can open anywhere to explore your ground investigation results.
+
+Instead of sharing folders of specialized files, you'll have a web visualization that works on any device without special software.
+
+Here's the end result:
+
+<iframe src="/webmap/index.html" loading="lazy" width="100%" height="500" title="Bedrock AGS to GeoJSON Webmap demo" style="min-height:500px;" />
+
+<LinkButton href="/webmap/index.html">View it here</LinkButton>
+
+You can also explore the data preparation workflow interactively in a [marimo notebook](link-here), a [reactive Python notebook](https://marimo.io/) that automatically updates when you modify data or code.
+
+### Prerequisites
+
+Before starting, ensure you have:
+
+- **Python 3.10+** with ability to install packages (we recommend [`uv`](https://docs.astral.sh/uv/)).
+- **Basic web development skills**: Understanding HTML files, copying code snippets, and running local servers.
+- **AGS files** from your geotechnical project. Download the AGS files from the demo [here](/hk_kai_tak_ags_files.zip).
+- **Your project's coordinate reference system (CRS)**. Check your geotechnical report or survey data.
+- **Local development setup**: Code editor and command line access.
+
+**Important:** Your web map will need to run on a local server (not by opening HTML files directly) due to browser security restrictions when loading data files. You can use `python3 -m http.server 8000` to quickly start one.
+
+## 1. Data Transformation With `bedrock-ge`
+
+### 1.1: Set Up Your Python Environment
+
+Create a new Python project using the `uv init` command.
+[Learn more on Python projects using uv](https://docs.astral.sh/uv/guides/projects/).
+
+```bash
+uv init
+```
+
+Install the required packages:
+
+```bash
+uv add bedrock-ge pyproj
+```
+
+### 1.2: Read AGS Files using Bedrock
+
+First, you'll convert your AGS files to geospatial data using `bedrock-ge`.
+
+For this, you need to know the horizontal and vertical Coordinate Reference System your AGS data uses.
+For the demo files, it's Hong Kong 1980 Grid System (EPSG:2326) and Hong Kong Principle Datum (EPSG:5738).
+
+You'll convert each AGS file to a single database object.
+
+```python title="ags_to_geojson.py"
+from bedrock_ge.gi.ags import ags_to_brgi_db_mapping
+from bedrock_ge.gi.db_operations import merge_dbs
+from bedrock_ge.gi.geospatial import create_brgi_geodb
+from bedrock_ge.gi.io_utils import geodf_to_df
+from bedrock_ge.gi.mapper import map_to_brgi_db
+from pyproj import CRS
+from pathlib import Path
+
+projected_crs = CRS("EPSG:2326")  # Hong Kong 1980 Grid System
+vertical_crs = CRS("EPSG:5738")   # Hong Kong Principle Datum
+
+folder_path = Path("./hk_kaitak_ags_files")
+ags_files = list(folder_path.glob("*AGS")) + list(folder_path.glob("*ags"))
+
+ags_file_brgi_dbs = []
+
+for file_path in ags_files:
+    print(f"[Processing {file_path.name}]")
+    brgi_mapping = ags_to_brgi_db_mapping(file_path, projected_crs, vertical_crs)
+    brgi_db = map_to_brgi_db(brgi_mapping)
+    ags_file_brgi_dbs.append(brgi_db)
+```
+
+Now you'll merge them into a single database and make the data geospatial.
+`bedrock-ge` creates 3D geospatial geometries for boreholes, specifically vertical lines.
+
+```python title="ags_to_geojson.py"
+merged_brgi_db = merge_dbs(ags_file_brgi_dbs)
+geodb = create_brgi_geodb(merged_brgi_db) # Transforms to geospatial data
+```
+
+You can see the geospatial data in the `geodb.Location` table.
+
+#### `geodb.LonLatHeight` vs `geodb.Location`
+
+Web maps don't display vertical lines well. Therefore, `create_brgi_geodb` also creates a `LonLatHeight` table which contains points of your GI locations at ground level in <abbr title='World Geodetic System 1984'>WGS84</abbr> coordinates (Longitude, Latitude, Elevation).
+
+### 1.3: Add Data to Display
+
+Your map will display:
+
+- The identifier of the borehole `HOLE_ID`
+- The type of borehole `HOLE_TYPE`
+- The start & end date of drilling `HOLE_STAR` & `HOLE_ENDD`
+- Remarks `HOLE_REM`
+
+:::tip
+To see what the headings in AGS mean, see the [Bedrock AGS4 reference](https://bedrock.engineer/reference/formats/ags/). Note there are slight differences between AGS3 and AGS4.
+:::
+
+You'll add some columns from the `geodb.Location` table.
+Select the columns from the `geodb.Location` table:
+
+```python title="ags_to_geojson.py"
+merge_key = "location_uid"
+
+location_columns = [merge_key, "HOLE_ID", "HOLE_TYPE", "HOLE_STAR", "HOLE_ENDD", "HOLE_REM"]
+location_df = geodb.Location[location_columns]
+```
+
+This selects only the columns you need from the Location table, creating a smaller table with just the borehole information for display.
+
+Now merge these columns with the `geodb.LonLatHeight` table.
+You'll connect the tables using the unique identifier they share, `"location_uid"`.
+
+```python title="ags_to_geojson.py"
+locations_webmap_df = geodb.LonLatHeight.merge(location_df, on=merge_key, how="left").drop(columns=["longitude", "latitude"]) # already in geometry
+```
+
+This joins the coordinate data with the borehole details. The `how="left"` ensures you keep all locations even if some don't have complete data. We drop the separate longitude/latitude columns since the geometry column already contains this information.
+
+You can inspect your data at this stage:
+
+```python title="ags_to_geojson.py"
+print(locations_webmap_df.head())  # Show first few rows
+print(f"Total locations: {len(locations_webmap_df)}")  # Count your boreholes
+```
+
+### 1.4: Export to GeoJSON
+
+Now export the locations table to GeoJSON format for web display:
+
+```python title="ags_to_geojson.py" 
+locations_geojson = locations_webmap_df.to_json()
+
+with open("locations.geojson", "w") as file:
+    file.write(locations_geojson)
+```
+
+## 2: Web Map Visualization
+
+Create a new folder and move `locations.geojson` into it.
+
+In this folder, create two new files: `index.html` and `script.js`
+
+<FileTree>
+
+- webmap
+  - index.html
+  - script.js
+  - locations.geojson
+
+</FileTree>
+
+
+### 2.1: Create HTML Structure
+
+In the `index.html`, copy the following HTML.
+
+```html title="index.html"
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geotechnical Data Viewer</title>
+    <link
+      href="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+
+      .legend {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 5px;
+        padding: 10px;
+        font-family: sans-serif;
+        font-size: 12px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        z-index: 1000;
+      }
+
+      .legend h4 {
+        margin: 0 0 8px 0;
+        font-size: 14px;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 4px;
+      }
+
+      .legend-color {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+        border: 1px solid #fff;
+      }
+
+      dl {
+        margin-inline: 0;
+      }
+
+      dt {
+        font-weight: 600;
+      }
+
+      dd {
+        font-weight: 400;
+        margin-bottom: 8px;
+      }
+
+      dt,
+      dd {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map">
+      <!-- This is the element that will become the map -->
+    </div>
+    <div class="legend" id="legend">
+      <!-- Legend will be populated by JavaScript -->
+    </div>
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
+```
+
+### 2.2: Add MapLibre JavaScript
+
+Now you'll build the interactive map. MapLibre GL JS is a web mapping library that displays maps and data in browsers.
+
+#### Import the mapping library
+
+In `script.js`, start with the import and configuration:
+
+```js title="script.js"
+import maplibregl from "https://cdn.jsdelivr.net/npm/maplibre-gl@5.6.2/+esm";
+
+// Colors and names for your borehole types (matches AGS HOLE_TYPE values)
+const agsHoleTypeConfig = {
+  SCP: { color: "#e31a1c", name: "Standard Penetration Test" },
+  "CP+RO+RC": { color: "#1f78b4", name: "CPT + Rotary Open + Rotary Cored" },
+  "CP+RC+RO": { color: "#1f78b4", name: "CPT + Rotary Cored + Rotary Open" },
+  "CP+RO": { color: "#33a02c", name: "CPT + Rotary Open" },
+  "RO+CP": { color: "#33a02c", name: "Rotary Open + CPT" },
+  VC: { color: "#ff7f0e", name: "Vibro Core" },
+};
+
+// Create legend showing borehole types and colors
+const legend = document.getElementById("legend");
+legend.innerHTML = `
+  <h4>Borehole Types</h4>
+  ${Object.entries(agsHoleTypeConfig)
+    .map(([type, config]) => `
+      <div class="legend-item">
+        <div class="legend-color" style="background-color: ${config.color}"></div>
+        <span>${config.name}</span>
+      </div>
+    `).join('')}
+`;
+```
+
+This configuration object maps your AGS hole types to colors and readable names for display. You can see what hole types are in your data with `geodb.Location["HOLE_TYPE"].unique()` and adjust the colors/names accordingly.
+
+#### Create the map container
+
+```js title="script.js"
+// Create the map and tell it which HTML element to use
+const map = new maplibregl.Map({
+  container: "map",              // Uses the <div id="map"> from your HTML
+  center: [114.2, 22.3],         // Starting view coordinates [longitude, latitude]
+  zoom: 13,                      // Initial zoom level (higher = closer)
+  minZoom: 11,                   // Prevent zooming out too far
+  style: {
+    version: 8,
+    sources: {
+      osm: {
+        type: "raster",
+        tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
+        tileSize: 256,
+        attribution: "© OpenStreetMap contributors",
+      },
+    },
+    layers: [{ id: "osm", type: "raster", source: "osm" }],
+  },
+});
+```
+
+The `style` object defines what base map to show, here we're using [OpenStreetMap tiles](https://wiki.openstreetmap.org/wiki/Tiles) as the background.
+
+#### Load and display your borehole data
+
+```js title="script.js"
+// Wait for the map to fully load before adding data
+map.on("load", () => {
+  // Add the location GeoJSON file as a data source
+  map.addSource("locations", {
+    type: "geojson",
+    data: "./locations.geojson",  // Points to the file you created
+  });
+
+  // Error handling for debugging
+  map.on("error", (e) => console.error("Map error:", e));
+
+
+```
+
+#### Style the borehole points
+
+Now add the visual styling. **This code continues inside the `map.on("load")` function:**
+
+```js title="script.js"
+  // Add a visual layer to display your boreholes as colored circles
+  map.addLayer({
+    id: "locations-layer",
+    type: "circle",
+    source: "locations",
+    paint: {
+      "circle-radius": 4,
+      "circle-stroke-color": "#fff",
+      "circle-stroke-width": 1,
+      // Color each circle based on the HOLE_TYPE field
+      "circle-color": [
+        "match",
+        ["get", "HOLE_TYPE"],              // Get HOLE_TYPE from each feature
+        "SCP", agsHoleTypeConfig.SCP.color,
+        "CP+RO+RC", agsHoleTypeConfig["CP+RO+RC"].color,
+        "CP+RC+RO", agsHoleTypeConfig["CP+RC+RO"].color,
+        "CP+RO", agsHoleTypeConfig["CP+RO"].color,
+        "RO+CP", agsHoleTypeConfig["RO+CP"].color,
+        "VC", agsHoleTypeConfig.VC.color,
+        "#999999",                         // Default gray for unknown types
+      ],
+    },
+  });
+```
+
+This displays your investigation points as colored circles, red for SPT, blue for CPT and so on, so stakeholders can quickly identify investigation types and coverage across your site at a glance.
+
+#### Add click interactions
+
+**Continue inside the `map.on("load")` function:**
+
+```js title="script.js"
+  // Show borehole details when clicked
+  map.on("click", "locations-layer", (event) => {
+    const { coordinates } = event.features[0].geometry;
+    const [lon, lat] = coordinates;
+    const properties = event.features[0].properties;
+    const { HOLE_ID, HOLE_REM, HOLE_TYPE, HOLE_STAR, HOLE_ENDD } = properties;
+
+    // Create HTML content for the popup
+    const div = document.createElement("div");
+    div.innerHTML = `
+<h3>Borehole: ${HOLE_ID || "Unknown"}</h3>
+<dl>
+    <dt>Type</dt>
+    <dd>${agsHoleTypeConfig[HOLE_TYPE]?.name || HOLE_TYPE}</dd>
+    
+    <dt>Ground Level</dt>
+    <dd>${properties.egm2008_ground_level_height?.toFixed(2) || "N/A"} m</dd>
+    
+    <dt>Coordinates</dt>
+    <dd>
+      ${lon.toFixed(6)},
+      ${lat.toFixed(6)}
+    </dd>
+    
+    <dt>Date</dt>
+    <dd>${HOLE_STAR} - ${HOLE_ENDD}</dd>
+    
+    <dt>Remarks</dt>
+    <dd>${HOLE_REM || "None"}</dd>
+</dl>`;
+
+    // Display the popup at the clicked location
+    new maplibregl.Popup()
+      .setLngLat(coordinates)
+      .setDOMContent(div)
+      .addTo(map);
+  });
+
+  // Change cursor to pointer when hovering over boreholes
+  map.on("mouseenter", "locations-layer", () => {
+    map.getCanvas().style.cursor = "pointer";
+  });
+  
+  map.on("mouseleave", "locations-layer", () => {
+    map.getCanvas().style.cursor = "";
+  });
+}); // Closes the `map.on("load")` function
+```
+
+This makes your investigation data interactive, stakeholders can click any location to see key details like ground level, drilling dates, and remarks without needing to cross-reference separate data sheets.
+
+### 2.3: View Your Web Map
+
+Start your local server from the folder containing your files and visit `http://localhost:8000` to see your interactive map.
+
+For permanent hosting, upload your files to any static hosting service.
+
+## 3. Optional: Adding and displaying Geology & SPT data
+
+Your basic map is already valuable for showing investigation coverage and key details.
+For technical stakeholders who need to understand subsurface conditions, adding geology columns and SPT charts to the popups makes the map much more useful.
+
+Let's add Standard Penetration Test & Geology data to the popup of each borehole location.
+'Standard Penetration Test' data is in the `ISPT` group in AGS and 'Geology' is in the `GEOL` group in AGS.
+
+You'll use the [Observable Plot](https://observablehq.com/plot/) library to draw a soil column and chart for SPT N values if present.
+
+### 3.1: Grouping by Locations
+
+You'll need to group the data by location.
+Here's a convenience function that groups a table by location ID and writes it to a JSON file:
+
+```python title="ags_to_geojson.py"
+def by_location_json_file(df, filename):
+    by_location = geodf_to_df(df).drop('geometry', axis=1).groupby("location_uid")
+    json_string = by_location.apply(lambda x: x.to_dict('records')).to_json()
+
+    with open(filename, "w") as file:
+        file.write(json_string)
+```
+
+This groups all the in the given table records by borehole location. Each location gets its own list of test results. The `lambda` function converts each group into a list of dictionaries that JavaScript can easily read.
+
+### 3.2: Exporting Geology Data
+
+```python title="ags_to_geojson.py"
+geol_df = geodb.InSituTests["GEOL"]
+
+by_location_json_file(geol_df, "geol.json")
+```
+
+### 3.3: Exporting SPT data
+
+```python title="ags_to_geojson.py"
+ispt_df = geodb.InSituTests["ISPT"]
+
+by_location_json_file(ispt_df, "ispt.json")
+```
+
+### 3.4: Adding a Chart to the Popup
+
+First, move the `geol.json` and `ispt.json` the folder of your web map.
+
+<FileTree>
+
+- webmap
+  - index.html
+  - script.js
+  - locations.geojson
+  - geol.json
+  - ispt.json
+  
+</FileTree>
+
+Next, update your `script.js` to import the Observable Plot library and load the additional data files. Add this to the top of the file:
+
+```js title="script.js"
+import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+
+const soilColors = {
+  SAND: "#fdae61", // orange-yellow
+  CLAY: "#8c510a", // brown
+  SILT: "#ffffbf", // pale yellow
+  GRAVEL: "#999999", // grey
+  GRANITE: "#e6a0c4", // pink (common for granite in logs)
+};
+
+function soilColor(code) {
+  if (code.startsWith("SAND")) return soilColors.SAND;
+  if (code.startsWith("CLAY")) return soilColors.CLAY;
+  if (code.startsWith("SILT")) return soilColors.SILT;
+  if (code.startsWith("GRAV")) return soilColors.GRAVEL;
+  if (code.startsWith("GRANITE")) return soilColors.GRANITE;
+  return "black"; // fallback
+}
+
+// Load the data from the JSON files
+const spts = await fetch("ispt.json").then((r) => r.json());
+const geol = await fetch("geol.json").then((r) => r.json());
+```
+
+Finally, modify the click handler in your existing `script.js` to include the plotting code. Replace the existing popup creation section with this enhanced version:
+
+```js title="script.js"
+  // Show borehole details when clicked (replace the existing click handler)
+  map.on("click", "locations-layer", (event) => {
+    const coordinates = event.features[0].geometry.coordinates.slice();
+    const properties = event.features[0].properties;
+    const { HOLE_ID, HOLE_REM, HOLE_TYPE, HOLE_STAR, HOLE_ENDD, location_uid } = properties;
+
+    // Get the geology and SPT data for this location
+    const spt = spts[location_uid];
+    const geology = geol[location_uid];
+
+    // Create HTML content for the popup
+    const div = document.createElement("div");
+    div.innerHTML = `
+<h3>Borehole: ${HOLE_ID || "Unknown"}</h3>
+<dl>
+    <dt>Type</dt>
+    <dd>${agsHoleTypeConfig[HOLE_TYPE]?.name || HOLE_TYPE}</dd>
+    
+    <dt>Ground Level</dt>
+    <dd>${properties.egm2008_ground_level_height?.toFixed(2) || "N/A"} m</dd>
+    
+    <dt>Coordinates</dt>
+    <dd>${coordinates[1].toFixed(6)}, ${coordinates[0].toFixed(6)}</dd>
+    
+    <dt>Date</dt>
+    <dd>${HOLE_STAR} - ${HOLE_ENDD}</dd>
+    
+    <dt>Remarks</dt>
+    <dd>${HOLE_REM || "None"}</dd>
+</dl>`;
+
+    // Add the soil column and SPT chart if data exists
+    if (geology || spt) {
+      const marks = [
+        Plot.rect(geology, {
+          y1: "depth_to_top",
+          y2: "depth_to_base",
+          fill: (d) => soilColor(d.GEOL_LEG),
+          stroke: "white",
+          title: (d) => `${d.depth_to_top} – ${d.depth_to_base}\n${d.GEOL_DESC}`,
+          tip: true,
+        }),
+        Plot.text(geology, {
+          y: (d) => d.depth_to_top + (d.depth_to_base - d.depth_to_top) / 2,
+          text: (d) => d.GEOL_LEG,
+          fill: "black",
+        }),
+        Plot.frame(),
+      ];
+
+      // Not every borehole has SPT data
+      if (spt) {
+        marks.push(
+          Plot.line(spt, { x: "ISPT_NVAL", y: "ISPT_TOP", clip: true }),
+          Plot.dot(spt, { x: "ISPT_NVAL", y: "ISPT_TOP", clip: true })
+        );
+      }
+
+      const plot = Plot.plot({
+        grid: true,
+        style: {
+          overflow: "visible",
+        },
+        y: {
+          reverse: true,
+        },
+        // If there is SPT data, set the x (N value) domain
+        ...(spt ? { x: { domain: [0, 100] } } : {}),
+        width: spt ? 300 : 100,
+        marks,
+      });
+
+      div.append(plot); // Add the plot to the popup
+    }
+
+    // Display the popup at the clicked location
+    new maplibregl.Popup()
+      .setLngLat(coordinates)
+      .setDOMContent(div)
+      .addTo(map);
+  });
+```
+
+{/* <!-- ### Troubleshooting
+
+**Map not loading**: Check browser console for errors and ensure all file paths are correct.
+
+**No data visible**: Verify GeoJSON files are valid and contain features with geometry. [geojson.io](https://www.geojson.io) is a simple web app for viewing geoJSON files.
+
+**Performance issues**: Reduce dataset size, use data clustering, or implement level-of-detail loading.
+
+**Coordinate system problems**: Ensure all data is exported in WGS84 (EPSG:4326) for web compatibility.
+
+**CORS errors**: Serve files from a web server, not directly from the file system. --> */}

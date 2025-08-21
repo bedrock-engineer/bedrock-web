@@ -1,0 +1,2518 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "id": "0",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH12/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19319276626365,
+                "latitude": 22.30228862212598,
+                "egm2008_ground_level_height": -18.3,
+                "HOLE_ID": "MBH12/1",
+                "HOLE_TYPE": "CP+RO+RC",
+                "HOLE_STAR": "23/4/1996",
+                "HOLE_REM": "In situ vane shear test carried out at 4.00m."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19319276626365,
+                    22.30228862212598,
+                    -18.3
+                ]
+            }
+        },
+        {
+            "id": "1",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH22/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19707953160577,
+                "latitude": 22.30364205420754,
+                "egm2008_ground_level_height": -12.15,
+                "HOLE_ID": "MBH22/1",
+                "HOLE_TYPE": "CP+RO+RC",
+                "HOLE_STAR": "16/4/1996",
+                "HOLE_REM": "In situ vane shear tests  carried out at 1.00m, 3.00m and 5.00m."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19707953160577,
+                    22.30364205420754,
+                    -12.15
+                ]
+            }
+        },
+        {
+            "id": "2",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH24/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19368193228384,
+                "latitude": 22.309974525359134,
+                "egm2008_ground_level_height": -8.4,
+                "HOLE_ID": "MBH24/1",
+                "HOLE_TYPE": "CP+RC+RO",
+                "HOLE_STAR": "1/4/1996",
+                "HOLE_REM": "In situ vane shear test carried out at 1.00m and 3.00m"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19368193228384,
+                    22.309974525359134,
+                    -8.4
+                ]
+            }
+        },
+        {
+            "id": "3",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH24/2_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19417162270527,
+                "latitude": 22.313584367083035,
+                "egm2008_ground_level_height": -7.3,
+                "HOLE_ID": "MBH24/2",
+                "HOLE_TYPE": "CP+RO",
+                "HOLE_STAR": "29/3/1996",
+                "HOLE_REM": "In situ vane shear test carried out at 1.50m."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19417162270527,
+                    22.313584367083035,
+                    -7.3
+                ]
+            }
+        },
+        {
+            "id": "4",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH24/3_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.1969311226158,
+                "latitude": 22.312317325819976,
+                "egm2008_ground_level_height": -8.6,
+                "HOLE_ID": "MBH24/3",
+                "HOLE_TYPE": "RO+CP",
+                "HOLE_STAR": "26/3/1996",
+                "HOLE_REM": "In situ vane shear test carried out at 1.00m and 3.00m."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.1969311226158,
+                    22.312317325819976,
+                    -8.6
+                ]
+            }
+        },
+        {
+            "id": "5",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH25/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19601907286676,
+                "latitude": 22.317107898998238,
+                "egm2008_ground_level_height": -5.4,
+                "HOLE_ID": "MBH25/1",
+                "HOLE_TYPE": "CP+RO+RC",
+                "HOLE_STAR": "17/4/1996",
+                "HOLE_REM": "In situ vane shear tests carried out at 1.00m, 3.00m and 4.00m."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19601907286676,
+                    22.317107898998238,
+                    -5.4
+                ]
+            }
+        },
+        {
+            "id": "6",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH32/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19902605818135,
+                "latitude": 22.303150263572892,
+                "egm2008_ground_level_height": -11.1,
+                "HOLE_ID": "MBH32/1",
+                "HOLE_TYPE": "CP+RO",
+                "HOLE_STAR": "12/4/1996",
+                "HOLE_REM": "In situ vane shear test carried out at 1.5m."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19902605818135,
+                    22.303150263572892,
+                    -11.1
+                ]
+            }
+        },
+        {
+            "id": "7",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH33/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19911570792934,
+                "latitude": 22.30545314744603,
+                "egm2008_ground_level_height": -10.6,
+                "HOLE_ID": "MBH33/1",
+                "HOLE_TYPE": "CP+RO+RC",
+                "HOLE_STAR": "13/4/1996",
+                "HOLE_REM": "In situ vane shear test carried out at 1.00m and 3.00m."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19911570792934,
+                    22.30545314744603,
+                    -10.6
+                ]
+            }
+        },
+        {
+            "id": "8",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH34/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19853517250301,
+                "latitude": 22.30997087811205,
+                "egm2008_ground_level_height": -8.3,
+                "HOLE_ID": "MBH34/1",
+                "HOLE_TYPE": "CP+RO+RC",
+                "HOLE_STAR": "3/4/1996",
+                "HOLE_REM": "In situ vane shear tests carried out at 2.00m and 4.00m."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19853517250301,
+                    22.30997087811205,
+                    -8.3
+                ]
+            }
+        },
+        {
+            "id": "9",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH35/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19768314084304,
+                "latitude": 22.315192393968097,
+                "egm2008_ground_level_height": -5.9,
+                "HOLE_ID": "MBH35/1",
+                "HOLE_TYPE": "CP+RO+RC",
+                "HOLE_STAR": "29/4/1996",
+                "HOLE_REM": "In situ vane shear test carried out at 1.00m and 3.00m."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19768314084304,
+                    22.315192393968097,
+                    -5.9
+                ]
+            }
+        },
+        {
+            "id": "10",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH43/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.20339163553042,
+                "latitude": 22.30545268436489,
+                "egm2008_ground_level_height": -10.15,
+                "HOLE_ID": "MBH43/1",
+                "HOLE_TYPE": "CP+RO+RC",
+                "HOLE_STAR": "18/4/1996",
+                "HOLE_REM": "In situ vane shear tests at 1.00m and 3.00m."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.20339163553042,
+                    22.30545268436489,
+                    -10.15
+                ]
+            }
+        },
+        {
+            "id": "11",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH44/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.20338084225477,
+                "latitude": 22.309968351263723,
+                "egm2008_ground_level_height": -7.75,
+                "HOLE_ID": "MBH44/1",
+                "HOLE_TYPE": "CP+RO",
+                "HOLE_STAR": "10/4/1996",
+                "HOLE_REM": "In situ vane shear tests carried at 1.00m and 3.00m. Mazier from 30.05m to 30.85m no jarsample recovered."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.20338084225477,
+                    22.309968351263723,
+                    -7.75
+                ]
+            }
+        },
+        {
+            "id": "12",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH44/2_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.20339456685916,
+                "latitude": 22.312232140565197,
+                "egm2008_ground_level_height": -7.9,
+                "HOLE_ID": "MBH44/2",
+                "HOLE_TYPE": "CP+RO+RC",
+                "HOLE_STAR": "22/4/1996",
+                "HOLE_REM": "In situ vane shear test carried out at 1.00m and 3.00m."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.20339456685916,
+                    22.312232140565197,
+                    -7.9
+                ]
+            }
+        },
+        {
+            "id": "13",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH52/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.20823762440916,
+                "latitude": 22.304100748795047,
+                "egm2008_ground_level_height": -11.0,
+                "HOLE_ID": "MBH52/1",
+                "HOLE_TYPE": "CP+RO+RC",
+                "HOLE_STAR": "20/4/1996",
+                "HOLE_REM": "No in situ vane shear tests required as instructed by MGS."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.20823762440916,
+                    22.304100748795047,
+                    -11.0
+                ]
+            }
+        },
+        {
+            "id": "14",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH53/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.20823852784609,
+                "latitude": 22.307712360540904,
+                "egm2008_ground_level_height": -7.9,
+                "HOLE_ID": "MBH53/1",
+                "HOLE_TYPE": "CP+RO+RC",
+                "HOLE_STAR": "29/4/1996",
+                "HOLE_REM": "In situ vane shear test performed at 1.00m, 3.00m and 5.00m."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.20823852784609,
+                    22.307712360540904,
+                    -7.9
+                ]
+            }
+        },
+        {
+            "id": "15",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH63/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.21649082220878,
+                "latitude": 22.30770423166509,
+                "egm2008_ground_level_height": -6.1,
+                "HOLE_ID": "MBH63/1",
+                "HOLE_TYPE": "CP+RO+RC",
+                "HOLE_STAR": "11/4/1996",
+                "HOLE_REM": "In situ vane shear tests carried out at 2.00m and 4.00m."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21649082220878,
+                    22.30770423166509,
+                    -6.1
+                ]
+            }
+        },
+        {
+            "id": "16",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH64/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.21552640680008,
+                "latitude": 22.31223060280118,
+                "egm2008_ground_level_height": -7.7,
+                "HOLE_ID": "MBH64/1",
+                "HOLE_TYPE": "CP+RO+RC",
+                "HOLE_STAR": "27/3/1996",
+                "HOLE_REM": "Sample No. 44 and 45 were recovered as rock core and placed into the core box. Insitu vane shear test carried out at 0.50m; 2.50m and 4.50m."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21552640680008,
+                    22.31223060280118,
+                    -7.7
+                ]
+            }
+        },
+        {
+            "id": "17",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH65/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.21310062034419,
+                "latitude": 22.314482492127805,
+                "egm2008_ground_level_height": -7.2,
+                "HOLE_ID": "MBH65/1",
+                "HOLE_TYPE": "CP+RO+RC",
+                "HOLE_STAR": "30/3/1996",
+                "HOLE_REM": "In situ vane shear test carried out at 1.00m and 3.00m."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21310062034419,
+                    22.314482492127805,
+                    -7.2
+                ]
+            }
+        },
+        {
+            "id": "18",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH73/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.21964907514561,
+                "latitude": 22.308340086189403,
+                "egm2008_ground_level_height": -7.1,
+                "HOLE_ID": "MBH73/1",
+                "HOLE_TYPE": "CP+RC+RO",
+                "HOLE_STAR": "3/4/1996",
+                "HOLE_REM": "In situ vane shear test carried out at 1.00m and 3.00m."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21964907514561,
+                    22.308340086189403,
+                    -7.1
+                ]
+            }
+        },
+        {
+            "id": "19",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH81/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.22377077714027,
+                "latitude": 22.296423955955984,
+                "egm2008_ground_level_height": -13.0,
+                "HOLE_ID": "MBH81/1",
+                "HOLE_TYPE": "CP+RO+RC",
+                "HOLE_STAR": "6/5/1996",
+                "HOLE_REM": "."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.22377077714027,
+                    22.296423955955984,
+                    -13.0
+                ]
+            }
+        },
+        {
+            "id": "20",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH81/2_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.22571106335799,
+                "latitude": 22.300031927298207,
+                "egm2008_ground_level_height": -10.75,
+                "HOLE_ID": "MBH81/2",
+                "HOLE_TYPE": "CP+RO+RC",
+                "HOLE_STAR": "24/4/1996",
+                "HOLE_REM": "In situ vane shear test carried out at 1.00m and 3.00m. From 17.50m to 17.60m U76attempted."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.22571106335799,
+                    22.300031927298207,
+                    -10.75
+                ]
+            }
+        },
+        {
+            "id": "21",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MBH82/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.22473278962653,
+                "latitude": 22.302743028892547,
+                "egm2008_ground_level_height": -7.8,
+                "HOLE_ID": "MBH82/1",
+                "HOLE_TYPE": "CP+RO+RC",
+                "HOLE_STAR": "26/4/1996",
+                "HOLE_REM": "."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.22473278962653,
+                    22.302743028892547,
+                    -7.8
+                ]
+            }
+        },
+        {
+            "id": "22",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC14/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19224258891497,
+                "latitude": 22.31134271518325,
+                "egm2008_ground_level_height": -6.12,
+                "HOLE_ID": "MVC14/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "11/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19224258891497,
+                    22.31134271518325,
+                    -6.12
+                ]
+            }
+        },
+        {
+            "id": "23",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC14/2_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19320477318632,
+                "latitude": 22.31041418402131,
+                "egm2008_ground_level_height": -8.59,
+                "HOLE_ID": "MVC14/2",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "11/4/1996",
+                "HOLE_REM": "."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19320477318632,
+                    22.31041418402131,
+                    -8.59
+                ]
+            }
+        },
+        {
+            "id": "24",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC14/3_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.1927105464049,
+                "latitude": 22.313588580906288,
+                "egm2008_ground_level_height": -5.34,
+                "HOLE_ID": "MVC14/3",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "11/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.1927105464049,
+                    22.313588580906288,
+                    -5.34
+                ]
+            }
+        },
+        {
+            "id": "25",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC22/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.1975686555802,
+                "latitude": 22.30363142679459,
+                "egm2008_ground_level_height": -11.2,
+                "HOLE_ID": "MVC22/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "29/3/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.1975686555802,
+                    22.30363142679459,
+                    -11.2
+                ]
+            }
+        },
+        {
+            "id": "26",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC23/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19660181890293,
+                "latitude": 22.30544408171717,
+                "egm2008_ground_level_height": -9.51,
+                "HOLE_ID": "MVC23/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "30/3/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19660181890293,
+                    22.30544408171717,
+                    -9.51
+                ]
+            }
+        },
+        {
+            "id": "27",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC23/2_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19464971227411,
+                "latitude": 22.308174170617274,
+                "egm2008_ground_level_height": -8.7,
+                "HOLE_ID": "MVC23/2",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "29/3/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19464971227411,
+                    22.308174170617274,
+                    -8.7
+                ]
+            }
+        },
+        {
+            "id": "28",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC23/3_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19368677296416,
+                "latitude": 22.30906523315663,
+                "egm2008_ground_level_height": -8.7,
+                "HOLE_ID": "MVC23/3",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "28/3/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19368677296416,
+                    22.30906523315663,
+                    -8.7
+                ]
+            }
+        },
+        {
+            "id": "29",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC24/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19466453423618,
+                "latitude": 22.311781985821128,
+                "egm2008_ground_level_height": -8.89,
+                "HOLE_ID": "MVC24/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "10/4/1996",
+                "HOLE_REM": "Vibrocore terminated fue to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19466453423618,
+                    22.311781985821128,
+                    -8.89
+                ]
+            }
+        },
+        {
+            "id": "30",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC24/2_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19464195886853,
+                "latitude": 22.31359849281168,
+                "egm2008_ground_level_height": -13.87,
+                "HOLE_ID": "MVC24/2",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "11/4/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19464195886853,
+                    22.31359849281168,
+                    -13.87
+                ]
+            }
+        },
+        {
+            "id": "31",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC24/3_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19750047984148,
+                "latitude": 22.31188730723909,
+                "egm2008_ground_level_height": -8.81,
+                "HOLE_ID": "MVC24/3",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "12/4/1996",
+                "HOLE_REM": "."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19750047984148,
+                    22.31188730723909,
+                    -8.81
+                ]
+            }
+        },
+        {
+            "id": "32",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC25/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19368024078013,
+                "latitude": 22.314481247621785,
+                "egm2008_ground_level_height": -8.12,
+                "HOLE_ID": "MVC25/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "10/4/1996",
+                "HOLE_REM": "."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19368024078013,
+                    22.314481247621785,
+                    -8.12
+                ]
+            }
+        },
+        {
+            "id": "33",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC25/2_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19395103083798,
+                "latitude": 22.316102031400472,
+                "egm2008_ground_level_height": -6.8,
+                "HOLE_ID": "MVC25/2",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "12/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19395103083798,
+                    22.316102031400472,
+                    -6.8
+                ]
+            }
+        },
+        {
+            "id": "34",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC25/3_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19467027019165,
+                "latitude": 22.31721109177921,
+                "egm2008_ground_level_height": -7.02,
+                "HOLE_ID": "MVC25/3",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "12/4/1996",
+                "HOLE_REM": "."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19467027019165,
+                    22.31721109177921,
+                    -7.02
+                ]
+            }
+        },
+        {
+            "id": "35",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC25/4_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19660370217517,
+                "latitude": 22.315381900781116,
+                "egm2008_ground_level_height": -6.17,
+                "HOLE_ID": "MVC25/4",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "3/4/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19660370217517,
+                    22.315381900781116,
+                    -6.17
+                ]
+            }
+        },
+        {
+            "id": "36",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC26/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.1956281816503,
+                "latitude": 22.31900437040562,
+                "egm2008_ground_level_height": -2.8,
+                "HOLE_ID": "MVC26/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "6/5/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.1956281816503,
+                    22.31900437040562,
+                    -2.8
+                ]
+            }
+        },
+        {
+            "id": "37",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC26/2_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19562441963397,
+                "latitude": 22.319907430539356,
+                "egm2008_ground_level_height": -1.4,
+                "HOLE_ID": "MVC26/2",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "6/5/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19562441963397,
+                    22.319907430539356,
+                    -1.4
+                ]
+            }
+        },
+        {
+            "id": "38",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC32/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.2004728432346,
+                "latitude": 22.303650897159354,
+                "egm2008_ground_level_height": -9.84,
+                "HOLE_ID": "MVC32/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "29/3/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.2004728432346,
+                    22.303650897159354,
+                    -9.84
+                ]
+            }
+        },
+        {
+            "id": "39",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC32/2_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.2024381483979,
+                "latitude": 22.30454950572828,
+                "egm2008_ground_level_height": -10.4,
+                "HOLE_ID": "MVC32/2",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "29/4/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.2024381483979,
+                    22.30454950572828,
+                    -10.4
+                ]
+            }
+        },
+        {
+            "id": "40",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC33/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19854471041394,
+                "latitude": 22.306371728141404,
+                "egm2008_ground_level_height": -10.55,
+                "HOLE_ID": "MVC33/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "28/3/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19854471041394,
+                    22.306371728141404,
+                    -10.55
+                ]
+            }
+        },
+        {
+            "id": "41",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC33/2_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.2004844614989,
+                "latitude": 22.30636983163387,
+                "egm2008_ground_level_height": -9.25,
+                "HOLE_ID": "MVC33/2",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "29/3/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.2004844614989,
+                    22.30636983163387,
+                    -9.25
+                ]
+            }
+        },
+        {
+            "id": "42",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC33/3_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19854085436462,
+                "latitude": 22.309051651659953,
+                "egm2008_ground_level_height": -10.28,
+                "HOLE_ID": "MVC33/3",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "30/3/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19854085436462,
+                    22.309051651659953,
+                    -10.28
+                ]
+            }
+        },
+        {
+            "id": "43",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC33/4_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.20240435087688,
+                "latitude": 22.308149021463205,
+                "egm2008_ground_level_height": -9.4,
+                "HOLE_ID": "MVC33/4",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "22/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.20240435087688,
+                    22.308149021463205,
+                    -9.4
+                ]
+            }
+        },
+        {
+            "id": "44",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC34/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.20243321423105,
+                "latitude": 22.30996218210259,
+                "egm2008_ground_level_height": -8.21,
+                "HOLE_ID": "MVC34/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "22/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.20243321423105,
+                    22.30996218210259,
+                    -8.21
+                ]
+            }
+        },
+        {
+            "id": "45",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC34/2_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.20009396180635,
+                "latitude": 22.313597713284043,
+                "egm2008_ground_level_height": -7.87,
+                "HOLE_ID": "MVC34/2",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "27/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.20009396180635,
+                    22.313597713284043,
+                    -7.87
+                ]
+            }
+        },
+        {
+            "id": "46",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC35/2_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.19950643220011,
+                "latitude": 22.316288734894037,
+                "egm2008_ground_level_height": -5.38,
+                "HOLE_ID": "MVC35/2",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "12/4/1996",
+                "HOLE_REM": "."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19950643220011,
+                    22.316288734894037,
+                    -5.38
+                ]
+            }
+        },
+        {
+            "id": "47",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC42/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.20534351460063,
+                "latitude": 22.304536197366144,
+                "egm2008_ground_level_height": -11.61,
+                "HOLE_ID": "MVC42/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "13/4/1996",
+                "HOLE_REM": "."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.20534351460063,
+                    22.304536197366144,
+                    -11.61
+                ]
+            }
+        },
+        {
+            "id": "48",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC43/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.20436104870363,
+                "latitude": 22.30634158608803,
+                "egm2008_ground_level_height": -10.57,
+                "HOLE_ID": "MVC43/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "1/5/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.20436104870363,
+                    22.30634158608803,
+                    -10.57
+                ]
+            }
+        },
+        {
+            "id": "49",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC43/2_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.20729139762423,
+                "latitude": 22.305453263145928,
+                "egm2008_ground_level_height": -10.57,
+                "HOLE_ID": "MVC43/2",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "13/4/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.20729139762423,
+                    22.305453263145928,
+                    -10.57
+                ]
+            }
+        },
+        {
+            "id": "50",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC44/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.2034008659994,
+                "latitude": 22.31269739633365,
+                "egm2008_ground_level_height": -6.88,
+                "HOLE_ID": "MVC44/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "29/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.2034008659994,
+                    22.31269739633365,
+                    -6.88
+                ]
+            }
+        },
+        {
+            "id": "51",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC52/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.20823704170179,
+                "latitude": 22.304532412021096,
+                "egm2008_ground_level_height": -11.3,
+                "HOLE_ID": "MVC52/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "10/4/1996",
+                "HOLE_REM": "."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.20823704170179,
+                    22.304532412021096,
+                    -11.3
+                ]
+            }
+        },
+        {
+            "id": "52",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC54/8_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.21214894804666,
+                "latitude": 22.310869649205173,
+                "egm2008_ground_level_height": -6.67,
+                "HOLE_ID": "MVC54/8",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "19/4/1996",
+                "HOLE_REM": "."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21214894804666,
+                    22.310869649205173,
+                    -6.67
+                ]
+            }
+        },
+        {
+            "id": "53",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC54/9_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.21113779780151,
+                "latitude": 22.312676799494426,
+                "egm2008_ground_level_height": -6.09,
+                "HOLE_ID": "MVC54/9",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "19/4/1996",
+                "HOLE_REM": "End of hole at 9.97m. Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21113779780151,
+                    22.312676799494426,
+                    -6.09
+                ]
+            }
+        },
+        {
+            "id": "54",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC62/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.21684578461804,
+                "latitude": 22.30172154527622,
+                "egm2008_ground_level_height": -11.7,
+                "HOLE_ID": "MVC62/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "13/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21684578461804,
+                    22.30172154527622,
+                    -11.7
+                ]
+            }
+        },
+        {
+            "id": "55",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC64/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.21406692840333,
+                "latitude": 22.310884572426687,
+                "egm2008_ground_level_height": -5.69,
+                "HOLE_ID": "MVC64/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "16/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal. End of hole at 9.10m"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21406692840333,
+                    22.310884572426687,
+                    -5.69
+                ]
+            }
+        },
+        {
+            "id": "56",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC64/2_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.21602294880017,
+                "latitude": 22.310878422243004,
+                "egm2008_ground_level_height": -5.85,
+                "HOLE_ID": "MVC64/2",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "9/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21602294880017,
+                    22.310878422243004,
+                    -5.85
+                ]
+            }
+        },
+        {
+            "id": "57",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC64/3_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.21308986280391,
+                "latitude": 22.312666802482045,
+                "egm2008_ground_level_height": -5.54,
+                "HOLE_ID": "MVC64/3",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "16/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21308986280391,
+                    22.312666802482045,
+                    -5.54
+                ]
+            }
+        },
+        {
+            "id": "58",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC64/4_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.21513080883771,
+                "latitude": 22.312577110760095,
+                "egm2008_ground_level_height": -6.71,
+                "HOLE_ID": "MVC64/4",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "23/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21513080883771,
+                    22.312577110760095,
+                    -6.71
+                ]
+            }
+        },
+        {
+            "id": "59",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC64/5_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.21400578903592,
+                "latitude": 22.313466796457593,
+                "egm2008_ground_level_height": -6.27,
+                "HOLE_ID": "MVC64/5",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "26/4/1996",
+                "HOLE_REM": "Vibrocore trminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21400578903592,
+                    22.313466796457593,
+                    -6.27
+                ]
+            }
+        },
+        {
+            "id": "60",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC64/6_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.21641976844147,
+                "latitude": 22.311791500113177,
+                "egm2008_ground_level_height": -6.98,
+                "HOLE_ID": "MVC64/6",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "23/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21641976844147,
+                    22.311791500113177,
+                    -6.98
+                ]
+            }
+        },
+        {
+            "id": "61",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC65/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.21369178580244,
+                "latitude": 22.314838435701155,
+                "egm2008_ground_level_height": -5.39,
+                "HOLE_ID": "MVC65/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "27/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21369178580244,
+                    22.314838435701155,
+                    -5.39
+                ]
+            }
+        },
+        {
+            "id": "62",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC71/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.22083217562619,
+                "latitude": 22.29822593626011,
+                "egm2008_ground_level_height": -11.79,
+                "HOLE_ID": "MVC71/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "18/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.22083217562619,
+                    22.29822593626011,
+                    -11.79
+                ]
+            }
+        },
+        {
+            "id": "63",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC71/2_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.21792137904154,
+                "latitude": 22.299127864841026,
+                "egm2008_ground_level_height": -10.97,
+                "HOLE_ID": "MVC71/2",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "20/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21792137904154,
+                    22.299127864841026,
+                    -10.97
+                ]
+            }
+        },
+        {
+            "id": "64",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC72/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.21893886233217,
+                "latitude": 22.300934539444143,
+                "egm2008_ground_level_height": -11.73,
+                "HOLE_ID": "MVC72/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "13/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21893886233217,
+                    22.300934539444143,
+                    -11.73
+                ]
+            }
+        },
+        {
+            "id": "65",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC72/2_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.22181494406796,
+                "latitude": 22.301845769631246,
+                "egm2008_ground_level_height": -8.97,
+                "HOLE_ID": "MVC72/2",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "18/4/1996",
+                "HOLE_REM": "."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.22181494406796,
+                    22.301845769631246,
+                    -8.97
+                ]
+            }
+        },
+        {
+            "id": "66",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC72/3_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.2223151323306,
+                "latitude": 22.30366114435022,
+                "egm2008_ground_level_height": -8.33,
+                "HOLE_ID": "MVC72/3",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "17/4/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.2223151323306,
+                    22.30366114435022,
+                    -8.33
+                ]
+            }
+        },
+        {
+            "id": "67",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC72/4_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.22132774785771,
+                "latitude": 22.304551204600248,
+                "egm2008_ground_level_height": -6.12,
+                "HOLE_ID": "MVC72/4",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "17/4/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.22132774785771,
+                    22.304551204600248,
+                    -6.12
+                ]
+            }
+        },
+        {
+            "id": "68",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC72/5_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.22038342163688,
+                "latitude": 22.303183503880888,
+                "egm2008_ground_level_height": -7.07,
+                "HOLE_ID": "MVC72/5",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "17/4/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.22038342163688,
+                    22.303183503880888,
+                    -7.07
+                ]
+            }
+        },
+        {
+            "id": "69",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC73/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.22201066887801,
+                "latitude": 22.30601451677996,
+                "egm2008_ground_level_height": -3.37,
+                "HOLE_ID": "MVC73/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "9/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.22201066887801,
+                    22.30601451677996,
+                    -3.37
+                ]
+            }
+        },
+        {
+            "id": "70",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC73/2_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.220841984887,
+                "latitude": 22.30724065207899,
+                "egm2008_ground_level_height": -6.17,
+                "HOLE_ID": "MVC73/2",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "9/4/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.220841984887,
+                    22.30724065207899,
+                    -6.17
+                ]
+            }
+        },
+        {
+            "id": "71",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC73/3_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.21889461776478,
+                "latitude": 22.309073568969392,
+                "egm2008_ground_level_height": -5.79,
+                "HOLE_ID": "MVC73/3",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "9/4/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21889461776478,
+                    22.309073568969392,
+                    -5.79
+                ]
+            }
+        },
+        {
+            "id": "72",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC74/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.21778388928405,
+                "latitude": 22.310533469564476,
+                "egm2008_ground_level_height": -6.36,
+                "HOLE_ID": "MVC74/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "15/4/1996",
+                "HOLE_REM": "Hole terminated to due refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21778388928405,
+                    22.310533469564476,
+                    -6.36
+                ]
+            }
+        },
+        {
+            "id": "73",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC81/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.22473465186596,
+                "latitude": 22.298239822139458,
+                "egm2008_ground_level_height": -10.48,
+                "HOLE_ID": "MVC81/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "18/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.22473465186596,
+                    22.298239822139458,
+                    -10.48
+                ]
+            }
+        },
+        {
+            "id": "74",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC81/2_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.22376265787099,
+                "latitude": 22.300011732461336,
+                "egm2008_ground_level_height": -9.37,
+                "HOLE_ID": "MVC81/2",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "15/4/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.22376265787099,
+                    22.300011732461336,
+                    -9.37
+                ]
+            }
+        },
+        {
+            "id": "75",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC82/1_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.22595452731537,
+                "latitude": 22.30190561611171,
+                "egm2008_ground_level_height": -8.24,
+                "HOLE_ID": "MVC82/1",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "15/4/1996",
+                "HOLE_REM": "Hole terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.22595452731537,
+                    22.30190561611171,
+                    -8.24
+                ]
+            }
+        },
+        {
+            "id": "76",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-A+cad5d35lC9",
+                "location_uid": "MVC82/2_GE/95/08.10-A+cad5d35lC9",
+                "longitude": 114.22312910358104,
+                "latitude": 22.304024576591903,
+                "egm2008_ground_level_height": -9.1,
+                "HOLE_ID": "MVC82/2",
+                "HOLE_TYPE": "VC",
+                "HOLE_STAR": "24/4/1996",
+                "HOLE_REM": "Vibrocore terminated due to refusal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.22312910358104,
+                    22.304024576591903,
+                    -9.1
+                ]
+            }
+        },
+        {
+            "id": "77",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP82/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.22310187417105,
+                "latitude": 22.303854899094798,
+                "egm2008_ground_level_height": -9.64,
+                "HOLE_ID": "SEK/MCP82/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "16/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.22310187417105,
+                    22.303854899094798,
+                    -9.64
+                ]
+            }
+        },
+        {
+            "id": "78",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP71/2_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.21842945405612,
+                "latitude": 22.29959263123456,
+                "egm2008_ground_level_height": -11.99,
+                "HOLE_ID": "SEK/MCP71/2",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "11/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21842945405612,
+                    22.29959263123456,
+                    -11.99
+                ]
+            }
+        },
+        {
+            "id": "79",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP71/3_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.2203668841847,
+                "latitude": 22.2986672977716,
+                "egm2008_ground_level_height": -11.29,
+                "HOLE_ID": "SEK/MCP71/3",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "23/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.2203668841847,
+                    22.2986672977716,
+                    -11.29
+                ]
+            }
+        },
+        {
+            "id": "80",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP71/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.21988818128277,
+                "latitude": 22.29778594668199,
+                "egm2008_ground_level_height": -13.12,
+                "HOLE_ID": "SEK/MCP71/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "19/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21988818128277,
+                    22.29778594668199,
+                    -13.12
+                ]
+            }
+        },
+        {
+            "id": "81",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP26/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.19562115592645,
+                "latitude": 22.319449489204658,
+                "egm2008_ground_level_height": -2.86,
+                "HOLE_ID": "SEK/MCP26/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "15/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19562115592645,
+                    22.319449489204658,
+                    -2.86
+                ]
+            }
+        },
+        {
+            "id": "82",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP72/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.22172976377932,
+                "latitude": 22.30223627704674,
+                "egm2008_ground_level_height": -8.18,
+                "HOLE_ID": "SEK/MCP72/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "13/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.22172976377932,
+                    22.30223627704674,
+                    -8.18
+                ]
+            }
+        },
+        {
+            "id": "83",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP25/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.19706711683713,
+                "latitude": 22.31583247045162,
+                "egm2008_ground_level_height": -6.26,
+                "HOLE_ID": "SEK/MCP25/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "02/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19706711683713,
+                    22.31583247045162,
+                    -6.26
+                ]
+            }
+        },
+        {
+            "id": "84",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP33/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.20192671394419,
+                "latitude": 22.30681392081343,
+                "egm2008_ground_level_height": -9.33,
+                "HOLE_ID": "SEK/MCP33/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "29/03/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.20192671394419,
+                    22.30681392081343,
+                    -9.33
+                ]
+            }
+        },
+        {
+            "id": "85",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP64/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.21407487158754,
+                "latitude": 22.312655742388596,
+                "egm2008_ground_level_height": -6.31,
+                "HOLE_ID": "SEK/MCP64/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "09/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21407487158754,
+                    22.312655742388596,
+                    -6.31
+                ]
+            }
+        },
+        {
+            "id": "86",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP91/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.22764117643888,
+                "latitude": 22.29911779788277,
+                "egm2008_ground_level_height": -8.45,
+                "HOLE_ID": "SEK/MCP91/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "03/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.22764117643888,
+                    22.29911779788277,
+                    -8.45
+                ]
+            }
+        },
+        {
+            "id": "87",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP72/2_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.2184461037721,
+                "latitude": 22.302729501232417,
+                "egm2008_ground_level_height": -9.61,
+                "HOLE_ID": "SEK/MCP72/2",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "16/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.2184461037721,
+                    22.302729501232417,
+                    -9.61
+                ]
+            }
+        },
+        {
+            "id": "88",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP33/2_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.20000394723759,
+                "latitude": 22.308622495585663,
+                "egm2008_ground_level_height": -9.61,
+                "HOLE_ID": "SEK/MCP33/2",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "11/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.20000394723759,
+                    22.308622495585663,
+                    -9.61
+                ]
+            }
+        },
+        {
+            "id": "89",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP52/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.20921773067798,
+                "latitude": 22.304554524975465,
+                "egm2008_ground_level_height": -10.44,
+                "HOLE_ID": "SEK/MCP52/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "30/03/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.20921773067798,
+                    22.304554524975465,
+                    -10.44
+                ]
+            }
+        },
+        {
+            "id": "90",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP53/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.21019972687202,
+                "latitude": 22.306810714146348,
+                "egm2008_ground_level_height": -8.95,
+                "HOLE_ID": "SEK/MCP53/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "24/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21019972687202,
+                    22.306810714146348,
+                    -8.95
+                ]
+            }
+        },
+        {
+            "id": "91",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP32/2_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.19951463102578,
+                "latitude": 22.304547141539636,
+                "egm2008_ground_level_height": -9.69,
+                "HOLE_ID": "SEK/MCP32/2",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "30/03/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19951463102578,
+                    22.304547141539636,
+                    -9.69
+                ]
+            }
+        },
+        {
+            "id": "92",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP24/2_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.19755769049456,
+                "latitude": 22.31088056828317,
+                "egm2008_ground_level_height": -8.96,
+                "HOLE_ID": "SEK/MCP24/2",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "27/03/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19755769049456,
+                    22.31088056828317,
+                    -8.96
+                ]
+            }
+        },
+        {
+            "id": "93",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP73/2_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.22183987141858,
+                "latitude": 22.305443920140924,
+                "egm2008_ground_level_height": -3.43,
+                "HOLE_ID": "SEK/MCP73/2",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "21/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.22183987141858,
+                    22.305443920140924,
+                    -3.43
+                ]
+            }
+        },
+        {
+            "id": "94",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP32/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.20240857797813,
+                "latitude": 22.303647171820653,
+                "egm2008_ground_level_height": -10.07,
+                "HOLE_ID": "SEK/MCP32/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "28/03/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.20240857797813,
+                    22.303647171820653,
+                    -10.07
+                ]
+            }
+        },
+        {
+            "id": "95",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP24/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.19562453464103,
+                "latitude": 22.311321858669597,
+                "egm2008_ground_level_height": -8.07,
+                "HOLE_ID": "SEK/MCP24/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "11/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19562453464103,
+                    22.311321858669597,
+                    -8.07
+                ]
+            }
+        },
+        {
+            "id": "96",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP73/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.21845676145693,
+                "latitude": 22.30562362926476,
+                "egm2008_ground_level_height": -5.01,
+                "HOLE_ID": "SEK/MCP73/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "13/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21845676145693,
+                    22.30562362926476,
+                    -5.01
+                ]
+            }
+        },
+        {
+            "id": "97",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP23/2_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.19753531911302,
+                "latitude": 22.307255776278893,
+                "egm2008_ground_level_height": -9.39,
+                "HOLE_ID": "SEK/MCP23/2",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "28/03/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19753531911302,
+                    22.307255776278893,
+                    -9.39
+                ]
+            }
+        },
+        {
+            "id": "98",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP81/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.22278325961362,
+                "latitude": 22.297317005891454,
+                "egm2008_ground_level_height": -10.91,
+                "HOLE_ID": "SEK/MCP81/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "17/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.22278325961362,
+                    22.297317005891454,
+                    -10.91
+                ]
+            }
+        },
+        {
+            "id": "99",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP54/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.21128928847945,
+                "latitude": 22.311835205531526,
+                "egm2008_ground_level_height": -6.61,
+                "HOLE_ID": "SEK/MCP54/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "18/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21128928847945,
+                    22.311835205531526,
+                    -6.61
+                ]
+            }
+        },
+        {
+            "id": "100",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP23/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.19560749271257,
+                "latitude": 22.30726179067597,
+                "egm2008_ground_level_height": -8.49,
+                "HOLE_ID": "SEK/MCP23/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "27/03/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19560749271257,
+                    22.30726179067597,
+                    -8.49
+                ]
+            }
+        },
+        {
+            "id": "101",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP35/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.19999222618085,
+                "latitude": 22.315827383256742,
+                "egm2008_ground_level_height": -5.6,
+                "HOLE_ID": "SEK/MCP35/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "11/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19999222618085,
+                    22.315827383256742,
+                    -5.6
+                ]
+            }
+        },
+        {
+            "id": "102",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP62/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.21551902684003,
+                "latitude": 22.300937197158255,
+                "egm2008_ground_level_height": -11.46,
+                "HOLE_ID": "SEK/MCP62/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "22/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21551902684003,
+                    22.300937197158255,
+                    -11.46
+                ]
+            }
+        },
+        {
+            "id": "103",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP63/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.21698006015815,
+                "latitude": 22.309065926679203,
+                "egm2008_ground_level_height": -5.6,
+                "HOLE_ID": "SEK/MCP63/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "18/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.21698006015815,
+                    22.309065926679203,
+                    -5.6
+                ]
+            }
+        },
+        {
+            "id": "104",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP34/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.201928196722,
+                "latitude": 22.31131342009571,
+                "egm2008_ground_level_height": -7.52,
+                "HOLE_ID": "SEK/MCP34/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "09/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.201928196722,
+                    22.31131342009571,
+                    -7.52
+                ]
+            }
+        },
+        {
+            "id": "105",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP22/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.19659732750436,
+                "latitude": 22.30456025632942,
+                "egm2008_ground_level_height": -10.11,
+                "HOLE_ID": "SEK/MCP22/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "12/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19659732750436,
+                    22.30456025632942,
+                    -10.11
+                ]
+            }
+        },
+        {
+            "id": "106",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP43/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.2063226361545,
+                "latitude": 22.30634115115597,
+                "egm2008_ground_level_height": -9.81,
+                "HOLE_ID": "SEK/MCP43/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "01/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.2063226361545,
+                    22.30634115115597,
+                    -9.81
+                ]
+            }
+        },
+        {
+            "id": "107",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP14/1_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.19273756377258,
+                "latitude": 22.311326411941852,
+                "egm2008_ground_level_height": -7.9,
+                "HOLE_ID": "SEK/MCP14/1",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "02/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19273756377258,
+                    22.311326411941852,
+                    -7.9
+                ]
+            }
+        },
+        {
+            "id": "108",
+            "type": "Feature",
+            "properties": {
+                "project_uid": "GE/95/08.10-ZUTM/Wwph0I0",
+                "location_uid": "SEK/MCP34/2_GE/95/08.10-ZUTM/Wwph0I0",
+                "longitude": 114.19847635233897,
+                "latitude": 22.313081748156133,
+                "egm2008_ground_level_height": -7.69,
+                "HOLE_ID": "SEK/MCP34/2",
+                "HOLE_TYPE": "SCP",
+                "HOLE_STAR": "01/04/96",
+                "HOLE_REM": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.19847635233897,
+                    22.313081748156133,
+                    -7.69
+                ]
+            }
+        }
+    ],
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:EPSG::9518"
+        }
+    }
+}
