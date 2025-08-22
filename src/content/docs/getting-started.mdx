@@ -173,10 +173,5 @@ for file_name in ags_files:
         ags3_file_brgi_dbs.append(brgi_db)
 
 merged_brgi_db = merge_dbs(ags3_file_brgi_dbs)
+geodb = create_brgi_geodb(merged_brgi_db) # Transforms to geospatial data
 ```
-
-{/* ## Next steps
-
-* Look at one of the guides
-* Look at the examples
-* Peruse the API reference */}
