@@ -9,8 +9,8 @@ description: Bedrock company details
 Our company details for your accountant.
 
 <dl>
-<dt>Company name</dt> <dd>Bedrock B.V.</dd>
-<dt>Address:</dt>
-<dt>VAT ID:</dt>
-<dt>KvK nummer:</dt>
+    <dt>Company name</dt> <dd>Bedrock Engineer B.V.</dd>
+    <dt>Address:</dt>
+    <dt>VAT ID:</dt>
+    <dt>KvK nummer:</dt>
 </dl>

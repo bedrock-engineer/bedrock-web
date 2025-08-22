@@ -18,7 +18,7 @@ export default defineConfig({
       plugins: [starlightLinksValidator()],
       title: "Bedrock",
       components: {
-        Head: './src/components/Head.astro',
+        Head: "./src/components/Head.astro",
       },
       customCss: [
         // Relative path to your custom CSS file
@@ -26,11 +26,11 @@ export default defineConfig({
       ],
       lastUpdated: true,
       logo: {
-        light: "/src/assets/bedrock.svg",
-        dark: "/src/assets/bedrock.svg",
+        light: "./src/assets/bedrock.svg",
+        dark: "./src/assets/bedrock.svg",
         replacesTitle: true,
       },
-      favicon: "/src/assets/bedrock.svg",
+      favicon: "./src/assets/bedrock.svg",
       editLink: {
         baseUrl:
           "https://github.com/bedrock-enginer/bedrock-web/edit/main/docs/",
@@ -50,10 +50,7 @@ export default defineConfig({
       sidebar: [
         {
           label: "Start Here",
-          items: [
-            "getting-started",
-            // "manual-setup"
-          ],
+          items: ["getting-started"],
         },
         {
           label: "Explanation",
@@ -62,15 +59,14 @@ export default defineConfig({
         {
           label: "Guides",
           autogenerate: { directory: "guides" },
-
-          // items: [
-          //   // Each item here is one entry in the navigation menu.
-          //   { label: "Example Guide", slug: "guides/example" },
-          // ],
         },
         {
           label: "Examples",
           autogenerate: { directory: "examples" },
+        },
+        {
+          label: "Tutorials",
+          autogenerate: { directory: "tutorials" },
         },
 
         {
