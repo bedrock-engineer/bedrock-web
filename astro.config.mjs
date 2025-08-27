@@ -30,7 +30,7 @@ export default defineConfig({
         dark: "./src/assets/bedrock.svg",
         replacesTitle: true,
       },
-      favicon: "./src/assets/bedrock.svg",
+      favicon: "/bedrock.svg",
       editLink: {
         baseUrl:
           "https://github.com/bedrock-enginer/bedrock-web/edit/main/docs/",
