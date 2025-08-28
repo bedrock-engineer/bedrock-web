@@ -3,8 +3,6 @@ title: "Getting started"
 description: "Getting started with bedrock-ge"
 ---
 
-import { Tabs, TabItem } from '@astrojs/starlight/components';
-
 `bedrock-ge` is an open-source Python library for reading & writing Ground Investigation data in different formats.
 
 Ground Investigation (GI) data is often stored in specialized file formats that are not easily accessible for modern (geospatial) analysis and visualization workflows.
@@ -12,11 +10,11 @@ Ground Investigation (GI) data is often stored in specialized file formats that 
 This enables integration of GI data with other software and workflows used in the AEC industry.
 
 
-{/* `bedrock-ge` helps you:
+<!-- bedrock-ge` helps you:
 
 - **Transform** GI data from various formats (AGS 3/4, GEF, Excel, CSV) into standardized geospatial data
 - **Validate** your GI data for consistency and relationships between locations, samples, and tests  
-- **Combine** multiple GI files into a single 3D geospatial database (GeoPackage) */}
+- **Combine** multiple GI files into a single 3D geospatial database (GeoPackage) -->
 
 ## Supported Formats
 
@@ -36,40 +34,39 @@ Let us know by creating an [issue](https://github.com/bedrock-engineer/bedrock-g
 
 Install `bedrock-ge` by running the following command in your terminal:
 
-<Tabs syncKey="dep">
-<TabItem label="uv">
+
+{% tabs syncKey="dep" %}
+{% tabitem label="uv" %}
 
 ```sh
 uv add bedrock-ge
 ```
 
-</TabItem>
-<TabItem label="pip">
+{% /tabitem %}
+{% tabitem label="pip" %}
 
 ```sh
 pip install bedrock-ge
 ```
 
-</TabItem>
-<TabItem label="conda">
+{% /tabitem %}
+{% tabitem label="conda" %}
 
 ```sh
 conda install bedrock-ge
 ```
 
-</TabItem>
-<TabItem label="poetry">
+{% /tabitem %}
+{% tabitem label="poetry" %}
 
 ```sh
 poetry add bedrock-ge
 ```
 
-</TabItem>
-</Tabs>
+{% /tabitem %}
+{% /tabs %}
 
-This will add `bedrock-ge` to your Python project.
-
-:::tip[Python package & project managment]
+:::tip[Python package & project management]
 We recommend using [`uv`](https://docs.astral.sh/uv/) for Python project management. Key benefits include:
 
 - **Cross-platform compatibility**: Works seamlessly on Windows, macOS, and Linux
@@ -156,13 +153,13 @@ from pathlib import Path
 projected_crs = CRS("EPSG:2326")
 vertical_crs = CRS("EPSG:5738")
 
-folder_path = Path("./gefs")
+folder_path = Path("./gi_data")
 ags_files = list(folder_path.glob("*.ags"))
 
 ags3_file_brgi_dbs = []
 
 for file_name in ags_files:
-    print(f"\n🖥️ Processing {file_name} ...")
+    print(f"\nProcessing {file_name} ...")
     with open(file_name) as ags3_file:
         # 1. Convert content of a single AGS 3 file to a Bedrock GI Mapping.
         brgi_mapping = ags_to_brgi_db_mapping(ags3_file, projected_crs, vertical_crs)        

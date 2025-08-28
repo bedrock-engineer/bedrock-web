@@ -8,12 +8,11 @@ todo:
   - Later: Marimo islands
 ---
 
-
 **What you'll build:** An interactive web map that displays your geotechnical investigation data, making it accessible to anyone with a web browser.
 
 **You'll learn to:** Transform AGS files into web-friendly formats and create a clickable map showing borehole locations with detailed information popups.
 
-**Time needed:** 30-45 minutes  
+**Time needed:** 30-45 minutes
 
 **Result:** A single web page stakeholders can open anywhere to explore your ground investigation results.
 
@@ -21,17 +20,26 @@ Instead of sharing folders of specialized files, you'll have a web visualization
 
 Here's the end result:
 
-{% iframe src="/webmap/index.html" loading="lazy" width="100%" height="500" title="Bedrock AGS to GeoJSON Webmap demo" style="min-height:500px;" /%}
+{% iframe
+   src="/webmap/index.html"
+   loading="lazy"
+   width="100%"
+   height="500"
+   title="Bedrock AGS to GeoJSON Webmap demo"
+   style="min-height:500px;" /%}
 
 {% linkbutton href="/webmap/index.html" %}
 View the webmap
 {% /linkbutton %}
 
-{% linkbutton href="https://github.com/bedrock-engineer/ags-to-webmap/" variant="secondary" %}
+{% linkbutton
+   href="https://github.com/bedrock-engineer/ags-to-webmap/"
+   variant="secondary" %}
 View the code
 {% /linkbutton %}
 
-You can also explore the data preparation workflow interactively in a [marimo notebook](https://marimo.app/gh/bedrock-engineer/ags-to-webmap/main?entrypoint=data_processing%2Fags_to_geojson.py), a [reactive Python notebook](https://marimo.io/) that automatically updates when you modify data or code.
+You can also explore the data preparation workflow interactively in a [marimo notebook](https://marimo.app/gh/bedrock-engineer/ags-to-webmap/main?entrypoint=data_processing%2Fags_to_geojson.py) in your web browser.
+[marimo](https://marimo.io/) is a [reactive Python notebook that automatically updates when you modify data or code. At Bedrock, we're big fans of it.
 
 ### Prerequisites
 
@@ -71,7 +79,7 @@ For the demo files, it's Hong Kong 1980 Grid System (EPSG:2326) and Hong Kong Pr
 
 You'll convert each AGS file to a single database object.
 
-```python title="ags_to_geojson.py"
+```python
 from bedrock_ge.gi.ags import ags_to_brgi_db_mapping
 from bedrock_ge.gi.db_operations import merge_dbs
 from bedrock_ge.gi.geospatial import create_brgi_geodb
@@ -98,7 +106,7 @@ for file_path in ags_files:
 Now you'll merge them into a single database and make the data geospatial.
 `bedrock-ge` creates 3D geospatial geometries for boreholes, specifically vertical lines.
 
-```python title="ags_to_geojson.py"
+```python
 merged_brgi_db = merge_dbs(ags_file_brgi_dbs)
 geodb = create_brgi_geodb(merged_brgi_db) # Transforms to geospatial data
 ```
@@ -125,7 +133,7 @@ To see what the headings in AGS mean, see the [Bedrock AGS4 reference](https://b
 You'll add some columns from the `geodb.Location` table.
 Select the columns from the `geodb.Location` table:
 
-```python title="ags_to_geojson.py"
+```python
 merge_key = "location_uid"
 
 location_columns = [merge_key, "HOLE_ID", "HOLE_TYPE", "HOLE_STAR", "HOLE_ENDD", "HOLE_REM"]
@@ -137,7 +145,7 @@ This selects only the columns you need from the Location table, creating a small
 Now merge these columns with the `geodb.LonLatHeight` table.
 You'll connect the tables using the unique identifier they share, `"location_uid"`.
 
-```python title="ags_to_geojson.py"
+```python
 locations_webmap_df = geodb.LonLatHeight.merge(location_df, on=merge_key, how="left").drop(columns=["longitude", "latitude"]) # already in geometry
 ```
 
@@ -145,7 +153,7 @@ This joins the coordinate data with the borehole details. The `how="left"` ensur
 
 You can inspect your data at this stage:
 
-```python title="ags_to_geojson.py"
+```python
 print(locations_webmap_df.head())  # Show first few rows
 print(f"Total locations: {len(locations_webmap_df)}")  # Count your boreholes
 ```
@@ -154,7 +162,7 @@ print(f"Total locations: {len(locations_webmap_df)}")  # Count your boreholes
 
 Now export the locations table to GeoJSON format for web display:
 
-```python title="ags_to_geojson.py" 
+```python
 locations_geojson = locations_webmap_df.to_json()
 
 with open("locations.geojson", "w") as file:
@@ -174,12 +182,11 @@ In this folder, create two new files: `index.html` and `script.js`
   - locations.geojson
 {% /filetree %}
 
-
 ### 2.1: Create HTML Structure
 
 In the `index.html`, copy the following HTML.
 
-```html title="index.html"
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -274,7 +281,7 @@ Now you'll build the interactive map. MapLibre GL JS is a web mapping library th
 
 In `script.js`, start with the import and configuration:
 
-```js title="script.js"
+```js
 import maplibregl from "https://cdn.jsdelivr.net/npm/maplibre-gl@5.6.2/+esm";
 
 // Colors and names for your borehole types (matches AGS HOLE_TYPE values)
@@ -305,7 +312,7 @@ This configuration object maps your AGS hole types to colors and readable names 
 
 #### Create the map container
 
-```js title="script.js"
+```js
 // Create the map and tell it which HTML element to use
 const map = new maplibregl.Map({
   container: "map",              // Uses the <div id="map"> from your HTML
@@ -331,7 +338,7 @@ The `style` object defines what base map to show, here we're using [OpenStreetMa
 
 #### Load and display your borehole data
 
-```js title="script.js"
+```js
 // Wait for the map to fully load before adding data
 map.on("load", () => {
   // Add the location GeoJSON file as a data source
@@ -350,7 +357,7 @@ map.on("load", () => {
 
 Now add the visual styling. **This code continues inside the `map.on("load")` function:**
 
-```js title="script.js"
+```js
   // Add a visual layer to display your boreholes as colored circles
   map.addLayer({
     id: "locations-layer",
@@ -382,7 +389,7 @@ This displays your investigation points as colored circles, red for SPT, blue fo
 
 **Continue inside the `map.on("load")` function:**
 
-```js title="script.js"
+```js
   // Show borehole details when clicked
   map.on("click", "locations-layer", (event) => {
     const { coordinates } = event.features[0].geometry;
@@ -455,7 +462,7 @@ You'll use the [Observable Plot](https://observablehq.com/plot/) library to draw
 You'll need to group the data by location.
 Here's a convenience function that groups a table by location ID and writes it to a JSON file:
 
-```python title="ags_to_geojson.py"
+```python
 def by_location_json_file(df, filename):
     by_location = geodf_to_df(df).drop('geometry', axis=1).groupby("location_uid")
     json_string = by_location.apply(lambda x: x.to_dict('records')).to_json()
@@ -468,7 +475,7 @@ This groups all the in the given table records by borehole location. Each locati
 
 ### 3.2: Exporting Geology Data
 
-```python title="ags_to_geojson.py"
+```python
 geol_df = geodb.InSituTests["GEOL"]
 
 by_location_json_file(geol_df, "geol.json")
@@ -476,7 +483,7 @@ by_location_json_file(geol_df, "geol.json")
 
 ### 3.3: Exporting SPT data
 
-```python title="ags_to_geojson.py"
+```python
 ispt_df = geodb.InSituTests["ISPT"]
 
 by_location_json_file(ispt_df, "ispt.json")
@@ -497,7 +504,7 @@ First, move the `geol.json` and `ispt.json` the folder of your web map.
 
 Next, update your `script.js` to import the Observable Plot library and load the additional data files. Add this to the top of the file:
 
-```js title="script.js"
+```js
 import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
 
 const soilColors = {
@@ -524,7 +531,7 @@ const geol = await fetch("geol.json").then((r) => r.json());
 
 Finally, modify the click handler in your existing `script.js` to include the plotting code. Replace the existing popup creation section with this enhanced version:
 
-```js title="script.js"
+```js
   // Show borehole details when clicked (replace the existing click handler)
   map.on("click", "locations-layer", (event) => {
     const coordinates = event.features[0].geometry.coordinates.slice();

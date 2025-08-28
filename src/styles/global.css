@@ -76,8 +76,8 @@ a {
   text-decoration-color: var(--color-brand-green);
 }
 
-.sl-markdown-content {
-  & > ol {
+.sl-markdown-content > article {
+  & > ol:not(.sl-steps) {
     list-style: decimal inside;
   }
 
