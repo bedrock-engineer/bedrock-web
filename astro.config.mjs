@@ -1,4 +1,6 @@
 // @ts-check
+import cloudflare from "@astrojs/cloudflare";
+import markdoc from '@astrojs/markdoc';
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
@@ -7,7 +9,6 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 import remarkDefinitionList from "remark-definition-list";
 import starlightLinksValidator from "starlight-links-validator";
-import cloudflare from "@astrojs/cloudflare";
 import { og } from "./og";
 
 // https://astro.build/config
@@ -85,6 +86,7 @@ export default defineConfig({
     mdx({
       optimize: true,
     }),
+    markdoc(),
     react({ experimentalReactChildren: true }),
     og(),
   ],

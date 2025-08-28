@@ -8,8 +8,6 @@ todo:
   - Later: Marimo islands
 ---
 
-import { FileTree, LinkButton } from '@astrojs/starlight/components';
-
 
 **What you'll build:** An interactive web map that displays your geotechnical investigation data, making it accessible to anyone with a web browser.
 
@@ -23,11 +21,15 @@ Instead of sharing folders of specialized files, you'll have a web visualization
 
 Here's the end result:
 
-<iframe src="/webmap/index.html" loading="lazy" width="100%" height="500" title="Bedrock AGS to GeoJSON Webmap demo" style="min-height:500px;" />
+{% iframe src="/webmap/index.html" loading="lazy" width="100%" height="500" title="Bedrock AGS to GeoJSON Webmap demo" style="min-height:500px;" /%}
 
-<LinkButton href="/webmap/index.html">View the webmap</LinkButton>
+{% linkbutton href="/webmap/index.html" %}
+View the webmap
+{% /linkbutton %}
 
-<LinkButton href="https://github.com/bedrock-engineer/ags-to-webmap/" variant='secondary'>View the code</LinkButton>
+{% linkbutton href="https://github.com/bedrock-engineer/ags-to-webmap/" variant="secondary" %}
+View the code
+{% /linkbutton %}
 
 You can also explore the data preparation workflow interactively in a [marimo notebook](https://marimo.app/gh/bedrock-engineer/ags-to-webmap/main?entrypoint=data_processing%2Fags_to_geojson.py), a [reactive Python notebook](https://marimo.io/) that automatically updates when you modify data or code.
 
@@ -105,7 +107,7 @@ You can see the geospatial data in the `geodb.Location` table.
 
 #### `geodb.LonLatHeight` vs `geodb.Location`
 
-Web maps don't display vertical lines well. Therefore, `create_brgi_geodb` also creates a `LonLatHeight` table which contains points of your GI locations at ground level in <abbr title='World Geodetic System 1984'>WGS84</abbr> coordinates (Longitude, Latitude, Elevation).
+Web maps don't display vertical lines well. Therefore, `create_brgi_geodb` also creates a `LonLatHeight` table which contains points of your GI locations at ground level in {% abbr title="World Geodetic System 1984" %}WGS84{% /abbr %} coordinates (Longitude, Latitude, Elevation).
 
 ### 1.3: Add Data to Display
 
@@ -165,14 +167,12 @@ Create a new folder and move `locations.geojson` into it.
 
 In this folder, create two new files: `index.html` and `script.js`
 
-<FileTree>
-
+{% filetree %}
 - webmap
   - index.html
   - script.js
   - locations.geojson
-
-</FileTree>
+{% /filetree %}
 
 
 ### 2.1: Create HTML Structure
@@ -486,16 +486,14 @@ by_location_json_file(ispt_df, "ispt.json")
 
 First, move the `geol.json` and `ispt.json` the folder of your web map.
 
-<FileTree>
-
+{% filetree %}
 - webmap
   - index.html
   - script.js
   - locations.geojson
   - geol.json
   - ispt.json
-  
-</FileTree>
+{% /filetree %}
 
 Next, update your `script.js` to import the Observable Plot library and load the additional data files. Add this to the top of the file:
 
@@ -610,14 +608,6 @@ Finally, modify the click handler in your existing `script.js` to include the pl
   });
 ```
 
-{/* <!-- ### Troubleshooting
+### Troubleshooting
 
-**Map not loading**: Check browser console for errors and ensure all file paths are correct.
-
-**No data visible**: Verify GeoJSON files are valid and contain features with geometry. [geojson.io](https://www.geojson.io) is a simple web app for viewing geoJSON files.
-
-**Performance issues**: Reduce dataset size, use data clustering, or implement level-of-detail loading.
-
-**Coordinate system problems**: Ensure all data is exported in WGS84 (EPSG:4326) for web compatibility.
-
-**CORS errors**: Serve files from a web server, not directly from the file system. --> */}
+Feel free to contact jules.blom@bedrock.engineer if you're stuck somewhere.
