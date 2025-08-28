@@ -77,11 +77,11 @@ a {
 }
 
 .sl-markdown-content {
-  ol {
+  & > ol {
     list-style: decimal inside;
   }
 
-  ul {
+  & > ul {
     list-style: circle inside;
   }
 }
