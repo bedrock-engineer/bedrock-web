@@ -1,10 +1,12 @@
 ---
 title: GEF-CPT
 description: Description of the Geotechnical Exchange Format (GEF) CPT Report
+draft: true
 ---
 
-The GEF-CPT format is a legacy text-based standard for Cone Penetration Test (CPT) data, primarily used in the Netherlands and Belgium. Created in 1999 to solve interoperability problems in Dutch geotechnical practice, it succeeded by replacing a proliferation of proprietary formats. 
-The format isn't maintained anymore and is technically outdated, it remains in use due to extensive legacy data and support for it in engineering software.
+The GEF-CPT format is a legacy text-based standard for Cone Penetration Test (CPT) data, primarily used in the Netherlands and Belgium.
+It was created in 1999 to solve interoperability problems in Dutch geotechnical practice, it replaced a proliferation of proprietary formats. 
+The format is no longer maintained and is technically outdated, but it remains in use due to extensive legacy data and support for it in engineering software.
 
 ## Technical Obsolescence
 
@@ -12,14 +14,14 @@ Though GEF-CPT was an important step forward at the time of its creation, it is 
 
 **Structural limitations**
 
-* Text-based, single-file structure with no data typing, schema validation, or extensibility (unlike XML/JSON).
-* Fragile comma-separated value format prone to parsing errors.
 * One file can only represent a single cone penetration test.
+* Text-based, single-file structure with no data typing, schema validation, or extensibility.
+* Fragile comma-separated value format prone to parsing errors.
 
 **Metadata and reference handling**
 
-* No timezone information for timestamps, requiring assumptions about Central European Time.
-* Coordinate systems defined via lookup tables instead of proper spatial reference definitions.
+* No timezone information for timestamps
+* Coordinate systems defined via lookup tables instead of common spatial reference definitions.
 * Column definitions tie metadata directly to fixed column positions in the data block, tightly coupling description with layout
 
 **Extensibility and modern use**
@@ -29,14 +31,14 @@ Though GEF-CPT was an important step forward at the time of its creation, it is 
 
 ### Outdated Standards
 
-Developed in the 1990s, the GEF-CPT spec references standards superseded by modern ISO equivalents.
+The GEF-CPT spec references standards superseded by modern ISO equivalents.
 
 - Soil classification references [NEN 5104](https://duckduckgo.com/?q=NEN+5104&ia=web) (1989), replaced by [ISO 14688-2](https://www.nen.nl/en/nen-en-iso-14688-2-2004-en-94323) (2004)
 - CPT procedures reference [NEN 5140](https://www.nen.nl/en/nen-5140-1996-nl-19464) (1996), replaced by [ISO 22476-1](https://www.nen.nl/en/iso-22476-1-2022-en-305240) (2012)
 
 This creates a significant gap between current industry capabilities and the format's design assumptions.
 
-## Current Status and Future
+## Regulatory Transition and Industry Reality
 
 The Dutch [Basis Registratie Ondergrond](https://basisregistratieondergrond.nl/) (BRO) program mandates a transition to XML-based data formats to ensure interoperability and modern regulatory compliance:
 
@@ -138,7 +140,8 @@ It takes the format `#ZID = code, elevation, accuracy`.
 
 For example, `#ZID = 31000, +2.45, 0.02` means the CPT surface is 2.45 meters above [NAP](https://www.rijkswaterstaat.nl/zakelijk/open-data/normaal-amsterdams-peil) with ±2cm accuracy.
 
-This keyword is crucial for data interpretation since all penetration depths are measured relative to this surface level, and proper height referencing enables integration with other geotechnical data, topographic surveys, and other construction models like BIM.
+All penetration depths are measured relative to this surface level.
+Proper height referencing enables integration with other geotechnical data, topographic surveys, and other construction models like BIM.
 
 ## Column Quantities
 
