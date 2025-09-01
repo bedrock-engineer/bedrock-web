@@ -68,7 +68,9 @@ import "../styles/global.css";
           </p>
 
           <p>
-            We provide <a class="link" href="/professional-support/">consulting services </a>
+            We provide <a class="link" href="/professional-support/"
+              >consulting services
+            </a>
             for teams who need help implementing modern workflows
           </p>
         </OneThirdColumn>
@@ -221,9 +223,9 @@ import "../styles/global.css";
               roadmap.
             </p>
             <p>
-              Contributing doesn't only mean writing code. You can also
-              contribute by adding data, examples, or being active in the
-              community by asking or answering questions.
+              <a href="contributing" class="link">Contributing</a>
+              doesn't only mean writing code. You can also contribute by adding data,
+              examples, or being active in the community by asking or answering questions.
             </p>
           </section>
         </Panel>
@@ -278,7 +280,7 @@ import "../styles/global.css";
             <ul>
               <li>
                 <a
-                  class="bg-black"
+                  class="footer-link"
                   href="https://www.linkedin.com/company/bedrock-engineer/"
                 >
                   <Icon class="inline mr-1" name="linkedin" />
@@ -286,19 +288,22 @@ import "../styles/global.css";
                 </a>
               </li>
               <li>
-                <a class="bg-black" href="https://github.com/bedrock-engineer/">
+                <a
+                  class="footer-link"
+                  href="https://github.com/bedrock-engineer/"
+                >
                   <Icon class="inline mr-1" name="github" />
                   GitHub
                 </a>
               </li>
               <li>
-                <a class="bg-black" href="mailto:info@bedrock.engineer">
+                <a class="footer-link" href="mailto:info@bedrock.engineer">
                   <Icon class="inline mr-1" name="email" />
                   info@bedrock.engineer
                 </a>
               </li>
               <li>
-                <a class="bg-black" href="company-details">
+                <a class="footer-link" href="company-details">
                   <Icon class="inline mr-1" name="document" />
                   Company details
                 </a>
@@ -316,6 +321,14 @@ import "../styles/global.css";
 
   <style>
     @reference "../styles/global.css";
+
+    .footer-link {
+      background-color: black;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
 
     .landing {
       --border-color: var(--color-gray-400);
