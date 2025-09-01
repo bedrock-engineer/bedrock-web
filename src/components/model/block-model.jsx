@@ -292,10 +292,10 @@ function GeologicalBlock() {
   );
 }
 
-export function GeologicalModel({ width = 350, height = 350 }) {
+export function GeologicalModel({ width = 300, height = 300 }) {
   return (
     <div
-      className="mx-auto shrink-0 min-w-0 aspect-square "
+      className="mx-auto my-auto shrink-0 min-w-0 aspect-square "
       style={{
         maxWidth: width,
         maxWeight: height,

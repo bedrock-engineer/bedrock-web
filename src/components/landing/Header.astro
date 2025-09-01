@@ -13,7 +13,7 @@ import { GeologicalModel } from "../model/block-model.jsx";
     <!-- TODO add copy button -->
   </div>
 
-  <div class="flex flex-wrap sm:flex-nowrap pb-4 my-auto">
+  <div class="main">
     <div>
       <h2 class="text-3xl md:text-4xl flex gap-2">
         <Image src={BedrockLogo} width="30" alt="Bedrock logo" class="block" />
@@ -50,6 +50,19 @@ import { GeologicalModel } from "../model/block-model.jsx";
     min-height: min-content;
     background-image: url("/607.svg");
     background-size: 80px;
+  }
+
+  .main {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-content: center;
+    padding-bottom: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    .main {
+      grid-template-columns: 2fr 1fr;
+    }
   }
 
   h1 {
