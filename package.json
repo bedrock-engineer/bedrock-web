@@ -14,9 +14,9 @@
     "deploy": "npx astro build && npx wrangler deploy"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.6.0",
+    "@astrojs/cloudflare": "^12.6.7",
     "@astrojs/markdoc": "^0.15.5",
-    "@astrojs/markdown-remark": "^6.3.3",
+    "@astrojs/markdown-remark": "^6.3.6",
     "@astrojs/react": "^4.3.0",
     "@astrojs/starlight": "^0.35.2",
     "@astrojs/starlight-markdoc": "^0.5.0",

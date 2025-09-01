@@ -71,12 +71,12 @@ a {
   color: var(--color-green-700);
 }
 
-.link[href^="http"] {
+.link {
   text-decoration: underline;
   text-decoration-color: var(--color-brand-green);
 }
 
-.sl-markdown-content > article {
+.sl-markdown-content  {
   & > ol:not(.sl-steps) {
     list-style: decimal inside;
   }

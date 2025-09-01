@@ -109,13 +109,13 @@ Consider a project with 2 boreholes, where "Borehole 1 (BH001)" has 3 samples:
 **Projects table:**
 | project_uid | project_name |
 |-------------|--------------|
-| P001 | Appartment  |
+| P001 | Appartment tower  |
 
 **Locations table:**
-| location_uid | project_uid | location_name | easting | northing |
-|--------------|-------------|---------------|---------|----------|
-| BH001 | P001 | Borehole 1 | 523441 | 181652 |
-| BH002 | P001 | Borehole 2 | 523467 | 181678 |
+| location_uid | project_uid  | easting | northing | depth_to_base | ground_level_elevation |
+|--------------|--------------|---------|----------|---------------|------------------------|
+| BH001 | P001 | 523441 | 181652 | 5.4 | 20.5 |
+| BH002 | P001 | 523467 | 181678 | 6.8 | 19.8 |
 
 **Samples table:**
 | sample_uid | location_uid | depth_top | depth_base |
@@ -140,20 +140,10 @@ The AGS (Association of Geotechnical and Geoenvironmental Specialists) format al
 
 ### Relational database advantages
 
-<!-- **Flexible relationships**: Can represent complex data relationships that don't fit AGS's predefined structure -->
 
 **Query power**: SQL enables complex queries across multiple tables:
 
-```sql
--- Find all samples from sandy soils deeper than 5m
-SELECT s.*, l.location_name
-FROM samples s
-JOIN locations l ON s.location_uid = l.location_uid
-JOIN geological_descriptions g ON s.location_uid = g.location_uid
-WHERE g.geology LIKE '%sand%' AND s.depth_top > 5.0
-```
-
-**Data integrity**: Enforces relationships through foreign key constraints, you can't add a sample without a valid location
+<!-- **Data integrity**: Enforces relationships through foreign key constraints, you can't add a sample without a valid location -->
 
 **Concurrent access**: Multiple users can query and update data simultaneously
 
@@ -203,4 +193,4 @@ Using relational databases for geotechnical data enables:
 - **Scalability**: Handle datasets from small sites to regional databases
 - **Integration**: Seamless connection with BIM, CAD, and web applications
 
-The hierarchical nature of geotechnical data isn't just a data management convenience—it's the foundation for more powerful, integrated, and automated geotechnical workflows. -->
+The hierarchical nature of geotechnical data isn't just a data management convenience, it's the foundation for more powerful, integrated, and automated geotechnical workflows. -->

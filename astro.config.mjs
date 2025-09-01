@@ -78,6 +78,7 @@ export default defineConfig({
           label: "Resources",
           items: [
             { label: "About", slug: "about" },
+            { label: "Contributing", slug: "contributing" },
             { label: "Professional support", slug: "professional-support" },
           ],
         },
