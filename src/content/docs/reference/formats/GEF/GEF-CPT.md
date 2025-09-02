@@ -62,13 +62,6 @@ As far as I know, no engineering software can read BRO's complex XML structure. 
 
 IMBRO/XML serves institutional governance; GEF remains established in workflows because it enjoys wider support, thus creating 'legacy format lock-in'.
 
-### GEF 1.1.3 (Retrofit for BRO compatibility)
-
-Version 1.1.3 was developed specifically for BRO compatibility by extending version 1.1.2 with additional `#MEASUREMENTTEXT` fields (101-128) to bridge legacy data formats with modern regulatory requirements. This extension was developed independently of Deltares and represents the final evolution of the GEF-CPT format before IMBRO/XML superseded it.
-
-Information on GEF 1.1.3 is rather hard to find and I have yet to find a full 'official' spec for it. The best I've found so far is [CPTdata.nl GEF1.1.3 Release notes](https://www.cptdata.nl/downloads/gef113Releasenotes.pdf).
-[This official standard](https://www.nen.nl/media/PDFjes/Background_report_NPR-9998_for_liquefaction_in_webtool_2018-08.pdf) refers to the VOTB website for the GEF1.1.3 reference but I can't find it there.
-
 ## Structure
 
 A GEF-CPT file consists of a **Header** and a **Datablock**.
@@ -208,6 +201,38 @@ The quantity system ensures a column labeled "6" always means "u2 pore pressure"
 
 <iframe width="100%" height="350" style="height:350px" frameborder="0"
   src="https://observablehq.com/embed/@julesblm/geotechnical-exchange-format-gef-cpt@678?cells=columnQuantitiesTable"></iframe>
+
+## GEF 1.1.3 (Retrofit for BRO compatibility)
+
+Version 1.1.3 was developed specifically for BRO compatibility by extending version 1.1.2 with additional `#MEASUREMENTTEXT` fields (101-128) to bridge legacy data formats with modern regulatory requirements. This extension was developed independently of Deltares and represents the final evolution of the GEF-CPT format before IMBRO/XML superseded it.
+
+Information on GEF 1.1.3 is rather hard to find and I have yet to find a full 'official' spec for it. The best I've found so far is [CPTdata.nl GEF1.1.3 Release notes](https://www.cptdata.nl/downloads/gef113Releasenotes.pdf).
+[This official standard](https://www.nen.nl/media/PDFjes/Background_report_NPR-9998_for_liquefaction_in_webtool_2018-08.pdf) refers to the VOTB website for the GEF1.1.3 reference but I can't find it there.
+
+[De Vereniging Ondernemers Technisch Bodemonderzoek](https://votb.nl/) (VOTB)
+
+> Vanuit de VOTB is geïnventariseerd welke extra informatie (velden) nodig zijn voor de BRO.
+> Tevens zijn vanuit de leden van de VOTB extra velden gedefinieerd ten opzichte van GEF 1.1.2.
+> GEF 1.1.2 is uitgebreid met deze extra velden en heeft de naam GEF 1.1.3 gekregen.
+> De Excel-lijst met extra velden en dataformaat van deze extra velden, wordt beschikbaar
+> via de VOTB website aan haar leden.
+
+[*VOTB - GEF 1.1.3 – BRO –converter beschikbaar!*](https://votb.nl/wp-content/uploads/2016/02/180712-tekst-GEF-1.1.3-BRO-converter.pdf)
+
+### BRO Measurement Text Additions
+
+<iframe width="100%" height="350" frameborder="0"
+  src="https://observablehq.com/embed/@julesblm/geotechnical-exchange-format-gef-cpt@682?cells=broMeasurmentTextAdditionsTable"></iframe>
+
+### BRO Measurement Variables Additions
+
+<iframe width="100%" height="350" frameborder="0"
+  src="https://observablehq.com/embed/@julesblm/geotechnical-exchange-format-gef-cpt@679?cells=broMeasurmentVarAdditionsTable"></iframe>
+
+### VOTB Measurement Variables Additions
+
+<iframe width="100%" height="213" frameborder="0"
+  src="https://observablehq.com/embed/@julesblm/geotechnical-exchange-format-gef-cpt@681?cells=votbMeasurmentVarAdditionsTable"></iframe>
 
 ## Sources
 
