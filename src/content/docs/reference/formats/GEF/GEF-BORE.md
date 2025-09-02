@@ -1,0 +1,121 @@
+---
+title: GEF-BORE
+description: Description of the Geotechnical Exchange Format (GEF) Bore Report
+---
+
+GEF-BORE-Report is a legacy data exchange format for documenting and sharing borehole descriptions (boorbeschrijvingen) in the geotechnical engineering.
+It provides a structured way to capture the visual and tactile observations made during drilling operations.
+
+It is commonly used in the Netherlands and Flanders (Belgium).
+The format is no longer maintained and technically outdated, but it remains in use due to extensive legacy data.
+
+## Structure
+
+A GEF-BORE file consists of a **Header** and a **Datablock**.
+
+The **Header** contains structured metadata using keywords that start with `#`, defining properties from file format version (`#GEFID`) to drilling methods (`#MEASUREMENTTEXT`) and coordinate systems (`#XYID`, `#ZID`). Key header sections include column definitions (#COLUMNINFO), specimen documentation (`#SPECIMENVAR`, `#SPECIMENTEXT`), and measurement parameters (`#MEASUREMENTVAR`) for borehole geometry and groundwater data.
+
+After it comes the **Datablock**, containing layer-by-layer soil descriptions with mandatory depth intervals and soil classifications, plus optional textual descriptions of each layer's characteristics, color, and composition.
+This text-based structure makes GEF-BORE files _human-readable_ while ensuring machine parsing compatibility across different geotechnical software platforms.
+
+<svg xmlns="http://www.w3.org/2000/svg" width="928" height="608" style="height: 608px;" style="max-width:100%;height:auto;font:11.428571428571429px sans-serif;overflow:visible" viewBox="-8 -24 828 608"><g fill="none" stroke="#999"><path d="M0 0v16h16"/><path d="M0 0v512h16M16 16v32h16"/><path d="M16 16v48h16"/><path d="M16 16v64h16"/><path d="M16 16v80h16"/><path d="M16 16v112h16"/><path d="M16 16v128h16"/><path d="M16 16v144h16"/><path d="M16 16v176h16"/><path d="M16 16v192h16"/><path d="M16 16v208h16"/><path d="M16 16v224h16"/><path d="M16 16v256h16"/><path d="M16 16v272h16"/><path d="M16 16v304h16"/><path d="M16 16v320h16"/><path d="M16 16v336h16"/><path d="M16 16v368h16"/><path d="M16 16v384h16"/><path d="M16 16v416h16"/><path d="M16 16v432h16"/><path d="M16 16v464h16"/><path d="M16 16v480h16M16 512v16h16"/><path d="M16 512v32h16"/><path d="M16 512v48h16"/><path d="M16 512v64h16"/></g><g><circle r="2"/><text x="6" dy=".32em"><tspan font-family="monospace" font-weight="600">GEF-BORE-Report File</tspan></text></g><g transform="translate(0 16)"><circle cx="16" r="2"/><text x="22" dy=".32em"><tspan font-family="monospace" font-weight="600">Header Block</tspan><tspan dx="3.2">File metadata and boring description parameters</tspan></text></g><g transform="translate(0 512)"><circle cx="16" r="2"/><text x="22" dy=".32em"><tspan font-family="monospace" font-weight="600">Data Block</tspan><tspan dx="3.2">Layer-by-layer soil description data</tspan></text></g><g transform="translate(0 32)"><text x="38" dy=".32em"><tspan font-family="sans-serif" font-weight="500" text-decoration="underline">GEF Identification</tspan></text></g><g transform="translate(0 48)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#GEFID</tspan><tspan dx="3.2">GEF version and format identification</tspan></text></g><g transform="translate(0 64)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#COLUMNTEXT</tspan><tspan dx="3.2">Text data preparation flag</tspan></text></g><g transform="translate(0 80)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#COLUMNSEPARATOR</tspan><tspan dx="3.2">Field separator character</tspan></text></g><g transform="translate(0 96)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#RECORDSEPARATOR</tspan><tspan dx="3.2">Record separator character</tspan></text></g><g transform="translate(0 112)"><text x="38" dy=".32em"><tspan font-family="sans-serif" font-weight="500" text-decoration="underline">File Metadata</tspan></text></g><g transform="translate(0 128)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#FILEOWNER</tspan><tspan dx="3.2">File creator name</tspan></text></g><g transform="translate(0 144)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#FILEDATE</tspan><tspan dx="3.2">File creation date</tspan></text></g><g transform="translate(0 160)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#COMPANYID</tspan><tspan dx="3.2">Responsible company information</tspan></text></g><g transform="translate(0 176)"><text x="38" dy=".32em"><tspan font-family="sans-serif" font-weight="500" text-decoration="underline">Project Information</tspan></text></g><g transform="translate(0 192)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#PROJECTID</tspan><tspan dx="3.2">Project identification</tspan></text></g><g transform="translate(0 208)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#TESTID</tspan><tspan dx="3.2">Borehole identification number</tspan></text></g><g transform="translate(0 224)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#REPORTCODE</tspan><tspan dx="3.2">Reporting procedure specification</tspan></text></g><g transform="translate(0 240)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#MEASUREMENTCODE</tspan><tspan dx="3.2">Description methodology</tspan></text></g><g transform="translate(0 256)"><text x="38" dy=".32em"><tspan font-family="sans-serif" font-weight="500" text-decoration="underline">Coordinate &amp; Reference Systems</tspan></text></g><g transform="translate(0 272)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#XYID</tspan><tspan dx="3.2">Horizontal coordinates (required under NEN 5104)</tspan></text></g><g transform="translate(0 288)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#ZID</tspan><tspan dx="3.2">Surface elevation and height reference system</tspan></text></g><g transform="translate(0 304)"><text x="38" dy=".32em"><tspan font-family="sans-serif" font-weight="500" text-decoration="underline">Data Structure Definition</tspan></text></g><g transform="translate(0 320)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#COLUMN</tspan><tspan dx="3.2">Number of numerical data columns</tspan></text></g><g transform="translate(0 336)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#COLUMNINFO</tspan><tspan dx="3.2">Column definitions and units</tspan></text></g><g transform="translate(0 352)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#LASTSCAN</tspan><tspan dx="3.2">Number of data records (layers)</tspan></text></g><g transform="translate(0 368)"><text x="38" dy=".32em"><tspan font-family="sans-serif" font-weight="500" text-decoration="underline">Measurement Parameters</tspan></text></g><g transform="translate(0 384)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#MEASUREMENTVAR</tspan><tspan dx="3.2">Numerical measurement parameters</tspan></text></g><g transform="translate(0 400)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#MEASUREMENTTEXT</tspan><tspan dx="3.2">Text measurement parameters (some required, some optional)</tspan></text></g><g transform="translate(0 416)"><text x="38" dy=".32em"><tspan font-family="sans-serif" font-weight="500" text-decoration="underline">Specimen Data</tspan></text></g><g transform="translate(0 432)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#SPECIMENVAR</tspan><tspan dx="3.2">Numerical specimen parameters</tspan></text></g><g transform="translate(0 448)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#SPECIMENTEXT</tspan><tspan dx="3.2">Text specimen parameters</tspan></text></g><g transform="translate(0 464)"><text x="38" dy=".32em"><tspan font-family="sans-serif" font-weight="500" text-decoration="underline">File Relationships</tspan></text></g><g transform="translate(0 480)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#PARENT</tspan><tspan dx="3.2">Parent file references</tspan></text></g><g transform="translate(0 496)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">#CHILD</tspan><tspan dx="3.2">Child file references (e.g., piezometer data)</tspan></text></g><g transform="translate(0 528)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">Layer Geometry</tspan><tspan dx="3.2">Top and bottom depths of soil layers</tspan></text></g><g transform="translate(0 544)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">Soil Classification</tspan><tspan dx="3.2">Soil type according to classification system</tspan></text></g><g transform="translate(0 560)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">Additional Properties</tspan><tspan dx="3.2">Optional soil properties and characteristics</tspan></text></g><g transform="translate(0 576)"><circle cx="32" r="2"/><text x="38" dy=".32em"><tspan font-family="monospace" font-weight="600">Layer Description</tspan><tspan dx="3.2">Textual description of each layer</tspan></text></g></svg>
+
+## Measurement Variables
+
+Measurement variables (`#MEASUREMENTVAR`) in GEF-BORE-Report are optional numerical parameters that provide quantitative information about the borehole, drilling process, samples, and site conditions that cannot be captured in the main data block structure.
+
+`#MEASUREMENTVAR = ID, value, unit, description`
+
+The GEF-Bore specification reserves IDs 1-50 for standardized measurement variables.
+Users can define custom measurement variables using IDs 129-1500.
+
+<iframe width="100%" height="350" style="height: 350px;" frameborder="0"
+  src="https://observablehq.com/embed/d092e8b87c9a9d78@457?cells=measurementVariablesTable"></iframe>
+
+## Measurement Text Variables
+
+While measurement variables handle numerical data, measurement text variables store coded text information using standardized terminology and abbreviations to ensure consistent interpretation across different organizations and software systems.
+
+`#MEASUREMENTTEXT = ID, value, description`
+
+<iframe width="100%" height="418" style="height: 418px;" frameborder="0"
+  src="https://observablehq.com/embed/d092e8b87c9a9d78@457?cells=viewof+measurementTextVariablesTable%2CmeasurementTextStandardizedCodes"></iframe>
+
+## Drilling Method Codes
+
+Drilling Method Codes are used in Measurement Text Variables to document the drilling techniques employed in different segments of the borehole in `MEASUREMENTTEXT` IDs 31 to 40.
+
+`#MEASUREMENTTEXT = ID, CODE, boormethode`
+
+<iframe width="100%" height="350" style="height: 350px;" frameborder="0" src="https://observablehq.com/embed/d092e8b87c9a9d78@457?cells=drillingMethodCodesTable"></iframe>
+
+## Specimens Documentation
+
+The specimen system handles documentation for up to 200 soil samples collected during drilling. It splits sample data between `#SPECIMENVAR` (numerical properties like depths and diameters) and `#SPECIMENTEXT` (codes, dates, and equipment details).
+
+### Specimen Text Variables
+
+`#SPECIMENTEXT = ID, value, description`
+
+Specimen texts 1 to 5 are reserved to be able to add comments to the sample.
+
+For example, `#SPECIMENTEXT = 1, folie ontbreekt, opmerking monstername1`
+
+<iframe width="100%" height="350" style="height: 350px;" frameborder="0"
+  src="https://observablehq.com/embed/d092e8b87c9a9d78@457?cells=specimenTextPropertiesTable"></iframe>
+
+### Specimen Numerical Variables
+
+`#SPECIMENVAR = ID, value, unit, description` where
+
+- ID = Index number (calculated using formulas)
+- value = Numerical measurement
+- unit = Measurement unit (m, mm, -)
+- description = Descriptive text in Dutch
+
+<iframe width="100%" height="214" style="height: 214px;" frameborder="0"
+  src="https://observablehq.com/embed/d092e8b87c9a9d78@457?cells=specimenNumericalPropertiesTable"></iframe>
+
+## Horizontal Reference System
+
+The `#XYID` keyword defines the horizontal coordinate reference system in GEF-Bore files, specifying the positioning datum and location coordinates.
+
+The format is `#XYID = code, X, Y, deltaX, deltaY`, where `code` identifies the coordinate system, `X` and `Y` provide the boring location coordinates, and `deltaX, deltaY` indicate positioning accuracy.
+
+For example, `#XYID = 31000, 79578.38, 424838.97, 0.02, 0.02` places the test at Dutch RD coordinates (79578.38, 424838.97) with ±2cm accuracy.
+
+This keyword enables places the test in real-world coordinates, which enables integration with GIS systems. This in turn enables integration of geotechnical data alongside structural or building models in spatial context.
+
+### Local Coordinate Systems
+
+Code `00000` allows a local coordinate system with its description in `#MEASUREMENTTEXT = 7`:
+For example:
+
+```
+#XYID = 00000, 125000, 450000, 0.1, 0.1
+#MEASUREMENTTEXT = 7, Local site grid, origin at main building corner
+```
+
+## Vertical Coordinate Systems
+
+The `#ZID` keyword defines the vertical reference system and surface elevation.
+It takes the format `#ZID = code, elevation, accuracy`.
+
+- The code identifies the height reference system
+- Elevation gives the surface level in meters relative to that datum
+- Accuracy specifies measurement precision.
+
+For example, `#ZID = 31000, -2.45, 0.01` indicates the ground surface is 2.45 meters below NAP with 1cm accuracy. This keyword is mandatory because all layer depths in the data block are measured downward from this reference surface.
+
+<iframe width="100%" height="236" style="height: 236px;" frameborder="0" src="https://observablehq.com/embed/d092e8b87c9a9d78@459?cells=verticalCoordinateSystemTable"></iframe>
+
+## Column Quantities
+
+Column Quantities are the standardized physical measurements that can appear in GEF-Bore data columns (#COLUMNINFO). Each has a unique ID number (1-4) that defines what the column contains.
+
+For example `#COLUMNINFO = 3, m, depth, 1` tells parsers: "Column 3 contains quantity 1 diepte onderkant laag in m".
+
+The quantity system ensures a column labeled "1" always means "diepte onderkant laag", regardless of which software created the file.
+
+<iframe width="100%" height="191" style="height: 191px;"  frameborder="0"
+  src="https://observablehq.com/embed/d092e8b87c9a9d78@458?cells=columnQuantitiesTable"></iframe>
