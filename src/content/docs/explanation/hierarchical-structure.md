@@ -107,7 +107,7 @@ Consider a project with 2 boreholes, where "Borehole 1 (BH001)" has 3 samples:
 
 **Projects table:**
 | project_uid | horizontal_crs | vertical_crs |
-|-------------|--------------|
+|-------------|----------------|--------------|
 | P001 | EPSG:2326 | EPSG:5738 |
 
 **Locations table:**
