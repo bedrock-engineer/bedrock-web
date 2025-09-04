@@ -8,98 +8,130 @@ prev: false
 next: false
 ---
 
-[AGS4](https://www.ags.org.uk/data-format/ags4-data-format/) is a standardized text file format specifically designed for exchanging geotechnical information between different software systems used in geotechnical engineering. It organizes borehole logs, laboratory test results, and field measurements into structured data tables with validation rules to ensure consistent data quality across the geotechnical industry.
+[AGS4](https://www.ags.org.uk/data-format/ags4-data-format/) is a standardized text file format designed for exchanging geotechnical information between different software systems used in geotechnical engineering. It organizes borehole logs, laboratory test results, and field measurements into structured data tables with validation rules to ensure consistent data quality across the geotechnical industry.
 
 ## Groups
 
-In the AGS4 format, **Groups** are organizational containers that structure geotechnical data. Each Group represents a specific aspect of geotechnical investigation, for example, project information (PROJ), location details (LOCA), sample information (SAMP), or specific test types like Standard Penetration Tests (ISPT).
+In the AGS4 format, **Groups** are organizational containers that structure geotechnical data. Each Group represents a specific aspect of geotechnical investigation, for example, project information (`PROJ`), location details (`LOCA`), sample information (`SAMP`), or specific test types like Standard Penetration Tests (`ISPT`).
 
 AGS4 Groups are organised in a hierarchical manner.
-Each **sample** (SAMP) belongs to a **location** (LOCA). Each **location** belongs to a **project** (PROJ).
+Each **sample** (`SAMP`) belongs to a **location** (`LOCA`). Each **location** belongs to a **project** (`PROJ`).
 
 Here’s a an indented tree diagram showing the hierarchy of groups commonly found in an AGS4 file.
 
 <svg xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;font:13px sans-serif; max-width: 450px;"  viewBox="-12 -24 402 424">
 <g fill="none" stroke="currentColor">
-    <path d="M0 0v24h24"/><path d="M0 0v264h24"/>
-    <path d="M0 0v288h24"/><path d="M0 0v312h24"/>
-    <path d="M0 0v336h24M24 24v24h24"/><path d="M24 24v120h24"/>
-    <path d="M24 24v168h24"/><path d="M24 24v192h24"/>
-    <path d="M24 24v216h24M48 48v24h24"/><path d="M48 48v72h24M48 144v24h24M72 72v24h24"/>
+    <path d="M0 0v24h24"/>
+    <path d="M0 0v264h24"/>
+    <path d="M0 0v288h24"/>
+    <path d="M0 0v312h24"/>
+    <path d="M0 0v336h24M24 24v24h24"/>
+    <path d="M24 24v120h24"/>
+    <path d="M24 24v168h24"/>
+    <path d="M24 24v192h24"/>
+    <path d="M24 24v216h24M48 48v24h24"/>
+    <path d="M48 48v72h24M48 144v24h24M72 72v24h24"/>
 </g>
 <g fill="currentColor">
-<g >
+<g>
 <circle r="2.5"/>
 <text x="6" dy=".32em">
   <tspan font-weight="600">PROJ</tspan>
   <tspan dx="2">Project information</tspan>
-</text></g>
+</text>
+</g>
 <g transform="translate(0 24)"><circle cx="24" r="2.5"/>
 <text x="30" dy=".32em">
   <tspan font-weight="600">LOCA</tspan>
   <tspan dx="2">Location details</tspan>
-</text></g>
-<g transform="translate(0 264)"><circle cx="24" r="2.5" fill="currentColor"/>
+</text>
+</g>
+<g transform="translate(0 264)">
+<circle cx="24" r="2.5" fill="currentColor"/>
 <text x="30" dy=".32em">
   <tspan font-weight="600">ABBR</tspan>
   <tspan dx="2">Abbreviation Definitions</tspan>
-</text></g>
-<g transform="translate(0 288)"><circle cx="24" r="2.5" fill="currentColor"/>
+</text>
+</g>
+<g transform="translate(0 288)">
+<circle cx="24" r="2.5" fill="currentColor"/>
 <text x="30" dy=".32em">
   <tspan font-weight="600">TRAN</tspan>
   <tspan dx="2">Data File Transmission Information / Data Status</tspan>
-</text></g>
-<g transform="translate(0 312)"><circle cx="24" r="2.5" fill="currentColor"/>
+</text>
+</g>
+<g transform="translate(0 312)">
+<circle cx="24" r="2.5" fill="currentColor"/>
 <text x="30" dy=".32em">
   <tspan font-weight="600">TYPE</tspan>
   <tspan dx="2">Definition of Data Types</tspan>
-</text></g>
-<g transform="translate(0 336)"><circle cx="24" r="2.5" fill="currentColor"/>
+</text>
+</g>
+<g transform="translate(0 336)">
+<circle cx="24" r="2.5" fill="currentColor"/>
 <text x="30" dy=".32em">
   <tspan font-weight="600">UNIT</tspan>
   <tspan dx="2">Definition of Units</tspan>
-</text></g>
-<g transform="translate(0 48)"><circle cx="48" r="2.5"/>
+</text>
+</g>
+<g transform="translate(0 48)">
+<circle cx="48" r="2.5"/>
 <text x="54" dy=".32em">
   <tspan font-weight="600">SAMP</tspan>
   <tspan dx="2">Sample information</tspan>
-</text></g>
-<g transform="translate(0 144)"><circle cx="48" r="2.5"/>
+</text>
+</g>
+<g transform="translate(0 144)">
+<circle cx="48" r="2.5"/>
 <text x="54" dy=".32em">
   <tspan font-weight="600">IPRG</tspan>
   <tspan dx="2">In Situ permeability</tspan>
-</text></g>
-<g transform="translate(0 192)"><circle cx="48" r="2.5" fill="currentColor"/>
+</text>
+</g>
+<g transform="translate(0 192)">
+<circle cx="48" r="2.5" fill="currentColor"/>
 <text x="54" dy=".32em">
   <tspan font-weight="600">GEOL</tspan>
   <tspan dx="2">Geological descriptions</tspan>
-</text></g>
-<g transform="translate(0 216)"><circle cx="48" r="2.5" fill="currentColor"/>
+</text>
+</g>
+<g transform="translate(0 216)">
+<circle cx="48" r="2.5" fill="currentColor"/>
 <text x="54" dy=".32em">
   <tspan font-weight="600">BKFL</tspan>
   <tspan dx="2">Backfill details</tspan>
-</text></g>
-<g transform="translate(0 240)"><circle cx="48" r="2.5" fill="currentColor"/>
+</text>
+</g>
+<g transform="translate(0 240)">
+<circle cx="48" r="2.5" fill="currentColor"/>
 <text x="54" dy=".32em">
   <tspan font-weight="600">ISPT</tspan>
   <tspan dx="2">Standard Penetration Test</tspan>
-</text></g>
-<g transform="translate(0 72)"><circle cx="72" r="2.5"/>
+</text>
+</g>
+<g transform="translate(0 72)">
+<circle cx="72" r="2.5"/>
 <text x="78" dy=".32em">
   <tspan font-weight="600">GRAG</tspan>
   <tspan dx="2">Particle size distribution analysis</tspan>
-</text></g>
-<g transform="translate(0 120)"><circle cx="72" r="2.5" fill="currentColor"/>
+</text>
+</g>
+<g transform="translate(0 120)">
+<circle cx="72" r="2.5" fill="currentColor"/>
 <text x="78" dy=".32em">
   <tspan font-weight="600">LNMC</tspan>
   <tspan dx="2">Water content</tspan>
-</text></g>
-<g transform="translate(0 168)"><circle cx="72" r="2.5" fill="currentColor"/>
+</text>
+</g>
+<g transform="translate(0 168)">
+<circle cx="72" r="2.5" fill="currentColor"/>
 <text x="78" dy=".32em">
   <tspan font-weight="600">IPRT</tspan>
   <tspan dx="2">In Situ permeability data</tspan>
-</text></g>
-<g transform="translate(0 96)"><circle cx="96" r="2.5" fill="currentColor"/>
+</text>
+</g>
+<g transform="translate(0 96)">
+<circle cx="96" r="2.5" fill="currentColor"/>
 <text x="102" dy=".32em">
   <tspan font-weight="600">GRAT</tspan>
   <tspan dx="2">Particle size distribution analysis data</tspan>
