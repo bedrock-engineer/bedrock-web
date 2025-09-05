@@ -1,6 +1,6 @@
 // @ts-check
 import cloudflare from "@astrojs/cloudflare";
-import markdoc from '@astrojs/markdoc';
+import markdoc from "@astrojs/markdoc";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
@@ -95,6 +95,10 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [rehypeHeadingIds],
     remarkPlugins: [remarkDefinitionList],
+  },
+
+  redirects: {
+    "/reference/formats/ags/": "/reference/formats/ags/ags4/",
   },
 
   vite: {

@@ -562,5 +562,5 @@ Headings include additional information like units of measurement, descriptions,
 </dl>
 </details>
 
-<iframe width="100%" height="481" frameborder="0" style="height: 1200px;"
+<iframe width="100%" height="481" frameborder="0" style="height: 600px;"
   src="https://observablehq.com/embed/@julesblm/ags4-data-format@514?cells=viewof+groupSearch%2Cviewof+groupTable%2CgroupText%2CheadingsTable"></iframe>

@@ -169,6 +169,14 @@ with open("locations.geojson", "w") as file:
     file.write(locations_geojson)
 ```
 
+{% aside type="caution" %}
+The official GeoJSON specification (RFC 7946) mandates WGS84 geographic coordinates (EPSG:4326) as the only supported CRS.
+While GeoJSON allows an optional third coordinate for elevation, the specification doesn't define what vertical reference system this represents.
+
+This creates ambiguity by design.
+Without a defined vertical coordinate system, elevation interpretation becomes a "free-for-all" depending on how individual web mapping libraries handle the height values.
+{% /aside %}
+
 ## 2: Web Map Visualization
 
 Create a new folder and move `locations.geojson` into it.
@@ -275,7 +283,21 @@ In the `index.html`, copy the following HTML.
 
 ### 2.2: Add MapLibre JavaScript
 
-Now you'll build the interactive map. MapLibre GL JS is a web mapping library that displays maps and data in browsers.
+Now you'll build the interactive map. MapLibre GL JS is a library for displaying 2D maps and geospatial data in web browsers.
+
+At its core is the **Map** object, which manages the rendering canvas and coordinate system.
+The **Map** contains a **Style** (defining visual appearance through layers, sources, and styling rules) and handles user interactions like pan and zoom.
+
+To add data, you work with **Sources** and **Layers**.
+**Sources** load and manage geographic data (GeoJSON, vector tiles, raster tiles).
+**Layers** define how that data should be visually rendered, as circles, lines, fills, symbols, or extruded 3D shapes.
+This separation allows you to load data once and visualize it multiple ways, or apply different styling rules based on data properties, zoom levels, or user interactions.
+
+{% aside type="caution" %}
+MapLibre GL JS uses the web mercator projection (EPSG:3857), meaning it does not natively support handling altitudes or vertical coordinates fully as true 3D points.
+
+For displaying the data 3D geospatially, check out the CesiumJS Guide.
+{% /aside %}
 
 #### Import the mapping library
 
