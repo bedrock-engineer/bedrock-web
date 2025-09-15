@@ -81,7 +81,7 @@ Here follow the reserved IDs:
 <iframe width="100%" height="418" style="height:418px" frameborder="0"
   src="https://observablehq.com/embed/@julesblm/geotechnical-exchange-format-gef-cpt@670?cells=viewof+measurementVariablesTable%2CmeasurementTextVariableOptions"></iframe>
 
-## Measurement Text Variables
+### Measurement Text Variables
 
 Measurement Text Variables (`#MEASUREMENTTEXT`) store descriptive information using a standardized ID numbering system. Unlike measurement variables (which are numerical), these contain human-readable text describing the project, equipment, and procedures.
 
@@ -192,10 +192,10 @@ The new BRO laws make geotechnical data in GEF-CPT a "compliance liability".
 Different institutional needs drive different format preferences. This quote summarizes the situation
 
 > The results of soundings, drillings and samples are processed the day after the investigation, after which the customer receives the report in an XML or GEF file. ‘The XML file is suitable for national databases such as BRO,’ says Van der Burg. ‘The GEF file is compatible with the calculation programmes.’
+> [Geotechnisch onderzoek in steden, op velden en wegen](https://gww-bouw.nl/specials/jaarboek/geotechnisch-onderzoek-in-steden-op-velden-en-wegen/)
 
 <!-- > De resultaten van sonderingen, boringen en monsters worden op de dag na het onderzoek uitgewerkt, waarna de klant de rapportage ontvangt in een xml- of gef-file. “De xml-file is geschikt voor landelijke databases zoals BRO”, vertelt Van der Burg. “De gef-file sluit aan op de rekenprogramma’s.” -->
 
-> [Geotechnisch onderzoek in steden, op velden en wegen](https://gww-bouw.nl/specials/jaarboek/geotechnisch-onderzoek-in-steden-op-velden-en-wegen/)
 
 BRO requires XML because regulatory databases need structured data adhering to current standards for archival integrity and legal compliance.
 GEF persists because engineering calculation software, like [D-Foundations](https://www.deltares.nl/en/software-and-data/products/d-foundations), support it.
