@@ -37,41 +37,41 @@ import "../styles/global.css";
       <Header />
 
       <ThreeColumns>
-        <OneThirdColumn title="What is ground investigation data?">
+        <OneThirdColumn title="Why does ground investigation data matter?">
           <p>
             Every foundation, tunnel, and major construction project depends on
             ground investigation data to ensure safety and feasibility.
             Engineers drill boreholes, take soil samples, and conduct tests to
-            understand what is in the ground.
+            understand what is in the ground and assess risks.
           </p>
         </OneThirdColumn>
 
         <OneThirdColumn title="What is the problem?">
           <p>
-            Yet this critical data is trapped in proprietary, database systems
-            like gINT, or in outdated file formats like AGS and GEF. As a
-            result, geotechnical projects suffer from inefficient workflows,
-            vendor lock-in, and inability to use modern analysis tools that
-            could improve decision-making.
+            Yet this critical data gets trapped in proprietary systems like
+            gINT, or outdated formats like AGS and GEF. Geotechnical projects
+            get stuck with inefficient workflows, vendor lock-in, and can't use
+            modern analysis tools that could improve decision-making.
           </p>
         </OneThirdColumn>
 
-        <OneThirdColumn title="What is Bedrock?">
+        <OneThirdColumn title="How does Bedrock help?">
           <p>
-            <a
+            Bedrock is the company that develop <a
               class="link"
               href="https://github.com/bedrock-engineer/bedrock-ge"
             >
               <code>bedrock-ge</code>
-            </a>{" "}
-            is an open-source Python library that converts your ground investigation
-            data from various formats, making it accessible to GIS, databases, and
-            modern analysis tools.
+            </a>, an open-source Python library that liberates your trapped
+            data. Convert from AGS, GEF, gINT, Excel, and other formats into
+            modern geospatial data that works with Python, GIS, and databases.
           </p>
 
           <p>
-            Bedrock is the company that develops <code>bedrock-ge</code> and provides
-            consulting services.
+            We provide <a class="link" href="/professional-support/"
+              >consulting services
+            </a>
+            for teams who need help implementing modern workflows
           </p>
         </OneThirdColumn>
       </ThreeColumns>
@@ -223,9 +223,9 @@ import "../styles/global.css";
               roadmap.
             </p>
             <p>
-              Contributing doesn't only mean writing code. You can also
-              contribute by adding data, examples, or being active in the
-              community by asking or answering questions.
+              <a href="contributing" class="link">Contributing</a>
+              doesn't only mean writing code. You can also contribute by adding data,
+              examples, or being active in the community by asking or answering questions.
             </p>
           </section>
         </Panel>
@@ -234,6 +234,13 @@ import "../styles/global.css";
           title="Get <em>professional support</em> <br />from the creators"
           href="professional-support"
         >
+          <!-- <p>
+            Bedrock is the company that develops <code> bedrock-ge </code>
+            and provides consulting services. Our experts are highly knowledgeable
+            an passionate in both geoscience and software development. A unique combination
+            that helps you transform important geodata into 3D models that drive
+            innovation. Get in touch 
+          </p> -->
           <p>
             While <code>bedrock-ge</code> is a Free & Open Source Software project,
             you might be looking for <a
@@ -273,7 +280,7 @@ import "../styles/global.css";
             <ul>
               <li>
                 <a
-                  class="bg-black"
+                  class="footer-link"
                   href="https://www.linkedin.com/company/bedrock-engineer/"
                 >
                   <Icon class="inline mr-1" name="linkedin" />
@@ -281,19 +288,22 @@ import "../styles/global.css";
                 </a>
               </li>
               <li>
-                <a class="bg-black" href="https://github.com/bedrock-engineer/">
+                <a
+                  class="footer-link"
+                  href="https://github.com/bedrock-engineer/"
+                >
                   <Icon class="inline mr-1" name="github" />
                   GitHub
                 </a>
               </li>
               <li>
-                <a class="bg-black" href="mailto:info@bedrock.engineer">
+                <a class="footer-link" href="mailto:info@bedrock.engineer">
                   <Icon class="inline mr-1" name="email" />
                   info@bedrock.engineer
                 </a>
               </li>
               <li>
-                <a class="bg-black" href="company-details">
+                <a class="footer-link" href="company-details">
                   <Icon class="inline mr-1" name="document" />
                   Company details
                 </a>
@@ -302,7 +312,7 @@ import "../styles/global.css";
           </div>
 
           <p class="self-end bg-black">
-            © {new Date().getFullYear()} Bedrock B.V.
+            © {new Date().getFullYear()} Bedrock Engineer B.V.
           </p>
         </div>
       </footer>
@@ -311,6 +321,14 @@ import "../styles/global.css";
 
   <style>
     @reference "../styles/global.css";
+
+    .footer-link {
+      background-color: black;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
 
     .landing {
       --border-color: var(--color-gray-400);

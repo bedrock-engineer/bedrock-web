@@ -1,17 +1,24 @@
 ---
 export interface Props {
   href?: string;
+  variant?: 'default' | 'primary';
 }
 
-const { href, ...props } = Astro.props;
+const { href, variant = 'default', ...props } = Astro.props;
+
+const baseClasses = "px-2 py-1 w-fit rounded-[1px] border block transition-colors";
+const variantClasses = {
+  default: "bg-white border-black hover:bg-green-50 hover:border-green-600",
+  primary: "bg-black border-black text-white hover:bg-gray-800"
+};
 ---
 
 {href ? (
-  <a href={href} class="px-2 py-1 w-fit bg-white rounded-[1px] border-black border block hover:bg-green-50 hover:border-green-600 transition-colors" {...props}>
+  <a href={href} class={`${baseClasses} ${variantClasses[variant]}`} {...props}>
     <slot />
   </a>
 ) : (
-  <button class="px-2 py-1 rounded-[1px] border-black border block hover:bg-gray-100 transition-colors w-fit" {...props}>
+  <button class={`${baseClasses} ${variantClasses[variant]}`} {...props}>
     <slot />
   </button>
 )}

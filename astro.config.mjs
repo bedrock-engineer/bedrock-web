@@ -1,4 +1,6 @@
 // @ts-check
+import cloudflare from "@astrojs/cloudflare";
+import markdoc from "@astrojs/markdoc";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
@@ -7,7 +9,6 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 import remarkDefinitionList from "remark-definition-list";
 import starlightLinksValidator from "starlight-links-validator";
-import cloudflare from "@astrojs/cloudflare";
 import { og } from "./og";
 
 // https://astro.build/config
@@ -18,7 +19,7 @@ export default defineConfig({
       plugins: [starlightLinksValidator()],
       title: "Bedrock",
       components: {
-        Head: './src/components/Head.astro',
+        Head: "./src/components/Head.astro",
       },
       customCss: [
         // Relative path to your custom CSS file
@@ -26,11 +27,11 @@ export default defineConfig({
       ],
       lastUpdated: true,
       logo: {
-        light: "/src/assets/bedrock.svg",
-        dark: "/src/assets/bedrock.svg",
+        light: "./src/assets/bedrock.svg",
+        dark: "./src/assets/bedrock.svg",
         replacesTitle: true,
       },
-      favicon: "/src/assets/bedrock.svg",
+      favicon: "/bedrock.svg",
       editLink: {
         baseUrl:
           "https://github.com/bedrock-enginer/bedrock-web/edit/main/docs/",
@@ -50,10 +51,7 @@ export default defineConfig({
       sidebar: [
         {
           label: "Start Here",
-          items: [
-            "getting-started",
-            // "manual-setup"
-          ],
+          items: ["getting-started"],
         },
         {
           label: "Explanation",
@@ -62,15 +60,14 @@ export default defineConfig({
         {
           label: "Guides",
           autogenerate: { directory: "guides" },
-
-          // items: [
-          //   // Each item here is one entry in the navigation menu.
-          //   { label: "Example Guide", slug: "guides/example" },
-          // ],
         },
         {
           label: "Examples",
           autogenerate: { directory: "examples" },
+        },
+        {
+          label: "Tutorials",
+          autogenerate: { directory: "tutorials" },
         },
 
         {
@@ -81,6 +78,7 @@ export default defineConfig({
           label: "Resources",
           items: [
             { label: "About", slug: "about" },
+            { label: "Contributing", slug: "contributing" },
             { label: "Professional support", slug: "professional-support" },
           ],
         },
@@ -89,6 +87,7 @@ export default defineConfig({
     mdx({
       optimize: true,
     }),
+    markdoc(),
     react({ experimentalReactChildren: true }),
     og(),
   ],
@@ -96,6 +95,10 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [rehypeHeadingIds],
     remarkPlugins: [remarkDefinitionList],
+  },
+
+  redirects: {
+    "/reference/formats/ags/": "/reference/formats/ags/ags4/",
   },
 
   vite: {

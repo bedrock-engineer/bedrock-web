@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geotechnical Data Viewer</title>
+    <link
+      href="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+
+      .legend {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 5px;
+        padding: 10px;
+        font-family: sans-serif;
+        font-size: 12px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        z-index: 1000;
+      }
+
+      .legend h4 {
+        margin: 0 0 8px 0;
+        font-size: 14px;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 4px;
+      }
+
+      .legend-color {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+        border: 1px solid #fff;
+      }
+
+      dl {
+        margin-inline: 0;
+      }
+
+      dt {
+        font-weight: 600;
+      }
+
+      dd {
+        font-weight: 400;
+        margin-bottom: 8px;
+      }
+
+      dt,
+      dd {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map">
+      <!-- This is the element that will become the map -->
+    </div>
+    <div class="legend" id="legend">
+      <!-- Legend will be populated by JavaScript -->
+    </div>
+    <script src="script.js" type="module"></script>
+  </body>
+</html>

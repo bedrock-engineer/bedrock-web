@@ -1,0 +1,1078 @@
+---
+title: Viewing Geotechnical Data on 3D Web Map
+description: Learn how to transform geotechnical files for viewing on a 3D web map using CesiumJS
+draft: true
+---
+
+**What you'll build:** An interactive web map that displays your geotechnical investigation data in 3D, making it accessible to anyone with a web browser.
+
+**You'll learn to:** Transform AGS files into web-friendly formats and create a clickable map showing borehole locations and in-situ tests like Standard Penetration Tests and Weathering Grades.
+
+**Time needed:** 30-45 minutes
+
+**Result:** A single web page stakeholders can open anywhere to explore your ground investigation results.
+
+Instead of sharing folders of specialized files, you'll have a 3D web visualization that works on any device without special software.
+
+Here's the end result:
+
+{% iframe
+   src="/cesium-map/index.html"
+   loading="lazy"
+   width="100%"
+   height="500"
+   title="Bedrock AGS to CesiumJS Webmap demo"
+   style="min-height:500px;" /%}
+
+{% linkbutton href="/cesium-map/index.html" %}
+  View the 3D webmap
+{% /linkbutton %}
+
+{% linkbutton
+   href="https://github.com/bedrock-engineer/bedrock-guides/"
+   variant="secondary" %}
+View the code
+{% /linkbutton %}
+
+You can also explore the data preparation workflow interactively in a [marimo notebook](https://marimo.app/gh/bedrock-engineer/ags-to-webmap/main?entrypoint=data_processing%2Fags_to_geojson.py) in your web browser.
+[marimo](https://marimo.io/) is a reactive Python notebook, meaning it automatically updates when you modify data or code. We're big fans of it here at Bedrock.
+
+## Prerequisites
+
+Before starting, ensure you have:
+
+- **Python 3.13+** with ability to install packages (we recommend [`uv`](https://docs.astral.sh/uv/)).
+- **Familiarity with web development**: HTML, CSS, and modern JavaScript patterns.
+- **Intermediate JavaScript knowledge**: Understanding of ES6 modules, async/await, and DOM manipulation.
+- **AGS files** from your geotechnical project. Download the AGS files from the demo [here](/hk_kai_tak_ags_files.zip).
+- **Your project's coordinate reference system (CRS)**. Check your geotechnical report or survey data.
+- **Local development setup**: Code editor and command line access.
+
+**Important:** Your web map will need to run on a local server (not by opening HTML files directly) due to browser security restrictions when loading data files. You can use `python3 -m http.server 8000` to quickly start one.
+
+## 1. Data Transformation With `bedrock-ge`
+
+### 1.1: Set Up Your Python Environment
+
+Create a new Python project using the `uv init` command.
+[Learn more on Python projects using uv](https://docs.astral.sh/uv/guides/projects/).
+
+```bash
+uv init
+```
+
+Install the required packages:
+
+```bash
+uv add bedrock-ge pyproj geopandas shapely
+```
+
+### 1.2: Read AGS Files using Bedrock
+
+First, you'll convert your AGS files to geospatial data using `bedrock-ge`.
+
+For this, you need to know the horizontal and vertical Coordinate Reference System your AGS data uses.
+For the demo files, it's Hong Kong 1980 Grid System (EPSG:2326) and Hong Kong Principle Datum (EPSG:5738).
+
+You'll convert each AGS file to a single database object.
+
+```python
+import geopandas as gpd
+from bedrock_ge.gi.ags import ags_to_brgi_db_mapping
+from bedrock_ge.gi.db_operations import merge_dbs
+from bedrock_ge.gi.geospatial import create_brgi_geodb
+from bedrock_ge.gi.io_utils import geodf_to_df
+from bedrock_ge.gi.mapper import map_to_brgi_db
+from pyproj import CRS, Transformer, network
+from pyproj.crs.crs import CompoundCRS
+from shapely.geometry import Point, LineString
+from pathlib import Path
+
+# Define coordinate reference systems
+projected_crs = CRS("EPSG:2326")        # Hong Kong 1980 Grid System
+vertical_crs = CRS("EPSG:5738")   # Hong Kong Principle Datum
+
+# Create compound CRS for proper 3D coordinate handling
+compound_crs = CompoundCRS(
+    name=f"{projected_crs.name} + {vertical_crs.name}",
+    components=[projected_crs, vertical_crs],
+)
+
+# CesiumJS requires WGS84 Ellipsoidal height (EPSG:4979)
+cesium_crs = CRS("EPSG:4979")
+
+# Set up coordinate transformer with network access for accurate transformations
+transformer_compound = Transformer.from_crs(compound_crs, cesium_crs, always_xy=True)
+network.set_network_enabled(active=True) # This is crucial for accurate transformations!
+
+folder_path = Path("./hk_kaitak_ags_files")
+ags_files = list(folder_path.glob("*AGS")) + list(folder_path.glob("*ags"))
+
+ags_file_brgi_dbs = []
+
+for file_path in ags_files:
+    print(f"[Processing {file_path.name}]")
+    brgi_mapping = ags_to_brgi_db_mapping(file_path, projected_crs, hk_principle_datum)
+    brgi_db = map_to_brgi_db(brgi_mapping)
+    ags_file_brgi_dbs.append(brgi_db)
+```
+
+Now you'll merge them into a single database and make the data geospatial.
+`bedrock-ge` creates 3D geospatial geometries for boreholes, specifically vertical lines.
+
+```python
+merged_brgi_db = merge_dbs(ags_file_brgi_dbs)
+geodb = create_brgi_geodb(merged_brgi_db) # Transforms to geospatial data
+```
+
+### 1.3: Coordinate Transformation for CesiumJS
+
+CesiumJS only supports WGS84 Ellipsoidal height ([EPSG:4979](https://epsg.io/4979)). We need to transform our geospatial data from the source coordinate system to this target system.
+
+Add these transformation functions:
+
+```python
+def transform_geometry(geom):
+    """Transform geometry from compound CRS to EPSG:4979 for CesiumJS"""
+    if geom is None:
+        return None
+    
+    if geom.geom_type == 'Point':
+        if geom.has_z:
+            x, y, z = transformer_compound.transform(geom.x, geom.y, geom.z)
+            return Point(x, y, z)
+        else:
+            x, y = transformer_compound.transform(geom.x, geom.y)
+            return Point(x, y)
+        
+    elif geom.geom_type == 'LineString':
+        coords = list(geom.coords)
+        if len(coords[0]) == 3:  # Has Z coordinate
+            x_list, y_list, z_list = zip(*coords)
+            x_new, y_new, z_new = transformer_compound.transform(x_list, y_list, z_list)
+            return LineString(list(zip(x_new, y_new, z_new)))
+        else:  # 2D coordinates
+            x_list, y_list = zip(*coords)
+            x_new, y_new = transformer_compound.transform(x_list, y_list)
+            return LineString(list(zip(x_new, y_new)))
+    else:
+        raise ValueError(f"Unsupported geometry type: {geom.geom_type}")
+
+def to_epsg_4979_3d(gdf):
+    """Transform GeoDataFrame to EPSG:4979 for CesiumJS compatibility"""
+    result = gdf.copy()
+    result.geometry = gdf.geometry.apply(transform_geometry)
+    result.crs = cesium_crs
+    return result
+```
+
+{% aside type="tip" %}
+**Why EPSG:4979?** For underground visualization, we need height coordinates.
+The [GeoJSON specification](https://datatracker.ietf.org/doc/html/rfc7946) states that EPSG:4326 (WGS84 longitude/latitude in degrees) is the only valid CRS.
+However, it allows an optional third coordinate as "height in meters above or below the WGS 84 reference ellipsoid" which makes it effectively EPSG:4979, not EPSG:4326.
+{% /aside %}
+
+### 1.4: Add Data to Display
+
+Your map will display:
+
+- The identifier of the borehole `HOLE_ID`
+- The type of borehole `HOLE_TYPE`
+- The start & end date of drilling `HOLE_STAR` & `HOLE_ENDD`
+- Remarks `HOLE_REM`
+
+{% aside type="tip" %}
+To see what the headings in AGS mean, see the [Bedrock AGS4 reference](https://bedrock.engineer/reference/formats/ags/). Note there are slight differences between AGS3 and AGS4.
+{% /aside %}
+
+Select the columns you need from the `geodb.Location` table:
+
+```python
+location_columns = ["location_uid", "HOLE_ID", "HOLE_TYPE", "HOLE_STAR", "HOLE_ENDD", "HOLE_REM", "geometry"]
+location_geodf = geodb.Location[location_columns]
+```
+
+This creates a GeoDataFrame with the essential borehole information and the 3D geometry (vertical lines representing the full depth of each GI location).
+
+### 1.5: Export to GeoJSON
+
+Now transform the data to CesiumJS-compatible coordinates and export to GeoJSON:
+
+```python
+# Transform coordinates to EPSG:4979 for CesiumJS compatibility
+locations_geojson = to_epsg_4979_3d(location_geodf).to_json(to_wgs84=True)
+
+with open("locations.geojson", "w") as file:
+    file.write(locations_geojson)
+
+print(f"Exported {len(location_geodf)} locations to locations.geojson")
+```
+
+The `to_epsg_4979_3d()` function transforms the 3D geometries to the coordinate system CesiumJS requires.
+The `to_wgs84=True` parameter ensures proper coordinate handling and ensure no CRS info is written to the geoJSON.
+
+{% aside type="note" %}
+**Checkpoint:** You should now have a `locations.geojson` file containing your borehole data in the correct coordinate system for CesiumJS.
+You can open this file in a text editor to verify it contains your data with longitude, latitude, and elevation coordinates.
+{% /aside %}
+
+### 1.6 Export Additional Data Types
+
+For a more comprehensive visualization, you can also export weathering and Standard Penetration Test (SPT) data:
+
+#### Weathering Data
+
+Weathering data follows the Brown 1981 classification scheme with grades I (fresh rock) through VI (residual soil):
+
+```python
+# Export weathering data
+weathering_grade_df = to_epsg_4979_3d(geodb.InSituTests["WETH"])
+weathering_geojson = weathering_grade_df.to_json(to_wgs84=True)
+
+with open("weathering.geojson", "w") as weathering_file:
+    weathering_file.write(weathering_geojson)
+
+print(f"Exported {len(weathering_grade_df)} weathering records")
+```
+
+#### SPT Data
+
+Standard Penetration Test data provides soil strength measurements:
+
+```python
+# Export SPT data
+ispt_df = to_epsg_4979_3d(geodb.InSituTests["ISPT"])
+ispt_geojson = ispt_df.to_json(to_wgs84=True)
+
+with open("ispt.geojson", "w") as ispt_file:
+    ispt_file.write(ispt_geojson)
+
+print(f"Exported {len(ispt_df)} SPT records")
+```
+
+{% aside type="tip" %}
+**AGS Abbreviations:** AGS files use abbreviations that might not be clear to stakeholders.
+You can look up their meanings in the `ABBR` group. For example, hole types like "SCP" mean "Static cone penetrometer" and "VC" means "Vibro Core".
+Check `geodb.Other["ABBR"]` to see all abbreviations in your data.
+{% /aside %}
+
+## 2: 3D Web Map Visualization
+
+Now you'll build the interactive 3D web map with [CesiumJS](https://cesium.com/platform/cesiumjs/).
+We'll start simple and add complexity gradually.
+
+### Project Setup
+
+Create a new folder for your web map and organize your files:
+
+{% filetree %}
+- webmap
+  - index.html ← The webpage
+  - script.js ← Your JavaScript code
+  - locations.geojson ← Your borehole data
+  - weathering.geojson ← Weathering data
+  - ispt.geojson ← SPT data
+{% /filetree %}
+
+Move your `.geojson` files from the Python section into this new `webmap` folder.
+
+### 2.1: Create HTML Structure
+
+This HTML file creates the webpage that displays your 3D map. Create `index.html` and copy this code:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CesiumJS 3D Geotechnical Data Viewer</title>
+    <!-- Include the CesiumJS JavaScript and CSS files from their CDN -->
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.133/Build/Cesium/Cesium.js"></script>
+    <link
+      href="https://cesium.com/downloads/cesiumjs/releases/1.133/Build/Cesium/Widgets/widgets.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        font-size: 12px;
+      }
+
+      /* Base style for all control panels */
+      .panel {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 2px;
+        padding: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+      }
+
+      #map {
+        background: gray;
+        height: 100svh; /* Full screen height */
+        width: 100%;
+      }
+
+      #datasets {
+        top: 10px;
+        left: 10px;
+        max-width: 200px;
+      }
+
+      #controls {
+        top: 300px;
+        left: 10px;
+        max-width: 200px;
+      }
+
+      #legend {
+        top: 10px;
+        right: 10px;
+        max-width: 250px;
+        max-height: 90vh;
+        overflow-y: auto; /* Scroll if legend gets too long */
+      }
+
+      /* Styles for checkboxes and controls */
+      .checkbox-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 6px;
+        cursor: pointer;
+      }
+
+      .checkbox-item input[type="checkbox"] {
+        margin-right: 8px;
+        cursor: pointer;
+      }
+
+      .checkbox-item label {
+        cursor: pointer;
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- The main map container -->
+    <div id="map"></div>
+    
+    <!-- Control panels (initially empty, populated by JavaScript) -->
+    <div id="datasets" class="panel">
+      <h2>Datasets</h2>
+    </div>
+
+    <div id="controls" class="panel">
+      <h2>Controls</h2>
+    </div>
+
+    <div id="legend" class="panel">
+      <h2>Legend</h2>
+    </div>
+
+    <!-- Load your JavaScript code -->
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
+```
+
+{% aside type="note" %}
+**What's happening here:**
+
+- The CesiumJS library is loaded from a <abbr title="Content Delivery Network">CDN</abbr>
+- We create a full-screen `#map` container in the HTML for the 3D globe
+- Three control panels are added: datasets, controls, and legend
+- CSS styles make the panels semi-transparent and position them over the map
+- The `type="module"` allows us to use modern JavaScript features
+{% /aside %}
+
+### 2.2: JavaScript
+
+Now create the `script.js` file.
+
+#### CesiumJS Concepts
+
+First, let us go over the basic concepts of any CesiumJS app.
+
+At the core of CesiumJS is the **Viewer**, which provides the main container for your application.
+The **Viewer** contains a **Scene** (the 3D rendering context), which in turn contains the **Globe** (the 3D Earth with **Terrain** and **Imagery**) and manages the [**Camera**](https://cesium.com/learn/cesiumjs-learn/cesiumjs-camera/) for navigation and viewpoint control.
+
+To add your own data, you work with **DataSources** and **Entities**.
+**DataSources** load and manage groups of related data (like GeoJSON files), automatically converting geographic features into renderable objects.
+Each feature becomes an [**Entity**](https://cesium.com/learn/cesiumjs-learn/cesiumjs-creating-entities/), which is a high-level object that can have various [**Geometries**](https://cesium.com/learn/cesiumjs-learn/cesiumjs-geometry-appearances/) like points, cylinders, polylines, or polygons.
+Each **geometry** has a material.
+Entities are declarative: you specify what you want (a red cylinder at this location) and the Scene renders it through the 3D graphics pipeline, positioning it correctly relative to the Globe's coordinate system.
+
+Here's an indented tree to clarify the relations between these concepts:
+
+```
+Viewer
+├── Scene
+│   ├── Globe
+│   │   ├── TerrainProvider
+│   │   └── ImageryProviders
+│   ├── Primitives
+│   │   └── Cesium3DTilesVoxelProvider
+│   ├── Camera
+│   └── ScreenSpaceEventHandler
+├── Entities
+│   └── Geometries (per entity)
+│       ├── Cylinder
+│       │   └── Materials
+│       ├── Point
+│       │   └── Materials
+│       ├── Polyline
+│       │   └── Materials
+│       ├── Polygon
+│       │   └── Materials
+│       └── Other 3D geometries
+│           └── Materials
+└── DataSources (eg GeoJsonDataSource)
+    └── Entities
+
+```
+
+#### Step 2.3: Create the Basic Map
+
+Let's start with the most basic 3D map. CesiumJS has a lot of features turned on by default that we don't need.
+We'll turn these off first.
+
+```js
+// Step 1: Create the 3D viewer in the HTML element with id "map"
+const viewer = new Cesium.Viewer("map", {
+  // Turn off features we don't need for a cleaner interface
+  animation: false,        // No animation controls
+  timeline: false,         // No timeline at bottom
+  fullscreenButton: false, // No fullscreen button
+  vrButton: false,         // No VR mode button
+  sceneModePicker: false,  // No 2D/3D mode picker
+  baseLayerPicker: false,  // No background map picker
+  navigationHelpButton: false, // No navigation help
+  geocoder: false,         // No search box
+  homeButton: false,       // No home button
+});
+```
+
+{% aside type="note" %}
+**Test it:** Save both files and start a local server in your `webmap` folder:
+
+```bash
+python3 -m http.server 8000
+```
+
+Visit `http://localhost:8000`, you should see a 3D Earth.
+{% /aside %}
+
+#### Step 2.4: Set Up Underground Visualization
+
+Geotechnical data is underground, so we need to configure CesiumJS to show underground features:
+
+```js
+// Step 2: Configure for underground visualization
+const globe = viewer.scene.globe;
+
+// Make the ground semi-transparent so we can see underground
+globe.translucency.enabled = true;
+globe.translucency.frontFaceAlphaByDistance = new Cesium.NearFarScalar(
+  200, // When camera is close (200m)
+  0.1, // Ground is very transparent (10%)
+  800, // When camera is far (800m)  
+  0.7  // Ground is more opaque (70%)
+);
+globe.translucency.backFaceAlpha = 1.0; // Keep bottom of ground solid
+globe.undergroundColor = Cesium.Color.GREY;
+
+// Allow camera to go underground
+viewer.scene.screenSpaceCameraController.enableCollisionDetection = false;
+
+// Set camera to look at Hong Kong (where our demo data is located)
+viewer.camera.setView({
+  destination: Cesium.Cartesian3.fromDegrees(114.20685352, 22.23496, 1325),
+  orientation: {
+    heading: 0.0319,    // Rotation left-right
+    pitch: -0.19935,    // Rotation up-down (looking down)
+    roll: 6.28318,      // Rotation around viewing direction
+  },
+});
+```
+
+#### Step 2.5: Load Your Borehole Data
+
+Let's start with the basic pattern for loading data in CesiumJS.
+We'll start with the borehole data:
+
+```js
+// Basic data loading pattern
+Cesium.GeoJsonDataSource.load("locations.geojson", {
+  clampToGround: false, // Allow 3D positioning
+})
+.then((dataSource) => {
+  // Add the data to the viewer so it appears on the map
+  viewer.dataSources.add(dataSource);
+  console.log("Loaded boreholes:", dataSource.entities.values.length);
+})
+.catch((error) => {
+  console.error("Error loading data:", error);
+  alert("Could not load locations.geojson. Make sure the file is in the same folder.");
+});
+```
+
+{% aside type="note" %}
+**Core Pattern:** This is the fundamental CesiumJS data loading pattern:
+
+1. `load()` - Gets your GeoJSON file
+1. `.then()` - Runs when loading succeeds
+1. `viewer.dataSources.add()` - Makes data visible on map
+1. `.catch()` - Handles errors if file is missing or invalid
+{% /aside %}
+
+{% aside type="note" %}
+**Test it:** Refresh your browser. You should now see your borehole locations on the map! They might look like simple pins or markers at first, we'll improve this next.
+{% /aside %}
+
+#### Step 2.6: Styling Borehole Data
+
+We'll make a function to customize the appearance of the borehole data when it loads.
+The boreholes are vertical lines, let's show them as cylinders with white outlines.
+
+```js
+function onLoadLocations(dataSource) {
+  console.log("Loaded location data", dataSource.entities.values.length);
+
+  for (const entity of dataSource.entities.values) {
+    const holeType = entity.properties.HOLE_TYPE.getValue();
+    const holeId = entity.properties.HOLE_ID.getValue();
+
+    const coordinates =
+      entity.polyline && entity.polyline.positions
+        ? entity.polyline.positions.getValue()
+        : null;
+
+    // Remove the default polyline rendering
+    if (entity.polyline) {
+      entity.polyline = undefined;
+    }
+
+    // Remove the default point rendering
+    if (entity.marker) {
+      entity.marker = undefined;
+    }
+
+    if (!coordinates || coordinates.length < 2) {
+      console.warn(`No valid coordinates for hole ${holeId}`);
+      return;
+    }
+
+    const [top, bottom] = coordinates;
+    const topCartographic = Cesium.Cartographic.fromCartesian(top);
+    const bottomCartographic = Cesium.Cartographic.fromCartesian(bottom);
+
+    const lon = topCartographic.longitude * Cesium.Math.DEGREES_PER_RADIAN;
+    const lat = topCartographic.latitude * Cesium.Math.DEGREES_PER_RADIAN;
+    const topElevation = topCartographic.height;
+    const bottomElevation = bottomCartographic.height;
+
+    const length = Math.abs(topElevation - bottomElevation);
+    const centerElevation = (topElevation + bottomElevation) / 2;
+
+    const color = Cesium.Color.WHITE;
+
+    dataSource.entities.add({
+      position: Cesium.Cartesian3.fromDegrees(lon, lat, centerElevation),
+      cylinder: new Cesium.CylinderGraphics({
+        topRadius: 3,
+        bottomRadius: 3,
+        length: length,
+        fill: false,
+        outline: true,
+        outlineColor: color,
+        outlineWidth: 1,
+        outlineOpacity: 0.5,
+      }),
+      properties: entity.properties,
+      name: holeId,
+    });
+  }
+}
+
+// Basic data loading pattern
+Cesium.GeoJsonDataSource.load("locations.geojson", {
+  clampToGround: false, // Allow 3D positioning
+})
+.then((dataSource) => {
+  // Add the data to the viewer so it appears on the map
+  viewer.dataSources.add(dataSource);
+  onLoadLocations(dataSource) // Add this to style the boreholes
+  console.log("Loaded boreholes:", dataSource.entities.values.length);
+})
+.catch((error) => {
+  console.error("Error loading data:", error);
+  alert("Could not load locations.geojson. Make sure the file is in the same folder.");
+});
+```
+
+#### Step 2.7: Coloring the Boreholes by Type
+
+For effective data visualization, we need consistent color coding across different data types.
+We'll use [D3.js](https://d3js.org/) scales to handle this systematically.
+
+Scales are functions that take your actual data values as input and return appropriate visual representations (like colors) as output.
+Read more about D3 scales [here](https://observablehq.com/@d3/introduction-to-d3s-scales?collection=@d3/d3-scale).
+
+We'll use different scale types based on our data:
+
+- **Ordinal scales** for categorical data like weathering grades (I, II, III, IV, V, VI), each grade maps to one specific color
+- **Sequential scales** for continuous numeric data like SPT N-values (0-100), creates smooth color gradients across the range
+
+For our borehole data, we have 11 different types. We want each type to be a different color.
+D3 provides different [categorical color sets](https://observablehq.com/@d3/color-schemes#categorical), we'll use `schemeSet3`.
+
+<!-- <svg viewBox="0 0 12 1" style="display:block;width:396px;height:33px;margin:0 -14px;cursor:pointer;"
+xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect x="0" width="1" height="1" fill="#8dd3c7" />
+<rect x="1" width="1" height="1" fill="#ffffb3" />
+<rect x="2" width="1" height="1" fill="#bebada" />
+<rect x="3" width="1" height="1" fill="#fb8072" />
+<rect x="4" width="1" height="1" fill="#80b1d3" />
+<rect x="5" width="1" height="1" fill="#fdb462" />
+<rect x="6" width="1" height="1" fill="#b3de69" />
+<rect x="7" width="1" height="1" fill="#fccde5" />
+<rect x="8" width="1" height="1" fill="#d9d9d9" />
+<rect x="9" width="1" height="1" fill="#bc80bd" />
+<rect x="10" width="1" height="1" fill="#ccebc5" />
+<rect x="11" width="1" height="1" fill="#ffed6f" />
+</svg> -->
+
+First let's add some imports at the top of your file and the key for the hole types.
+This is categorical data so we'll need an [ordinal D3 scale](https://observablehq.com/@d3/d3-scaleordinal) for coloring the different hole types.
+It maps each distinct hole type to a specific color from the Set3 palette.
+
+```js
+import {
+  interpolateYlGnBu,    // Yellow-Green-Blue gradient (for weathering)
+  interpolateCividis,   // Colorblind-friendly gradient (for SPT values)
+  schemeSet3,          // Categorical colors (for hole types)
+} from "https://cdn.jsdelivr.net/npm/d3-scale-chromatic@3/+esm";
+import {
+  scaleOrdinal,        // For discrete categories (hole types)
+  scaleSequential,     // For continuous ranges (SPT N-values)
+} from "https://cdn.jsdelivr.net/npm/d3-scale/+esm";
+
+
+// Define your borehole types and their meanings
+const agsHoleTypes = {
+  "CP+RO+RC": "CPT + Rotary Open + Rotary Cored",
+  "CP+RC+RO": "CPT + Rotary Cored + Rotary Open",
+  "CP+RO": "CPT + Rotary Open", 
+  "RO+CP": "Rotary Open + CPT",
+  SCP: "Standard Penetration Test",
+  VC: "Vibro Core",
+  RC: "Rotary Cored",
+  Grab: "Grab Sample",
+  RCG: "Rotary Cored + Grab",
+  "IP+W+RCG": "In-situ Piezometer + Water + Rotary Cored + Grab",
+  "IP+W": "In-situ Piezometer + Water",
+  TP: "Trial Pit",
+};
+
+const holeTypeColorScale = scaleOrdinal()
+  .domain(Object.keys(agsHoleTypes))
+  .range(schemeSet3)
+  .unknown("#999999");
+```
+
+Now in the `onLoadLocations` replace the `const color = Cesium.Color.WHITE;` with this:
+
+```js
+const color = Cesium.Color.fromCssColorString(holeTypeColorScale(holeType));
+```
+
+We need legends too for people to be able to decode the colors. This is a beyond the scope of this guide, so add this to the imports at the top
+
+```js
+import { createSequentialLegend, createOrdinalLegend } from "./legend.js";
+```
+
+and just copy the code below to a new file called `legend.js`.
+
+```js
+// Legend generation functions
+// Adapted from https://observablehq.com/@d3/color-legend
+export function createSequentialLegend({
+  scale,
+  title,
+  width = 200,
+  height = 20,
+}) {
+  const container = document.createElement("section");
+  container.classList.add("legend-section");
+
+  const titleEl = document.createElement("h4");
+  titleEl.textContent = title;
+  container.appendChild(titleEl);
+
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+  canvas.style.display = "block";
+  canvas.style.marginBottom = "4px";
+  canvas.style.border = "1px solid #d9d9d9";
+  const context = canvas.getContext("2d");
+
+  const [start, end] = scale.domain();
+
+  for (let i = 0; i < width; ++i) {
+    const value = start + ((end - start) * i) / (width - 1);
+    context.fillStyle = scale(value);
+    context.fillRect(i, 0, 1, height);
+  }
+
+  // Add min/max labels
+  const labelsDiv = document.createElement("div");
+  labelsDiv.style.display = "flex";
+  labelsDiv.style.justifyContent = "space-between";
+  labelsDiv.style.fontSize = "10px";
+  labelsDiv.innerHTML = `<span>${start}</span><span>${end}</span>`;
+
+  container.appendChild(canvas);
+  container.appendChild(labelsDiv);
+
+  return container;
+}
+
+export function createOrdinalLegend({ scale, title, config = null }) {
+  const container = document.createElement("section");
+  container.classList.add("legend-section");
+
+  const titleEl = document.createElement("h4");
+  titleEl.textContent = title;
+  container.appendChild(titleEl);
+
+  const itemsDiv = document.createElement("div");
+  scale.domain().forEach((value) => {
+    const item = document.createElement("div");
+    item.className = "legend-item";
+
+    // Use full name from config if available, otherwise use the value
+    const displayName = config?.[value] ? config[value] : value;
+
+    item.innerHTML = `
+      <div class="legend-circle" style="background-color: ${scale(
+        value
+      )}"></div>
+      <span>${displayName}</span>
+    `;
+    itemsDiv.appendChild(item);
+  });
+
+  container.appendChild(itemsDiv);
+  return container;
+}
+```
+
+#### Step 2.8: Add Weathering Data
+
+Now let's add the weathering dataset with LineString styling. Weathering data shows rock deterioration along borehole depths.
+Weathering data follows a classification scheme with grades I (fresh rock) through VI (residual soil) so we need an ordinal scale that maps the grades to colors.\
+We'll interpolat the `YlGnBu` color scheme.
+
+```js
+const weatheringGrades = [
+  { grade: "I", value: 0 },
+  { grade: "II", value: 1 / 5 },
+  { grade: "II/III", value: 1.5 / 5 },
+  { grade: "III/II", value: 1.5 / 5 },
+  { grade: "III", value: 2 / 5 },
+  { grade: "III/IV", value: 2.5 / 5 },
+  { grade: "IV/III", value: 2.5 / 5 },
+  { grade: "IV", value: 3 / 5 },
+  { grade: "IV/V", value: 3.5 / 5 },
+  { grade: "V/IV", value: 3.5 / 5 },
+  { grade: "V", value: 4 / 5 },
+  { grade: "VI", value: 5 / 5 },
+].map((d) => ({ ...d, color: interpolateYlGnBu(d.value) })); // Make a color scheme from the 0 - 5 scale
+
+
+const weatheringGradeColorScale = scaleOrdinal()
+  .domain(weatheringGrades.map((d) => d.grade))
+  .range(weatheringGrades.map((d) => d.color));
+
+function onLoadWeatheringData(dataSource) {
+  console.log("Loaded weathering data:", dataSource.entities.values.length);
+
+  for (const entity of dataSource.entities.values) {
+    const wetheringGrade = entity.properties?.WETH_GRAD?.getValue();
+    const color = weatheringGradeColorScale(wetheringGrade);
+
+    if (entity.billboard) {
+      entity.billboard = undefined;
+      // Add a point for point geometries
+      entity.point = new Cesium.PointGraphics({
+        pixelSize: 4,
+        color: Cesium.Color.fromCssColorString(color),
+        outlineColor: Cesium.Color.WHITE,
+        outlineWidth: 1,
+      });
+    }
+
+    if (entity.polyline) {
+      entity.polyline.material = Cesium.Color.fromCssColorString(color);
+      entity.polyline.width = 7;
+      entity.polyline.clampToGround = false;
+    }
+  }
+}
+
+
+Cesium.GeoJsonDataSource.load("weathering.geojson", {
+    clampToGround: false, // Allow 3D positioning
+  })
+  .then((dataSource) => {
+    viewer.dataSources.add(dataSource);
+    onLoadWeatheringData(dataSource)
+    console.log("Loaded weathering data:", dataSource.entities.values.length);
+  })
+  .catch((error) => {
+    console.error("Error loading data:", error);
+    alert("Could not load weathering.geojson. Make sure the file is in the same folder.");
+  });
+
+```
+
+#### Step 2.9: Add SPT Data
+
+And finally, the SPT data. For this we need to map the continuous numeric data SPT N-values (0-100) to a color across the range using a [**Sequential scale**](https://observablehq.com/@d3/sequential-scales).
+The SPT's are point geometries.
+
+```js
+// Creates smooth color gradient from 0 to 100 using colorblind-friendly Cividis color range
+const sptScale = scaleSequential(interpolateCividis)
+  .domain([0, 100]);
+
+function onLoadSptData(dataSource) {
+  console.log("Loaded ispt data:", dataSource.entities.values.length);
+
+  for (const entity of dataSource.entities.values) {
+    const sptNValue = entity.properties?.ISPT_NVAL?.getValue();
+    const color = sptScale(sptNValue);
+    // remove default pin for points
+    if (entity.billboard) {
+      entity.billboard = undefined;
+    }
+    if (!sptNValue) {
+      continue;
+    }
+
+    entity.point = new Cesium.PointGraphics({
+      pixelSize: 4,
+      color: Cesium.Color.fromCssColorString(color),
+      outlineColor: Cesium.Color.WHITE,
+      outlineWidth: 1,
+      heightReference: Cesium.HeightReference.NONE,
+    });
+  }
+}
+
+Cesium.GeoJsonDataSource.load("ispt.geojson", {
+    clampToGround: false, // Allow 3D positioning
+  })
+  .then((dataSource) => {
+    viewer.dataSources.add(dataSource);
+    onLoadSptData(dataSource);
+    console.log("Loaded ispt data:", dataSource.entities.values.length);
+  })
+  .catch((error) => {
+    console.error("Error loading data:", error);
+    alert("Could not load ispt.geojson. Make sure the file is in the same folder.");
+  });
+
+```
+
+#### Step 2.10: Structured Data Management
+
+If you load the map now you'll see all three datasets at the same time which is not clear nor useful.
+
+We'll restructure the code a bit to avoid repetition and prepare for toggling dataset visibility.
+
+First let's organize our data in an array to handle multiple datasets.
+
+```js
+// Step 4a: Define our dataset structure
+const datasets = [
+  {
+    id: "locations",
+    label: "Borehole Locations",
+    enabled: false,
+    dataSource: null,
+    legendElement: createOrdinalLegend({
+      scale: holeTypeColorScale,
+      title: "Hole Types",
+      config: agsHoleTypes,
+    }),
+    onLoad: onLoadLocations,
+  },
+  {
+    id: "weathering",
+    label: "Weathering",
+    enabled: false,
+    dataSource: null,
+    legendElement: createOrdinalLegend({
+      scale: weatheringGradeColorScale,
+      title: "Weathering Grade",
+      config: null,
+    }),
+    onLoad: onLoadWeatheringData,
+  },
+  {
+    id: "ispt",
+    label: "Standard Penetration Test",
+    enabled: true,
+    dataSource: null,
+    legendElement: createSequentialLegend({
+      scale: sptScale,
+      title: "SPT N Value",
+    }),
+    onLoad: onLoadSptData,
+  },
+];
+```
+
+#### Step 2.11: Loading Function That Uses Our Structure
+
+This part is the same for each dataset so we'll turn it into a function.
+
+```js
+// Step 4b: Generic loading function
+function loadDataset(dataset) {
+  return Cesium.GeoJsonDataSource.load(`${dataset.id}.geojson`, {
+    clampToGround: false,
+  })
+  .then((dataSource) => {
+    dataset.dataSource = dataSource;      // Store reference for later use
+    dataset.onLoad(dataSource);           // Apply custom styling
+    dataSource.show = dataset.enabled;    // Show/hide based on enabled state
+    viewer.dataSources.add(dataSource);   // Add to the map
+    return dataSource;
+  })
+  .catch((error) => {
+    console.error(`Error loading ${dataset.id}.geojson:`, error);
+  });
+}
+
+// Step 4c: Load all datasets
+Promise.allSettled(datasets.map(dataset => loadDataset(dataset)))
+  .then((results) => {
+    console.log("Finished loading all datasets");
+    results.forEach((result, index) => {
+      if (result.status === "rejected") {
+        console.warn(`Failed to load ${datasets[index].id}:`, result.reason);
+      }
+    });
+  });
+```
+
+{% aside type="note" %}
+**What's happening:**
+
+1. `Promise.allSettled()` loads all datasets in parallel, which is faster than one-by-one
+1. Error handling per dataset, one failure doesn't break everything
+1. The structure makes it easy to add a new dataset. Just an an object to the array.
+{% /aside %}
+
+#### Step 2.12: User Interface Interactivity
+
+Now we'll add interactive controls so users can toggle datasets on/off and see legends explaining the color coding. The controls will automatically generate checkboxes for each dataset and show/hide the corresponding legends.
+
+```js
+function updateLegendDisplay() {
+  for (const dataset of datasets) {
+    if (dataset.legendElement) {
+      dataset.legendElement.style.display = dataset.enabled ? "block" : "none";
+    }
+  }
+}
+
+function generateDatasetControls() {
+  const controlsSection = document.getElementById("datasets");
+
+  const controlsHTML = datasets
+    .map(
+      (dataset) => `
+  <div class="checkbox-item">
+    <input type="checkbox" id="${dataset.id}-toggle" ${
+        dataset.enabled ? "checked" : ""
+      }>
+    <label for="${dataset.id}-toggle">${dataset.label}</label>
+  </div>
+`
+    )
+    .join("");
+
+  controlsSection.innerHTML = controlsSection.innerHTML + controlsHTML;
+
+  // Add event listeners to checkboxes
+  for (const dataset of datasets) {
+    const checkbox = document.getElementById(`${dataset.id}-toggle`);
+    checkbox.addEventListener("change", (event) => {
+      dataset.enabled = event.target.checked;
+      if (dataset.dataSource) {
+        dataset.dataSource.show = dataset.enabled;
+      }
+      updateLegendDisplay();
+    });
+  }
+}
+
+generateDatasetControls();
+
+// Add legend elements to DOM and set initial visibility
+const legendEl = document.querySelector("#legend");
+for (const dataset of datasets) {
+  dataset.legendElement.style.display = dataset.enabled ? "block" : "none";
+  legendEl.appendChild(dataset.legendElement);
+}
+
+// Load all datasets
+Promise.allSettled(datasets.map((dataset) => loadDataset(dataset))).then(
+  (results) => {
+    for (const result of results) {
+      if (result.status === "rejected") {
+        console.warn("Failed to load dataset:", result.reason);
+      }
+    }
+  }
+);
+
+// Globe opacity slider
+document.querySelector("#alpha").addEventListener("input", (event) => {
+  const alpha = event.target.valueAsNumber;
+
+  // Update translucency using distance-based approach
+  globe.translucency.frontFaceAlphaByDistance.nearValue = alpha;
+  globe.translucency.frontFaceAlphaByDistance.farValue = alpha;
+  // imageryLayer.alpha = alpha;
+});
+
+// 3D buildings toggle
+document
+  .querySelector("#buildings-toggle")
+  .addEventListener("change", (event) => {
+    osmBuildings.show = event.target.checked;
+  });
+```
+
+With these controls in place, users will see:
+- **Dataset toggles** in the top-left panel to show/hide each data type
+- **Color legends** in the right panel that appear/disappear with their corresponding datasets
+- **Basemap opacity slider** to adjust ground transparency for better underground visibility
+- **3D buildings toggle** to show/hide OpenStreetMap building data
+
+{% aside type="note" %}
+**Final Test:** Open your map and try toggling different datasets on and off. You should see the legends update automatically and the 3D visualization respond to your controls. The combination of all three datasets provides a comprehensive view of the geotechnical investigation.
+{% /aside %}
+
+### Troubleshooting
+
+Feel free to contact jules.blom@bedrock.engineer if you're stuck somewhere.

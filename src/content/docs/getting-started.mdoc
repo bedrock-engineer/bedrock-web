@@ -1,0 +1,180 @@
+---
+title: "Getting started"
+description: "Getting started with bedrock-ge"
+---
+
+`bedrock-ge` is an open-source Python library for reading & writing Ground Investigation data in different formats.
+
+{% linkbutton href="https://github.com/bedrock-engineer/bedrock-ge" %}
+View on GitHub
+{% /linkbutton %}
+
+Ground Investigation (GI) data is often stored in specialized file formats that are not easily accessible for modern (geospatial) analysis and visualization workflows.
+`bedrock-ge` lets you transform this GI data into structured objects in Python, enabling you to analyze it, and export it to [geospatial databases](/explanation/gi-to-geospatial/#geospatial-databases).
+This enables integration of GI data with other software and workflows used in the AEC industry.
+
+
+<!-- bedrock-ge` helps you:
+
+- **Transform** GI data from various formats (AGS 3/4, GEF, Excel, CSV) into standardized geospatial data
+- **Validate** your GI data for consistency and relationships between locations, samples, and tests  
+- **Combine** multiple GI files into a single 3D geospatial database (GeoPackage) -->
+
+## Supported Formats
+
+| Data Format | Read | Write |
+| ----------- | ---- | ----- |
+| AGS 3       | ✔   | ✘    |
+| AGS 4       | ✔   | ✔    |
+| Excel       | ✔   | ✔    |
+| CSV         | ✔   | ✔    |
+| JSON        | ✔   | ✔    |
+| GeoJSON     | ✔   | ✔    |
+
+Do you need another format? Like [DIGGS](https://diggsml.org/), [NADAG](https://www.ngu.no/geologisk-kartlegging/om-nadag-nasjonal-database-grunnundersokelser), [GEF](https://publicwiki.deltares.nl/display/STREAM/Dutch+National+GEF+Standards), or something else?
+Let us know by creating an [issue](https://github.com/bedrock-engineer/bedrock-ge/issues) or starting a [discussion](https://github.com/orgs/bedrock-engineer/discussions).
+
+## Quick Start
+
+Install `bedrock-ge` by running the following command in your terminal:
+
+
+{% tabs syncKey="dep" %}
+{% tabitem label="uv" %}
+
+```sh
+uv add bedrock-ge
+```
+
+{% /tabitem %}
+{% tabitem label="pip" %}
+
+```sh
+pip install bedrock-ge
+```
+
+{% /tabitem %}
+{% tabitem label="conda" %}
+
+```sh
+conda install bedrock-ge
+```
+
+{% /tabitem %}
+{% tabitem label="poetry" %}
+
+```sh
+poetry add bedrock-ge
+```
+
+{% /tabitem %}
+{% /tabs %}
+
+{% aside type="tip" title="Python package & project management" %}
+
+We recommend using [`uv`](https://docs.astral.sh/uv/) for Python project management. Key benefits include:
+
+- **Cross-platform compatibility**: Works seamlessly on Windows, macOS, and Linux
+- **Python version management**: Automatically installs and manages Python versions
+- **Unified project management**: Provides comprehensive dependency management with universal lockfiles
+- **Simplified workflow**: Replaces multiple tools (`pip`, `poetry`, `pyenv`, `virtualenv`, etc.) with a single solution
+
+{% /aside %}
+
+## Basic Usage
+
+### Spatial Reference Systems
+
+Before processing geotechnical data, you need to specify the Spatial Reference Systems (SRS) used in your project.
+These are also called "Coordinate Reference Systems (CRS)".
+
+[EPSSG.io](https://epsg.io/) is a useful website for finding spatial reference systems and their codes.
+
+
+```python
+from pyproj import CRS # pyproj uses CRS instead of SRS
+
+# Common projected CRS examples:
+projected_crs = CRS("EPSG:2326")  # Hong Kong 1980 Grid System
+projected_crs = CRS("EPSG:27700") # OSGB36 / British National Grid (UK)
+projected_crs = CRS("EPSG:28992") # Amersfoort / RD New (Netherlands)
+
+# Common vertical CRS examples:
+vertical_crs = CRS("EPSG:5738")   # Hong Kong Principle Datum
+vertical_crs = CRS("EPSG:5701")   # Ordnance Datum Newlyn (UK)
+vertical_crs = CRS("EPSG:3855")   # EGM2008 height (default)
+```
+
+### Convert Single AGS File to GeoPackage
+
+```python
+from pyproj import CRS
+from bedrock_ge.gi.mapper import map_to_brgi_db
+from bedrock_ge.gi.ags import ags_to_brgi_db_mapping
+from bedrock_ge.gi.geospatial import create_brgi_geodb
+from bedrock_ge.gi.write import write_brgi_db_to_file
+
+projected_crs = CRS("EPSG:2326") # Hong Kong 1980 Grid System
+
+# Load AGS file and convert to Bedrock format
+brgi_mapping = ags_to_brgi_db_mapping("your_data.ags", projected_CRS) # Note vertical_crs is optional, it is set to EPSG:3855 by default
+brgi_db = map_to_brgi_db(brgi_mapping)
+
+# Create geospatial database
+geodb = create_brgi_geodb(brgi_db)
+
+# Save as GeoPackage
+write_brgi_db_to_file(geodb, "output.gpkg")
+```
+
+### Combine Multiple Files
+
+```python
+from pyproj import CRS
+from bedrock_ge.gi.db_operations import merge_dbs
+from bedrock_ge.gi.mapper import map_to_brgi_db
+from bedrock_ge.gi.ags import ags_to_brgi_db_mapping
+from bedrock_ge.gi.geospatial import create_brgi_geodb
+from bedrock_ge.gi.write import write_brgi_db_to_file
+
+projected_crs = CRS("EPSG:2326") # Hong Kong 1980 Grid System
+
+# Load multiple files
+brgi_db_1 = map_to_brgi_db(ags_to_brgi_db_mapping("file1.ags", projected_crs))
+brgi_db_2 = map_to_brgi_db(ags_to_brgi_db_mapping("file2.ags", projected_crs))
+
+# Merge into single database
+combined_db = merge_dbs([brgi_db_1, brgi_db_2])
+
+# Create and save geospatial database
+geodb = create_brgi_geodb(combined_db)
+write_brgi_db_to_file(geodb, "combined_gi_data.gpkg")
+```
+
+### Turn All Files in Folder to a Bedrock GI database
+
+```python
+from pathlib import Path
+
+projected_crs = CRS("EPSG:2326")
+vertical_crs = CRS("EPSG:5738")
+
+folder_path = Path("./gi_data")
+ags_files = list(folder_path.glob("*.ags"))
+
+ags3_file_brgi_dbs = []
+
+for file_name in ags_files:
+    print(f"\nProcessing {file_name} ...")
+    with open(file_name) as ags3_file:
+        # 1. Convert content of a single AGS 3 file to a Bedrock GI Mapping.
+        brgi_mapping = ags_to_brgi_db_mapping(ags3_file, projected_crs, vertical_crs)        
+        # 2. Map the mapping object to a Bedrock GI Database.
+        brgi_db = map_to_brgi_db(brgi_mapping)
+        # 3. Append the Bedrock GI Database to the list of Bedrock GI
+        #    Databases, that were created from single AGS 3 files.
+        ags3_file_brgi_dbs.append(brgi_db)
+
+merged_brgi_db = merge_dbs(ags3_file_brgi_dbs)
+geodb = create_brgi_geodb(merged_brgi_db) # Transforms to geospatial data
+```

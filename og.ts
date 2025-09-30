@@ -154,7 +154,7 @@ export const og = (): AstroIntegration => ({
           // 3. Locate the source file for this resolved page
           const filename = pathname.slice(folderPath.length + 1, -1);
           console.log(
-            `Looking for file: src/content/docs/${folderPath}/${filename}.md`
+            `Looking for file: src/content/docs/${folderPath}/${filename}.md/.mdx/.mdoc`
           );
 
           if (!filename) {
@@ -162,18 +162,28 @@ export const og = (): AstroIntegration => ({
             continue;
           }
 
-          let filePath = `src/content/docs/${folderPath}/${filename}.md`;
+          // Try different file extensions and patterns in order of preference
+          const extensions = ['md', 'mdoc', 'mdx'];
+          const patterns = [
+            (ext: string) => `src/content/docs/${folderPath}/${filename}.${ext}`,
+            (ext: string) => `src/content/docs/${folderPath}/${filename}/index.${ext}`
+          ];
 
-          // Check if the file exists, if not try index.md
-          if (!fs.existsSync(filePath)) {
-            filePath = `src/content/docs/${folderPath}/${filename}/index.md`;
-            console.log(`Trying index.md: ${filePath}`);
-            if (!fs.existsSync(filePath)) {
-              console.log(
-                `Neither ${filename}.md nor ${filename}/index.md exists, skipping`
-              );
-              continue;
+          let filePath = '';
+
+          outer: for (const pattern of patterns) {
+            for (const ext of extensions) {
+              const testPath = pattern(ext);
+              if (fs.existsSync(testPath)) {
+                filePath = testPath;
+                break outer;
+              }
             }
+          }
+
+          if (!filePath) {
+            console.log(`No matching file found for ${filename} with extensions: ${extensions.join(', ')}`);
+            continue;
           }
 
           const file = fs.readFileSync(filePath);

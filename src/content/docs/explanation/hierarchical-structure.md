@@ -83,7 +83,7 @@ Each level depends on the level above it, creating clear parent-child relationsh
 ## Relational databases represent hierarchical data
 
 [Relational databases](https://observablehq.com/blog/databases-101-basics-data-analysts) are foundational to modern data management, and probably the most common type of database.
-They store data in linked tables, making them suitable for representing hierarchical structures. Each table represents one level of the hierarchy:
+They store data in linked tables, making them suitable for representing hierarchical structures. Each table represents one level of the hierarchy.
 
 ### Primary keys: Unique identifiers
 
@@ -92,7 +92,6 @@ Every table has a **primary key**: a column that uniquely identifies each row:
 - `project_uid` in the Projects table
 - `location_uid` in the Locations table
 - `sample_uid` in the Samples table
-- `test_uid` in laboratory test tables
 
 ### Foreign keys: Linking relationships
 
@@ -107,22 +106,22 @@ Tables are linked through **foreign keys**: columns that reference primary keys 
 Consider a project with 2 boreholes, where "Borehole 1 (BH001)" has 3 samples:
 
 **Projects table:**
-| project_uid | project_name |
-|-------------|--------------|
-| P001 | Appartment  |
+| project_uid | horizontal_crs | vertical_crs |
+|-------------|----------------|--------------|
+| P001 | EPSG:2326 | EPSG:5738 |
 
 **Locations table:**
-| location_uid | project_uid | location_name | easting | northing |
-|--------------|-------------|---------------|---------|----------|
-| BH001 | P001 | Borehole 1 | 523441 | 181652 |
-| BH002 | P001 | Borehole 2 | 523467 | 181678 |
+| location_uid | project_uid  | easting | northing | depth_to_base | ground_level_elevation |
+|--------------|--------------|---------|----------|---------------|------------------------|
+| BH001 | P001 | 523441 | 181652 | 5.4 | 20.5 |
+| BH002 | P001 | 523467 | 181678 | 6.8 | 19.8 |
 
 **Samples table:**
-| sample_uid | location_uid | depth_top | depth_base |
-|------------|--------------|-----------|------------|
-| S001 | BH001 | 1.0 | 1.5 |
-| S002 | BH001 | 3.2 | 3.7 |
-| S003 | BH001 | 5.8 | 6.3 |
+| sample_uid | location_uid | project_uid  |
+|------------|--------------|-----------|
+| S001 | BH001 | P001 |
+| S002 | BH001 | P001 |
+| S003 | BH001 | P001 |
 
 This creates **one-to-many relationships**: one project has many locations, one location has many samples, etc.
 <!-- 
@@ -140,24 +139,14 @@ The AGS (Association of Geotechnical and Geoenvironmental Specialists) format al
 
 ### Relational database advantages
 
-<!-- **Flexible relationships**: Can represent complex data relationships that don't fit AGS's predefined structure -->
 
 **Query power**: SQL enables complex queries across multiple tables:
 
-```sql
--- Find all samples from sandy soils deeper than 5m
-SELECT s.*, l.location_name
-FROM samples s
-JOIN locations l ON s.location_uid = l.location_uid
-JOIN geological_descriptions g ON s.location_uid = g.location_uid
-WHERE g.geology LIKE '%sand%' AND s.depth_top > 5.0
-```
-
-**Data integrity**: Enforces relationships through foreign key constraints, you can't add a sample without a valid location
+<!-- **Data integrity**: Enforces relationships through foreign key constraints, you can't add a sample without a valid location -->
 
 **Concurrent access**: Multiple users can query and update data simultaneously
 
-**Extensibility**: Easy to add new test types or custom fields without breaking existing structure
+**Extensibility**: Easy to add custom fields without breaking existing structure
 
 **Integration**: Direct connectivity with GIS software, analysis tools, and web applications
 
@@ -203,4 +192,4 @@ Using relational databases for geotechnical data enables:
 - **Scalability**: Handle datasets from small sites to regional databases
 - **Integration**: Seamless connection with BIM, CAD, and web applications
 
-The hierarchical nature of geotechnical data isn't just a data management convenience—it's the foundation for more powerful, integrated, and automated geotechnical workflows. -->
+The hierarchical nature of geotechnical data isn't just a data management convenience, it's the foundation for more powerful, integrated, and automated geotechnical workflows. -->
