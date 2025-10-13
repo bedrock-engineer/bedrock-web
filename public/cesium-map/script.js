@@ -428,10 +428,10 @@ function generateDatasetControls() {
 generateDatasetControls();
 
 // Add legend elements to DOM and set initial visibility
-const legendEl = document.querySelector("#legend");
+const legendDetailsEl = document.querySelector("#legend-details");
 for (const dataset of datasets) {
   dataset.legendElement.style.display = dataset.enabled ? "block" : "none";
-  legendEl.appendChild(dataset.legendElement);
+  legendDetailsEl.appendChild(dataset.legendElement);
 }
 
 // Load all datasets
