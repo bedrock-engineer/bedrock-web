@@ -56,7 +56,12 @@ export function createOrdinalLegend({ scale, title, config = null }) {
     item.className = "legend-item";
 
     // Use full name from config if available, otherwise use the value
-    const displayName = config?.[value] ? config[value] : value;
+    // config can be an object with label/color properties or just strings
+    const displayName = config?.[value]
+      ? typeof config[value] === "object"
+        ? config[value].label
+        : config[value]
+      : value;
 
     item.innerHTML = `
       <div class="legend-circle" style="background-color: ${scale(
