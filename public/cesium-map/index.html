@@ -26,6 +26,11 @@
         z-index: 10;
       }
 
+      h2 {
+        margin: 0;
+        margin-bottom: 4px;
+      }
+
       #map {
         background: gray;
         height: 100vh;
@@ -47,9 +52,27 @@
       #legend {
         top: 10px;
         right: 10px;
-        max-width: 250px;
+        width: 250px;
         max-height: 90svh;
         overflow-y: auto;
+      }
+
+      @media (max-width: 600px) {
+        #legend {
+          top: unset;
+          bottom: 2px;
+          left: 2px;
+        }
+
+        #datasets {
+          left: 2px;
+        }
+
+        #controls {
+          left: 2px;
+          top:unset;
+          bottom: 130px;
+        }
       }
 
       #legend section {
@@ -97,7 +120,9 @@
         user-select: none;
       }
 
-      
+      .sequential-colors {
+        border: 1px solid #d9d9d9;
+      }
     </style>
   </head>
   <body>
@@ -114,6 +139,16 @@
       <div class="checkbox-item">
         <input type="checkbox" id="buildings-toggle" checked />
         <label for="buildings-toggle">3D Buildings</label>
+      </div>
+
+      <div class="checkbox-item">
+        <input type="checkbox" id="terrain-toggle" />
+        <label for="terrain-toggle">3D Terrain</label>
+      </div>
+
+      <div class="checkbox-item">
+        <input type="checkbox" id="basemap-toggle" />
+        <label for="basemap-toggle">Satellite Imagery</label>
       </div>
 
       <label>

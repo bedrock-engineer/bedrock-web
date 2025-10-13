@@ -1,13 +1,14 @@
+import bbox from "https://cdn.jsdelivr.net/npm/@turf/bbox@7/+esm";
 import {
+  interpolatePlasma,
   interpolateYlGnBu,
-  interpolateCividis,
-  schemeSet3,
+  interpolateOrRd,
 } from "https://cdn.jsdelivr.net/npm/d3-scale-chromatic@3/+esm";
 import {
   scaleOrdinal,
   scaleSequential,
 } from "https://cdn.jsdelivr.net/npm/d3-scale/+esm";
-import { createSequentialLegend, createOrdinalLegend } from "./legend.js";
+import { createOrdinalLegend, createSequentialLegend } from "./legend.js";
 
 // Your access token can be found at: https://ion.cesium.com/tokens.
 // Replace `your_access_token` with your Cesium ion access token.
@@ -15,7 +16,6 @@ import { createSequentialLegend, createOrdinalLegend } from "./legend.js";
 
 // Initialize the Cesium Viewer in the HTML element with the `map` ID.
 const viewer = new Cesium.Viewer("map", {
-  terrain: Cesium.Terrain.fromWorldTerrain(), // https://cesium.com/platform/cesium-ion/content/#cesium-world-terrain
   animation: false,
   timeline: false,
   fullscreenButton: false,
@@ -24,62 +24,106 @@ const viewer = new Cesium.Viewer("map", {
   baseLayerPicker: false,
   navigationHelpButton: false,
   geocoder: false,
-  homeButton: false,
+  homeButton: true, // Enable home button - we'll customize its behavior
+  msaaSamples: 4, // Anti-aliasing can help reduce visual artifacts
 });
 
 const osmBuildings = await Cesium.createOsmBuildingsAsync();
-viewer.scene.primitives.add(osmBuildings);
 
-// https://cesium.com/blog/2020/06/16/visualizing-underground/
+// Create terrain providers
+const worldTerrain = Cesium.Terrain.fromWorldTerrain();
+const ellipsoidTerrain = new Cesium.EllipsoidTerrainProvider();
+
 const initAlpha = 0.7;
 
-const { globe } = viewer.scene;
+// Set initial opacity for buildings to match basemap
+osmBuildings.style = new Cesium.Cesium3DTileStyle({
+  color: `color("white", ${initAlpha})`,
+});
+viewer.scene.primitives.add(osmBuildings);
 
 // Configure globe for underground visualization
+// https://cesium.com/blog/2020/06/16/visualizing-underground/
+const { globe } = viewer.scene;
 globe.translucency.enabled = true;
-globe.translucency.frontFaceAlphaByDistance = new Cesium.NearFarScalar(
-  200, // The lower bound of the camera range.
-  0.1, // Minimum alpha at close distance
-  800, // The upper bound of the camera range.
-  initAlpha //  Maximum alpha at far distance
-);
-globe.translucency.backFaceAlpha = 1.0; // Keep back face opaque
-globe.undergroundColor = Cesium.Color.GREY;
-// Set the camera to look at out data in Hong Kong
-viewer.camera.setView({
+globe.depthTestAgainstTerrain = true;
+globe.translucency.frontFaceAlpha = initAlpha;
+globe.translucency.rectangle = Cesium.Rectangle.MAX_VALUE; // Apply translucency everywhere
+globe.undergroundColor = Cesium.Color.fromCssColorString("#e8e4e0"); // Cesium.Color.GREY; // Solid color to block view to opposite side of globe
+globe.translucency.backFaceAlpha = 1.0; // Keep back face opaque so we don't see the opposite side of the globe
+
+// Store initial camera view
+const initialCameraView = {
   destination: Cesium.Cartesian3.fromDegrees(114.20685352, 22.23496, 1325),
   orientation: {
     heading: 0.0319,
     pitch: -0.19935,
     roll: 6.28318,
   },
+};
+
+// Set the camera to look at our data in Hong Kong
+viewer.camera.setView(initialCameraView);
+
+// Customize home button to use our initial view
+viewer.homeButton.viewModel.command.beforeExecute.addEventListener((e) => {
+  e.cancel = true; // Cancel default behavior
+  viewer.camera.flyTo(initialCameraView);
 });
+
 // So we can move the camera below the surface
 viewer.scene.screenSpaceCameraController.enableCollisionDetection = false;
 
-const terrainProvider = new Cesium.UrlTemplateImageryProvider({
-  url: "https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.png",
-  // url: "https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}.png",
+// Limit how far out the camera can zoom (in meters)
+viewer.scene.screenSpaceCameraController.maximumZoomDistance = 50000;
+
+// Create basemap imagery providers
+const stamenTonerLayer = new Cesium.UrlTemplateImageryProvider({
+  url: "https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}.png",
   maximumLevel: 18,
   credit:
     '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>',
 });
-const imageryLayer = viewer.imageryLayers.addImageryProvider(terrainProvider);
+
+// Get reference to the default Bing imagery layer (index 0)
+const defaultImageryLayer = viewer.imageryLayers.get(0);
+
+// Add Stamen layer on top and store reference
+const customImageryLayer =
+  viewer.imageryLayers.addImageryProvider(stamenTonerLayer);
+
+// Start with Stamen Toner visible, hide satellite
+defaultImageryLayer.show = false;
+customImageryLayer.show = true;
 
 /** Colors and names for your borehole types (matches AGS HOLE_TYPE values in our data) */
 const agsHoleTypes = {
-  "CP+RO+RC": "CPT + Rotary Open + Rotary Cored",
-  "CP+RC+RO": "CPT + Rotary Cored + Rotary Open",
-  "CP+RO": "CPT + Rotary Open",
-  "RO+CP": "Rotary Open + CPT",
-  SCP: "Standard Penetration Test",
-  VC: "Vibro Core",
-  RC: "Rotary Cored",
-  Grab: "Grab Sample",
-  RCG: "Rotary Cored + Grab",
-  "IP+W+RCG": "In-situ Piezometer + Water + Rotary Cored + Grab",
-  "IP+W": "In-situ Piezometer + Water",
-  TP: "Trial Pit",
+  // CPT-based methods (blues)
+  "CP+RO+RC": { label: "CPT + Rotary Open + Rotary Cored", color: "#1f77b4" },
+  "CP+RC+RO": { label: "CPT + Rotary Cored + Rotary Open", color: "#4a9bd6" },
+  "CP+RO": { label: "CPT + Rotary Open", color: "#6baed6" },
+  "RO+CP": { label: "Rotary Open + CPT", color: "#9ecae1" },
+
+  // Standard Penetration Testing (orange)
+  SCP: { label: "Standard Penetration Test", color: "#ff7f0e" },
+
+  // Rotary drilling methods (greens)
+  RC: { label: "Rotary Cored", color: "#2ca02c" },
+  RCG: { label: "Rotary Cored + Grab", color: "#52b352" },
+
+  // Sampling methods (purples)
+  VC: { label: "Vibro Core", color: "#9467bd" },
+  Grab: { label: "Grab Sample", color: "#c5b0d5" },
+
+  // Monitoring/instrumentation (reds/pinks)
+  "IP+W+RCG": {
+    label: "In-situ Piezometer + Water + Rotary Cored + Grab",
+    color: "#d62728",
+  },
+  "IP+W": { label: "In-situ Piezometer + Water", color: "#ff6b6b" },
+
+  // Excavation methods (brown)
+  TP: { label: "Trial Pit", color: "#8c564b" },
 };
 
 // This I to VI grade scale is a little funky with in-between grades. That's the way it is in the source data
@@ -102,7 +146,7 @@ const weatheringGrades = [
 // https://observablehq.com/@d3/d3-scaleordinal
 const holeTypeColorScale = scaleOrdinal()
   .domain(Object.keys(agsHoleTypes))
-  .range(schemeSet3)
+  .range(Object.values(agsHoleTypes).map((d) => d.color))
   .unknown("#999999");
 
 const weatheringGradeColorScale = scaleOrdinal()
@@ -110,7 +154,9 @@ const weatheringGradeColorScale = scaleOrdinal()
   .range(weatheringGrades.map((d) => d.color));
 
 // https://observablehq.com/@d3/sequential-scales
-const sptScale = scaleSequential(interpolateCividis).domain([0, 100]);
+const sptScale = scaleSequential(interpolatePlasma).domain([0, 100]);
+
+const coreRqdScale = scaleSequential(interpolateOrRd).domain([0, 100]);
 
 function onLoadLocations(dataSource) {
   console.log("Loaded location data", dataSource.entities.values.length);
@@ -167,6 +213,8 @@ function onLoadLocations(dataSource) {
       }),
       properties: entity.properties,
       name: holeId,
+      // Disable depth testing so boreholes always show through terrain
+      disableDepthTestDistance: Number.POSITIVE_INFINITY,
     });
   }
 }
@@ -177,6 +225,9 @@ function onLoadWeatheringData(dataSource) {
   for (const entity of dataSource.entities.values) {
     const wetheringGrade = entity.properties?.WETH_GRAD?.getValue();
     const color = weatheringGradeColorScale(wetheringGrade);
+
+    // Disable depth testing so weathering data always shows through terrain
+    entity.disableDepthTestDistance = Number.POSITIVE_INFINITY;
 
     if (entity.billboard) {
       entity.billboard = undefined;
@@ -203,22 +254,50 @@ function onLoadSptData(dataSource) {
   for (const entity of dataSource.entities.values) {
     const sptNValue = entity.properties?.ISPT_NVAL?.getValue();
     const color = sptScale(sptNValue);
+
+    // Disable depth testing so SPT data always shows through terrain
+    entity.disableDepthTestDistance = Number.POSITIVE_INFINITY;
+
     // remove default pin for points
     if (entity.billboard) {
       entity.billboard = undefined;
     }
-    if (!sptNValue) continue;
+    if (!sptNValue) {
+      continue;
+    }
 
     entity.point = new Cesium.PointGraphics({
       pixelSize: 4,
       color: Cesium.Color.fromCssColorString(color),
       outlineColor: Cesium.Color.WHITE,
-      outlineWidth: 1,
+      outlineWidth: 0,
       heightReference: Cesium.HeightReference.NONE,
     });
   }
 }
 
+function onLoadCoreData(dataSource) {
+  console.log("Loaded core data:", dataSource.entities.values.length);
+
+  for (const entity of dataSource.entities.values) {
+    const coreRqdValue = entity.properties?.CORE_RQD?.getValue();
+    const color = coreRqdValue ? coreRqdScale(coreRqdValue) : "#333333";
+
+    entity.disableDepthTestDistance = Number.POSITIVE_INFINITY;
+
+    if (entity.billboard) {
+      entity.billboard = undefined;
+    }
+    console.log(coreRqdValue, color);
+    entity.point = new Cesium.PointGraphics({
+      pixelSize: 4,
+      color: Cesium.Color.fromCssColorString(color),
+      outlineColor: Cesium.Color.WHITE,
+      outlineWidth: 0,
+      heightReference: Cesium.HeightReference.NONE,
+    });
+  }
+}
 
 const datasets = [
   {
@@ -256,12 +335,40 @@ const datasets = [
     }),
     onLoad: onLoadSptData,
   },
+/*   {
+    id: "core",
+    label: "Core",
+    enabled: false,
+    dataSource: null,
+    legendElement: createSequentialLegend({
+      scale: coreRqdScale,
+      title: "Core RQD",
+    }),
+    onLoad: onLoadCoreData,
+  }, */
 ];
 
 function loadDataset(dataset) {
-  return Cesium.GeoJsonDataSource.load(`${dataset.id}.geojson`, {
-    clampToGround: false,
-  })
+  // First fetch the GeoJSON to calculate bbox
+  return fetch(`${dataset.id}.geojson`)
+    .then((response) => response.json())
+    .then((geojson) => {
+      // Log bounding box for locations dataset (for reference)
+      if (dataset.id === "locations") {
+        const [minLon, minLat, maxLon, maxLat] = bbox(geojson);
+        console.log("Location data bounds:", {
+          west: minLon,
+          south: minLat,
+          east: maxLon,
+          north: maxLat,
+        });
+      }
+
+      // Now load with Cesium
+      return Cesium.GeoJsonDataSource.load(geojson, {
+        clampToGround: false,
+      });
+    })
     .then((dataSource) => {
       // Store reference to the loaded data source for later access (visibility toggling, styling)
       dataset.dataSource = dataSource;
@@ -338,14 +445,15 @@ Promise.allSettled(datasets.map((dataset) => loadDataset(dataset))).then(
   }
 );
 
-// Globe opacity slider
+// Globe opacity slider (also controls building opacity)
 document.querySelector("#alpha").addEventListener("input", (event) => {
   const alpha = event.target.valueAsNumber;
+  globe.translucency.frontFaceAlpha = alpha;
 
-  // Update translucency using distance-based approach
-  globe.translucency.frontFaceAlphaByDistance.nearValue = alpha;
-  globe.translucency.frontFaceAlphaByDistance.farValue = alpha;
-  // imageryLayer.alpha = alpha;
+  // Update building opacity to match
+  osmBuildings.style = new Cesium.Cesium3DTileStyle({
+    color: `color("white", ${alpha})`,
+  });
 });
 
 // 3D buildings toggle
@@ -353,4 +461,32 @@ document
   .querySelector("#buildings-toggle")
   .addEventListener("change", (event) => {
     osmBuildings.show = event.target.checked;
+  });
+
+// 3D terrain toggle
+document
+  .querySelector("#terrain-toggle")
+  .addEventListener("change", async (event) => {
+    if (event.target.checked) {
+      viewer.terrainProvider = await Cesium.CesiumTerrainProvider.fromUrl(
+        Cesium.IonResource.fromAssetId(1)
+      );
+    } else {
+      viewer.terrainProvider = ellipsoidTerrain;
+    }
+  });
+
+// Basemap toggle
+document
+  .querySelector("#basemap-toggle")
+  .addEventListener("change", (event) => {
+    if (event.target.checked) {
+      // Show satellite (default Bing layer)
+      defaultImageryLayer.show = true;
+      customImageryLayer.show = false;
+    } else {
+      // Show Stamen Toner
+      defaultImageryLayer.show = false;
+      customImageryLayer.show = true;
+    }
   });
