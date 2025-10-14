@@ -14,6 +14,20 @@ import { createOrdinalLegend, createSequentialLegend } from "./legend.js";
 // Replace `your_access_token` with your Cesium ion access token.
 // Cesium.Ion.defaultAccessToken = null;
 
+// Hong Kong Kai Tak initial camera view
+const initialCameraView = {
+  destination: Cesium.Cartesian3.fromDegrees(
+    114.19749996664763,
+    22.336721619536476,
+    653.3477715430049
+  ),
+  orientation: {
+    heading: 3.115321511892013,
+    pitch: -0.24478081612082314,
+    roll: 6.283098181620492,
+  },
+};
+
 // Initialize the Cesium Viewer in the HTML element with the `map` ID.
 const viewer = new Cesium.Viewer("map", {
   animation: false,
@@ -24,15 +38,23 @@ const viewer = new Cesium.Viewer("map", {
   baseLayerPicker: false,
   navigationHelpButton: false,
   geocoder: false,
-  homeButton: true, // Enable home button - we'll customize its behavior
+  homeButton: false,
   msaaSamples: 4, // Anti-aliasing can help reduce visual artifacts
 });
+
+// Set initial camera position immediately
+viewer.camera.setView(initialCameraView);
 
 const osmBuildings = await Cesium.createOsmBuildingsAsync();
 
 // Create terrain providers
-const worldTerrain = Cesium.Terrain.fromWorldTerrain();
-const ellipsoidTerrain = new Cesium.EllipsoidTerrainProvider();
+const worldTerrainProvider = await Cesium.CesiumTerrainProvider.fromUrl(
+  Cesium.IonResource.fromAssetId(1) // Asset 1 = Cesium World Terrain
+);
+const ellipsoidTerrainProvider = new Cesium.EllipsoidTerrainProvider();
+
+// Enable 3D terrain by default
+viewer.terrainProvider = worldTerrainProvider;
 
 const initAlpha = 0.7;
 
@@ -49,21 +71,8 @@ globe.translucency.enabled = true;
 globe.depthTestAgainstTerrain = true;
 globe.translucency.frontFaceAlpha = initAlpha;
 globe.translucency.rectangle = Cesium.Rectangle.MAX_VALUE; // Apply translucency everywhere
-globe.undergroundColor = Cesium.Color.fromCssColorString("#e8e4e0"); // Cesium.Color.GREY; // Solid color to block view to opposite side of globe
+globe.undergroundColor = Cesium.Color.fromCssColorString("#e8e4e0"); // Solid color to block view to opposite side of globe
 globe.translucency.backFaceAlpha = 1.0; // Keep back face opaque so we don't see the opposite side of the globe
-
-// Store initial camera view
-const initialCameraView = {
-  destination: Cesium.Cartesian3.fromDegrees(114.20685352, 22.23496, 1325),
-  orientation: {
-    heading: 0.0319,
-    pitch: -0.19935,
-    roll: 6.28318,
-  },
-};
-
-// Set the camera to look at our data in Hong Kong
-viewer.camera.setView(initialCameraView);
 
 // Customize home button to use our initial view
 viewer.homeButton.viewModel.command.beforeExecute.addEventListener((e) => {
@@ -335,7 +344,7 @@ const datasets = [
     }),
     onLoad: onLoadSptData,
   },
-/*   {
+  /*   {
     id: "core",
     label: "Core",
     enabled: false,
@@ -466,14 +475,10 @@ document
 // 3D terrain toggle
 document
   .querySelector("#terrain-toggle")
-  .addEventListener("change", async (event) => {
-    if (event.target.checked) {
-      viewer.terrainProvider = await Cesium.CesiumTerrainProvider.fromUrl(
-        Cesium.IonResource.fromAssetId(1)
-      );
-    } else {
-      viewer.terrainProvider = ellipsoidTerrain;
-    }
+  .addEventListener("change", (event) => {
+    viewer.terrainProvider = event.target.checked
+      ? worldTerrainProvider
+      : ellipsoidTerrainProvider;
   });
 
 // Basemap toggle
@@ -490,3 +495,42 @@ document
       customImageryLayer.show = true;
     }
   });
+
+// Reset camera button
+document.querySelector("#reset-camera").addEventListener("click", () => {
+  viewer.camera.flyTo(initialCameraView);
+});
+
+// Log camera position button (commented out for production)
+/* document.querySelector("#log-camera").addEventListener("click", () => {
+  const camera = viewer.camera;
+  const position = camera.positionCartographic;
+
+  console.log("Current camera position:");
+  console.log(
+    JSON.stringify(
+      {
+        lon: position.longitude * Cesium.Math.DEGREES_PER_RADIAN,
+        lat: position.latitude * Cesium.Math.DEGREES_PER_RADIAN,
+        height: position.height,
+        heading: camera.heading,
+        pitch: camera.pitch,
+        roll: camera.roll,
+      },
+      null,
+      2
+    )
+  );
+
+  console.log("\nCopy this for initialCameraView:");
+  console.log(`const initialCameraView = {
+  destination: Cesium.Cartesian3.fromDegrees(${
+    position.longitude * Cesium.Math.DEGREES_PER_RADIAN
+  }, ${position.latitude * Cesium.Math.DEGREES_PER_RADIAN}, ${position.height}),
+  orientation: {
+    heading: ${camera.heading},
+    pitch: ${camera.pitch},
+    roll: ${camera.roll},
+  },
+};`);
+}); */
