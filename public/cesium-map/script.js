@@ -70,15 +70,8 @@ const { globe } = viewer.scene;
 globe.translucency.enabled = true;
 globe.depthTestAgainstTerrain = true;
 globe.translucency.frontFaceAlpha = initAlpha;
-globe.translucency.rectangle = Cesium.Rectangle.MAX_VALUE; // Apply translucency everywhere
 globe.undergroundColor = Cesium.Color.fromCssColorString("#e8e4e0"); // Solid color to block view to opposite side of globe
 globe.translucency.backFaceAlpha = 1.0; // Keep back face opaque so we don't see the opposite side of the globe
-
-// Customize home button to use our initial view
-viewer.homeButton.viewModel.command.beforeExecute.addEventListener((e) => {
-  e.cancel = true; // Cancel default behavior
-  viewer.camera.flyTo(initialCameraView);
-});
 
 // So we can move the camera below the surface
 viewer.scene.screenSpaceCameraController.enableCollisionDetection = false;
