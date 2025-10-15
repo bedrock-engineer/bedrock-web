@@ -91,18 +91,13 @@ import "../styles/global.css";
           </p>
 
           <figure>
-            <Image
-              src={arcGIS}
-              alt="Screen recording of 3D GI data in ArcGIS with 3D buildings"
-              class="mr-1 border border-gray-300 rounded-xs"
-              height={300}
-            />
-            <figcaption>
-              GI data in Kai Tak, Hong Kong.
-              <a class="link" href="https://arcg.is/0r9DG9"
-                >Click here to explore for yourself.</a
-              >
-            </figcaption>
+            <iframe
+              src="https://bedrock.engineer/cesium-map/"
+              height="300"
+              style="width: 98%; max-width: 700px; border-radius:1px;"></iframe>
+            <a class="link" href="https://bedrock.engineer/cesium-map">
+              Click here to explore for yourself.
+            </a>
           </figure>
         </Panel>
 
