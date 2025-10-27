@@ -170,7 +170,7 @@ with open("locations.geojson", "w") as file:
 ```
 
 {% aside type="caution" %}
-The official GeoJSON specification (RFC 7946) mandates WGS84 geographic coordinates (EPSG:4326) as the only supported CRS.
+The [official GeoJSON specification (RFC 7946)](https://datatracker.ietf.org/doc/rfc7946/) mandates WGS84 geographic coordinates (EPSG:4326) as the only supported CRS.
 While GeoJSON allows an optional third coordinate for elevation, the specification doesn't define what vertical reference system this represents.
 
 This creates ambiguity by design.
