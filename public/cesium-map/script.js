@@ -12,7 +12,7 @@ import { createOrdinalLegend, createSequentialLegend } from "./legend.js";
 
 // Your access token can be found at: https://ion.cesium.com/tokens.
 // Replace `your_access_token` with your Cesium ion access token.
-// Cesium.Ion.defaultAccessToken = null;
+Cesium.Ion.defaultAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0MzY1NjhhNi03YjczLTRlZDQtODAyZS03YzgyZTFkZmUyYjYiLCJpZCI6Mjc0NDQ3LCJpYXQiOjE3NjIyNDU4Nzl9.3erU3gM4MU7Bl2bWMVVRwkE6CEQmYhrJAl1pTQCija8";
 
 // Hong Kong Kai Tak initial camera view
 const initialCameraView = {

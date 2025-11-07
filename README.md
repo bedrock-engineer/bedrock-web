@@ -34,7 +34,7 @@
 >
 > Sources: [[1] Bedrock | Cambridge Dictionary](https://dictionary.cambridge.org/us/dictionary/english/bedrock), [[2] Bedrock | Wikipedia](https://en.wikipedia.org/wiki/Bedrock)
 
-Ground Investigation (GI) data is often trapped in legacy formats that limit analysis and visualization possibilities.
+Ground Investigation (GI) data is often trapped in bespoke or legacy formats that limit analysis and visualization possibilities.
 `bedrock-ge` lets you transform this data from specialized geotechnical formats and common tabular formats (Excel, CSV) into modern, standardized geospatial data.
 
 This standardization lets you bridge the gap between raw geotechnical data, the modern Python (geo)scientific ecosystem and modern geospatial tools.
