@@ -1,0 +1,54 @@
+{
+  "asset": {
+    "version": "1.1"
+  },
+  "schemaUri": "schema.json",
+  "geometricError": 1000.0,
+  "root": {
+    "boundingVolume": {
+      "box": [
+        3923667.5022568656,
+        298694.92297530954,
+        5002488.773970973,
+        -3928.570396607274,
+        -299.0681629732219,
+        3078.456248316157,
+        379.5341507346272,
+        -4985.574573549788,
+        -0.0,
+        135.06128413703644,
+        10.281737644449738,
+        173.35724789654864
+      ]
+    },
+    "geometricError": 1000.0,
+    "refine": "REPLACE",
+    "content": {
+      "uri": "tiles/{level}/{x}/{y}/{z}.gltf",
+      "extensions": {
+        "3DTILES_content_voxels": {
+          "dimensions": [
+            101,
+            101,
+            89
+          ],
+          "class": "voxel"
+        }
+      }
+    },
+    "implicitTiling": {
+      "subdivisionScheme": "OCTREE",
+      "subtreeLevels": 1,
+      "availableLevels": 1,
+      "subtrees": {
+        "uri": "subtrees/{level}/{x}/{y}/{z}.json"
+      }
+    }
+  },
+  "extensionsUsed": [
+    "3DTILES_content_voxels"
+  ],
+  "extensionsRequired": [
+    "3DTILES_content_voxels"
+  ]
+}

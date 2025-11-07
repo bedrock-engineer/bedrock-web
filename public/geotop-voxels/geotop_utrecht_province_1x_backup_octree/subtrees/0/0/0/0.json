@@ -1,0 +1,25 @@
+{
+  "buffers": [
+    {
+      "uri": "data:application/octet-stream;base64,////////////AQ=="
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 10
+    }
+  ],
+  "tileAvailability": {
+    "bufferView": 0
+  },
+  "contentAvailability": [
+    {
+      "bufferView": 0
+    }
+  ],
+  "childSubtreeAvailability": {
+    "constant": 0
+  }
+}

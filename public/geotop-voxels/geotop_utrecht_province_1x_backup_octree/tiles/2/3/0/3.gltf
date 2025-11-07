@@ -1,0 +1,118 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "minimal_voxel_gltf.py (multi-attribute)"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "mode": 2147483647,
+          "attributes": {
+            "_LITHOK": 0
+          },
+          "extensions": {
+            "EXT_primitive_voxels": {
+              "shape": 0,
+              "dimensions": [
+                71,
+                52,
+                83
+              ],
+              "noData": {
+                "_LITHOK": [
+                  -9999.0
+                ]
+              }
+            },
+            "EXT_structural_metadata": {
+              "propertyAttributes": [
+                0
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 306436,
+      "type": "SCALAR",
+      "min": [
+        -9999.0
+      ],
+      "max": [
+        -9999.0
+      ]
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 1225744,
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "3.bin",
+      "byteLength": 1225744
+    }
+  ],
+  "extensions": {
+    "KHR_implicit_shapes": {
+      "shapes": [
+        {
+          "type": "box",
+          "box": {
+            "size": [
+              7000.0,
+              8200.0,
+              25.5
+            ]
+          }
+        }
+      ]
+    },
+    "EXT_structural_metadata": {
+      "schemaUri": "../../../../schema.json",
+      "propertyAttributes": [
+        {
+          "class": "voxel",
+          "properties": {
+            "lithok": {
+              "attribute": "_LITHOK"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "extensionsUsed": [
+    "EXT_primitive_voxels",
+    "KHR_implicit_shapes",
+    "EXT_structural_metadata"
+  ],
+  "extensionsRequired": [
+    "EXT_primitive_voxels",
+    "KHR_implicit_shapes",
+    "EXT_structural_metadata"
+  ]
+}

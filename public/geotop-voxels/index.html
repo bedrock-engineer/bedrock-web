@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.133/Build/Cesium/Cesium.js"></script>
+    <link
+      href="https://cesium.com/downloads/cesiumjs/releases/1.133/Build/Cesium/Widgets/widgets.css"
+      rel="stylesheet"
+    />
+    <title>Cesium voxels</title>
+    <style>
+      html {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        font-size: 12px;
+        height: 100%;
+      }
+
+      #map {
+        height: 100%;
+      }
+
+      .panel {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 2px;
+        padding: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+      }
+
+      #controls {
+        top: 10px;
+        left: 10px;
+        max-width: 200px;
+      }
+
+      .legend-item {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        column-gap: 8px;
+        margin-bottom: 4px;
+        text-transform: capitalize;
+      }
+
+      .legend-rect {
+        width: 25px;
+        height: 25px;
+        border: 1px solid #878787;
+      }
+
+      .checkbox-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 6px;
+        cursor: pointer;
+      }
+
+      .checkbox-item input[type="checkbox"] {
+        margin-right: 8px;
+        cursor: pointer;
+      }
+
+      .checkbox-item label {
+        cursor: pointer;
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script src="script.js" type="module"></script>
+    <div id="controls" class="panel">
+      <h2>GeoTOP 3DTiles Voxel</h2>
+      <p>
+        <a href="https://bedrock.engineer/" style="font-size: 10px">Bedrock</a>
+      </p>
+
+      <label>
+        <span style="display: block">Basemap opacity</span>
+        <input
+          id="alpha"
+          type="range"
+          min="0.0"
+          max="1.0"
+          step="0.05"
+          value="0.7"
+        />
+      </label>
+
+      <div id="datasets">
+        <h2>Datasets</h2>
+      </div>
+
+      <div>
+        <h2>Legenda</h2>
+
+        <div class="legend-item">
+          <div class="legend-rect" style="background: rgb(200, 200, 200)"></div>
+          <span>antropogeen</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-rect" style="background: rgb(157, 78, 64)"></div>
+          <span>organisch materiaal (veen)</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-rect" style="background: rgb(0, 146, 0)"></div>
+          <span>klei</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-rect" style="background: rgb(194, 207, 92)"></div>
+          <span>kleiig zand, zandige klei en leem</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-rect" style="background: rgb(243, 225, 6)"></div>
+          <span>zand niet gedifferentieerd</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-rect" style="background: rgb(255, 255, 0)"></div>
+          <span>zand fijn</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-rect" style="background: rgb(243, 225, 6)"></div>
+          <span>zand midden</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-rect" style="background: rgb(231, 195, 22)"></div>
+          <span>zand grof</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-rect" style="background: rgb(216, 163, 32)"></div>
+          <span>grind</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-rect" style="background: rgb(95, 95, 255)"></div>
+          <span>schelpen</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-rect" style="background: rgb(144, 144, 144)"></div>
+          <span>overig</span>
+        </div>
+      </div>
+
+      <p style="font-size: 10px">
+        <a
+          href="https://basisregistratieondergrond.nl/inhoud-bro/registratieobjecten/modellen/geotop-gtm/"
+        >
+          GeoTOP
+        </a>
+        Basisregistratie Ondergrond (BRO), TNO (Geologische Dienst Nederland).
+      </p>
+    </div>
+  </body>
+</html>
