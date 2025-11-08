@@ -8,10 +8,14 @@
       href="https://cesium.com/downloads/cesiumjs/releases/1.133/Build/Cesium/Widgets/widgets.css"
       rel="stylesheet"
     />
-    <title>Cesium voxels</title>
+    <title>GeoTOP 3DTiles Voxel — Bedrock</title>
     <style>
       html {
         height: 100%;
+      }
+
+      * {
+        margin: 0;
       }
 
       body {
@@ -27,10 +31,10 @@
 
       .panel {
         position: absolute;
-        background: rgba(255, 255, 255, 0.9);
+        background: oklch(100% 0.00011 271.152 / 0.9);
         border-radius: 2px;
         padding: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 4px oklch(0% 0 0 / 0.2);
         z-index: 10;
       }
 
@@ -40,42 +44,99 @@
         max-width: 200px;
       }
 
+      h2 {
+        margin-block-end: 8px;
+      }
+
       .legend-item {
         display: grid;
         grid-template-columns: auto 1fr;
         align-items: center;
-        column-gap: 8px;
-        margin-bottom: 4px;
+        column-gap: 6px;
+        margin-bottom: 2px;
         text-transform: capitalize;
       }
 
       .legend-rect {
         width: 25px;
-        height: 25px;
-        border: 1px solid #878787;
+        aspect-ratio: 1;
+        border: 1px solid oklch(62.341% 0.00007 271.152);
       }
 
-      .checkbox-item {
+      .radio-item {
         display: flex;
+        column-gap: 4px;
         align-items: center;
         margin-bottom: 6px;
         cursor: pointer;
       }
 
-      .checkbox-item input[type="checkbox"] {
+      .radio-item input[type="checkbox"] {
         margin-right: 8px;
         cursor: pointer;
       }
 
-      .checkbox-item label {
+      .radio-item label {
         cursor: pointer;
         user-select: none;
+      }
+
+      @media (max-width: 500px) {
+        .legend-rect {
+          width: 10px;
+        }
+
+        #controls {
+          top: unset;
+          left: 0px;
+          bottom: 0px;
+          max-width: 100%;
+          /* displ */
+        }
+      }
+
+      .panel-toggle {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        z-index: 11;
+        background: oklch(100% 0.00011 271.152 / 0.9);
+        border: none;
+        border-radius: 4px;
+        font-size: 20px;
+        padding: 6px 10px;
+        cursor: pointer;
+        box-shadow: 0 2px 4px oklch(0% 0 0 / 0.2);
+        display: none; /* desktop verborgen */
+      }
+
+      /* Alleen tonen op mobiel */
+      @media (max-width: 500px) {
+        .panel-toggle {
+          display: block;
+        }
+
+        #controls {
+          bottom: 0;
+          left: 0;
+          max-width: 100%;
+          transform: translateY(100%);
+          transition: transform 150ms ease-out;
+        }
+        
+        #controls[data-open="true"] {
+          transition: transform 100ms ease-in;
+          transform: translateY(0);
+        }
       }
     </style>
   </head>
   <body>
     <div id="map"></div>
     <script src="script.js" type="module"></script>
+
+    <button id="toggle-controls" class="panel-toggle">☰</button>
+
     <div id="controls" class="panel">
       <h2>GeoTOP 3DTiles Voxel</h2>
       <p>

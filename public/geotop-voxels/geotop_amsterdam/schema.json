@@ -1,0 +1,14 @@
+{
+  "id": "voxel",
+  "classes": {
+    "voxel": {
+      "properties": {
+        "lithok": {
+          "type": "SCALAR",
+          "componentType": "FLOAT32",
+          "required": false
+        }
+      }
+    }
+  }
+}

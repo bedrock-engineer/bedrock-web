@@ -63,17 +63,20 @@ viewer.scene.screenSpaceCameraController.enableCollisionDetection = false; // So
 
 const tileset = "delft_10x";
 const datasets = [
-  { enabled: false, name: "Delft 10x", url: "geotop_delft_10x" },
+  { enabled: false, name: "Delft (z ⨉ 10)", url: "geotop_delft_10x" },
   {
     enabled: false,
     name: "Provincie Utrecht",
-    url: "geotop_utrecht_province_1x_backup_octree",
+    url: "geotop_utrecht_province",
   },
-  { enabled: true, name: "Nederland", url: "geotop_nl_transposed_octree" },
+  // { enabled: true, name: "Nederland", url: "geotop_nl_transposed_octree" },
+  { enabled: true, name: "Amsterdam", url: "geotop_amsterdam" },
 ];
 
+const currentDataset = datasets.find((d) => d.enabled);
+
 const voxelProvider = await Cesium.Cesium3DTilesVoxelProvider.fromUrl(
-  `${datasets[0].url}/tileset.json`
+  `${currentDataset.url}/tileset.json`
 );
 
 const lithoColorShader = new Cesium.CustomShader({
@@ -173,7 +176,7 @@ function generateDatasetControls() {
   const controlsHTML = datasets
     .map(
       (dataset) => `
-  <div class="checkbox-item">
+  <div class="radio-item">
     <input type="radio" name="dataset"  id="${dataset.name}-radio" ${
         dataset.enabled ? "checked" : ""
       }>
@@ -203,3 +206,13 @@ function generateDatasetControls() {
 }
 
 generateDatasetControls();
+
+const toggleBtn = document.getElementById("toggle-controls");
+const controls = document.getElementById("controls");
+
+toggleBtn.addEventListener("click", () => {
+  const isOpen = controls.dataset.open === "true";
+  controls.dataset.open = String(!isOpen);
+  toggleBtn.setAttribute("aria-expanded", String(!isOpen));
+  toggleBtn.textContent = isOpen ? "☰" : "×";
+});
