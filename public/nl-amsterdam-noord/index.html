@@ -96,42 +96,78 @@
         cursor: pointer;
         user-select: none;
       }
+
+      .panel-toggle {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        z-index: 11;
+        background: oklch(100% 0.00011 271.152 / 0.9);
+        border: none;
+        border-radius: 4px;
+        font-size: 20px;
+        padding: 6px 10px;
+        cursor: pointer;
+        box-shadow: 0 2px 4px oklch(0% 0 0 / 0.2);
+        display: none;
+      }
+
+      @media (max-width: 500px) {
+        .panel-toggle {
+          display: block;
+        }
+
+        #controls {
+          bottom: 36px;
+          left: 0;
+          max-width: 100%;
+          transform: translateY(100%);
+          transition: transform 150ms ease-out;
+        }
+
+        #controls[data-open="true"] {
+          transition: transform 100ms ease-in;
+          transform: translateY(0);
+        }
+      }
     </style>
   </head>
   <body>
     <div id="map"></div>
     <script src="script.js" type="module"></script>
 
-    <div id="datasets" class="panel">
-      <h2>Datasets</h2>
-    </div>
+    <button id="toggle-controls" class="panel-toggle">☰</button>
 
-    <div id="controls" class="panel">
-      <h2>Controls</h2>
-
-      <div class="checkbox-item">
-        <input type="checkbox" id="buildings-toggle" checked />
-        <label for="buildings-toggle">3D BAG</label>
+    <div class="panel" id="controls">
+      <div id="datasets">
+        <h2>Datasets</h2>
       </div>
 
-      <div class="checkbox-item">
-        <input type="checkbox" id="geotop-toggle" checked />
-        <label for="geotop-toggle">GeoTOP</label>
+      <div>
+        <h2>Controls</h2>
+
+        <div class="checkbox-item">
+          <input type="checkbox" id="buildings-toggle" checked />
+          <label for="buildings-toggle">3D BAG</label>
+        </div>
+
+        <div class="checkbox-item">
+          <input type="checkbox" id="geotop-toggle" />
+          <label for="geotop-toggle">GeoTOP</label>
+        </div>
+
+        <label>
+          <span style="display: block">Basemap opacity</span>
+          <input
+            id="alpha"
+            type="range"
+            min="0.0"
+            max="1.0"
+            step="0.05"
+            value="0.7"
+          />
+        </label>
       </div>
-
-      <label>
-        <span style="display: block">Basemap opacity</span>
-        <input
-          id="alpha"
-          type="range"
-          min="0.0"
-          max="1.0"
-          step="0.05"
-          value="0.7"
-        />
-      </label>
-
-      
     </div>
 
     <div id="legend" class="panel">

@@ -2,10 +2,7 @@
 //   interpolateYlGnBu,
 //   interpolateCividis,
 // } from "https://cdn.jsdelivr.net/npm/d3-scale-chromatic@3/+esm";
-import {
-  scaleOrdinal,
-  scaleSequential,
-} from "https://cdn.jsdelivr.net/npm/d3-scale/+esm";
+import { scaleOrdinal } from "https://cdn.jsdelivr.net/npm/d3-scale/+esm";
 
 // Your access token can be found at: https://ion.cesium.com/tokens.
 // Replace `your_access_token` with your Cesium ion access token.
@@ -26,6 +23,23 @@ const viewer = new Cesium.Viewer(mapElementId, {
   geocoder: false,
   homeButton: false,
 });
+// window.viewer = viewer;
+
+// Overhoeks, Amsterdam initial camera view
+const initialCameraView = {
+  destination: Cesium.Cartesian3.fromRadians(
+    0.08537763567876235,
+    0.9143046099703667,
+    532.1130701784695
+  ),
+  orientation: {
+    heading: 1.6502882805254577,
+    pitch: -0.5379295035473293,
+    roll: 0.010147930377260472,
+  },
+};
+
+viewer.camera.setView(initialCameraView);
 
 const terrainProvider = await Cesium.CesiumTerrainProvider.fromUrl(
   "https://api.pdok.nl/kadaster/3d-basisvoorziening/ogc/v1_0/collections/digitaalterreinmodel/quantized-mesh"
@@ -63,30 +77,9 @@ globe.translucency.frontFaceAlphaByDistance = new Cesium.NearFarScalar(
 );
 globe.translucency.backFaceAlpha = 1.0; // Keep back face opaque
 globe.undergroundColor = Cesium.Color.GREY;
-// Set the camera to look at out data in Amsterdam Noord
-viewer.camera.setView({
-  destination: Cesium.Cartesian3.fromDegrees(
-    4.90367686119672,
-    52.38548804691893,
-    1325
-  ),
-  orientation: {
-    heading: 0.0319,
-    // pitch: -0.05,
-    roll: 6.28318,
-  },
-});
+
 // So we can move the camera below the surface
 viewer.scene.screenSpaceCameraController.enableCollisionDetection = false;
-
-const imageryProvider = new Cesium.UrlTemplateImageryProvider({
-  url: "https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.png",
-  // url: "https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}.png",
-  maximumLevel: 18,
-  credit:
-    '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>',
-});
-const imageryLayer = viewer.imageryLayers.addImageryProvider(imageryProvider);
 
 function onLoadLocations(dataSource) {
   console.log("Loaded location data", dataSource.entities.values.length);
@@ -111,7 +104,8 @@ function onLoadLocations(dataSource) {
     }
 
     if (!coordinates || coordinates.length < 2) {
-      console.warn(`No valid coordinates for CPT ${cptId}`);
+      // console.warn(`No valid coordinates for CPT ${cptId}`);
+      // console.log(coordinates)
       continue;
     }
 
@@ -180,7 +174,7 @@ function onLoadInterpretedCPT(dataSource) {
     }
 
     if (!coordinates || coordinates.length < 2) {
-      console.warn(`No valid coordinates for layer ${locationUid}`);
+      // console.warn(`No valid coordinates for layer ${locationUid}`);
       continue;
     }
 
@@ -267,7 +261,7 @@ function updateLegendDisplay() {
 }
 
 function generateDatasetControls() {
-  const controlsSection = document.getElementById("datasets");
+  const controlsSection = document.querySelector("#datasets");
 
   const controlsHTML = datasets
     .map(
@@ -286,7 +280,7 @@ function generateDatasetControls() {
 
   // Add event listeners to checkboxes
   for (const dataset of datasets) {
-    const checkbox = document.getElementById(`${dataset.id}-toggle`);
+    const checkbox = document.querySelector(`#${dataset.id}-toggle`);
     checkbox.addEventListener("change", (event) => {
       dataset.enabled = event.target.checked;
       if (dataset.dataSource) {
@@ -414,6 +408,7 @@ const voxelPrimitive = viewer.scene.primitives.add(
   })
 );
 
+voxelPrimitive.show = false;
 voxelPrimitive.nearestSampling = true;
 voxelPrimitive.jitter = false;
 
@@ -449,3 +444,13 @@ try {
   // Handle errors
   console.log(`There was an error while creating the 3D tileset. ${error}`);
 }
+
+const toggleBtn = document.querySelector("#toggle-controls");
+const controls = document.querySelector("#controls");
+
+toggleBtn.addEventListener("click", () => {
+  const isOpen = controls.dataset.open === "true";
+  controls.dataset.open = String(!isOpen);
+  toggleBtn.setAttribute("aria-expanded", String(!isOpen));
+  toggleBtn.textContent = isOpen ? "☰" : "×";
+});
