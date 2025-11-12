@@ -87,7 +87,9 @@ export default defineConfig({
     mdx({
       optimize: true,
     }),
-    markdoc(),
+    markdoc({
+      allowHTML: true,
+    }),
     react({ experimentalReactChildren: true }),
     og(),
   ],

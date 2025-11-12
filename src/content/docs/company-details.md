@@ -11,7 +11,8 @@ Our company details for your accountant.
 <dl>
     <dt>Company name</dt> <dd>Bedrock Engineer B.V.</dd>
     <!-- <dt>Address:</dt> -->
-    <!-- <dt>VAT ID: </dt> -->
+    <dt>VAT ID: </dt>
+    <dt>NL868402552B01</dt>
     <dt>KvK number:</dt>
     <dd>98282581</dd>
 </dl>

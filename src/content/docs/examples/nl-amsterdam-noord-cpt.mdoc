@@ -1,0 +1,22 @@
+---
+title: "Amsterdam Noord 3D CPT Webmap"
+description: "Interactive 3D visualization of Cone Penetration Test data from Amsterdam Noord, Netherlands"
+---
+
+This example displays Cone Penetration Test data from the [Basisregistratie Ondergrond](https://basisregistratieondergrond.nl/) from Amsterdam Noord in 3D using [CesiumJS](https://cesium.com/platform/cesiumjs/).
+The map shows CPT locations with the interpreted soil types following Robertson (2010).
+
+This example also includes 3D Buildings from the [3DBag](https://3dbag.nl/en/viewer) as [3DTiles](https://cesium.com/why-cesium/3d-tiles/) and [GeoTOP](https://basisregistratieondergrond.nl/inhoud-bro/registratieobjecten/modellen/geotop-gtm/), a geological block model of the shallow subsurface of the Netherlands as 3DTiles with voxels.
+
+<iframe
+  src="/nl-amsterdam-noord/index.html"
+  loading="lazy"
+  width="100%"
+  height="600"
+  title="Amsterdam Noord - CPT CesiumJS 3D Webmap"
+  style="min-height:600px; border: 1px solid #ddd; border-radius: 4px;">
+</iframe>
+
+{% linkbutton href="/nl-amsterdam-noord/index.html" %}View fullscreen{% /linkbutton %}
+
+The original GEF and BRO/XML data of the CPT's was transformed using `pygef` and `bedrock-ge` and exported to GeoJSON for display in the browser.
