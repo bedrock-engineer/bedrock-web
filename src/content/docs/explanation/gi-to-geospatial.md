@@ -240,6 +240,6 @@ Bedrock avoids fragile format conversions by structuring geotechnical data in op
 ![GI data, the derived Leapfrog ground model and a tunnel in Speckle](../../../assets/WekaHills_Speckle.webp)
 
 <figcaption>
-  GI data, the derived Leapfrog ground model and a tunnel in Speckle. <a href="https://app.speckle.systems/projects/7a489ac0d4/models/$epsg:2193-7839%2Fgeo%2Fgeology-model,65b4cf97d5,9069ef2b2b">Click here to explore for yourself on Speckle.</a>
+  GI data, the derived Leapfrog ground model and a tunnel in Speckle. <a href="https://app.speckle.systems/projects/bc2ef86a30/models/53ad71f84a,639810d7b2,6dcde3dafa,7d83fae8e5#savedView%3D%7B%2522id%2522%3A%2522025a4dcbd1%2522%7D">Click here to explore for yourself on Speckle.</a>
 </figcaption>
 </figure>
