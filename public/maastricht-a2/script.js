@@ -288,8 +288,11 @@ function createOrdinalLegend({ scale, title, config = null }) {
   return container;
 }
 
+// Add legends to the DOM
+const legendContainer = document.querySelector("#legend");
 for (const dataset of datasets) {
   if (dataset.legendElement) {
+    legendContainer.appendChild(dataset.legendElement);
     dataset.legendElement.style.display = dataset.enabled ? "block" : "none";
   }
 }
