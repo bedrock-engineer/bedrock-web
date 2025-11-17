@@ -19,7 +19,442 @@ This text-based structure makes GEF files _human-readable_<sup>1</sup> while ens
 
 <small>1. 'Human-readable' is rather generous. I'd call it human-openable-a-in-a-text-editor at most</small>
 
-<svg width="928" height="784" style="height:784px" viewBox="-8,-24,728,784" style="max-width: 100%; height: auto; font: 11.428571428571429px sans-serif; overflow: visible;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g fill="none" stroke="#999"><path d="&#10;M0,0&#10;V16&#10;h16&#10;"/><path d="&#10;M0,0&#10;V592&#10;h16&#10;"/><path d="&#10;M16,16&#10;V48&#10;h16&#10;"/><path d="&#10;M16,16&#10;V64&#10;h16&#10;"/><path d="&#10;M16,16&#10;V80&#10;h16&#10;"/><path d="&#10;M16,16&#10;V112&#10;h16&#10;"/><path d="&#10;M16,16&#10;V128&#10;h16&#10;"/><path d="&#10;M16,16&#10;V144&#10;h16&#10;"/><path d="&#10;M16,16&#10;V176&#10;h16&#10;"/><path d="&#10;M16,16&#10;V192&#10;h16&#10;"/><path d="&#10;M16,16&#10;V224&#10;h16&#10;"/><path d="&#10;M16,16&#10;V240&#10;h16&#10;"/><path d="&#10;M16,16&#10;V272&#10;h16&#10;"/><path d="&#10;M16,16&#10;V288&#10;h16&#10;"/><path d="&#10;M16,16&#10;V320&#10;h16&#10;"/><path d="&#10;M16,16&#10;V336&#10;h16&#10;"/><path d="&#10;M16,16&#10;V352&#10;h16&#10;"/><path d="&#10;M16,16&#10;V384&#10;h16&#10;"/><path d="&#10;M16,16&#10;V400&#10;h16&#10;"/><path d="&#10;M16,16&#10;V416&#10;h16&#10;"/><path d="&#10;M16,16&#10;V432&#10;h16&#10;"/><path d="&#10;M16,16&#10;V464&#10;h16&#10;"/><path d="&#10;M16,16&#10;V480&#10;h16&#10;"/><path d="&#10;M16,16&#10;V512&#10;h16&#10;"/><path d="&#10;M16,16&#10;V528&#10;h16&#10;"/><path d="&#10;M16,16&#10;V560&#10;h16&#10;"/><path d="&#10;M16,16&#10;V576&#10;h16&#10;"/><path d="&#10;M16,592&#10;V608&#10;h16&#10;"/><path d="&#10;M16,592&#10;V656&#10;h16&#10;"/><path d="&#10;M32,608&#10;V624&#10;h16&#10;"/><path d="&#10;M32,608&#10;V640&#10;h16&#10;"/><path d="&#10;M32,656&#10;V672&#10;h16&#10;"/><path d="&#10;M32,656&#10;V688&#10;h16&#10;"/><path d="&#10;M32,656&#10;V704&#10;h16&#10;"/><path d="&#10;M32,656&#10;V720&#10;h16&#10;"/><path d="&#10;M32,656&#10;V736&#10;h16&#10;"/><path d="&#10;M32,656&#10;V752&#10;h16&#10;"/></g><g><g transform="translate(0,0)"><circle cx="0" r="2"/><text dy="0.32em" x="6"><tspan font-weight="600" font-family="monospace" text-decoration="none">GEF-CPT-Report File</tspan><tspan dx="3.2">Complete GEF cone penetration test report file</tspan></text><title>GEF-CPT-Report File</title></g><g transform="translate(0,16)"><circle cx="16" r="2"/><text dy="0.32em" x="22"><tspan font-weight="600" font-family="monospace" text-decoration="none">Header Block</tspan><tspan dx="3.2">File metadata and test parameters</tspan></text><title>GEF-CPT-Report File/Header Block</title></g><g transform="translate(0,592)"><circle cx="16" r="2"/><text dy="0.32em" x="22"><tspan font-weight="600" font-family="monospace" text-decoration="none">Data Block</tspan><tspan dx="3.2">Tabular measurement data organized in scans</tspan></text><title>GEF-CPT-Report File/Data Block</title></g><g transform="translate(0,32)"><text dy="0.32em" x="38"><tspan font-weight="500" font-family="sans-serif" text-decoration="underline">GEF Identification</tspan></text><title>GEF-CPT-Report File/Header Block/GEF Identification</title></g><g transform="translate(0,48)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#GEFID</tspan><tspan dx="3.2">GEF version and format identification</tspan></text><title>GEF-CPT-Report File/Header Block/#GEFID</title></g><g transform="translate(0,64)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#REPORTCODE</tspan><tspan dx="3.2">Report format type and version</tspan></text><title>GEF-CPT-Report File/Header Block/#REPORTCODE</title></g><g transform="translate(0,80)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#DATAFORMAT</tspan><tspan dx="3.2">Data format specification</tspan></text><title>GEF-CPT-Report File/Header Block/#DATAFORMAT</title></g><g transform="translate(0,96)"><text dy="0.32em" x="38"><tspan font-weight="500" font-family="sans-serif" text-decoration="underline">File Metadata</tspan></text><title>GEF-CPT-Report File/Header Block/File Metadata</title></g><g transform="translate(0,112)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#FILEOWNER</tspan><tspan dx="3.2">File creator/owner name</tspan></text><title>GEF-CPT-Report File/Header Block/#FILEOWNER</title></g><g transform="translate(0,128)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#FILEDATE</tspan><tspan dx="3.2">File creation date</tspan></text><title>GEF-CPT-Report File/Header Block/#FILEDATE</title></g><g transform="translate(0,144)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#COMPANYID</tspan><tspan dx="3.2">Executing company information</tspan></text><title>GEF-CPT-Report File/Header Block/#COMPANYID</title></g><g transform="translate(0,160)"><text dy="0.32em" x="38"><tspan font-weight="500" font-family="sans-serif" text-decoration="underline">Project Information</tspan></text><title>GEF-CPT-Report File/Header Block/Project Information</title></g><g transform="translate(0,176)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#PROJECTID</tspan><tspan dx="3.2">Project identification</tspan></text><title>GEF-CPT-Report File/Header Block/#PROJECTID</title></g><g transform="translate(0,192)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#TESTID</tspan><tspan dx="3.2">CPT test identification number</tspan></text><title>GEF-CPT-Report File/Header Block/#TESTID</title></g><g transform="translate(0,208)"><text dy="0.32em" x="38"><tspan font-weight="500" font-family="sans-serif" text-decoration="underline">Coordinate &amp; Reference Systems</tspan></text><title>GEF-CPT-Report File/Header Block/Coordinate &amp; Reference Systems</title></g><g transform="translate(0,224)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#XYID</tspan><tspan dx="3.2">Horizontal coordinates and coordinate system</tspan></text><title>GEF-CPT-Report File/Header Block/#XYID</title></g><g transform="translate(0,240)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#ZID</tspan><tspan dx="3.2">Surface elevation and height reference system</tspan></text><title>GEF-CPT-Report File/Header Block/#ZID</title></g><g transform="translate(0,256)"><text dy="0.32em" x="38"><tspan font-weight="500" font-family="sans-serif" text-decoration="underline">Test Execution</tspan></text><title>GEF-CPT-Report File/Header Block/Test Execution</title></g><g transform="translate(0,272)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#STARTDATE</tspan><tspan dx="3.2">Test execution date</tspan></text><title>GEF-CPT-Report File/Header Block/#STARTDATE</title></g><g transform="translate(0,288)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#STARTTIME</tspan><tspan dx="3.2">Test execution time</tspan></text><title>GEF-CPT-Report File/Header Block/#STARTTIME</title></g><g transform="translate(0,304)"><text dy="0.32em" x="38"><tspan font-weight="500" font-family="sans-serif" text-decoration="underline">Data Structure Definition</tspan></text><title>GEF-CPT-Report File/Header Block/Data Structure Definition</title></g><g transform="translate(0,320)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#COLUMN</tspan><tspan dx="3.2">Number of numerical data columns</tspan></text><title>GEF-CPT-Report File/Header Block/#COLUMN</title></g><g transform="translate(0,336)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#COLUMNINFO</tspan><tspan dx="3.2">Column definitions, units, and quantity numbers</tspan></text><title>GEF-CPT-Report File/Header Block/#COLUMNINFO</title></g><g transform="translate(0,352)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#LASTSCAN</tspan><tspan dx="3.2">Number of data records (measurement scans)</tspan></text><title>GEF-CPT-Report File/Header Block/#LASTSCAN</title></g><g transform="translate(0,368)"><text dy="0.32em" x="38"><tspan font-weight="500" font-family="sans-serif" text-decoration="underline">Data Formatting</tspan></text><title>GEF-CPT-Report File/Header Block/Data Formatting</title></g><g transform="translate(0,384)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#COLUMNSEPARATOR</tspan><tspan dx="3.2">Character dividing columns in data block</tspan></text><title>GEF-CPT-Report File/Header Block/#COLUMNSEPARATOR</title></g><g transform="translate(0,400)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#RECORDSEPARATOR</tspan><tspan dx="3.2">Symbol at end of each measurement scan</tspan></text><title>GEF-CPT-Report File/Header Block/#RECORDSEPARATOR</title></g><g transform="translate(0,416)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#COLUMNTEXT</tspan><tspan dx="3.2">Text column on/off setting per column</tspan></text><title>GEF-CPT-Report File/Header Block/#COLUMNTEXT</title></g><g transform="translate(0,432)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#REPORTDATAFORMAT</tspan><tspan dx="3.2">Print format per column (FORTRAN style)</tspan></text><title>GEF-CPT-Report File/Header Block/#REPORTDATAFORMAT</title></g><g transform="translate(0,448)"><text dy="0.32em" x="38"><tspan font-weight="500" font-family="sans-serif" text-decoration="underline">Data Validation</tspan></text><title>GEF-CPT-Report File/Header Block/Data Validation</title></g><g transform="translate(0,464)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#COLUMNMINMAX</tspan><tspan dx="3.2">Min/max values per column</tspan></text><title>GEF-CPT-Report File/Header Block/#COLUMNMINMAX</title></g><g transform="translate(0,480)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#COLUMNVOID</tspan><tspan dx="3.2">No-data value definition per column</tspan></text><title>GEF-CPT-Report File/Header Block/#COLUMNVOID</title></g><g transform="translate(0,496)"><text dy="0.32em" x="38"><tspan font-weight="500" font-family="sans-serif" text-decoration="underline">Measurement Parameters</tspan></text><title>GEF-CPT-Report File/Header Block/Measurement Parameters</title></g><g transform="translate(0,512)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#MEASUREMENTVAR</tspan><tspan dx="3.2">Numerical measurement parameters with indexed IDs</tspan></text><title>GEF-CPT-Report File/Header Block/#MEASUREMENTVAR</title></g><g transform="translate(0,528)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#MEASUREMENTTEXT</tspan><tspan dx="3.2">Descriptive text information with indexed IDs</tspan></text><title>GEF-CPT-Report File/Header Block/#MEASUREMENTTEXT</title></g><g transform="translate(0,544)"><text dy="0.32em" x="38"><tspan font-weight="500" font-family="sans-serif" text-decoration="underline">Specimen Data</tspan></text><title>GEF-CPT-Report File/Header Block/Specimen Data</title></g><g transform="translate(0,560)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#SPECIMENVAR</tspan><tspan dx="3.2">Numerical specimen parameters</tspan></text><title>GEF-CPT-Report File/Header Block/#SPECIMENVAR</title></g><g transform="translate(0,576)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">#EOH</tspan><tspan dx="3.2">End of header marker - separates header from data</tspan></text><title>GEF-CPT-Report File/Header Block/#EOH</title></g><g transform="translate(0,608)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">Required Columns</tspan><tspan dx="3.2">Mandatory data columns that must be present</tspan></text><title>GEF-CPT-Report File/Data Block/Required Columns</title></g><g transform="translate(0,656)"><circle cx="32" r="2"/><text dy="0.32em" x="38"><tspan font-weight="600" font-family="monospace" text-decoration="none">Optional Columns</tspan><tspan dx="3.2">Additional measurement data columns</tspan></text><title>GEF-CPT-Report File/Data Block/Optional Columns</title></g><g transform="translate(0,624)"><circle cx="48" r="2"/><text dy="0.32em" x="54"><tspan font-weight="600" font-family="monospace" text-decoration="none">Column 1: Penetration Length (m)</tspan><tspan dx="3.2">Depth of cone tip below reference level</tspan></text><title>GEF-CPT-Report File/Data Block/Required Columns/Column 1: Penetration Length (m)</title></g><g transform="translate(0,640)"><circle cx="48" r="2"/><text dy="0.32em" x="54"><tspan font-weight="600" font-family="monospace" text-decoration="none">Column 2: Cone Resistance (MPa)</tspan><tspan dx="3.2">Measured cone tip resistance</tspan></text><title>GEF-CPT-Report File/Data Block/Required Columns/Column 2: Cone Resistance (MPa)</title></g><g transform="translate(0,672)"><circle cx="48" r="2"/><text dy="0.32em" x="54"><tspan font-weight="600" font-family="monospace" text-decoration="none">Friction Measurements</tspan><tspan dx="3.2">Sleeve friction and friction ratio data</tspan></text><title>GEF-CPT-Report File/Data Block/Optional Columns/Friction Measurements</title></g><g transform="translate(0,688)"><circle cx="48" r="2"/><text dy="0.32em" x="54"><tspan font-weight="600" font-family="monospace" text-decoration="none">Pore Pressure Measurements</tspan><tspan dx="3.2">Pore water pressure measurements (u1, u2, u3)</tspan></text><title>GEF-CPT-Report File/Data Block/Optional Columns/Pore Pressure Measurements</title></g><g transform="translate(0,704)"><circle cx="48" r="2"/><text dy="0.32em" x="54"><tspan font-weight="600" font-family="monospace" text-decoration="none">Inclination Measurements</tspan><tspan dx="3.2">Cone inclination from vertical</tspan></text><title>GEF-CPT-Report File/Data Block/Optional Columns/Inclination Measurements</title></g><g transform="translate(0,720)"><circle cx="48" r="2"/><text dy="0.32em" x="54"><tspan font-weight="600" font-family="monospace" text-decoration="none">Calculated Values</tspan><tspan dx="3.2">Derived parameters and soil properties</tspan></text><title>GEF-CPT-Report File/Data Block/Optional Columns/Calculated Values</title></g><g transform="translate(0,736)"><circle cx="48" r="2"/><text dy="0.32em" x="54"><tspan font-weight="600" font-family="monospace" text-decoration="none">Additional Measurements</tspan><tspan dx="3.2">Electric conductivity, magnetic field, etc.</tspan></text><title>GEF-CPT-Report File/Data Block/Optional Columns/Additional Measurements</title></g><g transform="translate(0,752)"><circle cx="48" r="2"/><text dy="0.32em" x="54"><tspan font-weight="600" font-family="monospace" text-decoration="none">Text Comments</tspan><tspan dx="3.2">Optional last column for comments on measurement scans</tspan></text><title>GEF-CPT-Report File/Data Block/Optional Columns/Text Comments</title></g></g></svg>
+<svg width="928" height="784" style="height:784px" viewBox="-8,-24,728,784"
+    style="max-width: 100%; height: auto; font: 11.428571428571429px sans-serif; overflow: visible;"
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g fill="none" stroke="#999">
+        <path d="&#10;M0,0&#10;V16&#10;h16&#10;" />
+        <path d="&#10;M0,0&#10;V592&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V48&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V64&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V80&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V112&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V128&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V144&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V176&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V192&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V224&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V240&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V272&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V288&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V320&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V336&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V352&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V384&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V400&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V416&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V432&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V464&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V480&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V512&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V528&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V560&#10;h16&#10;" />
+        <path d="&#10;M16,16&#10;V576&#10;h16&#10;" />
+        <path d="&#10;M16,592&#10;V608&#10;h16&#10;" />
+        <path d="&#10;M16,592&#10;V656&#10;h16&#10;" />
+        <path d="&#10;M32,608&#10;V624&#10;h16&#10;" />
+        <path d="&#10;M32,608&#10;V640&#10;h16&#10;" />
+        <path d="&#10;M32,656&#10;V672&#10;h16&#10;" />
+        <path d="&#10;M32,656&#10;V688&#10;h16&#10;" />
+        <path d="&#10;M32,656&#10;V704&#10;h16&#10;" />
+        <path d="&#10;M32,656&#10;V720&#10;h16&#10;" />
+        <path d="&#10;M32,656&#10;V736&#10;h16&#10;" />
+        <path d="&#10;M32,656&#10;V752&#10;h16&#10;" />
+    </g>
+    <g fill="currentColor">
+        <g transform="translate(0,0)">
+            <circle cx="0" r="2" />
+            <text dy="0.32em" x="6">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">GEF-CPT-Report
+                    File</tspan>
+                <tspan dx="3.2">Complete GEF cone penetration test report file</tspan>
+            </text>
+            <title>GEF-CPT-Report File</title>
+        </g>
+        <g transform="translate(0,16)">
+            <circle cx="16" r="2" />
+            <text dy="0.32em" x="22">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">Header Block</tspan>
+                <tspan dx="3.2">File metadata and test parameters</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block</title>
+        </g>
+        <g transform="translate(0,592)">
+            <circle cx="16" r="2" />
+            <text dy="0.32em" x="22">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">Data Block</tspan>
+                <tspan dx="3.2">Tabular measurement data organized in scans</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Data Block</title>
+        </g>
+        <g transform="translate(0,32)">
+            <text dy="0.32em" x="38">
+                <tspan font-weight="500" font-family="sans-serif" text-decoration="underline">GEF
+                    Identification</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/GEF Identification</title>
+        </g>
+        <g transform="translate(0,48)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#GEFID</tspan>
+                <tspan dx="3.2">GEF version and format identification</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#GEFID</title>
+        </g>
+        <g transform="translate(0,64)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#REPORTCODE</tspan>
+                <tspan dx="3.2">Report format type and version</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#REPORTCODE</title>
+        </g>
+        <g transform="translate(0,80)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#DATAFORMAT</tspan>
+                <tspan dx="3.2">Data format specification</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#DATAFORMAT</title>
+        </g>
+        <g transform="translate(0,96)">
+            <text dy="0.32em" x="38">
+                <tspan font-weight="500" font-family="sans-serif" text-decoration="underline">File
+                    Metadata</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/File Metadata</title>
+        </g>
+        <g transform="translate(0,112)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#FILEOWNER</tspan>
+                <tspan dx="3.2">File creator/owner name</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#FILEOWNER</title>
+        </g>
+        <g transform="translate(0,128)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#FILEDATE</tspan>
+                <tspan dx="3.2">File creation date</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#FILEDATE</title>
+        </g>
+        <g transform="translate(0,144)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#COMPANYID</tspan>
+                <tspan dx="3.2">Executing company information</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#COMPANYID</title>
+        </g>
+        <g transform="translate(0,160)">
+            <text dy="0.32em" x="38">
+                <tspan font-weight="500" font-family="sans-serif" text-decoration="underline">Project
+                    Information</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/Project Information</title>
+        </g>
+        <g transform="translate(0,176)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#PROJECTID</tspan>
+                <tspan dx="3.2">Project identification</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#PROJECTID</title>
+        </g>
+        <g transform="translate(0,192)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#TESTID</tspan>
+                <tspan dx="3.2">CPT test identification number</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#TESTID</title>
+        </g>
+        <g transform="translate(0,208)">
+            <text dy="0.32em" x="38">
+                <tspan font-weight="500" font-family="sans-serif" text-decoration="underline">Coordinate
+                    &amp; Reference Systems</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/Coordinate &amp; Reference Systems</title>
+        </g>
+        <g transform="translate(0,224)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#XYID</tspan>
+                <tspan dx="3.2">Horizontal coordinates and coordinate system</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#XYID</title>
+        </g>
+        <g transform="translate(0,240)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#ZID</tspan>
+                <tspan dx="3.2">Surface elevation and height reference system</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#ZID</title>
+        </g>
+        <g transform="translate(0,256)">
+            <text dy="0.32em" x="38">
+                <tspan font-weight="500" font-family="sans-serif" text-decoration="underline">Test
+                    Execution</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/Test Execution</title>
+        </g>
+        <g transform="translate(0,272)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#STARTDATE</tspan>
+                <tspan dx="3.2">Test execution date</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#STARTDATE</title>
+        </g>
+        <g transform="translate(0,288)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#STARTTIME</tspan>
+                <tspan dx="3.2">Test execution time</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#STARTTIME</title>
+        </g>
+        <g transform="translate(0,304)">
+            <text dy="0.32em" x="38">
+                <tspan font-weight="500" font-family="sans-serif" text-decoration="underline">Data
+                    Structure Definition</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/Data Structure Definition</title>
+        </g>
+        <g transform="translate(0,320)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#COLUMN</tspan>
+                <tspan dx="3.2">Number of numerical data columns</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#COLUMN</title>
+        </g>
+        <g transform="translate(0,336)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#COLUMNINFO</tspan>
+                <tspan dx="3.2">Column definitions, units, and quantity numbers</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#COLUMNINFO</title>
+        </g>
+        <g transform="translate(0,352)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#LASTSCAN</tspan>
+                <tspan dx="3.2">Number of data records (measurement scans)</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#LASTSCAN</title>
+        </g>
+        <g transform="translate(0,368)">
+            <text dy="0.32em" x="38">
+                <tspan font-weight="500" font-family="sans-serif" text-decoration="underline">Data
+                    Formatting</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/Data Formatting</title>
+        </g>
+        <g transform="translate(0,384)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">
+                    #COLUMNSEPARATOR</tspan>
+                <tspan dx="3.2">Character dividing columns in data block</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#COLUMNSEPARATOR</title>
+        </g>
+        <g transform="translate(0,400)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">
+                    #RECORDSEPARATOR</tspan>
+                <tspan dx="3.2">Symbol at end of each measurement scan</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#RECORDSEPARATOR</title>
+        </g>
+        <g transform="translate(0,416)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#COLUMNTEXT</tspan>
+                <tspan dx="3.2">Text column on/off setting per column</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#COLUMNTEXT</title>
+        </g>
+        <g transform="translate(0,432)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">
+                    #REPORTDATAFORMAT</tspan>
+                <tspan dx="3.2">Print format per column (FORTRAN style)</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#REPORTDATAFORMAT</title>
+        </g>
+        <g transform="translate(0,448)">
+            <text dy="0.32em" x="38">
+                <tspan font-weight="500" font-family="sans-serif" text-decoration="underline">Data
+                    Validation</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/Data Validation</title>
+        </g>
+        <g transform="translate(0,464)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">
+                    #COLUMNMINMAX</tspan>
+                <tspan dx="3.2">Min/max values per column</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#COLUMNMINMAX</title>
+        </g>
+        <g transform="translate(0,480)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#COLUMNVOID</tspan>
+                <tspan dx="3.2">No-data value definition per column</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#COLUMNVOID</title>
+        </g>
+        <g transform="translate(0,496)">
+            <text dy="0.32em" x="38">
+                <tspan font-weight="500" font-family="sans-serif" text-decoration="underline">Measurement
+                    Parameters</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/Measurement Parameters</title>
+        </g>
+        <g transform="translate(0,512)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">
+                    #MEASUREMENTVAR</tspan>
+                <tspan dx="3.2">Numerical measurement parameters with indexed IDs</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#MEASUREMENTVAR</title>
+        </g>
+        <g transform="translate(0,528)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">
+                    #MEASUREMENTTEXT</tspan>
+                <tspan dx="3.2">Descriptive text information with indexed IDs</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#MEASUREMENTTEXT</title>
+        </g>
+        <g transform="translate(0,544)">
+            <text dy="0.32em" x="38">
+                <tspan font-weight="500" font-family="sans-serif" text-decoration="underline">Specimen
+                    Data</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/Specimen Data</title>
+        </g>
+        <g transform="translate(0,560)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#SPECIMENVAR</tspan>
+                <tspan dx="3.2">Numerical specimen parameters</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#SPECIMENVAR</title>
+        </g>
+        <g transform="translate(0,576)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#EOH</tspan>
+                <tspan dx="3.2">End of header marker - separates header from data</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Header Block/#EOH</title>
+        </g>
+        <g transform="translate(0,608)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">Required
+                    Columns</tspan>
+                <tspan dx="3.2">Mandatory data columns that must be present</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Data Block/Required Columns</title>
+        </g>
+        <g transform="translate(0,656)">
+            <circle cx="32" r="2" />
+            <text dy="0.32em" x="38">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">Optional
+                    Columns</tspan>
+                <tspan dx="3.2">Additional measurement data columns</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Data Block/Optional Columns</title>
+        </g>
+        <g transform="translate(0,624)">
+            <circle cx="48" r="2" />
+            <text dy="0.32em" x="54">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">Column 1:
+                    Penetration Length (m)</tspan>
+                <tspan dx="3.2">Depth of cone tip below reference level</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Data Block/Required Columns/Column 1: Penetration Length (m)</title>
+        </g>
+        <g transform="translate(0,640)">
+            <circle cx="48" r="2" />
+            <text dy="0.32em" x="54">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">Column 2:
+                    Cone Resistance (MPa)</tspan>
+                <tspan dx="3.2">Measured cone tip resistance</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Data Block/Required Columns/Column 2: Cone Resistance (MPa)</title>
+        </g>
+        <g transform="translate(0,672)">
+            <circle cx="48" r="2" />
+            <text dy="0.32em" x="54">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">Friction
+                    Measurements</tspan>
+                <tspan dx="3.2">Sleeve friction and friction ratio data</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Data Block/Optional Columns/Friction Measurements</title>
+        </g>
+        <g transform="translate(0,688)">
+            <circle cx="48" r="2" />
+            <text dy="0.32em" x="54">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">Pore
+                    Pressure Measurements</tspan>
+                <tspan dx="3.2">Pore water pressure measurements (u1, u2, u3)</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Data Block/Optional Columns/Pore Pressure Measurements</title>
+        </g>
+        <g transform="translate(0,704)">
+            <circle cx="48" r="2" />
+            <text dy="0.32em" x="54">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">Inclination
+                    Measurements</tspan>
+                <tspan dx="3.2">Cone inclination from vertical</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Data Block/Optional Columns/Inclination Measurements</title>
+        </g>
+        <g transform="translate(0,720)">
+            <circle cx="48" r="2" />
+            <text dy="0.32em" x="54">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">Calculated
+                    Values</tspan>
+                <tspan dx="3.2">Derived parameters and soil properties</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Data Block/Optional Columns/Calculated Values</title>
+        </g>
+        <g transform="translate(0,736)">
+            <circle cx="48" r="2" />
+            <text dy="0.32em" x="54">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">Additional
+                    Measurements</tspan>
+                <tspan dx="3.2">Electric conductivity, magnetic field, etc.</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Data Block/Optional Columns/Additional Measurements</title>
+        </g>
+        <g transform="translate(0,752)">
+            <circle cx="48" r="2" />
+            <text dy="0.32em" x="54">
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">Text
+                    Comments</tspan>
+                <tspan dx="3.2">Optional last column for comments on measurement scans</tspan>
+            </text>
+            <title>GEF-CPT-Report File/Data Block/Optional Columns/Text Comments</title>
+        </g>
+    </g>
+</svg>
 
 ## Header Keywords
 

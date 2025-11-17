@@ -7,7 +7,7 @@ sidebar:
 ---
 
 Geotechnical data has a natural hierarchical structure that mirrors how ground investigations are actually performed.
-Understanding this structure—and how relational databases represent it, reveals why this approach is more flexible and powerful than traditional file-based formats like AGS.
+Understanding this structure and how relational databases represent it, shows why this approach is more flexible and powerful than traditional file-based formats like GEF or AGS.
 
 ## The natural hierarchy of ground investigations
 
@@ -74,9 +74,7 @@ These hierarchical relationships can be visualized in a tree diagram like this:
 
 This tree-like structure emerges naturally because:
 
-- **Projects** contain multiple investigation **locations**
-- **Locations** yield multiple **observations/measurements** and **samples**
-- **Samples** undergo multiple **laboratory tests**
+**Projects** contain multiple investigation **locations**. **Locations** yield multiple **observations, measurements**, and **samples**. Samples can be used in multiple **laboratory tests**.
 
 Each level depends on the level above it, creating clear parent-child relationships throughout the dataset.
 
@@ -108,13 +106,13 @@ Consider a project with 2 boreholes, where "Borehole 1 (BH001)" has 3 samples:
 **Projects table:**
 | project_uid | horizontal_crs | vertical_crs |
 |-------------|----------------|--------------|
-| P001 | EPSG:2326 | EPSG:5738 |
+| P001        | EPSG:2326      | EPSG:5738    |
 
 **Locations table:**
 | location_uid | project_uid  | easting | northing | depth_to_base | ground_level_elevation |
 |--------------|--------------|---------|----------|---------------|------------------------|
-| BH001 | P001 | 523441 | 181652 | 5.4 | 20.5 |
-| BH002 | P001 | 523467 | 181678 | 6.8 | 19.8 |
+| BH001        | P001         | 523441  | 181652   | 5.4           | 20.5                   |
+| BH002        | P001         | 523467  | 181678   | 6.8           | 19.8                   |
 
 **Samples table:**
 | sample_uid | location_uid | project_uid  |
@@ -124,21 +122,8 @@ Consider a project with 2 boreholes, where "Borehole 1 (BH001)" has 3 samples:
 | S003 | BH001 | P001 |
 
 This creates **one-to-many relationships**: one project has many locations, one location has many samples, etc.
-<!-- 
-## AGS format vs. relational database approach
 
-The AGS (Association of Geotechnical and Geoenvironmental Specialists) format also recognizes the hierarchical nature of geotechnical data, but handles it differently:
-
-### AGS format characteristics
-
-- **File-based**: Data stored in structured text files
-- **Table structure**: Uses groups (tables) with standardized column names
-- **Linking mechanism**: Uses combination keys across multiple columns
-- **Rigid schema**: Predefined structure with specific field requirements
-- **Exchange focus**: Designed primarily for data transfer between organizations -->
-
-### Relational database advantages
-
+### Relational Database Advantages
 
 **Query power**: SQL enables complex queries across multiple tables:
 
@@ -150,7 +135,20 @@ The AGS (Association of Geotechnical and Geoenvironmental Specialists) format al
 
 **Integration**: Direct connectivity with GIS software, analysis tools, and web applications
 
-<!-- ### When AGS format works well
+<!-- 
+## AGS format vs. relational database approach
+
+The AGS (Association of Geotechnical and Geoenvironmental Specialists) format also recognizes the hierarchical nature of geotechnical data, but handles it differently:
+
+### AGS format characteristics
+
+- **File-based**: Data stored in structured text files
+- **Table structure**: Uses groups (tables) with standardized column names
+- **Linking mechanism**: Uses combination keys across multiple columns
+- **Rigid schema**: Predefined structure with specific field requirements
+- **Exchange focus**: Designed primarily for data transfer between organizations
+
+### When AGS format works well
 
 AGS remains excellent for:
 

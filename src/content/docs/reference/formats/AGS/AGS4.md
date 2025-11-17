@@ -19,7 +19,7 @@ Each **sample** (`SAMP`) belongs to a **location** (`LOCA`). Each **location** b
 
 Here’s a an indented tree diagram showing the hierarchy of groups commonly found in an AGS4 file.
 
-<svg xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;font:13px sans-serif; max-width: 450px;"  viewBox="-12 -24 402 424">
+<svg xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;font:13px sans-serif; max-width: 450px;"  viewBox="-12 -24 402 358">
     <g fill="none" stroke="currentColor">
         <path d="&#10;M0,0&#10;V24&#10;h24&#10;" />
         <path d="&#10;M0,0&#10;V240&#10;h24&#10;" />
