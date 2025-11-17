@@ -1,11 +1,5 @@
-// import {
-//   interpolateYlGnBu,
-//   interpolateCividis,
-// } from "https://cdn.jsdelivr.net/npm/d3-scale-chromatic@3/+esm";
 import { scaleOrdinal } from "https://cdn.jsdelivr.net/npm/d3-scale/+esm";
 
-// Your access token can be found at: https://ion.cesium.com/tokens.
-// Replace `your_access_token` with your Cesium ion access token.
 Cesium.Ion.defaultAccessToken =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2ZTc4NGUwYi1hMGQ1LTQ0YmEtYThhMi03ZDFkYjhhYzY0ZGEiLCJpZCI6Mjc0NDQ3LCJpYXQiOjE3NjIyNTAwMDJ9._znSCj5J_BQcLnzZL1DGHw7E1cOqzZYENzl437ZY_5A";
 
@@ -30,7 +24,7 @@ const initialCameraView = {
   destination: Cesium.Cartesian3.fromRadians(
     0.08537763567876235,
     0.9143046099703667,
-    532.1130701784695
+    532.1130701784695,
   ),
   orientation: {
     heading: 1.6502882805254577,
@@ -42,7 +36,7 @@ const initialCameraView = {
 viewer.camera.setView(initialCameraView);
 
 const terrainProvider = await Cesium.CesiumTerrainProvider.fromUrl(
-  "https://api.pdok.nl/kadaster/3d-basisvoorziening/ogc/v1_0/collections/digitaalterreinmodel/quantized-mesh"
+  "https://api.pdok.nl/kadaster/3d-basisvoorziening/ogc/v1_0/collections/digitaalterreinmodel/quantized-mesh",
 );
 viewer.scene.terrainProvider = terrainProvider;
 
@@ -73,7 +67,7 @@ globe.translucency.frontFaceAlphaByDistance = new Cesium.NearFarScalar(
   200, // The lower bound of the camera range.
   0.1, // Minimum alpha at close distance
   800, // The upper bound of the camera range.
-  initAlpha //  Maximum alpha at far distance
+  initAlpha, //  Maximum alpha at far distance
 );
 globe.translucency.backFaceAlpha = 1.0; // Keep back face opaque
 globe.undergroundColor = Cesium.Color.GREY;
@@ -112,7 +106,7 @@ function onLoadLocations(dataSource) {
     const { length, position } = linestringToCylinder(coordinates);
 
     const color = Cesium.Color.fromCssColorString(
-      cptStandardColorScale(standardType)
+      cptStandardColorScale(standardType),
     );
 
     dataSource.entities.add({
@@ -169,8 +163,8 @@ function onLoadInterpretedCPT(dataSource) {
     }
 
     // Remove the default point rendering
-    if (entity.marker) {
-      entity.marker = undefined;
+    if (entity.point) {
+      entity.point = undefined;
     }
 
     if (!coordinates || coordinates.length < 2) {
@@ -268,11 +262,11 @@ function generateDatasetControls() {
       (dataset) => `
   <div class="checkbox-item">
     <input type="checkbox" id="${dataset.id}-toggle" ${
-        dataset.enabled ? "checked" : ""
-      }>
+      dataset.enabled ? "checked" : ""
+    }>
     <label for="${dataset.id}-toggle">${dataset.label}</label>
   </div>
-`
+`,
     )
     .join("");
 
@@ -310,7 +304,7 @@ Promise.allSettled(datasets.map((dataset) => loadDataset(dataset))).then(
         console.warn("Failed to load dataset:", result.reason);
       }
     }
-  }
+  },
 );
 
 // Globe opacity slider
@@ -341,7 +335,7 @@ export function createOrdinalLegend({ scale, title, config = null }) {
 
     item.innerHTML = `
       <div class="legend-circle" style="background-color: ${scale(
-        value
+        value,
       )}"></div>
       <span>${displayName}</span>
     `;
@@ -398,14 +392,14 @@ const lithoColorShader = new Cesium.CustomShader({
 viewer.extend(Cesium.viewerVoxelInspectorMixin);
 
 const voxelProvider = await Cesium.Cesium3DTilesVoxelProvider.fromUrl(
-  `/geotop-voxels/geotop_amsterdam/tileset.json`
+  `/geotop-voxels/geotop_amsterdam/tileset.json`,
 );
 
 const voxelPrimitive = viewer.scene.primitives.add(
   new Cesium.VoxelPrimitive({
     provider: voxelProvider,
     customShader: lithoColorShader,
-  })
+  }),
 );
 
 voxelPrimitive.show = false;
@@ -424,7 +418,7 @@ document.querySelector("#geotop-toggle").addEventListener("change", (event) => {
 
 try {
   const tileset_3dbag = await Cesium.Cesium3DTileset.fromUrl(
-    "https://data.3dbag.nl/v20250903/cesium3dtiles/lod22/tileset.json"
+    "https://data.3dbag.nl/v20250903/cesium3dtiles/lod22/tileset.json",
   );
   viewer.scene.primitives.add(tileset_3dbag);
 
