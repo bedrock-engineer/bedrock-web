@@ -9,6 +9,12 @@ It provides a structured way to capture the visual and tactile observations made
 It is commonly used in the Netherlands and Flanders (Belgium).
 The format is no longer maintained and technically outdated, but it remains in use due to extensive legacy data.
 
+{% linkcard
+   title="Visualize GEF files in your browser"
+   href="https://gef.bedrock.engineer/"
+   description="View GEF CPT and BORE files in easily in your browser." /%}
+
+
 ## Structure
 
 A GEF-BORE file consists of a **Header** and a **Datablock**.
