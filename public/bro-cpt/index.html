@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alle 260.000+ BRO CPT locaties op één kaart | Bedrock</title>
+
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta name="author" content="Jules Blom @ Bedrock" />
+    <meta
+      name="description"
+      content="Bekijk alle 260.000+ CPT locaties uit de Basisregistratie Ondergrond op één interactieve kaart."
+    />
+    <meta
+      name="keywords"
+      content="Basisregistratie Ondergrond, BRO, CPT kaart, sondeergegevens, Cone Penetration Test, PMTiles, Dutch subsurface, geotechniek, bodemonderzoek, CPT map, Bedrock"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="hsl(111, 15%, 43%)" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.bedrock.engineer/bro-cpt" />
+    <meta
+      property="og:title"
+      content="Alle 260.000+ BRO CPT locaties op één kaart"
+    />
+    <meta
+      property="og:description"
+      content="Bekijk alle CPT locaties uit de Basisregistratie Ondergrond op één interactieve kaart."
+    />
+    <meta property="og:locale" content="nl_NL" />
+    <meta
+      property="og:image"
+      content="https://www.bedrock.engineer/og-image-cpt.png"
+    />
+    <meta property="og:site_name" content="Bedrock" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="bedrock.engineer" />
+    <meta
+      property="twitter:url"
+      content="https://www.bedrock.engineer/bro-cpt"
+    />
+    <meta
+      name="twitter:title"
+      content="Alle 260.000+ BRO CPT locaties op één kaart"
+    />
+    <meta
+      name="twitter:description"
+      content="Bekijk alle CPT locaties uit de Basisregistratie Ondergrond op één interactieve kaart."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.bedrock.engineer/og-image-cpt.png"
+    />
+    <meta name="twitter:creator" content="@Mega_Jules" />
+
+    <style>
+      html,
+      body,
+      #map {
+        font-family: "IBM Plex Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+      }
+      h1 {
+        margin-inline: 12px;
+        font-weight: 400;
+        position: absolute;
+        z-index: 1;
+      }
+      #legend {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        background: white;
+        padding: 12px 16px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px oklch(0% 0 0 / 0.2);
+        z-index: 1;
+        font-size: 13px;
+      }
+      #legend h3 {
+        margin: 0 0 8px 0;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      #color-mode {
+        width: 100%;
+        padding: 4px 8px;
+        margin-bottom: 12px;
+        border: 1px solid oklch(84.522% 0.0001 271.152);
+        border-radius: 3px;
+        font-size: 13px;
+        font-family: inherit;
+        background: white;
+        cursor: pointer;
+      }
+      .legend-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 6px;
+        gap: 6px;
+      }
+      .legend-item:last-child {
+        margin-bottom: 0;
+      }
+      .legend-item input[type="checkbox"] {
+        cursor: pointer;
+        margin: 0;
+      }
+      .legend-item label {
+        margin: 0;
+      }
+      .legend-color {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      #info-panel {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: white;
+        padding: 16px 20px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px oklch(0% 0 0 / 0.2);
+        z-index: 1;
+        font-size: 14px;
+        max-width: 400px;
+        line-height: 1.5;
+      }
+      #info-panel h2 {
+        margin: 0 0 12px 0;
+        font-size: 18px;
+        font-weight: 500;
+      }
+      #info-panel p {
+        margin: 0 0 12px 0;
+        color: #333;
+      }
+      #info-panel p:last-child {
+        margin-bottom: 0;
+      }
+      #info-panel a {
+        color: oklch(56.18% 0.0594 140.849);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      #info-panel a:hover {
+        text-decoration: underline;
+      }
+      #info-panel .tech-stack {
+        font-size: 13px;
+        color: #666;
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid #eee;
+      }
+      #toggle-info {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: white;
+        border: none;
+        padding: 10px 14px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        font-size: 14px;
+        font-family: inherit;
+        z-index: 2;
+        display: none;
+      }
+      #toggle-info:hover {
+        background: #f5f5f5;
+      }
+      #info-panel.collapsed {
+        display: none;
+      }
+      #info-panel.collapsed + #toggle-info {
+        display: block;
+      }
+      #close-info {
+        float: right;
+        background: none;
+        border: none;
+        font-size: 20px;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0;
+        margin: -4px -4px 0 0;
+        color: #999;
+      }
+      #close-info:hover {
+        color: #333;
+      }
+      #search-container {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1;
+        width: 300px;
+        max-width: calc(100vw - 40px);
+      }
+      #search-input {
+        width: 100%;
+        padding: 10px 12px;
+        border: none;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        font-family: inherit;
+        font-size: 14px;
+      }
+      #search-input:focus {
+        outline: 2px solid hsl(111, 15%, 43%);
+      }
+      #search-results {
+        background: white;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        margin-top: 4px;
+        max-height: 300px;
+        overflow-y: auto;
+        display: none;
+      }
+      .search-result-item {
+        padding: 10px 12px;
+        cursor: pointer;
+        border-bottom: 1px solid oklch(94.912% 0.00011 271.152);
+        font-size: 13px;
+      }
+      .search-result-item:last-child {
+        border-bottom: none;
+      }
+      .search-result-item:hover {
+        background: oklch(97.015% 0.00011 271.152);
+      }
+      .search-result-title {
+        font-weight: 500;
+        margin-bottom: 2px;
+      }
+      .search-result-type {
+        font-size: 11px;
+        color: oklch(51.028% 0.00006 271.152);
+      }
+      #basemap-selector {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        background: white;
+        padding: 8px 12px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        font-size: 13px;
+      }
+      #basemap-select {
+        border: 1px solid oklch(84.522% 0.0001 271.152);
+        border-radius: 3px;
+        padding: 4px 8px;
+        font-family: inherit;
+        font-size: 13px;
+        background: white;
+        cursor: pointer;
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-DAvr7UGJ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-kWVbv8B-.css" />
+  </head>
+  <body>
+    <div id="info-panel">
+      <button id="close-info" aria-label="Sluit info">&times;</button>
+      <h2>260.000+ BRO CPT locaties</h2>
+      <p>
+        Deze kaart toont bijna
+        <a
+          href="https://service.pdok.nl/bzk/brocptvolledigeset/atom/v1_0/index.xml"
+          >alle publieke CPT sonderingen</a
+        >
+        (260.000+) uit de
+        <a href="https://basisregistratieondergrond.nl/"
+          >Basisregistratie Ondergrond</a
+        >
+        .
+      </p>
+      <p>
+        Op zoek naar custom tooling voor je geotechnisch ontwerkprocess?
+        <a href="https://www.bedrock.engineer" target="_blank" rel="noopener"
+          >Bedrock</a
+        >
+        bouwt software voor geotechnische- en ondergronddata. Neem contact op
+        via
+        <a href="mailto:info@bedrock.engineer">info@bedrock.engineer</a>
+      </p>
+      <div class="tech-stack">
+        Gemaakt met
+        <a href="https://maplibre.org/maplibre-gl-js/docs/">MapLibre GL JS</a>
+        en
+        <a href="https://github.com/protomaps/PMTiles">PMTiles</a>
+        <a
+          style="font-size: 8px"
+          href="https://github.com/bedrock-engineer/bedrock-experiments/tree/main/cpt-pmtiles"
+          >Broncode</a
+        >.
+        <p style="font-size: 8px">
+          Data: <a href="https://www.pdok.nl/" target="_blank">PDOK</a>
+        </p>
+      </div>
+    </div>
+    <button id="toggle-info">ℹ Info</button>
+
+    <div id="search-container">
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Zoek plaats, postcode of adres..."
+        autocomplete="off"
+      />
+      <div id="search-results"></div>
+    </div>
+
+    <div id="basemap-selector">
+      <select id="basemap-select">
+        <option value="brt">BRT Achtergrondkaart</option>
+        <option value="luchtfoto">Luchtfoto (actueel)</option>
+        <option value="bgt">BGT Achtergrondkaart</option>
+        <!-- <option value="bag">BAG Achtergrondkaart</option> -->
+        <option value="none">Geen achtergrond</option>
+      </select>
+    </div>
+
+    <div id="map"></div>
+
+    <div id="legend">
+      <h3>Kleur op</h3>
+      <select id="color-mode">
+        <option value="standard">CPT Standaard</option>
+        <option value="decade">Decenium</option>
+      </select>
+      <div id="legend-items"></div>
+    </div>
+
+    <script>
+      const infoPanel = document.getElementById("info-panel");
+      const toggleBtn = document.getElementById("toggle-info");
+      const closeBtn = document.getElementById("close-info");
+
+      closeBtn.addEventListener("click", () => {
+        infoPanel.classList.add("collapsed");
+      });
+
+      toggleBtn.addEventListener("click", () => {
+        infoPanel.classList.remove("collapsed");
+      });
+    </script>
+  </body>
+</html>
