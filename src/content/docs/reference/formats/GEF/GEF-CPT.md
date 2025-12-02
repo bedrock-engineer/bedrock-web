@@ -9,10 +9,6 @@ The GEF-CPT format is a legacy text-based data exchange format for Cone Penetrat
 It was created in 1999 to solve interoperability problems in Dutch geotechnical practice, it replaced a proliferation of proprietary formats.
 The format is no longer maintained and is technically outdated, but it remains in use due to extensive legacy data and support for it in engineering software.
 
-{% linkcard
-   title="Bedrock GEF File Viewer App"
-   href="https://gef.bedrock.engineer/"
-   description="View GEF CPT and BORE files in easily in your browser." /%}
 
 ## Structure
 
