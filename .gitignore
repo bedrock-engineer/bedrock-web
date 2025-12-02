@@ -25,3 +25,6 @@ pnpm-debug.log*
 /.luarc.json
 
 .wrangler
+
+# Large PMTiles files (hosted on R2)
+public/bro-cpt/*.pmtiles
