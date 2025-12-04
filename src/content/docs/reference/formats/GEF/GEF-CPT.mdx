@@ -4,10 +4,16 @@ description: Description of the Geotechnical Exchange Format (GEF) CPT Report
 author: "Jules Blom"
 date: "2025-08-22"
 ---
+import { LinkCard } from '@astrojs/starlight/components';
 
 The GEF-CPT format is a legacy text-based data exchange format for Cone Penetration Test (CPT) data, primarily used in the Netherlands and Belgium.
 It was created in 1999 to solve interoperability problems in Dutch geotechnical practice, it replaced a proliferation of proprietary formats.
 The format is no longer maintained and is technically outdated, but it remains in use due to extensive legacy data and support for it in engineering software.
+
+<LinkCard
+   title="View GEF files in your browser"
+   href="https://gef.bedrock.engineer/"
+   description="View GEF-CPT and GEF-BORE data and metadata easily in your browser." />
 
 
 ## Structure
@@ -22,8 +28,7 @@ This text-based structure makes GEF files _human-readable_<sup>1</sup> while ens
 
 <small>1. 'Human-readable' is rather generous. I'd call it human-openable-a-in-a-text-editor at most</small>
 
-<svg width="928" height="784" style="height:784px" viewBox="-8,-24,728,784"
-    style="max-width: 100%; height: auto; font: 11.428571428571429px sans-serif; overflow: visible;"
+<svg width="928" height="784"  viewBox="-8,-24,728,784" style="max-width: 100%; height: auto; font: 11.428571428571429px sans-serif; overflow: visible;"
     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g fill="none" stroke="#999">
         <path d="&#10;M0,0&#10;V16&#10;h16&#10;" />
@@ -262,8 +267,7 @@ This text-based structure makes GEF files _human-readable_<sup>1</sup> while ens
         <g transform="translate(0,384)">
             <circle cx="32" r="2" />
             <text dy="0.32em" x="38">
-                <tspan font-weight="600" font-family="monospace" text-decoration="none">
-                    #COLUMNSEPARATOR</tspan>
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#COLUMNSEPARATOR</tspan>
                 <tspan dx="3.2">Character dividing columns in data block</tspan>
             </text>
             <title>GEF-CPT-Report File/Header Block/#COLUMNSEPARATOR</title>
@@ -271,8 +275,7 @@ This text-based structure makes GEF files _human-readable_<sup>1</sup> while ens
         <g transform="translate(0,400)">
             <circle cx="32" r="2" />
             <text dy="0.32em" x="38">
-                <tspan font-weight="600" font-family="monospace" text-decoration="none">
-                    #RECORDSEPARATOR</tspan>
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#RECORDSEPARATOR</tspan>
                 <tspan dx="3.2">Symbol at end of each measurement scan</tspan>
             </text>
             <title>GEF-CPT-Report File/Header Block/#RECORDSEPARATOR</title>
@@ -288,8 +291,7 @@ This text-based structure makes GEF files _human-readable_<sup>1</sup> while ens
         <g transform="translate(0,432)">
             <circle cx="32" r="2" />
             <text dy="0.32em" x="38">
-                <tspan font-weight="600" font-family="monospace" text-decoration="none">
-                    #REPORTDATAFORMAT</tspan>
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#REPORTDATAFORMAT</tspan>
                 <tspan dx="3.2">Print format per column (FORTRAN style)</tspan>
             </text>
             <title>GEF-CPT-Report File/Header Block/#REPORTDATAFORMAT</title>
@@ -304,8 +306,7 @@ This text-based structure makes GEF files _human-readable_<sup>1</sup> while ens
         <g transform="translate(0,464)">
             <circle cx="32" r="2" />
             <text dy="0.32em" x="38">
-                <tspan font-weight="600" font-family="monospace" text-decoration="none">
-                    #COLUMNMINMAX</tspan>
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#COLUMNMINMAX</tspan>
                 <tspan dx="3.2">Min/max values per column</tspan>
             </text>
             <title>GEF-CPT-Report File/Header Block/#COLUMNMINMAX</title>
@@ -328,8 +329,7 @@ This text-based structure makes GEF files _human-readable_<sup>1</sup> while ens
         <g transform="translate(0,512)">
             <circle cx="32" r="2" />
             <text dy="0.32em" x="38">
-                <tspan font-weight="600" font-family="monospace" text-decoration="none">
-                    #MEASUREMENTVAR</tspan>
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#MEASUREMENTVAR</tspan>
                 <tspan dx="3.2">Numerical measurement parameters with indexed IDs</tspan>
             </text>
             <title>GEF-CPT-Report File/Header Block/#MEASUREMENTVAR</title>
@@ -337,8 +337,7 @@ This text-based structure makes GEF files _human-readable_<sup>1</sup> while ens
         <g transform="translate(0,528)">
             <circle cx="32" r="2" />
             <text dy="0.32em" x="38">
-                <tspan font-weight="600" font-family="monospace" text-decoration="none">
-                    #MEASUREMENTTEXT</tspan>
+                <tspan font-weight="600" font-family="monospace" text-decoration="none">#MEASUREMENTTEXT</tspan>
                 <tspan dx="3.2">Descriptive text information with indexed IDs</tspan>
             </text>
             <title>GEF-CPT-Report File/Header Block/#MEASUREMENTTEXT</title>
@@ -466,43 +465,13 @@ This text-based structure makes GEF files _human-readable_<sup>1</sup> while ens
 <iframe width="100%" height="260" style="height:260px" frameborder="0"
   src="https://observablehq.com/embed/@julesblm/geotechnical-exchange-format-gef-cpt@678?cells=requiredKeywords"></iframe>
 
-<!--
-| keyword     | description                                             | example                                   | category | dataType    | multiplicity | indexPattern  |
-| ----------- | ------------------------------------------------------- | ----------------------------------------- | -------- | ----------- | ------------ | ------------- |
-| #GEFID      | GEF release number                                      | #GEFID = 1,1,0                            | file     | version     | single       |               |
-| #REPORTCODE | Report type and version                                 | #REPORTCODE = GEF-CPT-Report,1,1,0        | file     | text        | single       |               |
-| #COLUMN     | Number of columns in data block                         | #COLUMN = 5                               | data     | number      | single       |               |
-| #COLUMNINFO | Column definition (number, unit, description, quantity) | #COLUMNINFO = 1, m, penetration length, 1 | data     | multi_value | multiple     | column_number |
-| #DATAFORMAT | Data format specification                               | #DATAFORMAT = ASCII                       | data     | text        | single       |               |
-| #LASTSCAN   | Number of data rows                                     | #LASTSCAN = 1500                          | data     | number      | single       |               |
-| #EOH        | End of header marker                                    | #EOH                                      | file     | marker      | single       |               |
- -->
 
 ### Optional
 
 <iframe width="100%" height="489" style="height:489px" frameborder="0"
   src="https://observablehq.com/embed/@julesblm/geotechnical-exchange-format-gef-cpt@678?cells=optionalKeywords"></iframe>
 
-<!-- | keyword           | description                             | example                                         | category        | dataType      | multiplicity | multiplicityType | indexPattern      |
-| ----------------- | --------------------------------------- | ----------------------------------------------- | --------------- | ------------- | ------------ | ---------------- | ----------------- |
-| #COMPANYID        | Executing company information           | `#COMPANYID = ABC Geo, NL, 12345`               | metadata        | multi_value   | single       | file_level       |                   |
-| #STARTDATE        | Test execution date                     | `#STARTDATE = 2024, 3, 10`                      | test info       | date          | single       | file_level       |                   |
-| #STARTTIME        | Test start time                         | `#STARTTIME = 9, 30, 0`                         | test info       | time          | single       | file_level       |                   |
-| #PROJECTID        | Project order number                    | `#PROJECTID = PRJ-2024-001`                     | project         | text          | single       | file_level       |                   |
-| #TESTID           | Test identification number              | `#TESTID = CPT-001`                             | test info       | text          | single       | file_level       |                   |
-| #XYID             | Coordinate system and position          | `#XYID = 31000, 125000, 450000, 0.1, 0.1`       | coordinates     | coordinate    | single       | file_level       |                   |
-| #ZID              | Height system and elevation             | `#ZID = 31000, 5.25, 0.02`                      | coordinates     | coordinate    | single       | file_level       |                   |
-| #COLUMNMINMAX     | Min/max values per column               | `#COLUMNMINMAX = 1, 0.0, 15.5`                  | data validation | range         | multiple     | column_related   | column_number     |
-| #COLUMNVOID       | No-data value definition                | `#COLUMNVOID = 1, -999.99`                      | data validation | number        | multiple     | column_related   | column_number     |
-| #COLUMNSEPARATOR  | Character dividing columns              | `#COLUMNSEPARATOR = ,`                          | data structure  | character     | single       | file_level       |                   |
-| #RECORDSEPARATOR  | Symbol at end of measurement scan       | `#RECORDSEPARATOR = ;`                          | data structure  | character     | single       | file_level       |                   |
-| #COLUMNTEXT       | Text column on/off setting              | `#COLUMNTEXT = 1, 1`                            | data structure  | multi_value   | multiple     | column_related   | column_number     |
-| #REPORTDATAFORMAT | Print format per column (FORTRAN style) | `#REPORTDATAFORMAT = F8.2F8.2F6.1`              | data structure  | format_string | single       | file_level       |                   |
-| #MEASUREMENTTEXT  | Indexed text information                | `#MEASUREMENTTEXT = 1, ABC Engineering`         | descriptive     | text          | multiple     | indexed_keywords | predefined_id     |
-| #MEASUREMENTVAR   | Indexed numeric measurements            | `#MEASUREMENTVAR = 1, 1000, mm2, Cone tip area` | descriptive     | multi_value   | multiple     | indexed_keywords | predefined_id     |
-| #SPECIMENVAR      | Specimen/sample information             | `#SPECIMENVAR = 1, 2.5, m, Clay sample`         | samples         | multi_value   | multiple     | list_like_data   | sequential_number |
-| #FILEDATE         | File creation date                      | `#FILEDATE = 2024, 3, 15`                       | metadata        | date          | single       | file_level       |                   |
- -->
+
 
 ### Measurement Variables
 
@@ -631,9 +600,6 @@ Different institutional needs drive different format preferences. This quote sum
 
 > The results of soundings, drillings and samples are processed the day after the investigation, after which the customer receives the report in an XML or GEF file. ‘The XML file is suitable for national databases such as BRO,’ says Van der Burg. ‘The GEF file is compatible with the calculation programmes.’
 > [Geotechnisch onderzoek in steden, op velden en wegen](https://gww-bouw.nl/specials/jaarboek/geotechnisch-onderzoek-in-steden-op-velden-en-wegen/)
-
-<!-- > De resultaten van sonderingen, boringen en monsters worden op de dag na het onderzoek uitgewerkt, waarna de klant de rapportage ontvangt in een xml- of gef-file. “De xml-file is geschikt voor landelijke databases zoals BRO”, vertelt Van der Burg. “De gef-file sluit aan op de rekenprogramma’s.” -->
-
 
 BRO requires XML because regulatory databases need structured data adhering to current standards for archival integrity and legal compliance.
 GEF persists because engineering calculation software, like [D-Foundations](https://www.deltares.nl/en/software-and-data/products/d-foundations), support it.

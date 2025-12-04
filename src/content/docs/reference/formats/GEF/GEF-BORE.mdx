@@ -4,6 +4,7 @@ description: Description of the Geotechnical Exchange Format (GEF) Bore Report
 author: "Jules Blom"
 date: "2025-08-22"
 ---
+import { LinkCard } from '@astrojs/starlight/components';
 
 GEF-BORE-Report is a legacy data exchange format for documenting and sharing borehole descriptions (boorbeschrijvingen) in the geotechnical engineering.
 It provides a structured way to capture the visual and tactile observations made during drilling operations.
@@ -11,6 +12,11 @@ It provides a structured way to capture the visual and tactile observations made
 It is commonly used in the Netherlands and Flanders (Belgium).
 The format is no longer maintained and technically outdated, but it remains in use due to extensive legacy data.
 
+
+<LinkCard
+   title="View GEF files in your browser"
+   href="https://gef.bedrock.engineer/"
+   description="View GEF-CPT and GEF-BORE data and metadata easily in your browser." />
 
 ## Structure
 
@@ -21,8 +27,7 @@ The **Header** contains structured metadata using keywords that start with `#`, 
 After it comes the **Datablock**, containing layer-by-layer soil descriptions with mandatory depth intervals and soil classifications, plus optional textual descriptions of each layer's characteristics, color, and composition.
 This text-based structure makes GEF-BORE files _human-readable_ while ensuring machine parsing compatibility across different geotechnical software platforms.
 
-<svg xmlns="http://www.w3.org/2000/svg" width="928" height="608" style="height: 608px;"
-    style="max-width:100%;height:auto;font:11.428571428571429px sans-serif;overflow:visible"
+<svg xmlns="http://www.w3.org/2000/svg" width="928" height="608" style="max-width:100%;height:auto;font:11.428571428571429px sans-serif;overflow:visible"
     viewBox="-8 -24 828 608">
     <g fill="none" stroke="#999">
         <path d="M0 0v16h16" />
