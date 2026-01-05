@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BRO CPT Parser Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: #fafafa;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .header {
+        background: white;
+        padding: 20px;
+        border: 1px solid #e0e0e0;
+        margin-bottom: 20px;
+      }
+
+      .title {
+        display: flex;
+        column-gap: 8px;
+      }
+
+      h1 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      .subtitle {
+        color: #666;
+        font-size: 14px;
+      }
+
+      .upload-section {
+        background: white;
+        padding: 30px;
+        border: 1px solid #e0e0e0;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .file-input-wrapper {
+        position: relative;
+        display: inline-block;
+        margin-right: 10px;
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+
+      .file-label,
+      .demo-button {
+        background: #333;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+      }
+
+      .file-label:hover,
+      .demo-button:hover {
+        background: #555;
+      }
+
+      .demo-button {
+        background: white;
+        color: #333;
+        border: 1px solid #333;
+      }
+
+      .demo-button:hover {
+        background: #f5f5f5;
+      }
+
+      .demo-button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .or-separator {
+        display: inline-block;
+        margin: 0 10px;
+        color: #999;
+      }
+
+      .content {
+        display: none;
+      }
+
+      .content.active {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 20px;
+      }
+
+      .metadata-section {
+        background: white;
+        padding: 20px;
+        border: 1px solid #e0e0e0;
+        height: fit-content;
+      }
+
+      .metadata-section h2 {
+        color: #333;
+        font-size: 16px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .metadata-group {
+        margin-bottom: 20px;
+      }
+
+      .metadata-group h3 {
+        color: #333;
+        font-size: 13px;
+        margin-bottom: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .metadata-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #f5f5f5;
+        font-size: 13px;
+      }
+
+      .metadata-label {
+        color: #666;
+        font-weight: 400;
+      }
+
+      .metadata-value {
+        color: #333;
+        font-weight: 400;
+        text-align: right;
+      }
+
+      .charts-section {
+        display: flex;
+        gap: 20px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        align-items: start;
+      }
+
+      .chart-container {
+        background: white;
+        padding: 20px 8px;
+        border: 1px solid #e0e0e0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .chart-container h3 {
+        color: #333;
+        font-size: 14px;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+
+      .error {
+        background: #fee;
+        color: #c33;
+        padding: 15px;
+        border: 1px solid #fcc;
+        margin-top: 15px;
+      }
+
+      .loading {
+        text-align: center;
+        padding: 20px;
+        color: #666;
+      }
+
+      @media (max-width: 1024px) {
+        .content.active {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="title">
+          <img src="bedrock.svg" width="24px" height="24px" />
+          <h1>BRO CPT Parser Demo</h1>
+        </div>
+
+        <p class="subtitle">
+          Upload een BRO XML-bestand met CPT (Cone Penetration Test) gegevens om
+          te visualiseren
+        </p>
+      </div>
+
+      <div class="upload-section">
+        <div class="file-input-wrapper">
+          <input type="file" id="fileInput" accept=".xml" />
+          <label for="fileInput" class="file-label">Kies BRO XML-bestand</label>
+        </div>
+        <span class="or-separator">of</span>
+        <button class="demo-button" id="demoButton">
+          Laad voorbeeldbestand
+        </button>
+        <div id="error"></div>
+      </div>
+
+      <div id="content" class="content">
+        <div class="metadata-section">
+          <h2>CPT Metadata</h2>
+          <div id="metadata"></div>
+        </div>
+        <div class="charts-section" id="charts"></div>
+      </div>
+    </div>
+
+    <script type="module">
+      import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+      import { BROParser, XMLAdapter } from "./bro-xml-parser/browser.js";
+
+      const fileInput = document.getElementById("fileInput");
+      const demoButton = document.getElementById("demoButton");
+      const content = document.getElementById("content");
+      const metadataDiv = document.getElementById("metadata");
+      const chartsDiv = document.getElementById("charts");
+      const errorDiv = document.getElementById("error");
+
+      async function loadAndParseCPT(text) {
+        errorDiv.innerHTML = "";
+        content.classList.remove("active");
+
+        try {
+          const parser = new BROParser(new XMLAdapter());
+          const cpt = parser.parseCPT(text);
+
+          displayMetadata(cpt);
+          displayCharts(cpt);
+          content.classList.add("active");
+        } catch (error) {
+          errorDiv.innerHTML = `<div class="error">Fout bij het parsen van bestand: ${error.message}</div>`;
+          console.error(error);
+        }
+      }
+
+      fileInput.addEventListener("change", async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const text = await file.text();
+        await loadAndParseCPT(text);
+      });
+
+      demoButton.addEventListener("click", async () => {
+        try {
+          demoButton.textContent = "Laden...";
+          demoButton.disabled = true;
+
+          const response = await fetch("CPT000000061388.xml");
+          if (!response.ok) {
+            throw new Error("Kon voorbeeldbestand niet laden");
+          }
+          const text = await response.text();
+          await loadAndParseCPT(text);
+        } catch (error) {
+          errorDiv.innerHTML = `<div class="error">Fout bij het laden van voorbeeldbestand: ${error.message}</div>`;
+          console.error(error);
+        } finally {
+          demoButton.textContent = "Laad voorbeeldbestand";
+          demoButton.disabled = false;
+        }
+      });
+
+      function displayMetadata(cpt) {
+        const formatValue = (value) => {
+          if (value === null || value === undefined) return "N.v.t.";
+          if (value instanceof Date) return value.toLocaleDateString("nl-NL");
+          if (typeof value === "boolean") return value ? "Ja" : "Nee";
+          if (typeof value === "number") return value.toFixed(2);
+          if (typeof value === "object" && "x" in value) {
+            return `${value.x.toFixed(2)}, ${value.y.toFixed(2)} (EPSG:${
+              value.epsg
+            })`;
+          }
+          return value;
+        };
+
+        const metadata = [
+          {
+            title: "Administratief",
+            items: [
+              { label: "BRO ID", value: cpt.bro_id },
+              { label: "Kwaliteitsregime", value: cpt.quality_regime },
+              { label: "Rapportdatum", value: cpt.research_report_date },
+            ],
+          },
+          {
+            title: "Locatie",
+            items: [
+              { label: "Aangeleverde locatie", value: cpt.delivered_location },
+              {
+                label: "Verticale offset",
+                value: cpt.delivered_vertical_position_offset
+                  ? `${cpt.delivered_vertical_position_offset} m`
+                  : null,
+              },
+              {
+                label: "Verticaal datum",
+                value: cpt.delivered_vertical_position_datum,
+              },
+              {
+                label: "Referentiepunt",
+                value: cpt.delivered_vertical_position_reference_point,
+              },
+            ],
+          },
+          {
+            title: "Onderzoek",
+            items: [
+              { label: "CPT-standaard", value: cpt.cpt_standard },
+              { label: "Kwaliteitsklasse", value: cpt.quality_class },
+              {
+                label: "Dissipatie test",
+                value: cpt.dissipationtest_performed,
+              },
+              {
+                label: "Voorgeboorde diepte",
+                value: cpt.predrilled_depth
+                  ? `${cpt.predrilled_depth} m`
+                  : null,
+              },
+              {
+                label: "Einddiepte",
+                value: cpt.final_depth ? `${cpt.final_depth} m` : null,
+              },
+              {
+                label: "Grondwaterstand",
+                value: cpt.groundwater_level
+                  ? `${cpt.groundwater_level} m`
+                  : null,
+              },
+            ],
+          },
+          {
+            title: "Apparatuur",
+            items: [
+              { label: "Beschrijving", value: cpt.cpt_description },
+              { label: "Type", value: cpt.cpt_type },
+              {
+                label: "Conus diameter",
+                value: cpt.cone_diameter ? `${cpt.cone_diameter} mm` : null,
+              },
+              {
+                label: "Conus oppervlakte",
+                value: cpt.cone_surface_area
+                  ? `${cpt.cone_surface_area} mm²`
+                  : null,
+              },
+            ],
+          },
+          {
+            title: "Metingen",
+            items: [{ label: "Aantal meetpunten", value: cpt.data.length }],
+          },
+        ];
+
+        metadataDiv.innerHTML = metadata
+          .map(
+            (group) => `
+                <div class="metadata-group">
+                    <h3>${group.title}</h3>
+                    ${group.items
+                      .map(
+                        (item) => `
+                        <div class="metadata-item">
+                            <span class="metadata-label">${item.label}:</span>
+                            <span class="metadata-value">${formatValue(
+                              item.value
+                            )}</span>
+                        </div>
+                    `
+                      )
+                      .join("")}
+                </div>
+            `
+          )
+          .join("");
+      }
+
+      function displayCharts(cpt) {
+        const data = cpt.data.filter(
+          (d) => d.depth !== null && d.depth !== undefined
+        );
+
+        // Calculate depth if not present
+        const enrichedData = data.map((d) => ({
+          ...d,
+          depth:
+            d.depth ??
+            (cpt.delivered_vertical_position_offset ?? 0) - d.penetrationLength,
+        }));
+
+        chartsDiv.innerHTML = "";
+
+        // Chart 1: Cone Resistance vs Depth
+        if (enrichedData.some((d) => d.coneResistance !== null)) {
+          createChart(
+            "Conusweerstand vs Diepte",
+            enrichedData,
+            "coneResistance",
+            "depth",
+            "Conusweerstand (MPa)",
+            "Diepte (m)",
+            true
+          );
+        }
+
+        // Chart 2: Local Friction vs Depth
+        if (enrichedData.some((d) => d.localFriction !== null)) {
+          createChart(
+            "Plaatselijke wrijving vs Diepte",
+            enrichedData,
+            "localFriction",
+            "depth",
+            "Plaatselijke wrijving (MPa)",
+            "Diepte (m)",
+            true
+          );
+        }
+
+        // Chart 3: Friction Ratio vs Depth
+        if (enrichedData.some((d) => d.frictionRatio !== null)) {
+          createChart(
+            "Wrijvingsgetal vs Diepte",
+            enrichedData,
+            "frictionRatio",
+            "depth",
+            "Wrijvingsgetal (%)",
+            "Diepte (m)",
+            true
+          );
+        }
+
+        // Chart 4: Pore Pressure U2 vs Depth
+        if (enrichedData.some((d) => d.porePressureU2 !== null)) {
+          createChart(
+            "Poriëndruk U2 vs Diepte",
+            enrichedData,
+            "porePressureU2",
+            "depth",
+            "Poriëndruk U2 (MPa)",
+            "Diepte (m)",
+            true
+          );
+        }
+      }
+
+      function createChart(
+        title,
+        data,
+        xKey,
+        yKey,
+        xLabel,
+        yLabel,
+        reverseY = false
+      ) {
+        const container = document.createElement("div");
+        container.className = "chart-container";
+
+        const heading = document.createElement("h3");
+        heading.textContent = title;
+        container.appendChild(heading);
+
+        const validData = data
+          .filter((d) => d[xKey] !== null && d[yKey] !== null)
+          .sort((a, b) => a[yKey] - b[yKey]);
+
+        if (validData.length === 0) {
+          container.innerHTML +=
+            '<p style="color: #999; padding: 20px;">Geen gegevens beschikbaar voor deze parameter</p>';
+          chartsDiv.appendChild(container);
+          return;
+        }
+
+        const plot = Plot.plot({
+          height: 500,
+          width: 250,
+          style: {
+            backgroundColor: "white",
+            overflow: "visible",
+          },
+          x: {
+            label: xLabel,
+            grid: true,
+          },
+          y: {
+            grid: true,
+            reverse: reverseY,
+            label: yLabel,
+          },
+          marks: [
+            Plot.frame(),
+            Plot.line(validData, {
+              x: xKey,
+              y: yKey,
+              stroke: "#333",
+              strokeWidth: 1.5,
+            }),
+            Plot.crosshair(validData, {
+              x: xKey,
+              y: yKey,
+            }),
+            Plot.text(["Bedrock.engineer"], {
+              frameAnchor: "top-right",
+              dx: -5,
+              dy: 5,
+              fill: "gray",
+              fontSize: 8,
+            }),
+          ],
+        });
+
+        container.appendChild(plot);
+        chartsDiv.appendChild(container);
+      }
+    </script>
+  </body>
+</html>
