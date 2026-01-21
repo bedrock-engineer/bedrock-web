@@ -1,0 +1,58 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  theme: {
+    extend: {
+      colors: {
+        green: {
+          1: 'var(--green-1)',
+          2: 'var(--green-2)',
+          3: 'var(--green-3)',
+          4: 'var(--green-4)',
+          5: 'var(--green-5)',
+          6: 'var(--green-6)',
+          7: 'var(--green-7)',
+          8: 'var(--green-8)',
+          9: 'var(--green-9)',
+          10: 'var(--green-10)',
+          11: 'var(--green-11)',
+          12: 'var(--green-12)',
+        },
+        gray: {
+          1: 'var(--gray-1)',
+          2: 'var(--gray-2)',
+          3: 'var(--gray-3)',
+          4: 'var(--gray-4)',
+          5: 'var(--gray-5)',
+          6: 'var(--gray-6)',
+          7: 'var(--gray-7)',
+          8: 'var(--gray-8)',
+          9: 'var(--gray-9)',
+          10: 'var(--gray-10)',
+          11: 'var(--gray-11)',
+          12: 'var(--gray-12)',
+        },
+        brown: {
+          1: 'var(--brown-1)',
+          2: 'var(--brown-2)',
+          3: 'var(--brown-3)',
+          4: 'var(--brown-4)',
+          5: 'var(--brown-5)',
+          6: 'var(--brown-6)',
+          7: 'var(--brown-7)',
+          8: 'var(--brown-8)',
+          9: 'var(--brown-9)',
+          10: 'var(--brown-10)',
+          11: 'var(--brown-11)',
+          12: 'var(--brown-12)',
+        },
+      },
+      fontFamily: {
+        sans: ['"IBM Plex Sans"', 'sans-serif'],
+        condensed: ['"IBM Plex Sans Condensed"', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'monospace'],
+      },
+    },
+  },
+  plugins: [],
+};

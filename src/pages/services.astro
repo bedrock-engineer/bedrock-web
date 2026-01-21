@@ -1,0 +1,556 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Card from "../components/Card.astro";
+import "../styles/custom.css";
+
+const title = "Software Development Services for Geotechnical Data | Bedrock.engineer";
+const description =
+  "Custom software development for transforming geotechnical data, building 3D web maps, and integrating subsurface data with CAD, BIM, and design tools.";
+---
+
+<BaseLayout title={title} description={description}>
+  <Navbar />
+  <div class="page" data-pagefind-body data-pagefind-meta="category:Marketing">
+    <!-- Hero Section -->
+    <header class="section-wrapper texture-607">
+      <section class="section intro-section">
+        <h1 class="heading-1">Software Development for Geotechnical Data</h1>
+        <p class="paragraph-xl" style="margin-block-end: 32px;">
+          We build custom tools and workflows that bridge the gap between legacy
+          geotechnical formats and modern software ecosystems.
+        </p>
+        <div class="flex gap-4 justify-center flex-wrap">
+          <a href="https://cal.com/bedrock-engineer" class="cta-button">
+            Schedule Discovery Call
+          </a>
+          <a href="mailto:info@bedrock.engineer" class="cta-button-secondary">
+            Email Us
+          </a>
+        </div>
+      </section>
+    </header>
+
+    <!-- Services Grid -->
+    <div class="section-wrapper texture-232-k">
+      <section class="section">
+        <h2
+          class="heading-3"
+          style="margin-block-end: 48px; text-align: center;"
+        >
+          Our Services
+        </h2>
+
+        <div class="services-grid">
+          <!-- Data Transformation -->
+          <Card>
+            <div class="service-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <h3 class="service-title">Data Transformation & Structuring</h3>
+            <p class="service-description">
+              Transform legacy formats (AGS3/4, GEF, BRO/XML) into modern
+              geospatial standards. Set up PostGIS databases when teams need
+              centralized, editable data, or produce GeoPackage files as fixed
+              project deliverables.
+            </p>
+            <div class="service-details">
+              <h4 class="service-details-title">Typical deliverables:</h4>
+              <ul class="service-list">
+                <li>Cleaned and validated datasets</li>
+                <li>Transformation scripts and workflows</li>
+                <li>Data quality reports</li>
+              </ul>
+            </div>
+            <div class="service-meta">
+              <strong>Examples:</strong> PostGIS database for live, multi-user projects,
+              or GeoPackage for finalized data handoff
+            </div>
+          </Card>
+
+          <!-- Web Apps & Maps -->
+          <Card>
+            <div class="service-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path
+                  d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="service-title">Web Applications & Data Visualization</h3>
+            <p class="service-description">
+              Build interactive web applications for GI data exploration. Create
+              3D web viewers using CesiumJS, interactive charts and plots for
+              borehole data, CPT results, or soil properties. Make your data
+              explorable in the browser.
+            </p>
+            <div class="service-details">
+              <h4 class="service-details-title">Typical deliverables:</h4>
+              <ul class="service-list">
+                <li>Deployed web application</li>
+                <li>Source code and documentation</li>
+                <li>Hosting setup and support</li>
+              </ul>
+            </div>
+            <div class="service-meta">
+              <strong>Examples:</strong> 3D map viewer with subsurface layers, or
+              interactive dashboard with filterable charts and soil profiles
+            </div>
+          </Card>
+
+          <!-- CAD/BIM Integration -->
+          <Card>
+            <div class="service-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="9" y1="3" x2="9" y2="21"></line>
+              </svg>
+            </div>
+            <h3 class="service-title">CAD/BIM/Design Integration</h3>
+            <p class="service-description">
+              Connect geotechnical data to Rhino/Grasshopper, Revit, Speckle, or
+              other design tools. Bring subsurface context into your design
+              process.
+            </p>
+            <div class="service-details">
+              <h4 class="service-details-title">Typical deliverables:</h4>
+              <ul class="service-list">
+                <li>Custom connectors and plugins</li>
+                <li>Automated workflows</li>
+                <li>Integration documentation</li>
+              </ul>
+            </div>
+            <div class="service-meta">
+              <strong>Good for:</strong> Bringing subsurface context into design and
+              engineering workflows
+            </div>
+          </Card>
+
+          <!-- Custom Development -->
+          <Card>
+            <div class="service-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 20h9"></path>
+                <path
+                  d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="service-title">Custom Development</h3>
+            <p class="service-description">
+              Bespoke tools and workflows tailored to your specific data
+              challenges. From automation scripts to full applications, we build
+              what you need.
+            </p>
+            <div class="service-details">
+              <h4 class="service-details-title">Typical deliverables:</h4>
+              <ul class="service-list">
+                <li>Custom software and tools</li>
+                <li>Automation scripts</li>
+                <li>Open-source contributions</li>
+              </ul>
+            </div>
+            <div class="service-meta">
+              <strong>Good for:</strong> Unique requirements not covered by standard
+              tools or existing software
+            </div>
+          </Card>
+        </div>
+
+        <div style="margin-top: 48px; text-align: center;">
+          <a href="/examples/" class="section-link">
+            View examples of our work →
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- How We Work -->
+    <div class="section-wrapper texture-620">
+      <section class="section">
+        <h2
+          class="heading-3"
+          style="margin-block-end: 48px; text-align: center;"
+        >
+          How We Work
+        </h2>
+
+        <div class="process-timeline">
+          <div class="process-step">
+            <div class="process-number">1</div>
+            <div class="process-content">
+              <h3 class="process-title">Discovery Call</h3>
+              <p class="process-description">
+                We discuss your data challenges, current workflows, and desired
+                outcomes. This helps us understand if we're a good fit.
+              </p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="process-number">2</div>
+            <div class="process-content">
+              <h3 class="process-title">Scoping & Proposal</h3>
+              <p class="process-description">
+                We define clear deliverables, timeline, and budget. You'll know
+                exactly what to expect before we start.
+              </p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="process-number">3</div>
+            <div class="process-content">
+              <h3 class="process-title">Development</h3>
+              <p class="process-description">
+                We build iteratively with regular check-ins and demos. You stay
+                involved and can provide feedback throughout.
+              </p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="process-number">4</div>
+            <div class="process-content">
+              <h3 class="process-title">Delivery & Handoff</h3>
+              <p class="process-description">
+                We deliver complete documentation, provide training if needed,
+                and ensure you can maintain the solution independently.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="section-wrapper texture-607">
+      <section class="section">
+        <h2
+          class="heading-3"
+          style="margin-block-end: 48px; text-align: center;"
+        >
+          Why Bedrock.engineer
+        </h2>
+
+        <div class="grid-auto-fit-narrow">
+          <Card>
+            <div class="value-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                ></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </div>
+            <h3 class="value-title">Open-source at heart</h3>
+            <p class="value-description">
+              No vendor lock-in. Tools you can inspect, modify, and own. Our
+              core library <code>bedrock-ge</code> is open-source and community-driven.
+            </p>
+          </Card>
+
+          <Card>
+            <div class="value-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="value-title">Dual expertise</h3>
+            <p class="value-description">
+              We understand both geotechnical engineering and modern software
+              development. We speak your language and know your data.
+            </p>
+          </Card>
+
+          <Card>
+            <div class="value-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="value-title">Modern stack</h3>
+            <p class="value-description">
+              Built for interoperability with Python, web standards, and
+              geospatial tools. Your data works with the tools you already use.
+            </p>
+          </Card>
+        </div>
+      </section>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="section-wrapper texture-616">
+      <section class="section cta-section">
+        <h2
+          class="heading-2"
+          style="text-align: center; margin-block-end: 16px;"
+        >
+          Ready to discuss your project?
+        </h2>
+        <p
+          class="paragraph"
+          style="text-align: center; margin-block-end: 32px; color: var(--gray-11);"
+        >
+          Schedule a discovery call to explore how we can help, or send us an
+          email to start the conversation.
+        </p>
+        <div class="flex gap-4 justify-center flex-wrap">
+          <a href="https://cal.com/bedrock-engineer" class="cta-button">
+            Schedule Discovery Call
+          </a>
+          <a href="mailto:info@bedrock.engineer" class="cta-button-secondary">
+            Email Us
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .service-icon {
+    color: var(--green-9);
+    margin-block-end: 16px;
+  }
+
+  .service-title {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-block-end: 12px;
+    color: var(--gray-12);
+  }
+
+  .service-description {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    margin-block-end: 20px;
+    color: var(--gray-11);
+  }
+
+  .service-details {
+    margin-block-end: 16px;
+  }
+
+  .service-details-title {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    margin-block-end: 8px;
+    color: var(--gray-12);
+  }
+
+  .service-list {
+    list-style: none;
+    padding: 0;
+    font-size: var(--text-sm);
+    color: var(--gray-11);
+  }
+
+  .service-list li {
+    padding-inline-start: 20px;
+    position: relative;
+    margin-block-end: 4px;
+  }
+
+  .service-list li::before {
+    content: "•";
+    position: absolute;
+    left: 8px;
+    color: var(--green-9);
+  }
+
+  .service-meta {
+    font-size: var(--text-sm);
+    padding: 12px;
+    background: var(--gray-3);
+    border-radius: var(--border-radius-sm);
+    color: var(--gray-11);
+  }
+
+  .service-meta strong {
+    color: var(--gray-12);
+  }
+
+  /* Process Timeline */
+  .process-timeline {
+    max-width: 800px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .process-step {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .process-number {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--green-9);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .process-content {
+    padding-block-start: 8px;
+  }
+
+  .process-title {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-block-end: 8px;
+    color: var(--gray-12);
+  }
+
+  .process-description {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--gray-11);
+  }
+
+  /* Values Grid - now using .grid-auto-fit-narrow from global CSS */
+
+  .value-icon {
+    color: var(--green-9);
+    margin-block-end: 16px;
+  }
+
+  .value-title {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-block-end: 12px;
+    color: var(--gray-12);
+  }
+
+  .value-description {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--gray-11);
+  }
+
+  .value-description code {
+    background: var(--gray-3);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.9em;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding-block: 64px;
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .process-step {
+      grid-template-columns: 50px 1fr;
+      gap: 16px;
+    }
+
+    .process-number {
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+    }
+  }
+</style>

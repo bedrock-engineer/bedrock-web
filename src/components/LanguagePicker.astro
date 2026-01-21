@@ -1,0 +1,57 @@
+---
+import { languages, defaultLang } from "../i18n/ui";
+import { getLocaleFromUrl, getLocalizedPath } from "../i18n/utils";
+
+const locale = getLocaleFromUrl(Astro.url);
+const currentPath = Astro.url.pathname;
+
+// Remove locale prefix to get base path
+const basePath = locale === defaultLang
+  ? currentPath
+  : currentPath.replace(`/${locale}`, "") || "/";
+---
+
+<div class="language-picker">
+  {Object.entries(languages).map(([lang, label]) => {
+    const href = getLocalizedPath(basePath, lang as keyof typeof languages);
+    const isActive = lang === locale;
+
+    return (
+      <a
+        href={href}
+        class:list={["lang-link", { active: isActive }]}
+        aria-current={isActive ? "page" : undefined}
+      >
+        {lang.toUpperCase()}
+      </a>
+    );
+  })}
+</div>
+
+<style>
+  .language-picker {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .lang-link {
+    padding: 4px 8px;
+    text-decoration: none;
+    color: var(--sl-color-gray-2);
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .lang-link:hover {
+    background: var(--sl-color-gray-6);
+    color: var(--sl-color-white);
+  }
+
+  .lang-link.active {
+    background: var(--sl-color-accent);
+    color: var(--sl-color-white);
+  }
+</style>

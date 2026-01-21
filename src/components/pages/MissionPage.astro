@@ -1,0 +1,140 @@
+---
+import Link from "../Link.astro";
+---
+
+<div class="page" data-pagefind-body data-pagefind-meta="category:Marketing">
+  <!-- Mission Statement -->
+  <div class="section-wrapper texture-607">
+    <section class="section intro-section">
+      <h1 class="heading-1">Mission</h1>
+      <p class="paragraph-xl" style="max-width: 70ch;">
+        Bedrock.engineer aims to make subsurface data more accessible and
+        understandable, driving innovation in geotechnical engineering. This
+        leads to better understanding of ground conditions, lower project risks,
+        and better designs.
+      </p>
+    </section>
+  </div>
+
+  <!-- The Problem -->
+  <div class="section-wrapper texture-232-k">
+    <section class="section">
+      <div class="prose-container">
+        <h2 class="heading-2">The Problem</h2>
+
+        <p class="paragraph">
+          Geotechnical engineering faces interconnected challenges that create
+          real risks for construction projects:
+        </p>
+
+        <p class="paragraph">
+          <strong>Subsurface data is hard to access and use.</strong> Ground investigation
+          data stays locked in specialized formats or proprietary databases with limited
+          support outside sector-specific software. You can't easily visualize what's
+          underground or integrate it with design tools teams already use. This leads
+          to underestimated ground risks, cost overruns, and project delays when unexpected
+          conditions emerge.
+        </p>
+
+        <p class="paragraph">
+          <strong>Workflows are fragmented and opaque.</strong> Geotechnical work
+          is scattered across too many disconnected tools, making it difficult to
+          automate, reproduce, or explain decisions to other disciplines. To structural
+          engineers and BIM teams, the process appears as a black box. When workflows
+          are manual and document-based, exploring design alternatives becomes impractical.
+        </p>
+
+        <p class="paragraph">
+          <strong>The ecosystem stifles innovation.</strong> Lack of interoperability
+          means advances from related fields, geospatial computing, data science,
+          academic research, don't transfer to geotechnical practice. Engineers reinvent
+          solutions that exist elsewhere, and computational design approaches common
+          in other disciplines remain out of reach.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <div class="section-wrapper texture-620">
+    <section class="section">
+      <div class="prose-container">
+        <h2 class="heading-2">How Bedrock.engineer Helps</h2>
+
+        <p class="paragraph">
+          <strong>We make data structured and connected.</strong> Ground investigation
+          data has natural relationships: projects contain locations, locations have
+          tests and samples, samples have lab results. We transform GI data from fragmented
+          files (AGS, GEF, Excel) into structured geospatial databases that preserve
+          these connections. Projects, boreholes, samples, and tests stay validated
+          and queryable.
+        </p>
+
+        <p class="paragraph">
+          <strong>We make data flow to where you need it.</strong> We convert GI data
+          into open geospatial formats that work across the entire GIS and by extension,
+          BIM ecosystem. Data can be used in GIS software (ArcGIS & QGIS), web maps,
+          and design tools like Rhino3D & Civil3D.
+          <!-- without manual conversion. -->
+        </p>
+
+        <p class="paragraph">
+          <strong>We make subsurface data visualizable in context.</strong> By recognizing
+          GI data as 3D spatial data, you can visualize borehole logs, CPT data, and
+          ground models alongside building designs, site plans, and infrastructure
+          in web browsers, GIS software, and BIM platforms.
+        </p>
+
+        <p class="paragraph">
+          <strong>We build tools that make people smart.</strong> Visualization makes
+          subsurface data tangible and intuitive, helping engineers and stakeholders
+          understand, communicate, and make better decisions. When ground conditions
+          are visualized in context with your designs, understanding becomes immediate,
+          and you can explain it to collaborators across disciplines.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Learn More -->
+  <div class="section-wrapper texture-232-k">
+    <section class="section">
+      <div class="prose-container">
+        <h2 class="heading-3">Learn More About Our Technical Approach</h2>
+        <ul class="space-y-3 mt-6">
+          <li>
+            <Link href="/explanation/hierarchical-structure"
+              >Relational databases for geotechnical data</Link
+            > - How relational databases naturally represent the hierarchical structure
+            of ground investigations
+          </li>
+          <li>
+            <Link href="/explanation/gi-to-geospatial"
+              >Geospatial data for geotechnical data</Link
+            > - Understanding Simple Features, spatial awareness, and geospatial databases
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>
+
+<style>
+  /* Prose container for long-form content */
+  .prose-container {
+    max-width: var(--container-narrow);
+    margin-inline: auto;
+  }
+
+  .prose-container p {
+    margin-block-end: var(--space-m);
+  }
+
+  .prose-container ul {
+    margin-block-start: var(--space-s);
+    margin-block-end: var(--space-m);
+  }
+
+  .prose-container li {
+    margin-block-end: var(--space-2xs);
+  }
+</style>

@@ -1,0 +1,430 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Card from "../components/Card.astro";
+import Link from "../components/Link.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/custom.css";
+
+const title =
+  "Geotechnical Software Development Capabilities - CesiumJS, AGS4, GEF, Speckle | Bedrock.engineer";
+const description =
+  "Software consultancy specializing in CesiumJS development, AGS4/GEF parsing, Speckle connectors, and Python geospatial tools for geotechnical engineering data. Expert developers for subsurface visualization and data transformation.";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Page-specific SEO meta tags -->
+  <Fragment slot="head">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://bedrock.engineer/technologies" />
+
+    <!-- Page-specific keywords for niche search terms -->
+    <meta
+      name="keywords"
+      content="CesiumJS developer, CesiumJS development, AGS4 parser, AGS3 parser, geotechnical exchange format, bro/xml, GEF parser, BRO XML parser, Speckle connector development, Python geospatial developer, GeoPandas developer, geotechnical software development, subsurface data visualization, borehole data processing, CPT data visualization, Three.js geological visualization, ground investigation software, geotechnical data transformation, PostGIS geotechnical, Rhino Grasshopper geotechnical, MapLibre GL subsurface, Deck.gl geotechnical"
+    />
+
+    <!-- Enhanced Open Graph for better social sharing -->
+    <meta property="og:url" content="https://bedrock.engineer/technologies" />
+    <meta property="og:site_name" content="Bedrock.engineer" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Enhanced Twitter Card -->
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Author & Robots directives -->
+    <meta name="author" content="Bedrock.engineer" />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+
+    <!-- Language alternatives (hreflang) -->
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://bedrock.engineer/technologies"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://bedrock.engineer/technologies"
+    />
+  </Fragment>
+
+  <!-- Structured Data for Services -->
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      name: "Bedrock.engineer Software Consultancy",
+      description:
+        "Software consultancy for subsurface data transformation, visualization, and integration",
+      serviceType: [
+        "Geotechnical Software Development",
+        "CesiumJS Development",
+        "AGS4 Data Processing",
+        "Speckle Connectors",
+        "Python Geospatial Development",
+      ],
+      areaServed: "Worldwide",
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Geotechnical Software Services",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "CesiumJS 3D Visualization Development",
+              description:
+                "Custom CesiumJS applications for subsurface and geological data visualization",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "AGS3 & AGS4 Data Processing",
+              description:
+                "Parse and transform AGS3 or AGS4 geotechnical data formats into modern geospatial data",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "BRO/XML & GEF Data Processing",
+              description:
+                "Parse and transform BRO/XML & GEF geotechnical data formats into modern geospatial data",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Python Geospatial Development for subsurface data",
+              description:
+                "Custom ground investigation data pipelines using GeoPandas, Shapely, and modern Python geospatial tools",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Speckle Connector Development",
+              description:
+                "Custom Speckle connectors for geotechnical data integration with BIM and CAD tools",
+            },
+          },
+        ],
+      },
+    })}
+  />
+
+  <!-- BreadcrumbList Schema for page hierarchy -->
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://bedrock.engineer",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Technologies",
+          item: "https://bedrock.engineer/technologies",
+        },
+      ],
+    })}
+  />
+
+  <Navbar />
+  <div class="page" data-pagefind-body data-pagefind-meta="category:Marketing">
+    <header class="section-wrapper texture-607">
+      <section class="section intro-section">
+        <h1 class="heading-1">Technical Capabilities</h1>
+        <p class="subtitle">Geotechnical Software Development Capabilities</p>
+        <p class="paragraph-xl">
+          Bedrock.engineer is a software consultancy for subsurface data. We
+          transform ground investigation data from specialized formats like
+          AGS4, GEF, and BRO/XML into modern geospatial formats, build custom 3D
+          visualizations with CesiumJS or Deck.gl, and create integrations with
+          BIM and CAD tools like Revit or Civil3D through Speckle connectors,
+          and custom applications.
+        </p>
+      </section>
+    </header>
+
+    <!-- Data Ingestion -->
+    <div class="section-wrapper texture-667">
+      <section class="section">
+        <h2 class="heading-2" style="margin-block-end: var(--space-l);">
+          Data Ingestion
+        </h2>
+
+        <div class="grid-auto-fit">
+          <Card size="large">
+            <h3 class="heading-3">Specialized Geotechnical Formats</h3>
+            <p class="tech-subtitle">AGS, GEF, and BRO/XML Parsing</p>
+            <p class="card-text">
+              Read AGS3 and AGS4 (Association of Geotechnical and
+              Geoenvironmental Specialists) files. Parse GEF (Geotechnical
+              Exchange Format) CPT and borehole data. Extract data from BRO/XML
+              (Basisregistratie Ondergrond) files from the Dutch subsurface
+              registry. Transform specialized geotechnical data into
+              standardized pandas DataFrames and GeoPandas GeoDataFrames.
+            </p>
+          </Card>
+        </div>
+      </section>
+    </div>
+
+    <!-- Data Processing & Analysis -->
+    <div class="section-wrapper texture-620">
+      <section class="section">
+        <h2 class="heading-2" style="margin-block-end: var(--space-l);">
+          Data Processing & Analysis
+        </h2>
+
+        <div class="grid-auto-fit">
+          <Card size="large">
+            <h3 class="heading-3">Python Geospatial Stack</h3>
+            <p class="tech-subtitle">
+              GeoPandas, Shapely, Fiona, Rasterio, Pandas
+            </p>
+            <p class="card-text">
+              Core Python libraries for geospatial data processing and the
+              foundation of the Bedrock library. Transform AGS4, GEF, and BRO
+              data into GeoPandas GeoDataFrames with spatial reference systems.
+              Build complete geotechnical data pipelines from legacy formats to
+              modern geospatial outputs. Dataframe-based workflows with
+              validation ensure data consistency and relationships between
+              boreholes, samples, and laboratory test results.
+            </p>
+          </Card>
+
+          <Card size="medium">
+            <h3 class="heading-3">PostGIS</h3>
+            <p class="tech-subtitle">Spatial Database Management</p>
+            <p class="card-text">
+              PostgreSQL spatial extension for storing and querying geotechnical
+              data at enterprise scale. Efficient spatial queries on borehole
+              locations, geological boundaries, investigation areas, and CPT
+              test locations. Load AGS4, GEF, and BRO data into PostGIS with
+              spatial indexing and spatial awareness. Build enterprise ground
+              investigation databases that integrate with QGIS, ArcGIS, FME, and
+              custom web applications.
+            </p>
+          </Card>
+
+          <Card size="medium">
+            <h3 class="heading-3">Rhino3D & Grasshopper</h3>
+            <p class="tech-subtitle">Parametric Geotechnical Workflows</p>
+            <p class="card-text">
+              Parametric workflows for ground modeling and geotechnical
+              analysis. Automate ground model generation from borehole data,
+              create parametric subsurface studies, and integrate ground
+              investigation data directly into Grasshopper definitions. Build
+              custom components for geotechnical calculations, soil layering,
+              and 3D ground models. Python scripting in Grasshopper enables
+              direct connection to the Bedrock library for live data processing.
+            </p>
+          </Card>
+        </div>
+      </section>
+    </div>
+
+    <!-- Visualization -->
+    <div class="section-wrapper texture-607">
+      <section class="section">
+        <h2 class="heading-2" style="margin-block-end: var(--space-l);">
+          Visualization
+        </h2>
+
+        <div class="grid-auto-fit">
+          <Card size="large">
+            <h3 class="heading-3">CesiumJS & 3D Tiles</h3>
+            <p class="tech-subtitle">Interactive Subsurface Visualization</p>
+            <p class="card-text">
+              Browser-based 3D visualizations of subsurface data on interactive
+              globes for digital twins. Stream massive 3D datasets efficiently
+              using the 3D Tiles specification and Voxel extension for
+              volumetric geological models. Convert netCDF or structured grid
+              data into performant web visualizations that handle large-scale
+              subsurface datasets. Integrate with terrain data, imagery, and
+              building models for complete site context.
+            </p>
+          </Card>
+
+          <Card size="medium">
+            <h3 class="heading-3">Web Mapping</h3>
+            <p class="tech-subtitle">MapLibre GL & Deck.gl</p>
+            <p class="card-text">
+              Fast, interactive web maps for ground investigation data using
+              MapLibre GL for vector tile rendering or Deck.gl for WebGL-powered
+              visualization. Render thousands of boreholes, CPT locations, and
+              geological features with interactive 2D and 3D layers. Open-source
+              tools for borehole maps and site investigation dashboards.
+            </p>
+          </Card>
+
+          <Card size="small">
+            <h3 class="heading-3">Three.js</h3>
+            <p class="card-text">
+              Bespoke 3D visualizations for subsurface data. Custom borehole
+              renderings, geological cross-sections, and underground models with
+              full control over materials, lighting, and interaction.
+            </p>
+          </Card>
+
+          <Card size="small">
+            <h3 class="heading-3">PyVista & ParaView</h3>
+            <p class="card-text">
+              3D visualizations and analysis workflows using PyVista and
+              ParaView. Publication-quality visualizations, cross-sections, and
+              volumetric renderings of subsurface data.
+            </p>
+          </Card>
+
+          <Card size="small">
+            <h3 class="heading-3">D3.js & Observable Plot</h3>
+            <p class="card-text">
+              Custom interactive charts and diagrams for technical data.
+              Borehole logs, CPT plots, soil classification diagrams, and
+              domain-specific visualizations using SVG and web standards.
+            </p>
+          </Card>
+
+          <Card size="small">
+            <h3 class="heading-3">Plotly & Dash</h3>
+            <p class="card-text">
+              Web-based dashboards and interactive visualizations with Python.
+              Geotechnical data exploration tools and technical reporting
+              interfaces.
+            </p>
+          </Card>
+
+          <Card size="small">
+            <h3 class="heading-3">Power BI Custom Visuals</h3>
+            <p class="card-text">
+              Custom Power BI plugins for subsurface data visualization.
+              Interactive borehole logs, CPT plots, and geotechnical charts in
+              BI dashboards.
+            </p>
+          </Card>
+        </div>
+      </section>
+    </div>
+
+    <!-- Integration & Export -->
+    <div class="section-wrapper texture-616">
+      <section class="section">
+        <h2 class="heading-2" style="margin-block-end: var(--space-l);">
+          Integration & Export
+        </h2>
+
+        <div class="grid-auto-fit">
+          <Card size="medium">
+            <h3 class="heading-3">Speckle</h3>
+            <p class="tech-subtitle">Multi-Disciplinary Data Exchange</p>
+            <p class="card-text">
+              Connect geotechnical data with building models from Revit,
+              Civil3D, Rhino, and other AEC tools. Build Speckle connectors and
+              custom objects for AGS4 boreholes, CPT data, and geological
+              models. Stream subsurface data to design teams in real-time,
+              enabling live updates when ground investigation data changes.
+              Enable true multi-disciplinary collaboration where subsurface
+              uncertainty is visible to all project stakeholders.
+            </p>
+          </Card>
+
+          <Card size="medium">
+            <h3 class="heading-3">Modern Data Formats</h3>
+            <p class="tech-subtitle">GeoPackage, GeoParquet, NetCDF & Zarr</p>
+            <p class="card-text">
+              Export to modern geospatial and scientific data formats. Convert
+              legacy geotechnical data to GeoPackage for use with QGIS and
+              ArcGIS, GeoParquet for cloud-optimized workflows, and NetCDF or
+              Zarr for 3D subsurface models. Cloud-native formats enable
+              efficient analysis at scale.
+            </p>
+          </Card>
+
+          <Card size="medium">
+            <h3 class="heading-3">Modern UI Frameworks</h3>
+            <p class="tech-subtitle">React, Svelte, TypeScript</p>
+            <p class="card-text">
+              Custom web applications for technical data analysis. Intuitive
+              interfaces for borehole logs, CPT charts, cross-sections, and
+              complex hierarchical geotechnical data built with modern
+              frameworks.
+            </p>
+          </Card>
+
+          <Card size="small">
+            <h3 class="heading-3">IFC</h3>
+            <p class="card-text">
+              Industry Foundation Classes format support for BIM workflows.
+              Export geotechnical data to IFC for integration with building
+              models and infrastructure design.
+            </p>
+          </Card>
+        </div>
+      </section>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="section-wrapper texture-620">
+      <section class="section cta-section">
+        <h2 class="heading-2" style="text-align: center; margin-block-end: 16px;">
+          Ready to apply these technologies to your project?
+        </h2>
+        <p class="paragraph" style="text-align: center; margin-block-end: 32px; color: var(--gray-11);">
+          We develop custom solutions for geotechnical data transformation,
+          3D visualization, and BIM/CAD integration.
+        </p>
+        <div class="flex gap-4 justify-center flex-wrap">
+          <a href="https://cal.com/bedrock-engineer" class="cta-button">
+            Schedule Discovery Call
+          </a>
+          <a href="/services" class="cta-button-secondary">
+            View Our Services
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .tech-subtitle {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--green-8);
+    margin-block-start: calc(-1 * var(--space-2xs));
+    margin-block-end: var(--space-2xs);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .card-text {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--gray-12);
+    margin: 0;
+  }
+</style>

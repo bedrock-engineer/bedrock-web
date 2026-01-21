@@ -1,0 +1,124 @@
+.animated-tabs {
+  width: fit-content;
+  --border-radius: 9999px;
+  padding-block-start: 32px;
+}
+
+.tabs-header {
+  position: relative;
+}
+
+.tabs-list {
+  display: flex;
+  width: fit-content;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--green-7);
+  background-color: var(--green-2);
+  margin-inline: auto;
+}
+
+.tab-button {
+  cursor: default;
+  padding: 6px 12px;
+  font-size: 1rem;
+  outline: none;
+  touch-action: none;
+  border-radius: 9999px;
+  transition: color 0.1s, background-color 0.1s;
+  text-align: center;
+
+  &[data-hovered] {
+    background-color: var(--green-3);
+    color: var(--gray-12);
+  }
+
+  &[data-pressed] {
+    background-color: var(--green-7);
+  }
+
+  &[data-selected] {
+    background-color: unset;
+  }
+}
+
+.tab-focus-ring {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  border-radius: var(--border-radius);
+  outline: 2px solid var(--green-2);
+  outline-offset: 2px;
+}
+
+.tab-indicator {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  background-color: var(--green-2);
+  border-radius: var(--border-radius);
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+
+.tab-panels-container {
+  margin-block: 62px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  display: flex;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.tab-panels-container::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-panel-animated {
+  flex-shrink: 0;
+  width: 100%;
+  padding-inline: 0.5rem;
+  box-sizing: border-box;
+  scroll-snap-align: start;
+  outline: none;
+  outline-offset: -2px;
+  border-radius: 0.25rem;
+}
+
+.tab-panel-animated:focus-visible {
+  outline: 2px solid var(--gray-11);
+}
+
+.tab-panel-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.tab-panel-content {
+  font-size: 1rem;
+}
+
+.tab-panel-content p {
+  margin-bottom: 1rem;
+}
+
+.tab-panel-content p:last-child {
+  margin-bottom: 0;
+}
+
+.tab-content-grid {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .tab-content-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

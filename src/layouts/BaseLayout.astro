@@ -1,49 +1,91 @@
 ---
 const {
-  title = "Bedrock - Transform Ground Investigation Data",
-  description = "Transform ground investigation data into structured, standardized geospatial data with Bedrock.",
+  title = "Bedrock.engineer - Geotechnical & Subsurface Data Consulting Services",
+  description = "Bedrock.engineer provides consulting and open-source software to visualize and integrate geotechnical data with BIM, Python parametric design, and geospatial tools."
 } = Astro.props;
 
 const htmlDataAttributes: DOMStringMap = { "data-theme": "dark" };
 
 import ThemeProvider from "@astrojs/starlight/components/ThemeProvider.astro";
 
-import '@fontsource/ibm-plex-sans/latin-400.css';
-import '@fontsource/ibm-plex-sans/latin-500.css';
-import '@fontsource/ibm-plex-sans/latin-600.css';
-import '@fontsource/ibm-plex-sans/latin-700.css';
-import '@fontsource/ibm-plex-sans-condensed/latin-400.css';
-import '@fontsource/ibm-plex-sans-condensed/latin-500.css';
-import '@fontsource/ibm-plex-sans-condensed/latin-600.css';
-import '@fontsource/ibm-plex-sans-condensed/latin-700.css';
-import '@fontsource/ibm-plex-sans/latin-400-italic.css';
-import '@fontsource/ibm-plex-sans/latin-500-italic.css';
-import '@fontsource/ibm-plex-sans/latin-600-italic.css';
-import '@fontsource/ibm-plex-sans/latin-700-italic.css';
-import '@fontsource/ibm-plex-sans-condensed/300-italic.css';
-import '@fontsource/ibm-plex-sans-condensed/400-italic.css';
-import '@fontsource/ibm-plex-sans-condensed/500-italic.css';
-import '@fontsource/ibm-plex-sans-condensed/600-italic.css';
-import '@fontsource/ibm-plex-sans-condensed/700-italic.css';
-import '@fontsource/ibm-plex-mono/latin-400.css';
-import '@fontsource/ibm-plex-mono/latin-500.css';
-import '@fontsource/ibm-plex-mono/latin-600.css';
-import '@fontsource/ibm-plex-mono/latin-700.css';
+import "../styles/custom.css";
+import "@fontsource/ibm-plex-sans/latin-400.css";
+import "@fontsource/ibm-plex-sans/latin-500.css";
+import "@fontsource/ibm-plex-sans/latin-600.css";
+import "@fontsource/ibm-plex-sans/latin-700.css";
+import "@fontsource/ibm-plex-sans-condensed/latin-400.css";
+import "@fontsource/ibm-plex-sans-condensed/latin-500.css";
+import "@fontsource/ibm-plex-sans-condensed/latin-600.css";
+import "@fontsource/ibm-plex-sans-condensed/latin-700.css";
+import "@fontsource/ibm-plex-sans/latin-400-italic.css";
+import "@fontsource/ibm-plex-sans/latin-500-italic.css";
+import "@fontsource/ibm-plex-sans/latin-600-italic.css";
+import "@fontsource/ibm-plex-sans/latin-700-italic.css";
+import "@fontsource/ibm-plex-sans-condensed/300-italic.css";
+import "@fontsource/ibm-plex-sans-condensed/400-italic.css";
+import "@fontsource/ibm-plex-sans-condensed/500-italic.css";
+import "@fontsource/ibm-plex-sans-condensed/600-italic.css";
+import "@fontsource/ibm-plex-sans-condensed/700-italic.css";
+import "@fontsource/ibm-plex-mono/latin-400.css";
+import "@fontsource/ibm-plex-mono/latin-500.css";
+import "@fontsource/ibm-plex-mono/latin-600.css";
+import "@fontsource/ibm-plex-mono/latin-700.css";
 ---
+
 <html {...htmlDataAttributes} lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="hsl(111, 15%, 43%)"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="oklch(33.4% 0.0356 140.8)"
+    />
     <title>{title}</title>
     <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:title" content={title} />
     <meta property="og:image" content="og-default.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Bedrock.engineer - Consulting for Subsurface Data & Open-Source Tools"
+    />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://bedrock.engineer" />
+
+    <meta
+      name="keywords"
+      content="geotechnical, ground investigation, AGS, GEF, subsurface data, Python geotechnical, open-source geotechnical"
+    />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/svg+xml" href="bedrock.svg" />
+
     <ThemeProvider />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Bedrock.engineer",
+        "url": "https://bedrock.engineer",
+        "logo": "https://bedrock.engineer/bedrock.svg",
+        "description": "Software consultancy for transforming ground investigation data into structured, standardized geospatial data"
+      }
+    </script>
+
+    <!-- Allow pages to inject additional head content -->
+    <slot name="head" />
   </head>
   <body>
     <slot />

@@ -1,0 +1,188 @@
+---
+import { Icon } from "@astrojs/starlight/components";
+---
+
+<footer class="footer">
+  <div class="footer-wrapper">
+    <div class="footer-content">
+      <div class="footer-columns">
+        <!-- Social/Contact Column -->
+        <div class="footer-column">
+          <h3 class="footer-title">Connect</h3>
+          <ul>
+            <li>
+              <a
+                class="footer-link"
+                href="https://www.linkedin.com/company/bedrock-engineer/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon class="footer-icon" name="linkedin" />
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a
+                class="footer-link"
+                href="https://github.com/bedrock-engineer/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon class="footer-icon" name="github" />
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a class="footer-link" href="mailto:info@bedrock.engineer">
+                <Icon class="footer-icon" name="email" />
+                info@bedrock.engineer
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Documentation/Pages Column -->
+        <div class="footer-column">
+          <h3 class="footer-title">Documentation</h3>
+          <ul>
+            <li>
+              <a class="footer-link" href="docs/getting-started">Getting Started</a>
+            </li>
+            <li>
+              <a class="footer-link" href="docs/guides/viewing-cesium/">Guides</a>
+            </li>
+            <li>
+              <a class="footer-link" href="docs/examples/">Examples</a>
+            </li>
+            <li>
+              <a class="footer-link" href="docs/reference/">API Reference</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Company Column -->
+        <div class="footer-column">
+          <h3 class="footer-title">Company</h3>
+          <ul>
+            <li>
+              <a class="footer-link" href="/about">About</a>
+            </li>
+            <li>
+              <a class="footer-link" href="/services">Services</a>
+            </li>
+            <li>
+              <a class="footer-link" href="/mission">Mission</a>
+            </li>
+            <li>
+              <a class="footer-link" href="/cases">Cases</a>
+            </li>
+            <li>
+              <a class="footer-link" href="/technologies">Technologies</a>
+            </li>
+            <li>
+              <a class="footer-link" href="/brand-assets">Brand Assets</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">
+          © {new Date().getFullYear()} Bedrock Engineer B.V. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: black;
+    font-size: 0.875rem;
+  }
+  
+  .footer-wrapper {
+    max-width: var(--container-wide);
+    background-image: url("/textures/granite.svg");
+    margin-inline: auto;
+    background-size: 150px;
+    border-inline: 1px solid #181a18;
+  }
+  
+  .footer-content {
+    padding-block: 48px;
+    padding-inline: var(--section-padding-inline);
+    border-inline: 1px solid #181a18;
+    max-width: var(--container-md);
+    margin-inline: auto;
+    background-color: black;
+  }
+
+  .footer-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 48px;
+    margin-bottom: 32px;
+  }
+
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+  }
+
+  .footer-column li {
+    margin: 0;
+  }
+
+  .footer-title {
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: black;
+    width: fit-content;
+    margin-bottom: 16px;
+    color: white;
+  }
+
+  .footer-icon {
+    display: inline;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  .footer-link {
+    background-color: black;
+    color: oklch(77.053% 0.01002 140.893);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  .footer-bottom {
+    /* border-top: 1px solid var(--gray-11); */
+    padding-top: 1.5rem;
+  }
+
+  .footer-copyright {
+    width: fit-content;
+    background-color: black;
+    color: var(--gray-8);
+    margin: 0;
+    text-align: center;
+    font-size: 0.8125rem;
+  }
+</style>

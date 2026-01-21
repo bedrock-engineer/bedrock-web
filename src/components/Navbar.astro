@@ -1,0 +1,138 @@
+---
+import { Image } from "astro:assets";
+import BedrockLogo from "../assets/bedrock.svg";
+import LanguagePicker from "./LanguagePicker.astro";
+import Search from "@astrojs/starlight/components/Search.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+import { NavCompanyMenu } from "./NavCompanyMenu";
+---
+
+<nav class="navbar">
+  <div class="navbar-container">
+    <a href="/" class="logo">
+      <Image src={BedrockLogo} width="24" alt="Bedrock.engineer logo" />
+      <span class="logo-text">Bedrock.engineer</span>
+    </a>
+
+    <div class="nav-links">
+      <NavCompanyMenu client:load />
+      <a href="/docs/getting-started">Docs</a>
+    </div>
+
+    <!-- Right side: Search + Theme Toggle + Language -->
+    <div class="nav-actions">
+      <Search />
+      <ThemeToggle />
+      <!-- <LanguagePicker /> -->
+    </div>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--gray-1);
+    border-bottom: 1px solid var(--border-color-light);
+  }
+
+  .navbar-container {
+    max-width: var(--container-wide);
+    margin-inline: auto;
+    padding-block: var(--space-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--space-l);
+    padding-inline: var(--section-padding-inline);
+    /* @media (max-width: 640px) {
+      padding-inline: var(--space-s);
+    } */
+  }
+
+  /* Logo */
+  .logo {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    font-size: var(--text-xl);
+    font-family: "IBM Plex Sans Condensed", sans-serif;
+    color: var(--gray-12);
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:hover {
+      color: var(--green-11);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--green-9);
+      outline-offset: 2px;
+      border-radius: var(--border-radius-sm);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: color 0.15s ease;
+    }
+  }
+
+  .logo-text {
+    display: none;
+
+    @media (min-width: 640px) {
+      display: inline;
+    }
+  }
+
+  /* Navigation Links */
+  .nav-links {
+    display: none;
+    gap: var(--space-s);
+    margin-inline-start: auto;
+
+    @media (min-width: 1024px) {
+      display: flex;
+    }
+
+    a {
+      font-size: var(--text-base);
+      color: var(--gray-11);
+      text-decoration: none;
+      white-space: nowrap;
+      border-radius: var(--border-radius-sm);
+      padding: var(--space-2xs) var(--space-xs);
+
+      &:hover {
+        color: var(--green-11);
+        background: var(--gray-3);
+      }
+
+      &:active {
+        background: var(--gray-4);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--green-9);
+        outline-offset: 2px;
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition:
+          color 0.15s ease,
+          background 0.15s ease;
+      }
+    }
+  }
+
+  /* Right side actions */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    margin-inline-start: auto;
+
+    @media (min-width: 1024px) {
+      margin-inline-start: 0;
+    }
+  }
+</style>

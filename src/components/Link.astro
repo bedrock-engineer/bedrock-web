@@ -1,0 +1,100 @@
+---
+export interface Props {
+  variant?: 'default' | 'arrow' | 'email';
+  href: string;
+  external?: boolean;
+  class?: string;
+}
+
+const { variant = 'default', href, external, class: className } = Astro.props;
+
+// Auto-detect external links if not explicitly set
+const isExternal = external !== undefined ? external : href.startsWith('http');
+
+const linkAttrs = isExternal
+  ? { target: '_blank', rel: 'noopener noreferrer' }
+  : {};
+---
+
+<a
+  class={`link ${className || ''}`}
+  data-variant={variant}
+  href={href}
+  {...linkAttrs}
+>
+  <slot />
+  {variant === 'arrow' && <span class="arrow">→</span>}
+</a>
+
+<style>
+  .link {
+    color: var(--green-9);
+    text-decoration: none;
+    border-radius: var(--border-radius-sm);
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: color 0.15s ease, gap 0.2s ease;
+    }
+
+    &:hover {
+      color: var(--green-10);
+    }
+
+    &:active {
+      color: var(--green-11);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--green-9);
+      outline-offset: 2px;
+    }
+
+    /* Default variant - underline */
+    &[data-variant="default"] {
+      text-decoration: underline;
+      text-decoration-color: var(--green-9);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+
+      &:hover {
+        text-decoration-color: var(--green-10);
+      }
+    }
+
+    /* Arrow variant - animated arrow */
+    &[data-variant="arrow"] {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2xs);
+      font-weight: var(--font-semibold);
+
+      &:hover {
+        gap: var(--space-xs);
+
+        .arrow {
+          transform: translateX(2px);
+        }
+      }
+
+      .arrow {
+        display: inline-block;
+
+        @media (prefers-reduced-motion: no-preference) {
+          transition: transform 0.2s ease;
+        }
+      }
+    }
+
+    /* Email variant */
+    &[data-variant="email"] {
+      font-weight: var(--font-semibold);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 2px;
+      }
+    }
+  }
+</style>
