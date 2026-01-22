@@ -6,11 +6,12 @@ import joost from "../assets/JoostGevaert.jpg";
 import jules from "../assets/JulesBlom.jpg";
 
 import { AnimatedDemoTabs } from "../components/AnimatedDemoTabs";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Footer from "../components/Footer.astro";
-import "../styles/custom.css";
 import Card from "../components/Card.astro";
+import Footer from "../components/Footer.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
+import HoverLogo from "../components/HoverLogo.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/custom.css";
 ---
 
 <BaseLayout>
@@ -18,17 +19,6 @@ import ThemeToggle from "../components/ThemeToggle.astro";
     <div class="hero-wrapper">
       <header class="hero">
         <div class="logo-text">
-          <!-- <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xml:space="preserve"
-            width="100"
-            height="100"
-            viewBox="0 0 100 100"
-          >
-          <rect fill="#868b85" stroke="white" stroke-width="10" paint-order="stroke" transform="rotate(45) skewX(-25)   skewY(5) translate(50, 40)" rx="8" transform-box="fill-box" transform-origin="center" rx="4" width="50" height="50"></rect>
-          <rect fill="#998468" stroke="white" stroke-width="10" paint-order="stroke" transform="rotate(45) skewX(-25)   skewY(5) translate(30, 25)" rx="8" transform-box="fill-box" transform-origin="center" rx="4" width="50" height="50"></rect>
-            <rect fill="#63805e" stroke="white" stroke-width="10" paint-order="stroke" transform="rotate(45) skewX(-25) skewY(5)  translate(10, 10)" rx="8" transform-box="fill-box" transform-origin="center" rx="4" width="50" height="50"></rect>
-          </svg> -->
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xml:space="preserve"
@@ -49,34 +39,46 @@ import ThemeToggle from "../components/ThemeToggle.astro";
           <span>Bedrock.engineer</span>
         </div>
 
-        <h1>
-          View ground conditions with<br /> building models and site plans
-        </h1>
+        <!-- <h1>Bridge subsurface data <br />and modern geospatial tools</h1> -->
+        <h1>Visualize. Integrate. Optimize. <br />Your Subsurface Data</h1>
+
+        <!-- <p>
+          Go from subsurface data stuck in gINT, AGS, or GEF to tools that make
+          it accessible and useful. Surface your subsurface data in web maps,
+          ArcGIS, QGIS, or AEC collaboration platforms.
+        </p> -->
 
         <p>
-          Go from subsurface data that is stuck in gINT, AGS, or GEF or
-          engineering suites to focused software that makes it accessible and
-          useful. Bedrock.engineer transforms subsurface data into web maps and
-          formats that work with ArcGIS, QGIS, AEC collaboration platforms like
-          Speckle.
+          Surface your subsurface data in web maps, Python, QGIS, and AEC
+          platforms, escape proprietary databases like gINT or industry-specific
+          file formats like AGS and GEF.
         </p>
 
-        <div class="flex gap-4 justify-center flex-wrap">
+        <!-- <p>Go from subsurface data stuck in gINT, AGS, or GEF to web maps, ArcGIS, QGIS, and AEC collaboration platforms—accessible wherever you need it.</p> -->
+
+        <!-- "Surface your subsurface data—go from gINT, AGS, and GEF files to web maps, ArcGIS, QGIS, and AEC platforms." -->
+
+        <div class="flex gap-4 justify-center flex-wrap mt-12">
           <a
-            href="https://cal.com/bedrock-engineer"
+            href="https://cal.com/bedrock.engineer"
             class="cta-button-inverted"
+            target="_blank"
           >
             Schedule Discovery Call
           </a>
           <a href="/demos" class="cta-button-secondary-inverted">View Demos</a>
         </div>
       </header>
+
       <ThemeToggle class="fixed top-3 right-4" />
 
-      <section class="worked-with">
-        <h2>We have worked with</h2>
+      <section class="worked-with"></section>
 
-        <div class="client-logos">
+      <!-- <section class="worked-with"> -->
+      <!-- <h2>We have worked with</h2> -->
+      <!-- <h2 style="color: var(--gray-10);" class="text-left">Trusted by</h2>
+
+        <div class="client-logos pt-6">
           <img src={fugroLogo.src} alt="Fugro" />
           <img src={zeelandLogo.src} alt="Zeeland" />
           <img src={tnoGdnLogo.src} alt="TNO-GDN" />
@@ -85,7 +87,7 @@ import ThemeToggle from "../components/ThemeToggle.astro";
         <div style="margin-top: 32px; text-align: center;">
           <a href="/cases" class="section-link">View case studies →</a>
         </div>
-      </section>
+      </section> -->
     </div>
 
     <div class="section-wrapper texture-232-k">
@@ -104,7 +106,7 @@ import ThemeToggle from "../components/ThemeToggle.astro";
       <section class="section">
         <h2 class="heading-3">A Software Consultancy for Subsurface Data</h2>
 
-        <div class="flex gap-10">
+        <div class="grid-auto-fit gap-y-8">
           <div>
             <p class="paragraph" style="margin-block-end: 24px">
               Subsurface data is trapped in proprietary databases, or text
@@ -122,7 +124,10 @@ import ThemeToggle from "../components/ThemeToggle.astro";
               What we do:
             </h3>
             <ul class="services-list paragraph">
-              <li>Convert legacy formats into modern geospatial standards</li>
+              <li>
+                Convert industry-specific formats like GEF or AGS into modern
+                geospatial standards
+              </li>
               <li>
                 Build interactive (3D) web maps and visualizations for
                 stakeholder engagement
@@ -134,6 +139,8 @@ import ThemeToggle from "../components/ThemeToggle.astro";
               <li>Develop custom integrations for your specific needs</li>
             </ul>
           </div>
+
+          <HoverLogo class="place-self-center" />
         </div>
 
         <div style="margin-top: 40px; text-align: center;">
@@ -148,42 +155,44 @@ import ThemeToggle from "../components/ThemeToggle.astro";
       <section class="section">
         <h2 class="heading-3">Our Values</h2>
 
-        <div class="grid-auto-fit-narrow">
+        <div class="grid-auto-fit" style="--grid-gap: 72px;">
           <div class="value-card">
             <h3 class="value-title text-xl font-semibold">
-              Open-source & open standards
+              Purpose-built for subsurface data
             </h3>
             <p>
-              We believe deeply in open-source software and open standards to to
+              We build tools specifically for subsurface data, applied to your
+              specific workflows. Not generic GIS software that "almost" fits.
+              Reusable patterns for subsurface data that we adapt to your needs.
+              You get tailored tools without custom-build costs.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <h3 class="value-title text-xl font-semibold">
+              Modern geospatial tech
+            </h3>
+            <p>
+              Modern geospatial formats mean your subsurface data works
+              everywhere, QGIS, ArcGIS, Python, web maps, geospatial databases.
+              We bring practices from modern software development and the
+              geospatial ecosystem to subsurface data.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <h3 class="value-title text-xl font-semibold">Open ecosystems</h3>
+            <p>
+              We believe deeply in open-source software and open standards to
               make subsurface data more accessible and understandable, and drive
-              innovation in geotechnical engineering. We develop <code
-                >bedrock-ge</code
-              >, our own open-source Python library for turning ground
-              investigation data into geospatial data.
+              innovation in geotechnical engineering. We develop
+              <code
+                ><a href="https://github.com/bedrock-engineer/bedrock-ge/"
+                  >bedrock-ge</a
+                ></code
+              >, our open-source Python library for turning ground investigation
+              data into geospatial data.
             </p>
-          </div>
-
-          <div class="value-card">
-            <h3 class="value-title text-xl font-semibold">
-              Modern geospatial standards
-            </h3>
-            <p>
-              Your ground investigation data converts to GeoPackage, GeoParquet,
-              GeoJSON; formats that work with every modern GIS tool, Python
-              workflow, and web mapping platform. Long-term accessibility and
-              compatibility guaranteed.
-            </p>
-          </div>
-
-          <div class="value-card">
-            <h3 class="value-title text-xl font-semibold">Purpose built</h3>
-            <p>
-              Tailored tools built specifically for subsurface data, applied to
-              your specific workflows. Not generic software that "almost" fits.
-              Not expensive custom builds. Proven patterns for subsurface data,
-              repeatable but flexible, with iteration as part of the process.
-            </p>
-            <!-- <a href="/automation" class="value-link">Learn about our approach →</a> -->
           </div>
         </div>
 
@@ -202,21 +211,29 @@ import ThemeToggle from "../components/ThemeToggle.astro";
         <div class="grid-auto-fit">
           <Card class="team-member card">
             <h3>Jules Blom</h3>
-            <img src={jules.src} alt="Jules Blom" />
+            <img
+              src={jules.src}
+              alt="Jules Blom"
+              style="filter: grayscale(1);"
+            />
             <p>
-              5+ years building data-rich geospatial applications. Specializes
-              in making complex subsurface data clear through visualization and
-              user intuitive interfaces. Background in Reservoir Geology (TU
-              Delft).
+              Experienced in building data-rich geospatial applications.
+              Specializes in making complex subsurface data clear through
+              visualization and intuitive user interfaces. Background in
+              Petroleum Engineering (Reservoir Geology) at TU Delft.
             </p>
           </Card>
 
           <Card class="team-member card">
             <h3>Joost Gevaert</h3>
-            <img src={joost.src} alt="Joost Gevaert" />
+            <img
+              src={joost.src}
+              alt="Joost Gevaert"
+              style="filter: grayscale(1);"
+            />
             <p>
-              Geotechnical engineer and computational designer. Spent 4 years at
-              Arup bridging gaps between geotechnical and structural engineering
+              Geotechnical engineer and computational designer. Worked at Arup
+              bridging gaps between geotechnical and structural engineering
               workflows. Background in Geotechnical Engineering and Applied
               Geophysics.
             </p>
@@ -228,6 +245,7 @@ import ThemeToggle from "../components/ThemeToggle.astro";
         </div>
       </section>
     </div>
+
     <Footer />
   </div>
 
@@ -261,10 +279,6 @@ import ThemeToggle from "../components/ThemeToggle.astro";
       margin-inline: auto;
       border-radius: 16px;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      row-gap: 32px;
-      justify-content: center;
       color: white;
       background:
         linear-gradient(
@@ -274,6 +288,7 @@ import ThemeToggle from "../components/ThemeToggle.astro";
         ),
         url("/ASCII-landscape.webp");
       background-size: cover;
+
       background-position: center;
       position: relative;
 
@@ -283,7 +298,8 @@ import ThemeToggle from "../components/ThemeToggle.astro";
 
       & h1 {
         font-size: clamp(2.8rem, 2.25rem + 2vw, 4rem);
-        margin-top: 5%;
+        margin-top: 8%;
+        margin-bottom: 16px;
         font-family: "IBM Plex Sans Condensed";
         text-box-trim: trim-both;
         text-wrap: balance;
@@ -303,8 +319,9 @@ import ThemeToggle from "../components/ThemeToggle.astro";
       padding-block-end: 48px;
 
       & h2 {
-        text-align: center;
+        /* text-align: center; */
         font-size: 20px;
+        margin-left: 108px;
         margin-bottom: 36px;
       }
     }
@@ -388,8 +405,7 @@ import ThemeToggle from "../components/ThemeToggle.astro";
     /* .values-grid replaced with .grid-auto-fit-narrow from global CSS */
 
     .value-card {
-      /* @apply p-6 bg-[var(--gray-2)] border border-[var(--border-color-light)] rounded-sm flex flex-col gap-4; */
-      @apply p-6 flex flex-col gap-4;
+      @apply flex flex-col gap-8;
       & p {
         flex-grow: 1;
         line-height: 1.6;

@@ -5,7 +5,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Card from "../components/Card.astro";
 import "../styles/custom.css";
 
-const title = "Software Development Services for Geotechnical Data | Bedrock.engineer";
+const title =
+  "Software Development Services for Geotechnical Data | Bedrock.engineer";
 const description =
   "Custom software development for transforming geotechnical data, building 3D web maps, and integrating subsurface data with CAD, BIM, and design tools.";
 ---
@@ -21,7 +22,7 @@ const description =
           We build custom tools and workflows that bridge the gap between legacy
           geotechnical formats and modern software ecosystems.
         </p>
-        <div class="flex gap-4 justify-center flex-wrap">
+        <div class="flex gap-4 flex-wrap">
           <a href="https://cal.com/bedrock-engineer" class="cta-button">
             Schedule Discovery Call
           </a>
@@ -65,15 +66,15 @@ const description =
             <p class="service-description">
               Transform legacy formats (AGS3/4, GEF, BRO/XML) into modern
               geospatial standards. Set up PostGIS databases when teams need
-              centralized, editable data, or produce GeoPackage files as fixed
-              project deliverables.
+              centralized, editable geospatial data, or produce GeoPackage files
+              as fixed project deliverables.
             </p>
             <div class="service-details">
               <h4 class="service-details-title">Typical deliverables:</h4>
               <ul class="service-list">
                 <li>Cleaned and validated datasets</li>
                 <li>Transformation scripts and workflows</li>
-                <li>Data quality reports</li>
+                <!-- <li>Data quality reports</li> -->
               </ul>
             </div>
             <div class="service-meta">
@@ -144,9 +145,9 @@ const description =
             </div>
             <h3 class="service-title">CAD/BIM/Design Integration</h3>
             <p class="service-description">
-              Connect geotechnical data to Rhino/Grasshopper, Revit, Speckle, or
-              other design tools. Bring subsurface context into your design
-              process.
+              Bring subsurface context into your design process. Connect
+              geotechnical data to Rhino3D/Grasshopper, Revit, Civil3D, or other
+              design tools.
             </p>
             <div class="service-details">
               <h4 class="service-details-title">Typical deliverables:</h4>
@@ -203,11 +204,11 @@ const description =
           </Card>
         </div>
 
-        <div style="margin-top: 48px; text-align: center;">
-          <a href="/examples/" class="section-link">
+        <!-- <div style="margin-top: 48px; text-align: center;">
+          <a href="/cases/" class="section-link">
             View examples of our work →
           </a>
-        </div>
+        </div> -->
       </section>
     </div>
 
@@ -221,51 +222,46 @@ const description =
           How We Work
         </h2>
 
-        <div class="process-timeline">
-          <div class="process-step">
-            <div class="process-number">1</div>
-            <div class="process-content">
+        <ol class="process-timeline">
+          <li class="process-step">
+            <div>
               <h3 class="process-title">Discovery Call</h3>
               <p class="process-description">
                 We discuss your data challenges, current workflows, and desired
                 outcomes. This helps us understand if we're a good fit.
               </p>
             </div>
-          </div>
+          </li>
 
-          <div class="process-step">
-            <div class="process-number">2</div>
-            <div class="process-content">
+          <li class="process-step">
+            <div>
               <h3 class="process-title">Scoping & Proposal</h3>
               <p class="process-description">
-                We define clear deliverables, timeline, and budget. You'll know
-                exactly what to expect before we start.
+                Together we define clear deliverables, timeline, and budget.
               </p>
             </div>
-          </div>
+          </li>
 
-          <div class="process-step">
-            <div class="process-number">3</div>
-            <div class="process-content">
+          <li class="process-step">
+            <div>
               <h3 class="process-title">Development</h3>
               <p class="process-description">
                 We build iteratively with regular check-ins and demos. You stay
                 involved and can provide feedback throughout.
               </p>
             </div>
-          </div>
+          </li>
 
-          <div class="process-step">
-            <div class="process-number">4</div>
-            <div class="process-content">
+          <li class="process-step">
+            <div>
               <h3 class="process-title">Delivery & Handoff</h3>
               <p class="process-description">
                 We deliver complete documentation, provide training if needed,
                 and ensure you can maintain the solution independently.
               </p>
             </div>
-          </div>
-        </div>
+          </li>
+        </ol>
       </section>
     </div>
 
@@ -464,6 +460,9 @@ const description =
     display: flex;
     flex-direction: column;
     gap: 32px;
+    list-style: none;
+    padding: 0;
+    counter-reset: process-counter;
   }
 
   .process-step {
@@ -471,24 +470,21 @@ const description =
     grid-template-columns: 60px 1fr;
     gap: 24px;
     align-items: start;
+    counter-increment: process-counter;
   }
 
-  .process-number {
+  .process-step::before {
+    content: counter(process-counter);
     width: 60px;
     height: 60px;
     border-radius: 50%;
     background: var(--green-9);
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-content: center;
     font-size: 24px;
     font-weight: 600;
-    flex-shrink: 0;
-  }
-
-  .process-content {
-    padding-block-start: 8px;
+    align-self: center;
   }
 
   .process-title {
@@ -502,6 +498,7 @@ const description =
     font-size: var(--text-base);
     line-height: 1.6;
     color: var(--gray-11);
+    max-width: 60ch;
   }
 
   /* Values Grid - now using .grid-auto-fit-narrow from global CSS */
@@ -547,7 +544,7 @@ const description =
       gap: 16px;
     }
 
-    .process-number {
+    .process-step::before {
       width: 50px;
       height: 50px;
       font-size: 20px;

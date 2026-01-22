@@ -40,7 +40,7 @@ const homepageTabs: TabData[] = [
             world of geospatial tools and standards.
           </p>
           <p className="text-lg">
-            Explore boreholes, test results, and geology directly in your
+            Explore boreholes, test results, and ground models directly in your
             browser, no specialist software required.
           </p>
         </div>
@@ -54,7 +54,11 @@ const homepageTabs: TabData[] = [
 
           <figcaption>
             GI data in Kai Tak, Hong Kong.{" "}
-            <a className="link" href="https://bedrock.engineer/hk-kaitak">
+            <a
+              className="link"
+              href="https://bedrock.engineer/hk-kaitak"
+              target="_blank"
+            >
               Explore for yourself.
             </a>
           </figcaption>
@@ -65,7 +69,6 @@ const homepageTabs: TabData[] = [
   {
     id: "geospatial",
     label: "Geospatial Data Integration",
-
     content: (
       <div className="tab-content-grid">
         <div>
@@ -74,10 +77,13 @@ const homepageTabs: TabData[] = [
           </h3>
 
           <p className="text-lg">
-            Access GI data in GIS software, Python, and modern geospatial
-            workflows. Analyze, visualize, and automate using the tools data
-            scientists and GIS professionals already know.
-            {/* Move beyond specialist software limitations. */}
+            Access ground investigation data in GIS software, Python, and modern
+            geospatial workflows.
+          </p>
+
+          <p className="text-lg">
+            Analyze, visualize, and automate using the tools data scientists and
+            GIS professionals already know.
           </p>
         </div>
 
@@ -102,9 +108,10 @@ const homepageTabs: TabData[] = [
           </h3>
 
           <p className="text-lg">
-            Break down silos with geospatial GI data—view geotechnical and
-            structural models together, enabling seamless collaboration across
-            disciplines in Speckle, Rhino, and Civil3D
+            Break down silos with geospatial ground investigation data. View
+            geotechnical and structural models together in design software like
+            Rhino3D or Civil3D. Enable seamless collaboration across disciplines
+            using AEC collaboration platforms like Speckle,
           </p>
         </div>
 
@@ -114,7 +121,17 @@ const homepageTabs: TabData[] = [
             alt="Interactive 3D visualization of subsurface data in Speckle"
           />
           <figcaption>
-            Kai Tak, Hong Kong 3D GI data visualization in Speckle.
+            Kai Tak, Hong Kong 3D GI data visualization in{" "}
+            <a target="_blank" className="link" href="https://speckle.systems">
+              Speckle.
+            </a>{" "}
+            <a
+              target="_blank"
+              className="link"
+              href="https://app.speckle.systems/projects/dea5d61543/models/721ad7b589,9962662abe,c82c54493a#savedView%3D%7B%2522id%2522%3A%2522f44961ecb8%2522%7D"
+            >
+              Explore for yourself.
+            </a>
           </figcaption>
         </figure>
       </div>

@@ -2,7 +2,7 @@ export const ui = {
   en: {
     title: "About Bedrock.engineer",
     intro:
-      "Bedrock.engineer is by two engineers who believe that geotechnical data should be accessible, interoperable, and visual. We combine domain expertise with modern software development to create tools that bridge the gap between legacy formats and contemporary workflows.",
+      "Bedrock.engineer is by two engineers who believe that geotechnical data should be accessible, interoperable, and visual. We combine domain expertise with modern software development to create tools that bridge the gap between industry-specific file formats and contemporary workflows.",
     joost: {
       bio: {
         p1: "I studied geotechnical engineering and applied geophysics and then worked for Arup for 4 years as a geotechnical engineer and computational designer.",

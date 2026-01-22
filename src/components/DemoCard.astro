@@ -5,7 +5,6 @@ import Link from './Link.astro';
 
 export interface Props {
   title: string;
-  description: string;
   href?: string;
   linkText?: string;
   iframe?: string;
@@ -16,7 +15,6 @@ export interface Props {
 
 const {
   title,
-  description,
   href,
   linkText,
   iframe,
@@ -48,7 +46,9 @@ const {
   </div>
   <div class="demo-card-content">
     <h3 class="demo-card-title">{title}</h3>
-    <p class="demo-card-description">{description}</p>
+    <div class="demo-card-description">
+      <slot name="description" />
+    </div>
     {
       href && linkText && (
         <Link href={href} variant="arrow" class="demo-link">
@@ -120,7 +120,7 @@ const {
     font-size: 20px;
     font-weight: 600;
     font-family: 'IBM Plex Sans Condensed';
-    color: var(--green-9);
+    color: var(--gray-12);
     margin: 0;
   }
 
@@ -128,8 +128,15 @@ const {
     font-size: 16px;
     line-height: 1.5;
     color: var(--gray-12);
-    margin: 0;
     flex-grow: 1;
+  }
+
+  .demo-card-description :global(p) {
+    margin: 0;
+  }
+
+  .demo-card-description :global(p:not(:last-child)) {
+    margin-bottom: 0.75em;
   }
 
   :global(.demo-card .demo-link) {
