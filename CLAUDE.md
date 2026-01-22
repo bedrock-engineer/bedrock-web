@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+You run in an environment where `ast-grep` is available; whenever a search requires syntax-aware or structural matching, default to `ast-grep --lang typescript -p '<pattern>'` (or set `--lang` appropriately) and avoid falling back to text-only tools like `rg` or `grep` unless I explicitly request a plain-text search. |
+
 ## Project Overview
 
 This is a marketing and documentation website for Bedrock, built with Astro and Starlight. Bedrock (`bedrock-ge`) is an open-source Python library that transforms ground investigation (GI) data from various specialized and common formats into structured, standardized geospatial data. The library serves as a bridge between legacy geotechnical data formats and modern Python-based analysis workflows.

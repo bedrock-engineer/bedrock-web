@@ -84,11 +84,11 @@ export default defineConfig({
   //     prefixDefaultLocale: false,
   //   },
   // },
-  image: {
-    service: {
-      entrypoint: "astro/assets/services/sharp",
-    },
-  },
+  // image: {
+  //   service: {
+  //     entrypoint: "astro/assets/services/sharp",
+  //   },
+  // },
   prefetch: {
     prefetchAll: true,
   },
@@ -104,19 +104,15 @@ export default defineConfig({
     og(),
     sitemap(),
   ],
-
   markdown: {
     rehypePlugins: [rehypeHeadingIds],
     remarkPlugins: [remarkDefinitionList],
   },
-
   redirects: {
     "/reference/formats/ags/": "/reference/formats/ags/ags4/",
   },
-
   vite: {
     plugins: [tailwindcss()],
   },
-
   adapter: cloudflare(),
 });

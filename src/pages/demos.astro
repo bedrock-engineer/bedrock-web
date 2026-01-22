@@ -158,7 +158,7 @@ const description =
 
           <DemoCard
             title="GEF Viewer"
-            description="Web-based viewer for GEF (Geotechnical Exchange Format) files. Upload and visualize CPT & bore data directly in your browser without specialist software."
+            description="Web-based viewer for GEF (Geotechnical Exchange Format) files. Upload and visualize CPT & bore data directly in your browser."
             image={gefApp}
             href="https://gef.bedrock.engineer"
             linkText="Open GEF viewer"
@@ -197,13 +197,17 @@ const description =
             description="Subsurface data from Amsterdam Noord visualized in Speckle for multi-disciplinary collaboration and BIM integration."
             image={amsterdamSpeckle}
             imageAlt="Amsterdam Noord in Speckle"
-          />
-
-          <DemoCard
+            href="https://app.speckle.systems/projects/d083a8bd5c/models/7d52f6a137,8e05ffa635,90726f9281,95af0442f1#savedView%3D%7B%2522id%2522%3A%252218f7dfbdfa%2522%7D"
+            linkText="Open in Speckle"
+            />
+            
+            <DemoCard
             title="Weka Hills - Speckle"
             description="Geological data visualization in Speckle showing subsurface conditions for infrastructure planning and design coordination."
             image={wekaHills}
             imageAlt="Weka Hills project in Speckle"
+            href="https://app.speckle.systems/projects/bc2ef86a30/models/53ad71f84a,639810d7b2,6dcde3dafa,7d83fae8e5#savedView%3D%7B%2522id%2522%3A%2522025a4dcbd1%2522%7D"
+            linkText="Open in Speckle"
           />
         </div>
       </section>
@@ -216,7 +220,7 @@ const description =
           GIS Software Integration
         </h2>
 
-        <div class="grid-auto-fit">
+        <div class="grid-cols-3">
           <DemoCard
             title="Kai Tak - ArcGIS Pro"
             description="3D visualization of ground investigation data in ArcGIS Pro. Geotechnical data converted to geospatial formats for GIS analysis and mapping."

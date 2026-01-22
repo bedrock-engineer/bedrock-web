@@ -145,7 +145,7 @@ export function AnimatedDemoTabs({
   useEffect(() => {
     if (tabElements.length === 0 && tabListRef.current) {
       let tabs = Array.from(
-        tabListRef.current.querySelectorAll("[role=tab]")
+        tabListRef.current.querySelectorAll("[role=tab]"),
       ) as HTMLElement[];
       setTabElements(tabs);
     }
@@ -156,7 +156,7 @@ export function AnimatedDemoTabs({
   let getIndex = (x: number) => {
     if (!tabListRef.current) return 0;
     let elements = Array.from(
-      tabListRef.current.querySelectorAll("[role=tab]")
+      tabListRef.current.querySelectorAll("[role=tab]"),
     ) as HTMLElement[];
     return Math.max(0, Math.floor((elements.length - 1) * x));
   };
@@ -168,7 +168,7 @@ export function AnimatedDemoTabs({
 
     // Query elements fresh each time to get current dimensions
     let elements = Array.from(
-      tabListRef.current.querySelectorAll("[role=tab]")
+      tabListRef.current.querySelectorAll("[role=tab]"),
     ) as HTMLElement[];
     if (!elements.length) return 0;
 
@@ -249,7 +249,7 @@ export function AnimatedDemoTabs({
           tabPanel.style.scrollSnapType = "";
           animationRef.current = null;
         },
-      }
+      },
     );
   };
 
@@ -260,11 +260,7 @@ export function AnimatedDemoTabs({
       onSelectionChange={onSelectionChange}
     >
       <div className="tabs-header">
-        <TabList
-          ref={tabListRef}
-          className="tabs-list"
-          items={tabs}
-        >
+        <TabList ref={tabListRef} className="tabs-list" items={tabs}>
           {(tab: TabData) => (
             <Tab className="tab-button">
               {({ isSelected, isFocusVisible }) => (

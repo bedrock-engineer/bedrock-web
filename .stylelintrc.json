@@ -1,15 +1,8 @@
 {
-  "plugins": [
-    "stylelint-gamut"
-  ],
+  "plugins": ["stylelint-gamut"],
   "rules": {
     "gamut/color-no-out-gamut-range": true,
-    "function-disallowed-list": [
-      "rgba",
-      "hsla",
-      "rgb",
-      "hsl"
-    ],
+    "function-disallowed-list": ["rgba", "hsla", "rgb", "hsl"],
     "color-function-notation": "modern",
     "color-no-hex": true
   },

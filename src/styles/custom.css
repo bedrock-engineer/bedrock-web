@@ -94,9 +94,15 @@ body:has(.page) {
   min-height: 100vh; /* keeps viewport height for sticky footer */
 }
 
-/* Form control accent color */
 :root {
+  /* Form control accent color */
   accent-color: var(--green-9);
+  caret-color: var(--green-9);
+}
+
+:focus-visible {
+  outline-color: var(--teal-10);
+  outline-offset: 4px;
 }
 
 /* Replace iOS tap highlight with custom color */
@@ -235,7 +241,8 @@ figcaption {
 /* ========== STARLIGHT UTILITY CLASSES ========== */
 /* Responsive visibility utilities used by Starlight components */
 
-.sl-hidden, .md\:sl-hidden {
+.sl-hidden,
+.md\:sl-hidden {
   display: none !important;
 }
 
