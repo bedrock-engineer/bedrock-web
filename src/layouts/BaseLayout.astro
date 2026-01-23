@@ -1,7 +1,7 @@
 ---
 const {
   title = "Bedrock.engineer - Geotechnical & Subsurface Data Consulting Services",
-  description = "Bedrock.engineer provides consulting and open-source software to visualize and integrate geotechnical data with BIM, Python parametric design, and geospatial tools."
+  description = "Bedrock.engineer provides consulting and open-source software to visualize and integrate geotechnical data with BIM, Python parametric design, and geospatial tools.",
 } = Astro.props;
 
 const htmlDataAttributes: DOMStringMap = { "data-theme": "dark" };
@@ -36,17 +36,19 @@ import "@fontsource/ibm-plex-mono/latin-700.css";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
     <meta
       name="theme-color"
-      media="(prefers-color-scheme: light)"
-      content="hsl(111, 15%, 43%)"
+      content="#63805E"
     />
-    <meta
+    <!-- <meta
       name="theme-color"
       media="(prefers-color-scheme: dark)"
-      content="oklch(33.4% 0.0356 140.8)"
-    />
+      content="hsl(60, 3%, 7%)"
+    /> -->
     <title>{title}</title>
+    <meta name="format-detection" content="telephone=no" />
+
     <meta name="description" content={description} />
 
     <!-- Open Graph / Facebook -->
@@ -61,11 +63,6 @@ import "@fontsource/ibm-plex-mono/latin-700.css";
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://bedrock.engineer" />
-
-    <meta
-      name="keywords"
-      content="geotechnical, ground investigation, AGS, GEF, subsurface data, Python geotechnical, open-source geotechnical"
-    />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="twitter:card" content="summary_large_image" />

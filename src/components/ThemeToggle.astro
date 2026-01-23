@@ -31,6 +31,16 @@ const { class: className } = Astro.props;
     return "auto";
   }
 
+  function setMetaThemeColor(color: string) {
+    let meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.setAttribute("name", "theme-color");
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute("content", color);
+  }
+
   // Get the resolved theme based on system preference
   function getResolvedTheme(
     theme: "light" | "auto" | "dark",
@@ -53,6 +63,12 @@ const { class: className } = Astro.props;
 
     localStorage.setItem("theme", theme);
     updateButton(theme);
+
+    const themeColors: Record<string, string> = {
+      light: "#63805E",
+      dark: "hsl(60, 3%, 7%)",
+    };
+    setMetaThemeColor(themeColors[resolvedTheme]);
   }
 
   // Update button appearance and aria-label

@@ -141,12 +141,12 @@ const description =
       <section class="section intro-section">
         <h1 class="heading-1">What We Work With</h1>
         <p class="paragraph-xl">
-          We specialize in the awkward middle ground between legacy geotechnical
-          formats and modern software. That means reading AGS4, GEF, and BRO/XML
-          files, transforming them into proper geospatial data, and building the
-          tools to actually use it. From 3D visualizations in CesiumJS to
-          integrations with Revit and Civil3D through Speckle, or custom web
-          applications to visualize your subsurface data.
+          We specialize in the missing middle ground between geotechnical
+          formats and modern (geospatial) development. That means reading AGS4,
+          GEF, and BRO/XML files, transforming them into proper geospatial data,
+          and building the tools to actually use it. Such as 3D visualizations
+          in CesiumJS, integrations with Revit or Civil3D through Speckle, or
+          custom web applications to visualize your subsurface data.
         </p>
       </section>
     </header>
@@ -163,22 +163,21 @@ const description =
             <h3 class="heading-3">Industry GI Formats</h3>
             <p class="tech-subtitle">AGS3, AGS4, GEF, BRO/XML</p>
             <p class="card-text">
-              We can handle specialized formats that ground investigation data
-              comes in. AGS3 and AGS4 files from site investigations, or GEF files
-              with CPT and borehole data, or BRO/XML from the Dutch subsurface
-              registry. We parse these formats and convert them into geospatial
+              We can process specialized formats that ground investigation data
+              comes in, like AGS3, AGS4, GEF files with CPT and borehole data,
+              or BRO/XML from the Dutch subsurface registry. We parse these
+              formats, structure the data, and can convert them into geospatial
               data.
             </p>
           </Card>
 
           <Card size="medium">
-            <h3 class="heading-3">Spreadsheets & Custom Data</h3>
+            <h3 class="heading-3">Spreadsheets & Semi-structured Data</h3>
             <p class="tech-subtitle">Excel, CSV</p>
             <p class="card-text">
               In practice, not all ground investigation data follows a standard.
-              We can handle the Excel spreadsheets with custom layouts, CSVs with
-              inconsistent formatting, and proprietary formats that need custom
-              parsing.
+              We can handle the Excel spreadsheets with custom schemas, CSVs
+              with inconsistent formatting.
             </p>
           </Card>
         </div>
@@ -193,15 +192,18 @@ const description =
         </h2>
 
         <div class="grid-auto-fit">
-          <Card size="large">
+          <Card>
             <h3 class="heading-3">Geospatial Data Pipelines</h3>
             <p class="tech-subtitle">GeoPandas, Shapely, Pandas</p>
             <p class="card-text">
-              The foundation of our Bedrock library is built on Python's
-              geospatial ecosystem. We use GeoPandas to build data
-              pipelines that transform AGS4, GEF, or BRO/XML files into proper
-              geospatial data with coordinate systems, validation, and
-              relationships between boreholes, samples, and test results intact.
+              The foundation of our <a
+                href="https://github.com/bedrock-engineer/bedrock-ge/"
+                class="link">bedrock-ge</a
+              >
+              library is built using Python's geospatial ecosystem. We use GeoPandas
+              to build data pipelines that transform AGS4, GEF, or BRO/XML files into
+              proper geospatial data with coordinate systems, validation, and relationships
+              between boreholes, samples, and test results intact.
             </p>
           </Card>
 
@@ -211,9 +213,9 @@ const description =
             <p class="card-text">
               Centralized database for ground investigation data instead of
               scattered files. PostgreSQL with PostGIS handles spatial queries
-              on borehole locations, CPT tests, and geological boundaries.
-              Load AGS4, GEF, or BRO data once, query from QGIS, ArcGIS, FME,
-              or web applications.
+              on borehole locations, CPT tests, and geological boundaries. Load
+              AGS4, GEF, or BRO data once, query from QGIS, ArcGIS, FME, or web
+              applications.
             </p>
           </Card>
 
@@ -221,9 +223,9 @@ const description =
             <h3 class="heading-3">Rhino3D & Grasshopper</h3>
             <p class="tech-subtitle">Parametric Design, Python Scripting</p>
             <p class="card-text">
-              Bring subsurface data into Grasshopper. Custom components read
-              ground investigation data, generate ground models from boreholes,
-              run geotechnical calculations, and integrate soil layering into
+              Bring subsurface data into Grasshopper. Custom components to read
+              and visualize ground investigation data, generate ground models,
+              run geotechnical calculations, or integrate soil layering into
               parametric designs.
             </p>
           </Card>
@@ -261,7 +263,7 @@ const description =
               the 3D Tiles Voxel extension. Convert netCDF, structured grids, or
               geological block models into streamable web format. Render
               subsurface uncertainty, property distributions, or stratigraphic
-              models at scale.
+              models at scale in the browser.
             </p>
           </Card>
 
@@ -286,8 +288,8 @@ const description =
             <p class="tech-subtitle">Three.js, WebGL</p>
             <p class="card-text">
               Custom 3D visualizations for subsurface data. Borehole renderings,
-              geological cross-sections, and underground models with full control
-              over materials, lighting, and interaction.
+              geological cross-sections, and underground models with full
+              control over materials, lighting, and interaction.
             </p>
           </Card>
 
@@ -328,7 +330,9 @@ const description =
 
           <Card size="small">
             <h3 class="heading-3">Power BI Custom Visuals</h3>
-            <p class="tech-subtitle">Business Intelligence, Geotechnical Charts</p>
+            <p class="tech-subtitle">
+              Business Intelligence, Geotechnical Charts
+            </p>
             <p class="card-text">
               Custom Power BI plugins for subsurface data. Borehole logs, CPT
               plots, and geotechnical charts in BI dashboards.
@@ -350,7 +354,7 @@ const description =
             <h3 class="heading-3">BIM/CAD Integration</h3>
             <p class="tech-subtitle">Speckle, Revit, Civil3D</p>
             <p class="card-text">
-              Connect geotechnical data with Revit, Civil3D, Rhino, and other
+              Connect geotechnical data with Revit, Civil3D, Rhino3D, and other
               design tools through Speckle. Custom connectors and objects for
               AGS4 boreholes, CPT data, and geological models. Stream subsurface
               data to design teams with live updates when ground investigation
@@ -362,10 +366,10 @@ const description =
             <h3 class="heading-3">Geospatial Formats</h3>
             <p class="tech-subtitle">GeoPackage, GeoParquet, GeoJSON</p>
             <p class="card-text">
-              Export to geospatial formats for GIS workflows. GeoPackage for
-              QGIS and ArcGIS, GeoParquet for cloud-optimized analysis, GeoJSON
-              for web applications. Convert AGS4, GEF, or BRO data to formats
-              that work with standard GIS tools.
+              Export GI data to geospatial formats for GIS workflows. GeoPackage
+              for QGIS and ArcGIS, GeoParquet for cloud-optimized analysis,
+              GeoJSON for web applications. Convert AGS4, GEF, or BRO data to
+              formats that work with standard GIS tools.
             </p>
           </Card>
 
@@ -393,7 +397,7 @@ const description =
 
           <Card size="small">
             <h3 class="heading-3">IFC</h3>
-            <p class="tech-subtitle">BIM Data Exchange, Building Information Modeling</p>
+            <p class="tech-subtitle">BIM Data Exchange, geotechnical BIM</p>
             <p class="card-text">
               Export geotechnical data to Industry Foundation Classes format for
               BIM workflows and integration with building information models.
@@ -407,7 +411,7 @@ const description =
     <div class="section-wrapper texture-620">
       <section class="section cta-section">
         <h2
-          class="heading-2"
+          class="heading-3"
           style="text-align: center; margin-block-end: 16px;"
         >
           Ready to apply these technologies to your project?

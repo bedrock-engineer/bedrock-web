@@ -251,11 +251,11 @@ figcaption {
 }
 
 @media (min-width: 50rem) {
-  .sl-hidden.md\:sl-block {
+  .md\:sl-block {
     display: block !important;
   }
 
-  .sl-hidden.md\:sl-flex {
+  .md\:sl-flex {
     display: flex !important;
   }
 }
@@ -549,7 +549,7 @@ figcaption {
   color: var(--green-9);
   text-decoration: none;
   border-radius: var(--border-radius-sm);
-  font-weight: 600;
+  font-weight: 500;
   font-size: var(--text-base);
   transition:
     transform 0.2s ease,
@@ -574,9 +574,9 @@ figcaption {
   color: white;
   text-decoration: none;
   border-radius: var(--border-radius-sm);
-  font-weight: 600;
+  font-weight: 500;
   font-size: var(--text-base);
-  border: 2px solid white;
+  border: 1.5px solid white;
   transition: background 0.2s ease;
 }
 

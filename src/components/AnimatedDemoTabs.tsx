@@ -49,6 +49,7 @@ const homepageTabs: TabData[] = [
           <iframe
             src="https://bedrock.engineer/hk-kaitak/"
             height={400}
+            title="Demo of ground investigation data in Hong Kong in a 3D map"
             style={{ width: "100%", maxWidth: "700px", borderRadius: "4px" }}
           />
 

@@ -76,8 +76,6 @@ globe.undergroundColor = Cesium.Color.GREY;
 viewer.scene.screenSpaceCameraController.enableCollisionDetection = false;
 
 function onLoadLocations(dataSource) {
-  console.log("Loaded location data", dataSource.entities.values.length);
-
   for (const entity of dataSource.entities.values) {
     const standardType = entity.properties.standard.getValue();
     const cptId = entity.properties.location_source_id.getValue();

@@ -10,6 +10,7 @@
 
 .tabs-list {
   display: flex;
+  align-items: center;
   width: fit-content;
   border-radius: var(--border-radius);
   border: 1px solid var(--green-7);
@@ -18,14 +19,20 @@
 }
 
 .tab-button {
-  cursor: default;
+  cursor: pointer;
   padding: 6px 12px;
   font-size: 1rem;
   outline: none;
   touch-action: none;
   border-radius: 9999px;
-  transition: color 0.1s, background-color 0.1s;
+  transition:
+    color 0.1s,
+    background-color 0.1s;
   text-align: center;
+
+  @media (max-width: 550px) {
+    font-size: 0.8rem;
+  }
 
   &[data-hovered] {
     background-color: var(--green-3);

@@ -158,10 +158,7 @@ const weatheringGradeColorScale = scaleOrdinal()
 // https://observablehq.com/@d3/sequential-scales
 const sptScale = scaleSequential(interpolatePlasma).domain([0, 100]);
 
-const coreRqdScale = scaleSequential(interpolateOrRd).domain([0, 100]);
-
 function onLoadLocations(dataSource) {
-  console.log("Loaded location data", dataSource.entities.values.length);
 
   for (const entity of dataSource.entities.values) {
     const holeType = entity.properties.HOLE_TYPE.getValue();
@@ -222,8 +219,6 @@ function onLoadLocations(dataSource) {
 }
 
 function onLoadWeatheringData(dataSource) {
-  console.log("Loaded weathering data:", dataSource.entities.values.length);
-
   for (const entity of dataSource.entities.values) {
     const wetheringGrade = entity.properties?.WETH_GRAD?.getValue();
     const color = weatheringGradeColorScale(wetheringGrade);
@@ -251,8 +246,6 @@ function onLoadWeatheringData(dataSource) {
 }
 
 function onLoadSptData(dataSource) {
-  console.log("Loaded ispt data:", dataSource.entities.values.length);
-
   for (const entity of dataSource.entities.values) {
     const sptNValue = entity.properties?.ISPT_NVAL?.getValue();
     const color = sptScale(sptNValue);
@@ -278,28 +271,6 @@ function onLoadSptData(dataSource) {
   }
 }
 
-function onLoadCoreData(dataSource) {
-  console.log("Loaded core data:", dataSource.entities.values.length);
-
-  for (const entity of dataSource.entities.values) {
-    const coreRqdValue = entity.properties?.CORE_RQD?.getValue();
-    const color = coreRqdValue ? coreRqdScale(coreRqdValue) : "#333333";
-
-    entity.disableDepthTestDistance = Number.POSITIVE_INFINITY;
-
-    if (entity.billboard) {
-      entity.billboard = undefined;
-    }
-    console.log(coreRqdValue, color);
-    entity.point = new Cesium.PointGraphics({
-      pixelSize: 4,
-      color: Cesium.Color.fromCssColorString(color),
-      outlineColor: Cesium.Color.WHITE,
-      outlineWidth: 0,
-      heightReference: Cesium.HeightReference.NONE,
-    });
-  }
-}
 
 const datasets = [
   {
@@ -358,12 +329,6 @@ function loadDataset(dataset) {
       // Log bounding box for locations dataset (for reference)
       if (dataset.id === "locations") {
         const [minLon, minLat, maxLon, maxLat] = bbox(geojson);
-        console.log("Location data bounds:", {
-          west: minLon,
-          south: minLat,
-          east: maxLon,
-          north: maxLat,
-        });
       }
 
       // Now load with Cesium

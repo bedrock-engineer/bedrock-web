@@ -18,351 +18,265 @@ const description =
 
 <BaseLayout title={title} description={description}>
   <Navbar />
-  <main class="page mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-    <!-- Hero Section -->
-    <div class="mb-16 text-center">
-      <h1
-        class="mb-4 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
-      >
-        Brand Assets
-      </h1>
-      <p class="mb-8 text-lg text-[var(--gray-11)]">
-        Download our logos and learn how to use them
-      </p>
-      <a
-        href="/brand-assets-pack.zip"
-        class="inline-flex items-center gap-2 rounded-lg bg-[var(--green-9)] px-6 py-3 font-semibold text-white transition-colors hover:bg-[var(--green-10)]"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+  <main class="page">
+    <header class="section-wrapper texture-607">
+      <section class="section intro-section">
+        <h1
+          class="mb-4 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
         >
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" y1="15" x2="12" y2="3"></line>
-        </svg>
-        Download all assets
-      </a>
-    </div>
+          Brand Assets
+        </h1>
+        <p class="mb-8 text-lg text-[var(--gray-11)]">
+          Download our logos and learn how to use them
+        </p>
+        <a
+          href="/brand-assets-pack.zip"
+          class="inline-flex items-center gap-2 rounded-sm bg-[var(--green-9)] px-6 py-3 font-semibold text-white transition-colors hover:bg-[var(--green-10)]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download all assets
+        </a>
+      </section>
+    </header>
 
     <!-- Logos Section -->
-    <section class="mb-20">
-      <h2 class="mb-8 text-3xl font-bold">Logos</h2>
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <!-- Primary Logo SVG -->
-        <div
-          class="flex flex-col rounded-xl border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
+    <div class="section-wrapper texture-232-k">
+      <section class="section">
+        <h2
+          class="heading-2"
+          style="margin-block-end: 48px; text-align: center;"
         >
-          <div class="mb-4 flex-1">
-            <div
-              class="mb-4 flex min-h-[200px] items-center justify-center rounded-lg bg-[var(--gray-3)] p-8"
-            >
-              <img
-                src={bedrockSvg.src}
-                alt="Bedrock Logo SVG"
-                class="max-h-32 w-auto"
-              />
-            </div>
-            <h3 class="mb-2 text-lg font-semibold">Primary Logo</h3>
-            <p class="mb-4 text-sm text-[var(--gray-11)]">
-              Vector format, scalable for any size
-            </p>
-          </div>
-          <div class="flex gap-2">
-            <a
-              href={bedrockSvg.src}
-              download="bedrock-logo.svg"
-              class="flex-1 rounded-lg bg-[var(--gray-12)] px-4 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-[var(--gray-11)]"
-            >
-              SVG
-            </a>
-            <a
-              href={bedrockPng.src}
-              download="bedrock-logo.png"
-              class="flex-1 rounded-lg border border-[var(--gray-7)] px-4 py-2 text-center text-sm font-medium transition-colors hover:bg-[var(--gray-3)]"
-            >
-              PNG
-            </a>
-          </div>
-        </div>
-
-        <!-- Logo in Circle -->
-        <div
-          class="flex flex-col rounded-xl border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
-        >
-          <div class="mb-4 flex-1">
-            <div
-              class="mb-4 flex min-h-[200px] items-center justify-center rounded-lg bg-[var(--gray-3)] p-8"
-            >
-              <Image
-                src={bedrockInCircle}
-                alt="Bedrock Logo in Circle"
-                class="max-h-32 w-auto"
-              />
-            </div>
-            <h3 class="mb-2 text-lg font-semibold">Logo in Circle</h3>
-            <p class="mb-4 text-sm text-[var(--gray-11)]">
-              Icon version for social media and apps
-            </p>
-          </div>
-          <div class="flex gap-2">
-            <a
-              href={bedrockInCircle.src}
-              download="bedrock-logo-circle.png"
-              class="flex-1 rounded-lg border border-[var(--gray-7)] px-4 py-2 text-center text-sm font-medium transition-colors hover:bg-[var(--gray-3)]"
-            >
-              PNG
-            </a>
-          </div>
-        </div>
-
-        <!-- Logo with Text Right -->
-        <div
-          class="flex flex-col rounded-xl border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
-        >
-          <div class="mb-4 flex-1">
-            <div
-              class="mb-4 flex min-h-[200px] items-center justify-center rounded-lg bg-[var(--gray-3)] p-8"
-            >
-              <Image
-                src={bedrockTextRight}
-                alt="Bedrock Logo with Text"
-                class="max-h-32 w-auto"
-              />
-            </div>
-            <h3 class="mb-2 text-lg font-semibold">Logo with Text</h3>
-            <p class="mb-4 text-sm text-[var(--gray-11)]">
-              Horizontal lockup for headers and banners
-            </p>
-          </div>
-          <div class="flex gap-2">
-            <a
-              href={bedrockTextRight.src}
-              download="bedrock-logo-text.png"
-              class="flex-1 rounded-lg border border-[var(--gray-7)] px-4 py-2 text-center text-sm font-medium transition-colors hover:bg-[var(--gray-3)]"
-            >
-              PNG
-            </a>
-          </div>
-        </div>
-
-        <!-- Text Only White -->
-        <div
-          class="flex flex-col rounded-xl border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
-        >
-          <div class="mb-4 flex-1">
-            <div
-              class="mb-4 flex min-h-[200px] items-center justify-center rounded-lg bg-[var(--gray-12)] p-8"
-            >
-              <img
-                src={bedrockTextWhite.src}
-                alt="Bedrock Text White"
-                class="max-h-32 w-auto"
-              />
-            </div>
-            <h3 class="mb-2 text-lg font-semibold">Text Only (Light)</h3>
-            <p class="mb-4 text-sm text-[var(--gray-11)]">
-              Text wordmark for light on dark backgrounds
-            </p>
-          </div>
-          <div class="flex gap-2">
-            <a
-              href={bedrockTextWhite.src}
-              download="bedrock-text-white.svg"
-              class="flex-1 rounded-lg bg-[var(--gray-12)] px-4 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-[var(--gray-11)]"
-            >
-              SVG
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Color Palette Section -->
-    <section class="mb-20">
-      <h2 class="mb-8 text-3xl font-bold">Color Palette</h2>
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <!-- Primary Green -->
-        <div class="rounded-xl border border-[var(--gray-6)] bg-[var(--gray-2)] p-6">
+          Logos
+        </h2>
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Primary Logo SVG -->
           <div
-            class="mb-4 h-24 rounded-lg"
-            style="background-color: var(--green-9);"
+            class="flex flex-col rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
           >
-          </div>
-          <h3 class="mb-2 font-semibold">Primary Green</h3>
-          <div class="space-y-1 text-sm text-[var(--gray-11)]">
-            <p class="font-mono">--green-9</p>
-            <p class="font-mono">hsl(111, 15%, 43%)</p>
-          </div>
-        </div>
-
-        <!-- Primary Dark -->
-        <div class="rounded-xl border border-[var(--gray-6)] bg-[var(--gray-2)] p-6">
-          <div
-            class="mb-4 h-24 rounded-lg"
-            style="background-color: oklch(33.4% 0.0356 140.8);"
-          >
-          </div>
-          <h3 class="mb-2 font-semibold">Primary Dark</h3>
-          <div class="space-y-1 text-sm text-[var(--gray-11)]">
-            <p class="font-mono">Background (Dark)</p>
-            <p class="font-mono">oklch(33.4% 0.0356 140.8)</p>
-          </div>
-        </div>
-
-        <!-- Gray Light -->
-        <div class="rounded-xl border border-[var(--gray-6)] bg-[var(--gray-2)] p-6">
-          <div
-            class="mb-4 h-24 rounded-lg border border-[var(--gray-6)]"
-            style="background-color: var(--gray-3);"
-          >
-          </div>
-          <h3 class="mb-2 font-semibold">Gray Light</h3>
-          <div class="space-y-1 text-sm text-[var(--gray-11)]">
-            <p class="font-mono">--gray-3</p>
-            <p class="font-mono">Surface color</p>
-          </div>
-        </div>
-
-        <!-- Gray Dark -->
-        <div class="rounded-xl border border-[var(--gray-6)] bg-[var(--gray-2)] p-6">
-          <div
-            class="mb-4 h-24 rounded-lg"
-            style="background-color: var(--gray-12);"
-          >
-          </div>
-          <h3 class="mb-2 font-semibold">Gray Dark</h3>
-          <div class="space-y-1 text-sm text-[var(--gray-11)]">
-            <p class="font-mono">--gray-12</p>
-            <p class="font-mono">Text color</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Typography Section -->
-    <section class="mb-20">
-      <h2 class="mb-8 text-3xl font-bold">Typography</h2>
-      <div class="rounded-xl border border-[var(--gray-6)] bg-[var(--gray-2)] p-8">
-        <div class="mb-8">
-          <h3 class="mb-4 text-xl font-semibold">Primary Typeface</h3>
-          <div class="space-y-4">
-            <div>
-              <p class="mb-2 text-5xl font-bold">IBM Plex Sans</p>
-              <p class="text-[var(--gray-11)]">
-                Used for headings, body text, and UI elements
+            <div class="mb-4 flex-1">
+              <div
+                class="mb-4 flex min-h-[200px] items-center justify-center rounded-sm bg-[var(--gray-3)] p-8"
+              >
+                <img
+                  src={bedrockSvg.src}
+                  alt="Bedrock Logo SVG"
+                  class="max-h-32 w-auto"
+                />
+              </div>
+              <h3 class="mb-2 text-lg font-semibold">Primary Logo</h3>
+              <p class="mb-4 text-sm text-[var(--gray-11)]">
+                Vector format, scalable for any size
               </p>
             </div>
-            <div class="flex flex-wrap gap-4 text-sm">
-              <span class="rounded bg-[var(--gray-3)] px-3 py-1 font-normal">
-                Regular 400
-              </span>
-              <span class="rounded bg-[var(--gray-3)] px-3 py-1 font-medium">
-                Medium 500
-              </span>
-              <span class="rounded bg-[var(--gray-3)] px-3 py-1 font-semibold">
-                Semibold 600
-              </span>
-              <span class="rounded bg-[var(--gray-3)] px-3 py-1 font-bold">
-                Bold 700
-              </span>
+            <div class="flex gap-2">
+              <a
+                href={bedrockSvg.src}
+                download="bedrock-logo.svg"
+                class="flex-1 rounded-sm border border-[var(--gray-7)] px-4 py-2 text-center text-sm font-medium transition-colors hover:bg-[var(--gray-3)]"
+              >
+                SVG
+              </a>
+              <a
+                href={bedrockPng.src}
+                download="bedrock-logo.png"
+                class="flex-1 rounded-sm border border-[var(--gray-7)] px-4 py-2 text-center text-sm font-medium transition-colors hover:bg-[var(--gray-3)]"
+              >
+                PNG
+              </a>
             </div>
           </div>
-        </div>
-        <div>
-          <h3 class="mb-4 text-xl font-semibold">Monospace Typeface</h3>
-          <div class="space-y-4">
-            <div>
-              <p class="mb-2 font-mono text-4xl font-semibold">
-                IBM Plex Mono
+
+          <!-- Logo in Circle -->
+          <div
+            class="flex flex-col rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
+          >
+            <div class="mb-4 flex-1">
+              <div
+                class="mb-4 flex min-h-[200px] items-center justify-center rounded-sm bg-[var(--gray-3)] p-8"
+              >
+                <Image
+                  src={bedrockInCircle}
+                  alt="Bedrock Logo in Circle"
+                  class="max-h-32 w-auto"
+                />
+              </div>
+              <h3 class="mb-2 text-lg font-semibold">Logo in Circle</h3>
+              <p class="mb-4 text-sm text-[var(--gray-11)]">
+                Icon version for social media and apps
               </p>
-              <p class="text-[var(--gray-11)]">Used for code and technical content</p>
+            </div>
+            <div class="flex gap-2">
+              <a
+                href={bedrockInCircle.src}
+                download="bedrock-logo-circle.png"
+                class="flex-1 rounded-sm border border-[var(--gray-7)] px-4 py-2 text-center text-sm font-medium transition-colors hover:bg-[var(--gray-3)]"
+              >
+                PNG
+              </a>
+            </div>
+          </div>
+
+          <!-- Logo with Text Right -->
+          <div
+            class="flex flex-col rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
+          >
+            <div class="mb-4 flex-1">
+              <div
+                class="mb-4 flex min-h-[200px] items-center justify-center rounded-sm bg-[var(--gray-3)] p-8"
+              >
+                <Image
+                  src={bedrockTextRight}
+                  alt="Bedrock Logo with Text"
+                  class="max-h-32 w-auto"
+                />
+              </div>
+              <h3 class="mb-2 text-lg font-semibold">Logo with Text</h3>
+            </div>
+            <div class="flex gap-2">
+              <a
+                href={bedrockTextRight.src}
+                download="bedrock-logo-text.png"
+                class="flex-1 rounded-sm border border-[var(--gray-7)] px-4 py-2 text-center text-sm font-medium transition-colors hover:bg-[var(--gray-3)]"
+              >
+                PNG
+              </a>
+            </div>
+          </div>
+
+          <!-- Text Only White -->
+          <div
+            class="flex flex-col rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
+          >
+            <div class="mb-4 flex-1">
+              <div
+                class="mb-4 flex min-h-[200px] items-center justify-center rounded-sm bg-[#1c211b] p-8"
+              >
+                <img
+                  src={bedrockTextWhite.src}
+                  alt="Bedrock Text White"
+                  class="max-h-32 w-auto"
+                />
+              </div>
+              <h3 class="mb-2 text-lg font-semibold">Text Only (Light)</h3>
+              <p class="mb-4 text-sm text-[var(--gray-11)]">
+                Text wordmark for light on dark backgrounds
+              </p>
+            </div>
+            <div class="flex gap-2">
+              <a
+                href={bedrockTextWhite.src}
+                download="bedrock-text-white.svg"
+                class="flex-1 rounded-sm border border-[var(--gray-7)] px-4 py-2 text-center text-sm font-medium transition-colors hover:bg-[var(--gray-3)]"
+              >
+                SVG
+              </a>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
+
+    <div class="section-wrapper texture-668">
+      <section class="section">
+        <h2 class="mb-8 text-3xl font-bold">Typography</h2>
+        <div
+          class="rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-8"
+        >
+          <div class="mb-8">
+            <h3 class="mb-4 text-xl font-semibold">Primary Typeface</h3>
+            <div class="space-y-4">
+              <div>
+                <p class="mb-2 text-5xl font-bold">IBM Plex Sans</p>
+                <p class="text-[var(--gray-11)]">
+                  Used for headings, body text, and UI elements
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-4 text-sm">
+                <span class="rounded bg-[var(--gray-3)] px-3 py-1 font-normal">
+                  Regular 400
+                </span>
+                <span class="rounded bg-[var(--gray-3)] px-3 py-1 font-medium">
+                  Medium 500
+                </span>
+                <span
+                  class="rounded bg-[var(--gray-3)] px-3 py-1 font-semibold"
+                >
+                  Semibold 600
+                </span>
+                <span class="rounded bg-[var(--gray-3)] px-3 py-1 font-bold">
+                  Bold 700
+                </span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 class="mb-4 text-xl font-semibold">Monospace Typeface</h3>
+            <div class="space-y-4">
+              <div>
+                <p class="mb-2 font-mono text-4xl font-semibold">
+                  IBM Plex Mono
+                </p>
+                <p class="text-[var(--gray-11)]">
+                  Used for code and technical content
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
 
     <!-- Usage Guidelines Section -->
-    <section>
-      <h2 class="mb-8 text-3xl font-bold">Usage Guidelines</h2>
-      <div class="grid gap-6 md:grid-cols-2">
-        <div class="rounded-xl border border-[var(--gray-6)] bg-[var(--gray-2)] p-6">
-          <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--green-9)]">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+    <div class="section-wrapper texture-667">
+      <section class="section">
+        <h2 class="mb-8 text-3xl font-bold">Usage Guidelines</h2>
+        <div class="grid gap-6 md:grid-cols-2">
+          <div
+            class="rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
+          >
+            <h3 class="mb-3 text-xl font-semibold">Do</h3>
+            <ul
+              class="space-y-2 text-sm text-[var(--gray-11)] list-disc list-inside"
             >
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
+              <li>Maintain adequate clear space around the logo</li>
+              <li>Use the original colors whenever possible</li>
+              <li>Ensure minimum size of 50px height for legibility</li>
+              <li>Use high-contrast backgrounds</li>
+              <li>Download the appropriate format for your use case</li>
+            </ul>
           </div>
-          <h3 class="mb-3 text-lg font-semibold">Do</h3>
-          <ul class="space-y-2 text-sm text-[var(--gray-11)]">
-            <li>✓ Maintain adequate clear space around the logo</li>
-            <li>✓ Use the original colors whenever possible</li>
-            <li>✓ Ensure minimum size of 50px height for legibility</li>
-            <li>✓ Use high-contrast backgrounds</li>
-            <li>✓ Download the appropriate format for your use case</li>
-          </ul>
-        </div>
 
-        <div class="rounded-xl border border-[var(--gray-6)] bg-[var(--gray-2)] p-6">
-          <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--red-9)]">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+          <div
+            class="rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
+          >
+            <h3 class="mb-3 text-xl font-semibold">Don't</h3>
+            <ul
+              class="space-y-2 text-sm text-[var(--gray-11)] list-disc list-inside"
             >
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
+              <li>Modify, rotate, or distort the logo</li>
+              <li>Change the logo colors or add effects</li>
+              <li>Place the logo on busy or low-contrast backgrounds</li>
+              <li>Recreate or redraw the logo</li>
+              <li>Use outdated or unofficial versions</li>
+            </ul>
           </div>
-          <h3 class="mb-3 text-lg font-semibold">Don't</h3>
-          <ul class="space-y-2 text-sm text-[var(--gray-11)]">
-            <li>✗ Modify, rotate, or distort the logo</li>
-            <li>✗ Change the logo colors or add effects</li>
-            <li>✗ Place the logo on busy or low-contrast backgrounds</li>
-            <li>✗ Recreate or redraw the logo</li>
-            <li>✗ Use outdated or unofficial versions</li>
-          </ul>
         </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <div class="mt-16 rounded-xl border border-[var(--gray-6)] bg-[var(--gray-2)] p-8 text-center">
-      <h3 class="mb-2 text-xl font-semibold">Need something else?</h3>
-      <p class="mb-4 text-[var(--gray-11)]">
-        If you need custom assets or have questions about brand usage, feel
-        free to reach out.
-      </p>
-      <a
-        href="mailto:info@bedrock.engineer"
-        class="inline-flex items-center gap-2 rounded-lg border border-[var(--gray-7)] px-6 py-2 font-medium transition-colors hover:bg-[var(--gray-3)]"
-      >
-        Contact us
-      </a>
+      </section>
     </div>
   </main>
-  <Footer />
 </BaseLayout>
+<Footer />

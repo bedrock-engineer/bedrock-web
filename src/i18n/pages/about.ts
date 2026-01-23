@@ -26,7 +26,7 @@ export const ui = {
   nl: {
     title: "Over Bedrock.engineer",
     intro:
-      "Bedrock.engineer bestaat uit twee ingenieurs die geloven dat geotechnische data toegankelijk, interoperabel en visueel moet zijn. We combineren domeinexpertise met moderne softwareontwikkeling om tools te creëren die de kloof overbruggen tussen legacy-formaten en hedendaagse workflows.",
+      "Bedrock.engineer bestaat uit twee ingenieurs die vinden dat geotechnische data toegankelijk, interoperabel en visueel moet zijn. We combineren domeinexpertise met moderne softwareontwikkeling om tools te creëren die de kloof overbruggen tussen industrie-formaten en hedendaagse workflows.",
     joost: {
       bio: {
         p1: "Ik heb geotechniek en toegepaste geofysica gestudeerd en vervolgens 4 jaar voor Arup gewerkt als geotechnisch ingenieur en computational designer.",
