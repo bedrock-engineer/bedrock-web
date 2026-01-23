@@ -206,14 +206,10 @@ import "../styles/custom.css";
       <section class="section team" style="--grid-color: black;">
         <h2 class="heading-2">The Team</h2>
 
-        <div class="grid-auto-fit">
+        <div class="team-member-grid">
           <Card class="team-member card">
             <h3>Jules Blom</h3>
-            <Image
-              src={jules}
-              alt="Jules Blom"
-              style="filter: grayscale(1);"
-            />
+            <Image src={jules} alt="Jules Blom" style="filter: grayscale(1);" />
             <p>
               Experienced in building data-rich geospatial applications.
               Specializes in making complex subsurface data clear throughf
@@ -350,9 +346,16 @@ import "../styles/custom.css";
       }
     }
 
+    .team-member-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+      gap: 16px;
+      container-type: inline-size;
+      container-name: team-grid;
+    }
+
     .team-member {
       display: grid;
-      max-width: 520px;
       grid-template-areas:
         "image description"
         "name description";
@@ -363,6 +366,8 @@ import "../styles/custom.css";
 
       & img {
         grid-area: image;
+        min-width: 100px;
+        max-width: min(220px, 100%);
         border-radius: 100%;
       }
 
@@ -373,7 +378,18 @@ import "../styles/custom.css";
       }
 
       & p {
+        min-width: 20ch;
         grid-area: description;
+      }
+    }
+
+    @container team-grid (width < 80ch) {
+      .team-member {
+        grid-template-areas:
+          "image"
+          "name"
+          "description";
+        justify-items: center;
       }
     }
 
@@ -434,6 +450,5 @@ import "../styles/custom.css";
         text-decoration: underline;
       }
     }
-    
   </style>
 </BaseLayout>

@@ -6,7 +6,12 @@ export interface Props {
   class?: string;
 }
 
-const { variant = "default", size = "medium", href, class: className } = Astro.props;
+const {
+  variant = "default",
+  size = "medium",
+  href,
+  class: className,
+} = Astro.props;
 
 // Polymorphic: render as <a> if href provided, otherwise <div>
 const Tag = href ? "a" : "div";
@@ -21,7 +26,12 @@ const linkAttrs = href
   : {};
 ---
 
-<Tag class={`card ${className || ""}`} data-variant={variant} data-size={size} {...linkAttrs}>
+<Tag
+  class={`card ${className || ""}`}
+  data-variant={variant}
+  data-size={size}
+  {...linkAttrs}
+>
   <slot />
 </Tag>
 
