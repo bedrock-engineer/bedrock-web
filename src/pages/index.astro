@@ -38,7 +38,10 @@ import "../styles/custom.css";
         </div>
 
         <!-- <h1>Bridge subsurface data <br />and modern geospatial tools</h1> -->
-        <h1>Visualize. Integrate. Optimize. <br />Your Subsurface Data</h1>
+        <h1>
+          Visualize. <wbr />Integrate.<wbr /> Optimize. <br />Your Subsurface
+          Data
+        </h1>
 
         <!-- <p>
           Go from subsurface data stuck in gINT, AGS, or GEF to tools that make
@@ -183,13 +186,13 @@ import "../styles/custom.css";
             <p>
               We believe deeply in open-source software and open standards to
               make subsurface data more accessible and understandable, and drive
-              innovation in geotechnical engineering. We develop
+              innovation in geotechnical engineering. We maintain
               <code
                 ><a href="https://github.com/bedrock-engineer/bedrock-ge/"
                   >bedrock-ge</a
                 ></code
               >, our open-source Python library for turning ground investigation
-              data into geospatial data.
+              data into geospatial data we use in projects.
             </p>
           </div>
         </div>
@@ -212,7 +215,7 @@ import "../styles/custom.css";
             <Image src={jules} alt="Jules Blom" style="filter: grayscale(1);" />
             <p>
               Experienced in building data-rich geospatial applications.
-              Specializes in making complex subsurface data clear throughf
+              Specializes in making complex subsurface data clear through
               visualization and intuitive user interfaces. Background in
               Petroleum Engineering (Reservoir Geology) at TU Delft.
             </p>
@@ -330,6 +333,17 @@ import "../styles/custom.css";
       position: absolute;
       top: 16px;
       left: 20px;
+
+      @media (max-width: 640px) {
+        font-size: 24px;
+        column-gap: 6px;
+        left: 12px;
+
+        & svg {
+          width: 28px;
+          height: 31px;
+        }
+      }
     }
 
     .client-logos {
