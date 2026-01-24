@@ -10,7 +10,7 @@ const isDocPage =
 
 const ogImageUrl = isDocPage
   ? new URL(pathname + "og.png", Astro.site).toString()
-  : "og-default.png";
+  : new URL("/og-default.png", Astro.site).toString();
 ---
 
 <StarlightHead {...Astro.props} />
