@@ -115,10 +115,10 @@ export default defineConfig({
     // Redirect old doc paths to new /docs paths
     "/getting-started": "/docs/getting-started",
     "/contributing": "/docs/contributing",
-    "/explanation/[...path]": "/docs/explanation/[...path]",
-    "/guides/[...path]": "/docs/guides/[...path]",
-    "/tutorials/[...path]": "/docs/tutorials/[...path]",
-    "/reference/[...path]": "/docs/reference/[...path]",
+    "/explanation/:path*": "/docs/explanation/:path*",
+    "/guides/:path*": "/docs/guides/:path*",
+    "/tutorials/:path*": "/docs/tutorials/:path*",
+    "/reference/:path*": "/docs/reference/:path*",
   },
   vite: {
     plugins: [tailwindcss()],
