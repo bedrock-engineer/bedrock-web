@@ -116,12 +116,8 @@ export const og = (): AstroIntegration => ({
   name: "satori-og",
   hooks: {
     "astro:build:done": async ({ dir, pages }) => {
-      console.log("pages", pages);
       try {
         for (const { pathname } of pages) {
-          // 1. For every resolved page, do the following:
-          console.log({ pathname });
-
           if (
             !pathname.startsWith("reference/") &&
             !pathname.startsWith("explanation/") &&
@@ -154,7 +150,7 @@ export const og = (): AstroIntegration => ({
           // 3. Locate the source file for this resolved page
           const filename = pathname.slice(folderPath.length + 1, -1);
           console.log(
-            `Looking for file: src/content/docs/${folderPath}/${filename}.md/.mdx/.mdoc`
+            `Looking for file: src/content/docs/${folderPath}/${filename}.md/.mdx/.mdoc`,
           );
 
           if (!filename) {
@@ -163,13 +159,15 @@ export const og = (): AstroIntegration => ({
           }
 
           // Try different file extensions and patterns in order of preference
-          const extensions = ['md', 'mdoc', 'mdx'];
+          const extensions = ["md", "mdoc", "mdx"];
           const patterns = [
-            (ext: string) => `src/content/docs/${folderPath}/${filename}.${ext}`,
-            (ext: string) => `src/content/docs/${folderPath}/${filename}/index.${ext}`
+            (ext: string) =>
+              `src/content/docs/${folderPath}/${filename}.${ext}`,
+            (ext: string) =>
+              `src/content/docs/${folderPath}/${filename}/index.${ext}`,
           ];
 
-          let filePath = '';
+          let filePath = "";
 
           outer: for (const pattern of patterns) {
             for (const ext of extensions) {
@@ -182,7 +180,9 @@ export const og = (): AstroIntegration => ({
           }
 
           if (!filePath) {
-            console.log(`No matching file found for ${filename} with extensions: ${extensions.join(', ')}`);
+            console.log(
+              `No matching file found for ${filename} with extensions: ${extensions.join(", ")}`,
+            );
             continue;
           }
 
@@ -195,21 +195,21 @@ export const og = (): AstroIntegration => ({
           const ibmPlexSans400 = fs.readFileSync(
             path.join(
               process.cwd(),
-              "node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff"
-            )
+              "node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff",
+            ),
           );
 
           const ibmPlexSans600 = fs.readFileSync(
             path.join(
               process.cwd(),
-              "node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-600-normal.woff"
-            )
+              "node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-600-normal.woff",
+            ),
           );
           const ibmPlexSansCondensed = fs.readFileSync(
             path.join(
               process.cwd(),
-              "node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-latin-400-normal.woff"
-            )
+              "node_modules/@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-latin-400-normal.woff",
+            ),
           );
 
           const svg = await satori(render({ prefix, title }), {
@@ -248,7 +248,7 @@ export const og = (): AstroIntegration => ({
           // 8. Write this PNG to a predictable location. I keep this right next to the page itself. That way, I can link to it easily.
           fs.writeFileSync(
             `${dir.pathname}${pathname}og.png`,
-            resvg.render().asPng()
+            resvg.render().asPng(),
           );
         }
 

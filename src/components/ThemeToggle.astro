@@ -1,0 +1,166 @@
+---
+// Theme toggle component for light/auto/dark mode
+// Works with Starlight's theme system
+import sunIcon from "./icons/sun.svg?raw";
+import desktopIcon from "./icons/desktop.svg?raw";
+import moonIcon from "./icons/moon.svg?raw";
+
+const { class: className } = Astro.props;
+---
+
+<div class={`${className || ""}`}>
+  <button
+    id="theme-toggle-btn"
+    type="button"
+    aria-label="Toggle theme"
+    title="Toggle theme (current: auto)"
+  >
+    <span class="theme-icon" data-theme="light" set:html={sunIcon} />
+    <span class="theme-icon" data-theme="auto" set:html={desktopIcon} />
+    <span class="theme-icon" data-theme="dark" set:html={moonIcon} />
+  </button>
+</div>
+
+<script>
+  // Get current theme from localStorage or default to auto
+  function getTheme(): "light" | "auto" | "dark" {
+    const stored = localStorage.getItem("theme");
+    if (stored === "light" || stored === "dark" || stored === "auto") {
+      return stored;
+    }
+    return "auto";
+  }
+
+  function setMetaThemeColor(color: string) {
+    let meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.setAttribute("name", "theme-color");
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute("content", color);
+  }
+
+  // Get the resolved theme based on system preference
+  function getResolvedTheme(
+    theme: "light" | "auto" | "dark",
+  ): "light" | "dark" {
+    if (theme === "auto") {
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    }
+    return theme;
+  }
+
+  // Apply theme to document
+  function applyTheme(theme: "light" | "auto" | "dark") {
+    const root = document.documentElement;
+    const resolvedTheme = getResolvedTheme(theme);
+
+    // Always set data-theme to the resolved theme (light or dark)
+    root.setAttribute("data-theme", resolvedTheme);
+
+    localStorage.setItem("theme", theme);
+    updateButton(theme);
+
+    const themeColors: Record<string, string> = {
+      light: "#63805E",
+      dark: "hsl(60, 3%, 7%)",
+    };
+    setMetaThemeColor(themeColors[resolvedTheme]);
+  }
+
+  // Update button appearance and aria-label
+  function updateButton(theme: "light" | "auto" | "dark") {
+    const btn = document.getElementById("theme-toggle-btn");
+    if (!btn) return;
+
+    const icons = btn.querySelectorAll(".theme-icon");
+    icons.forEach((icon) => {
+      const iconTheme = icon.getAttribute("data-theme");
+      if (iconTheme === theme) {
+        icon.classList.add("active");
+      } else {
+        icon.classList.remove("active");
+      }
+    });
+
+    btn.setAttribute("title", `Toggle theme (current: ${theme})`);
+  }
+
+  // Cycle through themes: auto → light → dark → auto
+  function cycleTheme() {
+    const current = getTheme();
+    const next =
+      current === "auto" ? "light" : current === "light" ? "dark" : "auto";
+    applyTheme(next);
+  }
+
+  // Initialize on page load
+  const initialTheme = getTheme();
+  applyTheme(initialTheme);
+
+  // Add click handler
+  const btn = document.getElementById("theme-toggle-btn");
+  btn?.addEventListener("click", cycleTheme);
+
+  // Listen for system theme changes when in auto mode
+  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  mediaQuery.addEventListener("change", () => {
+    const currentTheme = getTheme();
+    if (currentTheme === "auto") {
+      applyTheme("auto");
+    }
+  });
+</script>
+
+<style>
+  #theme-toggle-btn {
+    background: var(--gray-1);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    color: var(--gray-11);
+
+    &:hover {
+      background: var(--gray-3);
+      border-color: var(--border-color);
+    }
+
+    &:active {
+      background: var(--gray-4);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--green-9);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
+    }
+  }
+
+  .theme-icon {
+    position: absolute;
+    opacity: 0;
+    font-size: 1.125rem;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: opacity 0.2s ease;
+    }
+
+    &.active {
+      opacity: 1;
+    }
+  }
+</style>

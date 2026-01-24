@@ -1,0 +1,282 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import "../styles/custom.css";
+
+import bedrockSvg from "../assets/bedrock.svg";
+import bedrockPng from "../assets/bedrock.png";
+import bedrockInCircle from "../assets/Bedrock_inCircle.png";
+import bedrockTextRight from "../assets/Bedrock_TextRight.png";
+import bedrockTextWhite from "../assets/logos/bedrock-text-white.svg";
+
+const title = "Brand Assets - Bedrock.engineer";
+const description =
+  "Download Bedrock logos, brand assets, and brand guidelines";
+---
+
+<BaseLayout title={title} description={description}>
+  <Navbar />
+  <main class="page">
+    <header class="section-wrapper texture-607">
+      <section class="section intro-section">
+        <h1
+          class="mb-4 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
+        >
+          Brand Assets
+        </h1>
+        <p class="mb-8 text-lg text-[var(--gray-11)]">
+          Download our logos and learn how to use them
+        </p>
+        <a
+          href="/brand-assets-pack.zip"
+          class="inline-flex items-center gap-2 rounded-sm bg-[var(--green-9)] px-6 py-3 font-semibold text-white transition-colors hover:bg-[var(--green-10)]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download all assets
+        </a>
+      </section>
+    </header>
+
+    <!-- Logos Section -->
+    <div class="section-wrapper texture-232-k">
+      <section class="section">
+        <h2
+          class="heading-2"
+          style="margin-block-end: 48px; text-align: center;"
+        >
+          Logos
+        </h2>
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Primary Logo SVG -->
+          <div
+            class="flex flex-col rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
+          >
+            <div class="mb-4 flex-1">
+              <div
+                class="mb-4 flex min-h-[200px] items-center justify-center rounded-sm bg-[var(--gray-3)] p-8"
+              >
+                <img
+                  src={bedrockSvg.src}
+                  alt="Bedrock Logo SVG"
+                  class="max-h-32 w-auto"
+                />
+              </div>
+              <h3 class="mb-2 text-lg font-semibold">Primary Logo</h3>
+              <p class="mb-4 text-sm text-[var(--gray-11)]">
+                Vector format, scalable for any size
+              </p>
+            </div>
+            <div class="flex gap-2">
+              <a
+                href={bedrockSvg.src}
+                download="bedrock-logo.svg"
+                class="flex-1 rounded-sm border border-[var(--gray-7)] px-4 py-2 text-center text-sm font-medium transition-colors hover:bg-[var(--gray-3)]"
+              >
+                SVG
+              </a>
+              <a
+                href={bedrockPng.src}
+                download="bedrock-logo.png"
+                class="flex-1 rounded-sm border border-[var(--gray-7)] px-4 py-2 text-center text-sm font-medium transition-colors hover:bg-[var(--gray-3)]"
+              >
+                PNG
+              </a>
+            </div>
+          </div>
+
+          <!-- Logo in Circle -->
+          <div
+            class="flex flex-col rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
+          >
+            <div class="mb-4 flex-1">
+              <div
+                class="mb-4 flex min-h-[200px] items-center justify-center rounded-sm bg-[var(--gray-3)] p-8"
+              >
+                <Image
+                  src={bedrockInCircle}
+                  alt="Bedrock Logo in Circle"
+                  class="max-h-32 w-auto"
+                />
+              </div>
+              <h3 class="mb-2 text-lg font-semibold">Logo in Circle</h3>
+              <p class="mb-4 text-sm text-[var(--gray-11)]">
+                Icon version for social media and apps
+              </p>
+            </div>
+            <div class="flex gap-2">
+              <a
+                href={bedrockInCircle.src}
+                download="bedrock-logo-circle.png"
+                class="flex-1 rounded-sm border border-[var(--gray-7)] px-4 py-2 text-center text-sm font-medium transition-colors hover:bg-[var(--gray-3)]"
+              >
+                PNG
+              </a>
+            </div>
+          </div>
+
+          <!-- Logo with Text Right -->
+          <div
+            class="flex flex-col rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
+          >
+            <div class="mb-4 flex-1">
+              <div
+                class="mb-4 flex min-h-[200px] items-center justify-center rounded-sm bg-[var(--gray-3)] p-8"
+              >
+                <Image
+                  src={bedrockTextRight}
+                  alt="Bedrock Logo with Text"
+                  class="max-h-32 w-auto"
+                />
+              </div>
+              <h3 class="mb-2 text-lg font-semibold">Logo with Text</h3>
+            </div>
+            <div class="flex gap-2">
+              <a
+                href={bedrockTextRight.src}
+                download="bedrock-logo-text.png"
+                class="flex-1 rounded-sm border border-[var(--gray-7)] px-4 py-2 text-center text-sm font-medium transition-colors hover:bg-[var(--gray-3)]"
+              >
+                PNG
+              </a>
+            </div>
+          </div>
+
+          <!-- Text Only White -->
+          <div
+            class="flex flex-col rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
+          >
+            <div class="mb-4 flex-1">
+              <div
+                class="mb-4 flex min-h-[200px] items-center justify-center rounded-sm bg-[#1c211b] p-8"
+              >
+                <img
+                  src={bedrockTextWhite.src}
+                  alt="Bedrock Text White"
+                  class="max-h-32 w-auto"
+                />
+              </div>
+              <h3 class="mb-2 text-lg font-semibold">Text Only (Light)</h3>
+              <p class="mb-4 text-sm text-[var(--gray-11)]">
+                Text wordmark for light on dark backgrounds
+              </p>
+            </div>
+            <div class="flex gap-2">
+              <a
+                href={bedrockTextWhite.src}
+                download="bedrock-text-white.svg"
+                class="flex-1 rounded-sm border border-[var(--gray-7)] px-4 py-2 text-center text-sm font-medium transition-colors hover:bg-[var(--gray-3)]"
+              >
+                SVG
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="section-wrapper texture-668">
+      <section class="section">
+        <h2 class="mb-8 text-3xl font-bold">Typography</h2>
+        <div
+          class="rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-8"
+        >
+          <div class="mb-8">
+            <h3 class="mb-4 text-xl font-semibold">Primary Typeface</h3>
+            <div class="space-y-4">
+              <div>
+                <p class="mb-2 text-5xl font-bold">IBM Plex Sans</p>
+                <p class="text-[var(--gray-11)]">
+                  Used for headings, body text, and UI elements
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-4 text-sm">
+                <span class="rounded bg-[var(--gray-3)] px-3 py-1 font-normal">
+                  Regular 400
+                </span>
+                <span class="rounded bg-[var(--gray-3)] px-3 py-1 font-medium">
+                  Medium 500
+                </span>
+                <span
+                  class="rounded bg-[var(--gray-3)] px-3 py-1 font-semibold"
+                >
+                  Semibold 600
+                </span>
+                <span class="rounded bg-[var(--gray-3)] px-3 py-1 font-bold">
+                  Bold 700
+                </span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 class="mb-4 text-xl font-semibold">Monospace Typeface</h3>
+            <div class="space-y-4">
+              <div>
+                <p class="mb-2 font-mono text-4xl font-semibold">
+                  IBM Plex Mono
+                </p>
+                <p class="text-[var(--gray-11)]">
+                  Used for code and technical content
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Usage Guidelines Section -->
+    <div class="section-wrapper texture-667">
+      <section class="section">
+        <h2 class="mb-8 text-3xl font-bold">Usage Guidelines</h2>
+        <div class="grid gap-6 md:grid-cols-2">
+          <div
+            class="rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
+          >
+            <h3 class="mb-3 text-xl font-semibold">Do</h3>
+            <ul
+              class="space-y-2 text-sm text-[var(--gray-11)] list-disc list-inside"
+            >
+              <li>Maintain adequate clear space around the logo</li>
+              <li>Use the original colors whenever possible</li>
+              <li>Ensure minimum size of 50px height for legibility</li>
+              <li>Use high-contrast backgrounds</li>
+              <li>Download the appropriate format for your use case</li>
+            </ul>
+          </div>
+
+          <div
+            class="rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
+          >
+            <h3 class="mb-3 text-xl font-semibold">Don't</h3>
+            <ul
+              class="space-y-2 text-sm text-[var(--gray-11)] list-disc list-inside"
+            >
+              <li>Modify, rotate, or distort the logo</li>
+              <li>Change the logo colors or add effects</li>
+              <li>Place the logo on busy or low-contrast backgrounds</li>
+              <li>Recreate or redraw the logo</li>
+              <li>Use outdated or unofficial versions</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</BaseLayout>
+<Footer />

@@ -1,0 +1,159 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Card from "../components/Card.astro";
+import Link from "../components/Link.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/custom.css";
+---
+
+<BaseLayout>
+  <Navbar />
+  <div class="page" data-pagefind-body data-pagefind-meta="category:Marketing">
+    <!-- Intro Section -->
+    <header
+      class="section-wrapper texture-607"
+    >
+      <section class="section intro-section">
+        <h1 class="heading-1">Case Studies</h1>
+        <p class="paragraph-xl">
+          Selected projects combining geotechnical domain knowledge with
+          specialized technical expertise.
+        </p>
+      </section>
+    </header>
+
+    <!-- Case Studies Grid -->
+    <div
+      class="section-wrapper texture-232-k"
+    >
+      <section class="section">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Card>
+            <h3 class="heading-3">
+              Project Name - <em>Client/Location</em>
+            </h3>
+
+            <div class="space-y-4 mt-4">
+              <div>
+                <p class="font-semibold">Challenge</p>
+                <p class="text-base mt-1">
+                  Brief description of the problem or need.
+                </p>
+              </div>
+
+              <div>
+                <p class="font-semibold">Solution</p>
+                <p class="text-base mt-1">
+                  What was delivered. Technologies used.
+                </p>
+              </div>
+
+              <div>
+                <p class="font-semibold">Outcome</p>
+                <p class="text-base mt-1">Results or impact.</p>
+              </div>
+            </div>
+          </Card>
+
+          <Card>
+            <h3 class="heading-3">
+              Project Name - <em>Client/Location</em>
+            </h3>
+
+            <div class="space-y-4 mt-4">
+              <div>
+                <p class="font-semibold">Challenge</p>
+                <p class="text-base mt-1">
+                  Brief description of the problem or need.
+                </p>
+              </div>
+
+              <div>
+                <p class="font-semibold">Solution</p>
+                <p class="text-base mt-1">
+                  What was delivered. Technologies used.
+                </p>
+              </div>
+
+              <div>
+                <p class="font-semibold">Outcome</p>
+                <p class="text-base mt-1">Results or impact.</p>
+              </div>
+            </div>
+          </Card>
+
+          <Card>
+            <h3 class="heading-3">
+              Project Name - <em>Client/Location</em>
+            </h3>
+
+            <div class="space-y-4 mt-4">
+              <div>
+                <p class="font-semibold">Challenge</p>
+                <p class="text-base mt-1">
+                  Brief description of the problem or need.
+                </p>
+              </div>
+
+              <div>
+                <p class="font-semibold">Solution</p>
+                <p class="text-base mt-1">
+                  What was delivered. Technologies used.
+                </p>
+              </div>
+
+              <div>
+                <p class="font-semibold">Outcome</p>
+                <p class="text-base mt-1">Results or impact.</p>
+              </div>
+            </div>
+          </Card>
+
+          <Card>
+            <h3 class="heading-3">
+              Project Name - <em>Client/Location</em>
+            </h3>
+
+            <div class="space-y-4 mt-4">
+              <div>
+                <p class="font-semibold">Challenge</p>
+                <p class="text-base mt-1">
+                  Brief description of the problem or need.
+                </p>
+              </div>
+
+              <div>
+                <p class="font-semibold">Solution</p>
+                <p class="text-base mt-1">
+                  What was delivered. Technologies used.
+                </p>
+              </div>
+
+              <div>
+                <p class="font-semibold">Outcome</p>
+                <p class="text-base mt-1">Results or impact.</p>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </section>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="section-wrapper texture-620">
+      <section class="section cta-section">
+        <h2 class="heading-2">Discuss Your Project</h2>
+        <p class="paragraph">
+          Contact us at <Link
+            variant="email"
+            href="mailto:info@bedrock.engineer"
+            >info@bedrock.engineer</Link
+          >
+        </p>
+      </section>
+    </div>
+  </div>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,328 @@
+---
+import kaiTakSpeckle from "../assets/KaiTak_BrGI_Speckle.png";
+import kaiTakArcGIS from "../assets/KaiTak_BrGI_ArcGIS.webp";
+import kaiTakCesium from "../assets/hk_kaitak_cesium.webp";
+import geotop from "../assets/geotop.png";
+import broCpt from "../assets/bro-cpt.png";
+import gefApp from "../assets/gef.webp";
+import amsterdamSpeckle from "../assets/amsterdam-noord-speckle.webp";
+import amsterdamNoord from "../assets/nl-amsterdam-noord.webp";
+import wekaHills from "../assets/WekaHills_Speckle.webp";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import DemoCard from "../components/DemoCard.astro";
+import "../styles/custom.css";
+
+const title =
+  "Interactive Ground Investigation Demos - CesiumJS, GEF Viewer, Speckle, ArcGIS | Bedrock.engineer";
+const description =
+  "Explore examples of ground investigation data transformed into interactive visualizations. See AGS4, GEF, and BRO/XML data in CesiumJS 3D maps, Speckle BIM integration, and ArcGIS Pro.";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Page-specific SEO meta tags -->
+  <Fragment slot="head">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://bedrock.engineer/demos" />
+
+    <!-- Page-specific keywords for niche search terms -->
+    <meta
+      name="keywords"
+      content="ground investigation demo, borehole visualization, CesiumJS ground investigation, GEF viewer, CPT data viewer, Speckle geotechnical, AGS4 visualization, subsurface data visualization, 3D borehole map, geotechnical data browser, BRO viewer, ground investigation software demo, geospatial subsurface data, interactive borehole logs, CPT visualization tool"
+    />
+
+    <!-- Enhanced Open Graph for better social sharing -->
+    <meta property="og:url" content="https://bedrock.engineer/demos" />
+    <meta property="og:site_name" content="Bedrock.engineer" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Enhanced Twitter Card -->
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Author & Robots directives -->
+    <meta name="author" content="Bedrock.engineer" />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+
+    <!-- Language alternatives (hreflang) -->
+    <!-- <link rel="alternate" hreflang="en" href="https://bedrock.engineer/demos" />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://bedrock.engineer/demos"
+    /> -->
+  </Fragment>
+
+  <!-- Structured Data for Services -->
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: "Interactive Ground Investigation Demos",
+      description:
+        "Real-world examples of ground investigation data transformed into interactive visualizations",
+      url: "https://bedrock.engineer/demos",
+      mainEntity: {
+        "@type": "ItemList",
+        name: "Ground Investigation Visualization Demos",
+        itemListElement: [
+          {
+            "@type": "SoftwareApplication",
+            position: 1,
+            name: "Kai Tak Hong Kong CesiumJS Demo",
+            description:
+              "Interactive 3D visualization of ground investigation data in CesiumJS",
+            applicationCategory: "WebApplication",
+          },
+          {
+            "@type": "SoftwareApplication",
+            position: 2,
+            name: "GEF Viewer",
+            description: "Web-based viewer for GEF data files",
+            applicationCategory: "WebApplication",
+          },
+          {
+            "@type": "SoftwareApplication",
+            position: 3,
+            name: "Speckle BIM Integration Demos",
+            description:
+              "Ground investigation data integrated with BIM models in Speckle",
+            applicationCategory: "WebApplication",
+          },
+        ],
+      },
+    })}
+  />
+
+  <!-- BreadcrumbList Schema for page hierarchy -->
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://bedrock.engineer",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Demos",
+          item: "https://bedrock.engineer/demos",
+        },
+      ],
+    })}
+  />
+
+  <Navbar />
+  <div class="page" data-pagefind-body data-pagefind-meta="category:Marketing">
+    <header class="section-wrapper texture-607">
+      <section class="section intro-section">
+        <h1 class="heading-1">Interactive Demos</h1>
+        <p class="subtitle">Ground Investigation Data Visualizations</p>
+        <p class="paragraph-xl">
+          Explore real-world examples of ground investigation data transformed
+          into interactive visualizations across different platforms and tools.
+          See how ground investigation
+          <!-- AGS4, GEF, and BRO/XML / subsurface data -->
+          data can be visualized in CesiumJS 3D maps, Speckle BIM integration, and
+          ArcGIS Pro.
+        </p>
+      </section>
+    </header>
+
+    <!-- Web-Based Visualizations -->
+    <div class="section-wrapper texture-616">
+      <section class="section">
+        <h2 class="heading-2" style="margin-block-end: var(--space-l);">
+          Web-Based Visualizations
+        </h2>
+
+        <div class="grid-auto-fit">
+          <!-- TODO tags cesiumjs, webdev, etc -->
+          <DemoCard
+            title="Kai Tak, Hong Kong - CesiumJS"
+            image={kaiTakCesium}
+            href="https://bedrock.engineer/hk-kaitak"
+            linkText="Explore demo"
+          >
+            <Fragment slot="description">
+              Ground investigation data from Kai Tak, Hong Kong visualized in an
+              interactive CesiumJS map. Explore borehole locations, SPT results,
+              and weathering grades in 3D context directly in your browser.
+              Source data transformed from AGS3 format to GeoJSON using <code
+                >bedrock-ge</code
+              > for web visualization.
+            </Fragment>
+          </DemoCard>
+
+          <DemoCard
+            title="GEF File Viewer"
+            image={gefApp}
+            href="https://gef.bedrock.engineer"
+            linkText="Open GEF viewer"
+          >
+            <Fragment slot="description">
+              Free web-based viewer for GEF (Geotechnical Exchange Format)
+              files. Upload and visualize CPT & bore data directly in your
+              browser.
+            </Fragment>
+          </DemoCard>
+
+          <DemoCard
+            title="Amsterdam Noord - CesiumJS"
+            image={amsterdamNoord}
+            href="https://bedrock.engineer/nl-amsterdam-noord"
+            linkText="Explore demo"
+          >
+            <Fragment slot="description">
+              Interactive 3D web map showing interpreted Cone Penetration Test
+              data along with Dutch public datasets of 3D Buildings (3DBag), and
+              a 3D geological model (GeoTOP) in Amsterdam Noord using CesiumJS.
+            </Fragment>
+          </DemoCard>
+
+          <DemoCard
+            title="GeoTOP Voxels - CesiumJS"
+            image={geotop}
+            href="https://bedrock.engineer/geotop-voxels"
+            linkText="Explore demo"
+          >
+            <Fragment slot="description">
+              The Dutch GeoTOP shallow subsurface model visualized in 3D for the
+              first time in a browser. Explore 100×100×0.5 meter voxels
+              containing lithoclass information across Amsterdam, Delft, and
+              Utrecht using CesiumJS with the 3D Tiles Voxel extension.
+            </Fragment>
+          </DemoCard>
+
+          <DemoCard
+            title="Dutch BRO CPTs - MapLibre GL & PMTiles"
+            image={broCpt}
+            href="https://bedrock.engineer/bro-cpt"
+            linkText="Explore demo"
+          >
+            <Fragment slot="description">
+              All 237,297 Cone Penetration Tests from the Dutch subsurface
+              registry rendered instantly in your browser using MapLibre-gl.
+              Zoom, filter, and remap colors without any lag. No tile server
+              required, just one 35 MB PMTiles file served as a static asset.
+            </Fragment>
+          </DemoCard>
+        </div>
+      </section>
+    </div>
+
+    <!-- BIM & CAD Integration -->
+    <div class="section-wrapper texture-620">
+      <section class="section">
+        <h2 class="heading-2" style="margin-block-end: var(--space-l);">
+          BIM & CAD Integration
+        </h2>
+
+        <div class="grid-auto-fit">
+          <DemoCard
+            title="Kai Tak - Speckle"
+            image={kaiTakSpeckle}
+            imageAlt="Kai Tak GI data in Speckle with 3D buildings"
+            href="https://app.speckle.systems/projects/dea5d61543/models/9962662abe,c82c54493a#savedView%3D%7B%2522id%2522%3A%2522a2369ea45a%2522%7D"
+            linkText="Open in Speckle"
+          >
+            <Fragment slot="description">
+              Building models from Revit and Civil3D combined with geotechnical
+              data. View subsurface conditions alongside structural designs in
+              Speckle.
+            </Fragment>
+          </DemoCard>
+
+          <DemoCard
+            title="Amsterdam Noord - Speckle"
+            image={amsterdamSpeckle}
+            imageAlt="Amsterdam Noord in Speckle"
+            href="https://app.speckle.systems/projects/d083a8bd5c/models/7d52f6a137,8e05ffa635,90726f9281,95af0442f1#savedView%3D%7B%2522id%2522%3A%252218f7dfbdfa%2522%7D"
+            linkText="Open in Speckle"
+          >
+            <Fragment slot="description">
+              Subsurface data from Amsterdam Noord visualized in Speckle for
+              multi-disciplinary collaboration and BIM integration.
+            </Fragment>
+          </DemoCard>
+
+          <DemoCard
+            title="Weka Hills - Speckle"
+            image={wekaHills}
+            imageAlt="Weka Hills project in Speckle"
+            href="https://app.speckle.systems/projects/bc2ef86a30/models/53ad71f84a,639810d7b2,6dcde3dafa,7d83fae8e5#savedView%3D%7B%2522id%2522%3A%2522025a4dcbd1%2522%7D"
+            linkText="Open in Speckle"
+          >
+            <Fragment slot="description">
+              Geological data visualization in Speckle showing subsurface
+              conditions for infrastructure planning and design coordination.
+            </Fragment>
+          </DemoCard>
+        </div>
+      </section>
+    </div>
+
+    <!-- GIS Software Integration -->
+    <!-- <div class="section-wrapper texture-668">
+      <section class="section">
+        <h2 class="heading-2" style="margin-block-end: var(--space-l);">
+          GIS Software Integration
+        </h2>
+
+        <div class="grid-cols-3">
+          <DemoCard
+            title="Kai Tak - ArcGIS Pro"
+            image={kaiTakArcGIS}
+            imageAlt="Kai Tak 3D GI data in ArcGIS"
+          >
+            <Fragment slot="description">
+              3D visualization of ground investigation data in ArcGIS Pro. Geotechnical data converted to geospatial formats for GIS analysis and mapping.
+            </Fragment>
+          </DemoCard>
+        </div>
+      </section>
+    </div> -->
+
+    <!-- CTA Section -->
+    <div class="section-wrapper texture-616">
+      <section class="section cta-section">
+        <h2
+          class="heading-2"
+          style="text-align: center; margin-block-end: 16px;"
+        >
+          Want to see your data visualized?
+        </h2>
+        <p
+          class="paragraph"
+          style="text-align: center; margin-block-end: 32px; color: var(--gray-11);"
+        >
+          We build custom visualizations and web applications for geotechnical
+          data.
+        </p>
+        <div class="flex gap-4 justify-center flex-wrap">
+          <a href="https://cal.com/bedrock.engineer" class="cta-button" target="_blank">
+            Schedule Discovery Call
+          </a>
+          <a href="/services" class="cta-button-secondary">
+            View Our Services
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <Footer />
+</BaseLayout>

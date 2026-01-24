@@ -1,0 +1,129 @@
+---
+const { class: className, width, height } = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xml:space="preserve"
+  width="288"
+  height="210"
+  class={`logo-animated ${className}`}
+  id="logo"
+  viewBox="0 0 73.519 80.308"
+  overflow="visible"
+>
+  <g
+    font-size="7"
+    font-weight="600"
+    font-family="IBM Plex Sans Condensed"
+    text-anchor="middle"
+  >
+    <g id="lower" class="logo-layer">
+      <path
+        d="M 33.607 79.515 c -2.178 -0.778 -31.865 -16.392 -32.56 -17.125 c -2.385 -2.518 -1.888 -2.911 14.62 -11.547 c 19.714 -10.315 17.742 -9.389 20.3 -9.53 c 3.263 -0.181 3.356 -0.141 20.099 8.565 c 22.428 11.664 22.407 9.528 0.214 21.163 c -18.23 9.557 -18.919 9.814 -22.673 8.474"
+        fill="#868b85"></path>
+
+      <text
+        class="layer-label"
+        x="14"
+        y="73"
+        fill="white"
+        opacity="1"
+        transform="rotate(-28) skewX(30)"
+        transform-origin="center"
+      >
+        GI Data
+      </text>
+    </g>
+
+    <g id="middle" class="logo-layer">
+      <path
+        d="M 33.607 59.515 c -2.178 -0.778 -31.865 -16.392 -32.56 -17.125 c -2.385 -2.518 -1.888 -2.911 14.62 -11.547 c 19.714 -10.315 17.742 -9.389 20.3 -9.53 c 3.263 -0.181 3.356 -0.141 20.099 8.565 c 22.428 11.664 22.407 9.528 0.214 21.163 c -18.23 9.557 -18.919 9.814 -22.673 8.474"
+        fill="#998468"
+        stroke="var(--gray-1)"
+        stroke-width="10"
+        paint-order="stroke fill"></path>
+
+      <text
+        class="layer-label"
+        x="33"
+        y="55"
+        fill="white"
+        transform="rotate(-28) skewX(30)"
+        transform-origin="center"
+        opacity="1"
+      >
+        Structural
+      </text>
+    </g>
+
+    <g id="upper" class="logo-layer">
+      <path
+        d="M 33.607 38.243 c -2.178 -0.778 -31.865 -16.392 -32.56 -17.125 c -2.385 -2.518 -1.888 -2.911 14.62 -11.547 c 19.714 -10.315 17.742 -9.389 20.3 -9.53 c 3.263 -0.181 3.356 -0.141 20.099 8.565 c 22.428 11.664 22.407 9.528 0.214 21.163 c -18.23 9.557 -18.919 9.814 -22.673 8.474"
+        fill="#63805e"
+        stroke="var(--gray-1)"
+        stroke-width="10"
+        paint-order="stroke fill"></path>
+
+      <text
+        class="layer-label"
+        x="58"
+        y="37"
+        fill="white"
+        font-size="7"
+        font-weight="600"
+        font-family="IBM Plex Sans Condensed"
+        text-anchor="middle"
+        transform="rotate(-28) skewX(30)"
+        transform-origin="center"
+        opacity="1"
+      >
+        BIM
+      </text>
+    </g>
+  </g>
+</svg>
+
+<style>
+  .logo-animated .logo-layer {
+    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    pointer-events: none;
+    --offset-x: 20px;
+  }
+
+  .logo-animated {
+    pointer-events: bounding-box;
+
+    .layer-icon {
+      transition: opacity 0.3s ease-out;
+    }
+
+    .layer-label {
+      opacity: 0;
+      transition: opacity 0.3s ease-out;
+    }
+
+    #lower {
+      transform: translateX(0px);
+    }
+
+    #upper {
+      stroke-width: 5px;
+      transform: translateX(0px);
+    }
+  }
+
+  .logo-animated:hover {
+    .layer-label {
+      opacity: 1;
+    }
+
+    #lower {
+      transform: translateX(-35px);
+    }
+
+    #upper {
+      transform: translateX(35px);
+    }
+  }
+</style>

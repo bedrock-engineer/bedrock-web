@@ -1,0 +1,239 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Card from "../components/Card.astro";
+import Link from "../components/Link.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/custom.css";
+---
+
+<BaseLayout>
+  <Navbar />
+  <div class="page" data-pagefind-body data-pagefind-meta="category:Marketing">
+    <!-- Intro Section -->
+    <header
+      class="section-wrapper texture-607"
+    >
+      <section class="section intro-section">
+        <h1 class="heading-1">Build reusable, automated workflows</h1>
+        <p class="paragraph-xl">
+          Stop reinventing the wheel on every project. Automate repetitive tasks
+          and build workflows that evolve with your practice.
+        </p>
+      </section>
+    </header>
+
+    <!-- Problem & Data Flow -->
+    <div
+      class="section-wrapper texture-232-k"
+    >
+      <section class="section">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Card>
+            <h3 class="heading-3">
+              The problem: too much <em>manual work</em>
+            </h3>
+            <p class="paragraph-sm">
+              Geotechnical engineering projects involve repetitive tasks that
+              could be automated:
+            </p>
+            <ul class="list-disc list-inside mt-4 space-y-1 text-base">
+              <li>Manually copying data between formats</li>
+              <li>Recreating similar analyses for each project</li>
+              <li>Re-exporting data when requirements change</li>
+              <li>Rebuilding visualizations from scratch</li>
+            </ul>
+            <p class="paragraph-sm mt-4">
+              The underlying issue: data trapped in proprietary formats and
+              disconnected tools makes automation difficult.
+            </p>
+          </Card>
+
+          <Card>
+            <h3 class="heading-3">
+              Engineering projects as <em>data flow graphs</em>
+            </h3>
+            <p class="paragraph-sm">
+              Essential to bringing automation and computational design to
+              geotechnical engineering is recognizing that engineering projects
+              can be represented as data flow graphs:
+            </p>
+            <pre
+              class="bg-gray-3 px-4 py-3 rounded mt-4 text-sm font-mono">data → process → data → process → data</pre>
+            <p class="paragraph-sm mt-4">
+              The whole project can be seen as one large process:
+            </p>
+            <pre
+              class="bg-gray-3 px-4 py-3 rounded mt-4 text-sm font-mono">inputs → engineering process → deliverables</pre>
+          </Card>
+        </div>
+      </section>
+    </div>
+
+    <!-- Workflow Breakdown & Foundation -->
+    <div class="section-wrapper texture-616">
+      <section class="section">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Card>
+            <h3 class="heading-3">
+              Break down workflows into <em>smaller steps</em>
+            </h3>
+            <p class="paragraph-sm">
+              This large process can be broken down into smaller steps, each with
+              clear inputs and outputs. This makes it possible to:
+            </p>
+
+            <div class="mt-6 space-y-4">
+              <div>
+                <strong>1. Identify what's worth automating</strong>
+                <p class="text-sm mt-1">
+                  Not everything needs automation. Some parts are iterative,
+                  require human judgment, or are genuinely messy. Breaking down
+                  the workflow helps you identify the repetitive, rule-based parts
+                  worth automating.
+                </p>
+              </div>
+
+              <div>
+                <strong>2. Automate incrementally</strong>
+                <p class="text-sm mt-1">
+                  Start with one manual process. Replace it with a script. Test it
+                  on a project. Refine it. Move to the next process.
+                </p>
+              </div>
+
+              <div>
+                <strong>3. Build reusable components</strong>
+                <p class="text-sm mt-1">
+                  As scripts mature, split them into smaller, single-purpose
+                  functions. Single-purpose functions are easier to maintain and
+                  reusable across projects.
+                </p>
+              </div>
+
+              <div>
+                <strong>4. Chain processes together</strong>
+                <p class="text-sm mt-1">
+                  For parts of your workflow with clear, unidirectional data flow,
+                  mature functions can be chained into Directed Acyclic Graphs
+                  (DAGs) that automatically rerun when inputs change.
+                </p>
+              </div>
+            </div>
+          </Card>
+
+          <Card>
+            <h3 class="heading-3">
+              The foundation: <em>structured, accessible data</em>
+            </h3>
+            <p class="paragraph-sm">
+              Automating processes without structured input data is impossible.
+              Ground investigation data needs to be:
+            </p>
+
+            <ul class="list-disc list-inside mt-4 space-y-2 text-base">
+              <li>
+                <strong>Structured</strong> - Following the natural hierarchy (projects
+                → boreholes → samples → tests)
+              </li>
+              <li>
+                <strong>Accessible</strong> - In formats that work with modern tools
+                and programming languages
+              </li>
+              <li>
+                <strong>Validated</strong> - With relationships properly enforced
+              </li>
+            </ul>
+
+            <p class="paragraph-sm mt-4">
+              This is where geospatial databases and open standards become
+              essential.
+            </p>
+          </Card>
+        </div>
+      </section>
+    </div>
+
+    <!-- How We Help -->
+    <div
+      class="section-wrapper texture-607"
+    >
+      <section class="section">
+        <Card variant="featured">
+          <h3 class="heading-2">How we help</h3>
+          <p class="paragraph">
+            We provide consulting and software solutions for teams building
+            automated workflows:
+          </p>
+
+          <ul class="list-disc list-inside mt-6 space-y-2 text-base">
+            <li>
+              <strong>Data conversion and structuring</strong> - Transform legacy
+              formats (AGS, GEF, gINT, Excel) into structured geospatial databases
+            </li>
+            <li>
+              <strong>Workflow automation</strong> - Build custom scripts and tools
+              for repetitive processes
+            </li>
+            <li>
+              <strong>Integration</strong> - Connect geotechnical data with GIS tools,
+              Python scientific ecosystem, and BIM platforms
+            </li>
+            <li>
+              <strong>Training and guidance</strong> - Help your team adopt computational
+              design practices
+            </li>
+          </ul>
+
+          <p class="paragraph mt-6">
+            Whether you're comfortable with Python or need us to handle the
+            technical implementation, we can help you move from manual workflows
+            to automated, reusable processes.
+          </p>
+
+          <p class="paragraph mt-4">
+            We bring specialized expertise in geospatial visualization
+            technologies, industry data formats (AGS, GEF, BRO/XML), and
+            computational tools like Grasshopper, PyVista, and Speckle. <Link
+              href="/technologies">Learn more about our technical capabilities</Link
+            >.
+          </p>
+
+          <div class="mt-8">
+            <p class="font-bold text-lg">
+              Contact us at <Link variant="email" href="mailto:info@bedrock.engineer"
+                >info@bedrock.engineer</Link
+              > to discuss your workflow automation needs.
+            </p>
+            <p class="mt-2 text-sm">
+              Or explore the open-source library that powers these solutions: <Link
+                href="https://github.com/bedrock-engineer/bedrock-ge"
+                >bedrock-ge on GitHub</Link
+              >
+            </p>
+          </div>
+        </Card>
+      </section>
+    </div>
+
+    <!-- CTA Section -->
+    <div
+      class="section-wrapper texture-232-k"
+    >
+      <section class="section cta-section">
+        <h2 class="heading-2">Ready to automate your workflows?</h2>
+        <p class="paragraph">
+          Let's discuss how we can help transform your geotechnical practice with
+          automation and structured data.
+        </p>
+        <Link
+          variant="email"
+          href="mailto:info@bedrock.engineer"
+          class="mt-4 text-xl">Get in touch</Link
+        >
+      </section>
+    </div>
+  </div>
+
+  <Footer />
+</BaseLayout>

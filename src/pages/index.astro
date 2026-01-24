@@ -1,360 +1,468 @@
 ---
-import { Icon } from "@astrojs/starlight/components";
-import { Image } from "astro:assets";
-import structureDiagram from "../assets/structure.svg";
-import kaiTakSpeckle from "../assets/KaiTak_BrGI_Speckle.png";
-import arcGIS from "../assets/KaiTak_BrGI_ArcGIS.webp";
-import Header from "../components/landing/Header.astro";
-import OneThirdColumn from "../components/landing/one-third-column.astro";
-import Panel from "../components/landing/Panel.astro";
-import Ribbon from "../components/landing/ribbon.astro";
-import ThreeColumns from "../components/landing/three-columns.astro";
-import TwoColumns from "../components/landing/TwoColumns.astro";
+import joost from "../assets/JoostGevaert.jpg";
+import jules from "../assets/JulesBlom.jpg";
+
+import Image from "astro/components/Image.astro";
+import { AnimatedDemoTabs } from "../components/AnimatedDemoTabs";
+import Card from "../components/Card.astro";
+import Footer from "../components/Footer.astro";
+import HoverLogo from "../components/HoverLogo.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import "../styles/global.css";
+import "../styles/custom.css";
 ---
 
 <BaseLayout>
-  <div class="landing">
-    <div class="fixed inset-0 text-green-100">
-      <svg width="100%" height="100%">
-        <defs>
-          <pattern
-            id="dotPattern"
-            viewBox="-6 -6 12 12"
-            patternUnits="userSpaceOnUse"
-            width="12"
-            height="12"
+  <div class="page">
+    <div class="hero-wrapper">
+      <header class="hero">
+        <div class="logo-text">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xml:space="preserve"
+            width="42"
+            height="46"
+            viewBox="0 0 73.519 80.308"
           >
-            <circle cx="0" cy="0" r="1" fill="currentColor"></circle>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#dotPattern)"></rect>
-      </svg>
+            <path
+              d="M 35.245 80.249 c -1.65 -0.31 -3.423 -1.172 -17.991 -8.748 c -17.86 -9.289 -18.317 -9.625 -16.403 -12.059 c 0.477 -0.606 7.298 -4.423 7.905 -4.423 c 0.136 0 5.499 2.74 11.917 6.09 c 17.26 9.007 14.766 9.015 32.163 -0.107 l 11.856 -6.216 l 3.467 1.815 c 5.012 2.625 6.039 4.031 4.326 5.926 c -0.574 0.636 -30.926 16.711 -32.678 17.308 c -1.032 0.351 -3.637 0.588 -4.562 0.414"
+              style="fill:#868b85;"></path>
+            <path
+              d="M 34.584 59.339 c -1.176 -0.259 -2.719 -1.026 -17.595 -8.756 c -17.775 -9.236 -18.27 -9.608 -16.073 -12.08 c 1.14 -1.282 7.623 -4.463 8.394 -4.117 c 0.367 0.165 5.668 2.899 11.78 6.076 c 16.826 8.747 14.402 8.77 31.657 -0.285 c 6.351 -3.333 11.681 -6.06 11.844 -6.06 c 0.572 0 7.23 3.479 7.856 4.105 c 2.458 2.457 2.012 2.8 -15.93 12.244 c -17.513 9.22 -18.516 9.625 -21.933 8.873"
+              style="fill:#998468;"></path>
+            <path
+              d="M 33.607 38.243 c -2.178 -0.778 -31.865 -16.392 -32.56 -17.125 c -2.385 -2.518 -1.888 -2.911 14.62 -11.547 c 19.714 -10.315 17.742 -9.389 20.3 -9.53 c 3.263 -0.181 3.356 -0.141 20.099 8.565 c 22.428 11.664 22.407 9.528 0.214 21.163 c -18.23 9.557 -18.919 9.814 -22.673 8.474"
+              style="fill:#63805e;"></path>
+          </svg>
+          <span>Bedrock.engineer</span>
+        </div>
+
+        <!-- <h1>Bridge subsurface data <br />and modern geospatial tools</h1> -->
+        <h1>
+          Visualize. <wbr />Integrate.<wbr /> Optimize. <br />Your Subsurface
+          Data
+        </h1>
+
+        <!-- <p>
+          Go from subsurface data stuck in gINT, AGS, or GEF to tools that make
+          it accessible and useful. Surface your subsurface data in web maps,
+          ArcGIS, QGIS, or AEC collaboration platforms.
+        </p> -->
+
+        <p class="md:text-lg">
+          Surface your subsurface data in web maps, Python, QGIS, and AEC
+          platforms, escape proprietary databases like gINT or industry-specific
+          file formats like AGS and GEF.
+        </p>
+
+        <!-- <p>Go from subsurface data stuck in gINT, AGS, or GEF to web maps, ArcGIS, QGIS, and AEC collaboration platforms—accessible wherever you need it.</p> -->
+
+        <!-- "Surface your subsurface data—go from gINT, AGS, and GEF files to web maps, ArcGIS, QGIS, and AEC platforms." -->
+
+        <div class="flex gap-4 justify-center flex-wrap mt-12">
+          <a
+            href="https://cal.com/bedrock.engineer"
+            class="cta-button-inverted"
+            target="_blank"
+          >
+            Schedule Discovery Call
+          </a>
+          <a href="/demos" class="cta-button-secondary-inverted">View Demos</a>
+        </div>
+      </header>
+
+      <ThemeToggle class="fixed top-3 right-4" />
+
+      <section class="worked-with"></section>
+
+      <!-- <section class="worked-with"> -->
+      <!-- <h2>We have worked with</h2> -->
+      <!-- <h2 style="color: var(--gray-10);" class="text-left">Trusted by</h2>
+
+        <div class="client-logos pt-6">
+          <img src={fugroLogo.src} alt="Fugro" />
+          <img src={zeelandLogo.src} alt="Zeeland" />
+          <img src={tnoGdnLogo.src} alt="TNO-GDN" />
+        </div>
+
+        <div style="margin-top: 32px; text-align: center;">
+          <a href="/cases" class="section-link">View case studies →</a>
+        </div>
+      </section> -->
     </div>
 
-    <Ribbon>
-      <Header />
+    <div class="section-wrapper texture-232-k">
+      <section class="section tabs-section">
+        <AnimatedDemoTabs client:load />
 
-      <ThreeColumns>
-        <OneThirdColumn title="Why does ground investigation data matter?">
-          <p>
-            Every foundation, tunnel, and major construction project depends on
-            ground investigation data to ensure safety and feasibility.
-            Engineers drill boreholes, take soil samples, and conduct tests to
-            understand what is in the ground and assess risks.
-          </p>
-        </OneThirdColumn>
-
-        <OneThirdColumn title="What is the problem?">
-          <p>
-            Yet this critical data gets trapped in proprietary systems like
-            gINT, or outdated formats like AGS and GEF. Geotechnical projects
-            get stuck with inefficient workflows, vendor lock-in, and can't use
-            modern analysis tools that could improve decision-making.
-          </p>
-        </OneThirdColumn>
-
-        <OneThirdColumn title="How does Bedrock help?">
-          <p>
-            Bedrock is the company that develop <a
-              class="link"
-              href="https://github.com/bedrock-engineer/bedrock-ge"
-            >
-              <code>bedrock-ge</code>
-            </a>, an open-source Python library that liberates your trapped
-            data. Convert from AGS, GEF, gINT, Excel, and other formats into
-            modern geospatial data that works with Python, GIS, and databases.
-          </p>
-
-          <p>
-            We provide <a class="link" href="/professional-support/"
-              >consulting services
-            </a>
-            for teams who need help implementing modern workflows
-          </p>
-        </OneThirdColumn>
-      </ThreeColumns>
-
-      <TwoColumns divider>
-        <Panel
-          title="Turn <em>ground investigation</em> data <br />into <em>geospatial</em> data"
-          href="explanation/gi-to-geospatial"
-        >
-          <p>
-            Each GI investigation necessarily has a location. Yet it is often
-            not treated as such. By assigning (3D) geospatial geometry to each
-            of the GI locations, in-situ tests and samples, the GI data becomes
-            a geospatial database. This lets you bridge the gap between
-            specialized GI data formats and the wider world of geospatial tools
-            and standards.
-          </p>
-
-          <figure>
-            <iframe
-              src="https://bedrock.engineer/hk-kaitak/"
-              height="300"
-              style="width: 98%; max-width: 700px; border-radius:1px;"></iframe>
-
-            <figcaption>
-              GI data in Kai Tak, Hong Kong in an interactive CesiumJS map.
-              <a class="link" href="https://bedrock.engineer/hk-kaitak">
-                Click here to explore for yourself.
-              </a>
-            </figcaption>
-          </figure>
-        </Panel>
-
-        <Panel
-          title="And break down <br /><em>disciplinary </em> silos"
-          href="explanation/gi-to-geospatial#bridging-gis-and-engineering-workflows"
-        >
-          <p>
-            Departments often work in disciplinary silos with not enough
-            feedback between them. Geospatial GI data lets you view geotechnical
-            data alongside structural or building models in spatial context.
-          </p>
-
-          <p>
-            Connect your GI data with the Python (geo)scientific ecosystem, GIS
-            tools, and BIM platforms like{" "}
-            <a class="link" href="https://speckle.systems/">Speckle</a>.
-          </p>
-          <figure>
-            <Image
-              src={kaiTakSpeckle}
-              alt="Screenshot of GI data in Speckle with 3D buildings"
-              class="border border-gray-300 rounded-xs"
-              height={300}
-            />
-            <figcaption>
-              Models from Rhino, Revit, Civil3D + context & GI data from
-              Q/ArcGIS.
-              <a
-                class="link"
-                href="https://app.speckle.systems/projects/dea5d61543/models/9962662abe,c82c54493a#savedView%3D%7B%2522id%2522%3A%2522a2369ea45a%2522%7D"
-              >
-                Click here to explore for yourself.
-              </a>
-            </figcaption>
-          </figure>
-        </Panel>
-      </TwoColumns>
-
-      <TwoColumns>
-        <Panel
-          title="More <em>structure</em> for valuable <br />ground investigation data"
-          href="explanation/hierarchical-structure"
-        >
-          <p>
-            GI Data is inherently hierarchical, it should follow the natural
-            hierarchy of investigations: projects contain boreholes, boreholes
-            contain samples, samples have test results.
-          </p>
-
-          <p>
-            Legacy systems and bespoke industry formats often break these relationships or fail
-            to enforce them properly. Bedrock ensures proper data structure, and
-            validates everything in a single geospatial database.
-          </p>
-        </Panel>
-        <div class="grid place-content-center">
-          <Image
-            src={structureDiagram}
-            width="220"
-            class="block mb-4"
-            alt="Indented tree diagram of the structure of a geotechnical investigation"
-          />
+        <div style="margin-top: 40px; text-align: center;">
+          <a href="/demos" class="section-link">
+            Explore all interactive demos →
+          </a>
         </div>
-      </TwoColumns>
+      </section>
+    </div>
 
-      <TwoColumns divider>
-        <Panel
-          title="<em>Open</em>-source & <em>open</em>-standards"
-          href="explanation/concepts/open-source/"
-        >
-          <p>
-            <code>bedrock-ge</code> is licensed under the{" "}
-            <a
-              class="link"
-              href="https://www.apache.org/licenses/LICENSE-2.0.html"
-            >
-              Apache License 2.0
-            </a>
-            , making it free to use, modify, and distribute.
-          </p>
+    <div class="section-wrapper texture-607">
+      <section class="section">
+        <h2 class="heading-2">A Software Consultancy for Subsurface Data</h2>
 
-          <section>
-            <h3>Future Proof</h3>
-            <p>
-              Even standards managed by industry consortiums can become obsolete
-              or difficult to access as software ecosystems evolve. Already,
-              reading older AGS or GEF files can be difficult. By converting to
-              widely-adopted open geospatial standards like <a
-                class="link"
-                href="http://geopackage.org/">GeoPackage</a
-              >, your data gains long-term accessibility across the entire
-              geospatial software ecosystem, not just specialized geotechnical
-              tools.
-            </p>
-          </section>
-
-          <section>
-            <h3>Avoid vendor lock-in</h3>
-            <p>
-              Open standards mean your data and workflows aren't dependent on
-              any single vendor's continued support. No steep price hikes
-              either.
-            </p>
-          </section>
-
-          <section>
-            <h3>Contribute</h3>
-            <p>
-              Missing a feature?{" "}
-              <a
-                class="link"
-                href="https://github.com/bedrock-engineer/bedrock-ge/issues/new"
-              >
-                Open an issue
-              </a>{" "}
-              or contribute directly, your engineering needs drive our development
-              roadmap.
-            </p>
-            <p>
-              <a href="contributing" class="link">Contributing</a>
-              doesn't only mean writing code. You can also contribute by adding data,
-              examples, or being active in the community by asking or answering questions.
-            </p>
-          </section>
-        </Panel>
-
-        <Panel
-          title="Get <em>professional support</em> <br />from the creators"
-          href="professional-support"
-        >
-          <!-- <p>
-            Bedrock is the company that develops <code> bedrock-ge </code>
-            and provides consulting services. Our experts are highly knowledgeable
-            an passionate in both geoscience and software development. A unique combination
-            that helps you transform important geodata into 3D models that drive
-            innovation. Get in touch 
-          </p> -->
-          <p>
-            While <code>bedrock-ge</code> is a Free & Open Source Software project,
-            you might be looking for <a
-              class="link"
-              href="/professional-support">professional support</a
-            > implementing it.{" "}
-          </p>
-
-          <p>
-            Bedrock provides support and consultancy services for the
-            <code>bedrock-ge</code>
-            library, directly by its creators. We can help you with:
-          </p>
-
-          <ul class="list-disc list-inside">
-            <li>Converting your GI data to open geospatial standards</li>
-            <li>Visualizing GI data in 3D</li>
-            <li>Visualizing GI data in a web application</li>
-            <li>Automating ground modelling workflows</li>
-            <li>Integrating GI data in to digital twins</li>
-          </ul>
-
-          <p>
-            Contact us at <strong>info&#64;bedrock.engineer.</strong>
-          </p>
-        </Panel>
-      </TwoColumns>
-
-      <footer
-        class="bg-black text-gray-300 px-10 py-6 text-sm -mx-[1px]"
-        style="background-image: url('granite.svg'); background-size: 250px;"
-      >
-        <div class="flex justify-between">
+        <div class="grid-auto-fit gap-y-8">
           <div>
-            <h3 class="text-lg bg-black w-fit">Bedrock</h3>
+            <p class="paragraph" style="margin-block-end: 24px">
+              Subsurface data is trapped in proprietary databases, or text
+              formats like AGS or GEF, or in specialist software while
+              geospatial tools thrive in a separate, open ecosystem.
+              <!-- Custom builds require rare dual expertise. -->
+            </p>
 
-            <ul>
+            <p class="paragraph" style="margin-block-end: 24px">
+              Bedrock.engineer develops tools that understand subsurface data
+              natively, tailored to how you actually work.
+            </p>
+
+            <h3 style="font-size: 20px; margin-block: 16px; font-weight: 600;">
+              What we do:
+            </h3>
+            <ul class="services-list paragraph">
               <li>
-                <a
-                  class="footer-link"
-                  href="https://www.linkedin.com/company/bedrock-engineer/"
-                >
-                  <Icon class="inline mr-1" name="linkedin" />
-                  LinkedIn
-                </a>
+                Convert industry-specific formats like GEF or AGS into modern
+                geospatial standards
               </li>
               <li>
-                <a
-                  class="footer-link"
-                  href="https://github.com/bedrock-engineer/"
-                >
-                  <Icon class="inline mr-1" name="github" />
-                  GitHub
-                </a>
+                Build interactive (3D) web maps and visualizations for
+                stakeholder engagement
               </li>
               <li>
-                <a class="footer-link" href="mailto:info@bedrock.engineer">
-                  <Icon class="inline mr-1" name="email" />
-                  info@bedrock.engineer
-                </a>
+                Create automated workflows connecting subsurface data to GIS and
+                BIM tools
               </li>
-              <li>
-                <a class="footer-link" href="company-details">
-                  <Icon class="inline mr-1" name="document" />
-                  Company details
-                </a>
-              </li>
+              <li>Develop custom integrations for your specific needs</li>
             </ul>
           </div>
 
-          <p class="self-end bg-black">
-            © {new Date().getFullYear()} Bedrock Engineer B.V.
-          </p>
+          <HoverLogo class="place-self-center" />
         </div>
-      </footer>
-    </Ribbon>
+
+        <div style="margin-top: 40px; text-align: center;">
+          <a href="/services" class="section-link">
+            Learn about our services →
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <div class="section-wrapper texture-616">
+      <section class="section">
+        <h2 class="heading-2">Our Values</h2>
+
+        <div class="grid-auto-fit" style="--grid-gap: 72px;">
+          <div class="value-card">
+            <h3 class="value-title text-xl font-semibold">
+              Purpose-built for subsurface data
+            </h3>
+            <p>
+              We build tools specifically for subsurface data, applied to your
+              specific workflows. Not generic GIS software that "almost" fits.
+              Reusable patterns for subsurface data that we adapt to your needs.
+              You get tailored tools without custom-build costs.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <h3 class="value-title text-xl font-semibold">
+              Interoperable geospatial data
+            </h3>
+            <p>
+              Modern geospatial formats mean your subsurface data works
+              everywhere, QGIS, ArcGIS, Python, web maps, geospatial databases.
+              We bring practices from modern software development and the
+              geospatial ecosystem to subsurface data.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <h3 class="value-title text-xl font-semibold">Open ecosystems</h3>
+            <p>
+              We believe deeply in open-source software and open standards to
+              make subsurface data more accessible and understandable, and drive
+              innovation in geotechnical engineering. We maintain
+              <code
+                ><a href="https://github.com/bedrock-engineer/bedrock-ge/"
+                  >bedrock-ge</a
+                ></code
+              >, our open-source Python library for turning ground investigation
+              data into geospatial data we use in projects.
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top: 40px; text-align: center;">
+          <a href="/mission" class="section-link">
+            Learn about our mission →
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <div class="section-wrapper texture-668">
+      <section class="section team" style="--grid-color: black;">
+        <h2 class="heading-2">The Team</h2>
+
+        <div class="team-member-grid">
+          <Card class="team-member card">
+            <h3>Jules Blom</h3>
+            <Image src={jules} alt="Jules Blom" style="filter: grayscale(1);" />
+            <p>
+              Experienced in building data-rich geospatial applications.
+              Specializes in making complex subsurface data clear through
+              visualization and intuitive user interfaces. Background in
+              Petroleum Engineering (Reservoir Geology) at TU Delft.
+            </p>
+          </Card>
+
+          <Card class="team-member card">
+            <h3>Joost Gevaert</h3>
+            <Image
+              src={joost}
+              alt="Joost Gevaert"
+              style="filter: grayscale(1);"
+            />
+            <p>
+              Geotechnical engineer and computational designer. Worked at Arup
+              bridging gaps between geotechnical and structural engineering
+              workflows. Background in Geotechnical Engineering and Applied
+              Geophysics.
+            </p>
+          </Card>
+        </div>
+
+        <div style="margin-top: 48px; text-align: center;">
+          <a href="/about" class="section-link">More about the team →</a>
+        </div>
+      </section>
+    </div>
+
+    <Footer />
   </div>
 
   <style>
-    @reference "../styles/global.css";
+    @reference "../styles/custom.css";
 
-    .footer-link {
-      background-color: black;
-
-      &:hover {
-        text-decoration: underline;
-      }
+    .paragraph {
+      font-size: 18px;
+      max-width: 50ch;
     }
 
-    .landing {
-      --border-color: var(--color-gray-400);
-      background-color: white;
-      color: black;
+    /* Alternate background colors for sections */
+    .section-wrapper:nth-child(even) .section {
+      background: var(--brown-1);
     }
 
-    .landing-section {
-      padding-inline: 24px;
+    .section-wrapper:nth-child(odd) .section {
+      background: var(--gray-1);
+    }
+
+    .hero-wrapper {
+      padding-inline: 16px;
       border-bottom: 1px solid var(--border-color);
     }
 
-    .link[href^="http"]::after {
-      margin-left: 0.1ch;
-      display: contents;
-      white-space: nowrap;
-      vertical-align: baseline;
-      content: "\FEFF" url("/icons/external-link.svg");
+    .hero {
+      margin-top: 12px;
+      min-height: 620px;
+      max-width: var(--container-wide);
+      padding-block: 16px;
+      margin-inline: auto;
+      border-radius: 16px;
+      text-align: center;
+      color: white;
+      background:
+        linear-gradient(
+          to bottom,
+          oklch(10% 0.04244 152.546 / 0.6) 20%,
+          oklch(14% 0.0086 134.306 / 0.95) 100%
+        ),
+        url("/ASCII-landscape.webp");
       background-size: cover;
+
+      background-position: center;
+      position: relative;
+      display: grid;
+      place-content: center;
+
+      & > * {
+        margin-inline: auto;
+      }
+
+      & h1 {
+        font-size: clamp(1.8rem, 1.75rem + 2.4vw, 4rem);
+        margin-top: 32px;
+        margin-bottom: 16px;
+        font-family: "IBM Plex Sans Condensed";
+        text-box-trim: trim-both;
+        text-wrap: balance;
+      }
+
+      & p {
+        max-width: 50ch;
+        text-align: center;
+      }
     }
 
-    figure {
-      margin-block-start: var(--spacing);
+    .worked-with {
+      border-top: none;
+      padding-block-start: 32px;
+      padding-block-end: 48px;
+
+      & h2 {
+        /* text-align: center; */
+        font-size: 20px;
+        margin-left: 108px;
+        margin-bottom: 36px;
+      }
     }
 
-    figcaption {
-      @apply text-sm italic my-1;
+    .logo-text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: 9px;
+      font-size: 36px;
+      font-family: "IBM Plex Sans Condensed";
+      position: absolute;
+      top: 16px;
+      left: 20px;
+
+      @media (max-width: 640px) {
+        font-size: 24px;
+        column-gap: 6px;
+        left: 12px;
+
+        & svg {
+          width: 28px;
+          height: 31px;
+        }
+      }
+    }
+
+    .client-logos {
+      display: flex;
+      column-gap: 64px;
+      row-gap: 48px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        height: 48px;
+        object-fit: contain;
+      }
+    }
+
+    .team-member-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+      gap: 16px;
+      container-type: inline-size;
+      container-name: team-grid;
+    }
+
+    .team-member {
+      display: grid;
+      grid-template-areas:
+        "image description"
+        "name description";
+      column-gap: 24px;
+      row-gap: 12px;
+      padding-block: 20px;
+      padding-inline: 32px;
+
+      & img {
+        grid-area: image;
+        min-width: 100px;
+        max-width: min(220px, 100%);
+        border-radius: 100%;
+      }
+
+      & h3 {
+        grid-area: name;
+        font-size: 1.25em;
+        text-align: center;
+      }
+
+      & p {
+        min-width: 20ch;
+        grid-area: description;
+      }
+    }
+
+    @container team-grid (width < 80ch) {
+      .team-member {
+        grid-template-areas:
+          "image"
+          "name"
+          "description";
+        justify-items: center;
+      }
+    }
+
+    .tabs-section {
+      padding-block-start: 0;
+    }
+
+    .services-list {
+      list-style: none;
+      padding-left: 0;
+
+      li {
+        padding-left: 24px;
+        margin-block: 12px;
+        position: relative;
+
+        &::before {
+          content: "→";
+          position: absolute;
+          left: 0;
+          color: var(--green-8);
+          font-weight: bold;
+        }
+      }
+    }
+
+    /* .values-grid replaced with .grid-auto-fit-narrow from global CSS */
+
+    .value-card {
+      @apply flex flex-col gap-x-8 gap-y-4;
+      & p {
+        flex-grow: 1;
+        line-height: 1.6;
+        max-width: 40ch;
+      }
+
+      & code {
+        background: var(--gray-3);
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-size: 0.9em;
+      }
+    }
+
+    .value-title {
+      font-family: "IBM Plex Sans Condensed";
+      color: var(--gray-12);
+    }
+
+    .value-link {
+      @apply no-underline inline-flex items-center gap-1;
+      color: var(--green-11);
+      transition: gap 0.2s;
+      font-weight: 500;
+
+      &:hover {
+        gap: 8px;
+        text-decoration: underline;
+      }
     }
   </style>
 </BaseLayout>

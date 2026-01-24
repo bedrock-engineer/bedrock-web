@@ -1,0 +1,110 @@
+---
+export interface Props {
+  variant?: "default" | "featured" | "interactive";
+  size?: "small" | "medium" | "large";
+  href?: string;
+  class?: string;
+}
+
+const {
+  variant = "default",
+  size = "medium",
+  href,
+  class: className,
+} = Astro.props;
+
+// Polymorphic: render as <a> if href provided, otherwise <div>
+const Tag = href ? "a" : "div";
+
+// Link attributes for external URLs
+const linkAttrs = href
+  ? {
+      href,
+      target: href.startsWith("http") ? "_blank" : undefined,
+      rel: href.startsWith("http") ? "noopener noreferrer" : undefined,
+    }
+  : {};
+---
+
+<Tag
+  class={`card ${className || ""}`}
+  data-variant={variant}
+  data-size={size}
+  {...linkAttrs}
+>
+  <slot />
+</Tag>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--gray-2);
+    border: 1px solid var(--border-color-light);
+    border-radius: var(--border-radius-sm);
+    padding: var(--card-padding);
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    /* Size variations for grid layout */
+    &[data-size="large"] {
+      grid-column: span 2;
+    }
+
+    &[data-size="medium"] {
+      grid-column: span 1;
+    }
+
+    &[data-size="small"] {
+      grid-column: span 1;
+    }
+
+    /* On mobile, all cards take full width */
+    @media (max-width: 768px) {
+      &[data-size="large"],
+      &[data-size="medium"],
+      &[data-size="small"] {
+        grid-column: span 1;
+      }
+    }
+
+    /* Featured variant - more prominent border and styling */
+    &[data-variant="featured"] {
+      background: var(--gray-1);
+      border: 1px solid var(--border-color);
+    }
+
+    /* Interactive variant - indicates clickability */
+    &[data-variant="interactive"] {
+      cursor: pointer;
+
+      &:hover {
+        border-color: var(--green-7);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--green-9);
+        outline-offset: 2px;
+      }
+    }
+
+    /* When card is a link */
+    &:is(a) {
+      text-decoration: none;
+      color: inherit;
+
+      &:hover {
+        border-color: var(--green-7);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--green-9);
+        outline-offset: 2px;
+      }
+    }
+  }
+</style>

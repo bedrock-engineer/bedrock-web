@@ -20,6 +20,7 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+.venv
 /.quarto/
 
 /.luarc.json
@@ -28,3 +29,5 @@ pnpm-debug.log*
 
 # Large PMTiles files (hosted on R2)
 public/bro-cpt/*.pmtiles
+
+/.playwright-mcp

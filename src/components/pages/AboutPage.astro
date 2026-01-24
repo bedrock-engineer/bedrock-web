@@ -1,0 +1,251 @@
+---
+import { Icon } from "@astrojs/starlight/components";
+import { Image } from "astro:assets";
+import Link from "../Link.astro";
+import joostImage from "../../assets/JoostGevaert.jpg";
+import julesImage from "../../assets/JulesBlom.jpg";
+
+interface Props {
+  t: any; // translations object
+}
+
+const { t } = Astro.props;
+---
+
+<div class="page" data-pagefind-body data-pagefind-meta="category:Marketing">
+  <header
+    style="background: url('/textures/607.svg'); background-size: 70px;"
+    class="section-wrapper"
+  >
+    <section class="section intro-section">
+      <h1 class="heading-1" style="font-size: 36px;">{t.title}</h1>
+      <p class="paragraph-xl">
+        {t.intro}
+      </p>
+    </section>
+  </header>
+
+  <div
+    style="background: url('/textures/232-K.svg'); background-size: 80px;"
+    class="section-wrapper"
+  >
+    <section class="section">
+      <div class="team-member">
+        <div class="team-member-left">
+          <div class="team-member-image">
+            <Image
+              src={joostImage}
+              alt="Joost Gevaert"
+              width={200}
+              height={200}
+            />
+          </div>
+          <h2 class="team-member-name">Joost Gevaert</h2>
+        </div>
+
+        <div class="team-member-info">
+          <div class="social-links">
+            <Link
+              href="https://www.linkedin.com/in/joost-gevaert/"
+              class="social-link"
+            >
+              <Icon name="linkedin" />
+              LinkedIn
+            </Link>
+          </div>
+          <div class="bio">
+            <p>{t.joost.bio.p1}</p>
+            <p>{t.joost.bio.p2}</p>
+            <p>{t.joost.bio.p3}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div
+    style="background: url('/textures/620.svg'); background-size: 100px;"
+    class="section-wrapper"
+  >
+    <section class="section">
+      <div class="team-member">
+        <div class="team-member-left">
+          <div class="team-member-image">
+            <Image src={julesImage} alt="Jules Blom" width={200} height={200} />
+          </div>
+          <h2 class="team-member-name">Jules Blom</h2>
+        </div>
+        
+        <div class="team-member-info">
+          <div class="social-links">
+            <Link
+              href="https://www.linkedin.com/in/julesblom/"
+              class="social-link"
+            >
+              <Icon name="linkedin" />
+              LinkedIn
+            </Link>
+            <Link href="https://julesblom.com" class="social-link">
+              <Icon name="external" />
+              Website
+            </Link>
+          </div>
+          <div class="bio">
+            <p>{t.jules.bio.p1}</p>
+            <ul>
+              {t.jules.bio.beliefs.map((belief: string) => <li>{belief}</li>)}
+            </ul>
+            <p>{t.jules.bio.p2}</p>
+            <p>{t.jules.bio.p3}</p>
+            <p>{t.jules.bio.p4}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="section-wrapper">
+    <section class="section">
+      <h2 class="heading-2" style="margin-block-end: 24px;">Company Information</h2>
+      <p class="paragraph" style="margin-block-end: 32px; color: var(--gray-11);">
+        Legal details for invoicing and administration.
+      </p>
+      <dl class="details-list">
+        <div>
+          <dt class="details-term">Company name</dt>
+          <dd class="details-value">Bedrock Engineer B.V.</dd>
+        </div>
+        <div>
+          <dt class="details-term">VAT ID</dt>
+          <dd class="details-value">NL868402552B01</dd>
+        </div>
+        <div>
+          <dt class="details-term">KvK number</dt>
+          <dd class="details-value">98282581</dd>
+        </div>
+      </dl>
+    </section>
+  </div>
+</div>
+
+<style>
+  .paragraph {
+    font-size: 18px;
+    max-width: 60ch;
+    line-height: 1.6;
+  }
+
+  .team-member {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .team-member-left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .team-member-image {
+    & img {
+      border-radius: 100%;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+  }
+
+  .team-member-name {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    text-align: center;
+    font-family: "IBM Plex Sans Condensed";
+  }
+
+  .team-member-info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: var(--gray-2);
+    border: 1px solid var(--border-color-light);
+    border-radius: 2px;
+    text-decoration: none;
+    color: var(--gray-12);
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: var(--gray-3);
+      text-decoration: none;
+    }
+
+    & svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .bio {
+    font-size: 16px;
+    max-width: 60ch;
+
+    & p {
+      margin-block-end: 16px;
+    }
+
+    & ul {
+      margin-block: 16px;
+      padding-left: 24px;
+      list-style-type: disc;
+    }
+
+    & li {
+      margin-block-end: 8px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .team-member {
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
+
+    .team-member-info {
+      width: 100%;
+    }
+  }
+
+  .details-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    max-width: 40ch;
+  }
+
+  .details-term {
+    font-weight: var(--font-semibold);
+    color: var(--gray-11);
+    font-size: var(--text-sm);
+  }
+
+  .details-value {
+    font-size: var(--text-lg);
+    color: var(--gray-12);
+    font-family: "IBM Plex Mono", monospace;
+  }
+</style>
