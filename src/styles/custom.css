@@ -415,6 +415,9 @@ figcaption {
   max-width: var(--container-wide);
   margin-inline: auto;
   border-top: none;
+  @media (max-width: 1200px) {
+    border-inline: none;
+  }
 }
 
 .section {
@@ -424,6 +427,9 @@ figcaption {
   margin-inline: auto;
   border-inline: 1px solid var(--border-color);
   background: var(--gray-1);
+  @media (max-width: 1200px) {
+    border-inline: none;
+  }
 }
 
 .intro-section {
@@ -590,7 +596,6 @@ figcaption {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-weight: 500;
   font-size: var(--text-lg);
   color: var(--green-11);
   text-decoration: none;
