@@ -145,8 +145,9 @@ const description =
           formats and modern (geospatial) development. That means reading AGS4,
           GEF, and BRO/XML files, transforming them into proper geospatial data,
           and building the tools to actually use it. Such as 3D visualizations
-          in CesiumJS for digital twins, integrations with Revit or Civil3D through Speckle, or
-          custom web applications to visualize your subsurface data.
+          in CesiumJS for digital twins, integrations with Revit or Civil3D
+          through Speckle, or custom web applications to visualize your
+          subsurface data.
         </p>
       </section>
     </header>
@@ -176,7 +177,7 @@ const description =
             <p class="tech-subtitle">Excel, CSV</p>
             <p class="card-text">
               In practice, not all ground investigation data follows a standard.
-              We can handle the Excel spreadsheets with custom schemas, CSVs
+              We can handle the Excel spreadsheets with custom schemas, or CSVs
               with inconsistent formatting.
             </p>
           </Card>
@@ -269,12 +270,12 @@ const description =
 
           <Card size="medium">
             <h3 class="heading-3">Interactive Web Maps</h3>
-            <p class="tech-subtitle">MapLibre GL, Deck.gl, PMTiles</p>
+            <p class="tech-subtitle">MapLibre GL, Deck.gl, OpenLayers</p>
             <p class="card-text">
-              Interactive 2D and 3D web maps. MapLibre GL for vector tiles,
-              Deck.gl for WebGL layers. Render thousands of boreholes and CPT
-              locations with interactive filters. PMTiles for cloud-optimized
-              serving without a tile server.
+              Interactive 2D and 3D web maps for subsurface data. Render
+              thousands of boreholes and CPT locations with interactive filters,
+              popups, and layer controls. Custom styling for geological and
+              geotechnical data visualization.
             </p>
           </Card>
         </div>
@@ -363,13 +364,27 @@ const description =
           </Card>
 
           <Card size="medium">
-            <h3 class="heading-3">Geospatial Formats</h3>
-            <p class="tech-subtitle">GeoPackage, GeoParquet, GeoJSON</p>
+            <h3 class="heading-3">GIS Export Formats</h3>
+            <p class="tech-subtitle">GeoPackage, GeoJSON, Shapefile</p>
             <p class="card-text">
-              Export GI data to geospatial formats for GIS workflows. GeoPackage
-              for QGIS and ArcGIS, GeoParquet for cloud-optimized analysis,
-              GeoJSON for web applications. Convert AGS4, GEF, or BRO data to
-              formats that work with standard GIS tools.
+              Export GI data to standard GIS formats. GeoPackage for QGIS and
+              ArcGIS, GeoJSON for web applications, Shapefile for legacy
+              systems. Convert AGS4, GEF, or BRO data to formats that work with
+              standard GIS tools.
+            </p>
+          </Card>
+
+          <Card size="medium">
+            <h3 class="heading-3">Cloud-native Geospatial Formats</h3>
+            <p class="tech-subtitle">
+              PMTiles, MLT, COG, GeoParquet, FlatGeobuf, 3D Tiles
+            </p>
+            <p class="card-text">
+              Modern formats designed for HTTP range requests—serve directly
+              from object storage without a tile server. PMTiles and MapLibre
+              Tiles for vector maps, Cloud Optimized GeoTIFF for imagery,
+              GeoParquet and FlatGeobuf for large vector datasets, 3D Tiles for
+              streaming 3D content.
             </p>
           </Card>
 

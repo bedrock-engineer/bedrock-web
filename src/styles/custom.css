@@ -95,9 +95,10 @@ body:has(.page) {
 }
 
 :root {
-  /* Form control accent color */
   accent-color: var(--green-9);
   caret-color: var(--green-9);
+  scrollbar-color: var(--green-10);
+  scrollbar-width: thin;
 }
 
 :focus-visible {
