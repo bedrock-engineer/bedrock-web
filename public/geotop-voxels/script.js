@@ -258,7 +258,6 @@ function createPrimitive(provider) {
     voxelPrimitive.debugDraw = true;
   }
 
-  viewer.voxelInspector.viewModel.voxelPrimitive = voxelPrimitive;
   currentVoxelPrimitive = voxelPrimitive;
 
   // Apply current clipping state
