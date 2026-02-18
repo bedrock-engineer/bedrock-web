@@ -3,6 +3,7 @@ import joost from "../assets/JoostGevaert.jpg";
 import jules from "../assets/JulesBlom.jpg";
 
 import Image from "astro/components/Image.astro";
+import fugroLogo from "../assets/logos/fugro.svg";
 import { AnimatedDemoTabs } from "../components/AnimatedDemoTabs";
 import Card from "../components/Card.astro";
 import Footer from "../components/Footer.astro";
@@ -75,20 +76,19 @@ import "../styles/custom.css";
 
       <section class="worked-with"></section>
 
-      <!-- <section class="worked-with"> -->
-      <!-- <h2>We have worked with</h2> -->
-      <!-- <h2 style="color: var(--gray-10);" class="text-left">Trusted by</h2>
+      <section class="worked-with">
+        <h2 style="color: var(--gray-10); text-align: center; margin-inline: auto;">We have worked with</h2>
 
         <div class="client-logos pt-6">
           <img src={fugroLogo.src} alt="Fugro" />
-          <img src={zeelandLogo.src} alt="Zeeland" />
-          <img src={tnoGdnLogo.src} alt="TNO-GDN" />
         </div>
+        <!-- <img src={zeelandLogo.src} alt="Zeeland" /> -->
+        <!-- <img src={tnoGdnLogo.src} alt="TNO-GDN" /> -->
 
-        <div style="margin-top: 32px; text-align: center;">
+        <!-- <div style="margin-top: 32px; text-align: center;">
           <a href="/cases" class="section-link">View case studies →</a>
-        </div>
-      </section> -->
+        </div> -->
+      </section>
     </div>
 
     <div class="section-wrapper texture-232-k">
@@ -130,19 +130,21 @@ import "../styles/custom.css";
             <ul class="services-list paragraph">
               <li>
                 Convert legacy formats (AGS, GEF/CPT, gINT) into modern
-                geospatial formats like GeoPackage or geospatial databases like PostGIS
+                geospatial formats like GeoPackage or geospatial databases like
+                PostGIS
               </li>
               <li>
-                Build web applications for CPT data management, engineering model
-                visualization (Plaxis, Deltares D-Series), and interactive 3D maps
+                Build web applications for CPT data management, engineering
+                model visualization (Plaxis, Deltares D-Series), and interactive
+                3D maps
               </li>
               <li>
                 Integrate ground investigation data into digital twin platforms
                 for infrastructure planning
               </li>
               <li>
-                Create automated workflows connecting subsurface data to
-                QGIS, BIM platforms, and design tools
+                Create automated workflows connecting subsurface data to QGIS,
+                BIM platforms, and design tools
               </li>
             </ul>
           </div>
