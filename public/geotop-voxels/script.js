@@ -359,6 +359,9 @@ function createPrimitive(provider) {
       }
       console.log("Voxel bounds:", voxelBounds);
 
+      // Apply current vertical exaggeration
+      setVoxelExaggeration(voxelPrimitive, voxelExaggeration);
+
       // Fly to bounding sphere
       camera.flyToBoundingSphere(voxelPrimitive.boundingSphere, {
         duration: 0.0,
@@ -376,18 +379,52 @@ function createPrimitive(provider) {
 
 const voxelPrim = createPrimitive(voxelProvider);
 
-// document
-//   .querySelector("#vertical-exaggeration")
-//   ?.addEventListener("input", (event) => {
-//     const verticalExaggeration = event.target.valueAsNumber;
-//     console.log("Setting vertical exaggeration to:", verticalExaggeration);
+// Vertical exaggeration — applied only to the voxel primitive via modelMatrix.
+// Scales the voxel volume in the local vertical (Up) direction, anchored at the
+// terrain surface so shallow voxels stay near the surface and deep ones stretch down.
+let voxelExaggeration = 1;
 
-//     scene.verticalExaggeration = verticalExaggeration;
+function setVoxelExaggeration(primitive, exaggeration) {
+  if (!primitive || !primitive.ready) return;
 
-//     if (currentVoxelPrimitive) {
-//       currentVoxelPrimitive.verticalExaggeration = verticalExaggeration;
-//     }
-//   });
+  if (exaggeration === 1) {
+    primitive.modelMatrix = Cesium.Matrix4.clone(Cesium.Matrix4.IDENTITY);
+    return;
+  }
+
+  // Surface point directly above the voxel centre (height = 0 = sea level).
+  // Scaling from here keeps the surface-level voxels stationary and stretches
+  // deeper voxels further underground.
+  const center = primitive.boundingSphere.center;
+  const carto = Cesium.Cartographic.fromCartesian(center);
+  carto.height = 0;
+  const surfacePoint = Cesium.Cartographic.toCartesian(carto);
+
+  // ENU frame at surface: Z axis = vertical "up".
+  const enuToEcef = Cesium.Transforms.eastNorthUpToFixedFrame(surfacePoint);
+  const ecefToEnu = Cesium.Matrix4.inverse(enuToEcef, new Cesium.Matrix4());
+
+  // Non-uniform scale: keep X/Y, stretch Z (vertical) by exaggeration factor.
+  const scaleMatrix = Cesium.Matrix4.fromScale(
+    new Cesium.Cartesian3(1, 1, exaggeration),
+  );
+
+  // modelMatrix = enuToEcef * scale * ecefToEnu
+  const result = new Cesium.Matrix4();
+  Cesium.Matrix4.multiply(enuToEcef, scaleMatrix, result);
+  Cesium.Matrix4.multiply(result, ecefToEnu, result);
+
+  primitive.modelMatrix = result;
+}
+
+document
+  .querySelector("#vertical-exaggeration")
+  ?.addEventListener("input", (event) => {
+    voxelExaggeration = event.target.valueAsNumber;
+    if (currentVoxelPrimitive?.ready) {
+      setVoxelExaggeration(currentVoxelPrimitive, voxelExaggeration);
+    }
+  });
 
 // Globe opacity slider
 document.querySelector("#alpha")?.addEventListener("input", (event) => {
