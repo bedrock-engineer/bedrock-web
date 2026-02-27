@@ -2,6 +2,8 @@
 import kaiTakSpeckle from "../assets/KaiTak_BrGI_Speckle.png";
 import kaiTakArcGIS from "../assets/KaiTak_BrGI_ArcGIS.webp";
 import kaiTakCesium from "../assets/hk_kaitak_cesium.webp";
+import antwerpen from "../assets/antwerpen.png";
+import zalmhaven from "../assets/zalmhaven.jpeg";
 import geotop from "../assets/geotop.png";
 import broCpt from "../assets/bro-cpt.png";
 import gefApp from "../assets/gef.webp";
@@ -14,6 +16,7 @@ import Footer from "../components/Footer.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import DemoCard from "../components/DemoCard.astro";
 import "../styles/custom.css";
+import Link from "../components/Link.astro";
 
 const title =
   "Interactive Ground Investigation Demos - CesiumJS, GEF Viewer, Speckle, ArcGIS | Bedrock.engineer";
@@ -22,44 +25,24 @@ const description =
 ---
 
 <BaseLayout title={title} description={description}>
-  <!-- Page-specific SEO meta tags -->
   <Fragment slot="head">
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://bedrock.engineer/demos" />
 
-    <!-- Page-specific keywords for niche search terms -->
-    <meta
-      name="keywords"
-      content="ground investigation demo, borehole visualization, CesiumJS ground investigation, GEF viewer, CPT data viewer, Speckle geotechnical, AGS4 visualization, subsurface data visualization, 3D borehole map, geotechnical data browser, BRO viewer, ground investigation software demo, geospatial subsurface data, interactive borehole logs, CPT visualization tool"
-    />
-
-    <!-- Enhanced Open Graph for better social sharing -->
     <meta property="og:url" content="https://bedrock.engineer/demos" />
     <meta property="og:site_name" content="Bedrock.engineer" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
 
-    <!-- Enhanced Twitter Card -->
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
 
-    <!-- Author & Robots directives -->
     <meta name="author" content="Bedrock.engineer" />
     <meta
       name="robots"
       content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
     />
-
-    <!-- Language alternatives (hreflang) -->
-    <!-- <link rel="alternate" hreflang="en" href="https://bedrock.engineer/demos" />
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href="https://bedrock.engineer/demos"
-    /> -->
   </Fragment>
 
-  <!-- Structured Data for Services -->
   <script
     is:inline
     type="application/ld+json"
@@ -222,6 +205,21 @@ const description =
           </DemoCard>
 
           <DemoCard
+            title="Antwerp Geological Model - CesiumJS"
+            href="https://antwerpen.bedrock.engineer"
+            linkText="Explore demo"
+            image={antwerpen}
+          >
+            <Fragment slot="description">
+              The Flemish DOV shallow subsurface model of the Antwerp urban
+              region and harbor visualized as 3D Tiles Voxels in CesiumJS.
+              Explore 25×25×0.5 metre voxels — over 21 million in total —
+              containing proportional lithological composition (peat, clay,
+              silt, sand, gravel) from ground level to 50 metres depth.
+            </Fragment>
+          </DemoCard>
+
+          <DemoCard
             title="Dutch BRO CPTs - MapLibre GL & PMTiles"
             image={broCpt}
             href="https://bedrock.engineer/bro-cpt"
@@ -284,6 +282,34 @@ const description =
               Geological data visualization in Speckle showing subsurface
               conditions for infrastructure planning and design coordination.
             </Fragment>
+          </DemoCard>
+
+          <DemoCard
+            title="Rotterdam Buildings & GeoTOP - Speckle"
+            image={zalmhaven}
+            imageAlt="Building model of the De Zalmhaven along with foundation and GeoTOP voxel model in Speckle"
+          >
+            <Fragment slot="description">
+              Prominent Rotterdam buildings (Zalmhaven, Maastoren, and
+              Blaak/Markthal) shown in Speckle together with their foundations
+              and the GeoTOP voxel model. GeoTOP represents the first 50 metres
+              of the Dutch subsurface as 100×100×0.5 m voxels containing
+              lithoclass and lithology information.
+            </Fragment>
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <Link
+                href="https://app.speckle.systems/projects/adc3bec4c0/models/$zalmhaven"
+                variant="arrow">De Zalmhaven</Link
+              >
+              <Link
+                href="https://app.speckle.systems/projects/adc3bec4c0/models/$maastoren"
+                variant="arrow">Maastoren</Link
+              >
+              <Link
+                href="https://app.speckle.systems/projects/adc3bec4c0/models/$blaak-markthal"
+                variant="arrow">Blaak / Markthal</Link
+              >
+            </div>
           </DemoCard>
         </div>
       </section>
