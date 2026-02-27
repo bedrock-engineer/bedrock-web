@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -18,11 +18,17 @@
 
     <link rel="canonical" href="https://bedrock.engineer/geotop-voxels/" />
 
-    <!-- Facebook Meta Tags -->
+    <!-- OpenGraph Meta Tags -->
     <meta property="og:url" content="https://bedrock.engineer/geotop-voxels/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="GeoTOP 3DTiles Voxels — Bedrock.engineer" />
-    <meta property="og:description" content="" />
+    <meta
+      property="og:title"
+      content="GeoTOP 3DTiles Voxels — Bedrock.engineer"
+    />
+    <meta
+      property="og:description"
+      content="Explore the Dutch GeoTOP geological model in 3D directly in your browser, using CesiumJS and the 3D Tiles Voxel extension."
+    />
     <meta
       property="og:image"
       content="https://bedrock.engineer/geotop-voxels/og-voxel.png"
@@ -35,7 +41,10 @@
       property="twitter:url"
       content="https://bedrock.engineer/geotop-voxels/"
     />
-    <meta name="twitter:title" content="GeoTOP 3DTiles Voxels — Bedrock.engineer" />
+    <meta
+      name="twitter:title"
+      content="GeoTOP as 3DTiles Voxels — Bedrock.engineer"
+    />
     <meta
       name="twitter:description"
       content="Explore the Dutch GeoTOP geological model in 3D directly in your browser, using CesiumJS and the 3D Tiles Voxel extension."
@@ -277,33 +286,96 @@
         <input type="checkbox" id="show-edges" />
         <span>Show voxel edges</span>
       </label>
+<!-- 
+      <div class="z-controls">
+        <label>
+          <span>Vertical exaggeration</span>
+          <input
+            type="range"
+            id="vertical-exaggeration"
+            min="1"
+            max="100"
+            step="1"
+            value="1"
+          />
+        </label>
+      </div> -->
 
       <div class="clipping-controls">
         <h3>Clipping</h3>
+
         <label>
           <span>X min</span>
-          <input type="range" id="clip-x-min" min="0" max="1" step="0.01" value="0" />
+          <input
+            type="range"
+            id="clip-x-min"
+            min="0"
+            max="1"
+            step="0.01"
+            value="0"
+          />
         </label>
+
         <label>
           <span>X max</span>
-          <input type="range" id="clip-x-max" min="0" max="1" step="0.01" value="1" />
+          <input
+            type="range"
+            id="clip-x-max"
+            min="0"
+            max="1"
+            step="0.01"
+            value="1"
+          />
         </label>
+
         <label>
           <span>Y min</span>
-          <input type="range" id="clip-y-min" min="0" max="1" step="0.01" value="0" />
+          <input
+            type="range"
+            id="clip-y-min"
+            min="0"
+            max="1"
+            step="0.01"
+            value="0"
+          />
         </label>
+
         <label>
           <span>Y max</span>
-          <input type="range" id="clip-y-max" min="0" max="1" step="0.01" value="1" />
+          <input
+            type="range"
+            id="clip-y-max"
+            min="0"
+            max="1"
+            step="0.01"
+            value="1"
+          />
         </label>
+
         <label>
           <span>Z min</span>
-          <input type="range" id="clip-z-min" min="0" max="1" step="0.01" value="0" />
+          <input
+            type="range"
+            id="clip-z-min"
+            min="0"
+            max="1"
+            step="0.01"
+            value="0"
+          />
         </label>
+
         <label>
           <span>Z max</span>
-          <input type="range" id="clip-z-max" min="0" max="1" step="0.01" value="1" />
+          <input
+            type="range"
+            id="clip-z-max"
+            min="0"
+            max="1"
+            step="0.01"
+            value="1"
+          />
         </label>
+
         <button id="reset-clipping" type="button">Reset</button>
       </div>
 
@@ -319,51 +391,61 @@
           <div class="legend-rect" style="background: rgb(200, 200, 200)"></div>
           <label for="class-0">antropogeen</label>
         </div>
+
         <div class="legend-item" data-class="1">
           <input type="checkbox" checked id="class-1" />
           <div class="legend-rect" style="background: rgb(157, 78, 64)"></div>
           <label for="class-1">organisch materiaal (veen)</label>
         </div>
+
         <div class="legend-item" data-class="2">
           <input type="checkbox" checked id="class-2" />
           <div class="legend-rect" style="background: rgb(0, 146, 0)"></div>
           <label for="class-2">klei</label>
         </div>
+
         <div class="legend-item" data-class="3">
           <input type="checkbox" checked id="class-3" />
           <div class="legend-rect" style="background: rgb(194, 207, 92)"></div>
           <label for="class-3">kleiig zand, zandige klei en leem</label>
         </div>
+
         <div class="legend-item" data-class="4">
           <input type="checkbox" checked id="class-4" />
           <div class="legend-rect" style="background: rgb(243, 225, 6)"></div>
           <label for="class-4">zand niet gedifferentieerd</label>
         </div>
+
         <div class="legend-item" data-class="5">
           <input type="checkbox" checked id="class-5" />
           <div class="legend-rect" style="background: rgb(255, 255, 0)"></div>
           <label for="class-5">zand fijn</label>
         </div>
+
         <div class="legend-item" data-class="6">
           <input type="checkbox" checked id="class-6" />
           <div class="legend-rect" style="background: rgb(243, 225, 6)"></div>
           <label for="class-6">zand midden</label>
         </div>
+
         <div class="legend-item" data-class="7">
           <input type="checkbox" checked id="class-7" />
           <div class="legend-rect" style="background: rgb(231, 195, 22)"></div>
           <label for="class-7">zand grof</label>
         </div>
+
         <div class="legend-item" data-class="8">
           <input type="checkbox" checked id="class-8" />
           <div class="legend-rect" style="background: rgb(216, 163, 32)"></div>
           <label for="class-8">grind</label>
         </div>
+
         <div class="legend-item" data-class="9">
           <input type="checkbox" checked id="class-9" />
           <div class="legend-rect" style="background: rgb(95, 95, 255)"></div>
           <label for="class-9">schelpen</label>
         </div>
+
         <div class="legend-item" data-class="10">
           <input type="checkbox" checked id="class-10" />
           <div class="legend-rect" style="background: rgb(144, 144, 144)"></div>

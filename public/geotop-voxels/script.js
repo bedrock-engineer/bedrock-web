@@ -1,44 +1,52 @@
+const nlRectangle = Cesium.Rectangle.fromDegrees(3, 50.7, 7.3, 53.6);
+
 const viewer = new Cesium.Viewer("map", {
   animation: false,
   timeline: false,
+  terrainProvider: await Cesium.CesiumTerrainProvider.fromUrl(
+    "https://api.pdok.nl/kadaster/3d-basisvoorziening/ogc/v1_0/collections/digitaalterreinmodel/quantized-mesh",
+  ),
+  // terrain: Cesium.Terrain.fromWorldTerrain(),
   fullscreenButton: false,
   vrButton: false,
   sceneModePicker: false,
   baseLayerPicker: false,
+  imageryProvider: false, // no default Bing layer
+
   navigationHelpButton: false,
   geocoder: false,
   homeButton: false,
 });
 
-// viewer.scene.verticalExaggeration = 2.0;
-// const viewModel = {
-//   exaggeration: scene.verticalExaggeration,
-//   relativeHeight: scene.verticalExaggerationRelativeHeight,
-// };
+const { scene, camera } = viewer;
+const { globe } = scene;
 
-// function updateExaggeration() {
-//   scene.verticalExaggeration = Number(viewModel.exaggeration);
-//   scene.verticalExaggerationRelativeHeight = Number(viewModel.relativeHeight);
-// }
+scene.pickTranslucentDepth = false;
+scene.postProcessStages.fxaa.enabled = false;
+scene.fog.enabled = false;
 
-const osm = new Cesium.OpenStreetMapImageryProvider({
-  url: "https://tile.openstreetmap.org/",
-});
+scene.highDynamicRange = false;
+scene.msaaSamples = 1; 
 
-const defaultImageryLayer = viewer.imageryLayers.get(0);
+scene.postProcessStages.ambientOcclusion.enabled = false;
+scene.postProcessStages.bloom.enabled = false;
 
-const customImageryLayer = viewer.imageryLayers.addImageryProvider(osm);
+scene.skyAtmosphere.show = false;
+scene.skyBox.show = false;
+scene.sun.show = false;
+scene.moon.show = false;
+
+globe.showGroundAtmosphere = false;
+globe.enableLighting = false;
+
 
 Cesium.Ion.defaultAccessToken = null;
-// // Cesium.Ion.defaultAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIwNGFmOTJiZS0xMjJjLTRkNTYtYWU5NC05N2Y5ODZjNzQ4ZTQiLCJpZCI6Mjc0NDQ3LCJpYXQiOjE3MzkwMzUxNjV9.Vj6tRACNQvvjbzD1KJ0tccLziszrNXo6JIHv-as9kuE"
-// //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0MzY1NjhhNi03YjczLTRlZDQtODAyZS03YzgyZTFkZmUyYjYiLCJpZCI6Mjc0NDQ3LCJpYXQiOjE3NjIyNDU4Nzl9.3erU3gM4MU7Bl2bWMVVRwkE6CEQmYhrJAl1pTQCija8";
 
 // viewer.extend(Cesium.viewerVoxelInspectorMixin);
 
 const initAlpha = 0.4;
 // Configure globe for underground visualization
 // https://cesium.com/blog/2020/06/16/visualizing-underground/
-const { globe } = viewer.scene;
 globe.translucency.enabled = true;
 globe.depthTestAgainstTerrain = true;
 // globe.translucency.frontFaceAlpha = initAlpha;
@@ -46,20 +54,34 @@ globe.translucency.frontFaceAlphaByDistance = new Cesium.NearFarScalar(
   200, // The lower bound of the camera range.
   0.1, // Minimum alpha at close distance
   800, // The upper bound of the camera range.
-  initAlpha //  Maximum alpha at far distance
+  initAlpha, //  Maximum alpha at far distance
 );
 globe.translucency.backFaceAlpha = 1.0; // Keep back face opaque
 
 // globe.undergroundColor = Cesium.Color.fromCssColorString("#e8e4e0"); // Solid color to block view to opposite side of globe
 // globe.translucency.backFaceAlpha = 1.0; // Keep back face opaque so we don't see the opposite side of the globe
 
-// const terrainProvider = await Cesium.CesiumTerrainProvider.fromUrl(
-//   "https://api.pdok.nl/kadaster/3d-basisvoorziening/ogc/v1_0/collections/digitaalterreinmodel/quantized-mesh"
-// );
+// const terrainProvider =
 // viewer.scene.terrainProvider = terrainProvider;
 
-viewer.scene.globe.depthTestAgainstTerrain = true;
-viewer.scene.screenSpaceCameraController.enableCollisionDetection = false; // So we can move the camera below the surface
+const bgt = new Cesium.WebMapTileServiceImageryProvider({
+  url: "https://service.pdok.nl/brt/achtergrondkaart/wmts/v2_0?",
+  layer: "standaard",
+  style: "default",
+  format: "image/png",
+  tileMatrixSetID: "EPSG:3857",
+  rectangle: nlRectangle,
+  minimumLevel: 7, // start where tiles actually exist
+  maximumLevel: 18, // PDOK max zoom
+  credit: new Cesium.Credit(
+    'BGT (Basisregistratie Grootschalige Topografie) - <a href="https://www.pdok.nl/introductie/-/article/basisregistratie-grootschalige-topografie-bgt-">PDOK</a>',
+  ),
+});
+
+viewer.imageryLayers.addImageryProvider(bgt);
+
+scene.globe.depthTestAgainstTerrain = true;
+scene.screenSpaceCameraController.enableCollisionDetection = false; // So we can move the camera below the surface
 
 const tileset = "delft_10x";
 const datasets = [
@@ -76,14 +98,11 @@ const datasets = [
 const currentDataset = datasets.find((d) => d.enabled);
 
 const voxelProvider = await Cesium.Cesium3DTilesVoxelProvider.fromUrl(
-  `${currentDataset.url}/tileset.json`
+  `${currentDataset.url}/tileset.json`,
 );
 
 // Visibility state for each class (1.0 = visible, 0.0 = hidden)
 const classVisibility = {
-  // u_visibility0: classes 0-3
-  // u_visibility1: classes 4-7
-  // u_visibility2: classes 8-10 (+ 1 unused)
   u_visibility0: new Cesium.Cartesian4(1.0, 1.0, 1.0, 1.0),
   u_visibility1: new Cesium.Cartesian4(1.0, 1.0, 1.0, 1.0),
   u_visibility2: new Cesium.Cartesian4(1.0, 1.0, 1.0, 1.0),
@@ -183,7 +202,7 @@ const lithoColorShader = new Cesium.CustomShader({
         material.diffuse = color;
         // CRITICAL: Alpha must be < 1.0 for volumetric rendering
         // Lower alpha = more transparent = can see through sparse layers
-        material.alpha = 0.8;
+        material.alpha = 0.5;
       }
     `,
 });
@@ -195,22 +214,34 @@ function setClassVisibility(classId, visible) {
   if (classId < 4) {
     const vec = classVisibility.u_visibility0;
     if (classId === 0) vec.x = value;
-    else if (classId === 1) vec.y = value;
-    else if (classId === 2) vec.z = value;
-    else if (classId === 3) vec.w = value;
+    else if (classId === 1) {
+      vec.y = value;
+    } else if (classId === 2) {
+      vec.z = value;
+    } else if (classId === 3) {
+      vec.w = value;
+    }
     lithoColorShader.setUniform("u_visibility0", vec);
   } else if (classId < 8) {
     const vec = classVisibility.u_visibility1;
     if (classId === 4) vec.x = value;
-    else if (classId === 5) vec.y = value;
-    else if (classId === 6) vec.z = value;
-    else if (classId === 7) vec.w = value;
+    else if (classId === 5) {
+      vec.y = value;
+    } else if (classId === 6) {
+      vec.z = value;
+    } else if (classId === 7) {
+      vec.w = value;
+    }
     lithoColorShader.setUniform("u_visibility1", vec);
   } else {
     const vec = classVisibility.u_visibility2;
-    if (classId === 8) vec.x = value;
-    else if (classId === 9) vec.y = value;
-    else if (classId === 10) vec.z = value;
+    if (classId === 8) {
+      vec.x = value;
+    } else if (classId === 9) {
+      vec.y = value;
+    } else if (classId === 10) {
+      vec.z = value;
+    }
     lithoColorShader.setUniform("u_visibility2", vec);
   }
 }
@@ -220,9 +251,12 @@ let currentVoxelPrimitive = null;
 
 // Store actual voxel bounds for slider mapping
 let voxelBounds = {
-  minX: 0, maxX: 1,
-  minY: 0, maxY: 1,
-  minZ: 0, maxZ: 1,
+  minX: 0,
+  maxX: 1,
+  minY: 0,
+  maxY: 1,
+  minZ: 0,
+  maxZ: 1,
 };
 
 // Clipping state (using -Infinity/Infinity means no clipping on that axis)
@@ -236,14 +270,16 @@ const clippingState = {
 };
 
 function createPrimitive(provider) {
-  viewer.scene.primitives.removeAll();
+  scene.primitives.removeAll();
 
-  const voxelPrimitive = viewer.scene.primitives.add(
+  const voxelPrimitive = scene.primitives.add(
     new Cesium.VoxelPrimitive({
       provider: provider,
       customShader: lithoColorShader,
-    })
+    }),
   );
+
+  // viewer.voxelInspector.viewModel.voxelPrimitive = voxelPrimitive;
 
   voxelPrimitive.nearestSampling = true;
   voxelPrimitive.jitter = false; // Disable jitter for more consistent volume rendering
@@ -264,12 +300,13 @@ function createPrimitive(provider) {
   voxelPrimitive.minClippingBounds = new Cesium.Cartesian3(
     clippingState.minX,
     clippingState.minY,
-    clippingState.minZ
+    clippingState.minZ,
   );
+
   voxelPrimitive.maxClippingBounds = new Cesium.Cartesian3(
     clippingState.maxX,
     clippingState.maxY,
-    clippingState.maxZ
+    clippingState.maxZ,
   );
 
   // Wait for the primitive to be ready before positioning camera
@@ -312,15 +349,18 @@ function createPrimitive(provider) {
         const sphere = prim.boundingSphere;
         const r = sphere.radius;
         voxelBounds = {
-          minX: -r, maxX: r,
-          minY: -r, maxY: r,
-          minZ: -r, maxZ: r,
+          minX: -r,
+          maxX: r,
+          minY: -r,
+          maxY: r,
+          minZ: -r,
+          maxZ: r,
         };
       }
       console.log("Voxel bounds:", voxelBounds);
 
       // Fly to bounding sphere
-      viewer.camera.flyToBoundingSphere(voxelPrimitive.boundingSphere, {
+      camera.flyToBoundingSphere(voxelPrimitive.boundingSphere, {
         duration: 0.0,
       });
     } else {
@@ -335,6 +375,19 @@ function createPrimitive(provider) {
 }
 
 const voxelPrim = createPrimitive(voxelProvider);
+
+// document
+//   .querySelector("#vertical-exaggeration")
+//   ?.addEventListener("input", (event) => {
+//     const verticalExaggeration = event.target.valueAsNumber;
+//     console.log("Setting vertical exaggeration to:", verticalExaggeration);
+
+//     scene.verticalExaggeration = verticalExaggeration;
+
+//     if (currentVoxelPrimitive) {
+//       currentVoxelPrimitive.verticalExaggeration = verticalExaggeration;
+//     }
+//   });
 
 // Globe opacity slider
 document.querySelector("#alpha")?.addEventListener("input", (event) => {
@@ -363,12 +416,12 @@ function updateClipping() {
     currentVoxelPrimitive.minClippingBounds = new Cesium.Cartesian3(
       clippingState.minX,
       clippingState.minY,
-      clippingState.minZ
+      clippingState.minZ,
     );
     currentVoxelPrimitive.maxClippingBounds = new Cesium.Cartesian3(
       clippingState.maxX,
       clippingState.maxY,
-      clippingState.maxZ
+      clippingState.maxZ,
     );
   }
 }
@@ -377,37 +430,70 @@ function updateClipping() {
 // At 0 for min sliders -> -Infinity (no clipping)
 // At 1 for max sliders -> Infinity (no clipping)
 function sliderToClipMin(sliderVal, boundsMin, boundsMax) {
-  if (sliderVal <= 0.001) return -Infinity;
+  if (sliderVal <= 0.001) {
+    return -Infinity;
+  }
   return boundsMin + sliderVal * (boundsMax - boundsMin);
 }
 
 function sliderToClipMax(sliderVal, boundsMin, boundsMax) {
-  if (sliderVal >= 0.999) return Infinity;
+  if (sliderVal >= 0.999) {
+    return Infinity;
+  }
   return boundsMin + sliderVal * (boundsMax - boundsMin);
 }
 
 document.getElementById("clip-x-min")?.addEventListener("input", (e) => {
-  clippingState.minX = sliderToClipMin(e.target.valueAsNumber, voxelBounds.minX, voxelBounds.maxX);
+  clippingState.minX = sliderToClipMin(
+    e.target.valueAsNumber,
+    voxelBounds.minX,
+    voxelBounds.maxX,
+  );
   updateClipping();
 });
+
 document.getElementById("clip-x-max")?.addEventListener("input", (e) => {
-  clippingState.maxX = sliderToClipMax(e.target.valueAsNumber, voxelBounds.minX, voxelBounds.maxX);
+  clippingState.maxX = sliderToClipMax(
+    e.target.valueAsNumber,
+    voxelBounds.minX,
+    voxelBounds.maxX,
+  );
   updateClipping();
 });
+
 document.getElementById("clip-y-min")?.addEventListener("input", (e) => {
-  clippingState.minY = sliderToClipMin(e.target.valueAsNumber, voxelBounds.minY, voxelBounds.maxY);
+  clippingState.minY = sliderToClipMin(
+    e.target.valueAsNumber,
+    voxelBounds.minY,
+    voxelBounds.maxY,
+  );
   updateClipping();
 });
+
 document.getElementById("clip-y-max")?.addEventListener("input", (e) => {
-  clippingState.maxY = sliderToClipMax(e.target.valueAsNumber, voxelBounds.minY, voxelBounds.maxY);
+  clippingState.maxY = sliderToClipMax(
+    e.target.valueAsNumber,
+    voxelBounds.minY,
+    voxelBounds.maxY,
+  );
   updateClipping();
 });
+
 document.getElementById("clip-z-min")?.addEventListener("input", (e) => {
-  clippingState.minZ = sliderToClipMin(e.target.valueAsNumber, voxelBounds.minZ, voxelBounds.maxZ);
+  clippingState.minZ = sliderToClipMin(
+    e.target.valueAsNumber,
+    voxelBounds.minZ,
+    voxelBounds.maxZ,
+  );
   updateClipping();
 });
+
 document.getElementById("clip-z-max")?.addEventListener("input", (e) => {
-  clippingState.maxZ = sliderToClipMax(e.target.valueAsNumber, voxelBounds.minZ, voxelBounds.maxZ);
+  clippingState.maxZ = sliderToClipMax(
+    e.target.valueAsNumber,
+    voxelBounds.minZ,
+    voxelBounds.maxZ,
+  );
   updateClipping();
 });
 
@@ -437,11 +523,11 @@ function generateDatasetControls() {
       (dataset) => `
   <div class="radio-item">
     <input type="radio" name="dataset"  id="${dataset.name}-radio" ${
-        dataset.enabled ? "checked" : ""
-      }>
+      dataset.enabled ? "checked" : ""
+    }>
     <label for="${dataset.name}-radio">${dataset.name}</label>
   </div>
-`
+`,
     )
     .join("");
 
@@ -455,7 +541,7 @@ function generateDatasetControls() {
       dataset.enabled = event.target.checked;
       if (event.target.checked) {
         const voxelProvider = await Cesium.Cesium3DTilesVoxelProvider.fromUrl(
-          `${dataset.url}/tileset.json`
+          `${dataset.url}/tileset.json`,
         );
 
         const voxelPrim = createPrimitive(voxelProvider);
