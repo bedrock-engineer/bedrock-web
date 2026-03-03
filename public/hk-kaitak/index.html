@@ -1,128 +1,416 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bedrock.engineer Hong Kong 3D Geotechnical Data Viewer - CesiumJS</title>
-    <!-- Include the CesiumJS JavaScript and CSS files -->
+    <title>
+      Hong Kong 3D Geotechnical Data Viewer in CesiumJS | Bedrock.engineer
+    </title>
+
+    <link rel="icon" href="/bedrock.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+
+    <!-- SEO -->
+    <meta name="description" content="Explore 3D geotechnical ground investigation data from the Kai Tak development area in Hong Kong — boreholes, weathering grades, and SPT values visualised in your browser using CesiumJS." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.bedrock.engineer/hk-kaitak/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.bedrock.engineer/hk-kaitak/" />
+    <meta property="og:title" content="Hong Kong 3D Geotechnical Data Viewer in CesiumJS | Bedrock.engineer" />
+    <meta property="og:description" content="Explore 3D geotechnical ground investigation data from the Kai Tak development area in Hong Kong — boreholes, weathering grades, and SPT values visualised in your browser using CesiumJS." />
+    <meta property="og:image" content="https://www.bedrock.engineer/hk-kaitak/og-hk-kaitak.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="3D view of borehole and geotechnical data over Kai Tak, Hong Kong" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Bedrock.engineer" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="www.bedrock.engineer" />
+    <meta name="twitter:title" content="Hong Kong 3D Geotechnical Data Viewer | Bedrock.engineer" />
+    <meta name="twitter:description" content="Explore 3D geotechnical ground investigation data from the Kai Tak development area in Hong Kong — boreholes, weathering grades, and SPT values in your browser." />
+    <meta name="twitter:image" content="https://www.bedrock.engineer/hk-kaitak/og-hk-kaitak.png" />
+    <meta name="twitter:image:alt" content="3D view of borehole and geotechnical data over Kai Tak, Hong Kong" />
+
     <script src="https://cesium.com/downloads/cesiumjs/releases/1.133/Build/Cesium/Cesium.js"></script>
     <link
       href="https://cesium.com/downloads/cesiumjs/releases/1.133/Build/Cesium/Widgets/widgets.css"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      /* === Green palette === */
+      :root {
+        --green-1: #10130f;
+        --green-2: #151a14;
+        --green-3: #1e261c;
+        --green-4: #253123;
+        --green-5: #2c3b2a;
+        --green-6: #354732;
+        --green-7: #40563c;
+        --green-8: #526d4d;
+        --green-9: #627e5d;
+        --green-10: #557150;
+        --green-11: #adcba7;
+        --green-12: #ddf6d9;
+      }
+
+      /* === Tokens — light mode === */
+      :root {
+        --panel-bg: rgba(255, 255, 255, 0.9);
+        --panel-border: rgba(0, 0, 0, 0.07);
+        --panel-header-border: rgba(0, 0, 0, 0.06);
+        --text-primary: rgba(0, 0, 0, 0.82);
+        --text-muted: rgba(0, 0, 0, 0.4);
+        --checkbox-bg: rgba(0, 0, 0, 0.04);
+        --checkbox-border: rgba(0, 0, 0, 0.2);
+        --accent: var(--green-7);
+        --accent-bg: rgba(64, 86, 60, 0.08);
+        --accent-border: rgba(64, 86, 60, 0.25);
+        --accent-text: var(--green-7);
+        --accent-text-hover: var(--green-5);
+        --range-track: rgba(0, 0, 0, 0.1);
+        --section-border: rgba(0, 0, 0, 0.06);
+        --scrollbar: rgba(0, 0, 0, 0.12);
+        --canvas-border: rgba(0, 0, 0, 0.12);
+        --sequential-label: rgba(0, 0, 0, 0.45);
+      }
+
+      /* === Tokens — dark mode === */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --panel-bg: rgba(21, 26, 20, 0.88);
+          --panel-border: rgba(255, 255, 255, 0.08);
+          --panel-header-border: rgba(255, 255, 255, 0.06);
+          --text-primary: rgba(255, 255, 255, 0.82);
+          --text-muted: rgba(255, 255, 255, 0.4);
+          --checkbox-bg: rgba(255, 255, 255, 0.05);
+          --checkbox-border: rgba(255, 255, 255, 0.2);
+          --accent: var(--green-9);
+          --accent-bg: var(--green-3);
+          --accent-border: var(--green-7);
+          --accent-text: var(--green-11);
+          --accent-text-hover: var(--green-12);
+          --range-track: var(--green-8);
+          --section-border: rgba(255, 255, 255, 0.06);
+          --scrollbar: var(--green-5);
+          --canvas-border: var(--green-6);
+          --sequential-label: var(--green-11);
+        }
+      }
+
+      /* === Base === */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
-        font-family: sans-serif;
-        font-size: 12px;
-      }
-
-      .panel {
-        position: absolute;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 2px;
-        padding: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        z-index: 10;
-      }
-
-      h2 {
-        margin: 0;
-        margin-bottom: 4px;
+        font-family:
+          "IBM Plex Sans",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        font-size: 13px;
+        overflow: hidden;
       }
 
       #map {
-        background: gray;
-        height: 100vh;
+        height: 100dvh;
         width: 100%;
+        background: #0c0e14;
       }
 
-      #datasets {
-        top: 10px;
-        left: 10px;
-        max-width: 200px;
+      /* === Layout === */
+      .left-panels {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        z-index: 10;
       }
 
-      #controls {
-        top: 300px;
-        left: 10px;
-        max-width: 130px;
+      .panel {
+        background: var(--panel-bg);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid var(--panel-border);
+        border-radius: 2px;
+        overflow: hidden;
+        width: 185px;
       }
 
       #legend {
-        top: 10px;
-        right: 10px;
-        width: 250px;
-        max-height: 90svh;
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 230px;
+        max-height: calc(100dvh - 24px);
         overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--scrollbar) transparent;
       }
 
-      @media (max-width: 720px) {
-        #legend {
-          top: unset;
-          bottom: 2px;
-          left: 2px;
-        }
-
-        #datasets {
-          left: 2px;
-          top: 2px;
-        }
-
-        #controls {
-          left: unset;
-          right: 2px;
-          top: 2px;
-        }
+      #legend::-webkit-scrollbar {
+        width: 4px;
       }
-
-      #legend section {
+      #legend::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      #legend::-webkit-scrollbar-thumb {
+        background: var(--scrollbar);
         border-radius: 2px;
-        border: lightgray 1px solid;
-        padding: 4px;
       }
 
-      #legend h3 {
-        margin-block: 6px;
-      }
-
-      #legend h4 {
-        margin-block: 4px;
-      }
-
-      .legend-item {
+      /* === Panel header === */
+      .panel summary {
         display: flex;
         align-items: center;
-        margin-bottom: 4px;
+        gap: 8px;
+        padding: 10px 14px;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        border-bottom: 1px solid var(--panel-header-border);
+        cursor: pointer;
+        user-select: none;
+        list-style: none;
       }
 
-      .legend-circle {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        margin-right: 8px;
-        border: 1px solid #878787;
+      .panel summary::-webkit-details-marker {
+        display: none;
+      }
+      .panel-title {
+        flex: 1;
       }
 
+      .panel-arrow {
+        width: 14px;
+        height: 14px;
+        transition: transform 0.2s ease;
+        flex-shrink: 0;
+      }
+
+      details[open] > summary .panel-arrow {
+        transform: rotate(180deg);
+      }
+
+      .panel-body {
+        padding: 10px 14px 12px;
+      }
+
+      /* === Checkboxes === */
       .checkbox-item {
         display: flex;
         align-items: center;
-        margin-bottom: 6px;
-        cursor: pointer;
-      }
-
-      .checkbox-item input[type="checkbox"] {
-        margin-right: 8px;
+        gap: 9px;
+        padding: 4px 0;
         cursor: pointer;
       }
 
       .checkbox-item label {
         cursor: pointer;
         user-select: none;
+        color: var(--text-primary);
+        font-size: 12px;
+        line-height: 1.3;
       }
 
-      .sequential-colors {
-        border: 1px solid #d9d9d9;
+      input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 15px;
+        height: 15px;
+        border: 1.5px solid var(--checkbox-border);
+        border-radius: 4px;
+        background: var(--checkbox-bg);
+        cursor: pointer;
+        flex-shrink: 0;
+        transition:
+          background 0.15s,
+          border-color 0.15s;
+        position: relative;
+      }
+
+      input[type="checkbox"]:checked {
+        background: var(--accent);
+        border-color: var(--accent);
+      }
+
+      input[type="checkbox"]:checked::after {
+        content: "";
+        position: absolute;
+        left: 3.5px;
+        top: 0.5px;
+        width: 5px;
+        height: 9px;
+        border: 2px solid #fff;
+        border-top: none;
+        border-left: none;
+        transform: rotate(45deg);
+      }
+
+      /* === Slider === */
+      .slider-label {
+        display: block;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-top: 10px;
+        margin-bottom: 7px;
+      }
+
+      input[type="range"] {
+        width: 100%;
+        appearance: none;
+        -webkit-appearance: none;
+        height: 3px;
+        border-radius: 2px;
+        background: var(--range-track);
+        outline: none;
+        cursor: pointer;
+        display: block;
+      }
+
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: var(--accent);
+        cursor: pointer;
+        box-shadow: 0 0 0 3px var(--accent-bg);
+      }
+
+      input[type="range"]::-moz-range-thumb {
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: var(--accent);
+        border: none;
+        cursor: pointer;
+      }
+
+      /* === Button === */
+      #reset-camera {
+        margin-top: 10px;
+        width: 100%;
+        padding: 7px 12px;
+        cursor: pointer;
+        background: var(--accent-bg);
+        border: 1px solid var(--accent-border);
+        border-radius: 2px;
+        color: var(--accent-text);
+        font-size: 11.5px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        font-family: inherit;
+        transition:
+          background 0.15s,
+          border-color 0.15s,
+          color 0.15s;
+      }
+
+      #reset-camera:hover {
+        background: var(--accent-border);
+        color: var(--accent-text-hover);
+      }
+
+      #reset-camera:active {
+        transform: scale(0.97);
+      }
+
+      /* === Legend === */
+      #legend-details > .legend-section {
+        padding: 10px 14px;
+        border-top: 1px solid var(--section-border);
+      }
+
+      #legend-details > .legend-section:first-of-type {
+        border-top: none;
+      }
+
+      .legend-section h4 {
+        margin: 0 0 8px;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 4px;
+        font-size: 11px;
+        color: var(--text-primary);
+      }
+
+      .legend-circle {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        border: 1px solid var(--panel-border);
+      }
+
+      /* Override inline canvas border from legend.js */
+      #legend-details canvas {
+        border-color: var(--canvas-border) !important;
+        border-radius: 3px;
+        display: block;
+      }
+
+      #legend-details canvas + div {
+        color: var(--sequential-label) !important;
+      }
+
+      /* === Mobile === */
+      @media (max-width: 680px) {
+        .left-panels {
+          top: 8px;
+          left: 8px;
+          right: 8px;
+          flex-direction: row;
+          gap: 6px;
+        }
+
+        .panel {
+          flex: 1;
+          width: auto;
+          min-width: 0;
+        }
+
+        .checkbox-item label {
+          font-size: 11px;
+        }
+
+        #legend {
+          top: auto;
+          bottom: 8px;
+          left: 8px;
+          right: 8px;
+          width: auto;
+          max-height: 50dvh;
+        }
       }
     </style>
   </head>
@@ -130,50 +418,107 @@
     <div id="map"></div>
     <script src="script.js" type="module"></script>
 
-    <div id="datasets" class="panel">
-      <h2>Datasets</h2>
-    </div>
-
-    <div id="controls" class="panel">
-      <h2>Controls</h2>
-
-      <div class="checkbox-item">
-        <input type="checkbox" id="buildings-toggle" checked />
-        <label for="buildings-toggle">3D Buildings</label>
+    <div class="left-panels">
+      <div id="datasets" class="panel">
+        <details open>
+          <summary>
+            <span class="panel-title">Datasets</span>
+            <svg
+              class="panel-arrow"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 5l4 4 4-4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </summary>
+          <div id="datasets-body" class="panel-body">
+            <!-- Dataset checkboxes injected by script.js -->
+          </div>
+        </details>
       </div>
 
-      <div class="checkbox-item">
-        <input type="checkbox" id="terrain-toggle" checked />
-        <label for="terrain-toggle">3D Terrain</label>
+      <div id="controls" class="panel">
+        <details open>
+          <summary>
+            <span class="panel-title">Controls</span>
+            <svg
+              class="panel-arrow"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 5l4 4 4-4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </summary>
+          <div class="panel-body">
+            <div class="checkbox-item">
+              <input type="checkbox" id="buildings-toggle" checked />
+              <label for="buildings-toggle">3D Buildings</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="terrain-toggle" checked />
+              <label for="terrain-toggle">3D Terrain</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="basemap-toggle" />
+              <label for="basemap-toggle">Satellite</label>
+            </div>
+            <span class="slider-label">Basemap opacity</span>
+            <input
+              id="alpha"
+              type="range"
+              min="0.0"
+              max="1.0"
+              step="0.05"
+              value="0.7"
+            />
+            <button id="reset-camera">Reset Camera</button>
+          </div>
+        </details>
       </div>
-
-      <div class="checkbox-item">
-        <input type="checkbox" id="basemap-toggle" />
-        <label for="basemap-toggle">Satellite Imagery</label>
-      </div>
-
-      <label>
-        <span style="display: block">Basemap opacity</span>
-        <input
-          id="alpha"
-          type="range"
-          min="0.0"
-          max="1.0"
-          step="0.05"
-          value="0.7"
-        />
-      </label>
-
-      <button id="reset-camera" style="margin-top: 6px; width: 100%; padding: 4px; cursor: pointer;">
-        Reset Camera
-      </button>
     </div>
 
     <div id="legend" class="panel">
-      <h2>Legend</h2>
-      <details id="legend-details">
-        <summary>Show</summary>
+      <details id="legend-details" open>
+        <summary>
+          <span class="panel-title">Legend</span>
+          <svg
+            class="panel-arrow"
+            viewBox="0 0 14 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 5l4 4 4-4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </summary>
+        <!-- Legend sections injected by script.js -->
       </details>
     </div>
+
+    <!-- Start legend collapsed on small screens -->
+    <script>
+      if (window.matchMedia("(max-width: 680px)").matches) {
+        document.getElementById("legend-details").removeAttribute("open");
+      }
+    </script>
   </body>
 </html>

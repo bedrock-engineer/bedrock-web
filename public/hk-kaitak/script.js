@@ -10,16 +10,15 @@ import {
 } from "https://cdn.jsdelivr.net/npm/d3-scale/+esm";
 import { createOrdinalLegend, createSequentialLegend } from "./legend.js";
 
-// Your access token can be found at: https://ion.cesium.com/tokens.
-// Replace `your_access_token` with your Cesium ion access token.
-Cesium.Ion.defaultAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0MzY1NjhhNi03YjczLTRlZDQtODAyZS03YzgyZTFkZmUyYjYiLCJpZCI6Mjc0NDQ3LCJpYXQiOjE3NjIyNDU4Nzl9.3erU3gM4MU7Bl2bWMVVRwkE6CEQmYhrJAl1pTQCija8";
+Cesium.Ion.defaultAccessToken =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIwNGFmOTJiZS0xMjJjLTRkNTYtYWU5NC05N2Y5ODZjNzQ4ZTQiLCJpZCI6Mjc0NDQ3LCJpYXQiOjE3MzkwMzUxNjV9.Vj6tRACNQvvjbzD1KJ0tccLziszrNXo6JIHv-as9kuE";
 
-// Hong Kong Kai Tak initial camera view
+// Hong Kong Kai Tak
 const initialCameraView = {
   destination: Cesium.Cartesian3.fromDegrees(
     114.19749996664763,
     22.336721619536476,
-    653.3477715430049
+    653.3477715430049,
   ),
   orientation: {
     heading: 3.115321511892013,
@@ -28,7 +27,6 @@ const initialCameraView = {
   },
 };
 
-// Initialize the Cesium Viewer in the HTML element with the `map` ID.
 const viewer = new Cesium.Viewer("map", {
   animation: false,
   timeline: false,
@@ -42,14 +40,15 @@ const viewer = new Cesium.Viewer("map", {
   msaaSamples: 4, // Anti-aliasing can help reduce visual artifacts
 });
 
-// Set initial camera position immediately
+const { scene } = viewer;
+const { globe } = scene;
+
 viewer.camera.setView(initialCameraView);
 
 const osmBuildings = await Cesium.createOsmBuildingsAsync();
 
-// Create terrain providers
 const worldTerrainProvider = await Cesium.CesiumTerrainProvider.fromUrl(
-  Cesium.IonResource.fromAssetId(1) // Asset 1 = Cesium World Terrain
+  Cesium.IonResource.fromAssetId(1), // Asset 1 = Cesium World Terrain
 );
 const ellipsoidTerrainProvider = new Cesium.EllipsoidTerrainProvider();
 
@@ -62,11 +61,10 @@ const initAlpha = 0.7;
 osmBuildings.style = new Cesium.Cesium3DTileStyle({
   color: `color("white", ${initAlpha})`,
 });
-viewer.scene.primitives.add(osmBuildings);
+scene.primitives.add(osmBuildings);
 
 // Configure globe for underground visualization
 // https://cesium.com/blog/2020/06/16/visualizing-underground/
-const { globe } = viewer.scene;
 globe.translucency.enabled = true;
 globe.depthTestAgainstTerrain = true;
 globe.translucency.frontFaceAlpha = initAlpha;
@@ -74,10 +72,10 @@ globe.undergroundColor = Cesium.Color.fromCssColorString("#e8e4e0"); // Solid co
 globe.translucency.backFaceAlpha = 1.0; // Keep back face opaque so we don't see the opposite side of the globe
 
 // So we can move the camera below the surface
-viewer.scene.screenSpaceCameraController.enableCollisionDetection = false;
+scene.screenSpaceCameraController.enableCollisionDetection = false;
 
 // Limit how far out the camera can zoom (in meters)
-viewer.scene.screenSpaceCameraController.maximumZoomDistance = 50000;
+scene.screenSpaceCameraController.maximumZoomDistance = 50000;
 
 // Create basemap imagery providers
 const stamenTonerLayer = new Cesium.UrlTemplateImageryProvider({
@@ -159,7 +157,6 @@ const weatheringGradeColorScale = scaleOrdinal()
 const sptScale = scaleSequential(interpolatePlasma).domain([0, 100]);
 
 function onLoadLocations(dataSource) {
-
   for (const entity of dataSource.entities.values) {
     const holeType = entity.properties.HOLE_TYPE.getValue();
     const holeId = entity.properties.HOLE_ID.getValue();
@@ -271,7 +268,6 @@ function onLoadSptData(dataSource) {
   }
 }
 
-
 const datasets = [
   {
     id: "locations",
@@ -362,18 +358,18 @@ function updateLegendDisplay() {
 }
 
 function generateDatasetControls() {
-  const controlsSection = document.getElementById("datasets");
+  const controlsSection = document.getElementById("datasets-body");
 
   const controlsHTML = datasets
     .map(
       (dataset) => `
   <div class="checkbox-item">
     <input type="checkbox" id="${dataset.id}-toggle" ${
-        dataset.enabled ? "checked" : ""
-      }>
+      dataset.enabled ? "checked" : ""
+    }>
     <label for="${dataset.id}-toggle">${dataset.label}</label>
   </div>
-`
+`,
     )
     .join("");
 
@@ -409,7 +405,7 @@ Promise.allSettled(datasets.map((dataset) => loadDataset(dataset))).then(
         console.warn("Failed to load dataset:", result.reason);
       }
     }
-  }
+  },
 );
 
 // Globe opacity slider (also controls building opacity)
@@ -459,8 +455,8 @@ document.querySelector("#reset-camera").addEventListener("click", () => {
   viewer.camera.flyTo(initialCameraView);
 });
 
-// Log camera position button (commented out for production)
-/* document.querySelector("#log-camera").addEventListener("click", () => {
+// Log camera position button
+document.querySelector("#log-camera")?.addEventListener("click", () => {
   const camera = viewer.camera;
   const position = camera.positionCartographic;
 
@@ -476,8 +472,8 @@ document.querySelector("#reset-camera").addEventListener("click", () => {
         roll: camera.roll,
       },
       null,
-      2
-    )
+      2,
+    ),
   );
 
   console.log("\nCopy this for initialCameraView:");
@@ -491,4 +487,4 @@ document.querySelector("#reset-camera").addEventListener("click", () => {
     roll: ${camera.roll},
   },
 };`);
-}); */
+});
