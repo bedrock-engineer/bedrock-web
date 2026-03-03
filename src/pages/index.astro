@@ -8,6 +8,7 @@ import { AnimatedDemoTabs } from "../components/AnimatedDemoTabs";
 import Card from "../components/Card.astro";
 import Footer from "../components/Footer.astro";
 import HoverLogo from "../components/HoverLogo.astro";
+import Search from "@astrojs/starlight/components/Search.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/custom.css";
@@ -72,7 +73,10 @@ import "../styles/custom.css";
         </div>
       </header>
 
-      <ThemeToggle class="fixed top-3 right-4" />
+      <div class="header-controls">
+        <Search />
+        <ThemeToggle />
+      </div>
 
       <section class="worked-with"></section>
 
@@ -334,6 +338,15 @@ import "../styles/custom.css";
       }
     }
 
+    .header-controls {
+      position: fixed;
+      top: 16px;
+      right: 4px;
+      display: flex;
+      align-items: center;
+      column-gap: 4px;
+    }
+
     .logo-text {
       display: flex;
       align-items: center;
@@ -474,6 +487,33 @@ import "../styles/custom.css";
         gap: 8px;
         text-decoration: underline;
       }
+    }
+  </style>
+
+  <style is:global>
+    /* Override Search button to stay icon-only (not expand to a search bar) */
+    .header-controls button[data-open-modal] {
+      background: var(--gray-6) !important;
+      border: 1px solid var(--gray-4) !important;
+      border-radius: var(--border-radius-sm) !important;
+      color: var(--gray-12) !important;
+      width: 36px !important;
+      max-width: none !important;
+      height: 36px !important;
+      padding: 0 !important;
+      justify-content: center !important;
+    }
+    .header-controls button[data-open-modal]:hover {
+      background: var(--gray-7) !important;
+    }
+    /* Hide the text label and keyboard shortcut */
+    .header-controls button[data-open-modal] span,
+    .header-controls button[data-open-modal] kbd {
+      display: none !important;
+    }
+    /* Remove the ThemeToggle's built-in top margin so it aligns in the flex row */
+    .header-controls #triangle-toggle {
+      margin-top: 0;
     }
   </style>
 </BaseLayout>

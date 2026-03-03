@@ -12,7 +12,7 @@ import {
   useMotionValueEvent,
   useScroll,
   useTransform,
-} from "framer-motion";
+} from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import "../styles/animated-tabs.css";
 
