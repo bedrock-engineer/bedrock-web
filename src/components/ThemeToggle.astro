@@ -31,7 +31,7 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
   class={className}
   role="radiogroup"
   aria-label="Color theme"
-  width={length * 3}
+  width={length * 2}
   height={altitude}
   fill="none"
   overflow="visible"
@@ -45,8 +45,8 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
     aria-label="Light"
     aria-checked="false"
   >
-    <path d={trianglePath} class="tri-bg"></path>
-    <path d={trianglePath} class="tri-focus-ring"></path>
+    <path d={trianglePath}  class="tri-bg"></path>
+    <path d={trianglePath}  class="tri-focus-ring"></path>
     <svg
       x={iconX}
       y={altitude / 2}

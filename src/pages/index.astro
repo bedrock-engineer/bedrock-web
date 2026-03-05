@@ -81,7 +81,11 @@ import "../styles/custom.css";
       <section class="worked-with"></section>
 
       <section class="worked-with">
-        <h2 style="color: var(--gray-10); text-align: center; margin-inline: auto;">We have worked with</h2>
+        <h2
+          style="color: var(--gray-10); text-align: center; margin-inline: auto;"
+        >
+          We have worked with
+        </h2>
 
         <div class="client-logos pt-6">
           <img src={fugroLogo.src} alt="Fugro" />
@@ -341,10 +345,16 @@ import "../styles/custom.css";
     .header-controls {
       position: fixed;
       top: 16px;
-      right: 4px;
+      right: 24px;
       display: flex;
-      align-items: center;
-      column-gap: 4px;
+      flex-direction: row;
+      align-items: end;
+      gap: 4px;
+      
+      @media (max-width: 768px) {
+        right: 12px;
+        flex-direction: column-reverse;
+      }
     }
 
     .logo-text {
