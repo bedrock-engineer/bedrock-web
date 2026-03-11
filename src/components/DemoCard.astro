@@ -66,7 +66,7 @@ const {
     flex-direction: column;
     background: var(--gray-2);
     border: 1px solid var(--border-color-light);
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     overflow: hidden;
 
     @media (prefers-reduced-motion: no-preference) {
@@ -109,24 +109,24 @@ const {
   }
 
   .demo-card-content {
-    padding: 24px;
+    padding: var(--card-padding);
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: var(--space-xs);
     flex-grow: 1;
   }
 
   .demo-card-title {
-    font-size: 20px;
-    font-weight: 600;
-    font-family: 'IBM Plex Sans Condensed';
+    font-size: var(--heading-4);
+    font-weight: var(--font-semibold);
+    font-family: var(--font-condensed);
     color: var(--gray-12);
     margin: 0;
   }
 
   .demo-card-description {
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
     color: var(--gray-12);
     flex-grow: 1;
   }
@@ -140,12 +140,6 @@ const {
   }
 
   :global(.demo-card .demo-link) {
-    margin-top: 8px;
-  }
-
-  @media (max-width: 768px) {
-    .demo-card-content {
-      padding: 20px;
-    }
+    margin-top: var(--space-2xs);
   }
 </style>

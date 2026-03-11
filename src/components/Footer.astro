@@ -94,33 +94,40 @@ import { Icon } from "@astrojs/starlight/components";
 </footer>
 
 <style>
+  /* Footer is intentionally always dark — fixed tokens scoped here */
   .footer {
-    background-color: black;
-    font-size: 0.875rem;
+    --footer-bg: #111211;
+    --footer-border: #181a18;
+    --footer-text: #edeeed;
+    --footer-text-muted: #b1b6b0;
+    --footer-link: #b1b6b0;
+
+    background-color: var(--footer-bg);
+    font-size: var(--text-sm);
   }
-  
+
   .footer-wrapper {
     max-width: var(--container-wide);
     background-image: url("/textures/granite.svg");
     margin-inline: auto;
     background-size: 150px;
-    border-inline: 1px solid #181a18;
+    border-inline: 1px solid var(--footer-border);
   }
-  
+
   .footer-content {
-    padding-block: 48px;
+    padding-block: var(--section-padding-block);
     padding-inline: var(--section-padding-inline);
-    border-inline: 1px solid #181a18;
+    border-inline: 1px solid var(--footer-border);
     max-width: var(--container-md);
     margin-inline: auto;
-    background-color: black;
+    background-color: var(--footer-bg);
   }
 
   .footer-columns {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 48px;
-    margin-bottom: 32px;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-l);
   }
 
   .footer-column {
@@ -134,7 +141,7 @@ import { Icon } from "@astrojs/starlight/components";
     margin: 0;
     display: flex;
     flex-direction: column;
-    row-gap: 4px;
+    row-gap: var(--space-3xs);
   }
 
   .footer-column li {
@@ -142,45 +149,44 @@ import { Icon } from "@astrojs/starlight/components";
   }
 
   .footer-title {
-    font-size: 1rem;
-    font-weight: 600;
-    background-color: black;
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    background-color: var(--footer-bg);
     width: fit-content;
-    margin-bottom: 16px;
-    color: white;
+    margin-bottom: var(--space-s);
+    color: var(--footer-text);
   }
 
   .footer-icon {
     display: inline;
-    margin-right: 8px;
+    margin-right: var(--space-2xs);
     vertical-align: middle;
   }
 
   .footer-link {
-    background-color: black;
-    color: oklch(77.053% 0.01002 140.893);
+    background-color: var(--footer-bg);
+    color: var(--footer-link);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     transition: color 0.2s ease;
 
     &:hover {
-      color: white;
+      color: var(--footer-text);
       text-decoration: none;
     }
   }
 
   .footer-bottom {
-    /* border-top: 1px solid var(--gray-11); */
     padding-top: 1.5rem;
   }
 
   .footer-copyright {
     width: fit-content;
-    background-color: black;
-    color: var(--gray-8);
+    background-color: var(--footer-bg);
+    color: var(--footer-text-muted);
     margin: 0;
     text-align: center;
-    font-size: 0.8125rem;
+    font-size: var(--text-sm);
   }
 </style>
