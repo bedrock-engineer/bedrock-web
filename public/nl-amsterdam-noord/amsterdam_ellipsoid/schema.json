@@ -1,0 +1,30 @@
+{
+  "id": "voxel",
+  "classes": {
+    "voxel": {
+      "properties": {
+        "lithology": {
+          "type": "SCALAR",
+          "componentType": "UINT8",
+          "required": false,
+          "noData": 255
+        },
+        "stratigraphy": {
+          "type": "SCALAR",
+          "componentType": "UINT8",
+          "required": false,
+          "noData": 255
+        }
+      }
+    },
+    "tileset": {
+      "properties": {
+        "tileCount": {
+          "type": "SCALAR",
+          "componentType": "UINT64",
+          "semantic": "TILESET_TILE_COUNT"
+        }
+      }
+    }
+  }
+}

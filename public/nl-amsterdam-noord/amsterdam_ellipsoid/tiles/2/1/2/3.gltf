@@ -1,0 +1,126 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "tiles3d_voxels 0.1.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "mode": 2147483649,
+          "attributes": {
+            "_LITHOLOGY": 0,
+            "_STRATIGRAPHY": 1
+          },
+          "extensions": {
+            "EXT_primitive_voxels": {
+              "dimensions": [
+                83,
+                69,
+                32
+              ],
+              "noData": {
+                "_LITHOLOGY": [
+                  255
+                ],
+                "_STRATIGRAPHY": [
+                  255
+                ]
+              }
+            },
+            "EXT_structural_metadata": {
+              "propertyAttributes": [
+                0
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5121,
+      "count": 183264,
+      "type": "SCALAR",
+      "min": [
+        0
+      ],
+      "max": [
+        7
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5121,
+      "count": 183264,
+      "type": "SCALAR",
+      "min": [
+        0
+      ],
+      "max": [
+        26
+      ]
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 183264,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 183264,
+      "byteLength": 183264,
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "3.bin",
+      "byteLength": 366528
+    }
+  ],
+  "extensions": {
+    "EXT_structural_metadata": {
+      "schemaUri": "../../../../schema.json",
+      "propertyAttributes": [
+        {
+          "class": "voxel",
+          "properties": {
+            "lithology": {
+              "attribute": "_LITHOLOGY"
+            },
+            "stratigraphy": {
+              "attribute": "_STRATIGRAPHY"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "extensionsUsed": [
+    "EXT_primitive_voxels",
+    "EXT_structural_metadata"
+  ],
+  "extensionsRequired": [
+    "EXT_primitive_voxels",
+    "EXT_structural_metadata"
+  ]
+}

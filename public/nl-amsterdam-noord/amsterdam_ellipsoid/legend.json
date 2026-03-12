@@ -1,0 +1,422 @@
+{
+  "stratigraphy": {
+    "nodata": 255,
+    "values": [
+      {
+        "index": 0,
+        "original_code": 1000,
+        "unit": "AAOP",
+        "label": "Antropogene afzettingen, opgebrachte grond",
+        "color": [
+          200,
+          200,
+          200
+        ]
+      },
+      {
+        "index": 1,
+        "original_code": 1030,
+        "unit": "ONAWA",
+        "label": "Formatie van Naaldwijk, Laagpakket van Walcheren (gedeelte boven NAZA)",
+        "color": [
+          152,
+          220,
+          117
+        ]
+      },
+      {
+        "index": 2,
+        "original_code": 1040,
+        "unit": "NAZA",
+        "label": "Formatie van Naaldwijk, Laagpakket van Zandvoort",
+        "color": [
+          254,
+          183,
+          56
+        ]
+      },
+      {
+        "index": 3,
+        "original_code": 1048,
+        "label": "Unknown (1048)",
+        "color": [
+          128,
+          128,
+          128
+        ]
+      },
+      {
+        "index": 4,
+        "original_code": 1049,
+        "label": "Unknown (1049)",
+        "color": [
+          128,
+          128,
+          128
+        ]
+      },
+      {
+        "index": 5,
+        "original_code": 1050,
+        "unit": "NAWA",
+        "label": "Formatie van Naaldwijk, Laagpakket van Walcheren, gelegen onder Formatie van Naaldwijk, Laagpakket van Zandvoort",
+        "color": [
+          152,
+          220,
+          117
+        ]
+      },
+      {
+        "index": 6,
+        "original_code": 1070,
+        "unit": "OEC",
+        "label": "Formatie van Echteld (gedeelte boven NIHO)",
+        "color": [
+          170,
+          255,
+          245
+        ]
+      },
+      {
+        "index": 7,
+        "original_code": 1089,
+        "label": "Unknown (1089)",
+        "color": [
+          128,
+          128,
+          128
+        ]
+      },
+      {
+        "index": 8,
+        "original_code": 1090,
+        "unit": "NIHO",
+        "label": "Formatie van Nieuwkoop, Hollandveen Laagpakket",
+        "color": [
+          208,
+          130,
+          40
+        ]
+      },
+      {
+        "index": 9,
+        "original_code": 1100,
+        "unit": "NAWO",
+        "label": "Formatie van Naaldwijk, Laagpakket van Wormer",
+        "color": [
+          63,
+          165,
+          76
+        ]
+      },
+      {
+        "index": 10,
+        "original_code": 1120,
+        "unit": "NAWOVE",
+        "label": "Formatie van Naaldwijk, Laagpakket van Wormer, Laag van Velsen",
+        "color": [
+          189,
+          183,
+          107
+        ]
+      },
+      {
+        "index": 11,
+        "original_code": 1130,
+        "unit": "NIBA",
+        "label": "Formatie van Nieuwkoop, Basisveen Laag",
+        "color": [
+          152,
+          47,
+          10
+        ]
+      },
+      {
+        "index": 12,
+        "original_code": 2010,
+        "unit": "EC",
+        "label": "Formatie van Echteld",
+        "color": [
+          170,
+          255,
+          245
+        ]
+      },
+      {
+        "index": 13,
+        "original_code": 3025,
+        "unit": "BXWIKO",
+        "label": "Formatie van Boxtel, laagpakketten van Wierden en Kootwijk",
+        "color": [
+          255,
+          255,
+          80
+        ]
+      },
+      {
+        "index": 14,
+        "original_code": 3030,
+        "unit": "BXWISIKO",
+        "label": "Formatie van Boxtel, laagpakketten van Wierden, Singraven en Kootwijk",
+        "color": [
+          255,
+          255,
+          80
+        ]
+      },
+      {
+        "index": 15,
+        "original_code": 3100,
+        "unit": "BX",
+        "label": "Formatie van Boxtel",
+        "color": [
+          255,
+          235,
+          0
+        ]
+      },
+      {
+        "index": 16,
+        "original_code": 4010,
+        "unit": "KRBXDE",
+        "label": "Formatie van Kreftenheye en Formatie van Boxtel, Laagpakket van Delwijnen",
+        "color": [
+          176,
+          48,
+          96
+        ]
+      },
+      {
+        "index": 17,
+        "original_code": 4110,
+        "unit": "EE",
+        "label": "Eem Formatie",
+        "color": [
+          190,
+          255,
+          115
+        ]
+      },
+      {
+        "index": 18,
+        "original_code": 5000,
+        "unit": "DR",
+        "label": "Formatie van Drente",
+        "color": [
+          255,
+          127,
+          80
+        ]
+      },
+      {
+        "index": 19,
+        "original_code": 5010,
+        "unit": "DRGI",
+        "label": "Formatie van Drente, Laagpakket van Gieten",
+        "color": [
+          235,
+          97,
+          30
+        ]
+      },
+      {
+        "index": 20,
+        "original_code": 5020,
+        "unit": "GE",
+        "label": "Door landijs gestuwde afzettingen",
+        "color": [
+          156,
+          156,
+          156
+        ]
+      },
+      {
+        "index": 21,
+        "original_code": 5060,
+        "unit": "UR",
+        "label": "Formatie van Urk",
+        "color": [
+          189,
+          183,
+          107
+        ]
+      },
+      {
+        "index": 22,
+        "original_code": 5070,
+        "unit": "ST",
+        "label": "Formatie van Sterksel",
+        "color": [
+          205,
+          92,
+          92
+        ]
+      },
+      {
+        "index": 23,
+        "original_code": 5080,
+        "unit": "AP",
+        "label": "Formatie van Appelscha",
+        "color": [
+          218,
+          165,
+          32
+        ]
+      },
+      {
+        "index": 24,
+        "original_code": 5120,
+        "unit": "PZWA",
+        "label": "Formatie van Peize en Formatie van Waalre",
+        "color": [
+          255,
+          204,
+          0
+        ]
+      },
+      {
+        "index": 25,
+        "original_code": 6000,
+        "unit": "AEC",
+        "label": "Formatie van Echteld (geulafzettingen generatie A)",
+        "color": [
+          118,
+          147,
+          60
+        ]
+      },
+      {
+        "index": 26,
+        "original_code": 6010,
+        "unit": "ANAWA",
+        "label": "Formatie van Naaldwijk, Laagpakket van Walcheren (geulafzettingen generatie A)",
+        "color": [
+          118,
+          147,
+          60
+        ]
+      },
+      {
+        "index": 27,
+        "original_code": 6100,
+        "unit": "BEC",
+        "label": "Formatie van Echteld (geulafzettingen generatie B)",
+        "color": [
+          102,
+          205,
+          171
+        ]
+      },
+      {
+        "index": 28,
+        "original_code": 6200,
+        "unit": "CEC",
+        "label": "Formatie van Echteld (geulafzettingen generatie C)",
+        "color": [
+          170,
+          196,
+          255
+        ]
+      },
+      {
+        "index": 29,
+        "original_code": 6320,
+        "unit": "DNAWO",
+        "label": "Formatie van Naaldwijk, Laagpakket van Wormer (geulafzettingen generatie D)",
+        "color": [
+          102,
+          153,
+          205
+        ]
+      },
+      {
+        "index": 30,
+        "original_code": 6420,
+        "unit": "ENAWO",
+        "label": "Formatie van Naaldwijk, Laagpakket van Wormer (geulafzettingen generatie E)",
+        "color": [
+          27,
+          101,
+          175
+        ]
+      }
+    ]
+  },
+  "lithology": {
+    "nodata": 255,
+    "values": [
+      {
+        "index": 0,
+        "label": "Antropogeen",
+        "color": [
+          200,
+          200,
+          200
+        ]
+      },
+      {
+        "index": 1,
+        "label": "Veen",
+        "color": [
+          157,
+          78,
+          64
+        ]
+      },
+      {
+        "index": 2,
+        "label": "Klei",
+        "color": [
+          0,
+          146,
+          0
+        ]
+      },
+      {
+        "index": 3,
+        "label": "Kleiig zand",
+        "color": [
+          194,
+          207,
+          92
+        ]
+      },
+      {
+        "index": 5,
+        "label": "Zand fijn",
+        "color": [
+          255,
+          255,
+          0
+        ]
+      },
+      {
+        "index": 6,
+        "label": "Zand midden",
+        "color": [
+          243,
+          225,
+          6
+        ]
+      },
+      {
+        "index": 7,
+        "label": "Zand grof",
+        "color": [
+          231,
+          195,
+          22
+        ]
+      },
+      {
+        "index": 8,
+        "label": "Overig",
+        "color": [
+          144,
+          144,
+          144
+        ]
+      }
+    ]
+  }
+}

@@ -1,177 +1,130 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bedrock.engineer Amsterdam Noord Geodata Viewer</title>
-    <!-- Include the CesiumJS JavaScript and CSS files -->
-    <script src="https://cesium.com/downloads/cesiumjs/releases/1.133/Build/Cesium/Cesium.js"></script>
+    <title>Amsterdam Noord Geotechnical Data Viewer | Bedrock.engineer</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/bedrock.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="Explore 3D geotechnical ground investigation data from Amsterdam Noord, interpreted CPTs, GeoTOP, and 3D Buildings visualised in your browser using CesiumJS."
+    />
+    <meta name="robots" content="index, follow" />
     <link
-      href="https://cesium.com/downloads/cesiumjs/releases/1.133/Build/Cesium/Widgets/widgets.css"
+      rel="canonical"
+      href="https://www.bedrock.engineer/nl-amsterdamn-noord/"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://www.bedrock.engineer/nl-amsterdamn-noord/"
+    />
+    <meta
+      property="og:title"
+      content="Amsterdam Noord Geotechnical Data Viewer | Bedrock.engineer"
+    />
+    <meta
+      property="og:description"
+      content="Explore 3D geotechnical ground investigation data from Amsterdam Noord, interpreted CPTs, GeoTOP, and 3D Buildings visualised in your browser using CesiumJS."
+    />
+    <meta
+      property="og:image"
+      content="https://www.bedrock.engineer/nl-amsterdam-noord/og-image.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="3D view of borehole and geotechnical data in Amsterdam Noord"
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Bedrock.engineer" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="www.bedrock.engineer" />
+    <meta
+      name="twitter:title"
+      content="Amsterdam Noord 3D Geotechnical Data Viewer | Bedrock.engineer"
+    />
+    <meta
+      name="twitter:description"
+      content="Explore 3D geotechnical ground investigation data from Amsterdam Noord, interpreted CPTs, GeoTOP, and 3D Buildings visualised in your browser using CesiumJS."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.bedrock.engineer/nl-amsterdam-noord/og-image.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="3D view of geotechnical data and 3D buildings in Amsterdam Noord"
+    />
+
+    <link rel="stylesheet" href="components.css" />
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.139.1/Build/Cesium/Cesium.js"></script>
+    <link
+      href="https://cesium.com/downloads/cesiumjs/releases/1.139.1/Build/Cesium/Widgets/widgets.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap"
       rel="stylesheet"
     />
     <style>
+      html,
+      body,
+      #map {
+        height: 100%;
+      }
       body {
         margin: 0;
-        font-family: sans-serif;
-        font-size: 12px;
+        font-family:
+          "IBM Plex Sans",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
       }
 
-      .panel {
-        position: absolute;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 2px;
-        padding: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        z-index: 10;
-      }
-
-      #map {
-        background: gray;
-        height: 100vh;
-        width: 100%;
-      }
-
-      #datasets {
-        top: 10px;
-        left: 10px;
-        max-width: 200px;
-      }
-
-      #controls {
-        top: 300px;
-        left: 10px;
-        max-width: 200px;
-      }
-
-      #legend {
-        bottom: 10px;
-        right: 10px;
-        max-width: 250px;
-        max-height: 90svh;
-        overflow-y: auto;
-      }
-
-      #legend section {
-        border-radius: 2px;
-        border: lightgray 1px solid;
-        padding: 4px;
-      }
-
-      #legend h3 {
-        margin-block: 6px;
-      }
-
-      #legend h4 {
-        margin-block: 4px;
-      }
-
-      .legend-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 4px;
-      }
-
-      .legend-circle {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        margin-right: 8px;
-        border: 1px solid #878787;
-      }
-
-      .checkbox-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 6px;
-        cursor: pointer;
-      }
-
-      .checkbox-item input[type="checkbox"] {
-        margin-right: 8px;
-        cursor: pointer;
-      }
-
-      .checkbox-item label {
-        cursor: pointer;
-        user-select: none;
-      }
-
-      .panel-toggle {
-        position: absolute;
-        bottom: 10px;
-        left: 10px;
-        z-index: 11;
-        background: oklch(100% 0.00011 271.152 / 0.9);
-        border: none;
-        border-radius: 4px;
-        font-size: 20px;
-        padding: 6px 10px;
-        cursor: pointer;
-        box-shadow: 0 2px 4px oklch(0% 0 0 / 0.2);
-        display: none;
-      }
-
-      @media (max-width: 500px) {
-        .panel-toggle {
-          display: block;
-        }
-
-        #controls {
-          bottom: 36px;
-          left: 0;
-          max-width: 100%;
-          transform: translateY(100%);
-          transition: transform 150ms ease-out;
-        }
-
-        #controls[data-open="true"] {
-          transition: transform 100ms ease-in;
-          transform: translateY(0);
-        }
+      a:link {
+        text-decoration: underline;
       }
     </style>
   </head>
   <body>
     <div id="map"></div>
+
+    <div id="info" class="panel panel--info">
+      <div class="panel-body">
+        <h1>Amsterdam Noord Geotechnical Data in 3D Webmap</h1>
+        <p>
+          3D geotechnical data viewer showing CPT's, and GeoTOP voxels from
+          <a
+            href="https://basisregistratieondergrond.nl/inhoud-bro/aanleveren-gebruiken/gegevens-gebruiken/"
+            >Basis Registratie Ondergrond</a
+          >, and 3D buildings from
+          <a href="https://3dbag.nl/en/viewer">3DBAG</a> visualised with
+          <a href="https://cesium.com/platform/cesiumjs/">CesiumJS</a>.
+        </p>
+        <p>
+          Made by
+          <a href="https://bedrock.engineer" style="white-space: nowrap"
+            ><img src="/favicon.svg" height="12px" width="12px" />
+            Bedrock.engineer</a
+          >
+        </p>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/draggabilly@3/dist/draggabilly.pkgd.min.js"></script>
     <script src="script.js" type="module"></script>
-
-    <button id="toggle-controls" class="panel-toggle">☰</button>
-
-    <div class="panel" id="controls">
-      <div id="datasets">
-        <h2>Datasets</h2>
-      </div>
-
-      <div>
-        <h2>Controls</h2>
-
-        <div class="checkbox-item">
-          <input type="checkbox" id="buildings-toggle" checked />
-          <label for="buildings-toggle">3D BAG</label>
-        </div>
-
-        <div class="checkbox-item">
-          <input type="checkbox" id="geotop-toggle" />
-          <label for="geotop-toggle">GeoTOP</label>
-        </div>
-
-        <label>
-          <span style="display: block">Basemap opacity</span>
-          <input
-            id="alpha"
-            type="range"
-            min="0.0"
-            max="1.0"
-            step="0.05"
-            value="0.7"
-          />
-        </label>
-      </div>
-    </div>
-
-    <div id="legend" class="panel">
-      <h2>Legend</h2>
-    </div>
   </body>
 </html>

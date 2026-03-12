@@ -1,0 +1,72 @@
+{
+  "asset": {
+    "version": "1.1",
+    "generator": "tiles3d_voxels 0.1.0"
+  },
+  "schemaUri": "schema.json",
+  "geometricError": 799.642441803094,
+  "root": {
+    "boundingVolume": {
+      "region": [
+        0.08100758343363584,
+        0.9118938655335851,
+        0.08953918064244346,
+        0.9162431916239039,
+        -7.030190217759873,
+        55.46980978224013
+      ]
+    },
+    "geometricError": 399.821220901547,
+    "refine": "REPLACE",
+    "content": {
+      "uri": "tiles/{level}/{x}/{y}/{z}.gltf",
+      "extensions": {
+        "3DTILES_content_voxels": {
+          "dimensions": [
+            83,
+            69,
+            32
+          ],
+          "class": "voxel"
+        }
+      }
+    },
+    "implicitTiling": {
+      "subdivisionScheme": "OCTREE",
+      "availableLevels": 3,
+      "subtreeLevels": 3,
+      "subtrees": {
+        "uri": "subtrees/{level}/{x}/{y}/{z}.json"
+      }
+    }
+  },
+  "metadata": {
+    "class": "tileset",
+    "properties": {
+      "tileCount": 73
+    }
+  },
+  "statistics": {
+    "classes": {
+      "voxel": {
+        "count": 73,
+        "properties": {
+          "lithology": {
+            "min": 0,
+            "max": 8
+          },
+          "stratigraphy": {
+            "min": 0,
+            "max": 30
+          }
+        }
+      }
+    }
+  },
+  "extensionsUsed": [
+    "3DTILES_content_voxels"
+  ],
+  "extensionsRequired": [
+    "3DTILES_content_voxels"
+  ]
+}

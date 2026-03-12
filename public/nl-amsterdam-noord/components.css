@@ -1,0 +1,604 @@
+/* Shared UI components for CesiumJS voxel demos.
+   Copy this file (and components.js) into a new demo folder to reuse.
+
+   Override semantic tokens in your page's <style> block to retheme:
+     :root { --ui-accent: #c06a4a; }
+*/
+
+/* ---------------------------------------------------------------------------
+   Palette — Green (from hk-kaitak)
+   --------------------------------------------------------------------------- */
+:root {
+  --green-1: #10130f;
+  --green-2: #151a14;
+  --green-3: #1e261c;
+  --green-4: #253123;
+  --green-5: #2c3b2a;
+  --green-6: #354732;
+  --green-7: #40563c;
+  --green-8: #526d4d;
+  --green-9: #627e5d;
+  --green-10: #557150;
+  --green-11: #adcba7;
+  --green-12: #ddf6d9;
+}
+
+/* ---------------------------------------------------------------------------
+   Palette — Gray (green-tinted, dark mode)
+   --------------------------------------------------------------------------- */
+:root {
+  --gray-1: #111211;
+  --gray-2: #181a18;
+  --gray-3: #212321;
+  --gray-4: #282a28;
+  --gray-5: #30322f;
+  --gray-6: #383b38;
+  --gray-7: #464945;
+  --gray-8: #5d615c;
+  --gray-9: #6a7069;
+  --gray-10: #777d77;
+  --gray-11: #b1b6b0;
+  --gray-12: #edeeed;
+
+  --gray-a1: #0112110f;
+  --gray-a2: #bdf5d809;
+  --gray-a3: #dcf7e813;
+  --gray-a4: #eafef31a;
+  --gray-a5: #ecfbec23;
+  --gray-a6: #eafbee2d;
+  --gray-a7: #effcee3c;
+  --gray-a8: #f3fff355;
+  --gray-a9: #eefded66;
+  --gray-a10: #f0fdf274;
+  --gray-a11: #f7fef7b1;
+  --gray-a12: #fefffeed;
+
+  --gray-contrast: #ffffff;
+  --gray-surface: rgba(0, 0, 0, 0.05);
+  --gray-indicator: #6a7069;
+  --gray-track: #6a7069;
+}
+
+/* ---------------------------------------------------------------------------
+   Semantic tokens (dark mode only, solid backgrounds)
+   --------------------------------------------------------------------------- */
+:root {
+  /* Panel */
+  --ui-bg-panel:   var(--gray-2);
+  --ui-bg-tooltip: var(--gray-3);
+  --ui-border:     var(--gray-5);
+  --ui-radius:     2px;
+
+  /* Text hierarchy */
+  --ui-text:           var(--gray-12);
+  --ui-text-secondary: var(--gray-11);
+  --ui-text-muted:     var(--gray-9);
+  --ui-text-dim:       var(--gray-8);
+
+  /* Accent */
+  --ui-accent:        var(--green-9);
+  --ui-accent-bg:     var(--green-3);
+  --ui-accent-border: var(--green-7);
+
+  /* Interactive */
+  --ui-track: var(--gray-6);
+  --ui-thumb: var(--gray-11);
+
+  /* Buttons */
+  --ui-btn-bg:            var(--gray-4);
+  --ui-btn-border:        var(--gray-6);
+  --ui-btn-bg-hover:      var(--gray-5);
+  --ui-btn-bg-active:     var(--ui-accent);
+  --ui-btn-border-active: var(--green-7);
+}
+
+/* ---------------------------------------------------------------------------
+   Panel base — <details>/<summary> collapsible container
+   --------------------------------------------------------------------------- */
+.panel {
+  position: absolute;
+  background: var(--ui-bg-panel);
+  color: var(--ui-text);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius);
+  overflow: hidden;
+  font-size: 11px;
+  z-index: 1;
+}
+
+.panel summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ui-text-muted);
+  border-bottom: 1px solid var(--ui-border);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+
+.panel summary::-webkit-details-marker {
+  display: none;
+}
+
+.panel-title {
+  flex: 1;
+}
+
+.panel-arrow {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+details[open] > summary .panel-arrow {
+  transform: rotate(180deg);
+}
+
+.panel-body {
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.panel-body--scrollable {
+  max-height: 60vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gray-7) transparent;
+}
+
+.panel-body--scrollable::-webkit-scrollbar {
+  width: 4px;
+}
+.panel-body--scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+.panel-body--scrollable::-webkit-scrollbar-thumb {
+  background: var(--gray-7);
+  border-radius: 2px;
+}
+
+/* Draggable panel cursors */
+.panel.is-draggable summary {
+  cursor: grab;
+}
+.panel.is-draggable.is-dragging summary {
+  cursor: grabbing;
+}
+
+/* Info panel — static, not collapsible */
+.panel--info {
+  top: 12px;
+  left: 12px;
+  max-width: 200px;
+}
+
+.panel--info h1 {
+  font-size: 1.15rem;
+  margin: 0 0 6px;
+  color: var(--ui-text);
+}
+
+.panel--info p {
+  margin: 4px 0;
+  font-size: 0.8rem;
+  color: var(--ui-text-secondary);
+  line-height: 1.4;
+}
+
+.panel--info a {
+  color: var(--green-11);
+}
+
+/* ---------------------------------------------------------------------------
+   Buttons
+   --------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  font-size: 11px;
+  font-family: inherit;
+  color: var(--ui-text);
+  background: var(--ui-btn-bg);
+  border: 1px solid var(--ui-btn-border);
+  border-radius: var(--ui-radius);
+  cursor: pointer;
+  transition: background 0.1s, border-color 0.1s;
+}
+
+.btn:hover {
+  background: var(--ui-btn-bg-hover);
+}
+
+.btn.active {
+  background: var(--ui-btn-bg-active);
+  border-color: var(--ui-btn-border-active);
+  color: #fff;
+}
+
+.btn--accent {
+  background: var(--ui-accent);
+  border-color: var(--ui-accent-border);
+  color: #fff;
+}
+
+.btn--accent:hover {
+  background: var(--green-8);
+}
+
+.btn--block {
+  display: block;
+  width: 100%;
+}
+
+.btn-group {
+  display: flex;
+  gap: 4px;
+}
+
+.btn-group .btn {
+  flex: 1;
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------------------
+   Section label — lightweight heading inside panel body
+   --------------------------------------------------------------------------- */
+.section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ui-text-muted);
+  margin-top: 4px;
+}
+
+/* ---------------------------------------------------------------------------
+   Tooltip
+   --------------------------------------------------------------------------- */
+#tooltip {
+  position: absolute;
+  pointer-events: none;
+  display: none;
+  background: var(--ui-bg-tooltip);
+  color: var(--ui-text);
+  padding: 8px 12px;
+  border-radius: var(--ui-radius);
+  font-size: 12px;
+  border-left: 3px solid transparent;
+  max-width: 240px;
+  line-height: 1.5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------------------------------------------------------------------------
+   Legend (content container — positioned by parent .panel)
+   --------------------------------------------------------------------------- */
+.legend-content {
+  min-width: 180px;
+  max-width: 280px;
+}
+
+.legend-period {
+  margin: 6px 0 4px;
+  font-size: 10px;
+  color: var(--ui-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 4px;
+  gap: 8px;
+}
+
+.legend-item--hidden {
+  opacity: 0.35;
+}
+
+.legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: outline 0.1s;
+}
+
+.legend-swatch:hover {
+  outline: 2px solid var(--gray-a11);
+}
+
+.legend-number {
+  text-align: right;
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--ui-text-muted);
+}
+
+/* ---------------------------------------------------------------------------
+   Clipping controls
+   --------------------------------------------------------------------------- */
+.clipping-controls {
+  display: grid;
+  row-gap: 4px;
+}
+
+/* ---------------------------------------------------------------------------
+   Range slider (multi-thumb)
+   --------------------------------------------------------------------------- */
+.clip-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 176px;
+}
+
+.clip-axis-label {
+  font-size: 10px;
+  color: var(--ui-text-muted);
+  text-transform: uppercase;
+  width: 10px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.clip-range-slider {
+  flex: 1;
+  position: relative;
+  height: 20px;
+}
+
+.range-track {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--ui-track);
+  border-radius: 2px;
+}
+
+.range-track-zone {
+  position: absolute;
+  top: -8px;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.range-select {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: var(--range-min, 0%);
+  right: calc(100% - var(--range-max, 100%));
+  background: var(--ui-accent);
+  border-radius: 2px;
+  cursor: grab;
+  overflow: visible;
+}
+
+/* https://ishadeed.com/article/target-size/#extend-target-size-with-pseudo-elements */
+.range-select:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: scale(1.5);
+}
+
+.range-select:active {
+  cursor: grabbing;
+}
+
+.thumb {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--ui-thumb);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  cursor: ew-resize;
+  z-index: 1;
+}
+
+.thumb-min {
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+.thumb-max {
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+.clip-range-output {
+  font-size: 10px;
+  color: var(--ui-text-dim);
+  white-space: nowrap;
+  min-width: 44px;
+  text-align: right;
+}
+
+/* ---------------------------------------------------------------------------
+   Checkbox items
+   --------------------------------------------------------------------------- */
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 4px 0;
+  cursor: pointer;
+}
+
+.checkbox-item label {
+  cursor: pointer;
+  user-select: none;
+  color: var(--ui-text);
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.checkbox-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--ui-border);
+  border-radius: 3px;
+  background: var(--gray-4);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s;
+  position: relative;
+  margin: 0;
+}
+
+.checkbox-item input[type="checkbox"]:checked {
+  background: var(--ui-accent);
+  border-color: var(--ui-accent);
+}
+
+.checkbox-item input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0px;
+  width: 5px;
+  height: 9px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+/* ---------------------------------------------------------------------------
+   Fence diagram controls
+   --------------------------------------------------------------------------- */
+#fence-options {
+  display: none;
+}
+
+#fence-options.visible {
+  display: block;
+}
+
+.fence-section-label {
+  font-size: 10px;
+  color: var(--ui-text-muted);
+  margin: 6px 0 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.fence-lines {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.fence-tag {
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+
+.fence-width-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.fence-width-row label {
+  font-size: 11px;
+  color: var(--ui-text-muted);
+  flex-shrink: 0;
+}
+
+.fence-width-row input[type=range] {
+  flex: 1;
+  accent-color: var(--ui-accent);
+}
+
+#fence-width-val {
+  font-size: 11px;
+  width: 32px;
+  text-align: right;
+  color: var(--ui-text-secondary);
+}
+
+/* ---------------------------------------------------------------------------
+   Labeled slider (basemap opacity, vert. exag., voxel opacity)
+   --------------------------------------------------------------------------- */
+.labeled-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.labeled-slider label {
+  color: var(--ui-text-secondary);
+  white-space: nowrap;
+}
+
+.labeled-slider input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--ui-track);
+  outline: none;
+  cursor: pointer;
+}
+
+.labeled-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--ui-thumb);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.labeled-slider input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: var(--ui-thumb);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slider-value {
+  font-size: 10px;
+  color: var(--ui-text-secondary);
+  min-width: 28px;
+  text-align: right;
+}
