@@ -40,7 +40,7 @@ scene.moon.show = false;
 globe.showGroundAtmosphere = false;
 
 // To increase FPS
-viewer.resolutionScale = 5;
+// viewer.resolutionScale = 1;
 
 // Overhoeks, Amsterdam initial camera view
 const initialCameraView = {
@@ -354,6 +354,7 @@ const legendPanel = createPanel({ title: "Legend" });
 legendPanel.el.style.top = "12px";
 legendPanel.el.style.right = "12px";
 legendPanel.el.style.width = "260px";
+legendPanel.body.classList.add("panel-body--scrollable");
 
 function updateLegend() {
   legendPanel.body.innerHTML = "";
@@ -388,7 +389,8 @@ const stratLegendElement = createLegend({
 let geoTopLegendElement = lithoLegendElement;
 
 updateLegend();
-document.body.appendChild(legendPanel.el);
+
+const isMobile = window.matchMedia("(max-width: 640px)").matches;
 
 // Controls panel (bottom-right)
 const controlsPanel = createPanel({ title: "Controls" });
@@ -549,12 +551,23 @@ controlsPanel.body.appendChild(
   }).el,
 );
 
-// ── Layer toggle ─────────────────────────────────────────────────────────────
-
 // ── Controls Panel ──────────────────────────────────────────────────────────
 controlsPanel.body.append(layersLabel, bagItem, geoTOPItem);
 
-document.body.appendChild(controlsPanel.el);
+if (isMobile) {
+  // On mobile: wrap panels in a stacked bottom container
+  const bottomPanels = document.createElement("div");
+  bottomPanels.className = "mobile-bottom-panels";
+
+  // Legend starts collapsed on mobile to save space
+  legendPanel.details.open = false;
+
+  bottomPanels.append(legendPanel.el, controlsPanel.el);
+  document.body.appendChild(bottomPanels);
+} else {
+  document.body.appendChild(legendPanel.el);
+  document.body.appendChild(controlsPanel.el);
+}
 
 // ── Load data ─────────────────────────────────────────────────────────────
 
@@ -575,14 +588,6 @@ try {
     "https://data.3dbag.nl/v20250903/cesium3dtiles/lod22/tileset.json",
   );
 
-  tileset_3dbag.customShader = new Cesium.CustomShader({
-    fragmentShaderText: `
-      void fragmentMain(FragmentInput fsInput, inout czm_modelMaterial material) {
-        material.diffuse = vec3(0.45, 0.45, 0.45);
-      }
-    `,
-  });
-
   scene.primitives.add(tileset_3dbag);
 
   document
@@ -591,5 +596,5 @@ try {
       tileset_3dbag.show = event.target.checked;
     });
 } catch (error) {
-  console.log(`There was an error while creating the 3DBAG tileset. ${error}`);
+  console.log(`There was an error while adding the 3DBAG tileset. ${error}`);
 }

@@ -32,7 +32,8 @@ export function createPanel({ title, open = true, draggable = true } = {}) {
   details.append(summary, body);
   panel.appendChild(details);
 
-  if (draggable && typeof Draggabilly !== "undefined") {
+  const isMobileView = window.matchMedia("(max-width: 640px)").matches;
+  if (draggable && !isMobileView && typeof Draggabilly !== "undefined") {
     panel.classList.add("is-draggable");
 
     // Convert any right/bottom CSS positioning to left/top on first drag

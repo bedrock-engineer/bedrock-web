@@ -92,6 +92,7 @@
           -apple-system,
           BlinkMacSystemFont,
           sans-serif;
+        -webkit-font-smoothing: antialiased;
       }
 
       a:link {
@@ -103,6 +104,7 @@
     <div id="map"></div>
 
     <div id="info" class="panel panel--info">
+      <button id="info-close" class="info-close" aria-label="Close info panel">&times;</button>
       <div class="panel-body">
         <h1>Amsterdam Noord Geotechnical Data in 3D Webmap</h1>
         <p>
@@ -124,6 +126,11 @@
       </div>
     </div>
 
+    <script>
+      document.getElementById("info-close").addEventListener("click", () => {
+        document.getElementById("info").hidden = true;
+      });
+    </script>
     <script src="https://unpkg.com/draggabilly@3/dist/draggabilly.pkgd.min.js"></script>
     <script src="script.js" type="module"></script>
   </body>
