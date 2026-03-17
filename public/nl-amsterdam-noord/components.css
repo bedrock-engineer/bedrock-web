@@ -118,7 +118,7 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ui-text-muted);
+  color: var(--ui-text-secondary);
   border-bottom: 1px solid var(--ui-border);
   cursor: pointer;
   user-select: none;
@@ -298,7 +298,7 @@ details[open] > summary .panel-arrow {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ui-text-muted);
+  color: var(--ui-text-secondary);
   margin-top: 4px;
 }
 
