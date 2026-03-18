@@ -1,0 +1,40 @@
+/*
+ * Starlight Search component dependencies for custom (non-Starlight) pages.
+ *
+ * Starlight doc pages load these automatically; custom pages that use
+ * <Search /> need this file imported so the component renders correctly.
+ *
+ * What's included:
+ *   1. CSS layer order declaration (so @layer starlight.core styles apply correctly)
+ *   2. Utility classes used inside the Search component markup
+ */
+
+/* Layer order — must come before any @layer rules from Starlight components */
+@layer starlight.base, starlight.reset, starlight.core, starlight.content, starlight.components, starlight.utils;
+
+/* Utility classes referenced in Search.astro markup */
+.sl-hidden {
+  display: none;
+}
+
+.sl-flex {
+  display: flex;
+}
+
+.sl-block {
+  display: block;
+}
+
+@media (min-width: 50rem) {
+  .md\:sl-hidden {
+    display: none;
+  }
+
+  .md\:sl-flex {
+    display: flex;
+  }
+
+  .md\:sl-block {
+    display: block;
+  }
+}

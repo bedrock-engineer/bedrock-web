@@ -239,27 +239,6 @@ figcaption {
   font-size: 0.875rem;
 }
 
-/* ========== STARLIGHT UTILITY CLASSES ========== */
-/* Responsive visibility utilities used by Starlight components */
-
-.sl-hidden,
-.md\:sl-hidden {
-  display: none !important;
-}
-
-.sl-flex .md\:sl-flex {
-  display: flex !important;
-}
-
-@media (min-width: 50rem) {
-  .md\:sl-block {
-    display: block !important;
-  }
-
-  .md\:sl-flex {
-    display: flex !important;
-  }
-}
 
 /* ============================================ */
 /* FLUID DESIGN SYSTEM (Utopia-style)          */
