@@ -9,8 +9,12 @@
  *   2. Utility classes used inside the Search component markup
  */
 
-/* Layer order — must come before any @layer rules from Starlight components */
-@layer starlight.base, starlight.reset, starlight.core, starlight.content, starlight.components, starlight.utils;
+/*
+ * Layer order — Tailwind v4 layers first (lower priority), then Starlight layers (higher priority).
+ * The first @layer declaration in the stylesheet determines the final order,
+ * so Starlight's component styles won't be overridden by Tailwind's Preflight reset.
+ */
+@layer theme, base, components, utilities, starlight.base, starlight.reset, starlight.core, starlight.content, starlight.components, starlight.utils;
 
 /* Utility classes referenced in Search.astro markup */
 .sl-hidden {
