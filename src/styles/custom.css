@@ -382,7 +382,7 @@ figcaption {
   font-size: var(--text-sm);
   font-weight: 500;
   color: var(--green-9);
-  margin-block-start: calc(-1 * var(--space-xs));
+  /* margin-block-start: calc(-0.5 * var(--space-xs)); */
   margin-block-end: var(--space-m);
   letter-spacing: var(--leading-tight);
   text-transform: uppercase;

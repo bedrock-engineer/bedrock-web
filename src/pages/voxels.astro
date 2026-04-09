@@ -1,0 +1,643 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Card from "../components/Card.astro";
+import Link from "../components/Link.astro";
+import DemoCard from "../components/DemoCard.astro";
+import GeotopHeerich from "../components/GeotopHeerich.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/custom.css";
+
+import antwerpen from "../assets/antwerpen.png";
+import geotop from "../assets/geotop-south-holland.png";
+import amsterdamNoord from "../assets/nl-amsterdam-noord.webp";
+
+const title =
+  "3D Tiles Voxels - Volumetric Models in Browser Web Maps | Bedrock.engineer";
+const description =
+  "Share volumetric  models with anyone via a browser link. Bedrock.engineer converts your volumetric models — netCDF, block models, MODFLOW grids — into interactive 3D web apps using the 3D Tiles Voxel extension and CesiumJS.";
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://bedrock.engineer/voxels" />
+
+    <meta
+      name="keywords"
+      content="3D Tiles Voxels, volumetric geological models, netCDF visualization, geological block models, subsurface voxels, CesiumJS voxels, browser 3D geology, voxel visualization, geotechnical 3D, structured grids, stratigraphic models, property distributions, subsurface uncertainty"
+    />
+
+    <meta property="og:url" content="https://bedrock.engineer/voxels" />
+    <meta property="og:site_name" content="Bedrock.engineer" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- TODO custom og image with screenshot or heerich.js! -->
+    <!-- TODO custom og video with screenrect or animated heerich.js! -->
+
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <meta name="author" content="Bedrock.engineer" />
+
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+  </Fragment>
+
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://bedrock.engineer",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Technologies",
+          item: "https://bedrock.engineer/technologies",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "3D Tiles Voxels",
+          item: "https://bedrock.engineer/voxels",
+        },
+      ],
+    })}
+  />
+
+  <Navbar />
+  <div class="page" data-pagefind-body data-pagefind-meta="category:Marketing">
+    <header class="section-wrapper texture-607">
+      <section class="section intro-section">
+        <div class="hero-layout">
+          <div class="hero-text">
+            <h1 class="heading-1">3D Tiles Voxels</h1>
+            <p class="paragraph-xl">
+              Your volumetric model shouldn't require a desktop application and
+              a license to explore. We convert subsurface models into
+              interactive, streamable 3D models in the browser using the 3D
+              Tiles Voxel extension, so anyone with the link can explore the
+              data.
+            </p>
+            <p class="cesium-callout">
+              <Link
+                href="https://cesium.com/blog/2026/04/08/bedrock-engineer-streams-subsurface-with-voxels/"
+                variant="arrow"
+              >
+                Read our Cesium user story
+              </Link>
+            </p>
+          </div>
+          <div class="hero-decoration" id="hero-voxel" aria-hidden="true"></div>
+        </div>
+      </section>
+    </header>
+
+    <div class="section-wrapper texture-616">
+      <section class="section">
+        <h2 class="heading-2" style="margin-block-end: var(--space-l);">
+          Demos
+        </h2>
+
+        <div class="grid-auto-fit">
+          <DemoCard
+            title="GeoTOP Voxels"
+            image={geotop}
+            href="https://geotop.bedrock.engineer/"
+            linkText="Explore demo"
+          >
+            <Fragment slot="description">
+              The Dutch
+              <a
+                class="link"
+                href="https://www.dinoloket.nl/en/detailing-the-upper-layers-with-geotop"
+              >
+                GeoTOP
+              </a>
+              shallow subsurface model. Explore voxels of 100×100×0.5m with lithoclass
+              data from ground level to ~50m depth across the entire Netherlands.
+            </Fragment>
+          </DemoCard>
+
+          <DemoCard
+            title="Antwerp Geological Model"
+            image={antwerpen}
+            href="https://antwerpen.bedrock.engineer"
+            linkText="Explore demo"
+          >
+            <Fragment slot="description">
+              The Flemish <a
+                class="link"
+                href="https://www.dov.vlaanderen.be/page/ondiep-geologisch-3d-lagen-en-voxelmodel-van-regio-antwerpen-oa-v1-2021"
+              >
+                DOV shallow subsurface model of the Antwerp region
+              </a>
+              . Over 21 million voxels of 25×25×0.5m with lithological composition
+              from ground level to 50m depth.
+            </Fragment>
+          </DemoCard>
+
+          <DemoCard
+            title="Amsterdam Noord"
+            image={amsterdamNoord}
+            href="https://bedrock.engineer/nl-amsterdam-noord"
+            linkText="Explore demo"
+          >
+            <Fragment slot="description">
+              CPT data from <a
+                href="https://basisregistratieondergrond.nl/"
+                class="link"
+              >
+                BRO
+              </a>
+              , 3D buildings from <a href="https://3dbag.nl/en" class="link"
+                >3D BAG</a
+              >, and GeoTOP voxels combined in a single CesiumJS scene
+              subsurface and above-ground context together.
+            </Fragment>
+          </DemoCard>
+        </div>
+      </section>
+    </div>
+
+    <div class="section-wrapper texture-620">
+      <section class="section">
+        <h2 class="heading-2" style="margin-block-end: var(--space-l);">
+          Why 3D Tiles?
+        </h2>
+
+        <div class="grid-auto-fit">
+          <Card size="medium">
+            <h3 class="heading-3">Stream, Don't Download</h3>
+            <p class="card-text">
+              3D Tiles is optimized for viewing, only the visible voxels are
+              streamed. A multi-million cell model loads progressively as users
+              pan, zoom, and slice through it.
+            </p>
+          </Card>
+
+          <Card size="medium">
+            <h3 class="heading-3">Open Standard</h3>
+            <p class="card-text">
+              3D Tiles is an <a
+                class="link"
+                href="https://www.ogc.org/standards/3dtiles/"
+              >
+                OGC community standard
+              </a>
+              maintained by <a class="link" href="https://cesium.com/">Cesium</a
+              >. No vendor lock-in, your data stays in an open, documented
+              format.
+            </p>
+          </Card>
+
+          <Card size="medium">
+            <h3 class="heading-3">Interactive Exploration</h3>
+            <p class="card-text">
+              Slice through layers, filter by property ranges, toggle between
+              properties, all real-time in the browser. Stakeholders can explore
+              the model themselves.
+            </p>
+          </Card>
+
+          <Card size="medium">
+            <h3 class="heading-3">Spatial</h3>
+            <p class="card-text">
+              Combine voxel models with terrain, buildings, boreholes, and
+              infrastructure in a single scene.
+            </p>
+          </Card>
+        </div>
+      </section>
+    </div>
+
+    <div class="section-wrapper texture-616">
+      <section class="section">
+        <div class="content-with-decoration reverse">
+          <div>
+            <h2 class="heading-2">What We Convert</h2>
+            <p class="paragraph" style="margin-block-end: var(--space-m);">
+              Your existing volumetric data, converted to 3D Tiles Voxels.
+            </p>
+            <ul class="feature-list">
+              <li>
+                <strong>NetCDF, Zarr</strong> Climate, ocean, and atmospheric models
+              </li>
+              <li>
+                <strong>Geological voxel models</strong> Lithology, resistivity, porosity,
+                or other property grids
+              </li>
+              <li>
+                <strong>Mining block models</strong> OpenMiningFormat, GSLIB, CSV
+                exports from Vulcan, Surpac, Datamine, Leapfrog
+              </li>
+              <li>
+                <strong>Groundwater models</strong> MODFLOW structured grids
+              </li>
+              <li>
+                <strong>Seismic data</strong> SEG-Y volumes
+              </li>
+            </ul>
+          </div>
+          <div class="side-decoration" id="voxel-layers" aria-hidden="true">
+          </div>
+        </div>
+
+        <!-- <ol class="process-list grid grid-cols-3">
+          <li>
+            <strong>Send us your data</strong> netCDF, block model export, MODFLOW
+            grid, or any structured volumetric format.
+          </li>
+          <li>
+            <strong>We convert and tile</strong> your model becomes a streamable 3D
+            Tiles Voxel tileset, optimized for progressive loading.
+          </li>
+          <li>
+            <strong>You get a web app</strong> a CesiumJS application where anyone
+            can explore the model in the browser. Hosted by us or deployed on your
+            infrastructure.
+          </li>
+        </ol> -->
+      </section>
+    </div>
+
+    <div class="section-wrapper texture-620">
+      <section class="section">
+        <h2 class="heading-2" style="margin-block-end: var(--space-m);">
+          Use Cases
+        </h2>
+        <ul class="feature-list">
+          <li>
+            <strong>Subsurface uncertainty</strong> show where the model is confident
+            and where more investigation is needed
+          </li>
+          <li>
+            <strong>Ore grade models</strong> spatial variation in ore grade, identify
+            high-grade zones
+          </li>
+          <li>
+            <strong>Stratigraphic models</strong> navigate geological formations interactively
+            instead of static cross-sections
+          </li>
+          <li>
+            <strong>Geotechnical properties</strong> bearing capacity, soil stiffness,
+            or derived parameters across a site volume
+          </li>
+          <li>
+            <strong>Groundwater models</strong> hydraulic head, flow paths, and aquifer
+            properties
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="section-wrapper texture-616">
+      <section class="section cta-section">
+        <GeotopHeerich aria-hidden="true" class="cta-decoration" />
+
+        <h2
+          class="heading-3"
+          style="text-align: center; margin-block-end: 16px;"
+        >
+          Have a volumetric model you want to make accessible?
+        </h2>
+
+        <p
+          class="paragraph"
+          style="text-align: center; margin-block-end: 32px; color: var(--gray-11);"
+        >
+          We convert geological block models, ore grade models, groundwater
+          grids, seismic volumes into interactive 3D web maps.
+          <br /> Contact us to discuss your data and use case.
+        </p>
+
+        <div class="flex gap-4 justify-center flex-wrap">
+          <a href="https://cal.com/bedrock.engineer" class="cta-button">
+            Schedule Discovery Call
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .hero-layout {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-xl);
+    align-items: center;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .cesium-callout {
+    margin-block-start: var(--space-m);
+    font-size: var(--text-lg);
+  }
+
+  .hero-decoration {
+    width: clamp(200px, 30vw, 360px);
+    aspect-ratio: 1;
+
+    @media (max-width: 768px) {
+      width: min(280px, 100%);
+      margin-inline: auto;
+    }
+  }
+
+  .content-with-decoration {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-xl);
+    align-items: start;
+
+    &.reverse {
+      grid-template-columns: auto 1fr;
+      direction: rtl;
+      > * {
+        direction: ltr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+
+      &.reverse {
+        grid-template-columns: 1fr;
+        direction: ltr;
+      }
+    }
+  }
+
+  .side-decoration {
+    width: clamp(160px, 22vw, 280px);
+    aspect-ratio: 1;
+
+    @media (max-width: 900px) {
+      width: min(220px, 100%);
+      margin-inline: auto;
+    }
+  }
+
+  .cta-decoration {
+    width: min(320px, 80%);
+    margin-inline: auto;
+    margin-block-end: var(--space-l);
+    max-height: 200px;
+  }
+
+  .process-list {
+    list-style: none;
+    margin-top: 64px;
+    padding: 0;
+    counter-reset: process;
+    gap: var(--space-m);
+  }
+
+  .process-list li {
+    counter-increment: process;
+    padding-inline-start: var(--space-l);
+    position: relative;
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+  }
+
+  .process-list li::before {
+    content: counter(process);
+    position: absolute;
+    left: 0;
+    top: 0.1em;
+    width: 1.6em;
+    height: 1.6em;
+    display: grid;
+    place-items: center;
+    background: var(--green-9);
+    color: var(--gray-1);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    border-radius: 50%;
+  }
+
+  .process-list li strong {
+    color: var(--green-11);
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+  }
+
+  .feature-list li {
+    padding-inline-start: var(--space-m);
+    position: relative;
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+  }
+
+  .feature-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 8px;
+    height: 8px;
+    background: var(--green-9);
+  }
+
+  .feature-list li strong {
+    color: var(--green-11);
+  }
+
+  .card-text {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--gray-12);
+    margin: 0;
+  }
+</style>
+
+<script>
+  import { Heerich } from "heerich";
+
+  // Earth-tone palette for geological voxels
+  const geoColors = {
+    bedrock: {
+      green: { fill: "#627F5D", stroke: "hsl(111, 15%, 33%)" },
+      brown: { fill: "hsl(34, 19%, 51%)", stroke: "hsl(34, 19%, 41%)" },
+      gray: { fill: "hsl(115, 2%, 53%)", stroke: "hsl(115, 2%, 43%)" },
+    },
+    clay: { fill: "#8B7355", stroke: "#6B5744" },
+    sand: { fill: "#C4A265", stroke: "#A68B52" },
+    gravel: { fill: "#9B8B7A", stroke: "#7A6E60" },
+    peat: { fill: "#4A3728", stroke: "#3A2A1E" },
+    rock: { fill: "#7A8B8A", stroke: "#5E6E6D" },
+    green: { fill: "#63805E", stroke: "#4E664A" },
+  };
+
+  function styleFn(colors: { fill: string; stroke: string }) {
+    return {
+      default: {
+        fill: colors.fill,
+        stroke: colors.stroke,
+        "stroke-width": "0.5",
+      },
+      top: {
+        fill: lighten(colors.fill, 15),
+        stroke: colors.stroke,
+        "stroke-width": "0.5",
+      },
+    };
+  }
+
+  function lighten(hex: string, percent: number): string {
+    const num = parseInt(hex.replace("#", ""), 16);
+    const r = Math.min(255, ((num >> 16) & 0xff) + percent);
+    const g = Math.min(255, ((num >> 8) & 0xff) + percent);
+    const b = Math.min(255, (num & 0xff) + percent);
+    return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, "0")}`;
+  }
+
+  // Hero: Geological block model stacked layers with a carved-out section
+  function renderHero() {
+    const el = document.getElementById("hero-voxel");
+    if (!el) return;
+
+    const h = new Heerich({
+      tile: 22,
+      camera: { type: "isometric", angle: 225 },
+    });
+
+    // Top
+    h.applyGeometry({
+      type: "box",
+      position: [0, 0, 0],
+      size: [10, 3, 10],
+      style: styleFn(geoColors.bedrock.green),
+    });
+
+    // Middle
+    h.applyGeometry({
+      type: "box",
+      position: [0, 3, 0],
+      size: [10, 3, 10],
+      style: styleFn(geoColors.bedrock.brown),
+    });
+
+    // Bottom
+    h.applyGeometry({
+      type: "box",
+      position: [0, 6, 0],
+      size: [10, 3, 10],
+      style: styleFn(geoColors.bedrock.gray),
+    });
+
+    el.innerHTML = h.toSVG();
+    const svg = el.querySelector("svg");
+    if (svg) {
+      svg.setAttribute("width", "100%");
+      svg.setAttribute("height", "100%");
+      svg.style.display = "block";
+    }
+  }
+
+  // Grid section: an exploded voxel grid showing individual cells
+  function renderGrid() {
+    const el = document.getElementById("voxel-grid");
+    if (!el) return;
+
+    const h = new Heerich({
+      tile: 28,
+      camera: { type: "isometric", angle: 315 },
+    });
+
+    const layers = [
+      geoColors.rock,
+      geoColors.clay,
+      geoColors.sand,
+      geoColors.gravel,
+      geoColors.green,
+    ];
+
+    for (let y = 0; y < 5; y++) {
+      for (let x = 0; x < 4; x++) {
+        for (let z = 0; z < 4; z++) {
+          // Spacing between voxels for "exploded" look
+          h.applyGeometry({
+            type: "box",
+            position: [x * 2, y * 2, z * 2],
+            size: [1, 1, 1],
+            style: styleFn(layers[y]),
+            opaque: false,
+          });
+        }
+      }
+    }
+
+    el.innerHTML = h.toSVG();
+    const svg = el.querySelector("svg");
+    if (svg) {
+      svg.setAttribute("width", "100%");
+      svg.setAttribute("height", "100%");
+      svg.style.display = "block";
+    }
+  }
+
+  // Layers section: stacked geological layers
+  function renderLayers() {
+    const el = document.getElementById("voxel-layers");
+    if (!el) return;
+
+    const h = new Heerich({
+      tile: 24,
+      camera: { type: "isometric", angle: 135 },
+    });
+
+    // Create offset stacked layers to show conversion pipeline
+    const layerData = [
+      { y: 0, color: geoColors.rock, w: 8, d: 8 },
+      { y: 2, color: geoColors.clay, w: 8, d: 8 },
+      { y: 4, color: geoColors.sand, w: 8, d: 8 },
+      { y: 6, color: geoColors.gravel, w: 8, d: 8 },
+      { y: 8, color: geoColors.peat, w: 8, d: 8 },
+    ];
+
+    layerData.forEach(({ y, color, w, d }) => {
+      h.applyGeometry({
+        type: "box",
+        position: [0, y, 0],
+        size: [w, 1, d],
+        style: styleFn(color),
+      });
+    });
+
+    el.innerHTML = h.toSVG();
+    const svg = el.querySelector("svg");
+    if (svg) {
+      svg.setAttribute("width", "100%");
+      svg.setAttribute("height", "100%");
+      svg.style.display = "block";
+    }
+  }
+
+  renderHero();
+  renderGrid();
+  renderLayers();
+</script>
