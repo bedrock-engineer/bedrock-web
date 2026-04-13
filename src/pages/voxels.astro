@@ -15,7 +15,7 @@ import amsterdamNoord from "../assets/nl-amsterdam-noord.webp";
 const title =
   "3D Tiles Voxels - Volumetric Models in Browser Web Maps | Bedrock.engineer";
 const description =
-  "Share volumetric  models with anyone via a browser link. Bedrock.engineer converts your volumetric models into interactive 3D web apps using the 3D Tiles Voxel extension and CesiumJS.";
+  "Share volumetric models with your team via a browser link. Bedrock.engineer converts your volumetric models into interactive 3D web apps using the 3D Tiles Voxel extension and CesiumJS.";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -37,7 +37,6 @@ const description =
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/png" />
 
-    <!-- TODO: add video file -->
     <meta property="og:video" content="https://bedrock.engineer/voxels-og.mp4" />
     <meta property="og:video:type" content="video/mp4" />
     <meta property="og:video:width" content="1200" />
@@ -92,7 +91,7 @@ const description =
         <div class="hero-layout">
           <div class="hero-text">
             <p class="eyebrow">3D Tiles Voxels</p>
-            <h1 class="heading-1">Your subsurface model, explorable by anyone with a link</h1>
+            <h1 class="heading-1">Your subsurface model, explorable by anyone with the link</h1>
             <p class="paragraph-xl">
               Your volumetric model shouldn't require a desktop application and
               a license to explore. We convert subsurface models into
@@ -114,8 +113,8 @@ const description =
 
     <div class="section-wrapper texture-616">
       <section class="section">
-        <h2 class="heading-2" style="margin-block-end: var(--space-l);">
-          Demos
+        <h2 class="heading-2 anchor-heading" id="demos" style="margin-block-end: var(--space-l);">
+          Demos <a class="anchor-link" href="#demos">#</a>
         </h2>
 
         <div class="grid-auto-fit">
@@ -181,8 +180,8 @@ const description =
 
     <div class="section-wrapper texture-620">
       <section class="section">
-        <h2 class="heading-2" style="margin-block-end: var(--space-l);">
-          Built for the browser
+        <h2 class="heading-2 anchor-heading" id="built-for-the-browser" style="margin-block-end: var(--space-l);">
+          Built for the browser <a class="anchor-link" href="#built-for-the-browser">#</a>
         </h2>
 
         <div class="grid-auto-fit">
@@ -234,7 +233,7 @@ const description =
       <section class="section">
         <div class="content-with-decoration reverse">
           <div>
-            <h2 class="heading-2">What We Convert</h2>
+            <h2 class="heading-2 anchor-heading" id="what-we-convert">What We Convert <a class="anchor-link" href="#what-we-convert">#</a></h2>
             <p class="paragraph" style="margin-block-end: var(--space-m);">
               Your existing volumetric data, converted to 3D Tiles Voxels.
             </p>
@@ -282,8 +281,8 @@ const description =
 
     <div class="section-wrapper texture-620">
       <section class="section">
-        <h2 class="heading-2" style="margin-block-end: var(--space-m);">
-          Use Cases
+        <h2 class="heading-2 anchor-heading" id="use-cases" style="margin-block-end: var(--space-m);">
+          Use Cases <a class="anchor-link" href="#use-cases">#</a>
         </h2>
         <ul class="feature-list">
           <li>
@@ -331,6 +330,7 @@ const description =
         >
           We convert geological block models, ore grade models, groundwater
           grids, seismic volumes into interactive 3D web maps.
+          Need access controls? We can add authentication and permissions.
           <br /> Contact us to discuss your data and use case.
         </p>
 

@@ -344,6 +344,22 @@ figcaption {
   margin-block-end: var(--space-s);
 }
 
+.anchor-heading {
+  position: relative;
+
+  & .anchor-link {
+    color: var(--gray-8);
+    text-decoration: none;
+    margin-inline-start: 0.3em;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  &:hover .anchor-link {
+    opacity: 1;
+  }
+}
+
 .heading-3 {
   font-size: var(--heading-3);
   font-family: var(--font-condensed);

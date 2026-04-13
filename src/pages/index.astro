@@ -11,6 +11,7 @@ import HoverLogo from "../components/HoverLogo.astro";
 import Search from "@astrojs/starlight/components/Search.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import geotopSouthHolland from "../assets/geotop-south-holland.png";
 import "../styles/custom.css";
 ---
 
@@ -39,27 +40,15 @@ import "../styles/custom.css";
           <span>Bedrock.engineer</span>
         </div>
 
-        <!-- <h1>Bridge subsurface data <br />and modern geospatial tools</h1> -->
-        <h1>
-          Visualize. <wbr />Integrate.<wbr /> Optimize. <br />Your Subsurface
-          Data
+        <h1 id="hero-heading">
+          Unlock. <wbr />Visualize.<wbr /> Engineer. <br />Your Subsurface Data
         </h1>
 
-        <!-- <p>
-          Go from subsurface data stuck in gINT, AGS, or GEF to tools that make
-          it accessible and useful. Surface your subsurface data in web maps,
-          ArcGIS, QGIS, or AEC collaboration platforms.
-        </p> -->
-
         <p class="md:text-lg">
-          Surface your subsurface data in web maps, Python, QGIS, and AEC
-          platforms, escape proprietary databases like gINT or industry-specific
-          file formats like AGS and GEF.
+          Ground investigation data and geotechnical models sit in specialist
+          software the rest of your project can't reach. We make it accessible
+          in your web maps, GIS, BIM tools, and digital twin platforms.
         </p>
-
-        <!-- <p>Go from subsurface data stuck in gINT, AGS, or GEF to web maps, ArcGIS, QGIS, and AEC collaboration platforms—accessible wherever you need it.</p> -->
-
-        <!-- "Surface your subsurface data—go from gINT, AGS, and GEF files to web maps, ArcGIS, QGIS, and AEC platforms." -->
 
         <div class="flex gap-4 justify-center flex-wrap mt-12">
           <a
@@ -79,9 +68,7 @@ import "../styles/custom.css";
       </div>
 
       <section class="worked-with">
-        <h2
-          style="color: var(--gray-10); text-align: center; margin-inline: auto;"
-        >
+        <h2 id="worked-with">
           We have worked with
         </h2>
 
@@ -128,20 +115,48 @@ import "../styles/custom.css";
                   fill="#2D2E87"
                   d="M205.131,44.643 C205.182854,46.9356664 204.703699,49.2092562 203.731,51.286 C202.816724,53.1512874 201.600319,54.8525656 200.131,56.321 C197.977789,58.3909606 195.369355,59.9273886 192.515,60.807 C189.505681,61.7675983 186.364906,62.2527669 183.206,62.2450918 C175.984,62.2450918 170.314,60.355 166.196,56.575 C164.27194,54.7625611 162.719656,52.5924203 161.626,50.186 C160.484829,47.6747664 159.906981,44.9442403 159.933,42.186 L167.804,42.186 C167.802034,43.9833588 168.191741,45.7595603 168.946,47.391 C169.663408,48.9941523 170.681828,50.4447217 171.946,51.664 C173.365473,52.9998814 175.096212,53.9599521 176.981,54.457 C179.00579,55.024357 181.09923,55.3093826 183.202,55.304 C185.299816,55.3304919 187.391637,55.0741859 189.421,54.542 C191.217379,54.0558712 192.862114,53.1244738 194.203,51.834 C196.262354,50.0988469 197.390054,47.4992528 197.25,44.81 C197.286004,42.5377922 196.470544,40.3343376 194.964,38.633 C193.441333,36.8843333 190.902667,35.7276667 187.348,35.163 C185.710667,34.881 184.173333,34.641 182.736,34.443 C181.298667,34.245 179.761333,34.0053333 178.124,33.724 C175.97586,33.4156168 173.873129,32.8474563 171.862,32.032 C170.016795,31.2897499 168.324191,30.2137784 166.869,28.858 C165.447762,27.5188304 164.31082,25.9071136 163.526,24.119 C162.675766,22.1277404 162.257564,19.9787853 162.299,17.814 C162.292089,15.5896121 162.738504,13.3871426 163.611,11.341 C164.470272,9.30244983 165.75412,7.47042772 167.377,5.967 C169.377837,4.04753798 171.735196,2.53847514 174.316,1.525 C177.051627,0.501611575 179.954548,-0.00103222341 182.875,0.043 C185.736799,0.0322223619 188.581066,0.489939984 191.295,1.398 C193.911614,2.26328448 196.298538,3.70938716 198.277,5.628 C201.852645,8.99130387 203.900588,13.6683451 203.947,18.577 L196.075,18.577 C195.948631,13.9916799 193.152,9.90408571 188.924,8.125 C186.980726,7.32045988 184.890603,6.9314572 182.788,6.983 C180.795538,6.95598305 178.815463,7.3001818 176.949,7.998 C175.187772,8.68368434 173.619716,9.7873979 172.38,11.214 C171.626076,12.0554975 171.037473,13.0315265 170.645,14.091 C170.256697,15.2351129 170.070255,16.4380226 170.094,17.646 C170.063437,18.8604429 170.324753,20.0644878 170.856,21.157 C171.340725,22.1177982 172.017728,22.9687324 172.845,23.657 C173.680163,24.3444995 174.624103,24.8879495 175.638,25.265 C176.690335,25.6625178 177.782234,25.9461366 178.895,26.111 C180.587667,26.337 182.224,26.577 183.804,26.831 C185.384,27.085 186.991667,27.3516667 188.627,27.631 C193.113577,28.1173131 197.325718,30.0304249 200.644,33.089 C203.634667,35.9916667 205.130333,39.843 205.131,44.643 Z"
                 ></path>
-                <rect width="20" height="20" x="224.391" y="1.143" fill="#2D2E87"
-                ></rect>
-                <rect width="20" height="20" x="264.391" y="1.143" fill="#2D2E87"
-                ></rect>
-                <rect width="20" height="20" x="264.391" y="21.142" fill="#E04913"
-                ></rect>
-                <rect width="20" height="20" x="264.391" y="41.141" fill="#2D2E87"
-                ></rect>
-                <rect width="20" height="20" x="304.391" y="41.141" fill="#2D2E87"
-                ></rect>
-                <rect width="20" height="20" x="244.391" y="21.142" fill="#2D2E87"
-                ></rect>
-                <rect width="20" height="20" x="284.391" y="21.142" fill="#2D2E87"
-                ></rect>
+                <rect
+                  width="20"
+                  height="20"
+                  x="224.391"
+                  y="1.143"
+                  fill="#2D2E87"></rect>
+                <rect
+                  width="20"
+                  height="20"
+                  x="264.391"
+                  y="1.143"
+                  fill="#2D2E87"></rect>
+                <rect
+                  width="20"
+                  height="20"
+                  x="264.391"
+                  y="21.142"
+                  fill="#E04913"></rect>
+                <rect
+                  width="20"
+                  height="20"
+                  x="264.391"
+                  y="41.141"
+                  fill="#2D2E87"></rect>
+                <rect
+                  width="20"
+                  height="20"
+                  x="304.391"
+                  y="41.141"
+                  fill="#2D2E87"></rect>
+                <rect
+                  width="20"
+                  height="20"
+                  x="244.391"
+                  y="21.142"
+                  fill="#2D2E87"></rect>
+                <rect
+                  width="20"
+                  height="20"
+                  x="284.391"
+                  y="21.142"
+                  fill="#2D2E87"></rect>
               </g>
             </svg>
           </a>
@@ -167,7 +182,7 @@ import "../styles/custom.css";
       <section class="section tabs-section">
         <AnimatedDemoTabs client:load />
 
-        <div style="margin-top: 40px; text-align: center;">
+        <div class="section-link-center">
           <a href="/demos" class="section-link">
             Explore all interactive demos →
           </a>
@@ -175,48 +190,61 @@ import "../styles/custom.css";
       </section>
     </div>
 
+    <div class="section-wrapper texture-616">
+      <section class="section">
+        <a href="/voxels" class="voxel-callout">
+          <Image
+            src={geotopSouthHolland}
+            alt="GeoTOP geological voxel model in the browser"
+            class="voxel-callout-image"
+          />
+          <div class="voxel-callout-text">
+            <h2 class="heading-3">3D Voxel Models in the Browser</h2>
+            <p>
+              Explore geological models, groundwater grids, and mining block
+              models interactively. No downloads, no specialist software.
+            </p>
+            <span class="cesium-badge">Featured by Cesium</span>
+            <span class="section-link">See 3D Tiles Voxels →</span>
+          </div>
+        </a>
+      </section>
+    </div>
+
     <div class="section-wrapper texture-607">
       <section class="section">
-        <h2 class="heading-2">A Software Consultancy for Subsurface Data</h2>
+        <h2 class="heading-2 anchor-heading" id="what-we-do">
+          A Software Consultancy for Subsurface Data
+          <a class="anchor-link" href="#what-we-do">#</a>
+        </h2>
 
         <div class="grid-auto-fit gap-y-8">
           <div>
-            <p class="paragraph" style="margin-block-end: 24px">
-              Ground investigation data is trapped in proprietary databases
-              (gINT), text formats (AGS, GEF), and specialist software, while
-              geospatial tools thrive in a separate, open and interoperable
-              ecosystem.
-              <!-- Custom builds require rare dual expertise. -->
+            <p class="paragraph" style="margin-block-end: var(--space-m)">
+              We build tools and workflows that connect your ground
+              investigation data, ground models, and analysis results to the
+              platforms your project already runs on.
             </p>
 
-            <p class="paragraph" style="margin-block-end: 24px">
-              Bedrock.engineer bridges this gap. We're a software consultancy
-              specialized in subsurface data. We build tools and workflows that
-              connect your ground investigation data to modern platforms like
-              QGIS, web maps, PostGIS databases, and BIM tools.
-            </p>
-
-            <h3 style="font-size: 20px; margin-block: 16px; font-weight: 600;">
+            <h3 class="heading-4">
               What we do:
             </h3>
             <ul class="services-list paragraph">
               <li>
-                Convert legacy formats (AGS, GEF/CPT, gINT) into modern
-                geospatial formats like GeoPackage or geospatial databases like
-                PostGIS
+                Convert legacy formats (AGS, GEF/CPT, gINT) into geospatial
+                formats like GeoPackage or PostGIS databases
               </li>
               <li>
-                Build web applications for CPT data management, engineering
-                model visualization (Plaxis, Deltares D-Series), and interactive
+                Build web applications for CPT data, engineering model
+                visualization (Plaxis, Deltares D-Series), and interactive
                 3D maps
               </li>
               <li>
                 Integrate ground investigation data into digital twin platforms
-                for infrastructure planning
               </li>
               <li>
-                Create automated workflows connecting subsurface data to QGIS,
-                BIM platforms, and design tools
+                Automate workflows connecting subsurface data to QGIS, BIM
+                tools, and databases
               </li>
             </ul>
           </div>
@@ -224,9 +252,9 @@ import "../styles/custom.css";
           <HoverLogo class="place-self-center" />
         </div>
 
-        <div style="margin-top: 40px; text-align: center;">
+        <div class="section-link-center">
           <a href="/services" class="section-link">
-            Learn about our services →
+            Our services →
           </a>
         </div>
       </section>
@@ -234,7 +262,7 @@ import "../styles/custom.css";
 
     <div class="section-wrapper texture-616">
       <section class="section">
-        <h2 class="heading-2">Our Values</h2>
+        <h2 class="heading-2 anchor-heading" id="values">Our Values <a class="anchor-link" href="#values">#</a></h2>
 
         <div class="grid-auto-fit" style="--grid-gap: 72px;">
           <div class="value-card">
@@ -242,31 +270,30 @@ import "../styles/custom.css";
               Purpose-built for subsurface data
             </h3>
             <p>
-              We build tools specifically for subsurface data, applied to your
-              specific workflows. Not generic software that "almost" fits.
-              Reusable patterns for subsurface data that we adapt to your needs.
-              You get tailored tools without custom-build costs.
+              Not generic software that "almost" fits. We've built reusable
+              components for ground investigation data, geotechnical models,
+              and underground assets, and adapt them to your workflows.
+              Tailored tools without full custom-build costs.
             </p>
           </div>
 
           <div class="value-card">
             <h3 class="value-title text-xl font-semibold">
-              Interoperable geospatial data
+              Standard formats, any tool
             </h3>
             <p>
-              Modern geospatial formats mean your subsurface data works
-              everywhere, QGIS, ArcGIS, Python, web maps, geospatial databases.
-              We bring practices from modern software development and the
-              geospatial ecosystem to subsurface data.
+              Your subsurface data converted to standard geospatial formats.
+              Use it in QGIS, ArcGIS, Python, web maps, geospatial databases.
+              Whoever needs the data can open it in tools they already have.
             </p>
           </div>
 
           <div class="value-card">
             <h3 class="value-title text-xl font-semibold">Open ecosystems</h3>
             <p>
-              We believe deeply in open-source software and open standards to
-              make subsurface data more accessible and understandable, and drive
-              innovation in geotechnical engineering. We maintain
+              We believe in open-source software and open standards to drive
+              innovation in geotechnical engineering. Your subsurface data
+              should work in any tool, not just ours. We maintain
               <code
                 ><a href="https://github.com/bedrock-engineer/bedrock-ge/"
                   >bedrock-ge</a
@@ -277,9 +304,9 @@ import "../styles/custom.css";
           </div>
         </div>
 
-        <div style="margin-top: 40px; text-align: center;">
+        <div class="section-link-center">
           <a href="/mission" class="section-link">
-            Learn about our mission →
+            Our mission →
           </a>
         </div>
       </section>
@@ -287,7 +314,7 @@ import "../styles/custom.css";
 
     <div class="section-wrapper texture-668">
       <section class="section team" style="--grid-color: black;">
-        <h2 class="heading-2">The Team</h2>
+        <h2 class="heading-2 anchor-heading" id="team">The Team <a class="anchor-link" href="#team">#</a></h2>
 
         <div class="team-member-grid">
           <Card class="team-member card">
@@ -317,7 +344,7 @@ import "../styles/custom.css";
           </Card>
         </div>
 
-        <div style="margin-top: 48px; text-align: center;">
+        <div class="section-link-center">
           <a href="/about" class="section-link">More about the team →</a>
         </div>
       </section>
@@ -330,8 +357,12 @@ import "../styles/custom.css";
     @reference "../styles/custom.css";
 
     .paragraph {
-      font-size: 18px;
       max-width: 50ch;
+    }
+
+    .section-link-center {
+      margin-block-start: var(--space-l);
+      text-align: center;
     }
 
     /* Alternate background colors for sections */
@@ -344,10 +375,10 @@ import "../styles/custom.css";
     }
 
     .hero-wrapper {
-      padding-inline: 16px;
+      padding-inline: var(--space-s);
       border-bottom: 1px solid var(--border-color);
       @media (max-width: 640px) {
-        padding-inline: 8px;
+        padding-inline: var(--space-2xs);
       }
     }
 
@@ -380,9 +411,9 @@ import "../styles/custom.css";
 
       & h1 {
         font-size: clamp(1.8rem, 1.75rem + 2.4vw, 4rem);
-        margin-top: 32px;
-        margin-bottom: 16px;
-        font-family: "IBM Plex Sans Condensed";
+        margin-top: var(--space-l);
+        margin-bottom: var(--space-s);
+        font-family: var(--font-condensed);
         text-box-trim: trim-both;
         text-wrap: balance;
       }
@@ -395,14 +426,15 @@ import "../styles/custom.css";
 
     .worked-with {
       border-top: none;
-      padding-block-start: 32px;
-      padding-block-end: 48px;
+      padding-block-start: var(--space-l);
+      padding-block-end: var(--space-xl);
 
       & h2 {
-        /* text-align: center; */
-        font-size: 20px;
-        margin-left: 108px;
-        margin-bottom: 36px;
+        font-size: var(--text-xl);
+        color: var(--gray-10);
+        text-align: center;
+        margin-inline: auto;
+        margin-bottom: var(--space-m-l);
       }
     }
 
@@ -427,15 +459,15 @@ import "../styles/custom.css";
       justify-content: center;
       column-gap: 9px;
       font-size: 36px;
-      font-family: "IBM Plex Sans Condensed";
+      font-family: var(--font-condensed);
       position: absolute;
-      top: 16px;
+      top: var(--space-s);
       left: 20px;
 
       @media (max-width: 640px) {
         font-size: 24px;
         column-gap: 6px;
-        left: 12px;
+        left: var(--space-xs);
 
         & svg {
           width: 28px;
@@ -446,8 +478,8 @@ import "../styles/custom.css";
 
     .client-logos {
       display: flex;
-      column-gap: 64px;
-      row-gap: 48px;
+      column-gap: var(--space-2xl);
+      row-gap: var(--space-xl);
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
@@ -461,7 +493,7 @@ import "../styles/custom.css";
     .team-member-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
-      gap: 16px;
+      gap: var(--space-s);
       container-type: inline-size;
       container-name: team-grid;
     }
@@ -471,10 +503,10 @@ import "../styles/custom.css";
       grid-template-areas:
         "image description"
         "name description";
-      column-gap: 24px;
-      row-gap: 12px;
-      padding-block: 20px;
-      padding-inline: 32px;
+      column-gap: var(--space-m);
+      row-gap: var(--space-xs);
+      padding-block: var(--space-s);
+      padding-inline: var(--space-l);
 
       & img {
         grid-area: image;
@@ -509,13 +541,65 @@ import "../styles/custom.css";
       padding-block-start: 0;
     }
 
+    .voxel-callout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-l);
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      border-radius: var(--border-radius);
+      transition: background 0.15s;
+
+      &:hover {
+        background: var(--gray-2);
+      }
+
+      &:hover .section-link {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .voxel-callout-image {
+      border-radius: var(--border-radius-sm);
+      width: 80%;
+      height: auto;
+    }
+
+    .voxel-callout-text {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+
+      & p {
+        line-height: 1.6;
+        max-width: 40ch;
+      }
+    }
+
+    .cesium-badge {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2em 0.6em;
+      background: var(--green-3);
+      color: var(--green-11);
+      border-radius: var(--border-radius-sm);
+      width: fit-content;
+    }
+
     .services-list {
       list-style: none;
       padding-left: 0;
 
       li {
-        padding-left: 24px;
-        margin-block: 12px;
+        padding-left: var(--space-m);
+        margin-block: var(--space-xs);
         position: relative;
 
         &::before {
@@ -547,20 +631,8 @@ import "../styles/custom.css";
     }
 
     .value-title {
-      font-family: "IBM Plex Sans Condensed";
+      font-family: var(--font-condensed);
       color: var(--gray-12);
-    }
-
-    .value-link {
-      @apply no-underline inline-flex items-center gap-1;
-      color: var(--green-11);
-      transition: gap 0.2s;
-      font-weight: 500;
-
-      &:hover {
-        gap: 8px;
-        text-decoration: underline;
-      }
     }
   </style>
 

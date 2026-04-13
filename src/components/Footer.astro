@@ -45,7 +45,7 @@ import { Icon } from "@astrojs/starlight/components";
           <ul>
             <li>
               <a class="footer-link" href="docs/getting-started"
-                >Getting Started with <code>bedrock-ge</code></a
+                >Getting Started with{" "}<code>bedrock-ge</code></a
               >
             </li>
             <li>
@@ -90,7 +90,7 @@ import { Icon } from "@astrojs/starlight/components";
 
       <div class="footer-bottom">
         <p class="footer-copyright">
-          © {new Date().getFullYear()} Bedrock Engineer B.V. All rights reserved.
+          © {new Date().getFullYear()} Bedrock Technologies B.V. All rights reserved.
         </p>
       </div>
     </div>
@@ -100,11 +100,11 @@ import { Icon } from "@astrojs/starlight/components";
 <style>
   /* Footer is intentionally always dark — fixed tokens scoped here */
   .footer {
-    --footer-bg: #111211;
-    --footer-border: #181a18;
-    --footer-text: #edeeed;
-    --footer-text-muted: #b1b6b0;
-    --footer-link: #b1b6b0;
+    --footer-bg: oklch(0.181 0.003 145.468);
+    --footer-border: oklch(0.215 0.005 145.401);
+    --footer-text: oklch(0.948 0.002 145.562);
+    --footer-text-muted: oklch(0.771 0.01 140.511);
+    --footer-link: oklch(0.771 0.01 140.511);
 
     background-color: var(--footer-bg);
     font-size: var(--text-sm);
