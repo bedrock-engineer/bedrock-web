@@ -15,7 +15,7 @@ import amsterdamNoord from "../assets/nl-amsterdam-noord.webp";
 const title =
   "3D Tiles Voxels - Volumetric Models in Browser Web Maps | Bedrock.engineer";
 const description =
-  "Share volumetric  models with anyone via a browser link. Bedrock.engineer converts your volumetric models — netCDF, block models, MODFLOW grids — into interactive 3D web apps using the 3D Tiles Voxel extension and CesiumJS.";
+  "Share volumetric  models with anyone via a browser link. Bedrock.engineer converts your volumetric models into interactive 3D web apps using the 3D Tiles Voxel extension and CesiumJS.";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -32,11 +32,21 @@ const description =
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
 
-    <!-- TODO custom og image with screenshot or heerich.js! -->
-    <!-- TODO custom og video with screenrect or animated heerich.js! -->
+    <meta property="og:image" content="https://bedrock.engineer/og-voxels.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
 
+    <!-- TODO: add video file -->
+    <meta property="og:video" content="https://bedrock.engineer/voxels-og.mp4" />
+    <meta property="og:video:type" content="video/mp4" />
+    <meta property="og:video:width" content="1200" />
+    <meta property="og:video:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://bedrock.engineer/og-voxels.png" />
 
     <meta name="author" content="Bedrock.engineer" />
 
@@ -81,22 +91,21 @@ const description =
       <section class="section intro-section">
         <div class="hero-layout">
           <div class="hero-text">
-            <h1 class="heading-1">3D Tiles Voxels</h1>
+            <p class="eyebrow">3D Tiles Voxels</p>
+            <h1 class="heading-1">Your subsurface model, explorable by anyone with a link</h1>
             <p class="paragraph-xl">
               Your volumetric model shouldn't require a desktop application and
               a license to explore. We convert subsurface models into
               interactive, streamable 3D models in the browser using the 3D
-              Tiles Voxel extension, so anyone with the link can explore the
-              data.
+              Tiles Voxel extension.
             </p>
-            <p class="cesium-callout">
-              <Link
-                href="https://cesium.com/blog/2026/04/08/bedrock-engineer-streams-subsurface-with-voxels/"
-                variant="arrow"
-              >
-                Read our Cesium user story
-              </Link>
-            </p>
+            <a
+              class="cesium-callout"
+              href="https://cesium.com/blog/2026/04/08/bedrock-engineer-streams-subsurface-with-voxels/"
+            >
+              <span class="cesium-badge">Featured by Cesium</span>
+              Read how we stream subsurface models with 3D Tiles Voxels
+            </a>
           </div>
           <div class="hero-decoration" id="hero-voxel" aria-hidden="true"></div>
         </div>
@@ -125,7 +134,7 @@ const description =
                 GeoTOP
               </a>
               shallow subsurface model. Explore voxels of 100×100×0.5m with lithoclass
-              data from ground level to ~50m depth across the entire Netherlands.
+              data from ground level to ~50m depth across almost the entire Netherlands.
             </Fragment>
           </DemoCard>
 
@@ -173,7 +182,7 @@ const description =
     <div class="section-wrapper texture-620">
       <section class="section">
         <h2 class="heading-2" style="margin-block-end: var(--space-l);">
-          Why 3D Tiles?
+          Built for the browser
         </h2>
 
         <div class="grid-auto-fit">
@@ -278,24 +287,28 @@ const description =
         </h2>
         <ul class="feature-list">
           <li>
-            <strong>Subsurface uncertainty</strong> show where the model is confident
-            and where more investigation is needed
+            <strong>Subsurface uncertainty</strong> filter by confidence
+            threshold, isolate zones that need more investigation
           </li>
           <li>
-            <strong>Ore grade models</strong> spatial variation in ore grade, identify
-            high-grade zones
+            <strong>Ore grade models</strong> visualize grade distribution
+            across the block model. Filter by cutoff, identify
+            high-value zones without mining software
           </li>
           <li>
-            <strong>Stratigraphic models</strong> navigate geological formations interactively
-            instead of static cross-sections
+            <strong>Stratigraphic models</strong> navigate formations in 3D
+            instead of flipping through cross-sections. Slice at any
+            depth or orientation
           </li>
           <li>
-            <strong>Geotechnical properties</strong> bearing capacity, soil stiffness,
-            or derived parameters across a site volume
+            <strong>Geotechnical properties</strong> bearing capacity, soil
+            stiffness, derived parameters. Inspect values at any point
+            across the site volume
           </li>
           <li>
-            <strong>Groundwater models</strong> hydraulic head, flow paths, and aquifer
-            properties
+            <strong>Groundwater models</strong> hydraulic head, flow paths,
+            aquifer boundaries. Share model results with regulators and
+            clients directly
           </li>
         </ul>
       </section>
@@ -334,6 +347,15 @@ const description =
 </BaseLayout>
 
 <style>
+  .eyebrow {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--green-11);
+    margin-block-end: var(--space-xs);
+  }
+
   .hero-layout {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -346,8 +368,30 @@ const description =
   }
 
   .cesium-callout {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-s);
     margin-block-start: var(--space-m);
-    font-size: var(--text-lg);
+    font-size: var(--text-sm);
+    color: var(--gray-11);
+    text-decoration: none;
+    transition: color 0.15s;
+
+    &:hover {
+      color: var(--gray-12);
+    }
+  }
+
+  .cesium-badge {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.2em 0.6em;
+    background: var(--green-3);
+    color: var(--green-11);
+    border-radius: 4px;
+    white-space: nowrap;
   }
 
   .hero-decoration {
