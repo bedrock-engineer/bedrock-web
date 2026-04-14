@@ -4,7 +4,16 @@ import BedrockLogo from "../assets/bedrock.svg";
 import LanguagePicker from "./LanguagePicker.astro";
 import Search from "@astrojs/starlight/components/Search.astro";
 import ThemeToggle from "./ThemeToggle.astro";
-import { NavCompanyMenu } from "./NavCompanyMenu";
+
+const pathname = Astro.url.pathname;
+const navLinks = [
+  { href: "/demos", label: "Demos", match: "/demos" },
+  { href: "/services", label: "Services", match: "/services" },
+  { href: "/docs/getting-started", label: "Docs", match: "/docs" },
+  { href: "/about", label: "About", match: "/about" },
+];
+const isActive = (match: string) =>
+  pathname === match || pathname.startsWith(`${match}/`);
 ---
 
 <nav class="navbar">
@@ -15,8 +24,16 @@ import { NavCompanyMenu } from "./NavCompanyMenu";
     </a>
 
     <div class="nav-links">
-      <NavCompanyMenu client:load />
-      <a href="/docs/getting-started">Docs</a>
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            aria-current={isActive(link.match) ? "page" : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
     </div>
 
     <!-- Right side: Search + Theme Toggle + Language -->
@@ -24,7 +41,41 @@ import { NavCompanyMenu } from "./NavCompanyMenu";
       <Search />
       <ThemeToggle />
       <!-- <LanguagePicker /> -->
+      <button
+        type="button"
+        class="hamburger"
+        popovertarget="mobile-nav"
+        aria-label="Open navigation menu"
+      >
+        <svg
+          width="15"
+          height="15"
+          viewBox="0 0 15 15"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            d="M14 12.85L1 12.85L1 14.15L14 14.15L14 12.85ZM14 8.85002L1 8.85002L1 10.15L14 10.15L14 8.85002ZM1 4.85003L14 4.85003L14 6.15003L1 6.15002L1 4.85003ZM14 0.850025L1 0.850025L1 2.15002L14 2.15002L14 0.850025Z"
+            fill="currentColor"
+            fill-rule="evenodd"
+            clip-rule="evenodd"></path>
+        </svg>
+      </button>
     </div>
+  </div>
+
+  <div id="mobile-nav" popover class="mobile-nav">
+    {
+      navLinks.map((link) => (
+        <a
+          href={link.href}
+          aria-current={isActive(link.match) ? "page" : undefined}
+        >
+          {link.label}
+        </a>
+      ))
+    }
   </div>
 </nav>
 
@@ -76,21 +127,13 @@ import { NavCompanyMenu } from "./NavCompanyMenu";
     }
   }
 
-  .logo-text {
-    display: none;
-
-    @media (min-width: 640px) {
-      display: inline;
-    }
-  }
-
   /* Navigation Links */
   .nav-links {
     display: none;
     gap: 8px;
     margin-inline-start: auto;
 
-    @media (min-width: 1024px) {
+    @media (min-width: 768px) {
       display: flex;
     }
 
@@ -116,6 +159,12 @@ import { NavCompanyMenu } from "./NavCompanyMenu";
         outline-offset: 2px;
       }
 
+      &[aria-current="page"] {
+        color: var(--green-11);
+        background: var(--gray-3);
+        font-weight: 500;
+      }
+
       @media (prefers-reduced-motion: no-preference) {
         transition:
           color 0.15s ease,
@@ -131,8 +180,92 @@ import { NavCompanyMenu } from "./NavCompanyMenu";
     gap: var(--space-s);
     margin-inline-start: auto;
 
-    @media (min-width: 1024px) {
+    @media (min-width: 768px) {
       margin-inline-start: 0;
     }
+  }
+
+  /* Hamburger button — only on narrow screens */
+  .hamburger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: transparent;
+    color: var(--gray-11);
+    border: 1px solid transparent;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    anchor-name: --hamburger;
+
+    &:hover {
+      color: var(--green-11);
+      background: var(--gray-3);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--green-9);
+      outline-offset: 2px;
+    }
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  /* Popover menu */
+  .mobile-nav {
+    margin: 0;
+    padding: var(--space-xs);
+    border: 1px solid var(--border-color-light);
+    border-radius: var(--border-radius-md);
+    background: var(--gray-1);
+    box-shadow: var(--shadow-md, 0 8px 24px rgba(0, 0, 0, 0.12));
+    min-width: 200px;
+
+    /* Static fallback positioning */
+    position: fixed;
+    inset: auto;
+    top: 3.5rem;
+    right: var(--section-padding-inline);
+
+    /* Anchor-positioned where supported */
+    @supports (position-anchor: --x) {
+      position-anchor: --hamburger;
+      top: calc(anchor(bottom) + 4px);
+      right: anchor(right);
+    }
+
+    a {
+      display: block;
+      font-size: var(--text-base);
+      color: var(--gray-11);
+      text-decoration: none;
+      white-space: nowrap;
+      border-radius: var(--border-radius-sm);
+      padding: var(--space-xs) var(--space-s);
+
+      &:hover {
+        color: var(--green-11);
+        background: var(--gray-3);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--green-9);
+        outline-offset: 2px;
+      }
+
+      &[aria-current="page"] {
+        color: var(--green-11);
+        background: var(--gray-3);
+        font-weight: 500;
+      }
+    }
+  }
+
+  .mobile-nav::backdrop {
+    background: transparent;
   }
 </style>

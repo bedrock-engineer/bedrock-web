@@ -2,12 +2,12 @@ export const ui = {
   en: {
     title: "About Bedrock.engineer",
     intro:
-      "Bedrock.engineer is by two engineers who believe that geotechnical data should be accessible, interoperable, and visual. We combine domain expertise with modern software development to create tools that bridge the gap between industry-specific file formats and contemporary workflows.",
+      "Bedrock.engineer is two engineers who believe that geotechnical data should be accessible, interoperable, and visual. We combine domain expertise with modern software development to create tools that bridge the gap between industry-specific file formats and contemporary workflows.",
     joost: {
       bio: {
-        p1: "I studied geotechnical engineering and applied geophysics and then worked for Arup for 4 years as a geotechnical engineer and computational designer.",
-        p2: "During my time at Arup I worked a lot on bringing computational design into the world of geotechnical engineering, and on bridging the gaps between geotechnical engineering and structural engineering.",
-        p3: "Bedrock is the Free and Open Source Software (FOSS) that I wish existed when I worked as a geotechnical engineer at Arup.",
+        p1: "I studied geotechnical engineering and applied geophysics (imaging the subsurface using similar techniques to those we use in hospital to do non-invasive tests on the body), and then worked for Arup for 4 years as a geotechnical engineer and computational designer.",
+        p2: "During my time at Arup I worked on applying computational design to geotechnical engineering, and on communicating subsurface data (ground investigation data, ground models and geotechnical analysis results).",
+        p3: "With Bedrock.engineer, I'm building the Free and Open Source Software (FOSS), tools and apps that I wished existed when I was still working at Arup.",
       },
     },
     jules: {
@@ -17,7 +17,7 @@ export const ui = {
           "Software should be useful and usable, even (especially) technical software.",
           "A good visualization can make complex ideas clear quickly.",
         ],
-        p2: "These beliefs pushed me to learn programming, specifically user interface development to build more thoughtful interfaces for display technical information.",
+        p2: "These beliefs pushed me to learn programming, focusing on user interfaces to build more thoughtful interfaces for technical information.",
         p3: "For the past five years, I've worked on data-rich applications across various domains, focusing on usable UIs and turning numbers into visual insights.",
         p4: "At the moment, my primary interest is figuring out how to close the gap between the fragmented tools that exist for working with geotechnical data and the more accessible, interoperable tools that I believe could exist.",
       },

@@ -95,14 +95,14 @@ body:has(.page) {
 }
 
 :root {
-  accent-color: var(--green-9);
-  caret-color: var(--green-9);
-  scrollbar-color: var(--green-10);
+  accent-color: var(--color-primary);
+  caret-color: var(--color-primary);
+  scrollbar-color: var(--color-primary-hover);
   scrollbar-width: thin;
 }
 
 :focus-visible {
-  outline-color: var(--teal-10);
+  outline-color: var(--color-focus);
   outline-offset: 4px;
 }
 
@@ -160,17 +160,17 @@ a {
 
 .link {
   text-decoration: underline;
-  text-decoration-color: var(--green-9);
-  color: var(--gray-12);
+  text-decoration-color: var(--color-primary);
+  color: var(--color-text);
   transition: color 150ms;
 }
 
 .link:hover {
-  color: var(--green-11);
+  color: var(--color-primary-text);
 }
 
 .link:active {
-  color: var(--green-10);
+  color: var(--color-primary-hover);
 }
 
 .sl-markdown-content {
@@ -196,17 +196,17 @@ a {
 
 /* Dark mode colors - reference Radix dark theme variables */
 :root {
-  /* Accent colors - Radix green dark scale */
-  --sl-color-accent-low: var(--green-3);
-  --sl-color-accent: var(--green-9);
-  --sl-color-accent-high: var(--green-11);
+  /* Accent colors */
+  --sl-color-accent-low: var(--color-primary-subtle);
+  --sl-color-accent: var(--color-primary);
+  --sl-color-accent-high: var(--color-primary-text);
 
-  /* Text colors - Radix gray dark scale */
-  --sl-color-white: var(--gray-12);
-  --sl-color-black: var(--gray-1);
-  --sl-color-text: var(--gray-12);
-  --sl-color-text-accent: var(--green-11);
-  --sl-color-text-invert: var(--gray-1);
+  /* Text colors */
+  --sl-color-white: var(--color-text);
+  --sl-color-black: var(--color-surface);
+  --sl-color-text: var(--color-text);
+  --sl-color-text-accent: var(--color-primary-text);
+  --sl-color-text-invert: var(--color-surface);
 
   /* Gray scale - Radix gray dark scale */
   --sl-color-gray-1: var(--gray-12);
@@ -217,8 +217,8 @@ a {
   --sl-color-gray-6: var(--gray-3);
 
   /* Additional Starlight variables for Search component */
-  --sl-color-backdrop-overlay: rgba(0, 0, 0, 0.5);
-  --sl-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.3);
+  --sl-color-backdrop-overlay: var(--color-overlay);
+  --sl-shadow-lg: 0 10px 25px var(--color-shadow-strong);
   --__sl-font: var(--font-sans);
 
   /* Starlight text sizes - map to your fluid scale */
@@ -318,10 +318,43 @@ figcaption {
   --container-md: 1200px;
   --container-wide: 1480px;
 
+  /* ========== SEMANTIC COLOR TOKENS ========== */
+  /* Use these instead of raw Radix scale numbers in components */
+
+  /* Text */
+  --color-text: var(--gray-12);
+  --color-text-muted: var(--gray-11);
+  --color-text-subtle: var(--gray-9);
+
+  /* Surfaces */
+  --color-surface: var(--gray-1);
+  --color-surface-raised: var(--gray-2);
+  --color-surface-overlay: var(--gray-3);
+
+  /* Borders */
+  --color-border: var(--gray-5);
+  --color-border-subtle: var(--gray-4);
+  --color-border-strong: var(--gray-7);
+
+  /* Primary (green) */
+  --color-primary: var(--green-9);
+  --color-primary-hover: var(--green-10);
+  --color-primary-text: var(--green-11);
+  --color-primary-subtle: var(--green-3);
+  --color-primary-contrast: var(--green-contrast);
+
+  /* Focus */
+  --color-focus: var(--teal-10);
+
+  /* Shadows & overlays */
+  --color-shadow: oklch(0 0 0 / 0.15);
+  --color-shadow-strong: oklch(0 0 0 / 0.3);
+  --color-overlay: oklch(0 0 0 / 0.5);
+
   /* ========== BORDER & RADIUS ========== */
 
-  --border-color-light: var(--gray-4);
-  --border-color: var(--gray-5);
+  --border-color-light: var(--color-border-subtle);
+  --border-color: var(--color-border);
   --border-radius: 8px;
   --border-radius-sm: 4px;
 }
@@ -397,7 +430,7 @@ figcaption {
 .subtitle {
   font-size: var(--text-sm);
   font-weight: 500;
-  color: var(--green-9);
+  color: var(--color-primary);
   /* margin-block-start: calc(-0.5 * var(--space-xs)); */
   margin-block-end: var(--space-m);
   letter-spacing: var(--leading-tight);
@@ -427,7 +460,7 @@ figcaption {
   padding-inline: var(--section-padding-inline);
   margin-inline: auto;
   border-inline: 1px solid var(--border-color);
-  background: var(--gray-1);
+  background: var(--color-surface);
   @media (max-width: 1200px) {
     border-inline: none;
   }
@@ -502,8 +535,8 @@ figcaption {
 .cta-button {
   display: inline-block;
   padding: 14px 28px;
-  background: var(--green-9);
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
   text-decoration: none;
   border-radius: var(--border-radius-sm);
   font-weight: 600;
@@ -512,14 +545,14 @@ figcaption {
     transform 0.2s ease,
     box-shadow 0.2s ease,
     background 0.2s ease;
-  border: 2px solid var(--green-9);
+  border: 2px solid var(--color-primary);
 }
 
 .cta-button:hover {
-  background: var(--green-10);
-  border-color: var(--green-10);
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px var(--color-shadow);
   text-decoration: none;
 }
 
@@ -531,19 +564,19 @@ figcaption {
   display: inline-block;
   padding: 14px 28px;
   background: transparent;
-  color: var(--gray-12);
+  color: var(--color-text);
   text-decoration: none;
   border-radius: var(--border-radius-sm);
   font-weight: 600;
   font-size: var(--text-base);
-  border: 2px solid var(--gray-7);
+  border: 2px solid var(--color-border-strong);
   transition:
     background 0.2s ease,
     border-color 0.2s ease;
 }
 
 .cta-button-secondary:hover {
-  background: var(--gray-3);
+  background: var(--color-surface-overlay);
   border-color: var(--gray-8);
   text-decoration: none;
 }
@@ -552,8 +585,8 @@ figcaption {
 .cta-button-inverted {
   display: inline-block;
   padding: 14px 28px;
-  background: white;
-  color: var(--green-9);
+  background: oklch(1 0 0);
+  color: var(--color-primary);
   text-decoration: none;
   border-radius: var(--border-radius-sm);
   font-weight: 500;
@@ -561,12 +594,12 @@ figcaption {
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
-  border: 2px solid white;
+  border: 2px solid oklch(1 0 0);
 }
 
 .cta-button-inverted:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px var(--color-shadow);
   text-decoration: none;
 }
 
@@ -578,17 +611,17 @@ figcaption {
   display: inline-block;
   padding: 14px 28px;
   background: transparent;
-  color: white;
+  color: oklch(1 0 0);
   text-decoration: none;
   border-radius: var(--border-radius-sm);
   font-weight: 500;
   font-size: var(--text-base);
-  border: 1.5px solid white;
+  border: 1.5px solid oklch(1 0 0);
   transition: background 0.2s ease;
 }
 
 .cta-button-secondary-inverted:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: oklch(1 0 0 / 0.1);
   text-decoration: none;
 }
 
@@ -598,7 +631,7 @@ figcaption {
   align-items: center;
   gap: 4px;
   font-size: var(--text-lg);
-  color: var(--green-11);
+  color: var(--color-primary-text);
   text-decoration: none;
   transition: gap 0.2s ease;
 }
