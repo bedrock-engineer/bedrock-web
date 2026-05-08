@@ -1,22 +1,16 @@
 ---
-import kaiTakSpeckle from "../assets/KaiTak_BrGI_Speckle.png";
-import kaiTakArcGIS from "../assets/KaiTak_BrGI_ArcGIS.webp";
-import kaiTakCesium from "../assets/hk_kaitak_cesium.webp";
-import antwerpen from "../assets/antwerpen.png";
-import zalmhaven from "../assets/zalmhaven.jpeg";
-import geotop from "../assets/geotop.png";
-import broCpt from "../assets/bro-cpt.png";
-import gefApp from "../assets/gef.webp";
-import broXmlApp from "../assets/bro-viewer.png";
-import amsterdamSpeckle from "../assets/amsterdam-noord-speckle.png";
-import amsterdamNoord from "../assets/nl-amsterdam-noord.webp";
-import wekaHills from "../assets/WekaHills_Speckle.webp";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import DemoCard from "../components/DemoCard.astro";
-import "../styles/custom.css";
 import Link from "../components/Link.astro";
+import {
+  demos,
+  demosById,
+  availableTags,
+  tagDimensions,
+} from "../data/demos";
+import "../styles/custom.css";
 
 const title =
   "Interactive Ground Investigation Demos - CesiumJS, GEF Viewer, Speckle, ArcGIS | Bedrock.engineer";
@@ -56,36 +50,18 @@ const description =
       mainEntity: {
         "@type": "ItemList",
         name: "Ground Investigation Visualization Demos",
-        itemListElement: [
-          {
-            "@type": "SoftwareApplication",
-            position: 1,
-            name: "Kai Tak Hong Kong CesiumJS Demo",
-            description:
-              "Interactive 3D visualization of ground investigation data in CesiumJS",
-            applicationCategory: "WebApplication",
-          },
-          {
-            "@type": "SoftwareApplication",
-            position: 2,
-            name: "GEF Viewer",
-            description: "Web-based viewer for GEF data files",
-            applicationCategory: "WebApplication",
-          },
-          {
-            "@type": "SoftwareApplication",
-            position: 3,
-            name: "Speckle BIM Integration Demos",
-            description:
-              "Ground investigation data integrated with BIM models in Speckle",
-            applicationCategory: "WebApplication",
-          },
-        ],
+        itemListElement: demos.map((demo, i) => ({
+          "@type": "SoftwareApplication",
+          position: i + 1,
+          name: demo.title,
+          description: demo.description,
+          applicationCategory: "WebApplication",
+          ...(demo.href ? { url: demo.href } : {}),
+        })),
       },
     })}
   />
 
-  <!-- BreadcrumbList Schema for page hierarchy -->
   <script
     is:inline
     type="application/ld+json"
@@ -118,29 +94,42 @@ const description =
         <p class="paragraph-xl">
           Explore real-world examples of ground investigation data transformed
           into interactive visualizations across different platforms and tools.
-          See how ground investigation
-          <!-- AGS4, GEF, and BRO/XML / subsurface data -->
-          data can be visualized in CesiumJS 3D maps, Speckle BIM integration, and
-          ArcGIS Pro.
+          See how ground investigation data can be visualized in CesiumJS 3D
+          maps, Speckle BIM integration, and ArcGIS Pro.
         </p>
       </section>
     </header>
 
-    <!-- Web-Based Visualizations -->
     <div class="section-wrapper texture-616">
       <section class="section">
-        <h2 class="heading-2" style="margin-block-end: var(--space-l);">
-          Web-Based Visualizations
-        </h2>
+        <div class="filter-bar" role="group" aria-label="Filter demos">
+          {
+            tagDimensions.map((dim) => (
+              <div class="filter-row">
+                <span class="filter-label">{dim.label}</span>
+                <div class="filter-chips">
+                  {availableTags[dim.key].map((value) => (
+                    <button
+                      type="button"
+                      class="filter-chip"
+                      data-dim={dim.key}
+                      data-value={value}
+                      aria-pressed="false"
+                    >
+                      {value}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
+          <button type="button" class="reset-filters" hidden>
+            Reset filters
+          </button>
+        </div>
 
-        <div class="grid-auto-fit">
-          <!-- TODO tags cesiumjs, webdev, etc -->
-          <DemoCard
-            title="Kai Tak, Hong Kong - CesiumJS"
-            image={kaiTakCesium}
-            href="https://bedrock.engineer/hk-kaitak"
-            linkText="Explore demo"
-          >
+        <div class="grid-auto-fit demos-grid">
+          <DemoCard {...demosById["kai-tak-cesium"]}>
             <Fragment slot="description">
               Ground investigation data from Kai Tak, Hong Kong visualized in an
               interactive CesiumJS map. Explore borehole locations, SPT results,
@@ -151,12 +140,7 @@ const description =
             </Fragment>
           </DemoCard>
 
-          <DemoCard
-            title="BRO/XML File Viewer"
-            image={broXmlApp}
-            href="https://bro.bedrock.engineer"
-            linkText="Open BRO/XML viewer"
-          >
+          <DemoCard {...demosById["bro-xml-viewer"]}>
             <Fragment slot="description">
               Free web-based viewer for BRO/XML (Basisregistratie Ondergrond)
               files. Upload and visualize CPT, geotechnical borehole and lab
@@ -164,12 +148,7 @@ const description =
             </Fragment>
           </DemoCard>
 
-          <DemoCard
-            title="GEF File Viewer"
-            image={gefApp}
-            href="https://gef.bedrock.engineer"
-            linkText="Open GEF viewer"
-          >
+          <DemoCard {...demosById["gef-viewer"]}>
             <Fragment slot="description">
               Free web-based viewer for GEF (Geotechnical Exchange Format)
               files. Upload and visualize CPT & bore data directly in your
@@ -177,12 +156,7 @@ const description =
             </Fragment>
           </DemoCard>
 
-          <DemoCard
-            title="Amsterdam Noord - CesiumJS"
-            image={amsterdamNoord}
-            href="https://bedrock.engineer/nl-amsterdam-noord"
-            linkText="Explore demo"
-          >
+          <DemoCard {...demosById["amsterdam-noord-cesium"]}>
             <Fragment slot="description">
               Interactive 3D web map showing interpreted Cone Penetration Test
               data along with Dutch public datasets of 3D Buildings (3DBag), and
@@ -190,12 +164,7 @@ const description =
             </Fragment>
           </DemoCard>
 
-          <DemoCard
-            title="GeoTOP Voxels - CesiumJS"
-            image={geotop}
-            href="https://bedrock.engineer/geotop-voxels"
-            linkText="Explore demo"
-          >
+          <DemoCard {...demosById["geotop-voxels-cesium"]}>
             <Fragment slot="description">
               The Dutch GeoTOP shallow subsurface model visualized in 3D for the
               first time in a browser. Explore 100×100×0.5 meter voxels
@@ -205,12 +174,7 @@ const description =
             </Fragment>
           </DemoCard>
 
-          <DemoCard
-            title="Antwerp Geological Model - CesiumJS"
-            href="https://antwerpen.bedrock.engineer"
-            linkText="Explore demo"
-            image={antwerpen}
-          >
+          <DemoCard {...demosById["antwerp-cesium"]}>
             <Fragment slot="description">
               The Flemish DOV shallow subsurface model of the Antwerp urban
               region and harbor visualized as 3D Tiles Voxels in CesiumJS.
@@ -220,12 +184,7 @@ const description =
             </Fragment>
           </DemoCard>
 
-          <DemoCard
-            title="Dutch BRO CPTs - MapLibre GL & PMTiles"
-            image={broCpt}
-            href="https://bedrock.engineer/bro-cpt"
-            linkText="Explore demo"
-          >
+          <DemoCard {...demosById["bro-cpt-maplibre"]}>
             <Fragment slot="description">
               All 237,297 Cone Penetration Tests from the Dutch subsurface
               registry rendered instantly in your browser using MapLibre-gl.
@@ -233,25 +192,8 @@ const description =
               required, just one 35 MB PMTiles file served as a static asset.
             </Fragment>
           </DemoCard>
-        </div>
-      </section>
-    </div>
 
-    <!-- BIM & CAD Integration -->
-    <div class="section-wrapper texture-620">
-      <section class="section">
-        <h2 class="heading-2" style="margin-block-end: var(--space-l);">
-          BIM & CAD Integration
-        </h2>
-
-        <div class="grid-auto-fit">
-          <DemoCard
-            title="Kai Tak - Speckle"
-            image={kaiTakSpeckle}
-            imageAlt="Kai Tak GI data in Speckle with 3D buildings"
-            href="https://app.speckle.systems/projects/dea5d61543/models/9962662abe,c82c54493a#savedView%3D%7B%2522id%2522%3A%2522a2369ea45a%2522%7D"
-            linkText="Open in Speckle"
-          >
+          <DemoCard {...demosById["kai-tak-speckle"]}>
             <Fragment slot="description">
               Building models from Revit and Civil3D combined with geotechnical
               data. View subsurface conditions alongside structural designs in
@@ -259,37 +201,21 @@ const description =
             </Fragment>
           </DemoCard>
 
-          <DemoCard
-            title="Amsterdam Noord - Speckle"
-            image={amsterdamSpeckle}
-            imageAlt="Amsterdam Noord in Speckle"
-            href="https://app.speckle.systems/projects/d083a8bd5c/models/7d52f6a137,8e05ffa635,90726f9281,95af0442f1,f96a046aed#savedView%3D%7B%2522id%2522%3A%2522faa8d15f95%2522%7D"
-            linkText="Open in Speckle"
-          >
+          <DemoCard {...demosById["amsterdam-noord-speckle"]}>
             <Fragment slot="description">
               Subsurface data from Amsterdam Noord visualized in Speckle for
               multi-disciplinary collaboration and BIM integration.
             </Fragment>
           </DemoCard>
 
-          <DemoCard
-            title="Weka Hills - Speckle"
-            image={wekaHills}
-            imageAlt="Weka Hills project in Speckle"
-            href="https://app.speckle.systems/projects/bc2ef86a30/models/53ad71f84a,639810d7b2,6dcde3dafa,7d83fae8e5#savedView%3D%7B%2522id%2522%3A%2522025a4dcbd1%2522%7D"
-            linkText="Open in Speckle"
-          >
+          <DemoCard {...demosById["weka-hills-speckle"]}>
             <Fragment slot="description">
               Geological data visualization in Speckle showing subsurface
               conditions for infrastructure planning and design coordination.
             </Fragment>
           </DemoCard>
 
-          <DemoCard
-            title="Rotterdam Buildings & GeoTOP - Speckle"
-            image={zalmhaven}
-            imageAlt="Building model of the De Zalmhaven along with foundation and GeoTOP voxel model in Speckle"
-          >
+          <DemoCard {...demosById["rotterdam-speckle"]}>
             <Fragment slot="description">
               Prominent Rotterdam buildings (Zalmhaven, Maastoren, and
               Blaak/Markthal) shown in Speckle together with their foundations
@@ -313,31 +239,18 @@ const description =
             </div>
           </DemoCard>
         </div>
+
+        <div class="demos-empty" hidden>
+          <h3 class="heading-3">No demos match these filters yet.</h3>
+          <p class="paragraph">
+            Looking for something specific? <Link
+              href="https://cal.com/bedrock.engineer">Schedule a Discovery Call</Link
+            > or <Link href="mailto:info@bedrock.engineer">email us</Link>.
+          </p>
+        </div>
       </section>
     </div>
 
-    <!-- GIS Software Integration -->
-    <!-- <div class="section-wrapper texture-668">
-      <section class="section">
-        <h2 class="heading-2" style="margin-block-end: var(--space-l);">
-          GIS Software Integration
-        </h2>
-
-        <div class="grid-cols-3">
-          <DemoCard
-            title="Kai Tak - ArcGIS Pro"
-            image={kaiTakArcGIS}
-            imageAlt="Kai Tak 3D GI data in ArcGIS"
-          >
-            <Fragment slot="description">
-              3D visualization of ground investigation data in ArcGIS Pro. Geotechnical data converted to geospatial formats for GIS analysis and mapping.
-            </Fragment>
-          </DemoCard>
-        </div>
-      </section>
-    </div> -->
-
-    <!-- CTA Section -->
     <div class="section-wrapper texture-616">
       <section class="section cta-section">
         <h2
@@ -371,3 +284,220 @@ const description =
 
   <Footer />
 </BaseLayout>
+
+<style>
+  .filter-bar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+    margin-block-end: var(--space-m);
+  }
+
+  .filter-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    flex-wrap: wrap;
+  }
+
+  .filter-label {
+    font-family: var(--font-condensed);
+    font-weight: var(--font-semibold);
+    color: var(--gray-11);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    flex: 0 0 auto;
+    min-width: 5.5rem;
+  }
+
+  .filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .filter-chip {
+    appearance: none;
+    background: transparent;
+    color: var(--gray-12);
+    border: 1px solid var(--border-color);
+    border-radius: 9999px;
+    padding: 2px 10px;
+    font-size: var(--text-xs);
+    font-family: inherit;
+    line-height: 1.5;
+    cursor: pointer;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
+    }
+  }
+
+  .filter-chip:hover {
+    border-color: var(--green-7);
+  }
+
+  .filter-chip:focus-visible {
+    outline: 2px solid var(--green-9);
+    outline-offset: 2px;
+  }
+
+  .filter-chip.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-primary-contrast);
+  }
+
+  .reset-filters {
+    align-self: flex-start;
+    appearance: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin-block-start: var(--space-3xs);
+    color: var(--green-9);
+    cursor: pointer;
+    font-weight: var(--font-semibold);
+    font-size: var(--text-xs);
+    text-decoration: underline;
+    font-family: inherit;
+  }
+
+  .reset-filters:hover {
+    color: var(--green-10);
+  }
+
+  .reset-filters:focus-visible {
+    outline: 2px solid var(--green-9);
+    outline-offset: 2px;
+  }
+
+  .demos-empty {
+    text-align: center;
+    padding: var(--space-2xl) var(--space-m);
+  }
+
+  .demos-empty .heading-3 {
+    margin-block-end: var(--space-s);
+  }
+</style>
+
+<script>
+  const dims = ["country", "type", "sourceData", "gm"] as const;
+  type Dim = (typeof dims)[number];
+
+  const filters: Record<Dim, Set<string>> = {
+    country: new Set(),
+    type: new Set(),
+    sourceData: new Set(),
+    gm: new Set(),
+  };
+
+  function readFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    for (const dim of dims) {
+      filters[dim] = new Set(params.getAll(dim));
+    }
+  }
+
+  function writeToUrl() {
+    const p = new URLSearchParams();
+    for (const dim of dims) {
+      for (const v of filters[dim]) p.append(dim, v);
+    }
+    const qs = p.toString();
+    history.replaceState(
+      null,
+      "",
+      qs ? `?${qs}` : window.location.pathname,
+    );
+  }
+
+  function cardMatches(card: HTMLElement) {
+    for (const dim of dims) {
+      const active = filters[dim];
+      if (active.size === 0) continue;
+      const raw = card.dataset[dim] || "";
+      const cardTags = raw.split(",").filter(Boolean);
+      const matched = [...active].some((v) => cardTags.includes(v));
+      if (!matched) return false;
+    }
+    return true;
+  }
+
+  function applyFilters() {
+    const cards = document.querySelectorAll<HTMLElement>(
+      ".demo-card[data-demo-id]",
+    );
+    const chips = document.querySelectorAll<HTMLButtonElement>(".filter-chip");
+    const resetBtn = document.querySelector<HTMLButtonElement>(
+      ".reset-filters",
+    );
+    const grid = document.querySelector<HTMLElement>(".demos-grid");
+    const empty = document.querySelector<HTMLElement>(".demos-empty");
+
+    const update = () => {
+      let visible = 0;
+      cards.forEach((card) => {
+        const m = cardMatches(card);
+        card.style.display = m ? "" : "none";
+        if (m) visible++;
+      });
+      chips.forEach((chip) => {
+        const dim = chip.dataset.dim as Dim;
+        const value = chip.dataset.value || "";
+        const active = filters[dim].has(value);
+        chip.classList.toggle("active", active);
+        chip.setAttribute("aria-pressed", String(active));
+      });
+      const anyActive = dims.some((d) => filters[d].size > 0);
+      if (resetBtn) resetBtn.hidden = !anyActive;
+      if (empty) empty.hidden = visible > 0;
+      if (grid) grid.hidden = visible === 0;
+    };
+
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (
+      "startViewTransition" in document &&
+      typeof document.startViewTransition === "function" &&
+      !reduced
+    ) {
+      document.startViewTransition(update);
+    } else {
+      update();
+    }
+  }
+
+  function init() {
+    readFromUrl();
+
+    document.querySelectorAll<HTMLButtonElement>(".filter-chip").forEach(
+      (chip) => {
+        chip.addEventListener("click", () => {
+          const dim = chip.dataset.dim as Dim;
+          const value = chip.dataset.value || "";
+          if (filters[dim].has(value)) filters[dim].delete(value);
+          else filters[dim].add(value);
+          writeToUrl();
+          applyFilters();
+        });
+      },
+    );
+
+    document
+      .querySelector<HTMLButtonElement>(".reset-filters")
+      ?.addEventListener("click", () => {
+        for (const dim of dims) filters[dim].clear();
+        writeToUrl();
+        applyFilters();
+      });
+
+    applyFilters();
+  }
+
+  init();
+</script>

@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import Link from './Link.astro';
 
 export interface Props {
+  id?: string;
   title: string;
   href?: string;
   linkText?: string;
@@ -11,9 +12,14 @@ export interface Props {
   image?: ImageMetadata;
   imageAlt?: string;
   class?: string;
+  country?: string;
+  type?: string[];
+  sourceData?: string[];
+  gm?: string[];
 }
 
 const {
+  id,
   title,
   href,
   linkText,
@@ -21,10 +27,25 @@ const {
   image,
   imageAlt,
   class: className,
+  country,
+  type,
+  sourceData,
+  gm,
 } = Astro.props;
+
+const tagAttrs = id
+  ? {
+      'data-demo-id': id,
+      'data-country': country ?? '',
+      'data-type': (type ?? []).join(','),
+      'data-source-data': (sourceData ?? []).join(','),
+      'data-gm': (gm ?? []).join(','),
+      style: `view-transition-name: demo-${id};`,
+    }
+  : {};
 ---
 
-<div class={`demo-card ${className || ''}`}>
+<div class={`demo-card ${className || ''}`} {...tagAttrs}>
   <div class="demo-card-media">
     {
       iframe ? (
@@ -75,6 +96,12 @@ const {
 
     &:hover {
       border-color: var(--green-7);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .demo-card {
+      view-transition-name: none !important;
     }
   }
 
