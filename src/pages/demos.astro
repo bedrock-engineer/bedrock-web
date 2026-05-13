@@ -4,12 +4,7 @@ import Footer from "../components/Footer.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import DemoCard from "../components/DemoCard.astro";
 import Link from "../components/Link.astro";
-import {
-  demos,
-  demosById,
-  availableTags,
-  tagDimensions,
-} from "../data/demos";
+import { demos, demosById, availableTags, tagDimensions } from "../data/demos";
 import "../styles/custom.css";
 
 const title =
@@ -193,6 +188,17 @@ const description =
             </Fragment>
           </DemoCard>
 
+          <DemoCard {...demosById["emerald-fre16-cesium"]}>
+            <Fragment slot="description">
+              Sensitive clay probability and resistivity along a survey line in
+              Norway, visualized as a 3D overlay on terrain in CesiumJS. Toggle
+              between sensitive clay probability and log-scale resistivity. Data
+              courtesy of <a
+                href="https://www.emerald-geomodelling.com/"
+                class="link">Emerald Geomodelling</a>.
+            </Fragment>
+          </DemoCard>
+
           <DemoCard {...demosById["kai-tak-speckle"]}>
             <Fragment slot="description">
               Building models from Revit and Civil3D combined with geotechnical
@@ -244,7 +250,8 @@ const description =
           <h3 class="heading-3">No demos match these filters yet.</h3>
           <p class="paragraph">
             Looking for something specific? <Link
-              href="https://cal.com/bedrock.engineer">Schedule a Discovery Call</Link
+              href="https://cal.com/bedrock.engineer"
+              >Schedule a Discovery Call</Link
             > or <Link href="mailto:info@bedrock.engineer">email us</Link>.
           </p>
         </div>
@@ -410,11 +417,7 @@ const description =
       for (const v of filters[dim]) p.append(dim, v);
     }
     const qs = p.toString();
-    history.replaceState(
-      null,
-      "",
-      qs ? `?${qs}` : window.location.pathname,
-    );
+    history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }
 
   function cardMatches(card: HTMLElement) {
@@ -434,9 +437,8 @@ const description =
       ".demo-card[data-demo-id]",
     );
     const chips = document.querySelectorAll<HTMLButtonElement>(".filter-chip");
-    const resetBtn = document.querySelector<HTMLButtonElement>(
-      ".reset-filters",
-    );
+    const resetBtn =
+      document.querySelector<HTMLButtonElement>(".reset-filters");
     const grid = document.querySelector<HTMLElement>(".demos-grid");
     const empty = document.querySelector<HTMLElement>(".demos-empty");
 
@@ -475,8 +477,9 @@ const description =
   function init() {
     readFromUrl();
 
-    document.querySelectorAll<HTMLButtonElement>(".filter-chip").forEach(
-      (chip) => {
+    document
+      .querySelectorAll<HTMLButtonElement>(".filter-chip")
+      .forEach((chip) => {
         chip.addEventListener("click", () => {
           const dim = chip.dataset.dim as Dim;
           const value = chip.dataset.value || "";
@@ -485,8 +488,7 @@ const description =
           writeToUrl();
           applyFilters();
         });
-      },
-    );
+      });
 
     document
       .querySelector<HTMLButtonElement>(".reset-filters")

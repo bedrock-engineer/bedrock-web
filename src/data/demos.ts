@@ -7,6 +7,7 @@ import amsterdamNoord from "../assets/nl-amsterdam-noord.webp";
 import geotop from "../assets/geotop.png";
 import antwerpen from "../assets/antwerpen.png";
 import broCpt from "../assets/bro-cpt.png";
+import emeraldFre16 from "../assets/emerald-fre16.png";
 import kaiTakSpeckle from "../assets/KaiTak_BrGI_Speckle.png";
 import amsterdamSpeckle from "../assets/amsterdam-noord-speckle.png";
 import wekaHills from "../assets/WekaHills_Speckle.webp";
@@ -128,6 +129,20 @@ export const demos: Demo[] = [
     type: ["Web app", "GIS"],
     sourceData: ["BRO-XML"],
     gm: ["Geotechnical"],
+  },
+  {
+    id: "emerald-fre16-cesium",
+    title: "Emerald FRE16, Norway - CesiumJS",
+    description:
+      "Sensitive clay probability and resistivity along survey line FRE16 from Emerald Geomodelling, visualized as a 3D overlay on Norwegian terrain in CesiumJS. Toggle between sensitive clay probability and log-scale resistivity, and adjust basemap and globe opacity.",
+    href: "https://emerald-sensitive-clay.bedrock.engineer/",
+    linkText: "Explore demo",
+    image: emeraldFre16,
+    imageAlt: "Emerald FRE16 sensitive clay probability overlay on Norwegian terrain in CesiumJS",
+    country: "NO",
+    type: ["Web app", "GIS"],
+    sourceData: ["CSV"],
+    gm: ["Geophysical", "Geotechnical"],
   },
   {
     id: "kai-tak-speckle",
