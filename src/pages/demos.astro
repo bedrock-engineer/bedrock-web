@@ -8,9 +8,9 @@ import { demos, demosById, availableTags, tagDimensions } from "../data/demos";
 import "../styles/custom.css";
 
 const title =
-  "Interactive Ground Investigation Demos - CesiumJS, GEF Viewer, Speckle, ArcGIS | Bedrock.engineer";
+  "Interactive Subsurface & BIM Demos - CesiumJS, GEF Viewer, IFC Georeferencer, Speckle | Bedrock.engineer";
 const description =
-  "Explore examples of ground investigation data transformed into interactive visualizations. See AGS4, GEF, and BRO/XML data in CesiumJS 3D maps, Speckle BIM integration, and ArcGIS Pro.";
+  "Explore examples of subsurface and BIM data in interactive visualizations and browser tools. See AGS4, GEF, BRO/XML, and IFC data in web application, CesiumJS 3D maps, or Speckle.";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -85,12 +85,12 @@ const description =
     <header class="section-wrapper texture-607">
       <section class="section intro-section">
         <h1 class="heading-1">Interactive Demos</h1>
-        <p class="subtitle">Ground Investigation Data Visualizations</p>
+        <p class="subtitle">Subsurface and BIM Data Visualizations</p>
         <p class="paragraph-xl">
-          Explore real-world examples of ground investigation data transformed
-          into interactive visualizations across different platforms and tools.
-          See how ground investigation data can be visualized in CesiumJS 3D
-          maps, Speckle BIM integration, and ArcGIS Pro.
+          Explore real-world examples of subsurface and BIM data across
+          different platforms and tools. See ground investigation data in
+          CesiumJS 3D maps and Speckle, and bridge Geo and BIM with browser
+          tools like the IFC Georeferencer.
         </p>
       </section>
     </header>
@@ -148,6 +148,21 @@ const description =
               Free web-based viewer for GEF (Geotechnical Exchange Format)
               files. Upload and visualize CPT & bore data directly in your
               browser.
+            </Fragment>
+          </DemoCard>
+
+          <DemoCard {...demosById["ifc-georeferencer"]}>
+            <Fragment slot="description">
+              Georeference an IFC file entirely in your browser. Place the model
+              on a map or enter survey points, solve a Helmert transformation,
+              and download an IFC with correct <code>IfcMapConversion</code> and <code
+                >IfcProjectedCRS</code
+              > entities. Built for the <Link
+                href="https://www.buildingsmart.nl/projecten/georefereren-ifc"
+                >buildingSMART NL georeferencing guideline</Link
+              >. <Link href="https://github.com/bedrock-engineer/ifc-georeferencer"
+                >Source on GitHub</Link
+              >.
             </Fragment>
           </DemoCard>
 

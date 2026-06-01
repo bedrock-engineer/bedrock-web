@@ -12,17 +12,19 @@ import kaiTakSpeckle from "../assets/KaiTak_BrGI_Speckle.png";
 import amsterdamSpeckle from "../assets/amsterdam-noord-speckle.png";
 import wekaHills from "../assets/WekaHills_Speckle.webp";
 import zalmhaven from "../assets/zalmhaven.jpeg";
+import ifcGeoreferencer from "../assets/ifc-georeferencer.png";
 
 export type Country = "NL" | "UK" | "HK" | "NO" | "NZ" | "BE";
 export type DemoType = "BIM" | "GIS" | "Web app";
-export type SourceData = "BRO-XML" | "GEF" | "AGS" | "CSV" | "NetCDF";
+export type SourceData = "BRO-XML" | "GEF" | "AGS" | "CSV" | "NetCDF" | "IFC";
 export type GroundModel =
   | "Voxel"
   | "Mesh"
   | "Geological"
   | "Geophysical"
   | "Geotechnical"
-  | "Geohydrological";
+  | "Geohydrological"
+  | "Structural";
 
 export interface Demo {
   id: string;
@@ -32,7 +34,7 @@ export interface Demo {
   linkText?: string;
   image: ImageMetadata;
   imageAlt?: string;
-  country: Country;
+  country?: Country;
   type: DemoType[];
   sourceData: SourceData[];
   gm: GroundModel[];
@@ -77,6 +79,19 @@ export const demos: Demo[] = [
     type: ["Web app"],
     sourceData: ["GEF"],
     gm: ["Geotechnical"],
+  },
+  {
+    id: "ifc-georeferencer",
+    title: "IFC Georeferencer",
+    description:
+      "Georeference an IFC file intuitively in your browser. Place the model on a map or enter survey points, solve a Helmert transformation, and download an IFC with correct IfcMapConversion and IfcProjectedCRS entities. Built for buildingSMART NL.",
+    href: "https://geo.buildingsmart.nl",
+    linkText: "Open IFC Georeferencer",
+    image: ifcGeoreferencer,
+    imageAlt: "IFC model placed on a map in the IFC Georeferencer browser tool",
+    type: ["Web app", "BIM"],
+    sourceData: ["IFC"],
+    gm: ["Structural"],
   },
   {
     id: "amsterdam-noord-cesium",
@@ -138,7 +153,8 @@ export const demos: Demo[] = [
     href: "https://emerald-sensitive-clay.bedrock.engineer/",
     linkText: "Explore demo",
     image: emeraldFre16,
-    imageAlt: "Emerald FRE16 sensitive clay probability overlay on Norwegian terrain in CesiumJS",
+    imageAlt:
+      "Emerald FRE16 sensitive clay probability overlay on Norwegian terrain in CesiumJS",
     country: "NO",
     type: ["Web app", "GIS"],
     sourceData: ["CSV"],
@@ -208,7 +224,14 @@ export const demosById: Record<string, Demo> = Object.fromEntries(
 const canonicalOrder = {
   country: ["NL", "UK", "HK", "NO", "NZ", "BE"] satisfies Country[],
   type: ["BIM", "GIS", "Web app"] satisfies DemoType[],
-  sourceData: ["BRO-XML", "GEF", "AGS", "CSV", "NetCDF"] satisfies SourceData[],
+  sourceData: [
+    "BRO-XML",
+    "GEF",
+    "AGS",
+    "CSV",
+    "NetCDF",
+    "IFC",
+  ] satisfies SourceData[],
   gm: [
     "Voxel",
     "Mesh",
@@ -216,6 +239,7 @@ const canonicalOrder = {
     "Geophysical",
     "Geotechnical",
     "Geohydrological",
+    "Structural",
   ] satisfies GroundModel[],
 };
 
@@ -224,7 +248,7 @@ const inUse = <T extends string>(values: T[], canonical: readonly T[]): T[] =>
 
 export const availableTags = {
   country: inUse(
-    demos.map((d) => d.country),
+    demos.map((d) => d.country).filter((c): c is Country => c !== undefined),
     canonicalOrder.country,
   ),
   type: inUse(
