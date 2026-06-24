@@ -1,8 +1,8 @@
 # Bedrock Website
 
-<figure style="margin-inline: block;">
-  <img src="https://bedrock.engineer/bedrock.png" alt="Bedrock logo" width="200px"/>
-</figure>
+<a href="https://bedrock.engineer">
+<img src="https://bedrock.engineer/Bedrock_TextRight.png" width="300px" alt="Bedrock Logo" />
+</a>
 
 <h3 style="margin-inline: block;">Bedrock, the Open Source Foundation for Geotechnical Engineering</h3>
 
