@@ -4,9 +4,6 @@
   // Update to today's date
   "compatibility_date": "2025-03-25",
   "compatibility_flags": ["nodejs_compat"],
-  // Cloudflare Images binding used by @astrojs/cloudflare to run the runtime
-  // /_image optimization endpoint. Without it, every <Image> 404s in production.
-  "images": { "binding": "IMAGES" },
   "assets": {
     "directory": "./dist",
     "not_found_handling": "404-page" // If you have a custom `src/pages/404.astro` page

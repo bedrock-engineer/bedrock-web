@@ -117,5 +117,9 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  adapter: cloudflare(),
+  // imageService "compile" optimizes <Image> at build time into static
+  // _astro/*.webp files. Required because this site is fully prerendered (no
+  // Worker is deployed) — the v13+ default "cloudflare-binding" needs a runtime
+  // /_image endpoint, which 404s on an assets-only deploy.
+  adapter: cloudflare({ imageService: "compile" }),
 });
