@@ -4,7 +4,7 @@
 <img src="https://bedrock.engineer/Bedrock_TextRight.png" width="300px" alt="Bedrock Logo" />
 </a>
 
-<h3 style="margin-inline: block;">Bedrock, the Open Source Foundation for Geotechnical Engineering</h3>
+<h3 style="margin-inline: block;">Bedrock.engineer: Software Consultancy for Subsurface Data</h3>
 
 ---
 
