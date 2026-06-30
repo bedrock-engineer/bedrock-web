@@ -1,7 +1,7 @@
 // @ts-check
 import cloudflare from "@astrojs/cloudflare";
 import markdoc from "@astrojs/markdoc";
-import { rehypeHeadingIds } from "@astrojs/markdown-remark";
+import { rehypeHeadingIds, unified } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import starlight from "@astrojs/starlight";
@@ -49,20 +49,20 @@ const starlightConfig = {
     },
     {
       label: "Explanation",
-      autogenerate: { directory: "docs/explanation" },
+      items: [{ autogenerate: { directory: "docs/explanation" } }],
     },
     {
       label: "Guides",
-      autogenerate: { directory: "docs/guides" },
+      items: [{ autogenerate: { directory: "docs/guides" } }],
     },
     {
       label: "Tutorials",
-      autogenerate: { directory: "docs/tutorials" },
+      items: [{ autogenerate: { directory: "docs/tutorials" } }],
     },
 
     {
       label: "Reference",
-      autogenerate: { directory: "docs/reference" },
+      items: [{ autogenerate: { directory: "docs/reference" } }],
     },
     {
       label: "Resources",
@@ -77,9 +77,13 @@ const starlightConfig = {
 // https://astro.build/config
 export default defineConfig({
   site: "https://bedrock.engineer",
+  // NOTE: Enabling Astro's i18n config makes Starlight emit /nl/docs/* fallback
+  // pages (English content under Dutch URLs). The marketing-page i18n below uses
+  // file-based routing (src/pages/nl/*) + src/i18n/utils.ts instead, so this
+  // stays off until docs i18n is tackled properly.
   // i18n: {
   //   defaultLocale: "en",
-  // locales: ["en", "nl"],
+  //   locales: ["en", "nl"],
   //   routing: {
   //     prefixDefaultLocale: false,
   //   },
@@ -105,8 +109,10 @@ export default defineConfig({
     sitemap(),
   ],
   markdown: {
-    rehypePlugins: [rehypeHeadingIds],
-    remarkPlugins: [remarkDefinitionList],
+    processor: unified({
+      remarkPlugins: [remarkDefinitionList],
+      rehypePlugins: [rehypeHeadingIds],
+    }),
   },
   vite: {
     plugins: [tailwindcss()],

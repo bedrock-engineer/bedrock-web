@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LandingPage from "../../components/pages/LandingPage.astro";
+import { landing } from "../../i18n/ui";
+import { useTranslations, getLocaleFromUrl } from "../../i18n/utils";
+
+const t = useTranslations(Astro.url, landing);
+const lang = getLocaleFromUrl(Astro.url);
+---
+
+<BaseLayout lang={lang}>
+  <LandingPage t={t} />
+</BaseLayout>

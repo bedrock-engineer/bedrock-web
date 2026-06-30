@@ -25,127 +25,139 @@ interface TabData {
   content: React.ReactNode;
 }
 
-const homepageTabs: TabData[] = [
-  {
-    id: "interactive-visualization",
-    label: "Interactive Visualization",
-    content: (
-      <div className="tab-content-grid">
-        <div>
-          <h3 className="tab-panel-title">
-            View and share your Ground Investigation data in the browser
-          </h3>
-          <p className="text-lg">
-            Bridge the gap between specialized GI data formats and the wider
-            world of geospatial tools and standards.
-          </p>
-          <p className="text-lg">
-            Explore boreholes, test results, and ground models directly in your
-            browser, no specialist software required.
-          </p>
+/**
+ * Translatable copy for the homepage demo tabs. URLs and images stay in the
+ * component; only the text crosses the island boundary (must be serializable).
+ */
+export interface DemoTabsCopy {
+  interactive: {
+    label: string;
+    title: string;
+    p1: string;
+    p2: string;
+    iframeTitle: string;
+    caption: string;
+    exploreLink: string;
+  };
+  geospatial: {
+    label: string;
+    title: string;
+    p1: string;
+    p2: string;
+    imgAlt: string;
+    caption: string;
+  };
+  cadBim: {
+    label: string;
+    title: string;
+    p1: string;
+    imgAlt: string;
+    caption: string;
+    speckleLink: string;
+    exploreLink: string;
+  };
+}
+
+function buildTabs(t: DemoTabsCopy): TabData[] {
+  return [
+    {
+      id: "interactive-visualization",
+      label: t.interactive.label,
+      content: (
+        <div className="tab-content-grid">
+          <div>
+            <h3 className="tab-panel-title">{t.interactive.title}</h3>
+            <p className="text-lg">{t.interactive.p1}</p>
+            <p className="text-lg">{t.interactive.p2}</p>
+          </div>
+
+          <figure>
+            <iframe
+              src="https://bedrock.engineer/hk-kaitak/"
+              height={400}
+              title={t.interactive.iframeTitle}
+              style={{ width: "100%", maxWidth: "700px", borderRadius: "4px" }}
+            />
+
+            <figcaption>
+              {t.interactive.caption}{" "}
+              <a
+                className="link"
+                href="https://bedrock.engineer/hk-kaitak"
+                target="_blank"
+              >
+                {t.interactive.exploreLink}
+              </a>
+            </figcaption>
+          </figure>
         </div>
+      ),
+    },
+    {
+      id: "geospatial",
+      label: t.geospatial.label,
+      content: (
+        <div className="tab-content-grid">
+          <div>
+            <h3 className="tab-panel-title">{t.geospatial.title}</h3>
 
-        <figure>
-          <iframe
-            src="https://bedrock.engineer/hk-kaitak/"
-            height={400}
-            title="Demo of ground investigation data in Hong Kong in a 3D map"
-            style={{ width: "100%", maxWidth: "700px", borderRadius: "4px" }}
-          />
+            <p className="text-lg">{t.geospatial.p1}</p>
 
-          <figcaption>
-            GI data in Kai Tak, Hong Kong.{" "}
-            <a
-              className="link"
-              href="https://bedrock.engineer/hk-kaitak"
-              target="_blank"
-            >
-              Explore for yourself.
-            </a>
-          </figcaption>
-        </figure>
-      </div>
-    ),
-  },
-  {
-    id: "geospatial",
-    label: "Geospatial Data Integration",
-    content: (
-      <div className="tab-content-grid">
-        <div>
-          <h3 className="tab-panel-title">
-            Unlock the geospatial ecosystem for subsurface data
-          </h3>
+            <p className="text-lg">{t.geospatial.p2}</p>
+          </div>
 
-          <p className="text-lg">
-            Access ground investigation data in GIS software, Python, and modern
-            geospatial workflows.
-          </p>
-
-          <p className="text-lg">
-            Analyze, visualize, and automate using the tools data scientists and
-            GIS professionals already know.
-          </p>
+          <figure>
+            <img src={arcGIS.src} alt={t.geospatial.imgAlt} />
+            <figcaption>{t.geospatial.caption}</figcaption>
+          </figure>
         </div>
+      ),
+    },
+    {
+      id: "cad-bim",
+      label: t.cadBim.label,
+      content: (
+        <div className="tab-content-grid">
+          <div>
+            <h3 className="tab-panel-title">{t.cadBim.title}</h3>
 
-        <figure>
-          <img src={arcGIS.src} alt="Subsurface data visualized in ArcGIS" />
-          <figcaption>
-            Kai Tak, Hong Kong 3D GI data visualization in ArcGIS.
-          </figcaption>
-        </figure>
-      </div>
-    ),
-  },
-  {
-    id: "cad-bim",
-    label: "CAD & BIM Integration",
+            <p className="text-lg">{t.cadBim.p1}</p>
+          </div>
 
-    content: (
-      <div className="tab-content-grid">
-        <div>
-          <h3 className="tab-panel-title">
-            Connect subsurface data with structural and building models
-          </h3>
-
-          <p className="text-lg">
-            Break down silos with geospatial ground investigation data. View
-            geotechnical and structural models together in design software like
-            Rhino3D or Civil3D. Enable seamless collaboration across disciplines
-            using AEC collaboration platforms like Speckle,
-          </p>
+          <figure>
+            <img src={kaiTakSpeckle.src} alt={t.cadBim.imgAlt} />
+            <figcaption>
+              {t.cadBim.caption}{" "}
+              <a
+                target="_blank"
+                className="link"
+                href="https://speckle.systems"
+              >
+                {t.cadBim.speckleLink}
+              </a>{" "}
+              <a
+                target="_blank"
+                className="link"
+                href="https://app.speckle.systems/projects/dea5d61543/models/721ad7b589,9962662abe,c82c54493a#savedView%3D%7B%2522id%2522%3A%2522f44961ecb8%2522%7D"
+              >
+                {t.cadBim.exploreLink}
+              </a>
+            </figcaption>
+          </figure>
         </div>
-
-        <figure>
-          <img
-            src={kaiTakSpeckle.src}
-            alt="Interactive 3D visualization of subsurface data in Speckle"
-          />
-          <figcaption>
-            Kai Tak, Hong Kong 3D GI data visualization in{" "}
-            <a target="_blank" className="link" href="https://speckle.systems">
-              Speckle.
-            </a>{" "}
-            <a
-              target="_blank"
-              className="link"
-              href="https://app.speckle.systems/projects/dea5d61543/models/721ad7b589,9962662abe,c82c54493a#savedView%3D%7B%2522id%2522%3A%2522f44961ecb8%2522%7D"
-            >
-              Explore for yourself.
-            </a>
-          </figcaption>
-        </figure>
-      </div>
-    ),
-  },
-];
+      ),
+    },
+  ];
+}
 
 interface AnimatedDemoTabsProps {
+  t: DemoTabsCopy;
   tabs?: TabData[];
 }
 
 export function AnimatedDemoTabs({
-  tabs = homepageTabs,
+  t,
+  tabs = buildTabs(t),
 }: AnimatedDemoTabsProps) {
   const [selectedKey, setSelectedKey] = useState(tabs[0].id);
 

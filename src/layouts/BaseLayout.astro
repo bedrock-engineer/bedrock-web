@@ -5,6 +5,7 @@ const {
   // Pages that supply their own og:image (via the "head" slot) set this to
   // suppress the default below and avoid emitting two og:image tags.
   customOgImage = false,
+  lang = "en",
 } = Astro.props;
 
 const ogImageUrl = new URL("/og-default.png", Astro.site).toString();
@@ -17,7 +18,7 @@ import "../styles/starlight-search.css"; // CSS layers + utility classes for Sta
 import "../styles/custom.css"; // fonts + design tokens loaded here
 ---
 
-<html {...htmlDataAttributes} lang="en">
+<html {...htmlDataAttributes} lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
