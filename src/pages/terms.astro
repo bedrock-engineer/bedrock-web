@@ -1,0 +1,17 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TermsPage from "../components/pages/TermsPage.astro";
+import { terms } from "../i18n/ui";
+import { useTranslations } from "../i18n/utils";
+import "../styles/custom.css";
+
+const t = useTranslations(Astro.url, terms);
+---
+
+<BaseLayout title={t.pageTitle}>
+  <Navbar />
+  <TermsPage t={t} />
+  <Footer />
+</BaseLayout>

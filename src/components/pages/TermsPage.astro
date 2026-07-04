@@ -1,0 +1,143 @@
+---
+interface Props {
+  t: any; // translations object
+}
+
+const { t } = Astro.props;
+---
+
+<div class="page" data-pagefind-body data-pagefind-meta="category:Marketing">
+  <header
+    style="background: url('/textures/607.svg'); background-size: 70px;"
+    class="section-wrapper"
+  >
+    <section class="section intro-section">
+      <h1 class="heading-1" style="font-size: 36px;">{t.title}</h1>
+      <p class="paragraph-xl">{t.intro}</p>
+    </section>
+  </header>
+
+  <div class="section-wrapper">
+    <section class="section">
+      <dl class="details-list">
+        {
+          t.details.map((detail: { term: string; value: string }) => (
+            <div>
+              <dt class="details-term">{detail.term}</dt>
+              <dd class="details-value">{detail.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <p class="language-note">{t.languageNote}</p>
+
+      <div class="terms-articles" style={`--article-label: "${t.articleLabel}"`}>
+        {
+          t.articles.map((article: { title: string; clauses: string[] }) => (
+            <article class="terms-article">
+              <h2 class="terms-article-title">{article.title}</h2>
+              <ol class="terms-clauses">
+                {article.clauses.map((clause: string) => (
+                  <li class="terms-clause">{clause}</li>
+                ))}
+              </ol>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+</div>
+
+<style>
+  .details-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, max-content));
+    gap: var(--space-m);
+    margin-block-end: var(--space-l);
+  }
+
+  .details-term {
+    font-weight: var(--font-semibold);
+    color: var(--gray-11);
+    font-size: var(--text-sm);
+  }
+
+  .details-value {
+    font-size: var(--text-base);
+    color: var(--gray-12);
+    font-family: var(--font-mono);
+  }
+
+  .language-note {
+    font-size: var(--text-sm);
+    color: var(--gray-11);
+    font-style: italic;
+    max-width: 70ch;
+    margin-block-end: var(--space-xl);
+  }
+
+  .terms-articles {
+    counter-reset: article;
+  }
+
+  .terms-article {
+    counter-increment: article;
+    margin-block-end: var(--space-xl);
+  }
+
+  .terms-article-title {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+    font-family: var(--font-condensed);
+    margin-block-end: var(--space-s);
+
+    &::before {
+      content: var(--article-label) " " counter(article) ". ";
+    }
+  }
+
+  .terms-clauses {
+    counter-reset: clause;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+  }
+
+  .terms-clause {
+    counter-increment: clause;
+    display: grid;
+    grid-template-columns: 3.5ch 1fr;
+    gap: var(--space-2xs);
+    max-width: 75ch;
+    line-height: 1.6;
+
+    &::before {
+      content: counter(article) "." counter(clause);
+      font-weight: var(--font-semibold);
+      color: var(--gray-11);
+      font-variant-numeric: tabular-nums;
+    }
+  }
+
+  @media print {
+    .terms-article {
+      break-inside: avoid;
+    }
+  }
+</style>
+
+<style is:global>
+  @media print {
+    nav,
+    footer,
+    .navbar,
+    .footer {
+      display: none !important;
+    }
+  }
+</style>
