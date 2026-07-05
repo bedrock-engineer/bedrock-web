@@ -14,6 +14,12 @@ const { t } = Astro.props;
     <section class="section intro-section">
       <h1 class="heading-1" style="font-size: 36px;">{t.title}</h1>
       <p class="paragraph-xl">{t.intro}</p>
+      <p class="language-note">
+        {t.languageNote}{" "}
+        <a class="language-link" href={t.otherVersionHref}
+          >{t.otherVersionLabel}</a
+        >
+      </p>
     </section>
   </header>
 
@@ -30,20 +36,36 @@ const { t } = Astro.props;
         }
       </dl>
 
-      <p class="language-note">{t.languageNote}</p>
-
-      <div class="terms-articles" style={`--article-label: "${t.articleLabel}"`}>
+      <div
+        class="terms-articles"
+        style={`--article-label: "${t.articleLabel}"`}
+      >
         {
-          t.articles.map((article: { title: string; clauses: string[] }) => (
-            <article class="terms-article">
-              <h2 class="terms-article-title">{article.title}</h2>
-              <ol class="terms-clauses">
-                {article.clauses.map((clause: string) => (
-                  <li class="terms-clause">{clause}</li>
-                ))}
-              </ol>
-            </article>
-          ))
+          t.articles.map(
+            (article: {
+              title: string;
+              clauses: (string | { text: string; items: string[] })[];
+            }) => (
+              <article class="terms-article">
+                <h2 class="terms-article-title">{article.title}</h2>
+
+                <ol class="terms-clauses">
+                  {article.clauses.map((clause) => (
+                    <li class="terms-clause">
+                      {typeof clause === "string" ? clause : clause.text}
+                      {typeof clause !== "string" && (
+                        <ol class="terms-subclauses">
+                          {clause.items.map((item) => (
+                            <li>{item}</li>
+                          ))}
+                        </ol>
+                      )}
+                    </li>
+                  ))}
+                </ol>
+              </article>
+            ),
+          )
         }
       </div>
     </section>
@@ -51,10 +73,14 @@ const { t } = Astro.props;
 </div>
 
 <style>
+  .language-link {
+    text-decoration: underline;
+  }
+
   .details-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, max-content));
-    gap: var(--space-m);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-l);
     margin-block-end: var(--space-l);
   }
 
@@ -75,7 +101,7 @@ const { t } = Astro.props;
     color: var(--gray-11);
     font-style: italic;
     max-width: 70ch;
-    margin-block-end: var(--space-xl);
+    margin-block-start: var(--space-xs);
   }
 
   .terms-articles {
@@ -121,6 +147,21 @@ const { t } = Astro.props;
       font-weight: var(--font-semibold);
       color: var(--gray-11);
       font-variant-numeric: tabular-nums;
+    }
+  }
+
+  .terms-subclauses {
+    grid-column: 2;
+    list-style: lower-alpha;
+    margin: 0;
+    padding-inline-start: var(--space-m);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+
+    & ::marker {
+      font-weight: var(--font-semibold);
+      color: var(--gray-11);
     }
   }
 

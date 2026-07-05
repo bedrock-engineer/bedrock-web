@@ -1,18 +1,28 @@
+const companyName = "Bedrock Engineer B.V.";
+const kvk = "98282581";
+const seatEn = "Goes, the Netherlands";
+const seatNl = "Goes, Nederland";
+const vatId = "NL868402552B01";
+const versionEn = "July 2026";
+const versionNl = "Juli 2026";
+
 export const ui = {
   en: {
     pageTitle: "Terms and Conditions | Bedrock.engineer",
     title: "General Terms and Conditions",
     intro:
-      "These general terms and conditions apply to all quotations, offers, and agreements of Bedrock Engineer B.V. Attach the PDF version to offers or reference this page.",
+      "These general terms and conditions apply to all quotations, offers, and agreements of Bedrock Engineer B.V.",
     details: [
-      { term: "Company name", value: "Bedrock Engineer B.V." },
-      { term: "Registered office", value: "Goes, the Netherlands" },
-      { term: "KvK number", value: "98282581" },
-      { term: "VAT ID", value: "NL868402552B01" },
-      { term: "Version", value: "July 2026" },
+      { term: "Company name", value: companyName },
+      { term: "Registered office", value: seatEn },
+      { term: "KvK number", value: kvk },
+      { term: "VAT ID", value: vatId },
+      { term: "Version", value: versionEn },
     ],
     languageNote:
       "These terms and conditions are available in Dutch and in English. In the event of any difference in interpretation, the Dutch version prevails.",
+    otherVersionHref: "/nl/terms",
+    otherVersionLabel: "View the Dutch version",
     articleLabel: "Article",
     articles: [
       {
@@ -96,7 +106,7 @@ export const ui = {
           "Generic Components remain the property of Bedrock.engineer. Bedrock.engineer makes Generic Components available under the Apache License 2.0, unless agreed otherwise.",
           "Insofar as the Deliverables contain Background Knowledge or other components of Bedrock.engineer that have not been made available under Article 9.3, the Client obtains, upon full payment, a perpetual, irrevocable, non-exclusive, royalty-free license to use these as embedded in the Deliverables, to the extent necessary for the use, maintenance, and modification of the Deliverables. This license is transferable only together with the Deliverables or the Client's business.",
           "Bedrock.engineer remains entitled to use the general knowledge, skills, experience, ideas, methods, and techniques gained in the performance of the Agreement for other purposes, subject to Article 8.",
-          "Bedrock.engineer may publish improvements and extensions to its pre-existing open-source libraries developed during the performance of the Agreement in its public repositories, provided these contain no confidential information of the Client, no data of the Client, and no client-specific logic. Publication of new, standalone components developed within the scope of the Agreement as open-source software requires the Client's prior Written consent.",
+          "Bedrock.engineer may publish improvements and extensions to its existing open-source libraries and its Generic Components developed during the performance of the Agreement in its public repositories, provided these contain no confidential information of the Client, no data of the Client, and no client-specific logic.",
         ],
       },
       {
@@ -109,9 +119,9 @@ export const ui = {
       {
         title: "Warranty",
         clauses: [
-          "For a period of 30 days after delivery, Bedrock.engineer shall repair, free of charge, defects in the Deliverables — including Generic Components as integrated therein — that are reproducible and constitute a material deviation from the agreed specifications. This repair is the Client's sole remedy in the event of defects.",
+          "For a period of 30 days after delivery, Bedrock.engineer shall repair, free of charge, defects in the Deliverables, including Generic Components as integrated therein, that are reproducible and constitute a material deviation from the agreed specifications. This repair is the Client's sole remedy in the event of defects.",
           "The warranty does not cover defects resulting from: third-party components; use contrary to the documentation or the intended purpose; modifications made by anyone other than Bedrock.engineer; or causes outside the software itself.",
-          "Maintenance and support after this period shall be provided only under a separate agreement.",
+          "Maintenance and support after this period shall be provided only under a separate Agreement.",
         ],
       },
       {
@@ -125,7 +135,14 @@ export const ui = {
         title: "Duration and termination",
         clauses: [
           "An Agreement for a specific project ends upon its completion. An Agreement for an indefinite period may be terminated by either party In Writing, observing a notice period of 30 days.",
-          "The Client may terminate a project Agreement prematurely; in that case, the Client owes payment for the work performed up to that moment, the costs incurred, and the commitments entered into with third parties.",
+          {
+            text: "The Client may terminate a project Agreement prematurely In Writing, observing a notice period of four weeks. Upon termination, the Client owes:",
+            items: [
+              "the fee for the work performed up to the end of the notice period;",
+              "the costs incurred and the commitments entered into with third parties that can no longer be undone; and",
+              "a cancellation fee of 25% of the agreed fee for the work that will not proceed as a result of the termination.",
+            ],
+          },
           "Either party may terminate the Agreement with immediate effect if the other party is declared bankrupt, is granted a suspension of payments, or ceases its business.",
           "Provisions that by their nature are intended to continue after the end of the Agreement (including Articles 8, 9, 15, and 16) shall remain in force after the end of the Agreement.",
         ],
@@ -141,7 +158,7 @@ export const ui = {
         title: "Liability",
         clauses: [
           "Bedrock.engineer is only liable for direct damages resulting from an attributable failure in the performance of the Agreement.",
-          "Liability for indirect or consequential damages — including lost profit, missed savings, loss or corruption of data, and business interruption — is excluded.",
+          "Liability for indirect or consequential damages is excluded. This includes, among other things, lost profit, missed savings, loss or corruption of data, and business interruption.",
           "Bedrock.engineer's total liability, on any grounds whatsoever, is limited to the amount paid by the Client under the Agreement (excluding VAT), with a maximum of € 50,000.",
           "Any claim lapses twelve months after the Client became aware, or could reasonably have become aware, of the damage.",
           "These limitations do not apply in the event of intent or deliberate recklessness on the part of Bedrock.engineer or its managers.",
@@ -160,16 +177,18 @@ export const ui = {
     pageTitle: "Algemene voorwaarden | Bedrock.engineer",
     title: "Algemene voorwaarden",
     intro:
-      "Deze algemene voorwaarden zijn van toepassing op alle offertes, aanbiedingen en overeenkomsten van Bedrock Engineer B.V. Voeg de PDF-versie toe aan offertes of verwijs naar deze pagina.",
+      "Deze algemene voorwaarden zijn van toepassing op alle offertes, aanbiedingen en overeenkomsten van Bedrock Engineer B.V.",
     details: [
-      { term: "Bedrijfsnaam", value: "Bedrock Engineer B.V." },
-      { term: "Statutaire zetel", value: "Goes, Nederland" },
-      { term: "KvK-nummer", value: "98282581" },
-      { term: "Btw-nummer", value: "NL868402552B01" },
-      { term: "Versie", value: "juli 2026" },
+      { term: "Bedrijfsnaam", value: companyName },
+      { term: "Statutaire zetel", value: seatNl },
+      { term: "KvK-nummer", value: kvk },
+      { term: "Btw-nummer", value: vatId },
+      { term: "Versie", value: versionNl },
     ],
     languageNote:
       "Deze algemene voorwaarden zijn beschikbaar in het Nederlands en het Engels. Bij verschil van interpretatie prevaleert de Nederlandse versie.",
+    otherVersionHref: "/terms",
+    otherVersionLabel: "Bekijk de Engelse vertaling",
     articleLabel: "Artikel",
     articles: [
       {
@@ -253,22 +272,22 @@ export const ui = {
           "Generieke Componenten blijven eigendom van Bedrock.engineer. Bedrock.engineer stelt Generieke Componenten beschikbaar onder de Apache License 2.0, tenzij anders overeengekomen.",
           "Voor zover de Resultaten Achtergrondkennis of andere componenten van Bedrock.engineer bevatten die niet onder artikel 9.3 beschikbaar zijn gesteld, verkrijgt Opdrachtgever na volledige betaling een eeuwigdurende, onherroepelijke, niet-exclusieve, royaltyvrije licentie om deze te gebruiken zoals verwerkt in de Resultaten, voor zover nodig voor het gebruik, het onderhoud en de aanpassing van de Resultaten. Deze licentie is uitsluitend overdraagbaar tezamen met de Resultaten of de onderneming van Opdrachtgever.",
           "Bedrock.engineer blijft gerechtigd de bij de uitvoering van de Overeenkomst opgedane algemene kennis, vaardigheden, ervaring, ideeën, methoden en technieken voor andere doeleinden te gebruiken, met inachtneming van artikel 8.",
-          "Bedrock.engineer mag verbeteringen en uitbreidingen van haar reeds bestaande open-sourcebibliotheken die tijdens de uitvoering van de Overeenkomst zijn ontwikkeld, publiceren in haar publieke repositories, mits deze geen vertrouwelijke informatie van Opdrachtgever, geen gegevens van Opdrachtgever en geen opdrachtgever-specifieke logica bevatten. Voor publicatie van nieuwe, zelfstandige componenten die binnen het kader van de Overeenkomst zijn ontwikkeld als open-sourcesoftware is voorafgaande Schriftelijke toestemming van Opdrachtgever vereist.",
+          "Bedrock.engineer mag verbeteringen en uitbreidingen van haar bestaande open-sourcebibliotheken en haar Generieke Componenten die tijdens de uitvoering van de Overeenkomst zijn ontwikkeld, publiceren in haar publieke repositories, mits deze geen vertrouwelijke informatie van Opdrachtgever, geen gegevens van Opdrachtgever en geen opdrachtgever-specifieke logica bevatten.",
         ],
       },
       {
         title: "Open source en componenten van derden",
         clauses: [
           "Resultaten kunnen open-sourcesoftware en componenten of diensten van derden bevatten. Daarop zijn uitsluitend de toepasselijke (licentie)voorwaarden van die derden van toepassing.",
-          "Componenten van derden vallen niet onder de overdracht en licenties van artikel 9, noch onder de garantie van artikel 11. Bedrock.engineer betracht redelijke zorg bij de selectie daarvan.",
+          "Componenten van derden vallen niet onder de overdracht en licenties van artikel 9, noch onder de garantie van artikel 11. Bedrock.engineer betracht redelijke zorgvuldigheid bij de selectie daarvan.",
         ],
       },
       {
         title: "Garantie",
         clauses: [
-          "Gedurende 30 dagen na oplevering herstelt Bedrock.engineer kosteloos gebreken in de Resultaten — met inbegrip van daarin verwerkte Generieke Componenten — die reproduceerbaar zijn en een wezenlijke afwijking van de overeengekomen specificaties vormen. Dit herstel is het enige rechtsmiddel van Opdrachtgever bij gebreken.",
+          "Gedurende 30 dagen na oplevering herstelt Bedrock.engineer kosteloos gebreken in de Resultaten, met inbegrip van daarin verwerkte Generieke Componenten, die reproduceerbaar zijn en een wezenlijke afwijking van de overeengekomen specificaties vormen. Dit herstel is het enige rechtsmiddel van Opdrachtgever bij gebreken.",
           "De garantie geldt niet voor gebreken die het gevolg zijn van: componenten van derden; gebruik in strijd met de documentatie of het beoogde doel; wijzigingen door anderen dan Bedrock.engineer; of oorzaken buiten de software zelf.",
-          "Onderhoud en ondersteuning na deze periode worden uitsluitend verricht op grond van een afzonderlijke overeenkomst.",
+          "Onderhoud en ondersteuning na deze periode worden uitsluitend verricht op grond van een afzonderlijke Overeenkomst.",
         ],
       },
       {
@@ -282,7 +301,14 @@ export const ui = {
         title: "Duur en beëindiging",
         clauses: [
           "Een Overeenkomst voor een bepaald project eindigt door voltooiing daarvan. Een Overeenkomst voor onbepaalde tijd kan door ieder van partijen Schriftelijk worden opgezegd met inachtneming van een opzegtermijn van 30 dagen.",
-          "Opdrachtgever kan een projectovereenkomst tussentijds opzeggen; in dat geval is hij betaling verschuldigd voor de tot dat moment verrichte werkzaamheden, de gemaakte kosten en de jegens derden aangegane verplichtingen.",
+          {
+            text: "Opdrachtgever kan een projectovereenkomst tussentijds Schriftelijk opzeggen met inachtneming van een opzegtermijn van vier weken. Bij opzegging is Opdrachtgever verschuldigd:",
+            items: [
+              "de vergoeding voor de tot het einde van de opzegtermijn verrichte werkzaamheden;",
+              "de gemaakte kosten en de jegens derden aangegane verplichtingen die niet meer ongedaan kunnen worden gemaakt; en",
+              "een annuleringsvergoeding van 25% van de overeengekomen vergoeding voor de werkzaamheden die door de opzegging geen doorgang vinden.",
+            ],
+          },
           "Ieder van partijen kan de Overeenkomst met onmiddellijke ingang beëindigen indien de andere partij failliet wordt verklaard, surseance van betaling wordt verleend of haar onderneming staakt.",
           "Bepalingen die naar hun aard bestemd zijn om na het einde van de Overeenkomst voort te duren (waaronder de artikelen 8, 9, 15 en 16) blijven na het einde van de Overeenkomst van kracht.",
         ],
@@ -298,7 +324,7 @@ export const ui = {
         title: "Aansprakelijkheid",
         clauses: [
           "Bedrock.engineer is uitsluitend aansprakelijk voor directe schade als gevolg van een toerekenbare tekortkoming in de nakoming van de Overeenkomst.",
-          "Aansprakelijkheid voor indirecte schade of gevolgschade — waaronder gederfde winst, gemiste besparingen, verlies of beschadiging van gegevens en bedrijfsstagnatie — is uitgesloten.",
+          "Aansprakelijkheid voor indirecte schade of gevolgschade is uitgesloten. Hieronder vallen onder meer gederfde winst, gemiste besparingen, verlies of beschadiging van gegevens en bedrijfsstagnatie.",
           "De totale aansprakelijkheid van Bedrock.engineer, uit welken hoofde dan ook, is beperkt tot het door Opdrachtgever uit hoofde van de Overeenkomst betaalde bedrag (exclusief btw), met een maximum van € 50.000.",
           "Iedere vordering vervalt twaalf maanden nadat Opdrachtgever met de schade bekend is geworden of redelijkerwijs bekend had kunnen zijn.",
           "Deze beperkingen gelden niet in geval van opzet of bewuste roekeloosheid van Bedrock.engineer of haar leidinggevenden.",

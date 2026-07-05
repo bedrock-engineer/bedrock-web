@@ -18,6 +18,7 @@
 @import "@fontsource/ibm-plex-sans-condensed/600-italic.css";
 @import "@fontsource/ibm-plex-sans-condensed/700-italic.css";
 @import "@fontsource/ibm-plex-mono/latin-400.css";
+@import "@fontsource/ibm-plex-mono/latin-400-italic.css";
 @import "@fontsource/ibm-plex-mono/latin-500.css";
 @import "@fontsource/ibm-plex-mono/latin-600.css";
 @import "@fontsource/ibm-plex-mono/latin-700.css";
@@ -37,8 +38,18 @@
 }
 
 body {
-  /* Improve text rendering on macOS/iOS */
-  -webkit-font-smoothing: antialiased;
+  /* Never fake bold/italic — synthesized styles render smeared. All real weights 400-700 + italics are loaded above */
+  font-synthesis: none;
+}
+
+/* Only disable subpixel rendering on high-DPI screens — on standard-DPI displays
+   `antialiased` makes text thinner and softer, not sharper */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    /* Firefox on macOS equivalent — without it Firefox renders text heavier than Safari/Chrome */
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
 /* Avoid text overflows */
