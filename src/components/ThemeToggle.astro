@@ -108,20 +108,20 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
   ></path>
 </svg>
 
-<script>
-  const themes = ["light", "auto", "dark"] as const;
-  type Theme = (typeof themes)[number];
-
+<!-- is:inline so this runs synchronously during parsing, before first
+     paint — a bundled module script runs after paint, so the indicator
+     would visibly swing from its CSS default (light) to the real theme -->
+<script is:inline>
   // Each step rotates 60° around the triangle's bottom-right corner,
   // landing exactly on the next triangle in the tiling.
-  const rotations: Record<Theme, number> = { light: 0, auto: 60, dark: 120 };
+  const rotations = { light: 0, auto: 60, dark: 120 };
 
-  function getTheme(): Theme {
+  function getTheme() {
     const s = localStorage.getItem("theme");
     return s === "light" || s === "dark" || s === "auto" ? s : "auto";
   }
 
-  function getResolvedTheme(theme: Theme): "light" | "dark" {
+  function getResolvedTheme(theme) {
     return theme === "auto"
       ? window.matchMedia("(prefers-color-scheme: dark)").matches
         ? "dark"
@@ -131,11 +131,11 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
 
   function getBtns() {
     return Array.from(
-      document.querySelectorAll<HTMLElement>("#triangle-toggle .tri-btn"),
+      document.querySelectorAll("#triangle-toggle .tri-btn"),
     );
   }
 
-  function applyTheme(theme: Theme) {
+  function applyTheme(theme) {
     document.documentElement.setAttribute(
       "data-theme",
       getResolvedTheme(theme),
@@ -155,22 +155,22 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
   }
 
   getBtns().forEach((btn) => {
-    btn.addEventListener("click", () => applyTheme(btn.dataset.theme as Theme));
+    btn.addEventListener("click", () => applyTheme(btn.dataset.theme));
     btn.addEventListener("keydown", (e) => {
       const btns = getBtns();
       const idx = btns.indexOf(btn);
       if (e.key === " " || e.key === "Enter") {
         e.preventDefault();
-        applyTheme(btn.dataset.theme as Theme);
+        applyTheme(btn.dataset.theme);
       } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
         e.preventDefault();
         const next = btns[(idx + 1) % btns.length];
-        applyTheme(next.dataset.theme as Theme);
+        applyTheme(next.dataset.theme);
         next.focus();
       } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
         e.preventDefault();
         const prev = btns[(idx - 1 + btns.length) % btns.length];
-        applyTheme(prev.dataset.theme as Theme);
+        applyTheme(prev.dataset.theme);
         prev.focus();
       }
     });
