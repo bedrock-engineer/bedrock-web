@@ -1,4 +1,8 @@
 ---
+import GithubSlugger from "github-slugger";
+
+const slugger = new GithubSlugger();
+
 interface Props {
   t: any; // translations object
 }
@@ -45,26 +49,40 @@ const { t } = Astro.props;
             (article: {
               title: string;
               clauses: (string | { text: string; items: string[] })[];
-            }) => (
-              <article class="terms-article">
-                <h2 class="terms-article-title">{article.title}</h2>
+            }) => {
+              const slug = slugger.slug(article.title);
 
-                <ol class="terms-clauses">
-                  {article.clauses.map((clause) => (
-                    <li class="terms-clause">
-                      {typeof clause === "string" ? clause : clause.text}
-                      {typeof clause !== "string" && (
-                        <ol class="terms-subclauses">
-                          {clause.items.map((item) => (
-                            <li>{item}</li>
-                          ))}
-                        </ol>
-                      )}
-                    </li>
-                  ))}
-                </ol>
-              </article>
-            ),
+              return (
+                <article class="terms-article">
+                  <h2 class="terms-article-title anchored-heading" id={slug}>
+                    {article.title}
+                    <a
+                      aria-hidden="true"
+                      tabindex="-1"
+                      href={`#${slug}`}
+                      class="anchor-link"
+                    >
+                      #
+                    </a>
+                  </h2>
+
+                  <ol class="terms-clauses">
+                    {article.clauses.map((clause) => (
+                      <li class="terms-clause">
+                        {typeof clause === "string" ? clause : clause.text}
+                        {typeof clause !== "string" && (
+                          <ol class="terms-subclauses">
+                            {clause.items.map((item) => (
+                              <li>{item}</li>
+                            ))}
+                          </ol>
+                        )}
+                      </li>
+                    ))}
+                  </ol>
+                </article>
+              );
+            },
           )
         }
       </div>
@@ -169,6 +187,29 @@ const { t } = Astro.props;
     .terms-article {
       break-inside: avoid;
     }
+  }
+
+  .anchored-heading {
+    /* offset for sticky headers when jumping to the anchor */
+    scroll-margin-top: 80px;
+  }
+
+  .anchor-link {
+    margin-inline-start: 0.35em;
+    opacity: 0;
+    text-decoration: none;
+    transition: opacity 120ms ease;
+  }
+
+  .anchored-heading:hover .anchor-link,
+  .anchor-link:focus-visible {
+    opacity: 1;
+  }
+
+  /* don't rely on opacity alone for the focus state */
+  .anchor-link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
 </style>
 
