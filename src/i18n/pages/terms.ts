@@ -77,7 +77,7 @@ export const ui = {
         title: "Changes and additional work",
         clauses: [
           "Changes or additions to the agreed scope (additional work) shall only be performed after agreement has been reached on their consequences for price and timelines.",
-          "If Bedrock.engineer performs changes at the Client's instruction, this qualifies as additional work chargeable at Bedrock.engineer's usual rates, also in the absence of a separate Written agreement.",
+          "If Bedrock.engineer performs changes at the Client's instruction, this qualifies as additional work chargeable at Bedrock.engineer's usual rates, also in the absence of a separate Written Agreement.",
         ],
       },
       {
@@ -243,7 +243,7 @@ export const ui = {
         title: "Wijzigingen en meerwerk",
         clauses: [
           "Wijzigingen of aanvullingen op de overeengekomen omvang (meerwerk) worden pas uitgevoerd nadat overeenstemming is bereikt over de gevolgen voor prijs en planning.",
-          "Indien Bedrock.engineer op instructie van Opdrachtgever wijzigingen uitvoert, geldt dit als meerwerk dat tegen de gebruikelijke tarieven in rekening wordt gebracht, ook zonder afzonderlijke Schriftelijke overeenkomst.",
+          "Indien Bedrock.engineer op instructie van Opdrachtgever wijzigingen uitvoert, geldt dit als meerwerk dat tegen de gebruikelijke tarieven in rekening wordt gebracht, ook zonder afzonderlijke Schriftelijke Overeenkomst.",
         ],
       },
       {

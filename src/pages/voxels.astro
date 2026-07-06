@@ -339,6 +339,174 @@ const description =
   </div>
 
   <Footer />
+
+  <script>
+    import { Heerich } from "heerich";
+
+    // Earth-tone palette for geological voxels
+    const geoColors = {
+      bedrock: {
+        green: { fill: "#627F5D", stroke: "hsl(111, 15%, 33%)" },
+        brown: { fill: "hsl(34, 19%, 51%)", stroke: "hsl(34, 19%, 41%)" },
+        gray: { fill: "hsl(115, 2%, 53%)", stroke: "hsl(115, 2%, 43%)" },
+      },
+      clay: { fill: "#8B7355", stroke: "#6B5744" },
+      sand: { fill: "#C4A265", stroke: "#A68B52" },
+      gravel: { fill: "#9B8B7A", stroke: "#7A6E60" },
+      peat: { fill: "#4A3728", stroke: "#3A2A1E" },
+      rock: { fill: "#7A8B8A", stroke: "#5E6E6D" },
+      green: { fill: "#63805E", stroke: "#4E664A" },
+    };
+
+    function styleFn(colors: { fill: string; stroke: string }) {
+      return {
+        default: {
+          fill: colors.fill,
+          stroke: colors.stroke,
+          "stroke-width": "0.5",
+        },
+        top: {
+          fill: lighten(colors.fill, 15),
+          stroke: colors.stroke,
+          "stroke-width": "0.5",
+        },
+      };
+    }
+
+    function lighten(hex: string, percent: number): string {
+      const num = parseInt(hex.replace("#", ""), 16);
+      const r = Math.min(255, ((num >> 16) & 0xff) + percent);
+      const g = Math.min(255, ((num >> 8) & 0xff) + percent);
+      const b = Math.min(255, (num & 0xff) + percent);
+      return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, "0")}`;
+    }
+
+    // Hero: Geological block model stacked layers with a carved-out section
+    function renderHero() {
+      const el = document.getElementById("hero-voxel");
+      if (!el) return;
+
+      const h = new Heerich({
+        tile: 22,
+        camera: { type: "isometric", angle: 225 },
+      });
+
+      // Top
+      h.applyGeometry({
+        type: "box",
+        position: [0, 0, 0],
+        size: [10, 3, 10],
+        style: styleFn(geoColors.bedrock.green),
+      });
+
+      // Middle
+      h.applyGeometry({
+        type: "box",
+        position: [0, 3, 0],
+        size: [10, 3, 10],
+        style: styleFn(geoColors.bedrock.brown),
+      });
+
+      // Bottom
+      h.applyGeometry({
+        type: "box",
+        position: [0, 6, 0],
+        size: [10, 3, 10],
+        style: styleFn(geoColors.bedrock.gray),
+      });
+
+      el.innerHTML = h.toSVG();
+      const svg = el.querySelector("svg");
+      if (svg) {
+        svg.setAttribute("width", "100%");
+        svg.setAttribute("height", "100%");
+        svg.style.display = "block";
+      }
+    }
+
+    // Grid section: an exploded voxel grid showing individual cells
+    function renderGrid() {
+      const el = document.getElementById("voxel-grid");
+      if (!el) return;
+
+      const h = new Heerich({
+        tile: 28,
+        camera: { type: "isometric", angle: 315 },
+      });
+
+      const layers = [
+        geoColors.rock,
+        geoColors.clay,
+        geoColors.sand,
+        geoColors.gravel,
+        geoColors.green,
+      ];
+
+      for (let y = 0; y < 5; y++) {
+        for (let x = 0; x < 4; x++) {
+          for (let z = 0; z < 4; z++) {
+            // Spacing between voxels for "exploded" look
+            h.applyGeometry({
+              type: "box",
+              position: [x * 2, y * 2, z * 2],
+              size: [1, 1, 1],
+              style: styleFn(layers[y]),
+              opaque: false,
+            });
+          }
+        }
+      }
+
+      el.innerHTML = h.toSVG();
+      const svg = el.querySelector("svg");
+      if (svg) {
+        svg.setAttribute("width", "100%");
+        svg.setAttribute("height", "100%");
+        svg.style.display = "block";
+      }
+    }
+
+    // Layers section: stacked geological layers
+    function renderLayers() {
+      const el = document.getElementById("voxel-layers");
+      if (!el) return;
+
+      const h = new Heerich({
+        tile: 24,
+        camera: { type: "isometric", angle: 135 },
+      });
+
+      // Create offset stacked layers to show conversion pipeline
+      const layerData = [
+        { y: 0, color: geoColors.rock, w: 8, d: 8 },
+        { y: 2, color: geoColors.clay, w: 8, d: 8 },
+        { y: 4, color: geoColors.sand, w: 8, d: 8 },
+        { y: 6, color: geoColors.gravel, w: 8, d: 8 },
+        { y: 8, color: geoColors.peat, w: 8, d: 8 },
+      ];
+
+      layerData.forEach(({ y, color, w, d }) => {
+        h.applyGeometry({
+          type: "box",
+          position: [0, y, 0],
+          size: [w, 1, d],
+          style: styleFn(color),
+        });
+      });
+
+      el.innerHTML = h.toSVG();
+      const svg = el.querySelector("svg");
+      if (svg) {
+        svg.setAttribute("width", "100%");
+        svg.setAttribute("height", "100%");
+        svg.style.display = "block";
+      }
+    }
+
+    renderHero();
+    renderGrid();
+    renderLayers();
+  </script>
 </BaseLayout>
 
 <style>
@@ -513,170 +681,3 @@ const description =
   }
 </style>
 
-<script>
-  import { Heerich } from "heerich";
-
-  // Earth-tone palette for geological voxels
-  const geoColors = {
-    bedrock: {
-      green: { fill: "#627F5D", stroke: "hsl(111, 15%, 33%)" },
-      brown: { fill: "hsl(34, 19%, 51%)", stroke: "hsl(34, 19%, 41%)" },
-      gray: { fill: "hsl(115, 2%, 53%)", stroke: "hsl(115, 2%, 43%)" },
-    },
-    clay: { fill: "#8B7355", stroke: "#6B5744" },
-    sand: { fill: "#C4A265", stroke: "#A68B52" },
-    gravel: { fill: "#9B8B7A", stroke: "#7A6E60" },
-    peat: { fill: "#4A3728", stroke: "#3A2A1E" },
-    rock: { fill: "#7A8B8A", stroke: "#5E6E6D" },
-    green: { fill: "#63805E", stroke: "#4E664A" },
-  };
-
-  function styleFn(colors: { fill: string; stroke: string }) {
-    return {
-      default: {
-        fill: colors.fill,
-        stroke: colors.stroke,
-        "stroke-width": "0.5",
-      },
-      top: {
-        fill: lighten(colors.fill, 15),
-        stroke: colors.stroke,
-        "stroke-width": "0.5",
-      },
-    };
-  }
-
-  function lighten(hex: string, percent: number): string {
-    const num = parseInt(hex.replace("#", ""), 16);
-    const r = Math.min(255, ((num >> 16) & 0xff) + percent);
-    const g = Math.min(255, ((num >> 8) & 0xff) + percent);
-    const b = Math.min(255, (num & 0xff) + percent);
-    return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, "0")}`;
-  }
-
-  // Hero: Geological block model stacked layers with a carved-out section
-  function renderHero() {
-    const el = document.getElementById("hero-voxel");
-    if (!el) return;
-
-    const h = new Heerich({
-      tile: 22,
-      camera: { type: "isometric", angle: 225 },
-    });
-
-    // Top
-    h.applyGeometry({
-      type: "box",
-      position: [0, 0, 0],
-      size: [10, 3, 10],
-      style: styleFn(geoColors.bedrock.green),
-    });
-
-    // Middle
-    h.applyGeometry({
-      type: "box",
-      position: [0, 3, 0],
-      size: [10, 3, 10],
-      style: styleFn(geoColors.bedrock.brown),
-    });
-
-    // Bottom
-    h.applyGeometry({
-      type: "box",
-      position: [0, 6, 0],
-      size: [10, 3, 10],
-      style: styleFn(geoColors.bedrock.gray),
-    });
-
-    el.innerHTML = h.toSVG();
-    const svg = el.querySelector("svg");
-    if (svg) {
-      svg.setAttribute("width", "100%");
-      svg.setAttribute("height", "100%");
-      svg.style.display = "block";
-    }
-  }
-
-  // Grid section: an exploded voxel grid showing individual cells
-  function renderGrid() {
-    const el = document.getElementById("voxel-grid");
-    if (!el) return;
-
-    const h = new Heerich({
-      tile: 28,
-      camera: { type: "isometric", angle: 315 },
-    });
-
-    const layers = [
-      geoColors.rock,
-      geoColors.clay,
-      geoColors.sand,
-      geoColors.gravel,
-      geoColors.green,
-    ];
-
-    for (let y = 0; y < 5; y++) {
-      for (let x = 0; x < 4; x++) {
-        for (let z = 0; z < 4; z++) {
-          // Spacing between voxels for "exploded" look
-          h.applyGeometry({
-            type: "box",
-            position: [x * 2, y * 2, z * 2],
-            size: [1, 1, 1],
-            style: styleFn(layers[y]),
-            opaque: false,
-          });
-        }
-      }
-    }
-
-    el.innerHTML = h.toSVG();
-    const svg = el.querySelector("svg");
-    if (svg) {
-      svg.setAttribute("width", "100%");
-      svg.setAttribute("height", "100%");
-      svg.style.display = "block";
-    }
-  }
-
-  // Layers section: stacked geological layers
-  function renderLayers() {
-    const el = document.getElementById("voxel-layers");
-    if (!el) return;
-
-    const h = new Heerich({
-      tile: 24,
-      camera: { type: "isometric", angle: 135 },
-    });
-
-    // Create offset stacked layers to show conversion pipeline
-    const layerData = [
-      { y: 0, color: geoColors.rock, w: 8, d: 8 },
-      { y: 2, color: geoColors.clay, w: 8, d: 8 },
-      { y: 4, color: geoColors.sand, w: 8, d: 8 },
-      { y: 6, color: geoColors.gravel, w: 8, d: 8 },
-      { y: 8, color: geoColors.peat, w: 8, d: 8 },
-    ];
-
-    layerData.forEach(({ y, color, w, d }) => {
-      h.applyGeometry({
-        type: "box",
-        position: [0, y, 0],
-        size: [w, 1, d],
-        style: styleFn(color),
-      });
-    });
-
-    el.innerHTML = h.toSVG();
-    const svg = el.querySelector("svg");
-    if (svg) {
-      svg.setAttribute("width", "100%");
-      svg.setAttribute("height", "100%");
-      svg.style.display = "block";
-    }
-  }
-
-  renderHero();
-  renderGrid();
-  renderLayers();
-</script>

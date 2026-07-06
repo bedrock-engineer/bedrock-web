@@ -305,6 +305,117 @@ const description =
   </div>
 
   <Footer />
+
+  <script>
+    const dims = ["country", "type", "sourceData", "gm"] as const;
+    type Dim = (typeof dims)[number];
+
+    const filters: Record<Dim, Set<string>> = {
+      country: new Set(),
+      type: new Set(),
+      sourceData: new Set(),
+      gm: new Set(),
+    };
+
+    function readFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      for (const dim of dims) {
+        filters[dim] = new Set(params.getAll(dim));
+      }
+    }
+
+    function writeToUrl() {
+      const p = new URLSearchParams();
+      for (const dim of dims) {
+        for (const v of filters[dim]) p.append(dim, v);
+      }
+      const qs = p.toString();
+      history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
+    }
+
+    function cardMatches(card: HTMLElement) {
+      for (const dim of dims) {
+        const active = filters[dim];
+        if (active.size === 0) continue;
+        const raw = card.dataset[dim] || "";
+        const cardTags = raw.split(",").filter(Boolean);
+        const matched = [...active].some((v) => cardTags.includes(v));
+        if (!matched) return false;
+      }
+      return true;
+    }
+
+    function applyFilters() {
+      const cards = document.querySelectorAll<HTMLElement>(
+        ".demo-card[data-demo-id]",
+      );
+      const chips = document.querySelectorAll<HTMLButtonElement>(".filter-chip");
+      const resetBtn =
+        document.querySelector<HTMLButtonElement>(".reset-filters");
+      const grid = document.querySelector<HTMLElement>(".demos-grid");
+      const empty = document.querySelector<HTMLElement>(".demos-empty");
+
+      const update = () => {
+        let visible = 0;
+        cards.forEach((card) => {
+          const m = cardMatches(card);
+          card.style.display = m ? "" : "none";
+          if (m) visible++;
+        });
+        chips.forEach((chip) => {
+          const dim = chip.dataset.dim as Dim;
+          const value = chip.dataset.value || "";
+          const active = filters[dim].has(value);
+          chip.classList.toggle("active", active);
+          chip.setAttribute("aria-pressed", String(active));
+        });
+        const anyActive = dims.some((d) => filters[d].size > 0);
+        if (resetBtn) resetBtn.hidden = !anyActive;
+        if (empty) empty.hidden = visible > 0;
+        if (grid) grid.hidden = visible === 0;
+      };
+
+      const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (
+        "startViewTransition" in document &&
+        typeof document.startViewTransition === "function" &&
+        !reduced
+      ) {
+        document.startViewTransition(update);
+      } else {
+        update();
+      }
+    }
+
+    function init() {
+      readFromUrl();
+
+      document
+        .querySelectorAll<HTMLButtonElement>(".filter-chip")
+        .forEach((chip) => {
+          chip.addEventListener("click", () => {
+            const dim = chip.dataset.dim as Dim;
+            const value = chip.dataset.value || "";
+            if (filters[dim].has(value)) filters[dim].delete(value);
+            else filters[dim].add(value);
+            writeToUrl();
+            applyFilters();
+          });
+        });
+
+      document
+        .querySelector<HTMLButtonElement>(".reset-filters")
+        ?.addEventListener("click", () => {
+          for (const dim of dims) filters[dim].clear();
+          writeToUrl();
+          applyFilters();
+        });
+
+      applyFilters();
+    }
+
+    init();
+  </script>
 </BaseLayout>
 
 <style>
@@ -408,113 +519,3 @@ const description =
   }
 </style>
 
-<script>
-  const dims = ["country", "type", "sourceData", "gm"] as const;
-  type Dim = (typeof dims)[number];
-
-  const filters: Record<Dim, Set<string>> = {
-    country: new Set(),
-    type: new Set(),
-    sourceData: new Set(),
-    gm: new Set(),
-  };
-
-  function readFromUrl() {
-    const params = new URLSearchParams(window.location.search);
-    for (const dim of dims) {
-      filters[dim] = new Set(params.getAll(dim));
-    }
-  }
-
-  function writeToUrl() {
-    const p = new URLSearchParams();
-    for (const dim of dims) {
-      for (const v of filters[dim]) p.append(dim, v);
-    }
-    const qs = p.toString();
-    history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
-  }
-
-  function cardMatches(card: HTMLElement) {
-    for (const dim of dims) {
-      const active = filters[dim];
-      if (active.size === 0) continue;
-      const raw = card.dataset[dim] || "";
-      const cardTags = raw.split(",").filter(Boolean);
-      const matched = [...active].some((v) => cardTags.includes(v));
-      if (!matched) return false;
-    }
-    return true;
-  }
-
-  function applyFilters() {
-    const cards = document.querySelectorAll<HTMLElement>(
-      ".demo-card[data-demo-id]",
-    );
-    const chips = document.querySelectorAll<HTMLButtonElement>(".filter-chip");
-    const resetBtn =
-      document.querySelector<HTMLButtonElement>(".reset-filters");
-    const grid = document.querySelector<HTMLElement>(".demos-grid");
-    const empty = document.querySelector<HTMLElement>(".demos-empty");
-
-    const update = () => {
-      let visible = 0;
-      cards.forEach((card) => {
-        const m = cardMatches(card);
-        card.style.display = m ? "" : "none";
-        if (m) visible++;
-      });
-      chips.forEach((chip) => {
-        const dim = chip.dataset.dim as Dim;
-        const value = chip.dataset.value || "";
-        const active = filters[dim].has(value);
-        chip.classList.toggle("active", active);
-        chip.setAttribute("aria-pressed", String(active));
-      });
-      const anyActive = dims.some((d) => filters[d].size > 0);
-      if (resetBtn) resetBtn.hidden = !anyActive;
-      if (empty) empty.hidden = visible > 0;
-      if (grid) grid.hidden = visible === 0;
-    };
-
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (
-      "startViewTransition" in document &&
-      typeof document.startViewTransition === "function" &&
-      !reduced
-    ) {
-      document.startViewTransition(update);
-    } else {
-      update();
-    }
-  }
-
-  function init() {
-    readFromUrl();
-
-    document
-      .querySelectorAll<HTMLButtonElement>(".filter-chip")
-      .forEach((chip) => {
-        chip.addEventListener("click", () => {
-          const dim = chip.dataset.dim as Dim;
-          const value = chip.dataset.value || "";
-          if (filters[dim].has(value)) filters[dim].delete(value);
-          else filters[dim].add(value);
-          writeToUrl();
-          applyFilters();
-        });
-      });
-
-    document
-      .querySelector<HTMLButtonElement>(".reset-filters")
-      ?.addEventListener("click", () => {
-        for (const dim of dims) filters[dim].clear();
-        writeToUrl();
-        applyFilters();
-      });
-
-    applyFilters();
-  }
-
-  init();
-</script>

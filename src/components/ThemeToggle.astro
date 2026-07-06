@@ -27,8 +27,7 @@ const iconX = length / 2 - iconSize / 2; // 17.5
 const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
 ---
 <svg
-  id="triangle-toggle"
-  class={className}
+  class:list={["triangle-toggle", className]}
   role="radiogroup"
   aria-label="Color theme"
   width={length * 2}
@@ -104,89 +103,99 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
 
   <!-- Rotating indicator: same triangle, rotates 0°/60°/120° around its
        bottom-right corner to land on light/auto/dark positions -->
-  <path id="tri-indicator" d={trianglePath} class="tri-indicator" stroke="none"
-  ></path>
+  <path d={trianglePath} class="tri-indicator" stroke="none"></path>
 </svg>
 
 <!-- is:inline so this runs synchronously during parsing, before first
      paint — a bundled module script runs after paint, so the indicator
-     would visibly swing from its CSS default (light) to the real theme -->
+     would visibly swing from its CSS default (light) to the real theme.
+     Inline scripts are NOT deduplicated by Astro, and Starlight renders
+     this component twice (header + mobile menu), so the whole script is
+     an IIFE (top-level consts would collide) and every step tolerates
+     re-running: init is guarded per toggle instance and applyTheme
+     updates all instances rendered so far. -->
 <script is:inline>
-  // Each step rotates 60° around the triangle's bottom-right corner,
-  // landing exactly on the next triangle in the tiling.
-  const rotations = { light: 0, auto: 60, dark: 120 };
+  (() => {
+    // Each step rotates 60° around the triangle's bottom-right corner,
+    // landing exactly on the next triangle in the tiling.
+    const rotations = { light: 0, auto: 60, dark: 120 };
 
-  function getTheme() {
-    const s = localStorage.getItem("theme");
-    return s === "light" || s === "dark" || s === "auto" ? s : "auto";
-  }
+    function getTheme() {
+      const s = localStorage.getItem("theme");
+      return s === "light" || s === "dark" || s === "auto" ? s : "auto";
+    }
 
-  function getResolvedTheme(theme) {
-    return theme === "auto"
-      ? window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light"
-      : theme;
-  }
+    function getResolvedTheme(theme) {
+      return theme === "auto"
+        ? window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light"
+        : theme;
+    }
 
-  function getBtns() {
-    return Array.from(
-      document.querySelectorAll("#triangle-toggle .tri-btn"),
-    );
-  }
+    function applyTheme(theme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        getResolvedTheme(theme),
+      );
+      localStorage.setItem("theme", theme);
 
-  function applyTheme(theme) {
-    document.documentElement.setAttribute(
-      "data-theme",
-      getResolvedTheme(theme),
-    );
-    localStorage.setItem("theme", theme);
+      document.querySelectorAll(".triangle-toggle").forEach((root) => {
+        const indicator = root.querySelector(".tri-indicator");
+        if (indicator)
+          indicator.style.transform = `rotate(${rotations[theme]}deg)`;
 
-    const indicator = document.getElementById("tri-indicator");
-    if (indicator) indicator.style.transform = `rotate(${rotations[theme]}deg)`;
+        root.querySelectorAll(".tri-btn").forEach((btn) => {
+          const active = btn.dataset.theme === theme;
+          btn.classList.toggle("active", active);
+          btn.setAttribute("aria-checked", String(active));
+          // Roving tabindex: only the selected radio is in the tab order
+          btn.setAttribute("tabindex", active ? "0" : "-1");
+        });
+      });
+    }
 
-    getBtns().forEach((btn) => {
-      const active = btn.dataset.theme === theme;
-      btn.classList.toggle("active", active);
-      btn.setAttribute("aria-checked", String(active));
-      // Roving tabindex: only the selected radio is in the tab order
-      btn.setAttribute("tabindex", active ? "0" : "-1");
-    });
-  }
+    document
+      .querySelectorAll(".triangle-toggle:not([data-tri-init])")
+      .forEach((root) => {
+        root.setAttribute("data-tri-init", "");
+        const btns = Array.from(root.querySelectorAll(".tri-btn"));
+        btns.forEach((btn, idx) => {
+          btn.addEventListener("click", () => applyTheme(btn.dataset.theme));
+          btn.addEventListener("keydown", (e) => {
+            if (e.key === " " || e.key === "Enter") {
+              e.preventDefault();
+              applyTheme(btn.dataset.theme);
+            } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+              e.preventDefault();
+              const next = btns[(idx + 1) % btns.length];
+              applyTheme(next.dataset.theme);
+              next.focus();
+            } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+              e.preventDefault();
+              const prev = btns[(idx - 1 + btns.length) % btns.length];
+              applyTheme(prev.dataset.theme);
+              prev.focus();
+            }
+          });
+        });
+      });
 
-  getBtns().forEach((btn) => {
-    btn.addEventListener("click", () => applyTheme(btn.dataset.theme));
-    btn.addEventListener("keydown", (e) => {
-      const btns = getBtns();
-      const idx = btns.indexOf(btn);
-      if (e.key === " " || e.key === "Enter") {
-        e.preventDefault();
-        applyTheme(btn.dataset.theme);
-      } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-        e.preventDefault();
-        const next = btns[(idx + 1) % btns.length];
-        applyTheme(next.dataset.theme);
-        next.focus();
-      } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-        e.preventDefault();
-        const prev = btns[(idx - 1 + btns.length) % btns.length];
-        applyTheme(prev.dataset.theme);
-        prev.focus();
-      }
-    });
-  });
+    applyTheme(getTheme());
 
-  applyTheme(getTheme());
-
-  window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", () => {
-      if (getTheme() === "auto") applyTheme("auto");
-    });
+    if (!window.__triangleToggleMediaBound) {
+      window.__triangleToggleMediaBound = true;
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", () => {
+          if (getTheme() === "auto") applyTheme("auto");
+        });
+    }
+  })();
 </script>
 
 <style>
-  #triangle-toggle {
+  .triangle-toggle {
     display: block;
     cursor: default;
   }
