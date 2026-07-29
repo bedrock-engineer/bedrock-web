@@ -165,7 +165,7 @@ export const demos: Demo[] = [
     title: "Kai Tak - Speckle",
     description:
       "Building models from Revit and Civil3D combined with geotechnical data in Speckle. View subsurface conditions alongside structural designs.",
-    href: "https://app.speckle.systems/projects/dea5d61543/models/9962662abe,c82c54493a#savedView%3D%7B%2522id%2522%3A%2522a2369ea45a%2522%7D",
+    href: "https://speckle.bedrock.engineer/projects/aa7ceaba47/models/all",
     linkText: "Open in Speckle",
     image: kaiTakSpeckle,
     imageAlt: "Kai Tak GI data in Speckle with 3D buildings",
@@ -179,7 +179,7 @@ export const demos: Demo[] = [
     title: "Amsterdam Noord - Speckle",
     description:
       "Subsurface data from Amsterdam Noord visualized in Speckle for multi-disciplinary collaboration and BIM integration.",
-    href: "https://app.speckle.systems/projects/d083a8bd5c/models/7d52f6a137,8e05ffa635,90726f9281,95af0442f1,f96a046aed#savedView%3D%7B%2522id%2522%3A%2522faa8d15f95%2522%7D",
+    href: "https://speckle.bedrock.engineer/projects/03f6fd3bc9/models/all",
     linkText: "Open in Speckle",
     image: amsterdamSpeckle,
     imageAlt: "Amsterdam Noord in Speckle",
@@ -193,7 +193,7 @@ export const demos: Demo[] = [
     title: "Weka Hills - Speckle",
     description:
       "Geological data visualization in Speckle showing subsurface conditions for infrastructure planning and design coordination.",
-    href: "https://app.speckle.systems/projects/bc2ef86a30/models/53ad71f84a,639810d7b2,6dcde3dafa,7d83fae8e5#savedView%3D%7B%2522id%2522%3A%2522025a4dcbd1%2522%7D",
+    href: "https://speckle.bedrock.engineer/projects/370cd6bbc7/models/all",
     linkText: "Open in Speckle",
     image: wekaHills,
     imageAlt: "Weka Hills project in Speckle",
