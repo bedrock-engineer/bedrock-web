@@ -10,14 +10,15 @@ const title =
   "Geotechnical Software Development Capabilities - CesiumJS, AGS4, GEF, Speckle | Bedrock.engineer";
 const description =
   "Software consultancy specializing in CesiumJS development, AGS4/GEF parsing, Speckle connectors, and Python geospatial tools for geotechnical engineering data. Expert developers for subsurface visualization and data transformation.";
+
+const pageUrl = new URL("/technologies", Astro.site);
 ---
 
 <BaseLayout title={title} description={description}>
   <Fragment slot="head">
-    <link rel="canonical" href="https://bedrock.engineer/technologies" />
+    <link rel="canonical" href={pageUrl} />
 
     <!-- Open Graph -->
-    <meta property="og:url" content="https://bedrock.engineer/technologies" />
     <meta property="og:site_name" content="Bedrock.engineer" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
@@ -118,13 +119,13 @@ const description =
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://bedrock.engineer",
+          item: Astro.site,
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Technologies",
-          item: "https://bedrock.engineer/technologies",
+          item: pageUrl,
         },
       ],
     })}

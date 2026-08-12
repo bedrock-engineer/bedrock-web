@@ -1,0 +1,8 @@
+# Docs moved under per-package paths when the site became multi-package.
+# Per-section rules (no catch-all /docs/*) so package-scoped URLs can't loop.
+/docs/getting-started /docs/bedrock-ge/getting-started 301
+/docs/contributing /docs/bedrock-ge/contributing 301
+/docs/explanation/* /docs/bedrock-ge/explanation/:splat 301
+/docs/guides/* /docs/bedrock-ge/guides/:splat 301
+/docs/tutorials/* /docs/bedrock-ge/tutorials/:splat 301
+/docs/reference/* /docs/bedrock-ge/reference/:splat 301

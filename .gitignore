@@ -21,7 +21,6 @@ pnpm-debug.log*
 .DS_Store
 
 .venv
-/.quarto/
 
 /.luarc.json
 

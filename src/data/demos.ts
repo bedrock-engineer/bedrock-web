@@ -1,5 +1,9 @@
 import type { ImageMetadata } from "astro";
 
+// Demos hosted on the main domain (separate deploys routed under bedrock.engineer).
+// Subdomain demos below keep their full URLs — they are different origins.
+const SITE = import.meta.env.SITE;
+
 import kaiTakCesium from "../assets/hk_kaitak_cesium.webp";
 import broXmlApp from "../assets/bro-viewer.png";
 import gefApp from "../assets/gef.webp";
@@ -46,7 +50,7 @@ export const demos: Demo[] = [
     title: "Kai Tak, Hong Kong - CesiumJS",
     description:
       "Ground investigation data from Kai Tak, Hong Kong visualized in an interactive CesiumJS map. Borehole locations, SPT results, and weathering grades in 3D, transformed from AGS3 to GeoJSON with bedrock-ge.",
-    href: "https://bedrock.engineer/hk-kaitak",
+    href: `${SITE}/hk-kaitak`,
     linkText: "Explore demo",
     image: kaiTakCesium,
     country: "HK",
@@ -98,7 +102,7 @@ export const demos: Demo[] = [
     title: "Amsterdam Noord - CesiumJS",
     description:
       "Interactive 3D web map combining interpreted CPT data, the 3DBag building dataset, and the GeoTOP geological model in Amsterdam Noord, rendered in CesiumJS.",
-    href: "https://bedrock.engineer/nl-amsterdam-noord",
+    href: `${SITE}/nl-amsterdam-noord`,
     linkText: "Explore demo",
     image: amsterdamNoord,
     country: "NL",
@@ -111,7 +115,7 @@ export const demos: Demo[] = [
     title: "GeoTOP Voxels - CesiumJS",
     description:
       "The Dutch GeoTOP shallow subsurface model rendered in 3D in a browser for the first time. 100×100×0.5 m voxels with lithoclass information across Amsterdam, Delft, and Utrecht using CesiumJS with the 3D Tiles Voxel extension.",
-    href: "https://bedrock.engineer/geotop-voxels",
+    href: `${SITE}/geotop-voxels`,
     linkText: "Explore demo",
     image: geotop,
     country: "NL",
@@ -137,7 +141,7 @@ export const demos: Demo[] = [
     title: "Dutch BRO CPTs - MapLibre GL & PMTiles",
     description:
       "All 237,297 Cone Penetration Tests from the Dutch subsurface registry rendered instantly in the browser with MapLibre GL. Zoom, filter, and recolor without lag from a 35 MB PMTiles file served as a static asset.",
-    href: "https://bedrock.engineer/bro-cpt",
+    href: `${SITE}/bro-cpt`,
     linkText: "Explore demo",
     image: broCpt,
     country: "NL",

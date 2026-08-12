@@ -490,7 +490,7 @@ def discover_modules(package_name: str) -> List[str]:
 def main():
     """Generate API documentation for bedrock_ge modules."""
     
-    output_dir = Path("src/content/docs/reference/api")
+    output_dir = Path("src/content/docs/docs/bedrock-ge/reference/API")
     output_dir.mkdir(parents=True, exist_ok=True)
     
     # Automatically discover all modules

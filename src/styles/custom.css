@@ -80,11 +80,6 @@ html {
   height: 100%;
 }
 
-/* Create a root stacking context for React/Next.js apps */
-/* #root,
-#__next {
-  isolation: isolate;
-} */
 
 /* Global styles and additional theme customizations */
 body {

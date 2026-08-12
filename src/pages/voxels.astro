@@ -16,23 +16,26 @@ const title =
   "3D Tiles Voxels - Volumetric Models in Browser Web Maps | Bedrock.engineer";
 const description =
   "Share volumetric models with your team via a browser link. Bedrock.engineer converts your volumetric models into interactive 3D web apps using the 3D Tiles Voxel extension and CesiumJS.";
+
+const pageUrl = new URL("/voxels", Astro.site);
+const ogImage = new URL("/og-voxels.png", Astro.site);
+const ogVideo = new URL("/voxels-og.mp4", Astro.site);
 ---
 
 <BaseLayout title={title} description={description} customOgImage={true}>
   <Fragment slot="head">
-    <link rel="canonical" href="https://bedrock.engineer/voxels" />
+    <link rel="canonical" href={pageUrl} />
 
-    <meta property="og:url" content="https://bedrock.engineer/voxels" />
     <meta property="og:site_name" content="Bedrock.engineer" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
 
-    <meta property="og:image" content="https://bedrock.engineer/og-voxels.png" />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/png" />
 
-    <meta property="og:video" content="https://bedrock.engineer/voxels-og.mp4" />
+    <meta property="og:video" content={ogVideo} />
     <meta property="og:video:type" content="video/mp4" />
     <meta property="og:video:width" content="1200" />
     <meta property="og:video:height" content="630" />
@@ -40,7 +43,7 @@ const description =
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://bedrock.engineer/og-voxels.png" />
+    <meta name="twitter:image" content={ogImage} />
 
     <meta name="author" content="Bedrock.engineer" />
 
@@ -61,19 +64,19 @@ const description =
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://bedrock.engineer",
+          item: Astro.site,
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Technologies",
-          item: "https://bedrock.engineer/technologies",
+          item: new URL("/technologies", Astro.site),
         },
         {
           "@type": "ListItem",
           position: 3,
           name: "3D Tiles Voxels",
-          item: "https://bedrock.engineer/voxels",
+          item: pageUrl,
         },
       ],
     })}
@@ -153,7 +156,7 @@ const description =
           <DemoCard
             title="Amsterdam Noord"
             image={amsterdamNoord}
-            href="https://bedrock.engineer/nl-amsterdam-noord"
+            href={`${import.meta.env.SITE}/nl-amsterdam-noord`}
             linkText="Explore demo"
           >
             <Fragment slot="description">

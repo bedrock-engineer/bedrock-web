@@ -9,6 +9,7 @@ const {
 } = Astro.props;
 
 const ogImageUrl = new URL("/og-default.png", Astro.site).toString();
+const pageUrl = new URL(Astro.url.pathname, Astro.site);
 
 const htmlDataAttributes: DOMStringMap = { "data-theme": "dark" };
 
@@ -52,7 +53,7 @@ import "../styles/custom.css"; // fonts + design tokens loaded here
     }
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://bedrock.engineer" />
+    <meta property="og:url" content={pageUrl} />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -65,16 +66,19 @@ import "../styles/custom.css"; // fonts + design tokens loaded here
       src="https://counterscale.bedrock-engineer.workers.dev/tracker.js"
       defer></script>
 
-    <script type="application/ld+json">
-      {
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "Bedrock.engineer",
-        "url": "https://bedrock.engineer",
-        "logo": "https://bedrock.engineer/bedrock.svg",
-        "description": "Software consultancy for transforming ground investigation data into structured, standardized geospatial data"
-      }
-    </script>
+        name: "Bedrock.engineer",
+        url: Astro.site,
+        logo: new URL("/bedrock.svg", Astro.site),
+        description:
+          "Software consultancy for transforming ground investigation data into structured, standardized geospatial data",
+      })}
+    />
 
     <!-- Allow pages to inject additional head content -->
     <slot name="head" />

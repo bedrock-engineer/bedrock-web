@@ -73,7 +73,7 @@ function buildTabs(t: DemoTabsCopy): TabData[] {
 
           <figure>
             <iframe
-              src="https://bedrock.engineer/hk-kaitak/"
+              src={`${import.meta.env.SITE}/hk-kaitak/`}
               height={400}
               title={t.interactive.iframeTitle}
               style={{ width: "100%", maxWidth: "700px", borderRadius: "4px" }}
@@ -83,7 +83,7 @@ function buildTabs(t: DemoTabsCopy): TabData[] {
               {t.interactive.caption}{" "}
               <a
                 className="link"
-                href="https://bedrock.engineer/hk-kaitak"
+                href={`${import.meta.env.SITE}/hk-kaitak`}
                 target="_blank"
               >
                 {t.interactive.exploreLink}

@@ -11,13 +11,14 @@ const title =
   "Interactive Subsurface & BIM Demos - CesiumJS, GEF Viewer, IFC Georeferencer, Speckle | Bedrock.engineer";
 const description =
   "Explore examples of subsurface and BIM data in interactive visualizations and browser tools. See AGS4, GEF, BRO/XML, and IFC data in web application, CesiumJS 3D maps, or Speckle.";
+
+const pageUrl = new URL("/demos", Astro.site);
 ---
 
 <BaseLayout title={title} description={description}>
   <Fragment slot="head">
-    <link rel="canonical" href="https://bedrock.engineer/demos" />
+    <link rel="canonical" href={pageUrl} />
 
-    <meta property="og:url" content="https://bedrock.engineer/demos" />
     <meta property="og:site_name" content="Bedrock.engineer" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
@@ -41,7 +42,7 @@ const description =
       name: "Interactive Ground Investigation Demos",
       description:
         "Real-world examples of ground investigation data transformed into interactive visualizations",
-      url: "https://bedrock.engineer/demos",
+      url: pageUrl,
       mainEntity: {
         "@type": "ItemList",
         name: "Ground Investigation Visualization Demos",
@@ -68,13 +69,13 @@ const description =
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://bedrock.engineer",
+          item: Astro.site,
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Demos",
-          item: "https://bedrock.engineer/demos",
+          item: pageUrl,
         },
       ],
     })}
