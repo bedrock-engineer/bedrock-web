@@ -1,0 +1,337 @@
+---
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import DemoCard from "../../components/DemoCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/custom.css";
+
+import broViewer from "../../assets/bro-viewer.png";
+import amsterdamNoord from "../../assets/nl-amsterdam-noord.webp";
+
+const title =
+  "Maatwerksoftware voor geotechnische BRO-data (BRO/XML) | Bedrock.engineer";
+const description =
+  "Bedrock bouwt maatwerksoftware voor geotechnische data uit de Basisregistratie Ondergrond: rapportage vanuit BRO/XML, dashboards, Python-analyse en BIM-integratie. Incl. gratis open-source viewer.";
+
+const pageUrl = new URL("/nl/bro-xml", Astro.site);
+
+const faq = [
+  {
+    question: "Wat is BRO/XML?",
+    answer:
+      "IMBRO/XML is het uitwisselformaat van de Basisregistratie Ondergrond (BRO), de opvolger van GEF voor sondeer- en boordata in Nederland. De BRO bevat veel soorten ondergrondgegevens; wij richten ons op de geotechnische registratieobjecten: sonderingen (CPT) en boringen (BHR-GT, BHR-G).",
+  },
+  {
+    question: "Is er een gratis manier om BRO/XML-bestanden te bekijken?",
+    answer:
+      "Ja, onze BRO/XML viewer op bro.bedrock.engineer — gratis, open source, en je bestanden verlaten je browser niet.",
+  },
+  {
+    question: "Kan ik een CPT XML-bestand omzetten naar CSV?",
+    answer:
+      "Ja, in de viewer: upload het bestand en download de meetdata als CSV of JSON. Locaties van meerdere bestanden kun je downloaden als GeoJSON.",
+  },
+  {
+    question: "Kan ik jullie parser in eigen software gebruiken?",
+    answer:
+      "Ja, de parser is open source onder de Apache 2.0-licentie en beschikbaar op npm als @bedrock-engineer/bro-xml-parser.",
+  },
+];
+---
+
+<BaseLayout title={title} description={description} lang="nl">
+  <Fragment slot="head">
+    <link rel="canonical" href={pageUrl} />
+    <meta property="og:site_name" content="Bedrock.engineer" />
+    <meta property="og:locale" content="nl_NL" />
+    <meta name="author" content="Bedrock.engineer" />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+  </Fragment>
+
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faq.map(({ question, answer }) => ({
+        "@type": "Question",
+        name: question,
+        acceptedAnswer: { "@type": "Answer", text: answer },
+      })),
+    })}
+  />
+
+  <Navbar />
+  <div class="page" data-pagefind-body data-pagefind-meta="category:Marketing">
+    <header class="section-wrapper texture-607">
+      <section class="section intro-section">
+        <p class="eyebrow">BRO/XML</p>
+        <h1 class="heading-1">
+          Wij bouwen software voor geotechnische BRO-data
+        </h1>
+        <p class="paragraph-xl">
+          De Basisregistratie Ondergrond bevat veel sonderingen, boringen en
+          labproeven. Maar het formaat, IMBRO/XML, is gemaakt voor registratie,
+          niet voor gebruik. Bedrock.engineer bouwt de maatwerksoftware die er
+          rapporten, kaarten van maakt of het integreert in je BIM- of
+          CAD-omgeving of digital twin.
+        </p>
+        <div
+          class="flex gap-4 flex-wrap"
+          style="margin-block-start: var(--space-m);"
+        >
+          <a href="https://cal.com/bedrock.engineer" class="cta-button">
+            Bespreek je project
+          </a>
+          <a href="https://bro.bedrock.engineer" class="cta-button-secondary">
+            Probeer de gratis viewer
+          </a>
+        </div>
+      </section>
+    </header>
+
+    <div class="section-wrapper texture-616">
+      <section class="section">
+        <h2
+          class="heading-2 anchor-heading"
+          id="kijk-zelf"
+          style="margin-block-end: var(--space-l);"
+        >
+          Kijk zelf <a class="anchor-link" href="#kijk-zelf">#</a>
+        </h2>
+
+        <div class="grid-auto-fit">
+          <DemoCard
+            title="BRO/XML Viewer"
+            image={broViewer}
+            href="https://bro.bedrock.engineer"
+            linkText="Open de viewer"
+          >
+            <Fragment slot="description">
+              Onze gratis viewer opent sonderingen (CPT), geotechnische en
+              geologische boringen (BHR-GT, BHR-G) en boormonsteranalyses direct
+              in je browser — of laadt ze via de kaart rechtstreeks uit de BRO.
+              Exporteer naar CSV, GeoJSON of PNG.
+            </Fragment>
+          </DemoCard>
+
+          <DemoCard
+            title="Amsterdam Noord in 3D"
+            image={amsterdamNoord}
+            href={`${import.meta.env.SITE}/nl-amsterdam-noord`}
+            linkText="Bekijk demo"
+          >
+            <Fragment slot="description">
+              Sonderingen uit de BRO, 3D-gebouwen uit de 3D BAG en GeoTOP-voxels
+              gecombineerd in één interactieve CesiumJS-scène — boven- en
+              ondergrond in samenhang.
+            </Fragment>
+          </DemoCard>
+        </div>
+
+        <p class="paragraph" style="margin-block-start: var(--space-l);">
+          De view draait op onze open-source library{" "}
+          <a
+            class="link"
+            href="https://www.npmjs.com/package/@bedrock-engineer/bro-xml-parser"
+            ><code>@bedrock-engineer/bro-xml-parser</code></a
+          >{" "}
+          (<a
+            class="link"
+            href="https://github.com/bedrock-engineer/bro-xml-parser-ts"
+            >GitHub</a
+          >), die de geotechnische BRO-schema's implementeert.
+        </p>
+      </section>
+    </div>
+
+    <div class="section-wrapper texture-620">
+      <section class="section">
+        <h2
+          class="heading-2 anchor-heading"
+          id="wat-we-bouwen"
+          style="margin-block-end: var(--space-m);"
+        >
+          Wat we voor je bouwen <a class="anchor-link" href="#wat-we-bouwen"
+            >#</a
+          >
+        </h2>
+        <ul class="feature-list">
+          <li>
+            <strong>Geautomatiseerde rapportage</strong> van BRO/XML naar PDF-sondeerstaten
+            en boorprofielen in jouw huisstijl.
+          </li>
+          <li>
+            <strong>Webapps en dashboards op maat</strong> ondergronddata bekijken
+            en delen zonder speciale software.
+          </li>
+          <li>
+            <strong>Python data-extractie en -analyse</strong> bulk-downloads uit
+            de BRO, parameterafleiding, kaarten. Reproduceerbaar in plaats van handwerk.
+          </li>
+          <li>
+            <strong>BIM/CAD-integratie</strong> BRO-data in Civil 3D, Revit, Rhino
+            en Grasshopper.
+          </li>
+        </ul>
+      </section>
+    </div>
+
+
+    <div class="section-wrapper texture-620">
+      <section class="section">
+        <h2
+          class="heading-2 anchor-heading"
+          id="faq"
+          style="margin-block-end: var(--space-m);"
+        >
+          Veelgestelde vragen <a class="anchor-link" href="#faq">#</a>
+        </h2>
+        <div class="faq-list">
+          <details>
+            <summary>Wat is BRO/XML?</summary>
+            <p class="paragraph">
+              IMBRO/XML is het uitwisselformaat van de
+              <a class="link" href="https://basisregistratieondergrond.nl/"
+                >Basisregistratie Ondergrond</a
+              >
+              (BRO), de opvolger van GEF voor sondeer- en boordata in Nederland. De
+              BRO bevat veel soorten ondergrondgegevens; wij richten ons op de geotechnische
+              registratieobjecten: sonderingen (CPT) en boringen (BHR-GT, BHR-G).
+            </p>
+          </details>
+          <details>
+            <summary>
+              Is er een gratis manier om BRO/XML-bestanden te bekijken?
+            </summary>
+            <p class="paragraph">
+              Ja, onze
+              <a class="link" href="https://bro.bedrock.engineer">
+                BRO/XML viewer</a
+              >
+              — gratis, open source, en je bestanden verlaten je browser niet.
+            </p>
+          </details>
+          <details>
+            <summary>Kan ik een CPT XML-bestand omzetten naar CSV?</summary>
+            <p class="paragraph">
+              Ja, in de
+              <a class="link" href="https://bro.bedrock.engineer">viewer</a>:
+              upload het bestand en download de meetdata als CSV of JSON.
+              Locaties van meerdere bestanden kun je downloaden als GeoJSON.
+            </p>
+          </details>
+          <details>
+            <summary>Kan ik jullie parser in eigen software gebruiken?</summary>
+            <p class="paragraph">
+              Ja, de parser is open source onder de Apache 2.0-licentie en
+              beschikbaar
+              <a
+                class="link"
+                href="https://www.npmjs.com/package/@bedrock-engineer/bro-xml-parser"
+                >op npm</a
+              > als <code>@bedrock-engineer/bro-xml-parser</code>.
+            </p>
+          </details>
+        </div>
+      </section>
+    </div>
+
+    <div class="section-wrapper texture-616">
+      <section class="section cta-section">
+        <h2
+          class="heading-3"
+          style="text-align: center; margin-block-end: 16px;"
+        >
+          Werk je met BRO-data en kan dat slimmer?
+        </h2>
+        <p
+          class="paragraph"
+          style="text-align: center; margin-block-end: 32px; color: var(--gray-11);"
+        >
+          Vertel ons waar je tegenaan loopt, een rapportagestraat, een
+          integratie, or gewoon "dit moet toch sneller kunnen".
+          <br /> Een gesprek is gratis en verplicht tot niets.
+        </p>
+        <div class="flex gap-4 justify-center flex-wrap">
+          <a href="https://cal.com/bedrock.engineer" class="cta-button">
+            Bespreek je project
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--green-11);
+    margin-block-end: var(--space-xs);
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+  }
+
+  .feature-list li {
+    padding-inline-start: var(--space-m);
+    position: relative;
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+  }
+
+  .feature-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 8px;
+    height: 8px;
+    background: var(--green-9);
+  }
+
+  .feature-list li strong {
+    color: var(--green-11);
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .faq-list details {
+    border-block-end: 1px solid var(--gray-6);
+    padding-block: var(--space-s);
+  }
+
+  .faq-list summary {
+    cursor: pointer;
+    font-size: var(--text-lg);
+    font-weight: 600;
+    line-height: var(--leading-relaxed);
+  }
+
+  .faq-list summary:hover {
+    color: var(--green-11);
+  }
+
+  .faq-list details[open] summary {
+    color: var(--green-11);
+    margin-block-end: var(--space-xs);
+  }
+</style>
