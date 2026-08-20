@@ -58,6 +58,23 @@ const starlightConfig = {
           },
         ],
       },
+      {
+        label: "cpt-anywidget",
+        link: "/docs/cpt-anywidget/getting-started/",
+        icon: "seti:python",
+        items: [
+          {
+            label: "Start Here",
+            items: ["docs/cpt-anywidget/getting-started"],
+          },
+          {
+            label: "Reference",
+            items: [
+              { autogenerate: { directory: "docs/cpt-anywidget/reference" } },
+            ],
+          },
+        ],
+      },
     ], {
       // The /docs landing page lists all packages and belongs to no topic.
       exclude: ["/docs"],
