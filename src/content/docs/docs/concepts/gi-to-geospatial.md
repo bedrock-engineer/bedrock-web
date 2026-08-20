@@ -2,7 +2,7 @@
 title: Geospatial data for geotechnical data
 description: Understanding how geotechnical data is naturally geospatial and the benefits of treating it as such.
 sidebar:
-  order: 3
+  order: 1
 ---
 
 Geotechnical data is inherently geospatial, yet it's often trapped in formats that don't take advantage of this spatial nature.
@@ -195,7 +195,7 @@ Spatial queries and analysis</dt>
 
 Geospatial data achieves its spatial awareness through [Spatial Reference Systems](https://en.wikipedia.org/wiki/Spatial_reference_system) (SRS), standardized definitions that link coordinates to real locations on Earth.
 
-See the [Spatial Reference Systems](/docs/bedrock-ge/explanation/concepts/spatial-reference-systems/) explanation for more.
+See the [Spatial Reference Systems](/docs/concepts/spatial-reference-systems/) explanation for more.
 
 ## Breaking free from format silos
 
@@ -216,7 +216,7 @@ Unlike regular databases that only handle text and numbers, these databases unde
 
 Geospatial databases like [PostGIS](https://postgis.net/) (PostgreSQL-based) or [GeoPackage](https://www.geopackage.org/) (SQLite-based) combine the benefits of:
 
-- **Relational structure**: Store [hierarchical geotechnical data](/docs/bedrock-ge/explanation/hierarchical-structure/) efficiently.
+- **Relational structure**: Store [hierarchical geotechnical data](/docs/concepts/hierarchical-structure/) efficiently.
 - **Spatial capabilities**: Perform geographic queries and analysis
 - **Multi-user access**: Server databases like PostGIS support concurrent users; GeoPackage is better for single-user or read-heavy scenarios
 - **Data integrity**: Enforce relationships and constraints

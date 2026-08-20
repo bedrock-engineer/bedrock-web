@@ -1,0 +1,104 @@
+---
+title: "Live: CPTViewer"
+description: A CPTViewer showing a real BRO sounding, on Python running in your browser.
+sidebar:
+  order: 1
+---
+
+import MarimoRuntime from "../../../../../components/MarimoRuntime.astro";
+
+<MarimoRuntime />
+
+This page runs Python in your browser through
+[marimo](https://marimo.io) WebAssembly islands. The cells below form
+one reactive notebook: the code is editable, and a change reruns the
+dependent cells. The first run downloads the Python runtime and the
+packages, so give it a few seconds.
+
+```marimo-config
+requires-python = ">=3.12"
+dependencies = ["cpt-anywidget>=0.1.0", "brodata>=0.1.8"]
+```
+
+## Fetch a CPT from the BRO
+
+[brodata](https://pypi.org/project/brodata/) fetches a sounding from
+the public [BRO](https://basisregistratieondergrond.nl/) API and parses
+the XML. Any reader works here — the viewer only sees tidy columns.
+
+```python marimo editor=true
+import marimo as mo
+import pandas as pd
+
+from brodata.cpt import ConePenetrationTest
+from cpt_anywidget import CPTViewer
+```
+
+```python marimo editor=true
+cpt = ConePenetrationTest.from_bro_id("CPT000000061388")
+```
+
+Edit the id above to fetch another public CPT — the whole page reruns
+with the new sounding.
+
+## Tidy the data
+
+Pick the channels, coerce the numeric strings, and compute the vertical
+coordinate in m NAP from the surface offset:
+
+```python marimo editor=true
+df = cpt.conePenetrationTest.dropna(axis=1, how="all").sort_index()
+
+cpt_data = df.reindex(
+    columns=["depth", "coneResistance", "localFriction", "frictionRatio"]
+).apply(pd.to_numeric, errors="coerce")
+
+cpt_data["nap"] = float(cpt.offset) - cpt_data["depth"]
+```
+
+The DataFrame follows the
+[data contract](/docs/cpt-anywidget/reference/intake/): tidy columns of
+equal length, one row per depth sample. The constructor handles the
+rest — NaN to `None`, rows sorted to render order.
+
+## Pick the channels
+
+The multiselect is a marimo UI element. The viewer cell reads its
+value, so the chart rebuilds when you change the selection.
+
+```python marimo editor=true
+channel_select = mo.ui.multiselect(
+    options=["coneResistance", "localFriction", "frictionRatio"],
+    value=["coneResistance", "localFriction", "frictionRatio"],
+    label="Channels",
+)
+channel_select
+```
+
+## Show the viewer
+
+```python marimo editor=true
+CPTViewer(
+    cpt_data,
+    vertical="nap",
+    channels=list(channel_select.value),
+    annotations=[
+        {
+            "at": float(cpt.offset) - 1.2,
+            "label": "GWL",
+            "color": "steelblue",
+            "dash": "4 2",
+        },
+    ],
+)
+```
+
+Try the interactions from
+[getting started](/docs/cpt-anywidget/getting-started/#use-the-viewer):
+hold Ctrl (Cmd on macOS) and turn the mouse wheel to zoom, drag to pan,
+Shift-drag along the axis to zoom to a range, double-click to reset,
+and hover to read values.
+
+The built-in column names carry their display defaults — see the
+[`CPTViewer` reference](/docs/cpt-anywidget/reference/cpt-viewer/) for
+bindings, limits, overlays, and the editable layer column.

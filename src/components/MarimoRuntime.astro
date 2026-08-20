@@ -1,0 +1,9 @@
+{/* Browser runtime for marimo islands in .mdx pages: registers the
+    <marimo-mdx-island> custom element and boots Pyodide. MDX top-level
+    imports run only at build time in Astro, so pages with marimo cells
+    must render this component to get the client-side runtime. The
+    matching styles load globally via Starlight customCss. */}
+
+<script>
+  import "@marimo-team/mdx-marimo/element/auto";
+</script>

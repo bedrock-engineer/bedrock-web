@@ -28,6 +28,7 @@
     "@fontsource/ibm-plex-mono": "^5.2.6",
     "@fontsource/ibm-plex-sans": "^5.2.6",
     "@fontsource/ibm-plex-sans-condensed": "^5.2.6",
+    "@marimo-team/mdx-marimo": "^0.0.5",
     "@paper-design/shaders-react": "^0.0.77",
     "@tailwindcss/vite": "^4.3.2",
     "astro": "^7.2.1",
