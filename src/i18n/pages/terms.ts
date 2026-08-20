@@ -2,7 +2,7 @@ const companyName = "Bedrock Engineer B.V.";
 const kvk = "98282581";
 const seatEn = "Goes, the Netherlands";
 const seatNl = "Goes, Nederland";
-const vatId = "NL868402552B01";
+const vatId = "NL868428681B01";
 const versionEn = "July 2026";
 const versionNl = "Juli 2026";
 
