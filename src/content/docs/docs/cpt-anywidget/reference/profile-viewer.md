@@ -11,6 +11,8 @@ anchored by its chainage along the profile line. A toolbar toggle
 switches between true-scale spacing and equal spacing. A click selects a
 strip and syncs its name back to Python.
 
+![A ProfileViewer: six CPT strips anchored by chainage on one NAP axis, each with qc and fs curves over an interpretation backdrop, joined by a surface-level overlay](../profile.webp)
+
 ```python
 from cpt_anywidget import ProfileViewer, chainage
 
@@ -90,10 +92,11 @@ shared by all strips. Key the vertical override by the `verticalKey`.
 
 ### `channels` — list
 
-The channels every strip plots, stacked axis slots in list order. Same
-entry shape as
-[`CPTViewer.channels`](/docs/cpt-anywidget/reference/cpt-viewer/#channels--list).
-An empty list plots cone resistance only.
+The channels every strip plots. Same entry shape as
+[`CPTViewer.channels`](/docs/cpt-anywidget/reference/cpt-viewer/#channels--list),
+except that `side` has no effect here: every axis stacks below the
+plot, one slot per channel in list order. An empty list plots cone
+resistance only.
 
 ### `overlays` — list
 
@@ -146,3 +149,8 @@ Pixels per strip. `0` (the default) falls back to 90.
 The plot size in pixels. `0` falls back to 700×500. Width is a minimum:
 the svg grows past it, and the widget scrolls sideways, whenever
 true-scale chainage or the strip count needs the room.
+
+When the profile scrolls, an overview bar appears above it: one mark
+per strip, and a rectangle showing the visible part. Drag the
+rectangle, or click the track, to navigate. The bar hides again when
+the whole profile fits.

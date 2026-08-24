@@ -1,0 +1,56 @@
+---
+title: "Live: BoreholeViewer"
+description: A BoreholeViewer showing a real BRO borehole log, on Python running in your browser.
+sidebar:
+  order: 3
+---
+
+import MarimoRuntime from "../../../../../components/MarimoRuntime.astro";
+
+<MarimoRuntime />
+
+This page runs Python in your browser through
+[marimo](https://marimo.io) WebAssembly islands, like the
+[CPTViewer example](/docs/cpt-anywidget/examples/cpt-viewer/). The
+first run downloads the Python runtime and the packages, which can
+take a minute.
+
+```marimo-config
+requires-python = ">=3.12"
+dependencies = ["cpt-anywidget>=0.1.0", "brodata>=0.1.8"]
+```
+
+## Fetch a borehole from the BRO
+
+[brodata](https://pypi.org/project/brodata/) fetches a geotechnical
+borehole (BHR-GT) from the public
+[BRO](https://basisregistratieondergrond.nl/) API and parses the XML:
+
+```python marimo editor=true
+from brodata.bhr import GeotechnicalBoreholeResearch
+from cpt_anywidget import BoreholeViewer, layers_from_bhrgt
+```
+
+```python marimo editor=true
+bhrgt = GeotechnicalBoreholeResearch.from_bro_id("BHR000000377186")
+```
+
+## Show the log
+
+[`layers_from_bhrgt`](/docs/cpt-anywidget/reference/borehole-viewer/#layers_from_bhrgt)
+reads the descriptive log and colors each layer by its BRO
+geotechnical soil name, using the built-in lithology table:
+
+```python marimo editor=true
+BoreholeViewer(layers_from_bhrgt(bhrgt))
+```
+
+Hover a layer to read its boundaries and soil name; zoom and pan work
+as in the
+[CPTViewer example](/docs/cpt-anywidget/examples/cpt-viewer/).
+
+The `layers` trait itself is plain dicts, so a log from any other
+source (AGS, CSV, your own interpretation) works without a converter;
+the
+[`BoreholeViewer` reference](/docs/cpt-anywidget/reference/borehole-viewer/)
+has the shape.

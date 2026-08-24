@@ -14,6 +14,8 @@ shared, zoomable vertical axis. Around the plot, it can show:
 - a nearby borehole log,
 - an editable layer column that syncs edits back to Python.
 
+![A CPTViewer: four measurement channels with stacked axes and hover readouts, a groundwater-level annotation, the Robertson and Lengkeek interpretation columns, and the editable layer column with a split preview](../cpt.webp)
+
 ```python
 from cpt_anywidget import CPTViewer, Channel
 
@@ -38,7 +40,7 @@ skips the intake step.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `data` | DataFrame or dict | Tidy columns: one row per depth sample, one column per measurement. Accepts a polars or pandas DataFrame, or a dict of equal-length lists. Goes through [`tidy`](/docs/cpt-anywidget/reference/intake/#tidy): samples become JSON-safe, and rows sort into render order. |
+| `data` | DataFrame or dict | Tidy columns: one row per depth sample, one column per measurement. Accepts a polars or pandas DataFrame, or a dict of equal-length columns (any iterables). Goes through [`tidy`](/docs/cpt-anywidget/reference/intake/#tidy): samples become JSON-safe, and rows sort into render order. |
 | `vertical` | str, `Vertical`, or dict | The column that holds the vertical coordinate. Must be present in `data`. `"depth"` sorts ascending, `"nap"` descending. See [`Vertical`](/docs/cpt-anywidget/reference/vertical/). |
 | `channels` | list | The channels to plot, in axis stacking order. Mix column-name strings, [`Channel`](#channel) bindings, and raw dicts. |
 | `limits` | dict | `{column: (min, max)}` axis overrides. The vertical pair may come in either order; the constructor orients it to the render direction. |
@@ -66,7 +68,9 @@ Channel("qn", label="qn", unit="MPa", color="tomato", side="bottom")
 
 ### Built-in channel defaults
 
-Columns with these names need no binding:
+Columns with these names, taken from the Dutch
+[BRO](https://basisregistratieondergrond.nl/) standard, need no
+binding:
 
 | Column | Label | Unit | Side |
 | --- | --- | --- | --- |
@@ -202,6 +206,10 @@ In the widget, the user can:
 - click the × near a boundary to merge two layers (the upper layer keeps
   its class),
 - click a layer to pick its class from a pie menu.
+
+The [Edit layers](/docs/cpt-anywidget/edit-layers/) guide walks
+through the workflow: seeding the column, the gestures, and keeping
+the edits alive across widget rebuilds.
 
 ### `soil_classes` — list
 

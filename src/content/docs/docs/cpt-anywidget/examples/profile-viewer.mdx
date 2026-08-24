@@ -1,0 +1,96 @@
+---
+title: "Live: ProfileViewer"
+description: A ProfileViewer building a cross-section from real BRO soundings, on Python running in your browser.
+sidebar:
+  order: 2
+---
+
+import MarimoRuntime from "../../../../../components/MarimoRuntime.astro";
+
+<MarimoRuntime />
+
+This page runs Python in your browser through
+[marimo](https://marimo.io) WebAssembly islands, like the
+[CPTViewer example](/docs/cpt-anywidget/examples/cpt-viewer/). The
+first run downloads the Python runtime and the packages, which can
+take a minute.
+
+```marimo-config
+requires-python = ">=3.12"
+dependencies = ["cpt-anywidget>=0.1.0", "brodata>=0.1.8"]
+```
+
+## Fetch the soundings
+
+Four public CPTs along a line, fetched from the
+[BRO](https://basisregistratieondergrond.nl/) API with
+[brodata](https://pypi.org/project/brodata/), listed in profile order:
+
+```python marimo editor=true
+import pandas as pd
+
+from brodata.cpt import ConePenetrationTest
+from cpt_anywidget import ProfileViewer, chainage
+```
+
+```python marimo editor=true
+bro_ids = [
+    "CPT000000090096",
+    "CPT000000090074",
+    "CPT000000090155",
+    "CPT000000090040",
+]
+cpts = [ConePenetrationTest.from_bro_id(i) for i in bro_ids]
+```
+
+## Stack the soundings in one long table
+
+`ProfileViewer` takes tidy **long** data: every CPT's samples in one
+table, with a name column telling them apart. Each CPT's elevation
+comes from its own surface offset, so the strips line up in NAP:
+
+```python marimo editor=true
+frames = []
+for c in cpts:
+    df = c.conePenetrationTest.apply(pd.to_numeric, errors="coerce")
+    frames.append(
+        pd.DataFrame(
+            {
+                "name": c.broId,
+                "nap": float(c.offset) - df["depth"],
+                "coneResistance": df["coneResistance"],
+            }
+        )
+    )
+long_data = pd.concat(frames, ignore_index=True)
+```
+
+## Anchor the strips
+
+[`chainage`](/docs/cpt-anywidget/reference/profile-viewer/#chainage)
+turns each CPT's map coordinates into a distance along the profile
+line:
+
+```python marimo editor=true
+positions = chainage(
+    {c.broId: (c.deliveredLocation.x, c.deliveredLocation.y) for c in cpts}
+)
+```
+
+## Show the profile
+
+```python marimo editor=true
+ProfileViewer(long_data, positions=positions)
+```
+
+The toolbar toggle switches between true-scale chainage and equal
+spacing. Zoom and pan work as in the
+[CPTViewer example](/docs/cpt-anywidget/examples/cpt-viewer/), and a
+click selects a strip, syncing its name back to Python through the
+`selected` trait.
+
+The
+[`ProfileViewer` reference](/docs/cpt-anywidget/reference/profile-viewer/)
+covers the rest: more channels per strip, interpretation backdrops
+behind the curves, and profile-space overlays such as a surface line or
+a groundwater level.

@@ -10,6 +10,8 @@ bands per layer on a shared, zoomable vertical axis, with hover readouts
 and reference-line annotations. The zoom and brush interactions match
 `CPTViewer`, so the two can sit side by side on the same axis.
 
+![A BoreholeViewer: proportional soil-composition bands with hatch patterns per layer, boundary depth labels dodging apart where layers thin, and a hover readout showing the soil name](../borehole.webp)
+
 ```python
 from cpt_anywidget import BoreholeViewer
 
@@ -19,11 +21,14 @@ BoreholeViewer(layers=[
 ])
 ```
 
-The `layers` trait is plain dicts, so any source works: BRO XML, GEF,
-AGS, or your own interpretation. For the common Dutch formats there are
-converters: [`layers_from_bhrgt`](#layers_from_bhrgt) for brodata's BRO
-BHR-GT objects and [`layers_from_bore`](#layers_from_bore) for pygef's
-borehole logs (GEF or BRO XML).
+The `layers` trait is plain dicts: build it from any source (AGS, CSV,
+your own interpretation) with whatever colors fit your legend. The two
+converters are shortcuts for data that already speaks the Dutch BRO
+vocabulary, because the soil colors they apply are keyed by BRO
+geotechnical soil names: [`layers_from_bhrgt`](#layers_from_bhrgt) for
+brodata's parsed BHR-GT objects, and
+[`layers_from_bore`](#layers_from_bore) for pygef's borehole logs (GEF
+or BRO XML, which pygef normalizes to those soil names).
 
 ## Traits
 
@@ -84,9 +89,9 @@ layers_from_bhrgt(bhrgt, vertical_key="depth")
 ```
 
 Converts a `brodata.bhr.GeotechnicalBoreholeResearch` object into the
-[`layers`](#layers--list) trait. This helper needs the `bro` extra
-(`cpt-anywidget[bro]`), which installs
-[brodata](https://pypi.org/project/brodata/).
+[`layers`](#layers--list) trait. The helper only reads the parsed
+object; parsing the file with
+[brodata](https://pypi.org/project/brodata/) is up to you.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
@@ -94,8 +99,8 @@ Converts a `brodata.bhr.GeotechnicalBoreholeResearch` object into the
 | `vertical_key` | str, `Vertical`, or dict | The target vertical coordinate. `"depth"` keeps depth below surface. A positive-up coordinate such as `"nap"` converts through the borehole's surface offset. |
 
 Each descriptive-log layer becomes `{"top", "bottom", "label", "bands"}`.
-The bands come from brodata's BRO lithology table. A soil name missing
-from that table gets a single gray band.
+The bands come from a built-in copy of the BRO lithology table. A soil
+name missing from that table gets a single gray band.
 
 ```python
 from brodata.bhr import GeotechnicalBoreholeResearch
@@ -115,9 +120,9 @@ Converts a `pygef.bore.BoreData` (pygef's parse of a GEF or BRO XML
 borehole) into the [`layers`](#layers--list) trait. pygef normalizes
 both formats to BRO geotechnical soil names, so the layers get the same
 lithology colors and hatches as `layers_from_bhrgt`. A layer's `remarks`
-(the field description) becomes its `description`, shown on hover. Needs
-[pygef](https://cemsbv.github.io/pygef/) for parsing and the `bro`
-extra for the lithology table.
+(the field description) becomes its `description`, shown on hover.
+Needs only [pygef](https://cemsbv.github.io/pygef/), for the parsing
+upstream.
 
 | Parameter | Type | Description |
 | --- | --- | --- |

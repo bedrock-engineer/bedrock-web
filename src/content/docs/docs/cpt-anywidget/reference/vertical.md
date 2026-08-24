@@ -41,7 +41,7 @@ CPTViewer(df, vertical=Vertical("taw", label="TAW [m]", up=True, format="+.2f"))
 | `key` | str | The column name in the data. Required. |
 | `label` | str | The full axis title, for example `"NAP [m]"`. Default: the key. |
 | `up` | bool | `True` for a positive-up coordinate (elevation), `False` for positive down (depth). Default for an unknown key: `False`. |
-| `format` | str | A [d3-format](https://d3js.org/d3-format) string for readouts, for example `"+.2f"`. |
+| `format` | str | The readout number format: a [d3-format](https://d3js.org/d3-format) string, which follows [Python's format-specifier mini-language](https://docs.python.org/3/library/string.html#format-specification-mini-language), for example `"+.2f"` to force a sign. Default for an unknown key: `".2f"`. |
 
 The direction matters in two places: it sets the sort order at intake
 (the topmost sample must come first) and it orients the vertical

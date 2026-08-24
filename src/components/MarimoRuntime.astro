@@ -2,8 +2,128 @@
     <marimo-mdx-island> custom element and boots Pyodide. MDX top-level
     imports run only at build time in Astro, so pages with marimo cells
     must render this component to get the client-side runtime. The
-    matching styles load globally via Starlight customCss. */}
+    matching styles load globally via Starlight customCss.
+
+    The status pill below is ours, not marimo's: the islands runtime
+    shows nothing while Pyodide boots (its own toast only appears when
+    the user interacts too early). The pill is server-rendered so it
+    shows from the first paint. Each <marimo-island> mirrors its cell's
+    runtime status as a data-status attribute, so the phase labels and
+    the error case are pure CSS via :has(). Dismissal cannot be: the
+    status is "idle" both during the whole Pyodide boot (it only
+    reflects kernel messages) and after the initial run completes, so
+    "has run at least once" is a sticky bit only the small script below
+    can remember. */}
+
+<div id="marimo-boot-status" role="status" aria-live="polite">
+  <span class="spinner" aria-hidden="true"></span>
+  <span data-idle-label>Loading the Python runtime…</span>
+  <span data-busy-label>Running the notebook cells…</span>
+</div>
+<noscript>
+  <style>
+    #marimo-boot-status {
+      display: none !important;
+    }
+  </style>
+</noscript>
+
+<style is:global>
+  #marimo-boot-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid var(--sl-color-gray-5);
+    background: var(--sl-color-bg-nav);
+    color: var(--sl-color-gray-2);
+    font-size: var(--sl-text-sm);
+    transition: opacity 0.4s;
+  }
+  #marimo-boot-status[data-done],
+  body:has(.marimo-island-error) #marimo-boot-status {
+    opacity: 0;
+    pointer-events: none;
+  }
+  #marimo-boot-status [data-busy-label] {
+    display: none;
+  }
+  body:has(
+      marimo-island[data-status="queued"],
+      marimo-island[data-status="running"]
+    )
+    #marimo-boot-status
+    [data-busy-label] {
+    display: inline;
+  }
+  body:has(
+      marimo-island[data-status="queued"],
+      marimo-island[data-status="running"]
+    )
+    #marimo-boot-status
+    [data-idle-label] {
+    display: none;
+  }
+  #marimo-boot-status .spinner {
+    width: 0.85em;
+    height: 0.85em;
+    flex: none;
+    border-radius: 50%;
+    border: 2px solid var(--sl-color-gray-5);
+    border-top-color: var(--sl-color-text-accent);
+    animation: marimo-boot-spin 0.8s linear infinite;
+  }
+  @keyframes marimo-boot-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #marimo-boot-status .spinner {
+      animation-duration: 2s;
+    }
+  }
+</style>
 
 <script>
   import "@marimo-team/mdx-marimo/element/auto";
+
+  // the one thing CSS cannot know: whether the cells have run already.
+  // Latch on the first queued/running status, dismiss for good once
+  // every island is idle again (after a beat, so the gap between two
+  // cells' runs doesn't dismiss early).
+  const pill = document.getElementById("marimo-boot-status");
+  if (pill) {
+    let sawActivity = false;
+    const observer = new MutationObserver(() => {
+      const statuses = Array.from(
+        document.querySelectorAll("marimo-island"),
+      ).map((island) => island.getAttribute("data-status"));
+      const busy = statuses.some((s) => s === "queued" || s === "running");
+      sawActivity ||= busy;
+      if (sawActivity && !busy) {
+        window.setTimeout(() => {
+          const stillBusy = Array.from(
+            document.querySelectorAll("marimo-island"),
+          ).some((island) =>
+            ["queued", "running"].includes(
+              island.getAttribute("data-status") ?? "",
+            ),
+          );
+          if (stillBusy) return;
+          observer.disconnect();
+          pill.setAttribute("data-done", "");
+          window.setTimeout(() => pill.remove(), 500);
+        }, 600);
+      }
+    });
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["data-status"],
+    });
+  }
 </script>

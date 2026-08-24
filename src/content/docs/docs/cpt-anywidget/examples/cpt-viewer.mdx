@@ -13,7 +13,7 @@ This page runs Python in your browser through
 [marimo](https://marimo.io) WebAssembly islands. The cells below form
 one reactive notebook: the code is editable, and a change reruns the
 dependent cells. The first run downloads the Python runtime and the
-packages, so give it a few seconds.
+packages, which can take a minute.
 
 ```marimo-config
 requires-python = ">=3.12"
@@ -43,10 +43,9 @@ Edit the id above to fetch another public CPT: every cell that reads
 
 ## Tidy the data
 
-The parsed table needs some shaping before it can be plotted. Keep the
-channels worth showing, coerce their values to numbers (the XML parse
-leaves them as strings), and compute an elevation column by subtracting
-each depth from the surface offset:
+The XML parse keeps every value as a string. Pick the channels to
+plot, turn them into numbers, and compute the elevation in NAP, the
+surface offset minus each depth:
 
 ```python marimo editor=true
 df = cpt.conePenetrationTest.dropna(axis=1, how="all").sort_index()

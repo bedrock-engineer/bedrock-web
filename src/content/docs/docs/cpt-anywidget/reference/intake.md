@@ -26,8 +26,10 @@ The intake enforces only what the front end cannot recover from:
   because that is the order the front end renders in. Samples without a
   vertical value cannot be placed and are dropped.
 
-The viewer constructors call these helpers for you. Call them directly
-to inspect or test what the widget will receive.
+The `CPTViewer` and `ProfileViewer` constructors call these helpers
+for you (a borehole log has no sample columns, so `BoreholeViewer`
+takes its layers as given). Call them directly to inspect or test what
+the widget will receive.
 
 ## tidy
 
@@ -43,7 +45,7 @@ dict the widget receives.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `data` | DataFrame or dict | A polars or pandas DataFrame, or a dict of equal-length columns: one row per depth sample, one column per measurement. |
+| `data` | DataFrame or dict | A polars or pandas DataFrame, or a dict mapping column names to any equal-length iterables (lists, tuples, numpy arrays): one row per depth sample, one column per measurement. |
 | `vertical` | str, `Vertical`, or dict | The column that places rows on the vertical axis. Rows sort ascending for depth-like coordinates and descending for positive-up ones, so the first sample is the topmost either way. |
 
 Returns exactly what the widget receives: plain lists, JSON-safe
@@ -51,6 +53,9 @@ samples, rows in render order.
 
 Raises `ValueError` when:
 
+- the data object is neither a DataFrame nor a dict of columns
+  (convert to a dict of columns first, for example pyarrow's
+  `.to_pydict()`),
 - a column holds a non-numeric sample (coerce upstream, for example
   `pd.to_numeric(...)` or `.cast(pl.Float64)`),
 - columns differ in length,

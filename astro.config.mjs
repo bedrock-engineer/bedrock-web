@@ -60,7 +60,10 @@ const starlightConfig = {
         items: [
           {
             label: "Start Here",
-            items: ["docs/cpt-anywidget/getting-started"],
+            items: [
+              "docs/cpt-anywidget/getting-started",
+              "docs/cpt-anywidget/edit-layers",
+            ],
           },
           {
             label: "Examples",
