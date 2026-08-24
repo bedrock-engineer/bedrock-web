@@ -6,16 +6,19 @@ sidebar:
 ---
 
 Every viewer plots against one vertical coordinate. The `verticalKey`
-trait selects which data column that is. Two coordinates carry built-in
-display defaults:
+trait selects which data column that is. A vertical coordinate is
+either a depth below surface (positive down) or an elevation in a
+vertical datum (positive up); the `up` field is the only thing the
+widgets act on. Two column names carry built-in display defaults:
 
 | Key | Meaning | Direction | Axis label | Readout format |
 | --- | --- | --- | --- | --- |
 | `depth` | depth below surface, in m | positive down | `depth [m]` | `.2f` |
-| `nap` | elevation in m NAP | positive up | `NAP [m]` | `+.2f` |
+| `nap` | elevation in m NAP, the Dutch datum | positive up | `NAP [m]` | `+.2f` |
 
-The widgets never see datums. Compute `nap` on the Python side as the
-surface elevation minus the depth. Express annotation `at` values, layer
+The widgets never see datums. Compute an elevation column on the Python
+side as the surface elevation minus the depth;
+[`to_vertical`](#to_vertical) does this. Express annotation `at` values, layer
 `top` and `bottom` values, and the vertical `axisLimits` entry in the
 selected coordinate.
 
@@ -40,8 +43,8 @@ CPTViewer(df, vertical=Vertical("taw", label="TAW [m]", up=True, format="+.2f"))
 | `up` | bool | `True` for a positive-up coordinate (elevation), `False` for positive down (depth). Default for an unknown key: `False`. |
 | `format` | str | A [d3-format](https://d3js.org/d3-format) string for readouts, for example `"+.2f"`. |
 
-The direction matters twice. It sets the sort order at intake — the
-shallowest sample must render first. And it orients the vertical
+The direction matters twice. It sets the sort order at intake, where
+the shallowest sample must render first. And it orients the vertical
 `limits` pair.
 
 ## to_vertical
@@ -74,5 +77,5 @@ from_vertical(value, offset, vertical_key)
 ```
 
 Converts a value in the selected vertical coordinate back to depth below
-surface — the inverse of [`to_vertical`](#to_vertical). Use it to read
+surface, the inverse of [`to_vertical`](#to_vertical). Use it to read
 `editedLayers` boundaries back into depths.

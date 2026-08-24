@@ -36,9 +36,9 @@ pass any trait directly as a keyword argument. Data passed raw via
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `data` | DataFrame or dict | Tidy **long**-format columns: every CPT's samples stacked, with a name column that tells them apart. Rows are grouped per CPT via [`split`](/docs/cpt-anywidget/reference/intake/#split); each group then goes through [`tidy`](/docs/cpt-anywidget/reference/intake/#tidy). |
-| `positions` | dict | `{name: chainage}` in m along the profile line. Every name in `data` must be present; a missing name raises. Omitted: input order, one unit apart — only sensible with equal spacing. See [`chainage`](#chainage). |
+| `positions` | dict | `{name: chainage}` in m along the profile line. Every name in `data` must be present; a missing name raises. Omitted: input order, one unit apart, which is only sensible with equal spacing. See [`chainage`](#chainage). |
 | `name` | str | The column that holds the CPT names. Default: `"name"`. |
-| `vertical` | str, `Vertical`, or dict | The vertical-coordinate column. Default: `"nap"` — a profile compares elevations across CPTs. |
+| `vertical` | str, `Vertical`, or dict | The vertical-coordinate column. Default: `"nap"`, because a profile compares elevations across CPTs. |
 | `channels` | list | The channels every strip plots. Mix column-name strings, [`Channel`](/docs/cpt-anywidget/reference/cpt-viewer/#channel) bindings, and raw dicts. Omitted: cone resistance only. |
 | `layers` | dict | `{name: [{"top", "bottom", "color"?, "label"?}, ...]}` interpreted layers per CPT, drawn as a backdrop behind the strip's curves. A name absent from `data` raises. |
 | `limits` | dict | `{column: (min, max)}` axis overrides. The plotted channel's pair sets the one scale shared by all strips. |

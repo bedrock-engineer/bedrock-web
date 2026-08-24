@@ -89,8 +89,8 @@ updates.
 
 The measurement data: `{"depth": [...], "coneResistance": [...], ...}`.
 Each key is a column name. Each value is a list of samples. All lists
-have equal length. Use `None` for a missing sample — NaN is not valid
-JSON and breaks the sync. The first sample renders at the top.
+have equal length. Use `None` for a missing sample, because NaN is not
+valid JSON and breaks the sync. The first sample renders at the top.
 
 Prefer the `data` constructor argument, which enforces this contract.
 
@@ -168,7 +168,7 @@ Each layer holds proportional soil-composition `bands` with x in
 dict `{}` hides the column.
 
 The borehole and the CPT have different surface elevations. Express
-both in a shared datum such as NAP — convert with
+both in a shared datum such as NAP. Convert with
 [`to_vertical`](/docs/cpt-anywidget/reference/vertical/#to_vertical).
 See
 [`layers_from_bhrgt`](/docs/cpt-anywidget/reference/borehole-viewer/#layers_from_bhrgt)

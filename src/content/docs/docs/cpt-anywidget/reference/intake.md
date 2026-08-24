@@ -7,22 +7,22 @@ sidebar:
 
 The intake module is the seam between your data source and the widgets'
 wire format. The package never parses file formats, never converts
-units, and never renames columns. Readers — brodata, pygef, python-ags4,
-a CSV reader — stay upstream.
+units, and never renames columns. Readers (brodata, pygef, python-ags4,
+a CSV reader) stay upstream.
 [`Channel`](/docs/cpt-anywidget/reference/cpt-viewer/#channel) and
 [`Vertical`](/docs/cpt-anywidget/reference/vertical/#vertical) bindings
 adapt the chart to whatever the columns are called.
 
 The intake enforces only what the front end cannot recover from:
 
-- **JSON safety.** NaN and inf become `None` — NaN is invalid JSON and
-  kills the trait sync. Numpy scalars unwrap to plain Python numbers. A
+- **JSON safety.** NaN and inf become `None`, because NaN is invalid
+  JSON and kills the trait sync. Numpy scalars unwrap to plain Python numbers. A
   non-numeric sample raises immediately, with the column and the value
   named. Nothing is silently coerced.
 - **Equal lengths.** Every column is indexed by the vertical sample
   position. A ragged dict would silently misalign channels, so it
   raises.
-- **Render order.** Rows sort so the first sample is the topmost — the
+- **Render order.** Rows sort so the first sample is the topmost, the
   order the front end renders in. Samples without a vertical value
   cannot be placed and are dropped.
 

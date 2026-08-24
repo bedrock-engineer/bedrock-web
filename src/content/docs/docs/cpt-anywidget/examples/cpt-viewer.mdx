@@ -24,7 +24,7 @@ dependencies = ["cpt-anywidget>=0.1.0", "brodata>=0.1.8"]
 
 [brodata](https://pypi.org/project/brodata/) fetches a sounding from
 the public [BRO](https://basisregistratieondergrond.nl/) API and parses
-the XML. Any reader works here — the viewer only sees tidy columns.
+the XML.
 
 ```python marimo editor=true
 import marimo as mo
@@ -38,7 +38,7 @@ from cpt_anywidget import CPTViewer
 cpt = ConePenetrationTest.from_bro_id("CPT000000061388")
 ```
 
-Edit the id above to fetch another public CPT — the whole page reruns
+Edit the id above to fetch another public CPT. The whole page reruns
 with the new sounding.
 
 ## Tidy the data
@@ -59,7 +59,7 @@ cpt_data["nap"] = float(cpt.offset) - cpt_data["depth"]
 The DataFrame follows the
 [data contract](/docs/cpt-anywidget/reference/intake/): tidy columns of
 equal length, one row per depth sample. The constructor handles the
-rest — NaN to `None`, rows sorted to render order.
+rest: NaN to `None`, rows sorted to render order.
 
 ## Pick the channels
 
@@ -99,6 +99,6 @@ hold Ctrl (Cmd on macOS) and turn the mouse wheel to zoom, drag to pan,
 Shift-drag along the axis to zoom to a range, double-click to reset,
 and hover to read values.
 
-The built-in column names carry their display defaults — see the
+The built-in column names carry their display defaults. See the
 [`CPTViewer` reference](/docs/cpt-anywidget/reference/cpt-viewer/) for
 bindings, limits, overlays, and the editable layer column.

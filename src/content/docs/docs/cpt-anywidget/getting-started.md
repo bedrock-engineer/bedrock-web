@@ -72,7 +72,7 @@ columns: a polars or pandas DataFrame, or a dict of equal-length lists.
 Each row is one depth sample. Each column is one measurement.
 
 The widget does not parse file formats. The widget does not convert
-units. Use a reader to do that upstream — any reader works. Examples:
+units. Use a reader to do that upstream. Any reader works. Examples:
 [brodata](https://pypi.org/project/brodata/) for Dutch
 [BRO](https://basisregistratieondergrond.nl/) data,
 [pygef](https://pypi.org/project/pygef/) for GEF files,
@@ -94,14 +94,25 @@ CPTViewer(df, channels=[Channel("qn", label="qn", unit="MPa", color="tomato")])
 
 ## Select the vertical coordinate
 
-Set `vertical` to the column that holds the vertical coordinate:
+Set `vertical` to the column that holds the vertical coordinate. A
+vertical coordinate is one of two kinds:
 
-- `"depth"` is depth below surface, in m, positive down.
-- `"nap"` is elevation in m NAP, positive up. Compute it as the surface
-  elevation minus the depth.
+- a depth below surface, in m, positive down
+- an elevation in a vertical datum, in m, positive up: the surface
+  elevation minus the depth
 
-For a different datum, pass a
-[`Vertical`](/docs/cpt-anywidget/reference/vertical/) binding.
+Any column can be the vertical coordinate. Bind it with a
+[`Vertical`](/docs/cpt-anywidget/reference/vertical/):
+
+```python
+from cpt_anywidget import Vertical
+
+CPTViewer(df, vertical=Vertical("elevation", label="TAW [m]", up=True))
+```
+
+The names `"depth"` and `"nap"` (elevation in the Dutch datum) carry
+built-in labels and formats, the same way the BRO channel names do, so
+they work as plain strings.
 
 ## Use the viewer
 
@@ -117,13 +128,13 @@ chart.
 
 ## Next steps
 
-- [`CPTViewer` reference](/docs/cpt-anywidget/reference/cpt-viewer/) —
-  all traits: annotations, overlays, interpretations, the borehole
-  column, and the editable layer column.
-- [`ProfileViewer` reference](/docs/cpt-anywidget/reference/profile-viewer/)
-  — build a cross-section from many CPTs.
-- [`BoreholeViewer` reference](/docs/cpt-anywidget/reference/borehole-viewer/)
-  — show a borehole log from any source, with converters for BRO BHR-GT
+- [`CPTViewer` reference](/docs/cpt-anywidget/reference/cpt-viewer/):
+  all traits, including annotations, overlays, interpretations, the
+  borehole column, and the editable layer column.
+- [`ProfileViewer` reference](/docs/cpt-anywidget/reference/profile-viewer/):
+  build a cross-section from many CPTs.
+- [`BoreholeViewer` reference](/docs/cpt-anywidget/reference/borehole-viewer/):
+  show a borehole log from any source, with converters for BRO BHR-GT
   and GEF files.
-- [Data intake reference](/docs/cpt-anywidget/reference/intake/) — the
+- [Data intake reference](/docs/cpt-anywidget/reference/intake/): the
   exact data contract, and the `tidy` and `split` helpers.

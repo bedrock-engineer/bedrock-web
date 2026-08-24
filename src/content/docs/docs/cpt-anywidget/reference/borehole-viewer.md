@@ -44,10 +44,10 @@ character (`-`, `/`, `\`, `.`, `o`, `|`) rendered as an SVG pattern.
 
 The widget labels each layer boundary with its depth, in a strip right
 of the bands. When layers get thin, the labels dodge apart and leader
-lines point back to their boundaries — the same behavior as the
+lines point back to their boundaries, the same behavior as the
 interpretation columns in `CPTViewer`.
 
-A layer can also carry an optional `description` — free text such as a
+A layer can also carry an optional `description`: free text such as a
 field description. While you hover the layer, the soil name and the
 description show word-wrapped in the readout area right of the label
 strip.
@@ -55,7 +55,7 @@ strip.
 ### `verticalKey` — str or dict
 
 The vertical coordinate the layers are expressed in. Default:
-`"depth"`. Only used for the axis label and the readout format — the
+`"depth"`. Only used for the axis label and the readout format; the
 layer order drives the axis direction. Same contract as
 [`CPTViewer.verticalKey`](/docs/cpt-anywidget/reference/cpt-viewer/#verticalkey--str-or-dict).
 
@@ -111,8 +111,8 @@ BoreholeViewer(layers=layers_from_bhrgt(bhrgt, "nap"), verticalKey="nap")
 layers_from_bore(bore, vertical_key="depth")
 ```
 
-Converts a `pygef.bore.BoreData` — pygef's parse of a GEF or BRO XML
-borehole — into the [`layers`](#layers--list) trait. pygef normalizes
+Converts a `pygef.bore.BoreData` (pygef's parse of a GEF or BRO XML
+borehole) into the [`layers`](#layers--list) trait. pygef normalizes
 both formats to BRO geotechnical soil names, so the layers get the same
 lithology colors and hatches as `layers_from_bhrgt`. A layer's `remarks`
 (the field description) becomes its `description`, shown on hover. Needs
