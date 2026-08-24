@@ -29,16 +29,19 @@ The package contains three viewers:
 
 ## Install
 
-The package is not on PyPI yet. Install it from git:
+Install [cpt-anywidget](https://pypi.org/project/cpt-anywidget/) from
+PyPI:
 
 ```sh
-uv add "cpt-anywidget @ git+https://github.com/bedrock-engineer/cpt-anywidget"
+uv add cpt-anywidget
 ```
+
+or with pip: `pip install cpt-anywidget`.
 
 The `bro` extra installs [brodata](https://pypi.org/project/brodata/):
 
 ```sh
-uv add "cpt-anywidget[bro] @ git+https://github.com/bedrock-engineer/cpt-anywidget"
+uv add "cpt-anywidget[bro]"
 ```
 
 Only the `layers_from_bhrgt` and `layers_from_bore` converters need the
