@@ -47,10 +47,10 @@ of the bands. When layers get thin, the labels dodge apart and leader
 lines point back to their boundaries, the same behavior as the
 interpretation columns in `CPTViewer`.
 
-A layer can also carry an optional `description`: free text such as a
-field description. While you hover the layer, the soil name and the
-description show word-wrapped in the readout area right of the label
-strip.
+A layer can also carry an optional `description` holding free text,
+such as the driller's field description. While you hover the layer, the
+soil name and the description show word-wrapped in the readout area
+right of the label strip.
 
 ### `verticalKey` — str or dict
 

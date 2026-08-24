@@ -16,11 +16,11 @@ widgets act on. Two column names carry built-in display defaults:
 | `depth` | depth below surface, in m | positive down | `depth [m]` | `.2f` |
 | `nap` | elevation in m NAP, the Dutch datum | positive up | `NAP [m]` | `+.2f` |
 
-The widgets never see datums. Compute an elevation column on the Python
-side as the surface elevation minus the depth;
-[`to_vertical`](#to_vertical) does this. Express annotation `at` values, layer
-`top` and `bottom` values, and the vertical `axisLimits` entry in the
-selected coordinate.
+The widgets themselves never see datums. Compute an elevation column on
+the Python side, as the surface elevation minus the depth
+([`to_vertical`](#to_vertical) does exactly this), and express
+annotation `at` values, layer `top` and `bottom` values, and the
+vertical `axisLimits` entry in the selected coordinate.
 
 ## Vertical
 
@@ -43,8 +43,8 @@ CPTViewer(df, vertical=Vertical("taw", label="TAW [m]", up=True, format="+.2f"))
 | `up` | bool | `True` for a positive-up coordinate (elevation), `False` for positive down (depth). Default for an unknown key: `False`. |
 | `format` | str | A [d3-format](https://d3js.org/d3-format) string for readouts, for example `"+.2f"`. |
 
-The direction matters twice. It sets the sort order at intake, where
-the shallowest sample must render first. And it orients the vertical
+The direction matters in two places: it sets the sort order at intake
+(the topmost sample must come first) and it orients the vertical
 `limits` pair.
 
 ## to_vertical

@@ -5,10 +5,10 @@ sidebar:
   order: 5
 ---
 
-The intake module is the seam between your data source and the widgets'
-wire format. The package never parses file formats, never converts
-units, and never renames columns. Readers (brodata, pygef, python-ags4,
-a CSV reader) stay upstream.
+The intake module sits between your data source and the JSON the
+widgets receive. The package never parses file formats, converts units,
+or renames columns; readers such as brodata, pygef, and python-ags4
+stay upstream.
 [`Channel`](/docs/cpt-anywidget/reference/cpt-viewer/#channel) and
 [`Vertical`](/docs/cpt-anywidget/reference/vertical/#vertical) bindings
 adapt the chart to whatever the columns are called.
@@ -22,12 +22,12 @@ The intake enforces only what the front end cannot recover from:
 - **Equal lengths.** Every column is indexed by the vertical sample
   position. A ragged dict would silently misalign channels, so it
   raises.
-- **Render order.** Rows sort so the first sample is the topmost, the
-  order the front end renders in. Samples without a vertical value
-  cannot be placed and are dropped.
+- **Render order.** Rows sort so the topmost sample comes first,
+  because that is the order the front end renders in. Samples without a
+  vertical value cannot be placed and are dropped.
 
 The viewer constructors call these helpers for you. Call them directly
-to inspect or test the wire format.
+to inspect or test what the widget will receive.
 
 ## tidy
 
@@ -37,9 +37,9 @@ from cpt_anywidget import tidy
 tidy(data, vertical="depth")
 ```
 
-Turns tidy columns into the wire-ready
+Turns tidy columns into the
 [`cptData`](/docs/cpt-anywidget/reference/cpt-viewer/#cptdata--dict)
-dict.
+dict the widget receives.
 
 | Parameter | Type | Description |
 | --- | --- | --- |

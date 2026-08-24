@@ -6,11 +6,11 @@ sidebar:
 ---
 
 cpt-anywidget is a set of [anywidget](https://anywidget.dev) viewers for
-cone penetration tests (CPTs) and geotechnical borehole logs. The viewers
-accept CPT data from any source: if you can load it into Python, you can
-plot it. The viewers work in marimo and Jupyter notebooks. All viewers
-share one zoomable vertical axis. The axis shows depth below surface, or
-elevation in m NAP.
+cone penetration tests (CPTs) and geotechnical borehole logs, for marimo
+and Jupyter notebooks. The viewers accept data from any source (if you
+can load it into Python, you can plot it) and share one zoomable
+vertical axis, showing either depth below surface or elevation in a
+vertical datum.
 
 The package contains three viewers:
 
@@ -41,8 +41,8 @@ The `bro` extra installs [brodata](https://pypi.org/project/brodata/):
 uv add "cpt-anywidget[bro] @ git+https://github.com/bedrock-engineer/cpt-anywidget"
 ```
 
-Only `layers_from_bhrgt` and `layers_from_bore` need the `bro` extra.
-The viewers do not need it.
+Only the `layers_from_bhrgt` and `layers_from_bore` converters need the
+`bro` extra; the viewers themselves run without it.
 
 ## Show a first CPT
 
@@ -61,8 +61,8 @@ df = pl.DataFrame({
 CPTViewer(df, vertical="depth", channels=["coneResistance", "localFriction"])
 ```
 
-The notebook shows the widget when the cell returns it. The widget plots
-each channel against the shared vertical axis.
+The notebook shows the widget when the cell returns it, with each
+channel plotted against the shared vertical axis.
 
 ## Prepare the data
 
@@ -71,19 +71,19 @@ The `data` argument takes
 columns: a polars or pandas DataFrame, or a dict of equal-length lists.
 Each row is one depth sample. Each column is one measurement.
 
-The widget does not parse file formats. The widget does not convert
-units. Use a reader to do that upstream. Any reader works. Examples:
+The widgets never parse file formats or convert units; that is the
+reader's job, and any reader works:
 [brodata](https://pypi.org/project/brodata/) for Dutch
 [BRO](https://basisregistratieondergrond.nl/) data,
 [pygef](https://pypi.org/project/pygef/) for GEF files,
 [python-ags4](https://pypi.org/project/python-ags4/) for AGS files, or
 plain `polars.read_csv` for a CSV.
 
-Column names are free. The BRO column names get built-in labels, units,
-and colors:
-`coneResistance`, `localFriction`, `frictionRatio`, `porePressureU1`,
-`porePressureU2`, and `inclination`. For a column with a different name,
-pass a [`Channel`](/docs/cpt-anywidget/reference/cpt-viewer/#channel)
+Column names are free, and the BRO names (`coneResistance`,
+`localFriction`, `frictionRatio`, `porePressureU1`, `porePressureU2`,
+and `inclination`) come with built-in labels, units, and colors. For a
+column with a different name, pass a
+[`Channel`](/docs/cpt-anywidget/reference/cpt-viewer/#channel)
 binding:
 
 ```python
@@ -101,7 +101,7 @@ vertical coordinate is one of two kinds:
 - an elevation in a vertical datum, in m, positive up: the surface
   elevation minus the depth
 
-Any column can be the vertical coordinate. Bind it with a
+Any column can be the vertical coordinate once you bind it with a
 [`Vertical`](/docs/cpt-anywidget/reference/vertical/):
 
 ```python

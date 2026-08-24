@@ -38,13 +38,15 @@ from cpt_anywidget import CPTViewer
 cpt = ConePenetrationTest.from_bro_id("CPT000000061388")
 ```
 
-Edit the id above to fetch another public CPT. The whole page reruns
-with the new sounding.
+Edit the id above to fetch another public CPT: every cell that reads
+`cpt` reruns with the new sounding.
 
 ## Tidy the data
 
-Pick the channels, coerce the numeric strings, and compute the vertical
-coordinate in m NAP from the surface offset:
+The parsed table needs some shaping before it can be plotted. Keep the
+channels worth showing, coerce their values to numbers (the XML parse
+leaves them as strings), and compute an elevation column by subtracting
+each depth from the surface offset:
 
 ```python marimo editor=true
 df = cpt.conePenetrationTest.dropna(axis=1, how="all").sort_index()
@@ -58,13 +60,14 @@ cpt_data["nap"] = float(cpt.offset) - cpt_data["depth"]
 
 The DataFrame follows the
 [data contract](/docs/cpt-anywidget/reference/intake/): tidy columns of
-equal length, one row per depth sample. The constructor handles the
-rest: NaN to `None`, rows sorted to render order.
+equal length, one row per depth sample. The constructor does the rest:
+`NaN` becomes `None`, and the rows sort so the shallowest sample
+renders first.
 
 ## Pick the channels
 
-The multiselect is a marimo UI element. The viewer cell reads its
-value, so the chart rebuilds when you change the selection.
+The multiselect is a marimo UI element. Because the viewer cell reads
+its value, changing the selection rebuilds the chart.
 
 ```python marimo editor=true
 channel_select = mo.ui.multiselect(
@@ -76,6 +79,10 @@ channel_select
 ```
 
 ## Show the viewer
+
+The viewer gets the tidy data, the selected channels, and one
+annotation: a groundwater level 1.2 m below the surface, converted to
+NAP through the offset.
 
 ```python marimo editor=true
 CPTViewer(
@@ -99,6 +106,8 @@ hold Ctrl (Cmd on macOS) and turn the mouse wheel to zoom, drag to pan,
 Shift-drag along the axis to zoom to a range, double-click to reset,
 and hover to read values.
 
-The built-in column names carry their display defaults. See the
-[`CPTViewer` reference](/docs/cpt-anywidget/reference/cpt-viewer/) for
-bindings, limits, overlays, and the editable layer column.
+The BRO column names carry built-in display defaults, which is why the
+viewer needed no channel bindings here. The
+[`CPTViewer` reference](/docs/cpt-anywidget/reference/cpt-viewer/)
+covers bindings for other names, axis limits, overlays, and the
+editable layer column.

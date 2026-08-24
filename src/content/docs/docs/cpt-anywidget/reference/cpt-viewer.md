@@ -31,8 +31,8 @@ CPTViewer(
 CPTViewer(data=None, *, vertical=None, channels=None, limits=None, **kwargs)
 ```
 
-The constructor is a facade over the [traits](#traits). It normalizes
-Python-friendly values into the JSON wire format. You can also pass any
+The constructor is a facade over the [traits](#traits). It turns
+Python-friendly values into the plain JSON the traits hold. You can also pass any
 trait directly as a keyword argument. Data passed raw via `cptData=`
 skips the intake step.
 
@@ -81,7 +81,7 @@ Bottom axes stack left to right. Top axes stack right to left.
 
 ## Traits
 
-The traits are the JSON wire format between Python and the browser. Every
+The traits are the JSON that syncs between Python and the browser. Every
 trait syncs live: set a trait on an existing widget and the chart
 updates.
 
@@ -167,10 +167,10 @@ Each layer holds proportional soil-composition `bands` with x in
 `[0, 1]` and an optional matplotlib-style `hatch` character. An empty
 dict `{}` hides the column.
 
-The borehole and the CPT have different surface elevations. Express
-both in a shared datum such as NAP. Convert with
-[`to_vertical`](/docs/cpt-anywidget/reference/vertical/#to_vertical).
-See
+Because the borehole and the CPT have different surface elevations,
+express both in a shared datum such as NAP;
+[`to_vertical`](/docs/cpt-anywidget/reference/vertical/#to_vertical)
+does the conversion. See
 [`layers_from_bhrgt`](/docs/cpt-anywidget/reference/borehole-viewer/#layers_from_bhrgt)
 for the band shape.
 
@@ -212,14 +212,8 @@ The soil-class palette, the single source of truth for layer colors:
 ```
 
 Layers reference an entry via their `class` key. Override this trait to
-change the classes or colors project-wide.
-
-Default
-* gravel
-* sand
-* silt
-* clay
-* peat.
+change the classes or colors project-wide. The default palette holds
+gravel, sand, silt, clay, and peat.
 
 ### `width`, `height` — int
 
