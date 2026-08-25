@@ -92,10 +92,11 @@ shared by all strips. Key the vertical override by the `verticalKey`.
 
 ### `channels` — list
 
-The channels every strip plots. Same entry shape as
-[`CPTViewer.channels`](/docs/cpt-anywidget/reference/cpt-viewer/#channels--list),
-except that `side` has no effect here: every axis stacks below the
-plot, one slot per channel in list order. An empty list plots cone
+The channels every strip plots. Same entry shape and axis sides as
+[`CPTViewer.channels`](/docs/cpt-anywidget/reference/cpt-viewer/#channels--list):
+bottom axes stack below the strips with zero at the left, top axes
+(Rf, inclination) stack above them with zero at the right, so a curve
+reads the same here as in a `CPTViewer`. An empty list plots cone
 resistance only.
 
 ### `overlays` — list

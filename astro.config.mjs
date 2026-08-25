@@ -143,6 +143,12 @@ export default defineConfig({
     "/explanation/concepts/open-source": "/docs/concepts/open-source/",
     "/explanation/concepts/open-standards": "/docs/concepts/open-standards/",
     "/explanation/concepts/spatial-reference-systems": "/docs/concepts/spatial-reference-systems/",
+    // Format references (AGS4, GEF) moved out of the bedrock-ge reference into
+    // Concepts; they describe industry formats, not the package's API.
+    "/docs/bedrock-ge/reference/formats/ags/ags4": "/docs/concepts/formats/ags4/",
+    "/docs/bedrock-ge/reference/formats/gef/gef": "/docs/concepts/formats/gef/",
+    "/docs/bedrock-ge/reference/formats/gef/gef-cpt": "/docs/concepts/formats/gef-cpt/",
+    "/docs/bedrock-ge/reference/formats/gef/gef-bore": "/docs/concepts/formats/gef-bore/",
   },
   // NOTE: Enabling Astro's i18n config makes Starlight emit /nl/docs/* fallback
   // pages (English content under Dutch URLs). The marketing-page i18n below uses

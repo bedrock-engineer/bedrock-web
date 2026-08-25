@@ -81,7 +81,9 @@ binding:
 | `frictionRatio` | Rf | % | top |
 | `inclination` | incl | ° | top |
 
-Bottom axes stack left to right. Top axes stack right to left.
+A bottom axis has zero at the left, a top axis has zero at the right.
+So qc grows to the right and Rf grows to the left, and the two curves
+stay out of each other's way.
 
 ## Traits
 

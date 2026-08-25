@@ -35,7 +35,7 @@ from cpt_anywidget import CPTViewer
 ```
 
 ```python marimo editor=true
-cpt = ConePenetrationTest.from_bro_id("CPT000000061388")
+cpt = ConePenetrationTest.from_bro_id("CPT000000090074")
 ```
 
 Edit the id above to fetch another public CPT: every cell that reads
@@ -43,9 +43,8 @@ Edit the id above to fetch another public CPT: every cell that reads
 
 ## Tidy the data
 
-The XML parse keeps every value as a string. Pick the channels to
-plot, turn them into numbers, and compute the elevation in NAP, the
-surface offset minus each depth:
+The parsed BRO/XML keeps every value as a string, we need to convert certain columns to floats.
+Next we pick the channels to plot, and compute the elevation in NAP.
 
 ```python marimo editor=true
 df = cpt.conePenetrationTest.dropna(axis=1, how="all").sort_index()
@@ -65,8 +64,8 @@ renders first.
 
 ## Pick the channels
 
-The multiselect is a marimo UI element. Because the viewer cell reads
-its value, changing the selection rebuilds the chart.
+The multiselect is a [marimo UI element](https://docs.marimo.io/guides/interactivity/). This page is a reactive notebook, so because the viewer cell reads
+its value, changing the selection automatically redraws the chart.
 
 ```python marimo editor=true
 channel_select = mo.ui.multiselect(
@@ -79,9 +78,10 @@ channel_select
 
 ## Show the viewer
 
-The viewer gets the tidy data, the selected channels, and one
-annotation: a groundwater level 1.2 m below the surface, converted to
-NAP through the offset.
+The viewer takes the tidy data, the selected channels, and one
+annotation: the groundwater level recorded in this CPT's file
+(`groundwaterLevel`, in m below the surface), converted to NAP through
+the offset.
 
 ```python marimo editor=true
 CPTViewer(
@@ -90,7 +90,7 @@ CPTViewer(
     channels=list(channel_select.value),
     annotations=[
         {
-            "at": float(cpt.offset) - 1.2,
+            "at": float(cpt.offset) - float(cpt.groundwaterLevel),
             "label": "GWL",
             "color": "steelblue",
             "dash": "4 2",
@@ -99,10 +99,12 @@ CPTViewer(
 )
 ```
 
+`groundwaterLevel` is optional in a BRO/XML, so some CPTs lack it.
+
 Try the interactions from
 [getting started](/docs/cpt-anywidget/getting-started/#use-the-viewer):
-hold Ctrl (Cmd on macOS) and turn the mouse wheel to zoom, drag to pan,
-Shift-drag along the axis to zoom to a range, double-click to reset,
+hold <kbd>Ctrl</kbd> (<kbd>Cmd</kbd> on macOS) and turn the mouse wheel to zoom, drag to pan,
+<kbd>Shift</kbd>-drag along the axis to zoom to a range, double-click to reset,
 and hover to read values.
 
 The BRO column names carry built-in display defaults, which is why the

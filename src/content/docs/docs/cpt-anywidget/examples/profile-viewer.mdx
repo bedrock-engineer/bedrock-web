@@ -27,6 +27,7 @@ Four public CPTs along a line, fetched from the
 [brodata](https://pypi.org/project/brodata/), listed in profile order:
 
 ```python marimo editor=true
+import marimo as mo
 import pandas as pd
 
 from brodata.cpt import ConePenetrationTest
@@ -59,6 +60,8 @@ for c in cpts:
                 "name": c.broId,
                 "nap": float(c.offset) - df["depth"],
                 "coneResistance": df["coneResistance"],
+                "localFriction": df["localFriction"],
+                "frictionRatio": df["frictionRatio"],
             }
         )
     )
@@ -77,10 +80,30 @@ positions = chainage(
 )
 ```
 
+## Pick the channels
+
+Every strip plots the same channels. As in the
+[CPTViewer example](/docs/cpt-anywidget/examples/cpt-viewer/), the
+multiselect is a marimo UI element: the viewer cell reads its value, so
+changing the selection redraws the profile.
+
+```python marimo editor=true
+channel_select = mo.ui.multiselect(
+    options=["coneResistance", "localFriction", "frictionRatio"],
+    value=["coneResistance", "localFriction"],
+    label="Channels",
+)
+channel_select
+```
+
 ## Show the profile
 
 ```python marimo editor=true
-ProfileViewer(long_data, positions=positions)
+ProfileViewer(
+    long_data,
+    positions=positions,
+    channels=list(channel_select.value),
+)
 ```
 
 The toolbar toggle switches between true-scale chainage and equal
@@ -91,6 +114,6 @@ click selects a strip, syncing its name back to Python through the
 
 The
 [`ProfileViewer` reference](/docs/cpt-anywidget/reference/profile-viewer/)
-covers the rest: more channels per strip, interpretation backdrops
-behind the curves, and profile-space overlays such as a surface line or
-a groundwater level.
+covers the rest: channel bindings for other column names, interpretation
+backdrops behind the curves, and profile-space overlays such as a
+surface line or a groundwater level.
