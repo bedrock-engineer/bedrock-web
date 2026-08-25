@@ -46,16 +46,7 @@ const { t } = Astro.props;
         <span>Bedrock.engineer</span>
       </div>
 
-      <h1 id="hero-heading">
-        {
-          t.hero.headingWords.map((word: string) => (
-            <>
-              {word} <wbr />
-            </>
-          ))
-        }
-        <br />{t.hero.headingLine2}
-      </h1>
+      <h1 id="hero-heading">{t.hero.heading}</h1>
 
       <p class="md:text-lg">{t.hero.subhead}</p>
 
