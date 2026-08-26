@@ -3,7 +3,7 @@ export const ui = {
     hero: {
       heading: "We build software for geotechnical data.",
       subhead:
-        "Bedrock is a small software studio. We make your geotechnical data more useful: CPT and borehole data in web apps, ground models in 3D in the browser, and data ready for QGIS and BIM tools.",
+        "Bedrock.engineer is a small software studio. We make your geotechnical data more useful: CPT and borehole data in web apps, ground models in 3D in the browser, and data ready for the BIM tools you already use.",
       ctaPrimary: "Schedule Discovery Call",
       ctaSecondary: "View Demos",
     },
@@ -23,10 +23,10 @@ export const ui = {
     whatWeDo: {
       heading: "What We Build",
       intro:
-        "We build tools and workflows that connect your ground investigation data, ground models, and analysis results to the platforms your project already runs on.",
+        "We build tools and workflows that connect your ground investigation data, geological and geotechnical models, and analysis results to the platforms your project already runs on.",
       subheading: "For example:",
       items: [
-        "Convert legacy formats (AGS, GEF/CPT, gINT) into geospatial formats like GeoPackage or PostGIS databases",
+        "Convert bespoke formats (AGS, GEF/CPT, gINT) into geospatial formats like GeoPackage or PostGIS databases",
         "Build web applications for CPT data, engineering model visualization (Plaxis, Deltares D-Series), and interactive 3D maps",
         "Integrate ground investigation data into digital twin platforms",
         "Automate workflows connecting geotechnical data to QGIS, BIM tools, and databases",
@@ -45,12 +45,11 @@ export const ui = {
       },
       openEcosystems: {
         title: "Open ecosystems",
-        // Split around the inline bedrock-ge link
+        // Prose split around two inline library links (see LandingPage.astro)
         bodyBefore:
-          "We believe in open-source software and open standards to drive innovation in geotechnical engineering. We maintain",
-        linkText: "bedrock-ge",
-        bodyAfter:
-          ", our open-source Python library for turning ground investigation data into geospatial data that we use in projects.",
+          "We believe in open-source software and open standards to drive innovation in geotechnical engineering. We publish parts of our work as open-source libraries, such as ",
+        middle: " for CPT data in notebooks and ",
+        bodyAfter: " for unit-aware engineering calculations.",
       },
       link: "Our mission",
     },
@@ -69,9 +68,9 @@ export const ui = {
     demoTabs: {
       interactive: {
         label: "Interactive Visualization",
-        title: "View and share your ground investigation data in the browser",
-        p1: "Bridge the gap between specialized GI data formats and the wider world of geospatial tools and standards.",
-        p2: "Explore boreholes, test results, and ground models directly in your browser, no specialist software required.",
+        title: "We build web viewers for ground investigation data",
+        p1: "Your project team and clients open boreholes, test results, and ground models straight in the browser, with nothing to install.",
+        p2: "We build viewers like this around your data and workflows.",
         iframeTitle:
           "Demo of ground investigation data in Hong Kong in a 3D map",
         caption: "GI data in Kai Tak, Hong Kong.",
@@ -79,16 +78,16 @@ export const ui = {
       },
       geospatial: {
         label: "Geospatial Data Integration",
-        title: "Unlock the geospatial ecosystem for geotechnical data",
-        p1: "Access ground investigation data in GIS software, Python, and modern geospatial workflows.",
-        p2: "Analyze, visualize, and automate using the tools data scientists and GIS professionals already know.",
+        title: "We get your geotechnical data into the geospatial ecosystem",
+        p1: "We convert ground investigation data to standard geospatial formats, so your team can use it in QGIS, ArcGIS, Python, and web maps.",
+        p2: "Analysis, visualization, and automation happen in the tools your GIS colleagues and data scientists already know.",
         imgAlt: "Geotechnical data visualized in ArcGIS",
         caption: "Kai Tak, Hong Kong 3D GI data visualization in ArcGIS.",
       },
       cadBim: {
         label: "CAD & BIM Integration",
-        title: "Connect geotechnical data with structural and building models",
-        p1: "Break down silos with geospatial ground investigation data. View geotechnical and structural models together in design software like Rhino3D or Civil3D. Enable seamless collaboration across disciplines using AEC collaboration platforms like Speckle,",
+        title: "We connect geotechnical data with structural and building models",
+        p1: "We bring geotechnical and structural models together in design software like Rhino3D and Civil3D, connect them through AEC platforms like Speckle, and feed ground data into digital twin platforms.",
         imgAlt: "Interactive 3D visualization of geotechnical data in Speckle",
         caption: "Kai Tak, Hong Kong 3D GI data visualization in",
         speckleLink: "Speckle.",
@@ -101,7 +100,7 @@ export const ui = {
       // DRAFT — needs a native marketing eye
       heading: "Wij bouwen software voor geotechnische data.",
       subhead:
-        "Bedrock is een kleine softwarestudio. Wij maken je geotechnische data bruikbaarder: sonderingen en boringen in webapps, grondmodellen in 3D in de browser, en data klaar voor QGIS en BIM-tools.",
+        "Bedrock.engineer is een softwarestudio. Wij maken je geotechnische data bruikbaarder: sonderingen en boringen in webapps, grondmodellen in 3D in de browser, en data klaar voor QGIS en BIM-tools.",
       ctaPrimary: "Plan een kennismakingsgesprek",
       ctaSecondary: "Bekijk demo's",
     },
@@ -121,7 +120,7 @@ export const ui = {
     whatWeDo: {
       heading: "Wat we bouwen",
       intro:
-        "We bouwen tools en workflows die je grondonderzoeksdata, grondmodellen en analyseresultaten verbinden met de platforms waarop je project al draait.",
+        "We bouwen tools en workflows die je grondonderzoeksdata, geologische en geotechnische modellen en analyseresultaten verbinden met de platforms waarop je project al draait.",
       subheading: "Bijvoorbeeld:",
       items: [
         "Verouderde formaten (GEF, gINT) omzetten naar geospatiale formaten zoals GeoPackage of PostGIS-databases",
@@ -144,10 +143,9 @@ export const ui = {
       openEcosystems: {
         title: "Open ecosystemen",
         bodyBefore:
-          "We geloven in open-source software en open standaarden om innovatie in de geotechniek te stimuleren. We onderhouden",
-        linkText: "bedrock-ge",
-        bodyAfter:
-          ", onze open-source Python-library die grondonderzoeksdata omzet naar geospatiale data en die we in projecten gebruiken.",
+          "We geloven in open-source software en open standaarden om innovatie in de geotechniek te stimuleren. Delen van ons werk publiceren we als open-source libraries, zoals ",
+        middle: " voor CPT-data in notebooks en ",
+        bodyAfter: " voor engineeringberekeningen met eenheden.",
       },
       link: "Onze missie",
     },
@@ -166,9 +164,9 @@ export const ui = {
     demoTabs: {
       interactive: {
         label: "Interactieve visualisatie",
-        title: "Bekijk en deel je grondonderzoeksdata in de browser",
-        p1: "Overbrug de kloof tussen gespecialiseerde GI-dataformaten en de bredere wereld van geospatiale tools en standaarden.",
-        p2: "Verken boringen, testresultaten en grondmodellen direct in je browser, zonder specialistische software.",
+        title: "Wij bouwen webviewers voor grondonderzoeksdata",
+        p1: "Je projectteam en opdrachtgevers bekijken boringen, testresultaten en grondmodellen direct in de browser, zonder iets te installeren.",
+        p2: "Zulke viewers bouwen we rond jouw data en workflows.",
         iframeTitle:
           "Demo van grondonderzoeksdata in Hongkong op een 3D-kaart",
         caption: "GI-data in Kai Tak, Hongkong.",
@@ -176,16 +174,16 @@ export const ui = {
       },
       geospatial: {
         label: "Integratie van geospatiale data",
-        title: "Ontsluit het geospatiale ecosysteem voor geotechnische data",
-        p1: "Gebruik grondonderzoeksdata in GIS-software, Python en moderne geospatiale workflows.",
-        p2: "Analyseer, visualiseer en automatiseer met de tools die data scientists en GIS-professionals al kennen.",
+        title: "Wij brengen je geotechnische data naar het geospatiale ecosysteem",
+        p1: "We zetten grondonderzoeksdata om naar standaard geospatiale formaten, zodat je team ermee kan werken in QGIS, ArcGIS, Python en webkaarten.",
+        p2: "Analyseren, visualiseren en automatiseren gebeurt in tools die je GIS-collega's en data scientists al kennen.",
         imgAlt: "Geotechnische data gevisualiseerd in ArcGIS",
         caption: "3D GI-datavisualisatie van Kai Tak, Hongkong in ArcGIS.",
       },
       cadBim: {
         label: "CAD- & BIM-integratie",
-        title: "Verbind geotechnische data met constructie- en gebouwmodellen",
-        p1: "Doorbreek silo's met geospatiale grondonderzoeksdata. Bekijk geotechnische en constructieve modellen samen in ontwerpsoftware zoals Rhino3D of Civil3D. Maak naadloze samenwerking tussen disciplines mogelijk met AEC-samenwerkingsplatforms zoals Speckle,",
+        title: "Wij verbinden geotechnische data met constructie- en gebouwmodellen",
+        p1: "We brengen geotechnische en constructieve modellen samen in ontwerpsoftware zoals Rhino3D en Civil3D, koppelen ze via AEC-platforms zoals Speckle, en voeden digital twin-platforms met je gronddata.",
         imgAlt: "Interactieve 3D-visualisatie van geotechnische data in Speckle",
         caption: "3D GI-datavisualisatie van Kai Tak, Hongkong in",
         speckleLink: "Speckle.",

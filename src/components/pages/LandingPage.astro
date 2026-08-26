@@ -285,12 +285,13 @@ const { t } = Astro.props;
             {t.values.openEcosystems.title}
           </h3>
           <p>
-            {t.values.openEcosystems.bodyBefore}{" "}
-            <code>
-              <a href="https://github.com/bedrock-engineer/bedrock-ge/">
-                {t.values.openEcosystems.linkText}
-              </a>
-            </code>{t.values.openEcosystems.bodyAfter}
+            {t.values.openEcosystems.bodyBefore}<code
+              ><a href="/docs/cpt-anywidget/">cpt-anywidget</a></code
+            >{t.values.openEcosystems.middle}<code
+              ><a href="https://github.com/bedrock-engineer/symeval"
+                >symeval</a
+              ></code
+            >{t.values.openEcosystems.bodyAfter}
           </p>
         </div>
       </div>

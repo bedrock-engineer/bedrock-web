@@ -1,3 +1,10 @@
+/* Pin cascade layer order BEFORE any imports: Starlight's layers must rank below
+   Tailwind's components/utilities, or its `starlight.reset { * { margin: 0 } }`
+   silently kills every Tailwind margin utility (mt-*, space-y-*) in prod builds,
+   where bundling declares the starlight layer last. Keep starlight above base so
+   it still overrides Preflight on docs pages. */
+@layer properties, theme, base, starlight, components, utilities;
+
 @import "tailwindcss";
 
 /* Font imports */
@@ -540,97 +547,79 @@ figcaption {
 /* ========== CTA BUTTONS ========== */
 /* Primary and secondary call-to-action button styles */
 
-.cta-button {
+/* Shared shell for all CTA variants; variants only set color, border, and weight */
+.cta-button,
+.cta-button-secondary,
+.cta-button-inverted,
+.cta-button-secondary-inverted {
   display: inline-block;
+  line-height: 1;
   padding: 14px 28px;
+  font-size: var(--text-base);
+  border-radius: 2px;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    scale 0.15s ease;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:active {
+    scale: 0.96;
+  }
+}
+
+.cta-button {
   background: var(--color-primary);
   color: var(--color-primary-contrast);
-  text-decoration: none;
-  border-radius: var(--border-radius-sm);
-  font-weight: 600;
-  font-size: var(--text-base);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
+  font-weight: 400;
   border: 2px solid var(--color-primary);
-}
 
-.cta-button:hover {
-  background: var(--color-primary-hover);
-  border-color: var(--color-primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px var(--color-shadow);
-  text-decoration: none;
-}
-
-.cta-button:active {
-  transform: translateY(0);
+  &:hover {
+    background: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+  }
 }
 
 .cta-button-secondary {
-  display: inline-block;
-  padding: 14px 28px;
   background: transparent;
   color: var(--color-text);
-  text-decoration: none;
-  border-radius: var(--border-radius-sm);
-  font-weight: 600;
-  font-size: var(--text-base);
+  font-weight: 400;
   border: 2px solid var(--color-border-strong);
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease;
+
+  &:hover {
+    background: var(--color-surface-overlay);
+    border-color: var(--gray-8);
+  }
 }
 
-.cta-button-secondary:hover {
-  background: var(--color-surface-overlay);
-  border-color: var(--gray-8);
-  text-decoration: none;
-}
-
-/* Inverted variant for dark backgrounds (like hero sections) */
+/* Inverted variants for dark backgrounds (like hero sections).
+   The hero is always dark (image + overlay), so fixed colors here —
+   the green theme tokens flip between light and dark mode. */
 .cta-button-inverted {
-  display: inline-block;
-  padding: 14px 28px;
-  background: oklch(1 0 0);
-  color: var(--color-primary);
-  text-decoration: none;
-  border-radius: var(--border-radius-sm);
-  font-weight: 500;
-  font-size: var(--text-base);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-  border: 2px solid oklch(1 0 0);
-}
+  background: oklch(74.5% 0.0695 140.8);
+  color: oklch(22% 0.02 140.8);
+  /* font-weight: 500; */
+  /* transparent border keeps metrics identical to the secondary button */
+  border: 1px solid transparent;
 
-.cta-button-inverted:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px var(--color-shadow);
-  text-decoration: none;
-}
-
-.cta-button-inverted:active {
-  transform: translateY(0);
+  &:hover {
+    background: oklch(81.1% 0.0564 140.8);
+  }
 }
 
 .cta-button-secondary-inverted {
-  display: inline-block;
-  padding: 14px 28px;
-  background: transparent;
+  background: oklch(1 0 0 / 0.08);
   color: oklch(1 0 0);
-  text-decoration: none;
-  border-radius: var(--border-radius-sm);
-  font-weight: 500;
-  font-size: var(--text-base);
-  border: 1.5px solid oklch(1 0 0);
-  transition: background 0.2s ease;
-}
+  border: 1px solid oklch(1 0 0 / 0.4);
 
-.cta-button-secondary-inverted:hover {
-  background: oklch(1 0 0 / 0.1);
-  text-decoration: none;
+  &:hover {
+    background: oklch(1 0 0 / 0.12);
+    border-color: oklch(1 0 0 / 0.7);
+  }
 }
 
 /* Section link with arrow that slides on hover */

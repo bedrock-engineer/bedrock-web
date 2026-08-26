@@ -22,6 +22,13 @@ import "../styles/custom.css"; // fonts + design tokens loaded here
 <html {...htmlDataAttributes} lang={lang}>
   <head>
     <meta charset="utf-8" />
+    <!-- Must be parsed before any stylesheet: first @layer statement wins, and
+         Starlight inlines its own (utilities below starlight.reset, whose
+         `* { margin: 0 }` would kill Tailwind margin utilities). is:inline keeps
+         it here instead of being hoisted into the bundled CSS, which loads too late. -->
+    <style is:inline>
+      @layer properties, theme, base, starlight, components, utilities;
+    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#63805E" />
