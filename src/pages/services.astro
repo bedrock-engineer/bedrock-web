@@ -52,7 +52,8 @@ const description =
               Transform industry-specific formats (AGS3/4, GEF, <a
                 class="link"
                 href="/nl/bro-xml">BRO/XML</a
-              >) into modern geospatial standards.
+              >) into structured data in open formats with broad software
+              support.
             </p>
             <div class="service-details">
               <h4 class="service-details-title">Typical deliverables:</h4>
@@ -63,7 +64,7 @@ const description =
             </div>
             <div class="service-meta">
               <strong>Examples:</strong> Set up PostGIS databases when a team needs
-              a centralized, editable geospatial data or GeoPackage for finalized
+              centralized, editable geospatial data, or a GeoPackage for finalized
               data handoff
             </div>
           </Card>
@@ -89,6 +90,35 @@ const description =
               <strong>Examples:</strong> CPT data browser for organizing and comparing
               soundings, web viewer for FEM/geological models with context, or interactive
               3D map viewer with subsurface layers
+            </div>
+          </Card>
+
+          <!-- Python & Notebooks -->
+          <Card>
+            <h3 class="service-title">Python Tools & Notebook Workflows</h3>
+            <p class="service-description">
+              Work with CPT and borehole data in Python notebooks, and turn
+              spreadsheet calculations into scripts you can rerun and audit. We
+              build on our open-source libraries <a
+                class="link"
+                href="/docs/cpt-anywidget/">cpt-anywidget</a
+              > and <a
+                class="link"
+                href="https://github.com/bedrock-engineer/symeval">symeval</a
+              >.
+            </p>
+            <div class="service-details">
+              <h4 class="service-details-title">Typical deliverables:</h4>
+              <ul class="service-list">
+                <li>Notebook viewers for CPT and borehole data</li>
+                <li>Unit-aware, reproducible calculation workflows</li>
+                <li>Python libraries tailored to your data</li>
+              </ul>
+            </div>
+            <div class="service-meta">
+              <strong>Good for:</strong> Engineering teams that want
+              interpretations and calculations they can query, rerun, and reuse
+              across projects.
             </div>
           </Card>
 
@@ -252,8 +282,10 @@ const description =
           <Card>
             <h3 class="value-title">Modern stack</h3>
             <p class="value-description">
-              Built for interoperability with Python, web standards, and
-              geospatial tools. Your data works with the tools you already use.
+              We build with the same technologies as the wider software world:
+              Python, web standards, and open geospatial tooling. Your project
+              benefits from that ecosystem instead of depending on niche sector
+              software.
             </p>
           </Card>
         </div>
@@ -311,7 +343,7 @@ const description =
 
   .service-description {
     font-size: var(--text-base);
-    line-height: 1.6;
+    line-height: var(--leading-relaxed);
     margin-block-end: 20px;
     color: var(--gray-11);
   }
@@ -402,7 +434,7 @@ const description =
 
   .process-description {
     font-size: var(--text-base);
-    line-height: 1.6;
+    line-height: var(--leading-relaxed);
     color: var(--gray-11);
     max-width: 60ch;
   }
@@ -423,7 +455,7 @@ const description =
 
   .value-description {
     font-size: var(--text-base);
-    line-height: 1.6;
+    line-height: var(--leading-relaxed);
     color: var(--gray-11);
   }
 

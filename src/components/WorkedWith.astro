@@ -1,0 +1,80 @@
+---
+import bInventedLogo from "../assets/logos/b-invented.png";
+import cruxLogo from "../assets/logos/crux.png";
+
+import BuildingSmartLogo from "./logos/BuildingSmartLogo.astro";
+import FugroLogo from "./logos/FugroLogo.astro";
+import ZeelandLogo from "./logos/ZeelandLogo.astro";
+
+interface Props {
+  t: any;
+}
+const { t } = Astro.props;
+---
+
+<section class="worked-with">
+  <h2 id="worked-with">{t.heading}</h2>
+
+  <div class="client-logos pt-6">
+    <FugroLogo />
+
+    <a href="https://www.zeeland.nl/">
+      <ZeelandLogo />
+    </a>
+
+    <a href="https://cruxbv.nl/">
+      <img src={cruxLogo.src} alt="CRUX" width="120" id="crux-logo" />
+    </a>
+
+    <a href="https://b-invented.com/en/home-english/">
+      <img
+        src={bInventedLogo.src}
+        alt="B-Invented"
+        width="120"
+        id="b-invented-logo"
+      />
+    </a>
+
+    <a href="http://buildingsmart.nl/">
+      <BuildingSmartLogo />
+    </a>
+  </div>
+</section>
+
+<style>
+  .worked-with {
+    border-top: none;
+    padding-block-start: var(--space-l);
+    padding-block-end: var(--space-xl);
+
+    & h2 {
+      font-size: var(--text-xl);
+      color: var(--gray-10);
+      text-align: center;
+      margin-inline: auto;
+      margin-bottom: var(--space-m-l);
+    }
+  }
+
+  .client-logos {
+    display: flex;
+    column-gap: var(--space-2xl);
+    row-gap: var(--space-xl);
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      height: 48px;
+      object-fit: contain;
+    }
+  }
+</style>
+
+<style is:global>
+  :root:not([data-theme="dark"]) {
+    #b-invented-logo {
+      filter: invert(1) grayscale(1);
+    }
+  }
+</style>

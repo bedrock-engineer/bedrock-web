@@ -132,7 +132,7 @@ const { t } = Astro.props;
   .paragraph {
     font-size: 18px;
     max-width: 60ch;
-    line-height: 1.6;
+    line-height: var(--leading-relaxed);
   }
 
   .team-member {
@@ -234,7 +234,7 @@ const { t } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: var(--space-s);
-    max-width: 40ch;
+    max-width: var(--measure-narrow);
   }
 
   .details-term {

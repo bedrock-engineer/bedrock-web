@@ -333,6 +333,10 @@ figcaption {
   --container-md: 1200px;
   --container-wide: 1480px;
 
+  /* Readable paragraph widths */
+  --measure: 50ch;
+  --measure-narrow: 40ch;
+
   /* ========== SEMANTIC COLOR TOKENS ========== */
   /* Use these instead of raw Radix scale numbers in components */
 
@@ -372,6 +376,7 @@ figcaption {
   --border-color: var(--color-border);
   --border-radius: 8px;
   --border-radius-sm: 4px;
+  --border-radius-lg: 16px;
 }
 
 /* ========== TYPOGRAPHY UTILITY CLASSES ========== */

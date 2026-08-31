@@ -12,12 +12,12 @@ export const ui = {
     },
     jules: {
       bio: {
-        p1: "I studied Petroleum Engineering (Reservoir Geology) at TU Delft, which involves interpreting complex subsurface data. There, I grew frustrated with the software we used. I came to believe that:",
+        p1: "Computers could be a much better tool than they are today. They are already powerful, but there is a big gap between how smart they make us now and how smart they could make us. That gap is what my work is about, guided by two beliefs:",
         beliefs: [
           "Software should be useful and usable, even (especially) technical software.",
           "A good visualization can make complex ideas clear quickly.",
         ],
-        p2: "These beliefs pushed me to learn programming, focusing on user interfaces and data visualization to build more thoughtful interfaces for technical information.",
+        p2: "I studied Petroleum Engineering (Reservoir Geology) at TU Delft, with a minor in Computer Science and Data Science, but these beliefs pulled me into programming, user interfaces, and data visualization.",
         p3: "For the past five years, I've worked on data-rich applications across various domains, focusing on usable UIs and turning numbers into visual insights.",
         p4: "At the moment, my primary interest is figuring out how to close the gap between the fragmented tools that exist for working with geotechnical data and the more accessible, interoperable tools that I believe could exist.",
       },
@@ -36,12 +36,12 @@ export const ui = {
     },
     jules: {
       bio: {
-        p1: "Ik heb Petroleum Engineering (Reservoir Geologie) gestudeerd aan de TU Delft, wat het interpreteren van complexe ondergrondse data omvat. Daar raakte ik gefrustreerd over de software die we gebruikten. Ik kwam tot de overtuiging dat:",
+        p1: "Computers kunnen een veel beter gereedschap zijn dan ze nu zijn. Ze zijn al krachtig, maar er zit een groot gat tussen hoe slim ze ons nu maken en hoe slim ze ons zouden kunnen maken. Dat gat is waar mijn werk over gaat, met twee overtuigingen als leidraad:",
         beliefs: [
           "Software moet nuttig en bruikbaar zijn, zelfs (en vooral) technische software.",
           "Een goede visualisatie kan complexe ideeën snel duidelijk maken.",
         ],
-        p2: "Deze overtuigingen zetten me ertoe aan om programmeren te leren, specifiek UI development om doordachtere interfaces te bouwen voor het weergeven van technische informatie.",
+        p2: "Ik heb Petroleum Engineering (Reservoir Geologie) gestudeerd aan de TU Delft, met een minor in Computer Science en Data Science, maar deze overtuigingen trokken me richting programmeren, user interfaces en datavisualisatie.",
         p3: "De afgelopen vijf jaar heb ik gewerkt aan data-rijke applicaties in verschillende domeinen, met de focus op bruikbare UI's en het omzetten van cijfers naar visuele inzichten.",
         p4: "Op dit moment is mijn primaire interesse om uit te zoeken hoe de kloof te overbruggen tussen de gefragmenteerde tools die bestaan voor het werken met geotechnische data en de meer toegankelijke, interoperabele tools waarvan ik geloof dat ze zouden kunnen bestaan.",
       },

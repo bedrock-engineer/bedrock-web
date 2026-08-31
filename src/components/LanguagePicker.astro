@@ -36,22 +36,37 @@ const basePath = locale === defaultLang
   }
 
   .lang-link {
-    padding: 4px 8px;
+    padding: var(--space-2xs) var(--space-xs);
     line-height: 1;
     text-decoration: none;
-    color: var(--sl-color-gray-2);
-    font-size: 14px;
+    color: var(--gray-11);
+    font-size: var(--text-sm);
     border-radius: var(--border-radius-sm);
-    transition: all 0.2s ease;
-  }
 
-  .lang-link:hover {
-    background: var(--sl-color-gray-6);
-    color: var(--sl-color-white);
-  }
+    &:hover {
+      color: var(--green-11);
+      background: var(--gray-3);
+    }
 
-  .lang-link.active {
-    background: var(--sl-color-accent);
-    color: var(--sl-color-white);
+    &:active {
+      background: var(--gray-4);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--green-9);
+      outline-offset: 2px;
+    }
+
+    &.active {
+      color: var(--green-11);
+      background: var(--gray-3);
+      font-weight: 500;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        color 0.15s ease,
+        background 0.15s ease;
+    }
   }
 </style>

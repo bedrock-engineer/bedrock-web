@@ -16,14 +16,14 @@ export const ui = {
     voxels: {
       imageAlt: "GeoTOP geological voxel model in the browser",
       heading: "3D Voxel Models in the Browser",
-      body: "Explore geological models, groundwater grids, and mining block models interactively. No downloads, no specialist software.",
+      body: "Explore geological models, groundwater grids, and mining block models interactively, without the need for specialist software or large downloads.",
       badge: "Featured by Cesium",
       link: "See 3D Tiles Voxels",
     },
     whatWeDo: {
       heading: "What We Build",
       intro:
-        "We build tools and workflows that connect your ground investigation data, geological and geotechnical models, and analysis results to the platforms your project already runs on.",
+        "Most geotechnical data sits in reports and bespoke file formats that only specialist software can open. We turn it into structured data, so you can see it in the browser, query it, rerun calculations on it, and script workflows with it.",
       subheading: "For example:",
       items: [
         "Convert bespoke formats (AGS, GEF/CPT, gINT) into geospatial formats like GeoPackage or PostGIS databases",
@@ -41,7 +41,7 @@ export const ui = {
       },
       standardFormats: {
         title: "Standard formats, any tool",
-        body: "Your geotechnical data converted to standard geospatial formats. Use it in QGIS, ArcGIS, Python, web maps, geospatial databases. Whoever needs the data can open it in tools they already have.",
+        body: "Data in open, standard formats is not locked to the software that made it. Whoever needs it next, a GIS colleague, a structural engineer, a client, can work with it in tools they already have.",
       },
       openEcosystems: {
         title: "Open ecosystems",
@@ -120,7 +120,7 @@ export const ui = {
     whatWeDo: {
       heading: "Wat we bouwen",
       intro:
-        "We bouwen tools en workflows die je grondonderzoeksdata, geologische en geotechnische modellen en analyseresultaten verbinden met de platforms waarop je project al draait.",
+        "De meeste geotechnische data zit in rapporten en bestandsformaten die alleen specialistische software kan openen. Wij zetten die om in gestructureerde data, zodat je die in de browser kunt bekijken, kunt bevragen, berekeningen opnieuw kunt uitvoeren en workflows kunt scripten.",
       subheading: "Bijvoorbeeld:",
       items: [
         "Verouderde formaten (GEF, gINT) omzetten naar geospatiale formaten zoals GeoPackage of PostGIS-databases",
@@ -138,7 +138,7 @@ export const ui = {
       },
       standardFormats: {
         title: "Standaardformaten, elke tool",
-        body: "Je geotechnische data omgezet naar standaard geospatiale formaten. Gebruik het in QGIS, ArcGIS, Python, webkaarten en geospatiale databases. Iedereen die de data nodig heeft, kan die openen in tools die ze al hebben.",
+        body: "Data in open standaardformaten zit niet vast aan de software waarmee die gemaakt is. Wie de data daarna nodig heeft, een GIS-collega, een constructeur, een opdrachtgever, kan ermee werken in tools die ze al hebben.",
       },
       openEcosystems: {
         title: "Open ecosystemen",
