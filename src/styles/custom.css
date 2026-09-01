@@ -203,6 +203,14 @@ a {
   }
 }
 
+/* Vite's CSS chunking declares @layer starlight.core before starlight.reset,
+   inverting Starlight's intended sub-layer order, so the reset's `* { margin: 0 }`
+   beats the content column's `margin-inline: auto` and splash pages hug the left
+   edge. Restore the default unlayered; on sidebar pages this is a no-op. */
+main .sl-container {
+  margin-inline: auto;
+}
+
 /* https://starlight.astro.build/guides/css-and-tailwind/#color-theme-editor */
 /* Map Radix colors to Starlight's semantic color system */
 
