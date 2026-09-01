@@ -89,7 +89,7 @@ const starlightConfig = {
       },
     ], {
       // The /docs landing page lists all packages and belongs to no topic.
-      exclude: ["/docs"],
+      exclude: ["/docs", "/geotop-cesium-certified"],
     }),
   ],
   components: {

@@ -188,13 +188,18 @@ a {
   color: var(--color-primary-hover);
 }
 
+/* Tailwind Preflight strips list markers and padding; restore them for prose
+   lists at any nesting depth. Starlight's <Steps> (.sl-steps) draws its own
+   counters and stays excluded. */
 .sl-markdown-content {
-  & > ol:not(.sl-steps) {
-    list-style: decimal inside;
+  & ol:not(.sl-steps) {
+    list-style: decimal;
+    padding-inline-start: 1.5em;
   }
 
-  & > ul {
-    list-style: circle inside;
+  & ul {
+    list-style: circle;
+    padding-inline-start: 1.5em;
   }
 }
 
