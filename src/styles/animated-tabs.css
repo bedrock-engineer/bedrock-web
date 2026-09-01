@@ -33,7 +33,9 @@
   padding: 6px 12px;
   font-size: 1rem;
   outline: none;
-  touch-action: none;
+  /* Must allow panning: the pills fill the scrollable .tabs-header, so
+     touch-action: none here would make the tab bar unswipeable on mobile. */
+  touch-action: manipulation;
   white-space: nowrap;
   border-radius: 9999px;
   transition:
