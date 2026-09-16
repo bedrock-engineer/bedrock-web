@@ -79,6 +79,29 @@ const starlightConfig = {
           },
         ],
       },
+      {
+        label: "bro-xml-parser",
+        link: "/docs/bro-xml-parser/getting-started/",
+        icon: "seti:typescript",
+        items: [
+          {
+            label: "Start Here",
+            items: ["docs/bro-xml-parser/getting-started"],
+          },
+          {
+            label: "Guides",
+            items: [
+              { autogenerate: { directory: "docs/bro-xml-parser/guides" } },
+            ],
+          },
+          {
+            label: "Reference",
+            items: [
+              { autogenerate: { directory: "docs/bro-xml-parser/reference" } },
+            ],
+          },
+        ],
+      },
       // Package-independent background reading (why geospatial, open
       // standards, etc.) shared by all packages.
       {
@@ -131,6 +154,7 @@ export default defineConfig({
   redirects: {
     "/docs/bedrock-ge": "/docs/bedrock-ge/getting-started/",
     "/docs/cpt-anywidget": "/docs/cpt-anywidget/getting-started/",
+    "/docs/bro-xml-parser": "/docs/bro-xml-parser/getting-started/",
     // Explanation pages moved out of bedrock-ge into the package-independent
     // Concepts topic; the /explanation/* entries cover pre-restructure URLs.
     "/docs/bedrock-ge/explanation/gi-to-geospatial": "/docs/concepts/gi-to-geospatial/",
