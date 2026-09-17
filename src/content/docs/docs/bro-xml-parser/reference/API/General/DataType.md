@@ -11,4 +11,4 @@ editUrl: false
 type DataType = "CPT" | "BHR-GT" | "BHR-G";
 ```
 
-Defined in: [src/core/version-detector.ts:11](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/core/version-detector.ts#L11)
+Defined in: [src/core/version-detector.ts:11](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/core/version-detector.ts#L11)

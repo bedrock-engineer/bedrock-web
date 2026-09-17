@@ -11,7 +11,7 @@ editUrl: false
 function processSampledIntervals(_value, context): SampledInterval[];
 ```
 
-Defined in: [src/resolvers/bore-resolvers.ts:1544](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/resolvers/bore-resolvers.ts#L1544)
+Defined in: [src/resolvers/bore-resolvers.ts:1667](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/resolvers/bore-resolvers.ts#L1667)
 
 Process sampled intervals from boring element
 

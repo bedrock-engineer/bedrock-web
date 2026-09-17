@@ -7,7 +7,7 @@ editUrl: false
 
 # Interface: DissipationTest
 
-Defined in: [src/types/index.ts:177](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L177)
+Defined in: [src/types/index.ts:177](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L177)
 
 Dissipation test performed at a specific depth
 
@@ -18,6 +18,6 @@ pore pressure decay over time. A CPT can contain multiple dissipation tests.
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="penetrationlength"></a> `penetrationLength` | `number` | [src/types/index.ts:178](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L178) |
-| <a id="phenomenontime"></a> `phenomenonTime` | `string` \| `null` | [src/types/index.ts:179](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L179) |
-| <a id="measurements"></a> `measurements` | [`DissipationMeasurement`](/docs/bro-xml-parser/reference/api/cpt/dissipationmeasurement/)[] | [src/types/index.ts:180](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L180) |
+| <a id="penetrationlength"></a> `penetrationLength` | `number` | [src/types/index.ts:178](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L178) |
+| <a id="phenomenontime"></a> `phenomenonTime` | `string` \| `null` | [src/types/index.ts:179](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L179) |
+| <a id="measurements"></a> `measurements` | [`DissipationMeasurement`](/docs/bro-xml-parser/reference/api/cpt/dissipationmeasurement/)[] | [src/types/index.ts:180](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L180) |

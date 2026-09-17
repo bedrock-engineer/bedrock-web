@@ -7,7 +7,7 @@ editUrl: false
 
 # Interface: ReportHistory
 
-Defined in: [src/types/index.ts:827](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L827)
+Defined in: [src/types/index.ts:1238](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1238)
 
 Report history - records when and how data was reported
 
@@ -15,6 +15,6 @@ Report history - records when and how data was reported
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="reportstartdate"></a> `reportStartDate` | `string` \| `null` | [src/types/index.ts:828](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L828) |
-| <a id="reportenddate"></a> `reportEndDate` | `string` \| `null` | [src/types/index.ts:829](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L829) |
-| <a id="intermediateevents"></a> `intermediateEvents` | [`IntermediateEvent`](/docs/bro-xml-parser/reference/api/general/intermediateevent/)[] | [src/types/index.ts:830](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L830) |
+| <a id="reportstartdate"></a> `reportStartDate` | `string` \| `null` | [src/types/index.ts:1239](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1239) |
+| <a id="reportenddate"></a> `reportEndDate` | `string` \| `null` | [src/types/index.ts:1240](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1240) |
+| <a id="intermediateevents"></a> `intermediateEvents` | [`IntermediateEvent`](/docs/bro-xml-parser/reference/api/general/intermediateevent/)[] | [src/types/index.ts:1241](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1241) |

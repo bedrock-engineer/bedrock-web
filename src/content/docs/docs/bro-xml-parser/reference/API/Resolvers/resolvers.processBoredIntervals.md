@@ -11,7 +11,7 @@ editUrl: false
 function processBoredIntervals(_value, context): BoredInterval[];
 ```
 
-Defined in: [src/resolvers/bore-resolvers.ts:1502](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/resolvers/bore-resolvers.ts#L1502)
+Defined in: [src/resolvers/bore-resolvers.ts:1625](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/resolvers/bore-resolvers.ts#L1625)
 
 Process bored intervals from boring element
 

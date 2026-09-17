@@ -7,7 +7,7 @@ editUrl: false
 
 # Interface: VolumeChangeAtSpecificTime
 
-Defined in: [src/types/index.ts:1112](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L1112)
+Defined in: [src/types/index.ts:1567](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1567)
 
 Volume change measurement at specific time during consolidation
 
@@ -15,5 +15,5 @@ Volume change measurement at specific time during consolidation
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="time"></a> `time` | `number` | [src/types/index.ts:1113](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L1113) |
-| <a id="volumechange"></a> `volumeChange` | `number` | [src/types/index.ts:1114](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L1114) |
+| <a id="time"></a> `time` | `number` | [src/types/index.ts:1568](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1568) |
+| <a id="volumechange"></a> `volumeChange` | `number` | [src/types/index.ts:1569](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1569) |

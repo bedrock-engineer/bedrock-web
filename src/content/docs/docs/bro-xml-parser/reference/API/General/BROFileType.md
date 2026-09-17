@@ -11,6 +11,6 @@ editUrl: false
 type BROFileType = "CPT" | "BHR-GT" | "BHR-G";
 ```
 
-Defined in: [src/types/index.ts:1359](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L1359)
+Defined in: [src/types/index.ts:1818](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1818)
 
 BRO file type identifier

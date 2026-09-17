@@ -7,7 +7,7 @@ editUrl: false
 
 # Interface: BoreholeSampleAnalysis
 
-Defined in: [src/types/index.ts:1328](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L1328)
+Defined in: [src/types/index.ts:1787](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1787)
 
 Borehole sample analysis data (BHR-GT-BMA)
 Contains laboratory test results for soil samples
@@ -16,6 +16,6 @@ Contains laboratory test results for soil samples
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="analysisreportdate"></a> `analysisReportDate` | `string` \| `null` | [src/types/index.ts:1329](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L1329) |
-| <a id="analysisprocedure"></a> `analysisProcedure` | `string` \| `null` | [src/types/index.ts:1330](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L1330) |
-| <a id="investigatedintervals"></a> `investigatedIntervals` | [`InvestigatedInterval`](/docs/bro-xml-parser/reference/api/bhr-gt/investigatedinterval/)[] | [src/types/index.ts:1331](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L1331) |
+| <a id="analysisreportdate"></a> `analysisReportDate` | `string` \| `null` | [src/types/index.ts:1788](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1788) |
+| <a id="analysisprocedure"></a> `analysisProcedure` | `string` \| `null` | [src/types/index.ts:1789](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1789) |
+| <a id="investigatedintervals"></a> `investigatedIntervals` | [`InvestigatedInterval`](/docs/bro-xml-parser/reference/api/bhr-gt/investigatedinterval/)[] | [src/types/index.ts:1790](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1790) |

@@ -7,7 +7,7 @@ editUrl: false
 
 # Interface: SamplerDetails
 
-Defined in: [src/types/index.ts:753](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L753)
+Defined in: [src/types/index.ts:1102](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1102)
 
 Sampler equipment details within a sampled interval
 
@@ -15,14 +15,14 @@ Sampler equipment details within a sampled interval
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="samplertype"></a> `samplerType` | `string` \| `null` | [src/types/index.ts:754](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L754) |
-| <a id="samplecontainerdiameter"></a> `sampleContainerDiameter` | `number` \| `null` | [src/types/index.ts:755](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L755) |
-| <a id="samplecontainerlength"></a> `sampleContainerLength` | `number` \| `null` | [src/types/index.ts:756](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L756) |
-| <a id="cuttingshoeinsidediameter"></a> `cuttingShoeInsideDiameter` | `number` \| `null` | [src/types/index.ts:757](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L757) |
-| <a id="cuttingshoeoutsidediameter"></a> `cuttingShoeOutsideDiameter` | `number` \| `null` | [src/types/index.ts:758](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L758) |
-| <a id="stockingused"></a> `stockingUsed` | `boolean` \| `null` | [src/types/index.ts:759](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L759) |
-| <a id="rightangledcuttingshoe"></a> `rightAngledCuttingShoe` | `boolean` \| `null` | [src/types/index.ts:760](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L760) |
-| <a id="taperangle"></a> `taperAngle` | `number` \| `null` | [src/types/index.ts:761](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L761) |
-| <a id="lubricationfluidused"></a> `lubricationFluidUsed` | `boolean` \| `null` | [src/types/index.ts:762](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L762) |
-| <a id="corecatcherpresent"></a> `coreCatcherPresent` | `boolean` \| `null` | [src/types/index.ts:763](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L763) |
-| <a id="pistonpresent"></a> `pistonPresent` | `boolean` \| `null` | [src/types/index.ts:764](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L764) |
+| <a id="samplertype"></a> `samplerType` | `string` \| `null` | [src/types/index.ts:1103](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1103) |
+| <a id="samplecontainerdiameter"></a> `sampleContainerDiameter` | `number` \| `null` | [src/types/index.ts:1104](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1104) |
+| <a id="samplecontainerlength"></a> `sampleContainerLength` | `number` \| `null` | [src/types/index.ts:1105](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1105) |
+| <a id="cuttingshoeinsidediameter"></a> `cuttingShoeInsideDiameter` | `number` \| `null` | [src/types/index.ts:1106](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1106) |
+| <a id="cuttingshoeoutsidediameter"></a> `cuttingShoeOutsideDiameter` | `number` \| `null` | [src/types/index.ts:1107](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1107) |
+| <a id="stockingused"></a> `stockingUsed` | `boolean` \| `null` | [src/types/index.ts:1108](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1108) |
+| <a id="rightangledcuttingshoe"></a> `rightAngledCuttingShoe` | `boolean` \| `null` | [src/types/index.ts:1109](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1109) |
+| <a id="taperangle"></a> `taperAngle` | `number` \| `null` | [src/types/index.ts:1110](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1110) |
+| <a id="lubricationfluidused"></a> `lubricationFluidUsed` | `boolean` \| `null` | [src/types/index.ts:1111](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1111) |
+| <a id="corecatcherpresent"></a> `coreCatcherPresent` | `boolean` \| `null` | [src/types/index.ts:1112](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1112) |
+| <a id="pistonpresent"></a> `pistonPresent` | `boolean` \| `null` | [src/types/index.ts:1113](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1113) |

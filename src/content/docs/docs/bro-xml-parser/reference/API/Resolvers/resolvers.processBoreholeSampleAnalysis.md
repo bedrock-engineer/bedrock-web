@@ -13,7 +13,7 @@ function processBoreholeSampleAnalysis(_value, context):
   | undefined;
 ```
 
-Defined in: [src/resolvers/bore-resolvers.ts:1391](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/resolvers/bore-resolvers.ts#L1391)
+Defined in: [src/resolvers/bore-resolvers.ts:1514](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/resolvers/bore-resolvers.ts#L1514)
 
 Process borehole sample analysis data from boreholeSampleAnalysis element
 

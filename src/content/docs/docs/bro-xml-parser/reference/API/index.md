@@ -23,8 +23,11 @@ editUrl: false
 - [Schema](/docs/bro-xml-parser/reference/api/general/schema/)
 - [QualityRegime](/docs/bro-xml-parser/reference/api/general/qualityregime/)
 - [Location](/docs/bro-xml-parser/reference/api/general/location/)
+- [BRORegistrationObject](/docs/bro-xml-parser/reference/api/general/broregistrationobject/)
+- [BHRGTLayerBase](/docs/bro-xml-parser/reference/api/general/bhrgtlayerbase/)
 - [BoredInterval](/docs/bro-xml-parser/reference/api/general/boredinterval/)
 - [SamplerDetails](/docs/bro-xml-parser/reference/api/general/samplerdetails/)
+- [CoreRecovery](/docs/bro-xml-parser/reference/api/general/corerecovery/)
 - [SampledInterval](/docs/bro-xml-parser/reference/api/general/sampledinterval/)
 - [IntermediateEvent](/docs/bro-xml-parser/reference/api/general/intermediateevent/)
 - [RegistrationHistory](/docs/bro-xml-parser/reference/api/general/registrationhistory/)
@@ -44,9 +47,17 @@ editUrl: false
 ## BHR-GT
 
 - [Grainshape](/docs/bro-xml-parser/reference/api/bhr-gt/grainshape/)
+- [RockWeatheringDegree](/docs/bro-xml-parser/reference/api/bhr-gt/rockweatheringdegree/)
+- [RockDescription](/docs/bro-xml-parser/reference/api/bhr-gt/rockdescription/)
+- [PostSedimentaryDiscontinuity](/docs/bro-xml-parser/reference/api/bhr-gt/postsedimentarydiscontinuity/)
+- [BHRGTSoilLayer](/docs/bro-xml-parser/reference/api/bhr-gt/bhrgtsoillayer/)
+- [BHRGTRockLayer](/docs/bro-xml-parser/reference/api/bhr-gt/bhrgtrocklayer/)
 - [BHRGTLayer](/docs/bro-xml-parser/reference/api/bhr-gt/bhrgtlayer/)
 - [BHRGTData](/docs/bro-xml-parser/reference/api/bhr-gt/bhrgtdata/)
 - [CompletedInterval](/docs/bro-xml-parser/reference/api/bhr-gt/completedinterval/)
+- [ExcavatedLayer](/docs/bro-xml-parser/reference/api/bhr-gt/excavatedlayer/)
+- [BoringVelocityMeasurement](/docs/bro-xml-parser/reference/api/bhr-gt/boringvelocitymeasurement/)
+- [FluidMudLayer](/docs/bro-xml-parser/reference/api/bhr-gt/fluidmudlayer/)
 - [NotDescribedInterval](/docs/bro-xml-parser/reference/api/bhr-gt/notdescribedinterval/)
 
 ### Lab analysis
@@ -65,6 +76,7 @@ editUrl: false
 - [SaturationStageAtCompression](/docs/bro-xml-parser/reference/api/bhr-gt/saturationstageatcompression/)
 - [SettlementCharacteristicsDetermination](/docs/bro-xml-parser/reference/api/bhr-gt/settlementcharacteristicsdetermination/)
 - [SaturatedPermeabilityAtSpecificDensity](/docs/bro-xml-parser/reference/api/bhr-gt/saturatedpermeabilityatspecificdensity/)
+- [SaturatedPermeabilityAtSpecificLoad](/docs/bro-xml-parser/reference/api/bhr-gt/saturatedpermeabilityatspecificload/)
 - [SaturatedPermeabilityDetermination](/docs/bro-xml-parser/reference/api/bhr-gt/saturatedpermeabilitydetermination/)
 - [MembraneCorrection](/docs/bro-xml-parser/reference/api/bhr-gt/membranecorrection/)
 - [DrainageStripCorrection](/docs/bro-xml-parser/reference/api/bhr-gt/drainagestripcorrection/)
@@ -87,6 +99,21 @@ editUrl: false
 
 ## BHR-G
 
+- [MunsellColour](/docs/bro-xml-parser/reference/api/bhr-g/munsellcolour/)
+- [SandConstituent](/docs/bro-xml-parser/reference/api/bhr-g/sandconstituent/)
+- [SandFraction](/docs/bro-xml-parser/reference/api/bhr-g/sandfraction/)
+- [ShellConstituent](/docs/bro-xml-parser/reference/api/bhr-g/shellconstituent/)
+- [ShellFraction](/docs/bro-xml-parser/reference/api/bhr-g/shellfraction/)
+- [GravelConstituent](/docs/bro-xml-parser/reference/api/bhr-g/gravelconstituent/)
+- [GravelFraction](/docs/bro-xml-parser/reference/api/bhr-g/gravelfraction/)
+- [PeatConstituent](/docs/bro-xml-parser/reference/api/bhr-g/peatconstituent/)
+- [PeatFraction](/docs/bro-xml-parser/reference/api/bhr-g/peatfraction/)
+- [Chunk](/docs/bro-xml-parser/reference/api/bhr-g/chunk/)
+- [FineFractionDistributionOrganicSoil](/docs/bro-xml-parser/reference/api/bhr-g/finefractiondistributionorganicsoil/)
+- [FineFractionDistributionShellySoil](/docs/bro-xml-parser/reference/api/bhr-g/finefractiondistributionshellysoil/)
+- [FractionDistribution](/docs/bro-xml-parser/reference/api/bhr-g/fractiondistribution/)
+- [Mottle](/docs/bro-xml-parser/reference/api/bhr-g/mottle/)
+- [ThinStratum](/docs/bro-xml-parser/reference/api/bhr-g/thinstratum/)
 - [BHRGLayer](/docs/bro-xml-parser/reference/api/bhr-g/bhrglayer/)
 - [BHRGData](/docs/bro-xml-parser/reference/api/bhr-g/bhrgdata/)
 

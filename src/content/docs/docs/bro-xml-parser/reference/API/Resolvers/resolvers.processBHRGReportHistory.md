@@ -11,7 +11,7 @@ editUrl: false
 function processBHRGReportHistory(_value, context): ReportHistory | null;
 ```
 
-Defined in: [src/resolvers/bhrg-resolvers.ts:201](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/resolvers/bhrg-resolvers.ts#L201)
+Defined in: [src/resolvers/bhrg-resolvers.ts:471](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/resolvers/bhrg-resolvers.ts#L471)
 
 Process report history from BHR-G document element
 

@@ -11,7 +11,7 @@ editUrl: false
 function parseInt(value): number | null;
 ```
 
-Defined in: [src/resolvers/type-resolvers.ts:29](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/resolvers/type-resolvers.ts#L29)
+Defined in: [src/resolvers/type-resolvers.ts:42](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/resolvers/type-resolvers.ts#L42)
 
 Public resolver functions for custom schema definitions
 

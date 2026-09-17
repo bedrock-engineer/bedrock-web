@@ -7,7 +7,7 @@ editUrl: false
 
 # Class: XMLAdapter
 
-Defined in: [src/adapters/browser-adapter.ts:13](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/adapters/browser-adapter.ts#L13)
+Defined in: [src/adapters/browser-adapter.ts:13](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/adapters/browser-adapter.ts#L13)
 
 ## Implements
 
@@ -21,7 +21,7 @@ Defined in: [src/adapters/browser-adapter.ts:13](https://github.com/bedrock-engi
 new XMLAdapter(): BrowserXMLAdapter;
 ```
 
-Defined in: [src/adapters/browser-adapter.ts:16](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/adapters/browser-adapter.ts#L16)
+Defined in: [src/adapters/browser-adapter.ts:16](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/adapters/browser-adapter.ts#L16)
 
 #### Returns
 
@@ -35,7 +35,7 @@ Defined in: [src/adapters/browser-adapter.ts:16](https://github.com/bedrock-engi
 parseXML(xmlText): Document;
 ```
 
-Defined in: [src/adapters/browser-adapter.ts:20](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/adapters/browser-adapter.ts#L20)
+Defined in: [src/adapters/browser-adapter.ts:20](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/adapters/browser-adapter.ts#L20)
 
 #### Parameters
 
@@ -65,7 +65,7 @@ evaluateXPath(
 ): Node | null;
 ```
 
-Defined in: [src/adapters/browser-adapter.ts:31](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/adapters/browser-adapter.ts#L31)
+Defined in: [src/adapters/browser-adapter.ts:31](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/adapters/browser-adapter.ts#L31)
 
 #### Parameters
 
@@ -97,7 +97,7 @@ evaluateXPathAll(
 ): Node[];
 ```
 
-Defined in: [src/adapters/browser-adapter.ts:74](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/adapters/browser-adapter.ts#L74)
+Defined in: [src/adapters/browser-adapter.ts:76](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/adapters/browser-adapter.ts#L76)
 
 #### Parameters
 

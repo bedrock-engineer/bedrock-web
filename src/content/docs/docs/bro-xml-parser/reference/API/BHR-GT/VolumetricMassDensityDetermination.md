@@ -7,7 +7,7 @@ editUrl: false
 
 # Interface: VolumetricMassDensityDetermination
 
-Defined in: [src/types/index.ts:854](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L854)
+Defined in: [src/types/index.ts:1265](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1265)
 
 Volumetric mass density (bulk density) determination result
 
@@ -15,7 +15,7 @@ Volumetric mass density (bulk density) determination result
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="determinationprocedure"></a> `determinationProcedure` | `string` \| `null` | [src/types/index.ts:855](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L855) |
-| <a id="determinationmethod"></a> `determinationMethod` | `string` \| `null` | [src/types/index.ts:856](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L856) |
-| <a id="samplemoistness"></a> `sampleMoistness` | `string` \| `null` | [src/types/index.ts:857](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L857) |
-| <a id="volumetricmassdensity"></a> `volumetricMassDensity` | `number` \| `null` | [src/types/index.ts:858](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L858) |
+| <a id="determinationprocedure"></a> `determinationProcedure` | `string` \| `null` | [src/types/index.ts:1266](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1266) |
+| <a id="determinationmethod"></a> `determinationMethod` | `string` \| `null` | [src/types/index.ts:1267](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1267) |
+| <a id="samplemoistness"></a> `sampleMoistness` | `string` \| `null` | [src/types/index.ts:1268](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1268) |
+| <a id="volumetricmassdensity"></a> `volumetricMassDensity` | `number` \| `null` | [src/types/index.ts:1269](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1269) |

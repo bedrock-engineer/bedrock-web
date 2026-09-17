@@ -7,7 +7,7 @@ editUrl: false
 
 # Interface: HorizontalDeformationDataPoint
 
-Defined in: [src/types/index.ts:1247](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L1247)
+Defined in: [src/types/index.ts:1706](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1706)
 
 Shear stress measurement at specific deformation during horizontal shearing
 
@@ -15,8 +15,8 @@ Shear stress measurement at specific deformation during horizontal shearing
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="time"></a> `time` | `number` | [src/types/index.ts:1248](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L1248) |
-| <a id="horizontaldisplacement"></a> `horizontalDisplacement` | `number` | [src/types/index.ts:1249](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L1249) |
-| <a id="shearstress"></a> `shearStress` | `number` | [src/types/index.ts:1250](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L1250) |
-| <a id="verticalstress"></a> `verticalStress` | `number` | [src/types/index.ts:1251](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L1251) |
-| <a id="heightchange"></a> `heightChange?` | `number` \| `null` | [src/types/index.ts:1252](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L1252) |
+| <a id="time"></a> `time` | `number` | [src/types/index.ts:1707](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1707) |
+| <a id="horizontaldisplacement"></a> `horizontalDisplacement` | `number` | [src/types/index.ts:1708](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1708) |
+| <a id="shearstress"></a> `shearStress` | `number` | [src/types/index.ts:1709](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1709) |
+| <a id="verticalstress"></a> `verticalStress` | `number` | [src/types/index.ts:1710](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1710) |
+| <a id="heightchange"></a> `heightChange?` | `number` \| `null` | [src/types/index.ts:1711](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1711) |

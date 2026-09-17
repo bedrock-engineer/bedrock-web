@@ -7,7 +7,7 @@ editUrl: false
 
 # Interface: HeightAtSpecificConsolidationTime
 
-Defined in: [src/types/index.ts:1222](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L1222)
+Defined in: [src/types/index.ts:1681](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1681)
 
 Height measurement at specific time during consolidation in horizontal deformation test
 
@@ -15,5 +15,5 @@ Height measurement at specific time during consolidation in horizontal deformati
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="time"></a> `time` | `number` | [src/types/index.ts:1223](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L1223) |
-| <a id="height"></a> `height` | `number` | [src/types/index.ts:1224](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/95ea3eab423b3842a3b463ef5a462652d881db2e/src/types/index.ts#L1224) |
+| <a id="time"></a> `time` | `number` | [src/types/index.ts:1682](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1682) |
+| <a id="height"></a> `height` | `number` | [src/types/index.ts:1683](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1683) |
