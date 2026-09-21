@@ -11,6 +11,7 @@ export interface Props {
   iframe?: string;
   image?: ImageMetadata;
   imageAlt?: string;
+  badge?: string;
   class?: string;
   country?: string;
   type?: string[];
@@ -26,6 +27,7 @@ const {
   iframe,
   image,
   imageAlt,
+  badge,
   class: className,
   country,
   type,
@@ -47,6 +49,7 @@ const tagAttrs = id
 
 <div class={`demo-card ${className || ''}`} {...tagAttrs}>
   <div class="demo-card-media">
+    {badge && <span class="demo-card-badge badge" data-variant="solid">{badge}</span>}
     {
       iframe ? (
         <iframe
@@ -111,6 +114,15 @@ const tagAttrs = id
     overflow: hidden;
     background: var(--gray-3);
     position: relative;
+  }
+
+  /* Positioning only — pill styling comes from the global .badge utility. */
+  .demo-card-badge {
+    position: absolute;
+    top: var(--space-2xs);
+    left: var(--space-2xs);
+    z-index: 1;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
   }
 
   .demo-iframe {

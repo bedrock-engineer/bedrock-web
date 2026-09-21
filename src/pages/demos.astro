@@ -4,13 +4,18 @@ import Footer from "../components/Footer.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import DemoCard from "../components/DemoCard.astro";
 import Link from "../components/Link.astro";
-import { demos, demosById, availableTags, tagDimensions } from "../data/demos";
+import {
+  demoItems,
+  demosById,
+  availableTags,
+  tagDimensions,
+} from "../data/demos";
 import "../styles/custom.css";
 
 const title =
-  "Interactive Subsurface & BIM Demos - CesiumJS, GEF Viewer, IFC Georeferencer, Speckle | Bedrock.engineer";
+  "Interactive Subsurface & BIM Demos - CesiumJS, MapLibre, Speckle | Bedrock.engineer";
 const description =
-  "Explore examples of subsurface and BIM data in interactive visualizations and browser tools. See AGS4, GEF, BRO/XML, and IFC data in web application, CesiumJS 3D maps, or Speckle.";
+  "Explore examples of subsurface and BIM data in interactive visualizations. See AGS, BRO/XML, NetCDF, and CSV data in CesiumJS 3D maps, MapLibre, and Speckle.";
 
 const pageUrl = new URL("/demos", Astro.site);
 ---
@@ -46,7 +51,7 @@ const pageUrl = new URL("/demos", Astro.site);
       mainEntity: {
         "@type": "ItemList",
         name: "Ground Investigation Visualization Demos",
-        itemListElement: demos.map((demo, i) => ({
+        itemListElement: demoItems.map((demo, i) => ({
           "@type": "SoftwareApplication",
           position: i + 1,
           name: demo.title,
@@ -89,9 +94,9 @@ const pageUrl = new URL("/demos", Astro.site);
         <p class="subtitle">Subsurface and BIM Data Visualizations</p>
         <p class="paragraph-xl">
           Explore real-world examples of subsurface and BIM data across
-          different platforms and tools. See ground investigation data in
-          CesiumJS 3D maps and Speckle, and bridge Geo and BIM with browser
-          tools like the IFC Georeferencer.
+          different platforms. See ground investigation data in CesiumJS 3D
+          maps, MapLibre, and Speckle. For free browser apps you can run on your
+          own files, see our <a class="link" href="/tools">tools</a>.
         </p>
       </section>
     </header>
@@ -136,40 +141,6 @@ const pageUrl = new URL("/demos", Astro.site);
             </Fragment>
           </DemoCard>
 
-          <DemoCard {...demosById["bro-xml-viewer"]}>
-            <Fragment slot="description">
-              Free web-based viewer for BRO/XML (Basisregistratie Ondergrond)
-              files. Upload and visualize CPT, geotechnical borehole and lab
-              analysis, and geological borehole data directly in your browser.
-              Read more about <a class="link" href="/nl/bro-xml"
-                >what we build with BRO/XML</a
-              > (in Dutch).
-            </Fragment>
-          </DemoCard>
-
-          <DemoCard {...demosById["gef-viewer"]}>
-            <Fragment slot="description">
-              Free web-based viewer for GEF (Geotechnical Exchange Format)
-              files. Upload and visualize CPT & bore data directly in your
-              browser.
-            </Fragment>
-          </DemoCard>
-
-          <DemoCard {...demosById["ifc-georeferencer"]}>
-            <Fragment slot="description">
-              Georeference an IFC file entirely in your browser. Place the model
-              on a map or enter survey points, solve a Helmert transformation,
-              and download an IFC with correct <code>IfcMapConversion</code> and <code
-                >IfcProjectedCRS</code
-              > entities. Built for the <Link
-                href="https://www.buildingsmart.nl/projecten/georefereren-ifc"
-                >buildingSMART NL georeferencing guideline</Link
-              >. <Link href="https://github.com/bedrock-engineer/ifc-georeferencer"
-                >Source on GitHub</Link
-              >.
-            </Fragment>
-          </DemoCard>
-
           <DemoCard {...demosById["amsterdam-noord-cesium"]}>
             <Fragment slot="description">
               Interactive 3D web map showing interpreted Cone Penetration Test
@@ -180,8 +151,7 @@ const pageUrl = new URL("/demos", Astro.site);
 
           <DemoCard {...demosById["geotop-voxels-cesium"]}>
             <Fragment slot="description">
-              The Dutch GeoTOP shallow subsurface model visualized in 3D for the
-              first time in a browser. Explore 100×100×0.5 meter voxels
+              The Dutch GeoTOP shallow subsurface model visualized in 3D in a browser. Explore 100×100×0.5 meter voxels
               containing lithoclass information across Amsterdam, Delft, and
               Utrecht using CesiumJS with the 3D Tiles Voxel extension.
               <a href="/voxels" class="link">More about our voxel work →</a>
@@ -351,7 +321,7 @@ const pageUrl = new URL("/demos", Astro.site);
 
     function applyFilters() {
       const cards = document.querySelectorAll<HTMLElement>(
-        ".demo-card[data-demo-id]",
+        ".demos-grid .demo-card[data-demo-id]",
       );
       const chips = document.querySelectorAll<HTMLButtonElement>(".filter-chip");
       const resetBtn =

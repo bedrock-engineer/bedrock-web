@@ -16,7 +16,7 @@ export const ui = {
     voxels: {
       imageAlt: "GeoTOP geological voxel model in the browser",
       heading: "3D Voxel Models in the Browser",
-      body: "Explore geological models, groundwater grids, and mining block models interactively, without the need for specialist software or large downloads.",
+      body: "Explore geological models, groundwater grids, and mining block models interactively, without specialist software or large downloads.",
       badge: "Featured by Cesium",
       link: "See 3D Tiles Voxels",
     },
@@ -26,10 +26,10 @@ export const ui = {
         "Most geotechnical data sits in reports and bespoke file formats that only specialist software can open. We turn it into structured data, so you can see it in the browser, query it, rerun calculations on it, and script workflows with it.",
       subheading: "For example:",
       items: [
-        "Convert bespoke formats (AGS, GEF/CPT, gINT) into geospatial formats like GeoPackage or PostGIS databases",
-        "Build web applications for CPT data, engineering model visualization (Plaxis, Deltares D-Series), and interactive 3D maps",
-        "Integrate ground investigation data into digital twin platforms",
-        "Automate workflows connecting geotechnical data to QGIS, BIM tools, and databases",
+        "Convert borehole and CPT data from specialist-only formats (AGS, GEF, gINT) into open, queryable databases that work in QGIS, the browser, and your other tools",
+        "Build web apps that bring CPT data, analysis models (Plaxis, Deltares D-Series), and 3D maps into the browser",
+        "Integrate ground investigation data into your digital twin",
+        "Automate the data flow between QGIS, BIM tools, and databases, so no one moves files by hand",
       ],
       link: "Our services",
     },
@@ -68,7 +68,7 @@ export const ui = {
     demoTabs: {
       interactive: {
         label: "Interactive Visualization",
-        title: "We build web viewers for ground investigation data",
+        title: "We put your ground investigation data in the browser",
         p1: "Your project team and clients open boreholes, test results, and ground models straight in the browser, with nothing to install.",
         p2: "We build viewers like this around your data and workflows.",
         iframeTitle:
@@ -78,7 +78,7 @@ export const ui = {
       },
       geospatial: {
         label: "Geospatial Data Integration",
-        title: "We get your geotechnical data into the geospatial ecosystem",
+        title: "We get your geotechnical data into QGIS, ArcGIS, and Python",
         p1: "We convert ground investigation data to standard geospatial formats, so your team can use it in QGIS, ArcGIS, Python, and web maps.",
         p2: "Analysis, visualization, and automation happen in the tools your GIS colleagues and data scientists already know.",
         imgAlt: "Geotechnical data visualized in ArcGIS",
@@ -86,7 +86,7 @@ export const ui = {
       },
       cadBim: {
         label: "CAD & BIM Integration",
-        title: "We connect geotechnical data with structural and building models",
+        title: "We connect your geotechnical data with structural and building models",
         p1: "We bring geotechnical and structural models together in design software like Rhino3D and Civil3D, connect them through AEC platforms like Speckle, and feed ground data into digital twin platforms.",
         imgAlt: "Interactive 3D visualization of geotechnical data in Speckle",
         caption: "Kai Tak, Hong Kong 3D GI data visualization in",
@@ -113,7 +113,7 @@ export const ui = {
     voxels: {
       imageAlt: "GeoTOP geologisch voxelmodel in de browser",
       heading: "3D-voxelmodellen in de browser",
-      body: "Verken geologische & geotechnische of geohydrologische blogmodellen. Zonder downloads en specialistische software.",
+      body: "Verken geologische modellen, grondwatermodellen en mijnbouwblokmodellen interactief, zonder specialistische software of grote downloads.",
       badge: "Uitgelicht door Cesium",
       link: "Bekijk 3D Tiles-voxels",
     },
@@ -123,10 +123,10 @@ export const ui = {
         "De meeste geotechnische data zit in rapporten en bestandsformaten die alleen specialistische software kan openen. Wij zetten die om in gestructureerde data, zodat je die in de browser kunt bekijken, kunt bevragen, berekeningen opnieuw kunt uitvoeren en workflows kunt scripten.",
       subheading: "Bijvoorbeeld:",
       items: [
-        "Verouderde formaten (GEF, gINT) omzetten naar geospatiale formaten zoals GeoPackage of PostGIS-databases",
-        "Webapplicaties bouwen voor CPT-data, visualisatie van engineeringmodellen (Plaxis, Deltares D-Series) en interactieve 3D-kaarten",
-        "Grondonderzoeksdata integreren in digital twin-platforms",
-        "Workflows automatiseren die geotechnische data koppelen aan QGIS, BIM-tools en databases",
+        "Boor- en sonderingsdata uit specialistische formaten (GEF, gINT) omzetten naar open, doorzoekbare databases die werken in QGIS, de browser en je andere tools",
+        "Webapps bouwen die CPT-data, analysemodellen (Plaxis, Deltares D-Series) en 3D-kaarten in de browser brengen",
+        "Grondonderzoeksdata in je digital twin integreren, naast de rest van het asset",
+        "De datastroom tussen QGIS, BIM-tools en databases automatiseren, zodat niemand handmatig bestanden verplaatst",
       ],
       link: "Onze diensten",
     },
@@ -164,7 +164,7 @@ export const ui = {
     demoTabs: {
       interactive: {
         label: "Interactieve visualisatie",
-        title: "Wij bouwen webviewers voor grondonderzoeksdata",
+        title: "Wij zetten je grondonderzoeksdata in de browser",
         p1: "Je projectteam en opdrachtgevers bekijken boringen, testresultaten en grondmodellen direct in de browser, zonder iets te installeren.",
         p2: "Zulke viewers bouwen we rond jouw data en workflows.",
         iframeTitle:
@@ -174,7 +174,7 @@ export const ui = {
       },
       geospatial: {
         label: "Integratie van geospatiale data",
-        title: "Wij brengen je geotechnische data naar het geospatiale ecosysteem",
+        title: "Wij brengen je geotechnische data naar QGIS, ArcGIS en Python",
         p1: "We zetten grondonderzoeksdata om naar standaard geospatiale formaten, zodat je team ermee kan werken in QGIS, ArcGIS, Python en webkaarten.",
         p2: "Analyseren, visualiseren en automatiseren gebeurt in tools die je GIS-collega's en data scientists al kennen.",
         imgAlt: "Geotechnische data gevisualiseerd in ArcGIS",
@@ -182,7 +182,7 @@ export const ui = {
       },
       cadBim: {
         label: "CAD- & BIM-integratie",
-        title: "Wij verbinden geotechnische data met constructie- en gebouwmodellen",
+        title: "Wij verbinden je geotechnische data met constructie- en gebouwmodellen",
         p1: "We brengen geotechnische en constructieve modellen samen in ontwerpsoftware zoals Rhino3D en Civil3D, koppelen ze via AEC-platforms zoals Speckle, en voeden digital twin-platforms met je gronddata.",
         imgAlt: "Interactieve 3D-visualisatie van geotechnische data in Speckle",
         caption: "3D GI-datavisualisatie van Kai Tak, Hongkong in",

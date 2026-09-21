@@ -1,0 +1,172 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import DemoCard from "../components/DemoCard.astro";
+import Link from "../components/Link.astro";
+import { demosById, tools } from "../data/demos";
+import "../styles/custom.css";
+
+const title =
+  "Free Browser Tools for Geotechnical & BIM Data - GEF Viewer, BRO/XML Viewer, IFC Georeferencer | Bedrock.engineer";
+const description =
+  "Free web apps for geotechnical and BIM data. View GEF and BRO/XML CPT and borehole files, and georeference IFC models, all in your browser with nothing to install.";
+
+const pageUrl = new URL("/tools", Astro.site);
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <link rel="canonical" href={pageUrl} />
+
+    <meta property="og:site_name" content="Bedrock.engineer" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <meta name="author" content="Bedrock.engineer" />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+  </Fragment>
+
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: "Free Browser Tools for Geotechnical & BIM Data",
+      description:
+        "Free web apps for viewing geotechnical files and georeferencing IFC models in the browser",
+      url: pageUrl,
+      mainEntity: {
+        "@type": "ItemList",
+        name: "Free Geotechnical & BIM Browser Tools",
+        itemListElement: tools.map((tool, i) => ({
+          "@type": "SoftwareApplication",
+          position: i + 1,
+          name: tool.title,
+          description: tool.description,
+          applicationCategory: "WebApplication",
+          offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
+          ...(tool.href ? { url: tool.href } : {}),
+        })),
+      },
+    })}
+  />
+
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: Astro.site,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Tools",
+          item: pageUrl,
+        },
+      ],
+    })}
+  />
+
+  <Navbar />
+  <div class="page" data-pagefind-body data-pagefind-meta="category:Marketing">
+    <header class="section-wrapper texture-607">
+      <section class="section intro-section">
+        <h1 class="heading-1">Free Browser Tools</h1>
+        <p class="subtitle">Geotechnical and BIM data, in your browser</p>
+        <p class="paragraph-xl">
+          Open web apps for working with geotechnical and BIM files. Upload a
+          GEF or BRO/XML file to view CPTs and boreholes, or georeference an IFC
+          model. They run entirely in your browser, with nothing to install and
+          no account to create.
+        </p>
+      </section>
+    </header>
+
+    <div class="section-wrapper texture-616">
+      <section class="section">
+        <div class="grid-auto-fit">
+          <DemoCard {...demosById["bro-xml-viewer"]}>
+            <Fragment slot="description">
+              Free web-based viewer for BRO/XML (Basisregistratie Ondergrond)
+              files. Upload and visualize CPT, geotechnical borehole and lab
+              analysis, and geological borehole data directly in your browser.
+              Read more about <a class="link" href="/nl/bro-xml"
+                >what we build with BRO/XML</a
+              > (in Dutch).
+            </Fragment>
+          </DemoCard>
+
+          <DemoCard {...demosById["gef-viewer"]}>
+            <Fragment slot="description">
+              Free web-based viewer for GEF (Geotechnical Exchange Format)
+              files. Upload and visualize CPT & bore data directly in your
+              browser.
+            </Fragment>
+          </DemoCard>
+
+          <DemoCard
+            {...demosById["ifc-georeferencer"]}
+            badge="Built for buildingSMART NL"
+          >
+            <Fragment slot="description">
+              Georeference an IFC file entirely in your browser. Place the model
+              on a map or enter survey points, solve a Helmert transformation,
+              and download an IFC with correct <code>IfcMapConversion</code> and <code
+                >IfcProjectedCRS</code
+              > entities. Follows the <Link
+                href="https://www.buildingsmart.nl/projecten/georefereren-ifc"
+                >buildingSMART NL georeferencing guideline</Link
+              >. <Link href="https://github.com/bedrock-engineer/ifc-georeferencer"
+                >Source on GitHub</Link
+              >.
+            </Fragment>
+          </DemoCard>
+        </div>
+      </section>
+    </div>
+
+    <div class="section-wrapper texture-616">
+      <section class="section cta-section">
+        <h2
+          class="heading-2"
+          style="text-align: center; margin-block-end: 16px;"
+        >
+          Need a tool for your own data?
+        </h2>
+        <p
+          class="paragraph"
+          style="text-align: center; margin-block-end: 32px; color: var(--gray-11);"
+        >
+          We build custom web tools and viewers for subsurface and BIM data.
+        </p>
+        <div class="flex gap-4 justify-center flex-wrap">
+          <a
+            href="https://cal.com/bedrock.engineer"
+            class="cta-button"
+            target="_blank"
+          >
+            Schedule Discovery Call
+          </a>
+          <a href="/services" class="cta-button-secondary"> View Our Services </a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <Footer />
+</BaseLayout>

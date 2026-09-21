@@ -188,6 +188,27 @@ a {
   color: var(--color-primary-hover);
 }
 
+/* Small uppercase pill used for credits/trust markers ("Featured by Cesium",
+   "Built for buildingSMART NL"). Default is the subtle tinted variant; add
+   data-variant="solid" for a filled pill that stays legible over imagery. */
+.badge {
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25em 0.6em;
+  border-radius: 4px;
+  white-space: nowrap;
+  background: var(--green-3);
+  color: var(--green-11);
+}
+
+.badge[data-variant="solid"] {
+  background: var(--green-9);
+  color: #fff;
+}
+
 /* Tailwind Preflight strips list markers and padding; restore them for prose
    lists at any nesting depth. Starlight's <Steps> (.sl-steps) draws its own
    counters and stays excluded. */

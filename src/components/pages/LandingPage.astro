@@ -82,7 +82,7 @@ const { t } = Astro.props;
         <div class="voxel-callout-text">
           <h2 class="heading-3">{t.voxels.heading}</h2>
           <p>{t.voxels.body}</p>
-          <span class="cesium-badge">{t.voxels.badge}</span>
+          <span class="badge">{t.voxels.badge}</span>
           <span class="section-link">{t.voxels.link} →</span>
         </div>
       </a>
@@ -406,16 +406,9 @@ const { t } = Astro.props;
     }
   }
 
-  .cesium-badge {
-    font-size: var(--text-xs);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0.2em 0.6em;
-    background: var(--green-3);
-    color: var(--green-11);
-    border-radius: var(--border-radius-sm);
-    width: fit-content;
+  /* Keep the shared .badge from stretching in the flex column. */
+  .voxel-callout-text :global(.badge) {
+    align-self: flex-start;
   }
 
   .services-list {
