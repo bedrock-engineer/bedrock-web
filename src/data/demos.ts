@@ -17,10 +17,18 @@ import amsterdamSpeckle from "../assets/amsterdam-noord-speckle.png";
 import wekaHills from "../assets/WekaHills_Speckle.webp";
 import zalmhaven from "../assets/zalmhaven.jpeg";
 import ifcGeoreferencer from "../assets/ifc-georeferencer.png";
+import tnw from "../assets/tnw.png";
 
 export type Country = "NL" | "UK" | "HK" | "NO" | "NZ" | "BE";
 export type DemoType = "BIM" | "GIS" | "Web app";
-export type SourceData = "BRO-XML" | "GEF" | "AGS" | "CSV" | "NetCDF" | "IFC";
+export type SourceData =
+  | "BRO-XML"
+  | "GEF"
+  | "AGS"
+  | "CSV"
+  | "NetCDF"
+  | "SEG-Y"
+  | "IFC";
 export type GroundModel =
   | "Voxel"
   | "Mesh"
@@ -148,6 +156,22 @@ export const demos: Demo[] = [
     gm: ["Voxel", "Geological"],
   },
   {
+    id: "tnw-cesium",
+    title: "Ten noorden van de Waddeneilanden - CesiumJS",
+    description:
+      "The integrated ground model for Ten noorden van de Waddeneilanden, an offshore wind zone north of the Wadden Islands, rendered as 3D Tiles Voxels in CesiumJS. Geological units on a 25×25×0.1 m grid, from the quantitative ground model built by NGI and SAND Geophysics for the Netherlands Enterprise Agency (RVO).",
+    category: "demo",
+    href: "https://tnw.bedrock.engineer",
+    linkText: "Explore demo",
+    image: tnw,
+    imageAlt:
+      "Ten noorden van de Waddeneilanden ground model as 3D voxels in CesiumJS",
+    country: "NL",
+    type: ["Web app", "GIS"],
+    sourceData: ["SEG-Y"],
+    gm: ["Voxel", "Geological"],
+  },
+  {
     id: "bro-cpt-maplibre",
     title: "Dutch BRO CPTs - MapLibre GL & PMTiles",
     description:
@@ -256,6 +280,7 @@ const canonicalOrder = {
     "AGS",
     "CSV",
     "NetCDF",
+    "SEG-Y",
     "IFC",
   ] satisfies SourceData[],
   gm: [
