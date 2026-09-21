@@ -7,7 +7,7 @@ editUrl: false
 
 # Class: BROParser
 
-Defined in: [src/parser.ts:48](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/parser.ts#L48)
+Defined in: [src/parser.ts:53](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/parser.ts#L53)
 
 Main BRO Parser class
 
@@ -32,7 +32,7 @@ if (cptData.meta.warnings.length > 0) {
 new BROParser(adapter, namespaces?): BROParser;
 ```
 
-Defined in: [src/parser.ts:58](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/parser.ts#L58)
+Defined in: [src/parser.ts:63](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/parser.ts#L63)
 
 Create a BRO parser instance
 
@@ -55,7 +55,7 @@ Create a BRO parser instance
 parseCPT(xmlText): CPTData;
 ```
 
-Defined in: [src/parser.ts:102](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/parser.ts#L102)
+Defined in: [src/parser.ts:107](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/parser.ts#L107)
 
 Parse CPT data from BRO/XML string
 
@@ -99,7 +99,7 @@ console.log(cptData.meta.schemaVersion);   // "1.1"
 parseBHRGT(xmlText): BHRGTData;
 ```
 
-Defined in: [src/parser.ts:135](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/parser.ts#L135)
+Defined in: [src/parser.ts:141](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/parser.ts#L141)
 
 Parse Bore (borehole) data from BRO/XML string
 
@@ -143,7 +143,7 @@ console.log(BHRGTData.meta.schemaVersion);  // "2.1"
 parseBHRG(xmlText): BHRGData;
 ```
 
-Defined in: [src/parser.ts:168](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/parser.ts#L168)
+Defined in: [src/parser.ts:175](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/parser.ts#L175)
 
 Parse BHR-G (Geological Borehole) data from BRO/XML string
 
@@ -181,13 +181,104 @@ console.log(BHRGData.meta.schemaVersion);  // "3.1"
 
 ***
 
+### parseGMW()
+
+```ts
+parseGMW(xmlText): GMWData;
+```
+
+Defined in: [src/parser.ts:209](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/parser.ts#L209)
+
+Parse GMW (groundwater monitoring well) data from BRO/XML string
+
+Extracts well metadata and its monitoring tubes following the IMBRO GMW
+schema (dsgmw/1.1). Works on the public dispatch document (`GMW_PPO`) as
+well as the `GMW_PO` / `GMW_O` variants, which share one leaf surface.
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `xmlText` | `string` | BRO/XML document as string |
+
+#### Returns
+
+[`GMWData`](/docs/bro-xml-parser/reference/api/gmw/gmwdata/)
+
+Parsed GMW data with metadata and monitoring tubes
+
+#### Throws
+
+If parsing fails or required fields are missing
+
+#### Example
+
+```typescript
+const parser = new BROParser(new XMLAdapter());
+const gmw = parser.parseGMW(xmlString);
+
+console.log(gmw.broId);                         // "GMW000000048066"
+console.log(gmw.numberOfMonitoringTubes);       // 1
+console.log(gmw.monitoringTubes[0].screenLength); // 1.0
+console.log(gmw.meta.schemaVersion);            // "1.1"
+```
+
+***
+
+### parseGLD()
+
+```ts
+parseGLD(xmlText): GLDData;
+```
+
+Defined in: [src/parser.ts:246](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/parser.ts#L246)
+
+Parse GLD (groundwater level research) data from BRO/XML string
+
+Extracts the monitoring-point reference, monitoring-net membership and the
+groundwater level observation time-series following the IMBRO GLD schema
+(dsgld/1.0).
+
+Note: full GLD dispatch documents can be very large (years of time-series
+measurements). Consider requesting a bounded observation period from the BRO
+REST API before parsing.
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `xmlText` | `string` | BRO/XML document as string |
+
+#### Returns
+
+[`GLDData`](/docs/bro-xml-parser/reference/api/gld/glddata/)
+
+Parsed GLD data with metadata and observation series
+
+#### Throws
+
+If parsing fails or required fields are missing
+
+#### Example
+
+```typescript
+const parser = new BROParser(new XMLAdapter());
+const gld = parser.parseGLD(xmlString);
+
+console.log(gld.broId);                       // "GLD000000010000"
+console.log(gld.monitoringPoint?.broId);      // "GMW000000020142"
+console.log(gld.observations[0].points.length); // 8760
+```
+
+***
+
 ### parse()
 
 ```ts
 parse(xmlText): BROData;
 ```
 
-Defined in: [src/parser.ts:207](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/parser.ts#L207)
+Defined in: [src/parser.ts:286](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/parser.ts#L286)
 
 Parse any BRO XML document, auto-detecting the data type
 
@@ -234,56 +325,62 @@ switch (data.meta.dataType) {
 ### parseCustom()
 
 ```ts
-parseCustom(
+parseCustom<F>(
    xmlText, 
-   schema, 
+   fields, 
    dataType?
-): Record<string, unknown> & object;
+): { [K in string | number | symbol]: ({ [K in string | number | symbol]: Produced<F[K]> } & { [K in string | number | symbol]?: Produced<F[K]> })[K] } & object;
 ```
 
-Defined in: [src/parser.ts:261](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/parser.ts#L261)
+Defined in: [src/parser.ts:344](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/parser.ts#L344)
 
 Parse BRO XML with a custom schema for selective extraction
 
 This allows you to extract only the fields you need, which can be
 more efficient and gives you full control over the output structure.
 
+Pass a bare map of field name → [Producer](/docs/bro-xml-parser/reference/api/general/producer/), built from the `producers`
+authoring surface. The return type is inferred from the map: each field's
+type is its producer's output type, plus a `meta` block. Author the map as
+an inline literal (or with `satisfies Record<string, Producer<unknown>>`) so
+the field types are preserved for inference.
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `F` *extends* `Record`\<`string`, [`Producer`](/docs/bro-xml-parser/reference/api/general/producer/)\<`unknown`, `Presence`\>\> |
+
 #### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `xmlText` | `string` | BRO/XML document as string |
-| `schema` | [`Schema`](/docs/bro-xml-parser/reference/api/general/schema/) | Custom schema defining fields to extract |
+| `fields` | `F` | Field name → producer map defining what to extract |
 | `dataType?` | [`BROFileType`](/docs/bro-xml-parser/reference/api/general/brofiletype/) | The BRO data type (for version validation) |
 
 #### Returns
 
-`Record`\<`string`, `unknown`\> & `object`
+\{ \[K in string \| number \| symbol\]: (\{ \[K in string \| number \| symbol\]: Produced\<F\[K\]\> \} & \{ \[K in string \| number \| symbol\]?: Produced\<F\[K\]\> \})\[K\] \} & `object`
 
-Object with extracted fields matching your schema
+Object with extracted fields matching your map, plus `meta`
 
 #### Example
 
 ```typescript
-import { BROParser, resolvers } from '@bedrock-engineer/bro-xml-parser';
+import { BROParser, producers as p } from '@bedrock-engineer/bro-xml-parser';
 
 const parser = new BROParser(new XMLAdapter());
 
 // Define only the fields you need
-const mySchema = {
-  id: { xpath: 'brocom:broId' },
-  depth: {
-    xpath: './/cptcommon:finalDepth',
-    resolver: resolvers.parseFloat
-  },
-  location: {
-    xpath: './dscpt:deliveredLocation/cptcommon:location',
-    resolver: resolvers.parseGMLLocation
-  }
-};
+const result = parser.parseCustom(xmlText, {
+  id: p.text('brocom:broId'),                                       // string | null
+  depth: p.number_('./dscpt:conePenetrometerSurvey/cptcommon:trajectory/cptcommon:finalDepth'),
+  location: p.gmlLocation('./dscpt:deliveredLocation/cptcommon:location'),
+}, 'CPT');
 
-const result = parser.parseCustom(xmlText, mySchema, 'CPT');
-// { id: "CPT000000099543", depth: 25.5, location: { x: 155000, y: 463000, epsg: "EPSG:28992" } }
+result.depth;    // number | null — inferred, no casts
+result.location; // Location | null
 ```
 
 ***
@@ -294,7 +391,7 @@ const result = parser.parseCustom(xmlText, mySchema, 'CPT');
 getAdapter(): XMLAdapter;
 ```
 
-Defined in: [src/parser.ts:298](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/parser.ts#L298)
+Defined in: [src/parser.ts:382](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/parser.ts#L382)
 
 Get the underlying XML adapter
 (useful for advanced use cases or testing)

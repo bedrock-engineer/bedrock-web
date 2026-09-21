@@ -11,10 +11,12 @@ editUrl: false
 type BROData = 
   | CPTData
   | BHRGTData
-  | BHRGData;
+  | BHRGData
+  | GMWData
+  | GLDData;
 ```
 
-Defined in: [src/types/index.ts:1813](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L1813)
+Defined in: [src/types/index.ts:179](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/types/index.ts#L179)
 
 Union type for all BRO data types
 

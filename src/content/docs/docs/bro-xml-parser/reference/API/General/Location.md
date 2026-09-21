@@ -7,7 +7,7 @@ editUrl: false
 
 # Interface: Location
 
-Defined in: [src/types/index.ts:100](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L100)
+Defined in: [src/types/index.ts:80](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/types/index.ts#L80)
 
 Geographic location with coordinates and EPSG code
 
@@ -15,6 +15,6 @@ Geographic location with coordinates and EPSG code
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="x"></a> `x` | `number` | [src/types/index.ts:101](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L101) |
-| <a id="y"></a> `y` | `number` | [src/types/index.ts:102](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L102) |
-| <a id="epsg"></a> `epsg` | `string` | [src/types/index.ts:103](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L103) |
+| <a id="x"></a> `x` | `number` | [src/types/index.ts:81](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/types/index.ts#L81) |
+| <a id="y"></a> `y` | `number` | [src/types/index.ts:82](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/types/index.ts#L82) |
+| <a id="epsg"></a> `epsg` | `string` | [src/types/index.ts:83](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/types/index.ts#L83) |

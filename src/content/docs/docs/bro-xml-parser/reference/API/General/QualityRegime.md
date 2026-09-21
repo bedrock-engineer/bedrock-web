@@ -11,7 +11,7 @@ editUrl: false
 type QualityRegime = "IMBRO" | "IMBRO/A";
 ```
 
-Defined in: [src/types/index.ts:95](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/types/index.ts#L95)
+Defined in: [src/types/index.ts:75](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/types/index.ts#L75)
 
 BRO quality regime
 

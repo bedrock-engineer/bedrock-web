@@ -13,7 +13,7 @@ editUrl: false
 function getSoilColor(colorName): string | null;
 ```
 
-Defined in: [src/colors.ts:108](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/colors.ts#L108)
+Defined in: [src/colors.ts:108](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/colors.ts#L108)
 
 Get the hex color for a BRO soil color name.
 
@@ -43,7 +43,7 @@ getSoilColor('unknown');    // null
 function getSoilColor(colorName, defaultColor): string;
 ```
 
-Defined in: [src/colors.ts:121](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/e6595ec0e9918a1b3eb6a4035da013950da8f382/src/colors.ts#L121)
+Defined in: [src/colors.ts:121](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/colors.ts#L121)
 
 Get the hex color for a BRO soil color name, falling back to a default.
 
