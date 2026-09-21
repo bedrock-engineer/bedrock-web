@@ -6,8 +6,10 @@ import Link from './Link.astro';
 export interface Props {
   id?: string;
   title: string;
+  description?: string;
   href?: string;
   linkText?: string;
+  links?: { href: string; label: string }[];
   iframe?: string;
   image?: ImageMetadata;
   imageAlt?: string;
@@ -22,8 +24,10 @@ export interface Props {
 const {
   id,
   title,
+  description,
   href,
   linkText,
+  links,
   iframe,
   image,
   imageAlt,
@@ -70,9 +74,7 @@ const tagAttrs = id
   </div>
   <div class="demo-card-content">
     <h3 class="demo-card-title">{title}</h3>
-    <div class="demo-card-description">
-      <slot name="description" />
-    </div>
+    {description && <p class="demo-card-description">{description}</p>}
     {
       href && linkText && (
         <Link href={href} variant="arrow" class="demo-link">
@@ -80,7 +82,17 @@ const tagAttrs = id
         </Link>
       )
     }
-    <slot />
+    {
+      links && links.length > 0 && (
+        <div class="demo-card-links">
+          {links.map((link) => (
+            <Link href={link.href} variant="arrow">
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      )
+    }
   </div>
 </div>
 
@@ -168,14 +180,14 @@ const tagAttrs = id
     line-height: var(--leading-normal);
     color: var(--gray-12);
     flex-grow: 1;
-  }
-
-  .demo-card-description :global(p) {
     margin: 0;
   }
 
-  .demo-card-description :global(p:not(:last-child)) {
-    margin-bottom: 0.75em;
+  .demo-card-links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: var(--space-2xs);
   }
 
   :global(.demo-card .demo-link) {

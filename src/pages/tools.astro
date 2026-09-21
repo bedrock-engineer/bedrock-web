@@ -3,8 +3,7 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import DemoCard from "../components/DemoCard.astro";
-import Link from "../components/Link.astro";
-import { demosById, tools } from "../data/demos";
+import { tools } from "../data/demos";
 import "../styles/custom.css";
 
 const title =
@@ -100,42 +99,7 @@ const pageUrl = new URL("/tools", Astro.site);
     <div class="section-wrapper texture-616">
       <section class="section">
         <div class="grid-auto-fit">
-          <DemoCard {...demosById["bro-xml-viewer"]}>
-            <Fragment slot="description">
-              Free web-based viewer for BRO/XML (Basisregistratie Ondergrond)
-              files. Upload and visualize CPT, geotechnical borehole and lab
-              analysis, and geological borehole data directly in your browser.
-              Read more about <a class="link" href="/nl/bro-xml"
-                >what we build with BRO/XML</a
-              > (in Dutch).
-            </Fragment>
-          </DemoCard>
-
-          <DemoCard {...demosById["gef-viewer"]}>
-            <Fragment slot="description">
-              Free web-based viewer for GEF (Geotechnical Exchange Format)
-              files. Upload and visualize CPT & bore data directly in your
-              browser.
-            </Fragment>
-          </DemoCard>
-
-          <DemoCard
-            {...demosById["ifc-georeferencer"]}
-            badge="Built for buildingSMART NL"
-          >
-            <Fragment slot="description">
-              Georeference an IFC file entirely in your browser. Place the model
-              on a map or enter survey points, solve a Helmert transformation,
-              and download an IFC with correct <code>IfcMapConversion</code> and <code
-                >IfcProjectedCRS</code
-              > entities. Follows the <Link
-                href="https://www.buildingsmart.nl/projecten/georefereren-ifc"
-                >buildingSMART NL georeferencing guideline</Link
-              >. <Link href="https://github.com/bedrock-engineer/ifc-georeferencer"
-                >Source on GitHub</Link
-              >.
-            </Fragment>
-          </DemoCard>
+          {tools.map((tool) => <DemoCard {...tool} />)}
         </div>
       </section>
     </div>

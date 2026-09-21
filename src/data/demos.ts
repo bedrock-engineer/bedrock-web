@@ -41,6 +41,11 @@ export type GroundModel =
 // "tool" = a free, usable browser app; "demo" = an example visualization of our work.
 export type Category = "tool" | "demo";
 
+export interface DemoLink {
+  href: string;
+  label: string;
+}
+
 export interface Demo {
   id: string;
   title: string;
@@ -50,6 +55,8 @@ export interface Demo {
   linkText?: string;
   image: ImageMetadata;
   imageAlt?: string;
+  badge?: string;
+  links?: DemoLink[];
   country?: Country;
   type: DemoType[];
   sourceData: SourceData[];
@@ -79,6 +86,7 @@ export const demos: Demo[] = [
     category: "tool",
     href: "https://bro.bedrock.engineer",
     linkText: "Open BRO/XML viewer",
+    links: [{ href: "/nl/bro-xml", label: "What we build with BRO/XML (Dutch)" }],
     image: broXmlApp,
     country: "NL",
     type: ["Web app"],
@@ -103,10 +111,21 @@ export const demos: Demo[] = [
     id: "ifc-georeferencer",
     title: "IFC Georeferencer",
     description:
-      "Georeference an IFC file intuitively in your browser. Place the model on a map or enter survey points, solve a Helmert transformation, and download an IFC with correct IfcMapConversion and IfcProjectedCRS entities. Built for buildingSMART NL.",
+      "Georeference an IFC file in your browser. Place the model on a map or enter survey points, solve a Helmert transformation, and download an IFC with correct IfcMapConversion and IfcProjectedCRS entities.",
     category: "tool",
     href: "https://geo.buildingsmart.nl",
     linkText: "Open IFC Georeferencer",
+    badge: "Built for buildingSMART NL",
+    links: [
+      {
+        href: "https://www.buildingsmart.nl/projecten/georefereren-ifc",
+        label: "buildingSMART NL georeferencing guideline",
+      },
+      {
+        href: "https://github.com/bedrock-engineer/ifc-georeferencer",
+        label: "Source on GitHub",
+      },
+    ],
     image: ifcGeoreferencer,
     imageAlt: "IFC model placed on a map in the IFC Georeferencer browser tool",
     type: ["Web app", "BIM"],
@@ -135,6 +154,7 @@ export const demos: Demo[] = [
     category: "demo",
     href: "https://geotop.bedrock.engineer",
     linkText: "Explore demo",
+    links: [{ href: "/voxels", label: "More about our voxel work" }],
     image: geotop,
     country: "NL",
     type: ["Web app", "GIS"],
@@ -163,6 +183,12 @@ export const demos: Demo[] = [
     category: "demo",
     href: "https://tnw.bedrock.engineer",
     linkText: "Explore demo",
+    links: [
+      {
+        href: "https://offshorewind.rvo.nl/page/view/be898bea-672f-464c-bfaf-74666cb8c489/soil-tnw",
+        label: "Source ground model (RVO)",
+      },
+    ],
     image: tnw,
     imageAlt:
       "Ten noorden van de Waddeneilanden ground model as 3D voxels in CesiumJS",
@@ -193,6 +219,12 @@ export const demos: Demo[] = [
     category: "demo",
     href: "https://emerald-sensitive-clay.bedrock.engineer/",
     linkText: "Explore demo",
+    links: [
+      {
+        href: "https://www.emerald-geomodelling.com/",
+        label: "Emerald Geomodelling",
+      },
+    ],
     image: emeraldFre16,
     imageAlt:
       "Emerald FRE16 sensitive clay probability overlay on Norwegian terrain in CesiumJS",
@@ -252,6 +284,20 @@ export const demos: Demo[] = [
     description:
       "Prominent Rotterdam buildings (Zalmhaven, Maastoren, Blaak/Markthal) shown in Speckle with their foundations and the GeoTOP voxel model — the first 50 m of Dutch subsurface as 100×100×0.5 m voxels with lithoclass and lithology information.",
     category: "demo",
+    links: [
+      {
+        href: "https://app.speckle.systems/projects/adc3bec4c0/models/$zalmhaven",
+        label: "De Zalmhaven",
+      },
+      {
+        href: "https://app.speckle.systems/projects/adc3bec4c0/models/$maastoren",
+        label: "Maastoren",
+      },
+      {
+        href: "https://app.speckle.systems/projects/adc3bec4c0/models/$blaak-markthal",
+        label: "Blaak / Markthal",
+      },
+    ],
     image: zalmhaven,
     imageAlt:
       "Building model of the De Zalmhaven along with foundation and GeoTOP voxel model in Speckle",
