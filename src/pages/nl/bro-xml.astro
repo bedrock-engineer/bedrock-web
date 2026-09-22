@@ -19,17 +19,12 @@ const faq = [
   {
     question: "Wat is BRO/XML?",
     answer:
-      "IMBRO/XML is het uitwisselformaat van de Basisregistratie Ondergrond (BRO), de opvolger van GEF voor sondeer- en boordata in Nederland. De BRO bevat veel soorten ondergrondgegevens; wij richten ons op de geotechnische registratieobjecten: sonderingen (CPT) en boringen (BHR-GT, BHR-G).",
+      "IMBRO/XML is het uitwisselformaat van de Basisregistratie Ondergrond (BRO). De BRO bevat veel soorten ondergrondgegevens; wij richten ons op de geotechnische registratieobjecten: sonderingen (CPT) en boringen (BHR-GT, BHR-G).",
   },
   {
     question: "Is er een gratis manier om BRO/XML-bestanden te bekijken?",
     answer:
-      "Ja, onze BRO/XML viewer op bro.bedrock.engineer — gratis, open source, en je bestanden verlaten je browser niet.",
-  },
-  {
-    question: "Kan ik een CPT XML-bestand omzetten naar CSV?",
-    answer:
-      "Ja, in de viewer: upload het bestand en download de meetdata als CSV of JSON. Locaties van meerdere bestanden kun je downloaden als GeoJSON.",
+      "Ja, onze BRO/XML viewer op bro.bedrock.engineer, gratis, open source, en je bestanden verlaten je browser niet.",
   },
   {
     question: "Kan ik jullie parser in eigen software gebruiken?",
@@ -115,7 +110,7 @@ const faq = [
               Onze gratis viewer opent sonderingen (CPT), geotechnische en
               geologische boringen (BHR-GT, BHR-G) en boormonsteranalyses direct
               in je browser — of laadt ze via de kaart rechtstreeks uit de BRO.
-              Exporteer naar CSV, GeoJSON of PNG.
+              Exporteer naar data CSV of GeoJSON en grafieken naar SVG of PNG.
             </Fragment>
           </DemoCard>
 
@@ -137,7 +132,7 @@ const faq = [
           De viewer draait op onze open-source TypeScript-library{" "}
           <a
             class="link"
-            href="https://www.npmjs.com/package/@bedrock-engineer/bro-xml-parser"
+            href="https://bedrock.engineer/docs/bro-xml-parser/getting-started/"
           >
             <code>@bedrock-engineer/bro-xml-parser </code>
           </a>{" "}
