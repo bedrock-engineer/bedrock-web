@@ -11,7 +11,7 @@ editUrl: false
 type CPTData = object & Produced<typeof CPT_PRODUCER>;
 ```
 
-Defined in: [src/types/index.ts:147](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/types/index.ts#L147)
+Defined in: [src/types/index.ts:149](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L149)
 
 Complete CPT data (metadata + measurements).
 
@@ -22,5 +22,6 @@ user-set `alias` are the only fields not produced from the XML.
 
 | Name | Type | Defined in |
 | ------ | ------ | ------ |
-| `meta` | [`ParseMeta`](/docs/bro-xml-parser/reference/api/general/parsemeta/) | [src/types/index.ts:147](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/types/index.ts#L147) |
-| `alias?` | `string` | [src/types/index.ts:147](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/types/index.ts#L147) |
+| `dataType` | `"CPT"` | [src/types/index.ts:149](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L149) |
+| `meta` | [`ParseMeta`](/docs/bro-xml-parser/reference/api/general/parsemeta/)\<`"CPT"`\> | [src/types/index.ts:149](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L149) |
+| `alias?` | `string` | [src/types/index.ts:149](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L149) |

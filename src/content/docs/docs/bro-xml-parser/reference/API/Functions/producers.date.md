@@ -11,7 +11,7 @@ editUrl: false
 function date<P>(at?, opts?): ScalarProducer<string | null, P>;
 ```
 
-Defined in: [src/core/producer.ts:202](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/core/producer.ts#L202)
+Defined in: [src/core/producer.ts:253](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/producer.ts#L253)
 
 Precision-preserving ISO date/dateTime string (`string | null`).
 

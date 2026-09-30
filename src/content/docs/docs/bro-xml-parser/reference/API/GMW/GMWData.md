@@ -11,7 +11,7 @@ editUrl: false
 type GMWData = object & Produced<typeof GMW_PRODUCER>;
 ```
 
-Defined in: [src/types/index.ts:210](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/types/index.ts#L210)
+Defined in: [src/types/index.ts:251](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L251)
 
 Complete GMW (groundwater monitoring well) data.
 
@@ -24,5 +24,6 @@ from the XML.
 
 | Name | Type | Defined in |
 | ------ | ------ | ------ |
-| `meta` | [`ParseMeta`](/docs/bro-xml-parser/reference/api/general/parsemeta/) | [src/types/index.ts:210](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/types/index.ts#L210) |
-| `alias?` | `string` | [src/types/index.ts:210](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/types/index.ts#L210) |
+| `dataType` | `"GMW"` | [src/types/index.ts:251](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L251) |
+| `meta` | [`ParseMeta`](/docs/bro-xml-parser/reference/api/general/parsemeta/)\<`"GMW"`\> | [src/types/index.ts:251](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L251) |
+| `alias?` | `string` | [src/types/index.ts:251](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L251) |

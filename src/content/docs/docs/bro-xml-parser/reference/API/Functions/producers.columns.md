@@ -15,7 +15,7 @@ function columns<Spec>(
 ): CustomProducer<{ [K in string]: { [S in ColumnSpec<string, unknown> as S["name"]]: ReturnType<S["parse"]> }[K] }[]>;
 ```
 
-Defined in: [src/core/columns.ts:142](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/core/columns.ts#L142)
+Defined in: [src/core/columns.ts:142](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/columns.ts#L142)
 
 A [Producer](/docs/bro-xml-parser/reference/api/general/producer/) that reads the CSV text at `valuesAt` (relative to the
 enclosing node) and decodes it with `decodeColumns`. Yields `[]` when the

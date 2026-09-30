@@ -8,10 +8,10 @@ editUrl: false
 # Function: oneOf()
 
 ```ts
-function oneOf<TagKey, Base, Branches, P>(opts): OneOfProducer<OneOfOut<TagKey, Base, Branches>, P>;
+function oneOf<TagKey, Base, Branches, P>(opts): OneOfProducer<OneOfOut<TagKey, Base, Branches>, P> & object;
 ```
 
-Defined in: [src/core/producer.ts:294](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/core/producer.ts#L294)
+Defined in: [src/core/producer.ts:370](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/producer.ts#L370)
 
 An honest discriminated union. `base` fields are parsed once; the first branch
 whose `when` XPath exists is parsed and merged, with its literal `tag` written
@@ -38,4 +38,4 @@ literal `tag`. Presence is honoured throughout (`omit` → optional key).
 
 ## Returns
 
-`OneOfProducer`\<`OneOfOut`\<`TagKey`, `Base`, `Branches`\>, `P`\>
+`OneOfProducer`\<`OneOfOut`\<`TagKey`, `Base`, `Branches`\>, `P`\> & `object`

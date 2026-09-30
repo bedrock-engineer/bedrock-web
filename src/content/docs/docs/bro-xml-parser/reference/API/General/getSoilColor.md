@@ -10,58 +10,58 @@ editUrl: false
 ## Call Signature
 
 ```ts
-function getSoilColor(colorName): string | null;
+function getSoilColor(colour): string | null;
 ```
 
-Defined in: [src/colors.ts:108](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/colors.ts#L108)
+Defined in: [src/colors.ts:110](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/colors.ts#L110)
 
-Get the hex color for a BRO soil color name.
+Get the hex color for a BRO soil colour code.
 
 ### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `colorName` | `string` | BRO color name (e.g., "lichtBruin", "donkerGrijs") |
+| `colour` | [`Coded`](/docs/bro-xml-parser/reference/api/general/coded/) \| `null` \| `undefined` | A coded colour value (e.g. `layer.colour`), or `null`/`undefined` |
 
 ### Returns
 
 `string` \| `null`
 
-Hex color string, or `null` if the name is not found
+Hex color string, or `null` if the code is absent or not recognised
 
 ### Example
 
 ```typescript
-getSoilColor('lichtBruin'); // '#b79a77'
-getSoilColor('LICHTBRUIN'); // '#b79a77' (case-insensitive)
-getSoilColor('unknown');    // null
+getSoilColor(layer.colour);                       // '#b79a77'
+getSoilColor({ code: 'lichtBruin', codeSpace }); // '#b79a77'
+getSoilColor(null);                               // null
 ```
 
 ## Call Signature
 
 ```ts
-function getSoilColor(colorName, defaultColor): string;
+function getSoilColor(colour, defaultColor): string;
 ```
 
-Defined in: [src/colors.ts:121](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/colors.ts#L121)
+Defined in: [src/colors.ts:123](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/colors.ts#L123)
 
-Get the hex color for a BRO soil color name, falling back to a default.
+Get the hex color for a BRO soil colour code, falling back to a default.
 
 ### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `colorName` | `string` | BRO color name (e.g., "lichtBruin", "donkerGrijs") |
-| `defaultColor` | `string` | Fallback color returned when the name is not found |
+| `colour` | [`Coded`](/docs/bro-xml-parser/reference/api/general/coded/) \| `null` \| `undefined` | A coded colour value, or `null`/`undefined` |
+| `defaultColor` | `string` | Fallback color returned when the code is absent or unknown |
 
 ### Returns
 
 `string`
 
-Hex color string, or `defaultColor` if the name is not found
+Hex color string, or `defaultColor` if the code is absent or unknown
 
 ### Example
 
 ```typescript
-getSoilColor('unknown', '#808080'); // '#808080'
+getSoilColor(null, '#808080'); // '#808080'
 ```

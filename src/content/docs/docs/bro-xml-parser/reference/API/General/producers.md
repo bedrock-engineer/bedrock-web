@@ -13,11 +13,11 @@ editUrl: false
 - [scalar](/docs/bro-xml-parser/reference/api/functions/producersscalar/)
 - [text](/docs/bro-xml-parser/reference/api/functions/producerstext/)
 - [date](/docs/bro-xml-parser/reference/api/functions/producersdate/)
-- [number\_](/docs/bro-xml-parser/reference/api/functions/producersnumber_/)
+- [number](/docs/bro-xml-parser/reference/api/functions/producersnumber/)
 - [integer](/docs/bro-xml-parser/reference/api/functions/producersinteger/)
-- [boolean\_](/docs/bro-xml-parser/reference/api/functions/producersboolean_/)
-- [qualityClass](/docs/bro-xml-parser/reference/api/functions/producersqualityclass/)
-- [object\_](/docs/bro-xml-parser/reference/api/functions/producersobject_/)
+- [boolean](/docs/bro-xml-parser/reference/api/functions/producersboolean/)
+- [code](/docs/bro-xml-parser/reference/api/functions/producerscode/)
+- [object](/docs/bro-xml-parser/reference/api/functions/producersobject/)
 - [array](/docs/bro-xml-parser/reference/api/functions/producersarray/)
 - [custom](/docs/bro-xml-parser/reference/api/functions/producerscustom/)
 - [oneOf](/docs/bro-xml-parser/reference/api/functions/producersoneof/)
@@ -26,6 +26,12 @@ editUrl: false
 ## Interfaces
 
 - [ColumnSpec](/docs/bro-xml-parser/reference/api/interfaces/producerscolumnspec/)
+
+## References
+
+### Coded
+
+Re-exports [Coded](/docs/bro-xml-parser/reference/api/general/coded/)
 
 ## Type Aliases
 

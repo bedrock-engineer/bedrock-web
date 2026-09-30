@@ -10,13 +10,14 @@ editUrl: false
 ```ts
 type Producer<T, P> = 
   | ScalarProducer<T, P>
+  | CodeProducer<T, P>
   | ObjectProducer<T, P>
   | ArrayProducer<T, P>
   | CustomProducer<T, P>
 | OneOfProducer<T, P>;
 ```
 
-Defined in: [src/core/producer.ts:133](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/core/producer.ts#L133)
+Defined in: [src/core/producer.ts:166](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/producer.ts#L166)
 
 ## Type Parameters
 

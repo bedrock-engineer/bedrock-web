@@ -7,7 +7,7 @@ editUrl: false
 
 # Interface: NodeLens
 
-Defined in: [src/core/producer.ts:45](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/core/producer.ts#L45)
+Defined in: [src/core/producer.ts:65](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/producer.ts#L65)
 
 The narrow, relative-only surface a `CustomProducer` receives.
 
@@ -22,7 +22,7 @@ it reads text and child nodes relative to the node it was mounted on.
 name(): string | null;
 ```
 
-Defined in: [src/core/producer.ts:47](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/core/producer.ts#L47)
+Defined in: [src/core/producer.ts:67](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/producer.ts#L67)
 
 Local (namespace-stripped) name of this lens' own node (`null` if none).
 
@@ -38,7 +38,7 @@ Local (namespace-stripped) name of this lens' own node (`null` if none).
 text(): string | null;
 ```
 
-Defined in: [src/core/producer.ts:49](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/core/producer.ts#L49)
+Defined in: [src/core/producer.ts:69](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/producer.ts#L69)
 
 Trimmed text content of this lens' own node (`null` if empty).
 
@@ -54,7 +54,7 @@ Trimmed text content of this lens' own node (`null` if empty).
 textAt(xpath): string | null;
 ```
 
-Defined in: [src/core/producer.ts:51](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/core/producer.ts#L51)
+Defined in: [src/core/producer.ts:71](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/producer.ts#L71)
 
 Trimmed text at a relative XPath (`null` if the node is absent/empty).
 
@@ -76,7 +76,7 @@ Trimmed text at a relative XPath (`null` if the node is absent/empty).
 attr(xpath): string | null;
 ```
 
-Defined in: [src/core/producer.ts:53](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/core/producer.ts#L53)
+Defined in: [src/core/producer.ts:73](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/producer.ts#L73)
 
 Value of an attribute reached by a relative XPath ending in `/@name`.
 
@@ -98,7 +98,7 @@ Value of an attribute reached by a relative XPath ending in `/@name`.
 all(xpath): NodeLens[];
 ```
 
-Defined in: [src/core/producer.ts:55](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/core/producer.ts#L55)
+Defined in: [src/core/producer.ts:75](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/producer.ts#L75)
 
 A lens per node matching a relative XPath.
 

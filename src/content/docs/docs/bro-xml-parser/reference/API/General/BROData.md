@@ -8,22 +8,17 @@ editUrl: false
 # Type Alias: BROData
 
 ```ts
-type BROData = 
-  | CPTData
-  | BHRGTData
-  | BHRGData
-  | GMWData
-  | GLDData;
+type BROData = DataByType[BROFileType];
 ```
 
-Defined in: [src/types/index.ts:179](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/types/index.ts#L179)
+Defined in: [src/types/index.ts:223](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L223)
 
-Union type for all BRO data types
+Union type for all BRO data types, derived from DataByType.
 
-Use the `meta.dataType` field to discriminate between types:
+Discriminated on the top-level `dataType` field:
 ```typescript
 const data = parser.parse(xmlText);
-if (data.meta.dataType === 'CPT') {
-  // data is CPTData
+if (data.dataType === 'CPT') {
+  // data is narrowed to CPTData
 }
 ```

@@ -11,7 +11,7 @@ editUrl: false
 type GLDData = object & Produced<typeof GLD_PRODUCER>;
 ```
 
-Defined in: [src/types/index.ts:196](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/types/index.ts#L196)
+Defined in: [src/types/index.ts:235](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L235)
 
 Complete GLD (groundwater level research) data.
 
@@ -22,5 +22,6 @@ user-set `alias` are the only fields not produced from the XML.
 
 | Name | Type | Defined in |
 | ------ | ------ | ------ |
-| `meta` | [`ParseMeta`](/docs/bro-xml-parser/reference/api/general/parsemeta/) | [src/types/index.ts:196](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/types/index.ts#L196) |
-| `alias?` | `string` | [src/types/index.ts:196](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/56ae77765c1e8202d9985d5eced277c4c34eb6b2/src/types/index.ts#L196) |
+| `dataType` | `"GLD"` | [src/types/index.ts:235](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L235) |
+| `meta` | [`ParseMeta`](/docs/bro-xml-parser/reference/api/general/parsemeta/)\<`"GLD"`\> | [src/types/index.ts:235](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L235) |
+| `alias?` | `string` | [src/types/index.ts:235](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L235) |
