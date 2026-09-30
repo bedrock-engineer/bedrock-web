@@ -84,9 +84,15 @@ h6 {
 }
 
 html {
+  overscroll-behavior-y: none;
   height: 100%;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  html {
+    overscroll-behavior-y: none;
+  }
+}
 
 /* Global styles and additional theme customizations */
 body {
@@ -98,7 +104,6 @@ body {
   /* min-height, not height: a fixed height caps the body at one viewport,
      which clips the sticky navbar's range after the first screen of scroll */
   min-height: 100%;
-
   --viewport-padding: 32px;
 }
 
@@ -287,7 +292,6 @@ figcaption {
   margin-top: 8px;
   font-size: 0.875rem;
 }
-
 
 /* ============================================ */
 /* FLUID DESIGN SYSTEM (Utopia-style)          */
