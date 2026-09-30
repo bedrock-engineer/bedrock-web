@@ -103,6 +103,9 @@ const ogVideo = new URL("/voxels-og.mp4", Astro.site);
               <span class="badge">Featured by Cesium</span>
               Read how we stream subsurface models with 3D Tiles Voxels
             </a>
+            <p class="cesium-cert">
+              <span class="badge">Cesium Certified Developers</span>
+            </p>
           </div>
           <div class="hero-decoration" id="hero-voxel" aria-hidden="true"></div>
         </div>
@@ -546,6 +549,10 @@ const ogVideo = new URL("/voxels-og.mp4", Astro.site);
     &:hover {
       color: var(--gray-12);
     }
+  }
+
+  .cesium-cert {
+    margin-block-start: var(--space-s);
   }
 
   .hero-decoration {

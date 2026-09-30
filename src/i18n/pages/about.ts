@@ -3,6 +3,7 @@ export const ui = {
     title: "About Bedrock.engineer",
     intro:
       "Bedrock.engineer is two engineers building software for geotechnical data. We turn raw data files into ground models, visualizations, and digital twins.",
+    credential: "Cesium Certified Developers",
     joost: {
       bio: {
         p1: "I studied geotechnical engineering and applied geophysics (imaging the subsurface using similar techniques to those we use in hospital to do non-invasive tests on the body), and then worked for Arup for 4 years as a geotechnical engineer and computational designer.",
@@ -27,6 +28,7 @@ export const ui = {
     title: "Over Bedrock.engineer",
     intro:
       "Bedrock.engineer is twee ingenieurs die software bouwen voor geotechnische data. We zetten ruwe databestanden om naar grondmodellen, visualisaties en digital twins.",
+    credential: "Cesium Certified Developers",
     joost: {
       bio: {
         p1: "Ik heb geotechniek en toegepaste geofysica gestudeerd en vervolgens 4 jaar voor Arup gewerkt als geotechnisch ingenieur en computational designer.",
