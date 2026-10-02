@@ -25,6 +25,20 @@ Fields that the BRO marks optional are typed as `T | null`. A field parses to
 `null` when the element is absent or explicitly nil, so guard against `null`
 before using a value the source may leave out.
 
+## Measured values
+
+Quantities that carry a unit in the XML — depths, layer boundaries, diameters,
+lengths — parse to a `Measure` object: the numeric `value` plus its `uom`, the
+**unit of measure** the XML declares as an attribute (`uom="m"`, `uom="kPa"`,
+`uom="g/cm3"`, …):
+
+```typescript
+cpt.conePenetrometerSurvey?.trajectory?.finalDepth; // { value: 25.5, uom: "m" } or null
+```
+
+The unit travels with the number, so you never have to assume what a bare
+`25.5` is measured in.
+
 ## CPT
 
 `parseCPT` returns a `CPTData`. The `data` array holds one `CPTMeasurement` per
@@ -34,7 +48,7 @@ sensors the cone carried, so most are `number | null`.
 ```typescript
 const cpt = parser.parseCPT(xmlText);
 
-cpt.finalDepth; // 25.5
+cpt.conePenetrometerSurvey?.trajectory?.finalDepth?.value; // 25.5
 cpt.data.length; // e.g. 2540 rows
 
 for (const row of cpt.data) {
@@ -50,16 +64,16 @@ Those runs land in `dissipationTests`, separate from the main `data` array.
 ## BHR-GT (geotechnical borehole)
 
 `parseBHRGT` returns a `BHRGTData`. Here `data` is an array of `BHRGTLayer`
-ordered by depth. Each layer spans `upperBoundary` to `lowerBoundary` and names
-the soil in `geotechnicalSoilName`.
+ordered by depth. Each layer spans `upperBoundary` to `lowerBoundary` (both
+`Measure`s) and names the soil in `geotechnicalSoilName`, a `Coded` value that
+carries the BRO code plus its `codeSpace` domain.
 
 ```typescript
 const bore = parser.parseBHRGT(xmlText);
 
 for (const layer of bore.data) {
-  `${layer.upperBoundary}–${layer.lowerBoundary}m`; // "0–0.5m"
-  layer.geotechnicalSoilName; // "zwakZandigeKlei"
-  layer.color; // "standaardGrijs" or undefined
+  `${layer.upperBoundary?.value}–${layer.lowerBoundary?.value}m`; // "0–0.5m"
+  layer.geotechnicalSoilName?.code; // "zwakZandigeKlei"
 }
 ```
 
@@ -86,7 +100,7 @@ booleans, because that is how the BHR-G schema encodes them.
 const bore = parser.parseBHRG(xmlText);
 
 for (const layer of bore.data) {
-  layer.soilNameNEN5104; // "zand"
+  layer.soilNameNEN5104?.code; // "zand"
   layer.anthropogenic; // "nee"
 }
 ```
@@ -102,7 +116,7 @@ const data = parser.parse(xmlText);
 
 switch (data.meta.dataType) {
   case "CPT": {
-    console.log(data.finalDepth, data.data.length);
+    console.log(data.conePenetrometerSurvey?.trajectory?.finalDepth?.value, data.data.length);
     break;
   }
   case "BHR-GT":
@@ -113,6 +127,6 @@ switch (data.meta.dataType) {
 }
 ```
 
-TypeScript narrows the union inside each branch, so `data.finalDepth` only
+TypeScript narrows the union inside each branch, so `data.conePenetrometerSurvey` only
 type-checks in the CPT case. For the full field list of each type, see the
 [API reference](/docs/bro-xml-parser/reference/).

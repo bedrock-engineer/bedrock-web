@@ -92,7 +92,7 @@ measurement rows. For a borehole, it holds soil layers.
 const cpt = parser.parseCPT(xmlText);
 
 cpt.broId; // "CPT000000099543"
-cpt.finalDepth; // 25.5
+cpt.conePenetrometerSurvey?.trajectory?.finalDepth; // { value: 25.5, uom: "m" }
 cpt.data[0]; // { penetrationLength, coneResistance, localFriction, ... }
 ```
 
@@ -111,18 +111,20 @@ shape of each file type.
 ## Resolve reference codes
 
 BRO XML stores domain values as codes such as `"langwerpig"` or
-`"ISO19901d8v2014"`. The `/reference-codes` subpath exports lookup functions,
-generated from the [BRO reference codes API](https://publiek.broservices.nl/bro/refcodes/v1/codes),
-that turn a code into its official Dutch description:
+`"ISO19901d8v2014"`. Coded fields parse to a `Coded` object that carries the
+code plus its domain. The `/reference-codes` subpath exports a single
+`describe` function, generated from the
+[BRO reference codes API](https://publiek.broservices.nl/bro/refcodes/v1/codes),
+that turns any `Coded` value into its official Dutch description:
 
 ```typescript
-import { getBhrgtGeotechnicalSoilNameDescription } from "@bedrock-engineer/bro-xml-parser/reference-codes";
+import { describe } from "@bedrock-engineer/bro-xml-parser/reference-codes";
 
 const bore = parser.parseBHRGT(xmlText);
 
 for (const layer of bore.data) {
-  const name = getBhrgtGeotechnicalSoilNameDescription(layer.geotechnicalSoilName);
-  console.log(`${layer.upperBoundary}–${layer.lowerBoundary}m: ${name}`);
+  const name = describe(layer.geotechnicalSoilName);
+  console.log(`${layer.upperBoundary?.value}–${layer.lowerBoundary?.value}m: ${name}`);
 }
 ```
 
