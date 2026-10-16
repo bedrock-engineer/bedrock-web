@@ -13,7 +13,60 @@ import bedrockTextWhite from "../assets/logos/bedrock-text-white.svg";
 
 const title = "Brand Assets | Bedrock.engineer";
 const description =
-  "Download Bedrock logos, brand assets, and brand guidelines";
+  "Download Bedrock.engineer logos, colors, typography, and textures, with brand guidelines";
+
+// Canonical light-mode values — shown as literals so the reference
+// swatches don't shift in dark mode. Source of truth: tokens/color/
+const colors = [
+  {
+    name: "Brand Green",
+    role: "Brand color, primary actions",
+    hex: "#627e5d",
+    oklch: "oklch(56.2% 0.0594 140.8)",
+  },
+  {
+    name: "Ink",
+    role: "Text",
+    hex: "#1c211b",
+    oklch: "oklch(24.1% 0.0128 141.2)",
+  },
+  {
+    name: "Surface",
+    role: "Backgrounds",
+    hex: "#fafbfa",
+    oklch: "oklch(98.7% 0.002 141.2)",
+  },
+  {
+    name: "Green Tint",
+    role: "Badges, subtle fills",
+    hex: "#e7f3e5",
+    oklch: "oklch(95.1% 0.0223 140.8)",
+  },
+  {
+    name: "Brown",
+    role: "Secondary, warm accents",
+    hex: "#9a856a",
+    oklch: "oklch(62.9% 0.0463 73.78)",
+  },
+  {
+    name: "Teal",
+    role: "Accent, focus states",
+    hex: "#45818b",
+    oklch: "oklch(56.8% 0.0641 209.3)",
+  },
+];
+
+const textures = [
+  { file: "607.svg", cssClass: "texture-607", size: "70px" },
+  { file: "232-K.svg", cssClass: "texture-232-k", size: "80px" },
+  { file: "233-K.svg", cssClass: "texture-233-k", size: "80px" },
+  { file: "616.svg", cssClass: "texture-616", size: "80px" },
+  { file: "620.svg", cssClass: "texture-620", size: "100px" },
+  { file: "667.svg", cssClass: "texture-667", size: "120px" },
+  { file: "668.svg", cssClass: "texture-668", size: "220px" },
+  { file: "685.svg", cssClass: "texture-685", size: "100px" },
+  { file: "granite.svg", cssClass: "texture-granite", size: "150px", dark: true },
+];
 ---
 
 <BaseLayout title={title} description={description}>
@@ -23,7 +76,8 @@ const description =
       <section class="section intro-section">
         <h1 class="heading-1 font-bold tracking-tight">Brand Assets</h1>
         <p class="mb-8 text-lg text-[var(--gray-11)]">
-          Download our logos and learn how to use them
+          Logos, colors, typography, and textures for working with the
+          Bedrock.engineer brand
         </p>
       </section>
     </header>
@@ -128,19 +182,73 @@ const description =
       </section>
     </div>
 
-    <!--   <div class="section-wrapper texture-668">
+    <!-- Colors Section -->
+    <div class="section-wrapper texture-620">
       <section class="section">
-        <h2 class="heading-2 font-bold" style="margin-block-end: 32px;">Typography</h2>
+        <h2 class="heading-2 font-bold" style="margin-block-end: 32px;">
+          Colors
+        </h2>
+        <p class="mb-8 max-w-prose text-[var(--gray-11)]">
+          The palette is built on <a
+            class="link"
+            href="https://www.radix-ui.com/colors">Radix color scales</a
+          >. These are the core values for print and design work.
+        </p>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            colors.map((color) => (
+              <div class="flex flex-col overflow-hidden rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)]">
+                <div
+                  class="h-24 border-b border-[var(--gray-6)]"
+                  style={`background-color: ${color.hex};`}
+                />
+                <div class="p-4">
+                  <h3 class="mb-1 text-lg font-semibold">{color.name}</h3>
+                  <p class="mb-3 text-sm text-[var(--gray-11)]">{color.role}</p>
+                  <p class="font-mono text-sm">{color.hex}</p>
+                  <p class="font-mono text-sm text-[var(--gray-11)]">
+                    {color.oklch}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+    </div>
+
+    <!-- Typography Section -->
+    <div class="section-wrapper texture-668">
+      <section class="section">
+        <h2 class="heading-2 font-bold" style="margin-block-end: 32px;">
+          Typography
+        </h2>
         <div
           class="rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-8"
         >
           <div class="mb-8">
-            <h3 class="mb-4 text-xl font-semibold">Primary Typeface</h3>
+            <h3 class="mb-4 text-xl font-semibold">Headings</h3>
+            <p
+              class="mb-2 font-condensed"
+              style="font-size: var(--heading-1);"
+            >
+              IBM Plex Sans Condensed
+            </p>
+            <p class="text-[var(--gray-11)]">
+              All headings and titles. Regular 400 for large headings, Medium
+              500 for smaller ones.
+            </p>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="mb-4 text-xl font-semibold">Body</h3>
             <div class="space-y-4">
               <div>
-                <p class="mb-2 font-bold" style="font-size: var(--heading-1);">IBM Plex Sans</p>
+                <p class="mb-2 font-bold" style="font-size: var(--heading-2);">
+                  IBM Plex Sans
+                </p>
                 <p class="text-[var(--gray-11)]">
-                  Used for headings, body text, and UI elements
+                  Body text and UI elements
                 </p>
               </div>
               <div class="flex flex-wrap gap-4 text-sm">
@@ -161,22 +269,69 @@ const description =
               </div>
             </div>
           </div>
+
           <div>
-            <h3 class="mb-4 text-xl font-semibold">Monospace Typeface</h3>
-            <div class="space-y-4">
-              <div>
-                <p class="mb-2 font-mono font-semibold" style="font-size: var(--heading-2);">
-                  IBM Plex Mono
-                </p>
-                <p class="text-[var(--gray-11)]">
-                  Used for code and technical content
-                </p>
-              </div>
-            </div>
+            <h3 class="mb-4 text-xl font-semibold">Code</h3>
+            <p
+              class="mb-2 font-mono font-semibold"
+              style="font-size: var(--heading-2);"
+            >
+              IBM Plex Mono
+            </p>
+            <p class="text-[var(--gray-11)]">
+              Code, data values, and technical content
+            </p>
           </div>
         </div>
+        <p class="mt-6 max-w-prose text-sm text-[var(--gray-11)]">
+          All three are <a class="link" href="https://www.ibm.com/plex/"
+            >IBM Plex</a
+          > families, freely available under the Open Font License.
+        </p>
       </section>
-    </div> -->
+    </div>
+
+    <!-- Textures Section -->
+    <div class="section-wrapper texture-616">
+      <section class="section">
+        <h2 class="heading-2 font-bold" style="margin-block-end: 32px;">
+          Textures
+        </h2>
+        <p class="mb-8 max-w-prose text-[var(--gray-11)]">
+          Hatching patterns used as tiled section backgrounds across the site.
+          Each SVG tiles seamlessly; the size listed is the tile size we use.
+        </p>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            textures.map((texture) => (
+              <div class="flex flex-col overflow-hidden rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)]">
+                <div
+                  class="h-28 border-b border-[var(--gray-6)]"
+                  style={`background: ${texture.dark ? "#1c211b " : "#fafbfa "}url('/textures/${texture.file}'); background-size: ${texture.size};`}
+                />
+                <div class="flex items-center justify-between p-4">
+                  <div>
+                    <h3 class="font-mono text-sm font-semibold">
+                      {texture.file}
+                    </h3>
+                    <p class="text-sm text-[var(--gray-11)]">
+                      tile {texture.size}
+                    </p>
+                  </div>
+                  <a
+                    href={`/textures/${texture.file}`}
+                    download={`bedrock-${texture.file}`}
+                    class="rounded-sm border border-[var(--gray-7)] px-4 py-2 text-sm font-medium transition-colors hover:bg-[var(--gray-3)]"
+                  >
+                    SVG
+                  </a>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+    </div>
 
     <!-- Usage Guidelines Section -->
     <div class="section-wrapper texture-667">
