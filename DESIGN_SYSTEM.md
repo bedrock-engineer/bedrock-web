@@ -56,25 +56,25 @@ Four Radix scales, each 1–12 plus alpha variants (a1–a12) and a `contrast` c
 
 **Use the semantic aliases in components**, not raw scale steps, wherever one fits:
 
-| Token | Alias of | Use |
-| --- | --- | --- |
-| `--color-text` | gray-12 | Body text |
-| `--color-text-muted` | gray-11 | Secondary text |
-| `--color-text-subtle` | gray-9 | De-emphasized text |
-| `--color-surface` | gray-1 | Page/section background |
-| `--color-surface-raised` | gray-2 | Cards, nav |
-| `--color-surface-overlay` | gray-3 | Hover fills, code chips |
-| `--color-border` | gray-5 | Standard borders |
-| `--color-border-subtle` | gray-4 | Light borders (cards) |
-| `--color-border-strong` | gray-7 | Prominent borders |
-| `--color-primary` | green-9 | Primary actions |
-| `--color-primary-hover` | green-10 | Hover state |
-| `--color-primary-text` | green-11 | Links, tinted text |
-| `--color-primary-subtle` | green-3 | Tinted backgrounds (badges) |
-| `--color-primary-contrast` | green-contrast (#fff) | Text on primary |
-| `--color-focus` | teal-10 | Focus rings |
-| `--color-shadow` / `--color-shadow-strong` / `--color-overlay` | fixed oklch black-alpha | Shadows, modal overlays |
-| `--color-background` | fixed per theme | `<body>` background |
+| Token                                                          | Alias of                | Use                         |
+| -------------------------------------------------------------- | ----------------------- | --------------------------- |
+| `--color-text`                                                 | gray-12                 | Body text                   |
+| `--color-text-muted`                                           | gray-11                 | Secondary text              |
+| `--color-text-subtle`                                          | gray-9                  | De-emphasized text          |
+| `--color-surface`                                              | gray-1                  | Page/section background     |
+| `--color-surface-raised`                                       | gray-2                  | Cards, nav                  |
+| `--color-surface-overlay`                                      | gray-3                  | Hover fills, code chips     |
+| `--color-border`                                               | gray-5                  | Standard borders            |
+| `--color-border-subtle`                                        | gray-4                  | Light borders (cards)       |
+| `--color-border-strong`                                        | gray-7                  | Prominent borders           |
+| `--color-primary`                                              | green-9                 | Primary actions             |
+| `--color-primary-hover`                                        | green-10                | Hover state                 |
+| `--color-primary-text`                                         | green-11                | Links, tinted text          |
+| `--color-primary-subtle`                                       | green-3                 | Tinted backgrounds (badges) |
+| `--color-primary-contrast`                                     | green-contrast (#fff)   | Text on primary             |
+| `--color-focus`                                                | teal-10                 | Focus rings                 |
+| `--color-shadow` / `--color-shadow-strong` / `--color-overlay` | fixed oklch black-alpha | Shadows, modal overlays     |
+| `--color-background`                                           | fixed per theme         | `<body>` background         |
 
 **Fixed palettes** (do not change with theme):
 
@@ -96,15 +96,21 @@ Never synthesize styles: all real weights are loaded via @fontsource and `font-s
 **Fluid type scale** (375px → 1440px):
 
 ```css
---heading-display: clamp(1.8rem, 1.75rem + 2.4vw, 4rem); /* hero only — wider range */
---heading-1: clamp(2.5rem, 1.5rem + 4vw, 4rem);          /* 40px → 64px */
---heading-2: clamp(2rem, 1.4rem + 2.4vw, 2.8rem);        /* 32px → 44.8px */
---heading-3: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);        /* 24px → 32px */
---heading-4: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);     /* 20px → 24px */
+--heading-display: clamp(
+  1.8rem,
+  1.75rem + 2.4vw,
+  4rem
+); /* hero only — wider range */
+--heading-1: clamp(2.5rem, 1.5rem + 4vw, 4rem); /* 40px → 64px */
+--heading-2: clamp(2rem, 1.4rem + 2.4vw, 2.8rem); /* 32px → 44.8px */
+--heading-3: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); /* 24px → 32px */
+--heading-4: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem); /* 20px → 24px */
 
---text-xl: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);       /* 18px → 20px */
---text-lg: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);       /* 16px → 18px */
---text-base: 1rem;   --text-sm: 0.875rem;   --text-xs: 0.75rem;
+--text-xl: clamp(1.125rem, 1rem + 0.5vw, 1.25rem); /* 18px → 20px */
+--text-lg: clamp(1rem, 0.95rem + 0.2vw, 1.125rem); /* 16px → 18px */
+--text-base: 1rem;
+--text-sm: 0.875rem;
+--text-xs: 0.75rem;
 ```
 
 **Line heights**: `--leading-tight` 1.25 · `snug` 1.375 · `normal` 1.5 · `relaxed` 1.625 · `loose` 1.75
@@ -118,7 +124,8 @@ Never synthesize styles: all real weights are loaded via @fontsource and `font-s
 <p class="paragraph-xl">Intro text (fluid 18→20px)</p>
 <p class="paragraph-sm">Small text (16px, no max-width)</p>
 <p class="subtitle">UPPERCASE KICKER ABOVE/BELOW H1</p>
-<span class="badge">Featured by Cesium</span>  <!-- data-variant="solid" for filled -->
+<span class="badge">Featured by Cesium</span>
+<!-- data-variant="solid" for filled -->
 ```
 
 ## Spacing & sizing
@@ -126,9 +133,9 @@ Never synthesize styles: all real weights are loaded via @fontsource and `font-s
 **Fluid space scale** (Utopia-style, 375px → 1440px):
 
 ```css
---space-3xs: 4px → 5px     --space-s: 16px → 20px    --space-xl: 48px → 60px
---space-2xs: 8px → 10px    --space-m: 24px → 30px    --space-2xl: 64px → 80px
---space-xs: 12px → 15px    --space-l: 32px → 40px    --space-3xl: 96px → 120px
+--space-3xs: 4px → 5px --space-s: 16px → 20px --space-xl: 48px → 60px
+  --space-2xs: 8px → 10px --space-m: 24px → 30px --space-2xl: 64px → 80px
+  --space-xs: 12px → 15px --space-l: 32px → 40px --space-3xl: 96px → 120px;
 ```
 
 **One-up pairs** for spacing that varies more dramatically: `--space-3xs-2xs` … `--space-2xl-3xl` (e.g. `--space-m-l`: 24px → 40px).
@@ -138,9 +145,11 @@ Never synthesize styles: all real weights are loaded via @fontsource and `font-s
 **Containers & measures**:
 
 ```css
---container-narrow: 60ch;  /* prose */     --measure: 50ch;         /* paragraph width */
---container-md: 1200px;    /* sections */  --measure-narrow: 40ch;  /* cards, callouts */
---container-wide: 1480px;  /* full width */
+--container-narrow: 60ch; /* prose */
+--measure: 50ch; /* paragraph width */
+--container-md: 1200px; /* sections */
+--measure-narrow: 40ch; /* cards, callouts */
+--container-wide: 1480px; /* full width */
 ```
 
 **Border radius**: `--border-radius-sm` 4px (badges, inline code) · `--border-radius-md` 8px (cards, buttons) · `--border-radius-lg` 16px (hero card). Pills use literal `9999px`.
@@ -153,9 +162,9 @@ Never synthesize styles: all real weights are loaded via @fontsource and `font-s
 
 ```css
 --duration-instant: 100ms; /* pressed states, form feedback */
---duration-fast: 150ms;    /* color/background hovers */
---duration-normal: 200ms;  /* borders, transforms, slide-ins */
---duration-slow: 300ms;    /* image zooms, large surfaces */
+--duration-fast: 150ms; /* color/background hovers */
+--duration-normal: 200ms; /* borders, transforms, slide-ins */
+--duration-slow: 300ms; /* image zooms, large surfaces */
 ```
 
 ## Components
@@ -235,16 +244,16 @@ Key-value `<dl>` list. `items`: `{term, value}[]`; `direction`: `column` (about-
 
 SVG grid patterns in `public/textures/`, applied with `.texture-*` classes. Rotate through them for visual rhythm (classic sequence: 607 → 232-K → 620 → repeat).
 
-| Class | File | Size | Typical use |
-| --- | --- | --- | --- |
-| `.texture-607` | 607.svg | 70px | Intro sections |
-| `.texture-232-k` | 232-K.svg | 80px | Content sections |
-| `.texture-233-k` | 233-K.svg | 80px | Content variant |
-| `.texture-616` | 616.svg | 80px | Content sections |
-| `.texture-620` | 620.svg | 100px | CTA sections |
-| `.texture-667` | 667.svg | 120px | Loose grid |
-| `.texture-668` | 668.svg | 220px | Very loose grid |
-| `.texture-685` | 685.svg | 100px | Variant |
+| Class              | File        | Size  | Typical use          |
+| ------------------ | ----------- | ----- | -------------------- |
+| `.texture-607`     | 607.svg     | 70px  | Intro sections       |
+| `.texture-232-k`   | 232-K.svg   | 80px  | Content sections     |
+| `.texture-233-k`   | 233-K.svg   | 80px  | Content variant      |
+| `.texture-616`     | 616.svg     | 80px  | Content sections     |
+| `.texture-620`     | 620.svg     | 100px | CTA sections         |
+| `.texture-667`     | 667.svg     | 120px | Loose grid           |
+| `.texture-668`     | 668.svg     | 220px | Very loose grid      |
+| `.texture-685`     | 685.svg     | 100px | Variant              |
 | `.texture-granite` | granite.svg | 150px | Footer (dense, dark) |
 
 The SVG stroke colors adapt to dark mode via `prefers-color-scheme` inside the files.
@@ -256,14 +265,17 @@ The SVG stroke colors adapt to dark mode via `prefers-color-scheme` inside the f
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">…</div>
 
 <!-- responsive auto-fit: global classes -->
-<div class="grid-auto-fit">…</div>          <!-- minmax(min(320px,100%),1fr) -->
+<div class="grid-auto-fit">…</div>
+<!-- minmax(min(320px,100%),1fr) -->
 <div class="grid-auto-fit-narrow">…</div>
 ```
 
 ### Prose
 
 ```astro
-<div class="prose-container"><!-- 60ch, centered, paragraph/list spacing --></div>
+<div class="prose-container">
+  <!-- 60ch, centered, paragraph/list spacing -->
+</div>
 ```
 
 ## Starlight integration
@@ -276,6 +288,13 @@ Tailwind v4 runs via `@import "tailwindcss"` in custom.css — **there is no tai
 
 - `@theme` declares the three font families → `font-sans`, `font-condensed`, `font-mono` utilities
 - `@theme inline` maps the green/gray scales → `bg-gray-3`, `text-green-11`, … (theme-reactive `var()` references)
+
+**Tailwind's own design system is disabled where it could conflict with ours:**
+
+- `--color-*: initial` removes the default palette — `bg-emerald-400` etc. don't exist; only the Bedrock scales and `white` generate color utilities
+- `--text-2xl` … `--text-9xl` are removed — sizes beyond the scale don't exist; use the `heading-*` classes/tokens instead
+- `text-xs`…`text-xl`, `leading-*`, `shadow-*`, and `font-*` utilities stay, but resolve to **our** tokens: tokens.css defines the same variable names unlayered at `:root`, which outranks Tailwind's `@layer theme` defaults
+- Tailwind's spacing multiplier (`p-4`, `gap-8`), breakpoints (`md:`), and layout utilities are kept as-is — mechanics, not brand
 
 Heuristics: Tailwind for small, simple containers (`flex flex-wrap gap-4 px-6`, `md:grid-cols-2`); vanilla CSS with nesting + data-attribute variants for components and complex grids.
 

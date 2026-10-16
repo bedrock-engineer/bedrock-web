@@ -46,6 +46,18 @@
   --color-*: initial;
   --color-white: oklch(1 0 0);
 
+  /* Remove Tailwind's type sizes beyond the Bedrock scale. text-xs…text-xl
+     stay registered and resolve to our fluid tokens (tokens.css shadows the
+     same variable names); for larger sizes use the heading-* classes/tokens. */
+  --text-2xl: initial;
+  --text-3xl: initial;
+  --text-4xl: initial;
+  --text-5xl: initial;
+  --text-6xl: initial;
+  --text-7xl: initial;
+  --text-8xl: initial;
+  --text-9xl: initial;
+
   --font-sans: "IBM Plex Sans", sans-serif;
   --font-condensed: "IBM Plex Sans Condensed", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
