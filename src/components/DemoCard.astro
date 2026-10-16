@@ -51,7 +51,7 @@ const tagAttrs = id
   : {};
 ---
 
-<div class={`demo-card ${className || ''}`} {...tagAttrs}>
+<div class={`demo-card card-surface ${className || ''}`} {...tagAttrs}>
   <div class="demo-card-media">
     {badge && <span class="demo-card-badge badge" data-variant="solid">{badge}</span>}
     {
@@ -98,10 +98,8 @@ const tagAttrs = id
 
 <style>
   .demo-card {
-    display: flex;
-    flex-direction: column;
-    background: var(--gray-2);
-    border: 1px solid var(--color-border-subtle);
+    /* Base surface (flex column, background, border) comes from the global
+       .card-surface class */
     border-radius: var(--border-radius-md);
     overflow: hidden;
 

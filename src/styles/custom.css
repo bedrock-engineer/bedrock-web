@@ -407,6 +407,15 @@ figcaption {
   line-height: var(--leading-normal);
 }
 
+/* Shared card surface — base look for Card, DemoCard, and future card-like
+   components. Radius, padding, and hover behavior stay per-component. */
+.card-surface {
+  display: flex;
+  flex-direction: column;
+  background: var(--gray-2);
+  border: 1px solid var(--color-border-subtle);
+}
+
 /* Prose container for long-form content (mission, terms, …) */
 .prose-container {
   max-width: var(--container-narrow);
