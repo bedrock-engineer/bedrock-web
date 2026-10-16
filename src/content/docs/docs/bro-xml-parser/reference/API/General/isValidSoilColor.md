@@ -11,7 +11,7 @@ editUrl: false
 function isValidSoilColor(colorName): boolean;
 ```
 
-Defined in: [src/colors.ts:135](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/colors.ts#L135)
+Defined in: [src/colors.ts:135](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/colors.ts#L135)
 
 Check if a color name is a valid BRO soil color
 

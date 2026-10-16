@@ -11,7 +11,7 @@ editUrl: false
 type BHRGData = object & Produced<typeof BHRG_PRODUCER>;
 ```
 
-Defined in: [src/types/index.ts:188](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L188)
+Defined in: [src/types/index.ts:188](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/types/index.ts#L188)
 
 Complete BHR-G (Geological Borehole) data (metadata + layers).
 
@@ -22,6 +22,6 @@ user-set `alias` are the only fields not produced from the XML.
 
 | Name | Type | Defined in |
 | ------ | ------ | ------ |
-| `dataType` | `"BHR-G"` | [src/types/index.ts:188](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L188) |
-| `meta` | [`ParseMeta`](/docs/bro-xml-parser/reference/api/general/parsemeta/)\<`"BHR-G"`\> | [src/types/index.ts:188](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L188) |
-| `alias?` | `string` | [src/types/index.ts:188](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L188) |
+| `dataType` | `"BHR-G"` | [src/types/index.ts:188](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/types/index.ts#L188) |
+| `meta` | [`ParseMeta`](/docs/bro-xml-parser/reference/api/general/parsemeta/)\<`"BHR-G"`\> | [src/types/index.ts:188](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/types/index.ts#L188) |
+| `alias?` | `string` | [src/types/index.ts:188](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/types/index.ts#L188) |

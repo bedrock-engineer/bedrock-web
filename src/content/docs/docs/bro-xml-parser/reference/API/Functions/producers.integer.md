@@ -11,7 +11,7 @@ editUrl: false
 function integer<P>(at?, opts?): ScalarProducer<number | null, P>;
 ```
 
-Defined in: [src/core/producer.ts:269](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/producer.ts#L269)
+Defined in: [src/core/producer.ts:271](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/core/producer.ts#L271)
 
 Integer (`number | null`).
 

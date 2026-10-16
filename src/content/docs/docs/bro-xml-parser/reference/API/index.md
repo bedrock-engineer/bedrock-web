@@ -14,6 +14,7 @@ editUrl: false
 - [isValidSoilColor](/docs/bro-xml-parser/reference/api/general/isvalidsoilcolor/)
 - [getSoilColorNames](/docs/bro-xml-parser/reference/api/general/getsoilcolornames/)
 - [Coded](/docs/bro-xml-parser/reference/api/general/coded/)
+- [Measure](/docs/bro-xml-parser/reference/api/general/measure/)
 - [NodeLens](/docs/bro-xml-parser/reference/api/general/nodelens/)
 - [Producer](/docs/bro-xml-parser/reference/api/general/producer/)
 - [Produced](/docs/bro-xml-parser/reference/api/general/produced/)

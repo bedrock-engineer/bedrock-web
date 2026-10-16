@@ -7,7 +7,7 @@ editUrl: false
 
 # Class: BROParseError
 
-Defined in: [src/types/index.ts:258](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L258)
+Defined in: [src/types/index.ts:258](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/types/index.ts#L258)
 
 Parse error with context
 
@@ -23,7 +23,7 @@ Parse error with context
 new BROParseError(message, details): BROParseError;
 ```
 
-Defined in: [src/types/index.ts:262](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L262)
+Defined in: [src/types/index.ts:262](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/types/index.ts#L262)
 
 #### Parameters
 
@@ -47,8 +47,8 @@ Error.constructor
 
 | Property | Modifier | Type | Inherited from | Defined in |
 | ------ | ------ | ------ | ------ | ------ |
-| <a id="code"></a> `code` | `readonly` | `string` | - | [src/types/index.ts:259](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L259) |
-| <a id="details"></a> `details` | `readonly` | `Record`\<`string`, `unknown`\> | - | [src/types/index.ts:260](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/types/index.ts#L260) |
+| <a id="code"></a> `code` | `readonly` | `string` | - | [src/types/index.ts:259](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/types/index.ts#L259) |
+| <a id="details"></a> `details` | `readonly` | `Record`\<`string`, `unknown`\> | - | [src/types/index.ts:260](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/types/index.ts#L260) |
 | <a id="cause"></a> `cause?` | `public` | `unknown` | `Error.cause` | node\_modules/typescript/lib/lib.es2022.error.d.ts:24 |
 | <a id="name"></a> `name` | `public` | `string` | `Error.name` | node\_modules/typescript/lib/lib.es5.d.ts:1074 |
 | <a id="message"></a> `message` | `public` | `string` | `Error.message` | node\_modules/typescript/lib/lib.es5.d.ts:1075 |

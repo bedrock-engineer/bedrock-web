@@ -11,7 +11,7 @@ editUrl: false
 type RowOf<Spec> = Simplify<{ [S in Extract<Spec[number], ColumnSpec> as S["name"]]: ReturnType<S["parse"]> }>;
 ```
 
-Defined in: [src/core/columns.ts:42](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/columns.ts#L42)
+Defined in: [src/core/columns.ts:42](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/core/columns.ts#L42)
 
 The row object inferred from a `const` column-spec tuple. Every non-`null`
 column contributes a **required** key (the decoder always assigns it — `null`

@@ -17,10 +17,10 @@ editUrl: false
 - [integer](/docs/bro-xml-parser/reference/api/functions/producersinteger/)
 - [boolean](/docs/bro-xml-parser/reference/api/functions/producersboolean/)
 - [code](/docs/bro-xml-parser/reference/api/functions/producerscode/)
+- [measure](/docs/bro-xml-parser/reference/api/functions/producersmeasure/)
 - [object](/docs/bro-xml-parser/reference/api/functions/producersobject/)
 - [array](/docs/bro-xml-parser/reference/api/functions/producersarray/)
 - [custom](/docs/bro-xml-parser/reference/api/functions/producerscustom/)
-- [oneOf](/docs/bro-xml-parser/reference/api/functions/producersoneof/)
 - [gmlLocation](/docs/bro-xml-parser/reference/api/functions/producersgmllocation/)
 
 ## Interfaces
@@ -32,6 +32,12 @@ editUrl: false
 ### Coded
 
 Re-exports [Coded](/docs/bro-xml-parser/reference/api/general/coded/)
+
+***
+
+### Measure
+
+Re-exports [Measure](/docs/bro-xml-parser/reference/api/general/measure/)
 
 ## Type Aliases
 

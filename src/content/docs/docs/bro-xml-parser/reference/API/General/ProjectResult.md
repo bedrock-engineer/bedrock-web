@@ -11,7 +11,7 @@ editUrl: false
 type ProjectResult<S> = S extends Leaf<infer V> ? V : S extends Record<string, unknown> ? { [K in keyof S]: ProjectResult<S[K]> } : never;
 ```
 
-Defined in: [src/core/select.ts:65](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/select.ts#L65)
+Defined in: [src/core/select.ts:57](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/core/select.ts#L57)
 
 Resolve a returned selection tree to its parsed output type.
 

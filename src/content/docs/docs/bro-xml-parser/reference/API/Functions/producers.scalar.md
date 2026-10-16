@@ -11,7 +11,7 @@ editUrl: false
 function scalar<T, P>(opts): ScalarProducer<T, P>;
 ```
 
-Defined in: [src/core/producer.ts:226](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/producer.ts#L226)
+Defined in: [src/core/producer.ts:223](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/core/producer.ts#L223)
 
 A leaf producer with an explicit decoder.
 

@@ -7,7 +7,7 @@ editUrl: false
 
 # Interface: ArraySel\<I\>
 
-Defined in: [src/core/select.ts:39](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/select.ts#L39)
+Defined in: [src/core/select.ts:39](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/core/select.ts#L39)
 
 An array node: select the whole array (it is a [Leaf](/docs/bro-xml-parser/reference/api/general/leaf/)), or `.each` a row.
 
@@ -29,7 +29,7 @@ An array node: select the whole array (it is a [Leaf](/docs/bro-xml-parser/refer
 each<R>(fn): Leaf<ProjectResult<R>[]>;
 ```
 
-Defined in: [src/core/select.ts:40](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/select.ts#L40)
+Defined in: [src/core/select.ts:40](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/core/select.ts#L40)
 
 #### Type Parameters
 
@@ -51,4 +51,4 @@ Defined in: [src/core/select.ts:40](https://github.com/bedrock-engineer/bro-xml-
 
 | Property | Modifier | Type | Inherited from | Defined in |
 | ------ | ------ | ------ | ------ | ------ |
-| <a id="out"></a> `[OUT]?` | `readonly` | [`Produced`](/docs/bro-xml-parser/reference/api/general/produced/)\<`I`\>[] | [`Leaf`](/docs/bro-xml-parser/reference/api/general/leaf/).[`[OUT]`](/docs/bro-xml-parser/reference/api/general/leaf/#out) | [src/core/select.ts:35](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/select.ts#L35) |
+| <a id="out"></a> `[OUT]?` | `readonly` | [`Produced`](/docs/bro-xml-parser/reference/api/general/produced/)\<`I`\>[] | [`Leaf`](/docs/bro-xml-parser/reference/api/general/leaf/).[`[OUT]`](/docs/bro-xml-parser/reference/api/general/leaf/#out) | [src/core/select.ts:35](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/core/select.ts#L35) |

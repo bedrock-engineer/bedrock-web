@@ -7,7 +7,7 @@ editUrl: false
 
 # Interface: Coded
 
-Defined in: [src/core/producer.ts:39](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/producer.ts#L39)
+Defined in: [src/core/producer.ts:39](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/core/producer.ts#L39)
 
 A BRO coded value: the `code` text plus the `codeSpace` domain URI that the XML
 carries as a `codeSpace` attribute (e.g. `urn:bro:cpt:QualityClass`).
@@ -21,5 +21,5 @@ always a full `{ code, codeSpace }`.
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="code"></a> `code` | `string` | [src/core/producer.ts:40](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/producer.ts#L40) |
-| <a id="codespace"></a> `codeSpace` | `string` | [src/core/producer.ts:41](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/producer.ts#L41) |
+| <a id="code"></a> `code` | `string` | [src/core/producer.ts:40](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/core/producer.ts#L40) |
+| <a id="codespace"></a> `codeSpace` | `string` | [src/core/producer.ts:41](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/core/producer.ts#L41) |

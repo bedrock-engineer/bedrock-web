@@ -11,7 +11,7 @@ editUrl: false
 function object<F, P>(opts): ObjectProducer<{ [K in string | number | symbol]: ({ [K in string | number | symbol]: FieldValue<F[K]> } & { [K in string | number | symbol]?: FieldValue<F[K]> })[K] }, P> & object;
 ```
 
-Defined in: [src/core/producer.ts:310](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/producer.ts#L310)
+Defined in: [src/core/producer.ts:350](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/core/producer.ts#L350)
 
 A fixed set of named fields. Output type is inferred from `fields`.
 
@@ -30,7 +30,7 @@ atomic `custom` field stays a leaf even when its value type looks structural).
 
 | Parameter | Type |
 | ------ | ------ |
-| `opts` | `object` & `BaseMeta` |
+| `opts` | `object` & `ProducerMeta` |
 
 ## Returns
 

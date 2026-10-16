@@ -8,15 +8,14 @@ editUrl: false
 # Type Alias: SelectableProducer\<P\>
 
 ```ts
-type SelectableProducer<P> = P extends object ? ArraySel<I> : P extends object ? { [K in keyof F]-?: SelectableProducer<F[K]> } : P extends object ? { [K in keyof (B & BranchFields<Br>)]-?: SelectableProducer<(B & BranchFields<Br>)[K]> } : P extends object ? Leaf<V> : never;
+type SelectableProducer<P> = P extends object ? ArraySel<I> : P extends object ? { [K in keyof F]-?: SelectableProducer<F[K]> } : P extends object ? Leaf<V> : never;
 ```
 
-Defined in: [src/core/select.ts:54](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/select.ts#L54)
+Defined in: [src/core/select.ts:48](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/core/select.ts#L48)
 
 Mirror a producer as a navigable path tree. Array producers → [ArraySel](/docs/bro-xml-parser/reference/api/general/arraysel/);
-object producers → descend by field; `oneOf` → descend the merged base + branch
-fields (selecting one flattens the union); every leaf (`text`/`number`/`date`/
-`boolean`/`code`) and atomic `custom`/`columns` → a whole-value [Leaf](/docs/bro-xml-parser/reference/api/general/leaf/).
+object producers → descend by field; every leaf (`text`/`number`/`date`/
+`boolean`/`code`/`measure`) and atomic `custom`/`columns` → a whole-value [Leaf](/docs/bro-xml-parser/reference/api/general/leaf/).
 
 ## Type Parameters
 

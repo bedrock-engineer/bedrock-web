@@ -11,7 +11,7 @@ editUrl: false
 function custom<T, P>(opts): CustomProducer<T, P>;
 ```
 
-Defined in: [src/core/producer.ts:335](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/fbc14a4e08ef5e7ac3188db8d242e7ff04bbd50d/src/core/producer.ts#L335)
+Defined in: [src/core/producer.ts:375](https://github.com/bedrock-engineer/bro-xml-parser-ts/blob/3a8a02c54af388d7b2e730fdfd8afe3ee1b801da/src/core/producer.ts#L375)
 
 The escape hatch: a decoder handed a relative-only [NodeLens](/docs/bro-xml-parser/reference/api/general/nodelens/).
 
@@ -26,7 +26,7 @@ The escape hatch: a decoder handed a relative-only [NodeLens](/docs/bro-xml-pars
 
 | Parameter | Type |
 | ------ | ------ |
-| `opts` | `object` & `BaseMeta` |
+| `opts` | `object` & `ProducerMeta` |
 
 ## Returns
 
