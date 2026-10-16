@@ -10,6 +10,8 @@ import bedrockPng from "../assets/bedrock.png";
 import bedrockInCircle from "../assets/Bedrock_inCircle.png";
 import bedrockTextRight from "../assets/Bedrock_TextRight.png";
 import bedrockTextWhite from "../assets/logos/bedrock-text-white.svg";
+import Color from "colorjs.io";
+import scalesLight from "../../tokens/color/scales.light.tokens.json";
 
 const title = "Brand Assets | Bedrock.engineer";
 const description =
@@ -55,6 +57,24 @@ const colors = [
     oklch: "oklch(56.8% 0.0641 209.3)",
   },
 ];
+
+// Full scales for the fold-out, derived from the token files at build time
+// so the page can't drift from the source of truth. colorjs.io is the same
+// library Terrazzo uses to generate tokens.css, so hex values match the
+// generated sRGB fallbacks exactly.
+const SCALE_NAMES = ["green", "gray", "brown", "teal"] as const;
+const scales = SCALE_NAMES.map((name) => ({
+  name,
+  steps: Array.from({ length: 12 }, (_, i) => {
+    const step = `${i + 1}`;
+    const value = (scalesLight.color as any)[name][step].$value;
+    const space = value.colorSpace === "oklch" ? "oklch" : "srgb";
+    const hex = new Color(space, value.components)
+      .to("srgb")
+      .toString({ format: "hex", collapse: false });
+    return { step, hex };
+  }),
+}));
 
 const textures = [
   { file: "607.svg", cssClass: "texture-607", size: "70px" },
@@ -212,6 +232,43 @@ const textures = [
             ))
           }
         </div>
+
+        <details class="mt-8">
+          <summary
+            class="cursor-pointer text-sm font-medium text-[var(--green-11)] hover:underline"
+          >
+            Full color scales
+          </summary>
+          <p class="mt-4 max-w-prose text-sm text-[var(--gray-11)]">
+            Each hue runs from 1 (lightest background) to 12 (highest-contrast
+            text). Light theme values.
+          </p>
+          <div class="mt-6 space-y-8">
+            {
+              scales.map((scale) => (
+                <div>
+                  <h3 class="mb-3 font-mono text-sm font-semibold capitalize">
+                    {scale.name}
+                  </h3>
+                  <div class="grid grid-cols-6 gap-2 md:grid-cols-12">
+                    {scale.steps.map(({ step, hex }) => (
+                      <div>
+                        <div
+                          class="h-10 rounded-sm border border-[var(--gray-6)]"
+                          style={`background-color: ${hex};`}
+                        />
+                        <p class="mt-1 text-center font-mono text-[10px] text-[var(--gray-11)]">
+                          {step}
+                        </p>
+                        <p class="text-center font-mono text-[10px]">{hex}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </details>
       </section>
     </div>
 
