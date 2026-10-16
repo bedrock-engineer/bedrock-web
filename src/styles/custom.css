@@ -214,8 +214,8 @@ a {
 @media (prefers-reduced-motion: no-preference) {
   a {
     transition:
-      text-decoration 100ms,
-      color 150ms;
+      text-decoration var(--duration-instant),
+      color var(--duration-fast);
   }
 }
 
@@ -223,7 +223,7 @@ a {
   text-decoration: underline;
   text-decoration-color: var(--color-primary);
   color: var(--color-text);
-  transition: color 150ms;
+  transition: color var(--duration-fast);
 }
 
 .link:hover {
@@ -366,7 +366,7 @@ figcaption {
     text-decoration: none;
     margin-inline-start: 0.3em;
     opacity: 0;
-    transition: opacity 0.15s;
+    transition: opacity var(--duration-fast);
   }
 
   &:hover .anchor-link {
@@ -553,9 +553,9 @@ figcaption {
   border-radius: 2px;
   text-decoration: none;
   transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    scale 0.15s ease;
+    background var(--duration-normal) ease,
+    border-color var(--duration-normal) ease,
+    scale var(--duration-fast) ease;
 
   &:hover {
     text-decoration: none;
@@ -624,7 +624,7 @@ figcaption {
   font-size: var(--text-lg);
   color: var(--color-primary-text);
   text-decoration: none;
-  transition: gap 0.2s ease;
+  transition: gap var(--duration-normal) ease;
 }
 
 .section-link:hover {

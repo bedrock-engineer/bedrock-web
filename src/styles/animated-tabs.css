@@ -39,8 +39,8 @@
   white-space: nowrap;
   border-radius: 9999px;
   transition:
-    color 0.1s,
-    background-color 0.1s;
+    color var(--duration-instant),
+    background-color var(--duration-instant);
   text-align: center;
 
   @media (max-width: 550px) {

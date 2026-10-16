@@ -104,7 +104,7 @@ const tagAttrs = id
     overflow: hidden;
 
     @media (prefers-reduced-motion: no-preference) {
-      transition: border-color 0.2s ease;
+      transition: border-color var(--duration-normal) ease;
     }
 
     &:hover {
@@ -149,7 +149,7 @@ const tagAttrs = id
     display: block;
 
     @media (prefers-reduced-motion: no-preference) {
-      transition: transform 0.3s ease;
+      transition: transform var(--duration-slow) ease;
     }
 
     &:hover {

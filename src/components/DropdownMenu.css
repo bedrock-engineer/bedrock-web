@@ -33,13 +33,13 @@
 @media (prefers-reduced-motion: no-preference) {
   .dropdown-trigger {
     transition:
-      color 0.15s ease,
-      background 0.15s ease;
+      color var(--duration-fast) ease,
+      background var(--duration-fast) ease;
   }
 }
 
 .dropdown-arrow {
-  transition: transform 0.2s ease;
+  transition: transform var(--duration-normal) ease;
 }
 
 .dropdown-trigger[data-pressed] .dropdown-arrow {
@@ -59,11 +59,11 @@
 }
 
 .dropdown-popover[data-entering] {
-  animation: dropdown-slide-in 0.2s ease-out;
+  animation: dropdown-slide-in var(--duration-normal) ease-out;
 }
 
 .dropdown-popover[data-exiting] {
-  animation: dropdown-slide-out 0.15s ease-in;
+  animation: dropdown-slide-out var(--duration-fast) ease-in;
 }
 
 @keyframes dropdown-slide-in {
@@ -127,7 +127,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .dropdown-menu-item {
-    transition: background 0.15s ease;
+    transition: background var(--duration-fast) ease;
   }
 }
 

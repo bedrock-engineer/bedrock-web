@@ -86,7 +86,7 @@ const { class: className, width, height } = Astro.props;
 
 <style>
   .logo-animated .logo-layer {
-    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform var(--duration-slow) cubic-bezier(0.165, 0.84, 0.44, 1);
     pointer-events: none;
     --offset-x: 20px;
   }
@@ -95,12 +95,12 @@ const { class: className, width, height } = Astro.props;
     pointer-events: bounding-box;
 
     .layer-icon {
-      transition: opacity 0.3s ease-out;
+      transition: opacity var(--duration-slow) ease-out;
     }
 
     .layer-label {
       opacity: 0;
-      transition: opacity 0.3s ease-out;
+      transition: opacity var(--duration-slow) ease-out;
     }
 
     #lower {
