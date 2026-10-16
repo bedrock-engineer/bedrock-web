@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   width: fit-content;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-md);
   border: 1px solid var(--green-7);
   background-color: var(--green-2);
   margin-inline: auto;
@@ -65,7 +65,7 @@
   position: absolute;
   inset: 0;
   z-index: 10;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-md);
   outline: 2px solid var(--green-2);
   outline-offset: 2px;
 }
@@ -77,7 +77,7 @@
   left: 0;
   z-index: 10;
   background-color: var(--green-2);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-md);
   pointer-events: none;
   mix-blend-mode: difference;
 }

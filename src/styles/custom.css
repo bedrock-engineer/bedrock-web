@@ -174,7 +174,7 @@ body:has(.page) {
 
 .landing-section {
   padding-inline: 24px;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--color-border);
 
   h2 > a {
     text-decoration: underline;
@@ -340,13 +340,6 @@ figcaption {
 /* The fluid type/space scales, semantic colors, radii, shadows, and durations
    are all generated into tokens.css (imported above) from tokens/*.json. */
 
-:root {
-  /* Legacy aliases — to be removed once components reference the token names */
-  --border-color-light: var(--color-border-subtle);
-  --border-color: var(--color-border);
-  --border-radius: var(--border-radius-md);
-}
-
 /* ========== TYPOGRAPHY UTILITY CLASSES ========== */
 
 .heading-1 {
@@ -433,7 +426,7 @@ figcaption {
 }
 
 .section-wrapper {
-  border: 1px solid var(--border-color-light);
+  border: 1px solid var(--color-border-subtle);
   max-width: var(--container-wide);
   margin-inline: auto;
   border-top: none;
@@ -447,7 +440,7 @@ figcaption {
   padding-block: var(--section-padding-block);
   padding-inline: var(--section-padding-inline);
   margin-inline: auto;
-  border-inline: 1px solid var(--border-color);
+  border-inline: 1px solid var(--color-border);
   background: var(--color-surface);
   @media (max-width: 1200px) {
     border-inline: none;
