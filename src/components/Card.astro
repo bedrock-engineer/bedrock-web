@@ -4,6 +4,8 @@ export interface Props {
   size?: "small" | "medium" | "large";
   href?: string;
   class?: string;
+  /** Extra attributes (e.g. data-*) are spread onto the rendered element */
+  [key: `data-${string}`]: string | undefined;
 }
 
 const {
@@ -11,6 +13,7 @@ const {
   size = "medium",
   href,
   class: className,
+  ...rest
 } = Astro.props;
 
 // Polymorphic: render as <a> if href provided, otherwise <div>
@@ -31,6 +34,7 @@ const linkAttrs = href
   data-variant={variant}
   data-size={size}
   {...linkAttrs}
+  {...rest}
 >
   <slot />
 </Tag>

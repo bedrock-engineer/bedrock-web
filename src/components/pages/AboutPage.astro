@@ -1,7 +1,5 @@
 ---
-import { Icon } from "@astrojs/starlight/components";
-import { Image } from "astro:assets";
-import Link from "../Link.astro";
+import TeamMember from "../TeamMember.astro";
 import joostImage from "../../assets/JoostGevaert.jpg";
 import julesImage from "../../assets/JulesBlom.jpg";
 
@@ -33,36 +31,22 @@ const { t } = Astro.props;
     class="section-wrapper"
   >
     <section class="section">
-      <div class="team-member">
-        <div class="team-member-left">
-          <div class="team-member-image">
-            <Image
-              src={joostImage}
-              alt="Joost Gevaert"
-              width={200}
-              height={200}
-            />
-          </div>
-          <h2 class="team-member-name">Joost Gevaert</h2>
-        </div>
-
-        <div class="team-member-info">
-          <div class="social-links">
-            <Link
-              href="https://www.linkedin.com/in/joost-gevaert/"
-              class="social-link"
-            >
-              <Icon name="linkedin" />
-              LinkedIn
-            </Link>
-          </div>
-          <div class="bio">
-            <p>{t.joost.bio.p1}</p>
-            <p>{t.joost.bio.p2}</p>
-            <p>{t.joost.bio.p3}</p>
-          </div>
-        </div>
-      </div>
+      <TeamMember
+        name="Joost Gevaert"
+        image={joostImage}
+        variant="expanded"
+        socials={[
+          {
+            href: "https://www.linkedin.com/in/joost-gevaert/",
+            label: "LinkedIn",
+            icon: "linkedin",
+          },
+        ]}
+      >
+        <p>{t.joost.bio.p1}</p>
+        <p>{t.joost.bio.p2}</p>
+        <p>{t.joost.bio.p3}</p>
+      </TeamMember>
     </section>
   </div>
 
@@ -71,39 +55,31 @@ const { t } = Astro.props;
     class="section-wrapper"
   >
     <section class="section">
-      <div class="team-member">
-        <div class="team-member-left">
-          <div class="team-member-image">
-            <Image src={julesImage} alt="Jules Blom" width={200} height={200} />
-          </div>
-          <h2 class="team-member-name">Jules Blom</h2>
-        </div>
-        
-        <div class="team-member-info">
-          <div class="social-links">
-            <Link
-              href="https://www.linkedin.com/in/crown-jules/"
-              class="social-link"
-            >
-              <Icon name="linkedin" />
-              LinkedIn
-            </Link>
-            <Link href="https://julesblom.com" class="social-link">
-              <Icon name="external" />
-              Website
-            </Link>
-          </div>
-          <div class="bio">
-            <p>{t.jules.bio.p1}</p>
-            <ul>
-              {t.jules.bio.beliefs.map((belief: string) => <li>{belief}</li>)}
-            </ul>
-            <p>{t.jules.bio.p2}</p>
-            <p>{t.jules.bio.p3}</p>
-            <p>{t.jules.bio.p4}</p>
-          </div>
-        </div>
-      </div>
+      <TeamMember
+        name="Jules Blom"
+        image={julesImage}
+        variant="expanded"
+        socials={[
+          {
+            href: "https://www.linkedin.com/in/crown-jules/",
+            label: "LinkedIn",
+            icon: "linkedin",
+          },
+          {
+            href: "https://julesblom.com",
+            label: "Website",
+            icon: "external",
+          },
+        ]}
+      >
+        <p>{t.jules.bio.p1}</p>
+        <ul>
+          {t.jules.bio.beliefs.map((belief: string) => <li>{belief}</li>)}
+        </ul>
+        <p>{t.jules.bio.p2}</p>
+        <p>{t.jules.bio.p3}</p>
+        <p>{t.jules.bio.p4}</p>
+      </TeamMember>
     </section>
   </div>
 
@@ -132,101 +108,6 @@ const { t } = Astro.props;
 </div>
 
 <style>
-  .team-member {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 32px;
-    align-items: start;
-  }
-
-  .team-member-left {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .team-member-image {
-    & img {
-      border-radius: 100%;
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-    }
-  }
-
-  .team-member-name {
-    font-size: var(--text-xl);
-    font-weight: 600;
-    text-align: center;
-    font-family: var(--font-condensed);
-  }
-
-  .team-member-info {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .social-links {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .social-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    background-color: var(--gray-2);
-    border: 1px solid var(--color-border-subtle);
-    border-radius: 2px;
-    text-decoration: none;
-    color: var(--gray-12);
-    font-size: 14px;
-    transition: background-color 0.2s ease;
-
-    &:hover {
-      background-color: var(--gray-3);
-      text-decoration: none;
-    }
-
-    & svg {
-      width: 16px;
-      height: 16px;
-    }
-  }
-
-  .bio {
-    font-size: 16px;
-    max-width: 60ch;
-
-    & p {
-      margin-block-end: 16px;
-    }
-
-    & ul {
-      margin-block: 16px;
-      padding-left: 24px;
-      list-style-type: disc;
-    }
-
-    & li {
-      margin-block-end: 8px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .team-member {
-      grid-template-columns: 1fr;
-      justify-items: center;
-    }
-
-    .team-member-info {
-      width: 100%;
-    }
-  }
-
   .details-list {
     display: flex;
     flex-direction: column;

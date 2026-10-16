@@ -1,0 +1,201 @@
+---
+import { Icon } from "@astrojs/starlight/components";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Card from "./Card.astro";
+import Link from "./Link.astro";
+
+interface Social {
+  href: string;
+  label: string;
+  /** Starlight icon name, e.g. "linkedin", "external" */
+  icon: string;
+}
+
+interface Props {
+  name: string;
+  image: ImageMetadata;
+  /** compact: small card for the landing page grid; expanded: photo column + bio for the about page */
+  variant?: "compact" | "expanded";
+  socials?: Social[];
+}
+
+const { name, image, variant = "compact", socials = [] } = Astro.props;
+---
+
+{
+  variant === "compact" ? (
+    <Card class="team-member" data-layout="compact">
+      <h3>{name}</h3>
+      <Image src={image} alt={name} />
+      <p>
+        <slot />
+      </p>
+    </Card>
+  ) : (
+    <div class="team-member" data-layout="expanded">
+      <div class="team-member-left">
+        <div class="team-member-image">
+          <Image src={image} alt={name} width={200} height={200} />
+        </div>
+        <h2 class="team-member-name">{name}</h2>
+      </div>
+
+      <div class="team-member-info">
+        {socials.length > 0 && (
+          <div class="social-links">
+            {socials.map((social) => (
+              <Link href={social.href} class="social-link">
+                <Icon name={social.icon} />
+                {social.label}
+              </Link>
+            ))}
+          </div>
+        )}
+        <div class="bio">
+          <slot />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+<style>
+  .team-member[data-layout="compact"] {
+    display: grid;
+    grid-template-areas:
+      "image description"
+      "name description";
+    column-gap: var(--space-m);
+    row-gap: var(--space-xs);
+    padding-block: var(--space-s);
+    padding-inline: var(--space-l);
+
+    & img {
+      grid-area: image;
+      min-width: 100px;
+      max-width: min(220px, 100%);
+      border-radius: 100%;
+      filter: grayscale(1);
+    }
+
+    & h3 {
+      grid-area: name;
+      font-size: 1.25em;
+      text-align: center;
+    }
+
+    & p {
+      min-width: 20ch;
+      grid-area: description;
+    }
+  }
+
+  /* team-grid is the container the landing page grid declares */
+  @container team-grid (width < 80ch) {
+    .team-member[data-layout="compact"] {
+      grid-template-areas:
+        "image"
+        "name"
+        "description";
+      justify-items: center;
+    }
+  }
+
+  .team-member[data-layout="expanded"] {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .team-member-left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .team-member-image {
+    & img {
+      border-radius: 100%;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+  }
+
+  .team-member-name {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    text-align: center;
+    font-family: var(--font-condensed);
+  }
+
+  .team-member-info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: var(--gray-2);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 2px;
+    text-decoration: none;
+    color: var(--gray-12);
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: var(--gray-3);
+      text-decoration: none;
+    }
+
+    & svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  /* Bio content arrives through the slot, so it carries the parent page's
+     scope — style it with :global() */
+  .bio {
+    font-size: 16px;
+    max-width: 60ch;
+
+    & :global(p) {
+      margin-block-end: 16px;
+    }
+
+    & :global(ul) {
+      margin-block: 16px;
+      padding-left: 24px;
+      list-style-type: disc;
+    }
+
+    & :global(li) {
+      margin-block-end: 8px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .team-member[data-layout="expanded"] {
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
+
+    .team-member-info {
+      width: 100%;
+    }
+  }
+</style>

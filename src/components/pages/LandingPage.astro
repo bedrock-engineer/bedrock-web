@@ -8,8 +8,8 @@ import jules from "../../assets/JulesBlom.jpg";
 import geotopSouthHolland from "../../assets/geotop-south-holland.png";
 
 import { AnimatedDemoTabs } from "../AnimatedDemoTabs";
-import Card from "../Card.astro";
 import Footer from "../Footer.astro";
+import TeamMember from "../TeamMember.astro";
 import HoverLogo from "../HoverLogo.astro";
 import LanguagePicker from "../LanguagePicker.astro";
 import ThemeToggle from "../ThemeToggle.astro";
@@ -168,25 +168,13 @@ const { t } = Astro.props;
       </h2>
 
       <div class="team-member-grid">
-        <Card class="team-member card">
-          <h3>{t.team.jules.name}</h3>
-          <Image
-            src={jules}
-            alt={t.team.jules.name}
-            style="filter: grayscale(1);"
-          />
-          <p>{t.team.jules.bio}</p>
-        </Card>
+        <TeamMember name={t.team.jules.name} image={jules} variant="compact">
+          {t.team.jules.bio}
+        </TeamMember>
 
-        <Card class="team-member card">
-          <h3>{t.team.joost.name}</h3>
-          <Image
-            src={joost}
-            alt={t.team.joost.name}
-            style="filter: grayscale(1);"
-          />
-          <p>{t.team.joost.bio}</p>
-        </Card>
+        <TeamMember name={t.team.joost.name} image={joost} variant="compact">
+          {t.team.joost.bio}
+        </TeamMember>
       </div>
 
       <div class="section-link-center">
@@ -321,45 +309,6 @@ const { t } = Astro.props;
     gap: var(--space-s);
     container-type: inline-size;
     container-name: team-grid;
-  }
-
-  .team-member {
-    display: grid;
-    grid-template-areas:
-      "image description"
-      "name description";
-    column-gap: var(--space-m);
-    row-gap: var(--space-xs);
-    padding-block: var(--space-s);
-    padding-inline: var(--space-l);
-
-    & img {
-      grid-area: image;
-      min-width: 100px;
-      max-width: min(220px, 100%);
-      border-radius: 100%;
-    }
-
-    & h3 {
-      grid-area: name;
-      font-size: 1.25em;
-      text-align: center;
-    }
-
-    & p {
-      min-width: 20ch;
-      grid-area: description;
-    }
-  }
-
-  @container team-grid (width < 80ch) {
-    .team-member {
-      grid-template-areas:
-        "image"
-        "name"
-        "description";
-      justify-items: center;
-    }
   }
 
   .tabs-section {
