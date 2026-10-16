@@ -40,6 +40,12 @@
    font-condensed / font-mono utilities work. The same families exist as DTCG
    tokens (tokens/typography.tokens.json) for Figma and other consumers. */
 @theme {
+  /* Wipe Tailwind's default color palette so off-brand utilities like
+     bg-emerald-400 don't exist; only the Bedrock scales below (plus white)
+     generate color utilities. */
+  --color-*: initial;
+  --color-white: oklch(1 0 0);
+
   --font-sans: "IBM Plex Sans", sans-serif;
   --font-condensed: "IBM Plex Sans Condensed", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
