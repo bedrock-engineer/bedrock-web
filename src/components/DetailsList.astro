@@ -1,0 +1,57 @@
+---
+interface Props {
+  items: { term: string; value: string }[];
+  /** column: stacked key/value pairs (about page); row: wrapping inline pairs (terms page) */
+  direction?: "column" | "row";
+}
+
+const { items, direction = "column" } = Astro.props;
+---
+
+<dl class="details-list" data-direction={direction}>
+  {
+    items.map((item) => (
+      <div>
+        <dt class="details-term">{item.term}</dt>
+        <dd class="details-value">{item.value}</dd>
+      </div>
+    ))
+  }
+</dl>
+
+<style>
+  .details-list {
+    display: flex;
+
+    &[data-direction="column"] {
+      flex-direction: column;
+      gap: var(--space-s);
+      max-width: var(--measure-narrow);
+
+      & .details-value {
+        font-size: var(--text-lg);
+      }
+    }
+
+    &[data-direction="row"] {
+      flex-wrap: wrap;
+      gap: var(--space-l);
+      margin-block-end: var(--space-l);
+
+      & .details-value {
+        font-size: var(--text-base);
+      }
+    }
+  }
+
+  .details-term {
+    font-weight: var(--font-semibold);
+    color: var(--gray-11);
+    font-size: var(--text-sm);
+  }
+
+  .details-value {
+    color: var(--gray-12);
+    font-family: var(--font-mono);
+  }
+</style>
