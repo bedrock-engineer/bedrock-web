@@ -1,7 +1,9 @@
 .animated-tabs {
   width: fit-content;
   max-width: 100%;
-  --border-radius: 9999px;
+  /* Tabs are pills — container, buttons, indicator, and focus ring all share
+     the full rounding */
+  --tab-radius: 9999px;
   padding-block-start: 32px;
 }
 
@@ -22,7 +24,7 @@
   display: flex;
   align-items: center;
   width: fit-content;
-  border-radius: var(--border-radius-md);
+  border-radius: var(--tab-radius);
   border: 1px solid var(--green-7);
   background-color: var(--green-2);
   margin-inline: auto;
@@ -37,7 +39,7 @@
      touch-action: none here would make the tab bar unswipeable on mobile. */
   touch-action: manipulation;
   white-space: nowrap;
-  border-radius: 9999px;
+  border-radius: var(--tab-radius);
   transition:
     color var(--duration-instant),
     background-color var(--duration-instant);
@@ -65,7 +67,7 @@
   position: absolute;
   inset: 0;
   z-index: 10;
-  border-radius: var(--border-radius-md);
+  border-radius: var(--tab-radius);
   outline: 2px solid var(--green-2);
   outline-offset: 2px;
 }
@@ -77,7 +79,7 @@
   left: 0;
   z-index: 10;
   background-color: var(--green-2);
-  border-radius: var(--border-radius-md);
+  border-radius: var(--tab-radius);
   pointer-events: none;
   mix-blend-mode: difference;
 }
