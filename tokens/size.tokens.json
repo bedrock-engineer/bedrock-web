@@ -1,0 +1,86 @@
+{
+  "container": {
+    "$description": "Layout region max-widths.",
+    "narrow": {
+      "$type": "dimension",
+      "$value": {
+        "value": 520,
+        "unit": "px"
+      },
+      "$extensions": {
+        "engineer.bedrock.css": {
+          "value": "60ch"
+        }
+      },
+      "$description": "Static px approximation for design tools; CSS uses the character-width value in $extensions."
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1200,
+        "unit": "px"
+      }
+    },
+    "wide": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1480,
+        "unit": "px"
+      }
+    }
+  },
+  "measure": {
+    "$type": "dimension",
+    "$description": "Default readable paragraph width. Static px approximation for design tools; CSS uses the character-width value in $extensions.",
+    "$value": {
+      "value": 430,
+      "unit": "px"
+    },
+    "$extensions": {
+      "engineer.bedrock.css": {
+        "value": "50ch"
+      }
+    }
+  },
+  "measure-narrow": {
+    "$type": "dimension",
+    "$description": "Paragraph width in cards, callouts, column text. Static px approximation for design tools; CSS uses the character-width value in $extensions.",
+    "$value": {
+      "value": 344,
+      "unit": "px"
+    },
+    "$extensions": {
+      "engineer.bedrock.css": {
+        "value": "40ch"
+      }
+    }
+  },
+  "border": {
+    "radius": {
+      "sm": {
+        "$type": "dimension",
+        "$description": "Badges, inline code.",
+        "$value": {
+          "value": 4,
+          "unit": "px"
+        }
+      },
+      "md": {
+        "$type": "dimension",
+        "$description": "Cards, buttons, images.",
+        "$value": {
+          "value": 8,
+          "unit": "px"
+        }
+      },
+      "lg": {
+        "$type": "dimension",
+        "$description": "Large surfaces (hero card).",
+        "$value": {
+          "value": 16,
+          "unit": "px"
+        }
+      }
+    }
+  }
+}

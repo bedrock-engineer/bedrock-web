@@ -1,0 +1,191 @@
+{
+  "heading": {
+    "$description": "Fluid heading sizes (375px \u2192 1440px viewport). $value is the desktop max; the CSS build emits the clamp() from $extensions.",
+    "display": {
+      "$type": "dimension",
+      "$description": "Hero/display size \u2014 wider fluid range than heading.1.",
+      "$value": {
+        "value": 4,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "engineer.bedrock.css": {
+          "value": "clamp(1.8rem, 1.75rem + 2.4vw, 4rem)",
+          "min": "1.8rem",
+          "max": "4rem"
+        }
+      }
+    },
+    "1": {
+      "$type": "dimension",
+      "$value": {
+        "value": 4,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "engineer.bedrock.css": {
+          "value": "clamp(2.5rem, 1.5rem + 4vw, 4rem)",
+          "min": "2.5rem",
+          "max": "4rem"
+        }
+      }
+    },
+    "2": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2.8,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "engineer.bedrock.css": {
+          "value": "clamp(2rem, 1.4rem + 2.4vw, 2.8rem)",
+          "min": "2rem",
+          "max": "2.8rem"
+        }
+      }
+    },
+    "3": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "engineer.bedrock.css": {
+          "value": "clamp(1.5rem, 1.2rem + 1.2vw, 2rem)",
+          "min": "1.5rem",
+          "max": "2rem"
+        }
+      }
+    },
+    "4": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.5,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "engineer.bedrock.css": {
+          "value": "clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem)",
+          "min": "1.25rem",
+          "max": "1.5rem"
+        }
+      }
+    }
+  },
+  "text": {
+    "$description": "Body text sizes. xl/lg are fluid; base/sm/xs are fixed.",
+    "xl": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.25,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "engineer.bedrock.css": {
+          "value": "clamp(1.125rem, 1rem + 0.5vw, 1.25rem)",
+          "min": "1.125rem",
+          "max": "1.25rem"
+        }
+      }
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.125,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "engineer.bedrock.css": {
+          "value": "clamp(1rem, 0.95rem + 0.2vw, 1.125rem)",
+          "min": "1rem",
+          "max": "1.125rem"
+        }
+      }
+    },
+    "base": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "rem"
+      }
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.875,
+        "unit": "rem"
+      }
+    },
+    "xs": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.75,
+        "unit": "rem"
+      }
+    }
+  },
+  "leading": {
+    "tight": {
+      "$type": "number",
+      "$value": 1.25
+    },
+    "snug": {
+      "$type": "number",
+      "$value": 1.375
+    },
+    "normal": {
+      "$type": "number",
+      "$value": 1.5
+    },
+    "relaxed": {
+      "$type": "number",
+      "$value": 1.625
+    },
+    "loose": {
+      "$type": "number",
+      "$value": 1.75
+    }
+  },
+  "font": {
+    "sans": {
+      "$type": "fontFamily",
+      "$value": [
+        "IBM Plex Sans",
+        "sans-serif"
+      ]
+    },
+    "condensed": {
+      "$type": "fontFamily",
+      "$description": "Headings.",
+      "$value": [
+        "IBM Plex Sans Condensed",
+        "sans-serif"
+      ]
+    },
+    "mono": {
+      "$type": "fontFamily",
+      "$description": "Code and tabular data.",
+      "$value": [
+        "IBM Plex Mono",
+        "monospace"
+      ]
+    },
+    "normal": {
+      "$type": "fontWeight",
+      "$value": 400
+    },
+    "medium": {
+      "$type": "fontWeight",
+      "$value": 500
+    },
+    "semibold": {
+      "$type": "fontWeight",
+      "$value": 600
+    },
+    "bold": {
+      "$type": "fontWeight",
+      "$value": 700
+    }
+  }
+}

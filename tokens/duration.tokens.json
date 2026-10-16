@@ -1,0 +1,24 @@
+{
+  "duration": {
+    "instant": {
+      "$type": "duration",
+      "$description": "Immediate feedback: form inputs, pressed states.",
+      "$value": { "value": 100, "unit": "ms" }
+    },
+    "fast": {
+      "$type": "duration",
+      "$description": "Color/background hover transitions.",
+      "$value": { "value": 150, "unit": "ms" }
+    },
+    "normal": {
+      "$type": "duration",
+      "$description": "Borders, transforms, slide-ins.",
+      "$value": { "value": 200, "unit": "ms" }
+    },
+    "slow": {
+      "$type": "duration",
+      "$description": "Image zooms, large surface changes.",
+      "$value": { "value": 300, "unit": "ms" }
+    }
+  }
+}

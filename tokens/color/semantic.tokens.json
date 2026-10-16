@@ -1,0 +1,76 @@
+{
+  "color": {
+    "text": { "$type": "color", "$value": "{color.gray.12}" },
+    "text-muted": { "$type": "color", "$value": "{color.gray.11}" },
+    "text-subtle": { "$type": "color", "$value": "{color.gray.9}" },
+
+    "surface": { "$type": "color", "$value": "{color.gray.1}" },
+    "surface-raised": { "$type": "color", "$value": "{color.gray.2}" },
+    "surface-overlay": { "$type": "color", "$value": "{color.gray.3}" },
+
+    "border": { "$type": "color", "$value": "{color.gray.5}" },
+    "border-subtle": { "$type": "color", "$value": "{color.gray.4}" },
+    "border-strong": { "$type": "color", "$value": "{color.gray.7}" },
+
+    "primary": { "$type": "color", "$value": "{color.green.9}" },
+    "primary-hover": { "$type": "color", "$value": "{color.green.10}" },
+    "primary-text": { "$type": "color", "$value": "{color.green.11}" },
+    "primary-subtle": { "$type": "color", "$value": "{color.green.3}" },
+    "primary-contrast": { "$type": "color", "$value": "{color.green.contrast}" },
+
+    "focus": { "$type": "color", "$value": "{color.teal.10}" },
+
+    "shadow": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0, 0, 0], "alpha": 0.15 }
+    },
+    "shadow-strong": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0, 0, 0], "alpha": 0.3 }
+    },
+    "overlay": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0, 0, 0], "alpha": 0.5 }
+    },
+
+    "footer": {
+      "$description": "The footer is intentionally always dark; these do not change with theme.",
+      "bg": {
+        "$type": "color",
+        "$value": { "colorSpace": "oklch", "components": [0.181, 0.003, 145.468] }
+      },
+      "border": {
+        "$type": "color",
+        "$value": { "colorSpace": "oklch", "components": [0.215, 0.005, 145.401] }
+      },
+      "text": {
+        "$type": "color",
+        "$value": { "colorSpace": "oklch", "components": [0.948, 0.002, 145.562] }
+      },
+      "text-muted": {
+        "$type": "color",
+        "$value": { "colorSpace": "oklch", "components": [0.771, 0.01, 140.511] }
+      },
+      "link": {
+        "$type": "color",
+        "$value": { "colorSpace": "oklch", "components": [0.771, 0.01, 140.511] }
+      }
+    },
+
+    "inverted": {
+      "$description": "Fixed palette for buttons on always-dark backgrounds (hero image overlays); independent of theme.",
+      "button-bg": {
+        "$type": "color",
+        "$value": { "colorSpace": "oklch", "components": [0.745, 0.0695, 140.8] }
+      },
+      "button-bg-hover": {
+        "$type": "color",
+        "$value": { "colorSpace": "oklch", "components": [0.811, 0.0564, 140.8] }
+      },
+      "button-text": {
+        "$type": "color",
+        "$value": { "colorSpace": "oklch", "components": [0.22, 0.02, 140.8] }
+      }
+    }
+  }
+}

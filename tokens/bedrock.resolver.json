@@ -1,0 +1,27 @@
+{
+  "name": "Bedrock",
+  "version": "2025.10",
+  "description": "Bedrock design tokens. Source of truth for the website (via Terrazzo → tokens.css), Figma, and other apps.",
+  "sets": {
+    "base": {
+      "sources": [
+        { "$ref": "typography.tokens.json" },
+        { "$ref": "space.tokens.json" },
+        { "$ref": "size.tokens.json" },
+        { "$ref": "shadow.tokens.json" },
+        { "$ref": "duration.tokens.json" },
+        { "$ref": "color/semantic.tokens.json" }
+      ]
+    }
+  },
+  "modifiers": {
+    "theme": {
+      "contexts": {
+        "light": [{ "$ref": "color/scales.light.tokens.json" }],
+        "dark": [{ "$ref": "color/scales.dark.tokens.json" }]
+      },
+      "default": "light"
+    }
+  },
+  "resolutionOrder": [{ "$ref": "#/sets/base" }, { "$ref": "#/modifiers/theme" }]
+}

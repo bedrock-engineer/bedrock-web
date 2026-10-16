@@ -4,10 +4,12 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
-    "build:all": "npm run docs:generate && astro build",
+    "build": "tz build && astro build",
+    "build:all": "npm run docs:generate && tz build && astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "tokens:build": "tz build",
+    "tokens:check": "tz check",
     "docs:generate": "uv run python ./scripts/docs/generate_api_docs.py",
     "deploy": "npx astro build && npx wrangler deploy",
     "lint": "eslint .",
@@ -46,6 +48,8 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
+    "@terrazzo/cli": "^2.9.0",
+    "@terrazzo/plugin-css": "^2.9.0",
     "@types/node": "^25.0.7",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
