@@ -254,7 +254,7 @@ SVG grid patterns in `public/textures/`, applied with `.texture-*` classes. Rota
 | `.texture-668`     | 668.svg     | 220px | Very loose grid      |
 | `.texture-granite` | granite.svg | 150px | Footer (dense, dark) |
 
-The SVG stroke colors adapt to dark mode via `prefers-color-scheme` inside the files. (`233-K.svg` and `685.svg` also exist in `public/textures/` but are not part of the site's texture set.)
+The SVG stroke colors adapt to dark mode via `prefers-color-scheme` inside the files.
 
 ### Grids
 
