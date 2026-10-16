@@ -1,0 +1,56 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/custom.css";
+---
+
+<BaseLayout
+  title="Page not found | Bedrock.engineer"
+  description="This page doesn't exist."
+>
+  <meta slot="head" name="robots" content="noindex" />
+  <Navbar />
+  <div class="page">
+    <div class="section-wrapper texture-607">
+      <section class="section not-found">
+        <p class="status-code">404</p>
+        <h1 class="heading-1">Page not found</h1>
+        <p class="paragraph">
+          The address may be mistyped, or the page has moved.
+        </p>
+        <!-- prettier-ignore: one line so Astro's HTML compression keeps the spaces between links -->
+        <p class="paragraph">
+          Go to the <a href="/" class="link">homepage</a>, or browse the <a href="/demos" class="link">demos</a>, <a href="/tools" class="link">tools</a>, or <a href="/docs" class="link">docs</a>.
+        </p>
+      </section>
+    </div>
+  </div>
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Short page: stretch the bordered column down to the footer instead of
+     leaving a bare void below the section */
+  .page {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-wrapper {
+    flex: 1;
+    width: 100%;
+  }
+
+  .not-found {
+    height: 100%;
+    padding-block: var(--space-2xl-3xl);
+  }
+
+  .status-code {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-block-end: var(--space-2xs);
+  }
+</style>
