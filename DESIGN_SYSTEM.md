@@ -248,15 +248,13 @@ SVG grid patterns in `public/textures/`, applied with `.texture-*` classes. Rota
 | ------------------ | ----------- | ----- | -------------------- |
 | `.texture-607`     | 607.svg     | 70px  | Intro sections       |
 | `.texture-232-k`   | 232-K.svg   | 80px  | Content sections     |
-| `.texture-233-k`   | 233-K.svg   | 80px  | Content variant      |
 | `.texture-616`     | 616.svg     | 80px  | Content sections     |
 | `.texture-620`     | 620.svg     | 100px | CTA sections         |
 | `.texture-667`     | 667.svg     | 120px | Loose grid           |
 | `.texture-668`     | 668.svg     | 220px | Very loose grid      |
-| `.texture-685`     | 685.svg     | 100px | Variant              |
 | `.texture-granite` | granite.svg | 150px | Footer (dense, dark) |
 
-The SVG stroke colors adapt to dark mode via `prefers-color-scheme` inside the files.
+The SVG stroke colors adapt to dark mode via `prefers-color-scheme` inside the files. (`233-K.svg` and `685.svg` also exist in `public/textures/` but are not part of the site's texture set.)
 
 ### Grids
 
