@@ -30,8 +30,49 @@
 @import "@fontsource/ibm-plex-mono/latin-600.css";
 @import "@fontsource/ibm-plex-mono/latin-700.css";
 
-/* Radix Colors - defines --green-1, --gray-1, etc. */
-@import "./radix-theme.css";
+/* Design tokens — GENERATED, do not edit. Source of truth is tokens/*.json;
+   regenerate with `npm run tokens:build`. Defines the Radix color scales
+   (--green-1 …), semantic colors (--color-text …), fluid type & space scales,
+   radii, shadows, and durations. */
+@import "./tokens.css";
+
+/* Font families live in Tailwind's theme (not tokens.css) so the font-sans /
+   font-condensed / font-mono utilities work. The same families exist as DTCG
+   tokens (tokens/typography.tokens.json) for Figma and other consumers. */
+@theme {
+  --font-sans: "IBM Plex Sans", sans-serif;
+  --font-condensed: "IBM Plex Sans Condensed", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+/* Expose the green/gray scales to Tailwind utilities (bg-gray-3, text-green-11, …).
+   `inline` keeps them as var() references, so they stay theme-reactive. */
+@theme inline {
+  --color-green-1: var(--green-1);
+  --color-green-2: var(--green-2);
+  --color-green-3: var(--green-3);
+  --color-green-4: var(--green-4);
+  --color-green-5: var(--green-5);
+  --color-green-6: var(--green-6);
+  --color-green-7: var(--green-7);
+  --color-green-8: var(--green-8);
+  --color-green-9: var(--green-9);
+  --color-green-10: var(--green-10);
+  --color-green-11: var(--green-11);
+  --color-green-12: var(--green-12);
+  --color-gray-1: var(--gray-1);
+  --color-gray-2: var(--gray-2);
+  --color-gray-3: var(--gray-3);
+  --color-gray-4: var(--gray-4);
+  --color-gray-5: var(--gray-5);
+  --color-gray-6: var(--gray-6);
+  --color-gray-7: var(--gray-7);
+  --color-gray-8: var(--gray-8);
+  --color-gray-9: var(--gray-9);
+  --color-gray-10: var(--gray-10);
+  --color-gray-11: var(--gray-11);
+  --color-gray-12: var(--gray-12);
+}
 
 /* CSS Reset Enhancements */
 /* Tailwind Preflight already handles box-sizing, margins, padding, and form font inheritance */
@@ -294,127 +335,16 @@ figcaption {
 }
 
 /* ============================================ */
-/* FLUID DESIGN SYSTEM (Utopia-style)          */
+/* DESIGN TOKENS                                */
 /* ============================================ */
+/* The fluid type/space scales, semantic colors, radii, shadows, and durations
+   are all generated into tokens.css (imported above) from tokens/*.json. */
 
 :root {
-  /* Viewport range for fluid calculations: 375px (mobile) to 1440px (desktop) */
-
-  /* ========== FLUID TYPOGRAPHY SCALE ========== */
-  /* Scales smoothly from mobile to desktop */
-
-  --heading-1: clamp(2.5rem, 1.5rem + 4vw, 4rem); /* 40px → 64px */
-  --heading-2: clamp(2rem, 1.4rem + 2.4vw, 2.8rem); /* 32px → 44.8px */
-  --heading-3: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); /* 24px → 32px */
-  --heading-4: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem); /* 20px → 24px */
-
-  --text-xl: clamp(1.125rem, 1rem + 0.5vw, 1.25rem); /* 18px → 20px */
-  --text-lg: clamp(1rem, 0.95rem + 0.2vw, 1.125rem); /* 16px → 18px */
-  --text-base: 1rem; /* 16px - fixed */
-  --text-sm: 0.875rem; /* 14px - fixed */
-  --text-xs: 0.75rem; /* 12px - fixed */
-
-  /* Line heights */
-  --leading-tight: 1.25;
-  --leading-snug: 1.375;
-  --leading-normal: 1.5;
-  --leading-relaxed: 1.625;
-  --leading-loose: 1.75;
-
-  /* Font families */
-  --font-sans: "IBM Plex Sans", sans-serif;
-  --font-condensed: "IBM Plex Sans Condensed", sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
-
-  /* Font weights */
-  --font-normal: 400;
-  --font-medium: 500;
-  --font-semibold: 600;
-  --font-bold: 700;
-
-  /* ========== FLUID SPACE SCALE ========== */
-  /* T-shirt sizing with fluid values */
-  /* Formula: clamp(MIN_mobile, MIN_mobile + (MAX_desktop - MIN_mobile) * viewport_growth, MAX_desktop) */
-
-  --space-3xs: clamp(0.25rem, 0.23rem + 0.09vw, 0.31rem); /* 4px → 5px */
-  --space-2xs: clamp(0.5rem, 0.46rem + 0.19vw, 0.63rem); /* 8px → 10px */
-  --space-xs: clamp(0.75rem, 0.69rem + 0.28vw, 0.94rem); /* 12px → 15px */
-  --space-s: clamp(1rem, 0.91rem + 0.38vw, 1.25rem); /* 16px → 20px */
-  --space-m: clamp(1.5rem, 1.37rem + 0.56vw, 1.88rem); /* 24px → 30px */
-  --space-l: clamp(2rem, 1.83rem + 0.75vw, 2.5rem); /* 32px → 40px */
-  --space-xl: clamp(3rem, 2.74rem + 1.13vw, 3.75rem); /* 48px → 60px */
-  --space-2xl: clamp(4rem, 3.66rem + 1.5vw, 5rem); /* 64px → 80px */
-  --space-3xl: clamp(6rem, 5.48rem + 2.25vw, 7.5rem); /* 96px → 120px */
-
-  /* One-up pairs (for consistent spacing combinations) */
-  --space-3xs-2xs: clamp(0.25rem, 0.13rem + 0.56vw, 0.63rem); /* 4px → 10px */
-  --space-2xs-xs: clamp(0.5rem, 0.36rem + 0.66vw, 0.94rem); /* 8px → 15px */
-  --space-xs-s: clamp(0.75rem, 0.59rem + 0.75vw, 1.25rem); /* 12px → 20px */
-  --space-s-m: clamp(1rem, 0.71rem + 1.31vw, 1.88rem); /* 16px → 30px */
-  --space-m-l: clamp(1.5rem, 1.17rem + 1.5vw, 2.5rem); /* 24px → 40px */
-  --space-l-xl: clamp(2rem, 1.43rem + 2.63vw, 3.75rem); /* 32px → 60px */
-  --space-xl-2xl: clamp(3rem, 2.34rem + 3vw, 5rem); /* 48px → 80px */
-  --space-2xl-3xl: clamp(4rem, 2.86rem + 5.25vw, 7.5rem); /* 64px → 120px */
-
-  /* ========== SEMANTIC SPACING ========== */
-  /* Use fluid space scale for semantic values */
-
-  --section-padding-block: var(--space-xl); /* 48px → 60px */
-  --section-padding-inline: var(--space-m-l); /* 32px → 60px */
-  --card-padding: var(--space-m); /* 24px → 30px */
-  --card-gap: var(--space-l); /* 32px → 40px */
-  --grid-gap: var(--space-m-l); /* 24px → 40px */
-
-  /* ========== CONTAINER WIDTHS ========== */
-
-  --container-narrow: 60ch;
-  --container-md: 1200px;
-  --container-wide: 1480px;
-
-  /* Readable paragraph widths */
-  --measure: 50ch;
-  --measure-narrow: 40ch;
-
-  /* ========== SEMANTIC COLOR TOKENS ========== */
-  /* Use these instead of raw Radix scale numbers in components */
-
-  /* Text */
-  --color-text: var(--gray-12);
-  --color-text-muted: var(--gray-11);
-  --color-text-subtle: var(--gray-9);
-
-  /* Surfaces */
-  --color-surface: var(--gray-1);
-  --color-surface-raised: var(--gray-2);
-  --color-surface-overlay: var(--gray-3);
-
-  /* Borders */
-  --color-border: var(--gray-5);
-  --color-border-subtle: var(--gray-4);
-  --color-border-strong: var(--gray-7);
-
-  /* Primary (green) */
-  --color-primary: var(--green-9);
-  --color-primary-hover: var(--green-10);
-  --color-primary-text: var(--green-11);
-  --color-primary-subtle: var(--green-3);
-  --color-primary-contrast: var(--green-contrast);
-
-  /* Focus */
-  --color-focus: var(--teal-10);
-
-  /* Shadows & overlays */
-  --color-shadow: oklch(0 0 0 / 0.15);
-  --color-shadow-strong: oklch(0 0 0 / 0.3);
-  --color-overlay: oklch(0 0 0 / 0.5);
-
-  /* ========== BORDER & RADIUS ========== */
-
+  /* Legacy aliases — to be removed once components reference the token names */
   --border-color-light: var(--color-border-subtle);
   --border-color: var(--color-border);
-  --border-radius: 8px;
-  --border-radius-sm: 4px;
-  --border-radius-lg: 16px;
+  --border-radius: var(--border-radius-md);
 }
 
 /* ========== TYPOGRAPHY UTILITY CLASSES ========== */

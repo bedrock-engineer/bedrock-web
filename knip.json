@@ -1,5 +1,6 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": ["terrazzo.config.mjs", "scripts/*.mjs"],
   "ignoreExportsUsedInFile": {
     "interface": true,
     "type": true
