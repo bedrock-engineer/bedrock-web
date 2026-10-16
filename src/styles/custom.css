@@ -611,14 +611,14 @@ figcaption {
    The hero is always dark (image + overlay), so fixed colors here —
    the green theme tokens flip between light and dark mode. */
 .cta-button-inverted {
-  background: oklch(74.5% 0.0695 140.8);
-  color: oklch(22% 0.02 140.8);
+  background: var(--color-inverted-button-bg);
+  color: var(--color-inverted-button-text);
   /* font-weight: 500; */
   /* transparent border keeps metrics identical to the secondary button */
   border: 1px solid transparent;
 
   &:hover {
-    background: oklch(81.1% 0.0564 140.8);
+    background: var(--color-inverted-button-bg-hover);
   }
 }
 

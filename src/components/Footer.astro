@@ -123,13 +123,14 @@ import { Icon } from "@astrojs/starlight/components";
 </footer>
 
 <style>
-  /* Footer is intentionally always dark — fixed tokens scoped here */
+  /* Footer is intentionally always dark — fixed palette from the
+     color.footer.* tokens */
   .footer {
-    --footer-bg: oklch(0.181 0.003 145.468);
-    --footer-border: oklch(0.215 0.005 145.401);
-    --footer-text: oklch(0.948 0.002 145.562);
-    --footer-text-muted: oklch(0.771 0.01 140.511);
-    --footer-link: oklch(0.771 0.01 140.511);
+    --footer-bg: var(--color-footer-bg);
+    --footer-border: var(--color-footer-border);
+    --footer-text: var(--color-footer-text);
+    --footer-text-muted: var(--color-footer-text-muted);
+    --footer-link: var(--color-footer-link);
 
     background-color: var(--footer-bg);
     font-size: var(--text-sm);
