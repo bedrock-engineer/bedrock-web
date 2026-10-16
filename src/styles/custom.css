@@ -538,6 +538,23 @@ figcaption {
   background-size: 220px;
 }
 
+.texture-233-k {
+  background: url("/textures/233-K.svg");
+  background-size: 80px;
+}
+
+.texture-685 {
+  background: url("/textures/685.svg");
+  background-size: 100px;
+}
+
+/* Dense texture for the always-dark footer; Footer.astro sets its own
+   background-image because it also needs the fixed footer palette */
+.texture-granite {
+  background: url("/textures/granite.svg");
+  background-size: 150px;
+}
+
 /* ========== CTA BUTTONS ========== */
 /* Primary and secondary call-to-action button styles */
 
