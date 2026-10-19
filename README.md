@@ -70,3 +70,7 @@ npm run docs:generate
 ```
 
 The script auto-discovers modules in bedrock-ge, extracts docstrings and type annotations, and writes markdown with parameter tables. The generated files are picked up by the `autogenerate` entries in the bedrock-ge sidebar topic in `astro.config.mjs`. This only needs re-running when the bedrock-ge package changes; day-to-day site work can use `npm run build`.
+
+## License
+
+The source code is licensed under the Apache License 2.0. The documentation and other website content are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The Bedrock name, logo and other brand assets are © Bedrock Technologies B.V., all rights reserved. See [LICENSE](LICENSE) for details.

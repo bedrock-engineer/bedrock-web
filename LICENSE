@@ -1,3 +1,25 @@
+Bedrock website — licensing
+
+1. Source code
+   The source code in this repository (including src/components/,
+   src/styles/, scripts/ and configuration files) is licensed under the
+   Apache License, Version 2.0. See section 4 for the full text.
+
+2. Documentation and other content
+   The documentation in src/content/docs/ and all other website content
+   (including the marketing pages in src/pages/) are
+   © Bedrock Technologies B.V. and licensed under the Creative Commons
+   Attribution 4.0 International License (CC BY 4.0):
+   https://creativecommons.org/licenses/by/4.0/
+
+3. Brand assets
+   The Bedrock name, logo and other brand assets are
+   © Bedrock Technologies B.V. All rights reserved. They are not covered
+   by the licenses in sections 1 and 2, wherever they appear.
+   Third-party material keeps its own license.
+
+4. Apache License, Version 2.0
+
                                  Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/

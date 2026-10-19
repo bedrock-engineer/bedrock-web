@@ -1,6 +1,7 @@
 {
   "name": "bedrock-astro",
   "type": "module",
+  "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
