@@ -1,5 +1,6 @@
 import { getCollection } from "astro:content";
 import { OGImageRoute } from "astro-og-canvas";
+import { docsPageTitle } from "../../docsPackage";
 
 // Build-time OG card for every docs page, keyed by content-collection id so it
 // covers all packages (and .mdoc pages) without any path matching.
@@ -10,8 +11,8 @@ const pages = Object.fromEntries(entries.map(({ data, id }) => [id, { data }]));
 
 export const { getStaticPaths, GET } = await OGImageRoute({
   pages,
-  getImageOptions: (_id, page: (typeof pages)[string]) => ({
-    title: page.data.title,
+  getImageOptions: (id, page: (typeof pages)[string]) => ({
+    title: docsPageTitle(id, page.data.title),
     description: page.data.description,
     logo: { path: "./src/assets/Bedrock_TextRight.png", size: [371] },
     bgGradient: [[255, 255, 255]],
