@@ -10,9 +10,6 @@ import {
 } from "https://cdn.jsdelivr.net/npm/d3-scale/+esm";
 import { createOrdinalLegend, createSequentialLegend } from "./legend.js";
 
-Cesium.Ion.defaultAccessToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIwNGFmOTJiZS0xMjJjLTRkNTYtYWU5NC05N2Y5ODZjNzQ4ZTQiLCJpZCI6Mjc0NDQ3LCJpYXQiOjE3MzkwMzUxNjV9.Vj6tRACNQvvjbzD1KJ0tccLziszrNXo6JIHv-as9kuE";
-
 // Hong Kong Kai Tak
 const initialCameraView = {
   destination: Cesium.Cartesian3.fromDegrees(
@@ -37,6 +34,7 @@ const viewer = new Cesium.Viewer("map", {
   navigationHelpButton: false,
   geocoder: false,
   homeButton: false,
+  baseLayer: false, // No default Bing imagery from Cesium ion; the basemaps are added below
   msaaSamples: 4, // Anti-aliasing can help reduce visual artifacts
 });
 
@@ -45,10 +43,21 @@ const { globe } = scene;
 
 viewer.camera.setView(initialCameraView);
 
-const osmBuildings = await Cesium.createOsmBuildingsAsync();
+// The Lands Department's 3D Spatial Data buildings, without a key. Its API answers bursts of
+// requests with 429s, and CesiumJS sends up to 18 at a time to one server.
+Cesium.RequestScheduler.requestsByServer["data.map.gov.hk:443"] = 4;
+const buildings = await Cesium.Cesium3DTileset.fromUrl(
+  "https://data.map.gov.hk/api/3d-data/3dsd/WGS84/building/tileset.json",
+);
+viewer.creditDisplay.addStaticCredit(
+  new Cesium.Credit(
+    '3D Spatial Data from <a href="https://www.landsd.gov.hk/">Lands Department</a>',
+  ),
+);
 
+// Re:Earth's global terrain, with heights on the WGS84 ellipsoid; credits come with its layer.json
 const worldTerrainProvider = await Cesium.CesiumTerrainProvider.fromUrl(
-  Cesium.IonResource.fromAssetId(1), // Asset 1 = Cesium World Terrain
+  "https://terrain.reearth.land/cesium-mesh/ellipsoid",
 );
 const ellipsoidTerrainProvider = new Cesium.EllipsoidTerrainProvider();
 
@@ -58,10 +67,19 @@ viewer.terrainProvider = worldTerrainProvider;
 const initAlpha = 0.7;
 
 // Set initial opacity for buildings to match basemap
-osmBuildings.style = new Cesium.Cesium3DTileStyle({
+buildings.style = new Cesium.Cesium3DTileStyle({
   color: `color("white", ${initAlpha})`,
 });
-scene.primitives.add(osmBuildings);
+// Their texture is one flat dark blue-grey; paint them light, and keep the alpha the opacity
+// slider sets through the style
+buildings.customShader = new Cesium.CustomShader({
+  fragmentShaderText: `
+    void fragmentMain(FragmentInput fsInput, inout czm_modelMaterial material) {
+      material.diffuse = vec3(0.92);
+    }
+  `,
+});
+scene.primitives.add(buildings);
 
 // Configure globe for underground visualization
 // https://cesium.com/blog/2020/06/16/visualizing-underground/
@@ -90,16 +108,23 @@ const stamenTonerLayer = new Cesium.UrlTemplateImageryProvider({
     '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>',
 });
 
-// Get reference to the default Bing imagery layer (index 0)
-const defaultImageryLayer = viewer.imageryLayers.get(0);
-
-// Add Stamen layer on top and store reference
-const customImageryLayer =
+// The Lands Department's aerial photos, and satellite images further out, without a key. Its
+// terms ask for its logo and copyright notice on the map face.
+const landsdImageryLayer = viewer.imageryLayers.addImageryProvider(
+  new Cesium.UrlTemplateImageryProvider({
+    url: "https://mapapi.hkmapservice.gov.hk/gs/api/v1.0.0/xyz/imagery/WGS84/{z}/{x}/{y}.png",
+    maximumLevel: 20,
+    credit: new Cesium.Credit(
+      '<img src="https://api.hkmapservice.gov.hk/mapapi/landsdlogo.jpg" alt="Lands Department" style="height: 22px; vertical-align: middle"> Aerial Photograph from Lands Department, Satellite Images from Landsat',
+      true,
+    ),
+  }),
+);
+const stamenImageryLayer =
   viewer.imageryLayers.addImageryProvider(stamenTonerLayer);
 
 // Start with Stamen Toner visible, hide satellite
-defaultImageryLayer.show = false;
-customImageryLayer.show = true;
+landsdImageryLayer.show = false;
 
 /** Colors and names for your borehole types (matches AGS HOLE_TYPE values in our data) */
 const agsHoleTypes = {
@@ -419,7 +444,7 @@ document.querySelector("#alpha").addEventListener("input", (event) => {
   globe.translucency.frontFaceAlpha = alpha;
 
   // Update building opacity to match
-  osmBuildings.style = new Cesium.Cesium3DTileStyle({
+  buildings.style = new Cesium.Cesium3DTileStyle({
     color: `color("white", ${alpha})`,
   });
 });
@@ -428,7 +453,7 @@ document.querySelector("#alpha").addEventListener("input", (event) => {
 document
   .querySelector("#buildings-toggle")
   .addEventListener("change", (event) => {
-    osmBuildings.show = event.target.checked;
+    buildings.show = event.target.checked;
   });
 
 // 3D terrain toggle
@@ -440,20 +465,18 @@ document
       : ellipsoidTerrainProvider;
   });
 
-// Basemap toggle
-document
-  .querySelector("#basemap-toggle")
-  .addEventListener("change", (event) => {
-    if (event.target.checked) {
-      // Show satellite (default Bing layer)
-      defaultImageryLayer.show = true;
-      customImageryLayer.show = false;
-    } else {
-      // Show Stamen Toner
-      defaultImageryLayer.show = false;
-      customImageryLayer.show = true;
+// Basemap switch: one of its buttons is pressed at a time
+const basemapButtons = document.querySelectorAll("[data-basemap]");
+for (const button of basemapButtons) {
+  button.addEventListener("click", () => {
+    const satellite = button.dataset.basemap === "satellite";
+    landsdImageryLayer.show = satellite;
+    stamenImageryLayer.show = !satellite;
+    for (const other of basemapButtons) {
+      other.setAttribute("aria-pressed", String(other === button));
     }
   });
+}
 
 // Reset camera button
 document.querySelector("#reset-camera").addEventListener("click", () => {

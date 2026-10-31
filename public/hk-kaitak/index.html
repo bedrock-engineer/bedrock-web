@@ -265,6 +265,42 @@
         transform: rotate(45deg);
       }
 
+      /* === Segmented control: one pressed button out of a few === */
+      .segmented {
+        display: flex;
+        border: 1px solid var(--checkbox-border);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+
+      .segmented button {
+        flex: 1;
+        padding: 5px 8px;
+        border: 0;
+        background: var(--checkbox-bg);
+        color: var(--text-primary);
+        font-family: inherit;
+        font-size: 11.5px;
+        cursor: pointer;
+        transition:
+          background 0.15s,
+          color 0.15s;
+      }
+
+      .segmented button + button {
+        border-left: 1px solid var(--checkbox-border);
+      }
+
+      .segmented button[aria-pressed="true"] {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      .segmented button:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: -2px;
+      }
+
       /* === Slider === */
       .slider-label {
         display: block;
@@ -474,9 +510,18 @@
               <input type="checkbox" id="terrain-toggle" checked />
               <label for="terrain-toggle">3D Terrain</label>
             </div>
-            <div class="checkbox-item">
-              <input type="checkbox" id="basemap-toggle" />
-              <label for="basemap-toggle">Satellite</label>
+            <span class="slider-label">Basemap</span>
+            <div class="segmented" role="group" aria-label="Basemap">
+              <button type="button" data-basemap="map" aria-pressed="true">
+                Map
+              </button>
+              <button
+                type="button"
+                data-basemap="satellite"
+                aria-pressed="false"
+              >
+                Satellite
+              </button>
             </div>
             <span class="slider-label">Basemap opacity</span>
             <input
