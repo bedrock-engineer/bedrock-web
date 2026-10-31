@@ -583,12 +583,19 @@ Promise.allSettled(datasets.map((dataset) => loadDataset(dataset))).then(
 
 // ── 3D BAG Buildings ──────────────────────────────────────────────────────
 
+// PDOK's tiles give the buildings a non-metallic material; 3dbag.nl's leave metallicFactor at
+// glTF's default of 1, which renders them dark and muddy without an environment to reflect
 try {
   const tileset_3dbag = await Cesium.Cesium3DTileset.fromUrl(
-    "https://data.3dbag.nl/v20250903/cesium3dtiles/lod22/tileset.json",
+    "https://api.pdok.nl/kadaster/3d-basisvoorziening/ogc/v1/collections/gebouwen/3dtiles",
   );
 
   scene.primitives.add(tileset_3dbag);
+  viewer.creditDisplay.addStaticCredit(
+    new Cesium.Credit(
+      '3D Basisvoorziening © <a href="https://www.pdok.nl/3d-basisvoorziening">Kadaster</a> (CC BY 4.0)',
+    ),
+  );
 
   document
     .querySelector("#buildings-toggle")
