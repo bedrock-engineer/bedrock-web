@@ -1,0 +1,7 @@
+# LF in the repository and in every checkout, no matter what core.autocrlf is set to in gitconfig.
+# Background: https://adaptivepatchwork.com/2012/03/01/mind-the-end-of-your-line/
+* text=auto eol=lf
+
+# Windows batch files need CRLF. Patterns here have no {a,b} brace expansion, so one line per type.
+*.[cC][mM][dD] text eol=crlf
+*.[bB][aA][tT] text eol=crlf
