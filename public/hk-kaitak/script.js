@@ -70,6 +70,11 @@ globe.depthTestAgainstTerrain = true;
 globe.translucency.frontFaceAlpha = initAlpha;
 globe.undergroundColor = Cesium.Color.fromCssColorString("#e8e4e0"); // Solid color to block view to opposite side of globe
 globe.translucency.backFaceAlpha = 1.0; // Keep back face opaque so we don't see the opposite side of the globe
+// The seams between the globe's back-face tiles show the stars and the background through the
+// translucent ground as dark arcs; no sky box and a background the color of the underground hide
+// them, and the sky atmosphere still covers the background above the horizon
+scene.skyBox = undefined; // skyBox.show = false still draws the stars
+scene.backgroundColor = globe.undergroundColor;
 
 // So we can move the camera below the surface
 scene.screenSpaceCameraController.enableCollisionDetection = false;
