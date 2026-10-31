@@ -12,8 +12,6 @@ import geotop from "../assets/geotop-fences.png";
 import antwerpen from "../assets/antwerpen.png";
 import broCpt from "../assets/bro-cpt.png";
 import emeraldFre16 from "../assets/emerald-fre16.png";
-import kaiTakSpeckle from "../assets/KaiTak_BrGI_Speckle.png";
-import amsterdamSpeckle from "../assets/amsterdam-noord-speckle.png";
 import wekaHills from "../assets/WekaHills_Speckle.webp";
 import zalmhaven from "../assets/zalmhaven.jpeg";
 import ifcGeoreferencer from "../assets/ifc-georeferencer.png";
@@ -44,6 +42,8 @@ export type Category = "tool" | "demo";
 export interface DemoLink {
   href: string;
   label: string;
+  // A subtitle under the label, e.g. which model of a Speckle demo
+  detail?: string;
 }
 
 export interface Demo {
@@ -65,16 +65,27 @@ export interface Demo {
 
 export const demos: Demo[] = [
   {
-    id: "kai-tak-cesium",
-    title: "Kai Tak, Hong Kong - CesiumJS",
+    id: "kai-tak",
+    title: "Kai Tak, Hong Kong",
     description:
-      "Ground investigation data from Kai Tak, Hong Kong visualized in an interactive CesiumJS map. Borehole locations, SPT results, and weathering grades in 3D, transformed from AGS3 to GeoJSON with bedrock-ge.",
+      "Ground investigation data from Kai Tak, Hong Kong, transformed from AGS3 with bedrock-ge. Borehole locations, SPT results and weathering grades in a 3D web map, and alongside building models from Revit and Civil3D in a web-based BIM viewer.",
     category: "demo",
     href: `${SITE}/hk-kaitak`,
-    linkText: "Explore demo",
+    links: [
+      {
+        href: `${SITE}/hk-kaitak`,
+        label: "Explore CesiumJS demo",
+        detail: "GIS",
+      },
+      {
+        href: "https://speckle.bedrock.engineer/projects/aa7ceaba47/models/all",
+        label: "Explore Speckle demo",
+        detail: "BIM",
+      },
+    ],
     image: kaiTakCesium,
     country: "HK",
-    type: ["Web app", "GIS"],
+    type: ["Web app", "GIS", "BIM"],
     sourceData: ["AGS"],
     gm: ["Geotechnical"],
   },
@@ -133,27 +144,40 @@ export const demos: Demo[] = [
     gm: ["Structural"],
   },
   {
-    id: "amsterdam-noord-cesium",
-    title: "Amsterdam Noord - CesiumJS",
+    id: "amsterdam-noord",
+    title: "Amsterdam Noord",
     description:
-      "Interactive 3D web map combining interpreted CPT data, the 3DBag building dataset, and the GeoTOP geological model in Amsterdam Noord, rendered in CesiumJS.",
+      "Interpreted CPT data, the GeoTOP geological model and 3D BAG buildings in Amsterdam Noord in a 3D web map, and the subsurface data next to BIM models in a web-based BIM viewer.",
     category: "demo",
     href: `${SITE}/nl-amsterdam-noord`,
-    linkText: "Explore demo",
+    links: [
+      {
+        href: `${SITE}/nl-amsterdam-noord`,
+        label: "Explore CesiumJS demo",
+        detail: "GIS",
+      },
+      {
+        href: "https://speckle.bedrock.engineer/projects/03f6fd3bc9/models/all",
+        label: "Explore Speckle demo",
+        detail: "BIM",
+      },
+    ],
     image: amsterdamNoord,
+    imageAlt:
+      "Amsterdam Noord in 3D: interpreted CPTs, the Overhoeks towers and the EYE film museum",
     country: "NL",
-    type: ["Web app", "GIS"],
+    type: ["Web app", "GIS", "BIM"],
     sourceData: ["BRO-XML"],
     gm: ["Geotechnical", "Geological"],
   },
   {
     id: "geotop-voxels-cesium",
-    title: "GeoTOP Voxels - CesiumJS",
+    title: "GeoTOP Voxels",
     description:
       "The Dutch GeoTOP shallow subsurface model rendered in 3D in a browser for the first time. 100×100×0.5 m voxels with lithoclass information across Amsterdam, Delft, and Utrecht using CesiumJS with the 3D Tiles Voxel extension.",
     category: "demo",
     href: "https://geotop.bedrock.engineer",
-    linkText: "Explore demo",
+    linkText: "Explore CesiumJS demo",
     links: [{ href: "/voxels", label: "More about our voxel work" }],
     image: geotop,
     country: "NL",
@@ -163,12 +187,12 @@ export const demos: Demo[] = [
   },
   {
     id: "antwerp-cesium",
-    title: "Antwerp Geological Model - CesiumJS",
+    title: "Antwerp Geological Model",
     description:
       "The Flemish DOV shallow subsurface model of Antwerp and its harbor as 3D Tiles Voxels in CesiumJS. 25×25×0.5 m voxels — over 21 million in total — with proportional lithology (peat, clay, silt, sand, gravel) from surface to 50 m depth.",
     category: "demo",
     href: "https://antwerpen.bedrock.engineer",
-    linkText: "Explore demo",
+    linkText: "Explore CesiumJS demo",
     image: antwerpen,
     country: "BE",
     type: ["Web app", "GIS"],
@@ -177,12 +201,12 @@ export const demos: Demo[] = [
   },
   {
     id: "tnw-cesium",
-    title: "Ten noorden van de Waddeneilanden - CesiumJS",
+    title: "Ten noorden van de Waddeneilanden",
     description:
       "The integrated ground model for Ten noorden van de Waddeneilanden, an offshore wind zone north of the Wadden Islands, rendered as 3D Tiles Voxels in CesiumJS. Geological units on a 25×25×0.1 m grid, from the quantitative ground model built by NGI and SAND Geophysics for the Netherlands Enterprise Agency (RVO).",
     category: "demo",
     href: "https://tnw.bedrock.engineer",
-    linkText: "Explore demo",
+    linkText: "Explore CesiumJS demo",
     links: [
       {
         href: "https://offshorewind.rvo.nl/page/view/be898bea-672f-464c-bfaf-74666cb8c489/soil-tnw",
@@ -199,12 +223,12 @@ export const demos: Demo[] = [
   },
   {
     id: "bro-cpt-maplibre",
-    title: "Dutch BRO CPTs - MapLibre GL & PMTiles",
+    title: "Dutch BRO CPTs",
     description:
       "All 237,297 Cone Penetration Tests from the Dutch subsurface registry rendered instantly in the browser with MapLibre GL. Zoom, filter, and recolor without lag from a 35 MB PMTiles file served as a static asset.",
     category: "demo",
     href: `${SITE}/bro-cpt`,
-    linkText: "Explore demo",
+    linkText: "Explore MapLibre demo",
     image: broCpt,
     country: "NL",
     type: ["Web app", "GIS"],
@@ -213,12 +237,12 @@ export const demos: Demo[] = [
   },
   {
     id: "emerald-fre16-cesium",
-    title: "Emerald FRE16, Norway - CesiumJS",
+    title: "Emerald FRE16, Norway",
     description:
       "Sensitive clay probability and resistivity along survey line FRE16 from Emerald Geomodelling, visualized as a 3D overlay on Norwegian terrain in CesiumJS. Toggle between sensitive clay probability and log-scale resistivity, and adjust basemap and globe opacity.",
     category: "demo",
     href: "https://emerald-sensitive-clay.bedrock.engineer/",
-    linkText: "Explore demo",
+    linkText: "Explore CesiumJS demo",
     links: [
       {
         href: "https://www.emerald-geomodelling.com/",
@@ -234,43 +258,13 @@ export const demos: Demo[] = [
     gm: ["Geophysical", "Geotechnical"],
   },
   {
-    id: "kai-tak-speckle",
-    title: "Kai Tak - Speckle",
-    description:
-      "Building models from Revit and Civil3D combined with geotechnical data in Speckle. View subsurface conditions alongside structural designs.",
-    category: "demo",
-    href: "https://speckle.bedrock.engineer/projects/aa7ceaba47/models/all",
-    linkText: "Open in Speckle",
-    image: kaiTakSpeckle,
-    imageAlt: "Kai Tak GI data in Speckle with 3D buildings",
-    country: "HK",
-    type: ["BIM"],
-    sourceData: ["AGS"],
-    gm: ["Geotechnical"],
-  },
-  {
-    id: "amsterdam-noord-speckle",
-    title: "Amsterdam Noord - Speckle",
-    description:
-      "Subsurface data from Amsterdam Noord visualized in Speckle for multi-disciplinary collaboration and BIM integration.",
-    category: "demo",
-    href: "https://speckle.bedrock.engineer/projects/03f6fd3bc9/models/all",
-    linkText: "Open in Speckle",
-    image: amsterdamSpeckle,
-    imageAlt: "Amsterdam Noord in Speckle",
-    country: "NL",
-    type: ["BIM"],
-    sourceData: ["BRO-XML"],
-    gm: ["Geotechnical"],
-  },
-  {
     id: "weka-hills-speckle",
-    title: "Weka Hills - Speckle",
+    title: "Weka Hills",
     description:
       "Geological data visualization in Speckle showing subsurface conditions for infrastructure planning and design coordination.",
     category: "demo",
     href: "https://speckle.bedrock.engineer/projects/370cd6bbc7/models/all",
-    linkText: "Open in Speckle",
+    linkText: "Explore Speckle demo",
     image: wekaHills,
     imageAlt: "Weka Hills project in Speckle",
     country: "NZ",
@@ -280,22 +274,25 @@ export const demos: Demo[] = [
   },
   {
     id: "rotterdam-speckle",
-    title: "Rotterdam Buildings & GeoTOP - Speckle",
+    title: "Rotterdam Buildings & GeoTOP",
     description:
       "Prominent Rotterdam buildings (Zalmhaven, Maastoren, Blaak/Markthal) shown in Speckle with their foundations and the GeoTOP voxel model — the first 50 m of Dutch subsurface as 100×100×0.5 m voxels with lithoclass and lithology information.",
     category: "demo",
     links: [
       {
         href: "https://app.speckle.systems/projects/adc3bec4c0/models/$zalmhaven",
-        label: "De Zalmhaven",
+        label: "Explore Speckle demo",
+        detail: "De Zalmhaven",
       },
       {
         href: "https://app.speckle.systems/projects/adc3bec4c0/models/$maastoren",
-        label: "Maastoren",
+        label: "Explore Speckle demo",
+        detail: "Maastoren",
       },
       {
         href: "https://app.speckle.systems/projects/adc3bec4c0/models/$blaak-markthal",
-        label: "Blaak / Markthal",
+        label: "Explore Speckle demo",
+        detail: "Blaak & Markthal",
       },
     ],
     image: zalmhaven,

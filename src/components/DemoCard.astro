@@ -9,7 +9,7 @@ export interface Props {
   description?: string;
   href?: string;
   linkText?: string;
-  links?: { href: string; label: string }[];
+  links?: { href: string; label: string; detail?: string }[];
   iframe?: string;
   image?: ImageMetadata;
   imageAlt?: string;
@@ -49,6 +49,25 @@ const tagAttrs = id
       style: `view-transition-name: demo-${id};`,
     }
   : {};
+
+// The same tags the filter bar on /demos filters on, in its order, minus those a link already
+// shows as its subtitle, e.g. GIS and BIM on a card with both a CesiumJS and a Speckle demo
+const allTags = new Set([
+  country,
+  ...(type ?? []),
+  ...(sourceData ?? []),
+  ...(gm ?? []),
+]);
+const linkDetails = new Set((links ?? []).map((link) => link.detail));
+const tags = [...allTags].filter(
+  (tag): tag is string => Boolean(tag) && !linkDetails.has(tag),
+);
+
+// The main link and any extra links share one stack, so they are spaced alike on every card
+const allLinks: NonNullable<Props['links']> = [
+  ...(href && linkText ? [{ href, label: linkText }] : []),
+  ...(links ?? []),
+];
 ---
 
 <div class={`demo-card card-surface ${className || ''}`} {...tagAttrs}>
@@ -76,18 +95,29 @@ const tagAttrs = id
     <h3 class="demo-card-title">{title}</h3>
     {description && <p class="demo-card-description">{description}</p>}
     {
-      href && linkText && (
-        <Link href={href} variant="arrow" class="demo-link">
-          {linkText}
-        </Link>
+      tags.length > 0 && (
+        <ul class="demo-card-tags" aria-label="Tags">
+          {tags.map((tag) => (
+            <li class="demo-card-tag">{tag}</li>
+          ))}
+        </ul>
       )
     }
     {
-      links && links.length > 0 && (
+      allLinks.length > 0 && (
         <div class="demo-card-links">
-          {links.map((link) => (
+          {allLinks.map((link) => (
             <Link href={link.href} variant="arrow">
               {link.label}
+              {link.detail && (
+                <span class="demo-card-link-detail">
+                  {allTags.has(link.detail) ? (
+                    <span class="demo-card-tag">{link.detail}</span>
+                  ) : (
+                    link.detail
+                  )}
+                </span>
+              )}
             </Link>
           ))}
         </div>
@@ -181,14 +211,47 @@ const tagAttrs = id
     margin: 0;
   }
 
+  /* Static versions of the filter chips on /demos */
+  .demo-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: var(--space-2xs) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .demo-card-tag {
+    display: inline-block;
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    padding: 1px 8px;
+    font-size: var(--text-xs);
+    line-height: 1.5;
+    color: var(--gray-11);
+  }
+
   .demo-card-links {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: var(--space-2xs);
     margin-top: var(--space-2xs);
+
+    /* Wrap the subtitle onto its own row after the arrow; the hover rule repeats the zero row gap
+       because Link widens its gap on hover */
+    & :global(.link[data-variant="arrow"]),
+    & :global(.link[data-variant="arrow"]:hover) {
+      flex-wrap: wrap;
+      row-gap: 0;
+    }
   }
 
-  :global(.demo-card .demo-link) {
-    margin-top: var(--space-2xs);
+  .demo-card-link-detail {
+    order: 1;
+    flex-basis: 100%;
+    font-size: var(--text-sm);
+    font-weight: normal;
+    line-height: var(--leading-snug);
+    color: var(--gray-11);
   }
 </style>
