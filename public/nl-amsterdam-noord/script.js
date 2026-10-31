@@ -10,7 +10,12 @@ Cesium.Ion.defaultAccessToken =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2ZTc4NGUwYi1hMGQ1LTQ0YmEtYThhMi03ZDFkYjhhYzY0ZGEiLCJpZCI6Mjc0NDQ3LCJpYXQiOjE3NjIyNTAwMDJ9._znSCj5J_BQcLnzZL1DGHw7E1cOqzZYENzl437ZY_5A";
 
 const viewer = new Cesium.Viewer("map", {
-  terrain: Cesium.Terrain.fromWorldTerrain(),
+  // Global, with heights on the WGS84 ellipsoid; credits come with its layer.json
+  terrain: new Cesium.Terrain(
+    Cesium.CesiumTerrainProvider.fromUrl(
+      "https://terrain.reearth.land/cesium-mesh/ellipsoid",
+    ),
+  ),
   animation: false,
   timeline: false,
   fullscreenButton: false,
@@ -33,26 +38,27 @@ scene.postProcessStages.bloom.enabled = false;
 scene.fog.enabled = false;
 scene.highDynamicRange = false;
 scene.msaaSamples = 1;
-scene.skyAtmosphere.show = false;
-scene.skyBox.show = false;
+scene.skyBox = undefined; // skyBox.show = false still draws the stars
 scene.sun.show = false;
 scene.moon.show = false;
 globe.showGroundAtmosphere = false;
 
+// The default SunLight follows the clock, so pin it to a summer midday in Amsterdam
+viewer.clock.currentTime = Cesium.JulianDate.fromIso8601(
+  "2025-06-21T11:40:00Z",
+);
+viewer.clock.shouldAnimate = false;
+
 // To increase FPS
 // viewer.resolutionScale = 1;
 
-// Overhoeks, Amsterdam initial camera view
+// Overhoeks, Amsterdam initial camera view: west of the EYE, looking east at the towers
 const initialCameraView = {
-  destination: Cesium.Cartesian3.fromRadians(
-    0.08537763567876235,
-    0.9143046099703667,
-    532.1130701784695,
-  ),
+  destination: Cesium.Cartesian3.fromDegrees(4.89553, 52.38484, 260),
   orientation: {
-    heading: 1.6502882805254577,
-    pitch: -0.5379295035473293,
-    roll: 0.010147930377260472,
+    heading: Cesium.Math.toRadians(93),
+    pitch: Cesium.Math.toRadians(-25),
+    roll: 0,
   },
 };
 
@@ -74,11 +80,6 @@ const bgt = new Cesium.WebMapTileServiceImageryProvider({
   ),
 });
 viewer.imageryLayers.addImageryProvider(bgt);
-
-const terrainProvider = await Cesium.CesiumTerrainProvider.fromUrl(
-  "https://api.pdok.nl/kadaster/3d-basisvoorziening/ogc/v1_0/collections/digitaalterreinmodel/quantized-mesh",
-);
-scene.terrainProvider = terrainProvider;
 
 // ── State  ─────────────────────────────────────────────────────────────────
 let voxelOpacity = 1;
@@ -120,6 +121,10 @@ globe.translucency.frontFaceAlphaByDistance = new Cesium.NearFarScalar(
 );
 globe.translucency.backFaceAlpha = 1.0;
 globe.undergroundColor = Cesium.Color.GREY;
+// The seams between the globe's back-face tiles show the background through the translucent
+// ground as dark arcs; the same grey as the underground hides them, and the sky atmosphere
+// covers the grey above the horizon
+scene.backgroundColor = Cesium.Color.GREY;
 scene.screenSpaceCameraController.enableCollisionDetection = false; // Allow camera to go subsurface
 
 // ── Data processing ───────────────────────────────────────────────────────
@@ -249,13 +254,6 @@ const datasets = [
     label: "CPT Interpreted",
     enabled: true,
     dataSource: null,
-    legendElement: createLegend({
-      title: "CPT Interpreted Soil type",
-      items: soilTypeColorScale.domain().map((key) => ({
-        label: key,
-        color: soilTypeColorScale(key),
-      })),
-    }),
     onLoad: onLoadInterpretedCPT,
   },
 ];
@@ -336,14 +334,12 @@ function buildLithoShader() {
   });
 }
 
-const voxelPrimitive = scene.primitives.add(
-  new Cesium.VoxelPrimitive({
-    provider: voxelProvider,
-    customShader: buildLithoShader(),
-  }),
-);
+// Added to the scene when GeoTOP is first switched on: a hidden primitive still streams its tiles
+const voxelPrimitive = new Cesium.VoxelPrimitive({
+  provider: voxelProvider,
+  customShader: buildLithoShader(),
+});
 
-voxelPrimitive.show = false;
 voxelPrimitive.nearestSampling = true;
 voxelPrimitive.jitter = false;
 
@@ -356,27 +352,42 @@ legendPanel.el.style.right = "12px";
 legendPanel.el.style.width = "260px";
 legendPanel.body.classList.add("panel-body--scrollable");
 
-function updateLegend() {
-  legendPanel.body.innerHTML = "";
-  for (const dataset of datasets) {
-    if (dataset.enabled && dataset.legendElement) {
-      legendPanel.body.appendChild(dataset.legendElement);
-    }
+let geoTopEnabled = false;
+
+// The CPT soil types and the GeoTOP lithoclasses share their colors one to one, so they share
+// one legend, titled and labeled after the layers that are on
+function createSoilLegend() {
+  const showCpt = datasets.find((d) => d.id === "cpt_interpreted").enabled;
+  const showLitho = geoTopEnabled && activeLayer === "lithology";
+  if (!showCpt && !showLitho) {
+    return null;
   }
+  const label = (cpt, litho) =>
+    showCpt && showLitho ? `${cpt} / ${litho}` : showCpt ? cpt : litho;
+  return createLegend({
+    title: label("CPT Interpreted Soil type", "GeoTOP Lithoklasse"),
+    items: soilTypeColorScale.domain().map((key, i) => ({
+      label: label(key, legend.lithology.values[i].label),
+      color: soilTypeColorScale(key),
+    })),
+  });
+}
+
+function updateLegend() {
+  const cptLocations = datasets.find((d) => d.id === "cpt");
+  legendPanel.body.replaceChildren(
+    ...[
+      cptLocations.enabled && cptLocations.legendElement,
+      createSoilLegend(),
+      geoTopEnabled && activeLayer === "stratigraphy" && stratLegendElement,
+    ].filter(Boolean),
+  );
 }
 
 // ── GeoTOP voxel ──────────────────────────────────────────────────────────
 
 // viewer.extend(Cesium.viewerVoxelInspectorMixin);
 // viewer.voxelInspector.viewModel.voxelPrimitive = voxelPrimitive;
-
-const lithoLegendElement = createLegend({
-  title: "GeoTOP Lithoklasse",
-  items: legend.lithology.values.map(({ label, color: [r, g, b] }) => ({
-    label,
-    color: `rgb(${r},${g},${b})`,
-  })),
-});
 
 const stratLegendElement = createLegend({
   title: "GeoTOP Stratigrafie",
@@ -386,8 +397,6 @@ const stratLegendElement = createLegend({
   })),
 });
 
-let geoTopLegendElement = lithoLegendElement;
-
 updateLegend();
 
 const isMobile = window.matchMedia("(max-width: 640px)").matches;
@@ -396,7 +405,7 @@ const isMobile = window.matchMedia("(max-width: 640px)").matches;
 const controlsPanel = createPanel({ title: "Controls" });
 controlsPanel.el.style.bottom = "12px";
 controlsPanel.el.style.right = "12px";
-controlsPanel.el.style.width = "220px";
+controlsPanel.el.style.width = "260px";
 
 // Dataset checkboxes
 const datasetsLabel = document.createElement("div");
@@ -459,14 +468,7 @@ function createGeoTOPLayerToggle() {
         .querySelectorAll("[data-layer]")
         .forEach((b) => b.classList.toggle("active", b === btn));
 
-      const newLegend =
-        activeLayer === "stratigraphy"
-          ? stratLegendElement
-          : lithoLegendElement;
-
-      geoTopLegendElement.replaceWith(newLegend);
-      geoTopLegendElement = newLegend;
-
+      updateLegend();
       applyShader();
     });
   });
@@ -508,11 +510,14 @@ function createGeoTOPItem() {
   let zClippingEl = null;
 
   geoTOPItem.addEventListener("change", (event) => {
+    if (event.target.checked && !scene.primitives.contains(voxelPrimitive)) {
+      scene.primitives.add(voxelPrimitive);
+    }
     voxelPrimitive.show = event.target.checked;
+    geoTopEnabled = event.target.checked;
+    updateLegend();
 
     if (event.target.checked) {
-      legendPanel.body.appendChild(geoTopLegendElement);
-
       zClippingEl = createClippingControlsZ(voxelPrimitive);
       geoTOPlayerToggleEl = createGeoTOPLayerToggle();
       voxelOpacitySliderEl = createVoxelOpacitySlider(voxelPrimitive);
@@ -523,8 +528,6 @@ function createGeoTOPItem() {
         zClippingEl,
       );
     } else {
-      geoTopLegendElement.remove();
-
       voxelOpacitySliderEl?.remove();
       voxelOpacitySliderEl = null;
 
@@ -589,6 +592,19 @@ try {
   const tileset_3dbag = await Cesium.Cesium3DTileset.fromUrl(
     "https://api.pdok.nl/kadaster/3d-basisvoorziening/ogc/v1/collections/gebouwen/3dtiles",
   );
+  // Red roofs: the tiles have no roof attribute, so color faces whose normal points up
+  tileset_3dbag.customShader = new Cesium.CustomShader({
+    fragmentShaderText: `
+      void fragmentMain(FragmentInput fsInput, inout czm_modelMaterial material) {
+        vec3 normalWC = normalize(czm_inverseViewRotation * fsInput.attributes.normalEC);
+        vec3 upWC = normalize(fsInput.attributes.positionWC);
+        float roof = smoothstep(0.25, 0.35, abs(dot(normalWC, upWC)));
+        vec3 wall = material.diffuse;
+        material.diffuse = mix(wall, vec3(0.87, 0.16, 0.16), roof);
+        material.emissive += wall * 0.25 * (1.0 - roof);
+      }
+    `,
+  });
 
   scene.primitives.add(tileset_3dbag);
   viewer.creditDisplay.addStaticCredit(
