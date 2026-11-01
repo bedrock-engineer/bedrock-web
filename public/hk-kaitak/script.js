@@ -1,4 +1,3 @@
-import bbox from "https://cdn.jsdelivr.net/npm/@turf/bbox@7/+esm";
 import {
   interpolatePlasma,
   interpolateYlGnBu,
@@ -10,17 +9,14 @@ import {
 } from "https://cdn.jsdelivr.net/npm/d3-scale/+esm";
 import { createOrdinalLegend, createSequentialLegend } from "./legend.js";
 
-// Hong Kong Kai Tak
+// Hong Kong Kai Tak: over the harbour south of the old runway, looking north-west along it, so
+// the basemap labels read the right way up
 const initialCameraView = {
-  destination: Cesium.Cartesian3.fromDegrees(
-    114.19749996664763,
-    22.336721619536476,
-    653.3477715430049,
-  ),
+  destination: Cesium.Cartesian3.fromDegrees(114.2215, 22.2966, 480),
   orientation: {
-    heading: 3.115321511892013,
-    pitch: -0.24478081612082314,
-    roll: 6.283098181620492,
+    heading: Cesium.Math.toRadians(320),
+    pitch: Cesium.Math.toRadians(-16),
+    roll: 0,
   },
 };
 
@@ -34,12 +30,19 @@ const viewer = new Cesium.Viewer("map", {
   navigationHelpButton: false,
   geocoder: false,
   homeButton: false,
+  infoBox: false,
+  selectionIndicator: false,
   baseLayer: false, // No default Bing imagery from Cesium ion; the basemaps are added below
   msaaSamples: 4, // Anti-aliasing can help reduce visual artifacts
 });
 
 const { scene } = viewer;
 const { globe } = scene;
+
+// Cesium's double-click default tracks the clicked entity and flies the camera into it
+viewer.screenSpaceEventHandler.removeInputAction(
+  Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK,
+);
 
 viewer.camera.setView(initialCameraView);
 
@@ -181,13 +184,15 @@ const holeTypeColorScale = scaleOrdinal()
 
 const weatheringGradeColorScale = scaleOrdinal()
   .domain(weatheringGrades.map((d) => d.grade))
-  .range(weatheringGrades.map((d) => d.color));
+  .range(weatheringGrades.map((d) => d.color))
+  .unknown("#999999");
 
 // https://observablehq.com/@d3/sequential-scales
 const sptScale = scaleSequential(interpolatePlasma).domain([0, 100]);
 
 function onLoadLocations(dataSource) {
-  for (const entity of dataSource.entities.values) {
+  // A copy: the loop adds cylinders to the live array, and must not walk into them
+  for (const entity of [...dataSource.entities.values]) {
     const holeType = entity.properties.HOLE_TYPE.getValue();
     const holeId = entity.properties.HOLE_ID.getValue();
 
@@ -208,7 +213,7 @@ function onLoadLocations(dataSource) {
 
     if (!coordinates || coordinates.length < 2) {
       console.warn(`No valid coordinates for hole ${holeId}`);
-      return;
+      continue;
     }
 
     const [top, bottom] = coordinates;
@@ -230,17 +235,14 @@ function onLoadLocations(dataSource) {
       cylinder: new Cesium.CylinderGraphics({
         topRadius: 3,
         bottomRadius: 3,
-        length: length,
-        fill: false,
+        length,
+        material: color.withAlpha(0.6),
         outline: true,
         outlineColor: color,
-        outlineWidth: 1,
-        outlineOpacity: 0.5,
+        numberOfVerticalLines: 0, // the default 16 make the cylinders read as striped cages
       }),
       properties: entity.properties,
       name: holeId,
-      // Disable depth testing so boreholes always show through terrain
-      disableDepthTestDistance: Number.POSITIVE_INFINITY,
     });
   }
 }
@@ -250,9 +252,6 @@ function onLoadWeatheringData(dataSource) {
     const wetheringGrade = entity.properties?.WETH_GRAD?.getValue();
     const color = weatheringGradeColorScale(wetheringGrade);
 
-    // Disable depth testing so weathering data always shows through terrain
-    entity.disableDepthTestDistance = Number.POSITIVE_INFINITY;
-
     if (entity.billboard) {
       entity.billboard = undefined;
       // Add a point for point geometries
@@ -261,6 +260,7 @@ function onLoadWeatheringData(dataSource) {
         color: Cesium.Color.fromCssColorString(color),
         outlineColor: Cesium.Color.WHITE,
         outlineWidth: 1,
+        disableDepthTestDistance: Number.POSITIVE_INFINITY, // show through the terrain
       });
     }
 
@@ -277,9 +277,6 @@ function onLoadSptData(dataSource) {
     const sptNValue = entity.properties?.ISPT_NVAL?.getValue();
     const color = sptScale(sptNValue);
 
-    // Disable depth testing so SPT data always shows through terrain
-    entity.disableDepthTestDistance = Number.POSITIVE_INFINITY;
-
     // remove default pin for points
     if (entity.billboard) {
       entity.billboard = undefined;
@@ -294,6 +291,7 @@ function onLoadSptData(dataSource) {
       outlineColor: Cesium.Color.WHITE,
       outlineWidth: 0,
       heightReference: Cesium.HeightReference.NONE,
+      disableDepthTestDistance: Number.POSITIVE_INFINITY, // show through the terrain
     });
   }
 }
@@ -348,16 +346,9 @@ const datasets = [
 ];
 
 function loadDataset(dataset) {
-  // First fetch the GeoJSON to calculate bbox
   return fetch(`${dataset.id}.geojson`)
     .then((response) => response.json())
     .then((geojson) => {
-      // Log bounding box for locations dataset (for reference)
-      if (dataset.id === "locations") {
-        const [minLon, minLat, maxLon, maxLat] = bbox(geojson);
-      }
-
-      // Now load with Cesium
       return Cesium.GeoJsonDataSource.load(geojson, {
         clampToGround: false,
       });
@@ -437,6 +428,148 @@ Promise.allSettled(datasets.map((dataset) => loadDataset(dataset))).then(
     }
   },
 );
+
+// ── Borehole selection ───────────────────────────────────────────────────────
+// Clicking a borehole, an SPT value or a weathering interval opens a panel with that hole's SPT
+// N values against depth over its weathering grades, all from the data already loaded
+const boreholePanel = document.querySelector("#borehole");
+const boreholeMeta = document.querySelector("#borehole-meta");
+const boreholeChart = document.querySelector("#borehole-chart");
+const isMobile = window.matchMedia("(max-width: 680px)").matches;
+
+const datasetById = Object.fromEntries(datasets.map((d) => [d.id, d]));
+
+// All three datasets key their rows to the hole with location_uid; HOLE_ID repeats across projects
+function locationUidOf(entity) {
+  const properties = entity?.properties;
+  return properties?.hasProperty("location_uid")
+    ? properties.location_uid.getValue()
+    : null;
+}
+
+function entitiesOf(datasetId, locationUid) {
+  return (datasetById[datasetId].dataSource?.entities.values ?? []).filter(
+    (entity) => locationUidOf(entity) === locationUid,
+  );
+}
+
+const get = (entity, key) => entity.properties[key]?.getValue() ?? null;
+
+function boreholeData(locationUid) {
+  const cylinder = entitiesOf("locations", locationUid).find((e) => e.cylinder);
+  const spt = entitiesOf("ispt", locationUid)
+    .filter((e) => get(e, "ISPT_NVAL") !== null)
+    .map((e) => ({
+      depth: get(e, "ISPT_TOP"),
+      n: get(e, "ISPT_NVAL"),
+      color: sptScale(get(e, "ISPT_NVAL")),
+    }));
+  const layers = entitiesOf("weathering", locationUid)
+    .filter(
+      (e) =>
+        e.polyline &&
+        get(e, "WETH_GRAD") !== null &&
+        get(e, "depth_to_base") !== null,
+    )
+    .map((e) => ({
+      top: get(e, "depth_to_top"),
+      bottom: get(e, "depth_to_base"),
+      grade: get(e, "WETH_GRAD"),
+      color: weatheringGradeColorScale(get(e, "WETH_GRAD")),
+    }));
+  const depth = Math.max(
+    cylinder?.cylinder.length.getValue() ?? 0,
+    ...spt.map((d) => d.depth),
+    ...layers.map((d) => d.bottom),
+  );
+  return { cylinder, spt, layers, depth };
+}
+
+function boreholeMetaItems(cylinder, depth) {
+  const type = cylinder && get(cylinder, "HOLE_TYPE");
+  const start = cylinder && get(cylinder, "HOLE_STAR");
+  const end = cylinder && get(cylinder, "HOLE_ENDD");
+  return [
+    agsHoleTypes[type]?.label ?? type,
+    start && end && start !== end ? `${start} – ${end}` : start,
+    depth > 0 && `${depth.toFixed(1)} m deep`,
+  ]
+    .filter(Boolean)
+    .map((text) => {
+      const span = document.createElement("span");
+      span.textContent = text;
+      return span;
+    });
+}
+
+let selectedLocationUid = null;
+let restoreHighlight = [];
+
+function highlightBorehole(locationUid) {
+  for (const entity of entitiesOf("locations", locationUid)) {
+    if (!entity.cylinder) continue;
+    const { material } = entity.cylinder;
+    entity.cylinder.material = Cesium.Color.WHITE.withAlpha(0.9);
+    restoreHighlight.push(() => (entity.cylinder.material = material));
+  }
+  for (const entity of entitiesOf("ispt", locationUid)) {
+    if (!entity.point) continue;
+    const { pixelSize } = entity.point;
+    entity.point.pixelSize = 8;
+    restoreHighlight.push(() => (entity.point.pixelSize = pixelSize));
+  }
+  for (const entity of entitiesOf("weathering", locationUid)) {
+    if (!entity.polyline) continue;
+    const { width } = entity.polyline;
+    entity.polyline.width = 12;
+    restoreHighlight.push(() => (entity.polyline.width = width));
+  }
+}
+
+function clearHighlight() {
+  for (const restore of restoreHighlight) restore();
+  restoreHighlight = [];
+}
+
+async function showBoreholePanel(locationUid, holeId) {
+  const { cylinder, spt, layers, depth } = boreholeData(locationUid);
+  boreholePanel.querySelector(".panel-title").textContent = holeId;
+  boreholePanel.querySelector("details").open = true;
+  boreholePanel.hidden = false;
+  boreholeMeta.replaceChildren(...boreholeMetaItems(cylinder, depth));
+  boreholeChart.replaceChildren();
+  if (spt.length === 0 && layers.length === 0) {
+    const p = document.createElement("p");
+    p.className = "borehole-empty";
+    p.textContent = "No SPT or weathering data for this hole";
+    boreholeChart.replaceChildren(p);
+    return;
+  }
+  const { renderBoreholeChart } = await import("./borehole-chart.js");
+  if (selectedLocationUid !== locationUid) {
+    return; // another hole was clicked meanwhile
+  }
+  renderBoreholeChart(
+    boreholeChart,
+    { spt, layers, depth },
+    { width: isMobile ? 200 : 260 },
+  );
+}
+
+viewer.selectedEntityChanged.addEventListener((entity) => {
+  const locationUid = locationUidOf(entity);
+  if (locationUid === selectedLocationUid) {
+    return;
+  }
+  clearHighlight();
+  selectedLocationUid = locationUid;
+  if (locationUid === null) {
+    boreholePanel.hidden = true;
+    return;
+  }
+  highlightBorehole(locationUid);
+  showBoreholePanel(locationUid, get(entity, "HOLE_ID") ?? locationUid);
+});
 
 // Globe opacity slider (also controls building opacity)
 document.querySelector("#alpha").addEventListener("input", (event) => {

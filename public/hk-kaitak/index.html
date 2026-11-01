@@ -36,9 +36,9 @@
     <meta name="twitter:image" content="https://www.bedrock.engineer/hk-kaitak/og-hk-kaitak.png" />
     <meta name="twitter:image:alt" content="3D view of borehole and geotechnical data over Kai Tak, Hong Kong" />
 
-    <script src="https://cesium.com/downloads/cesiumjs/releases/1.133/Build/Cesium/Cesium.js"></script>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.139.1/Build/Cesium/Cesium.js"></script>
     <link
-      href="https://cesium.com/downloads/cesiumjs/releases/1.133/Build/Cesium/Widgets/widgets.css"
+      href="https://cesium.com/downloads/cesiumjs/releases/1.139.1/Build/Cesium/Widgets/widgets.css"
       rel="stylesheet"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -420,8 +420,44 @@
         color: var(--sequential-label) !important;
       }
 
+      /* === Borehole panel: opens on clicking a hole === */
+      #borehole {
+        position: absolute;
+        bottom: 40px;
+        left: 12px;
+        width: auto;
+        min-width: 185px;
+        z-index: 10;
+      }
+
+      .borehole-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 14px;
+        margin-bottom: 6px;
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+
+      .borehole-empty {
+        margin: 0;
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+
       /* === Mobile === */
       @media (max-width: 680px) {
+        #borehole {
+          bottom: 8px;
+          left: 8px;
+          right: 8px;
+        }
+
+        /* The legend sits where the borehole panel opens */
+        body:has(#borehole:not([hidden])) #legend {
+          display: none;
+        }
+
         .left-panels {
           top: 8px;
           left: 8px;
@@ -558,6 +594,32 @@
           </svg>
         </summary>
         <!-- Legend sections injected by script.js -->
+      </details>
+    </div>
+
+    <div id="borehole" class="panel" hidden>
+      <details open>
+        <summary>
+          <span class="panel-title">Borehole</span>
+          <svg
+            class="panel-arrow"
+            viewBox="0 0 14 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 5l4 4 4-4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </summary>
+        <div class="panel-body">
+          <div id="borehole-meta" class="borehole-meta"></div>
+          <div id="borehole-chart"></div>
+        </div>
       </details>
     </div>
 
