@@ -36,9 +36,9 @@
     <meta name="twitter:image" content="https://www.bedrock.engineer/hk-kaitak/og-hk-kaitak.png" />
     <meta name="twitter:image:alt" content="3D view of borehole and geotechnical data over Kai Tak, Hong Kong" />
 
-    <script src="https://cesium.com/downloads/cesiumjs/releases/1.133/Build/Cesium/Cesium.js"></script>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.139.1/Build/Cesium/Cesium.js"></script>
     <link
-      href="https://cesium.com/downloads/cesiumjs/releases/1.133/Build/Cesium/Widgets/widgets.css"
+      href="https://cesium.com/downloads/cesiumjs/releases/1.139.1/Build/Cesium/Widgets/widgets.css"
       rel="stylesheet"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -265,6 +265,42 @@
         transform: rotate(45deg);
       }
 
+      /* === Segmented control: one pressed button out of a few === */
+      .segmented {
+        display: flex;
+        border: 1px solid var(--checkbox-border);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+
+      .segmented button {
+        flex: 1;
+        padding: 5px 8px;
+        border: 0;
+        background: var(--checkbox-bg);
+        color: var(--text-primary);
+        font-family: inherit;
+        font-size: 11.5px;
+        cursor: pointer;
+        transition:
+          background 0.15s,
+          color 0.15s;
+      }
+
+      .segmented button + button {
+        border-left: 1px solid var(--checkbox-border);
+      }
+
+      .segmented button[aria-pressed="true"] {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      .segmented button:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: -2px;
+      }
+
       /* === Slider === */
       .slider-label {
         display: block;
@@ -384,8 +420,44 @@
         color: var(--sequential-label) !important;
       }
 
+      /* === Borehole panel: opens on clicking a hole === */
+      #borehole {
+        position: absolute;
+        bottom: 40px;
+        left: 12px;
+        width: auto;
+        min-width: 185px;
+        z-index: 10;
+      }
+
+      .borehole-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 14px;
+        margin-bottom: 6px;
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+
+      .borehole-empty {
+        margin: 0;
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+
       /* === Mobile === */
       @media (max-width: 680px) {
+        #borehole {
+          bottom: 8px;
+          left: 8px;
+          right: 8px;
+        }
+
+        /* The legend sits where the borehole panel opens */
+        body:has(#borehole:not([hidden])) #legend {
+          display: none;
+        }
+
         .left-panels {
           top: 8px;
           left: 8px;
@@ -474,9 +546,18 @@
               <input type="checkbox" id="terrain-toggle" checked />
               <label for="terrain-toggle">3D Terrain</label>
             </div>
-            <div class="checkbox-item">
-              <input type="checkbox" id="basemap-toggle" />
-              <label for="basemap-toggle">Satellite</label>
+            <span class="slider-label">Basemap</span>
+            <div class="segmented" role="group" aria-label="Basemap">
+              <button type="button" data-basemap="map" aria-pressed="true">
+                Map
+              </button>
+              <button
+                type="button"
+                data-basemap="satellite"
+                aria-pressed="false"
+              >
+                Satellite
+              </button>
             </div>
             <span class="slider-label">Basemap opacity</span>
             <input
@@ -513,6 +594,32 @@
           </svg>
         </summary>
         <!-- Legend sections injected by script.js -->
+      </details>
+    </div>
+
+    <div id="borehole" class="panel" hidden>
+      <details open>
+        <summary>
+          <span class="panel-title">Borehole</span>
+          <svg
+            class="panel-arrow"
+            viewBox="0 0 14 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 5l4 4 4-4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </summary>
+        <div class="panel-body">
+          <div id="borehole-meta" class="borehole-meta"></div>
+          <div id="borehole-chart"></div>
+        </div>
       </details>
     </div>
 

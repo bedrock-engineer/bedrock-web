@@ -17,14 +17,14 @@
     <meta name="robots" content="index, follow" />
     <link
       rel="canonical"
-      href="https://www.bedrock.engineer/nl-amsterdamn-noord/"
+      href="https://www.bedrock.engineer/nl-amsterdam-noord/"
     />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
-      content="https://www.bedrock.engineer/nl-amsterdamn-noord/"
+      content="https://www.bedrock.engineer/nl-amsterdam-noord/"
     />
     <meta
       property="og:title"
@@ -98,6 +98,32 @@
       a:link {
         text-decoration: underline;
       }
+
+      /* CPT chart panel: bottom-left, above the credits bar */
+      .panel--cpt {
+        bottom: 40px;
+        left: 12px;
+      }
+      .cpt-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 14px;
+        color: var(--ui-text-secondary);
+      }
+      .cpt-meta a {
+        color: var(--green-11);
+      }
+      .cpt-status {
+        margin: 0;
+        color: var(--ui-text-muted);
+      }
+      .cpt-charts {
+        display: flex;
+        align-items: flex-start;
+      }
+      .cpt-charts:empty {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -112,9 +138,19 @@
           <a
             href="https://basisregistratieondergrond.nl/inhoud-bro/aanleveren-gebruiken/gegevens-gebruiken/"
             >Basis Registratie Ondergrond</a
-          >, and 3D buildings from
-          <a href="https://3dbag.nl/en/viewer">3DBAG</a> visualised with
+          >, and 3D buildings from Kadaster's
+          <a href="https://www.pdok.nl/3d-basisvoorziening"
+            >3D Basisvoorziening</a
+          >
+          visualised with
           <a href="https://cesium.com/platform/cesiumjs/">CesiumJS</a>.
+        </p>
+        <p>
+          Click a CPT to load its measurements from the BRO, parsed in the
+          browser with our
+          <a href="https://bedrock.engineer/docs/bro-xml-parser/"
+            >BRO XML parser</a
+          >.
         </p>
         <p>
           Made by
