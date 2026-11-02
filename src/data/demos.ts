@@ -157,7 +157,7 @@ export const demos: Demo[] = [
         detail: "GIS",
       },
       {
-        href: "https://speckle.bedrock.engineer/projects/03f6fd3bc9/models/all",
+        href: "https://app.speckle.systems/projects/d083a8bd5c/models/all",
         label: "Explore Speckle demo",
         detail: "BIM",
       },
