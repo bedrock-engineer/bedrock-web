@@ -6,6 +6,7 @@
 import js from "@eslint/js";
 import * as astroParser from "astro-eslint-parser";
 import betterTailwindcss from "eslint-plugin-better-tailwindcss";
+import { getDefaultSelectors } from "eslint-plugin-better-tailwindcss/defaults";
 import reactHooks from "eslint-plugin-react-hooks";
 import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
@@ -91,6 +92,17 @@ export default defineConfig(
         // Keep false: true would accept every class *defined* in the CSS,
         // i.e. exactly the invented class names the rule is meant to stop.
         detectComponentClasses: false,
+        // By default only class/className/class:list attributes and variables
+        // named classNames?/classes/styles? are read. Class strings kept
+        // anywhere else are unchecked unless listed here.
+        selectors: [
+          ...getDefaultSelectors(),
+          {
+            kind: "variable",
+            name: "^textures$",
+            match: [{ type: "objectValues", path: String.raw`^\[\d+\]\.cssClass$` }],
+          },
+        ],
       },
     },
     rules: {
@@ -98,11 +110,23 @@ export default defineConfig(
       "better-tailwindcss/no-restricted-classes": [
         "error",
         {
+          // A bracket group at the end of the class (before an optional
+          // /modifier and ! suffix) is an arbitrary value: w-[37px],
+          // md:bg-[url(x)], bg-gray-3/[0.5], [mask-type:alpha]. A bracket
+          // starting a variant is an arbitrary variant: [&>p]:mt-2.
+          // Bracketed *named* variants stay allowed: data-[state=open]:,
+          // aria-[sort=ascending]:, supports-[display:grid]:. A bare "\[" or
+          // "-\[" would also flag those.
           restrict: [
             {
-              pattern: "\\[",
+              pattern: String.raw`\[[^\]]*\](?:/\S*)?!?$`,
               message:
                 "Arbitrary value: name it as an @theme token or add an @utility instead.",
+            },
+            {
+              pattern: String.raw`(?:^|:)!?\[`,
+              message:
+                "Arbitrary property or variant: add an @utility or @custom-variant instead.",
             },
           ],
         },
