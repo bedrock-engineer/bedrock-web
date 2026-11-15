@@ -1,5 +1,5 @@
 {
-  "ignoreFiles": ["src/styles/tokens.css", "dist/**", "public/**", "node_modules/**"],
+  "ignoreFiles": ["src/styles/tokens.css", "dist/**", "public/**"],
   "plugins": ["stylelint-gamut"],
   "reportDescriptionlessDisables": true,
   "reportNeedlessDisables": true,
