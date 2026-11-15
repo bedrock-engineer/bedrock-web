@@ -166,13 +166,6 @@ body {
   --viewport-padding: 32px;
 }
 
-/* Make marketing pages fill viewport with sticky footer */
-body:has(.page) {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100vh; /* keeps viewport height for sticky footer */
-}
-
 :root {
   accent-color: var(--color-primary);
   caret-color: var(--color-primary);
@@ -276,6 +269,7 @@ a {
 /* Tailwind Preflight strips list markers and padding; restore them for prose
    lists at any nesting depth. Starlight's <Steps> (.sl-steps) draws its own
    counters and stays excluded. */
+/* stylelint-disable selector-max-class -- rendered Markdown and Starlight's own containers take no utility classes */
 .sl-markdown-content {
   & ol:not(.sl-steps) {
     list-style: decimal;
@@ -295,6 +289,7 @@ a {
 main .sl-container {
   margin-inline: auto;
 }
+/* stylelint-enable selector-max-class */
 
 /* https://starlight.astro.build/guides/css-and-tailwind/#color-theme-editor */
 /* Map Radix colors to Starlight's semantic color system */

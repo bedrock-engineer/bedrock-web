@@ -1,11 +1,31 @@
 {
-  "ignoreFiles": ["src/styles/tokens.css"],
+  "ignoreFiles": ["src/styles/tokens.css", "dist/**", "public/**", "node_modules/**"],
   "plugins": ["stylelint-gamut"],
+  "reportDescriptionlessDisables": true,
+  "reportNeedlessDisables": true,
   "rules": {
     "gamut/color-no-out-gamut-range": true,
     "function-disallowed-list": ["rgba", "hsla", "rgb", "hsl"],
     "color-function-notation": "modern",
-    "color-no-hex": true
+    "color-no-hex": true,
+    "selector-max-class": 0,
+    "selector-max-id": 0,
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "theme",
+          "utility",
+          "custom-variant",
+          "variant",
+          "source",
+          "plugin",
+          "apply",
+          "reference",
+          "config"
+        ]
+      }
+    ]
   },
   "extends": "stylelint-config-html"
 }
