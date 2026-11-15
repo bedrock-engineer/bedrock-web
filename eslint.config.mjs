@@ -1,8 +1,15 @@
 // @ts-check
-// Flat config per Web Tech Stack §3.5, plus the Tailwind guard rails from
-// "Tailwind Utilities": classes in markup must be registered Tailwind
-// utilities (built-in, generated from @theme tokens, or declared with
-// @utility), and arbitrary values are banned.
+// ESLint here exists for the Tailwind guard rails from "Tailwind Utilities":
+// classes in markup must be registered Tailwind utilities (built-in,
+// generated from @theme tokens, or declared with @utility), and arbitrary
+// values are banned.
+//
+// No typescript-eslint: the project is on TypeScript 7, whose npm package
+// exposes no JS compiler API, and typescript-eslint (peer typescript <6.1)
+// can't run without it. TypeScript *syntax* is parsed by Babel instead, so
+// the Tailwind rules, core rules and react-hooks still run; type-aware and
+// TS-specific rules are left to the TypeScript compiler.
+import babelParser from "@babel/eslint-parser";
 import js from "@eslint/js";
 import * as astroParser from "astro-eslint-parser";
 import betterTailwindcss from "eslint-plugin-better-tailwindcss";
@@ -10,16 +17,26 @@ import { getDefaultSelectors } from "eslint-plugin-better-tailwindcss/defaults";
 import reactHooks from "eslint-plugin-react-hooks";
 import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
-import tseslint from "typescript-eslint";
 
-const houseRules = {
-  "@typescript-eslint/array-type": ["error", { default: "generic" }],
-  "@typescript-eslint/consistent-type-imports": "error",
-  "@typescript-eslint/no-unused-vars": [
-    "error",
-    { varsIgnorePattern: "^_", argsIgnorePattern: "^_" },
-  ],
-  curly: ["error", "all"],
+/** Babel options that parse TypeScript (and JSX) without the TS compiler. */
+const babelTs = (/** @type {{ jsx?: boolean }} */ { jsx = false } = {}) => ({
+  requireConfigFile: false,
+  babelOptions: {
+    babelrc: false,
+    configFile: false,
+    // Syntax only: no transform runs, so no preset is needed. JSX stays off
+    // for .ts, where it would misread `<T>value` casts.
+    parserOpts: { plugins: jsx ? ["typescript", "jsx"] : ["typescript"] },
+  },
+});
+
+// Core scope analysis sees neither type positions nor components used as
+// JSX/Astro tags, so these two rules misfire on nearly every import here
+// (~115 false hits). The compiler checks both (noUnusedLocals, and
+// unresolved names are type errors).
+const tsSyntaxRules = {
+  "no-undef": "off",
+  "no-unused-vars": "off",
 };
 
 export default defineConfig(
@@ -35,39 +52,37 @@ export default defineConfig(
   ]),
 
   js.configs.recommended,
+  { rules: { curly: ["error", "all"] } },
 
-  // Type-aware linting for TypeScript sources.
   {
-    files: ["**/*.{ts,tsx,mts,cts}"],
-    extends: [
-      tseslint.configs.recommendedTypeChecked,
-      tseslint.configs.strictTypeChecked,
-      tseslint.configs.stylisticTypeChecked,
-    ],
-    languageOptions: {
-      parserOptions: {
-        projectService: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-    rules: houseRules,
+    files: ["**/*.{ts,mts,cts}"],
+    languageOptions: { parser: babelParser, parserOptions: babelTs() },
+    rules: tsSyntaxRules,
   },
 
-  // .astro files: the TypeScript project service can't open them (tsserver
-  // doesn't know the extension), so they get the non-type-checked presets.
+  {
+    files: ["**/*.tsx"],
+    languageOptions: {
+      parser: babelParser,
+      parserOptions: babelTs({ jsx: true }),
+      globals: globals.browser,
+    },
+    rules: tsSyntaxRules,
+  },
+
   {
     files: ["**/*.astro"],
-    extends: [tseslint.configs.strict, tseslint.configs.stylistic],
     languageOptions: {
       parser: astroParser,
       parserOptions: {
-        parser: tseslint.parser,
+        parser: babelParser,
+        ...babelTs({ jsx: true }),
         extraFileExtensions: [".astro"],
         sourceType: "module",
       },
       globals: { ...globals.browser, ...globals.node },
     },
-    rules: houseRules,
+    rules: tsSyntaxRules,
   },
 
   {
