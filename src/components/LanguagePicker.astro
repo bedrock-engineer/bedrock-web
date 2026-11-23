@@ -43,9 +43,11 @@ const basePath = locale === defaultLang
     font-size: var(--text-sm);
     border-radius: var(--border-radius-sm);
 
-    &:hover {
-      color: var(--green-11);
-      background: var(--gray-3);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: var(--green-11);
+        background: var(--gray-3);
+      }
     }
 
     &:active {
@@ -65,8 +67,8 @@ const basePath = locale === defaultLang
 
     @media (prefers-reduced-motion: no-preference) {
       transition:
-        color var(--duration-fast) ease,
-        background var(--duration-fast) ease;
+        color var(--duration-fast) var(--ease-out),
+        background var(--duration-fast) var(--ease-out);
     }
   }
 </style>

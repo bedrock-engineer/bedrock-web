@@ -86,21 +86,24 @@ const { class: className, width, height } = Astro.props;
 
 <style>
   .logo-animated .logo-layer {
-    transition: transform var(--duration-slow) cubic-bezier(0.165, 0.84, 0.44, 1);
     pointer-events: none;
     --offset-x: 20px;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: transform var(--duration-slow) var(--ease-out);
+    }
   }
 
   .logo-animated {
     pointer-events: bounding-box;
 
     .layer-icon {
-      transition: opacity var(--duration-slow) ease-out;
+      transition: opacity var(--duration-slow) var(--ease-out);
     }
 
     .layer-label {
       opacity: 0;
-      transition: opacity var(--duration-slow) ease-out;
+      transition: opacity var(--duration-slow) var(--ease-out);
     }
 
     #lower {
@@ -113,17 +116,19 @@ const { class: className, width, height } = Astro.props;
     }
   }
 
-  .logo-animated:hover {
-    .layer-label {
-      opacity: 1;
-    }
+  @media (hover: hover) and (pointer: fine) {
+    .logo-animated:hover {
+      .layer-label {
+        opacity: 1;
+      }
 
-    #lower {
-      transform: translateX(-35px);
-    }
+      #lower {
+        transform: translateX(-35px);
+      }
 
-    #upper {
-      transform: translateX(35px);
+      #upper {
+        transform: translateX(35px);
+      }
     }
   }
 </style>

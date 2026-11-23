@@ -331,14 +331,20 @@ const pageUrl = new URL("/demos", Astro.site);
 
     @media (prefers-reduced-motion: no-preference) {
       transition:
-        background var(--duration-fast) ease,
-        border-color var(--duration-fast) ease,
-        color var(--duration-fast) ease;
+        background var(--duration-fast) var(--ease-out),
+        border-color var(--duration-fast) var(--ease-out),
+        color var(--duration-fast) var(--ease-out);
     }
   }
 
-  .filter-chip:hover {
-    border-color: var(--green-7);
+  @media (hover: hover) and (pointer: fine) {
+    .filter-chip:hover {
+      border-color: var(--green-7);
+    }
+  }
+
+  .filter-chip:active {
+    background: var(--gray-3);
   }
 
   .filter-chip:focus-visible {
@@ -367,8 +373,14 @@ const pageUrl = new URL("/demos", Astro.site);
     font-family: inherit;
   }
 
-  .reset-filters:hover {
-    color: var(--green-10);
+  @media (hover: hover) and (pointer: fine) {
+    .reset-filters:hover {
+      color: var(--green-10);
+    }
+  }
+
+  .reset-filters:active {
+    color: var(--green-11);
   }
 
   .reset-filters:focus-visible {

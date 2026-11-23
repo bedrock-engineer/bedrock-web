@@ -102,11 +102,25 @@ const { name, image, variant = "compact", socials = [] } = Astro.props;
     }
   }
 
+  /* Image column with an ideal width beside the bio, which takes the rest;
+     wraps on its own when the bio would drop under ~60%, so no breakpoint */
   .team-member[data-layout="expanded"] {
-    display: grid;
-    grid-template-columns: 200px 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 32px;
     align-items: start;
+
+    & .team-member-left {
+      flex-basis: 200px;
+      flex-grow: 1;
+      align-items: center;
+    }
+
+    & .team-member-info {
+      flex-basis: 0;
+      flex-grow: 999;
+      min-inline-size: 60%;
+    }
   }
 
   .team-member-left {
@@ -154,11 +168,17 @@ const { name, image, variant = "compact", socials = [] } = Astro.props;
     text-decoration: none;
     color: var(--gray-12);
     font-size: 14px;
-    transition: background-color var(--duration-normal) ease;
+    transition: background-color var(--duration-normal) var(--ease-out);
 
-    &:hover {
-      background-color: var(--gray-3);
-      text-decoration: none;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: var(--gray-3);
+        text-decoration: none;
+      }
+    }
+
+    &:active {
+      background-color: var(--gray-4);
     }
 
     & svg {
@@ -179,7 +199,7 @@ const { name, image, variant = "compact", socials = [] } = Astro.props;
 
     & :global(ul) {
       margin-block: 16px;
-      padding-left: 24px;
+      padding-inline-start: 24px;
       list-style-type: disc;
     }
 
@@ -188,14 +208,4 @@ const { name, image, variant = "compact", socials = [] } = Astro.props;
     }
   }
 
-  @media (max-width: 768px) {
-    .team-member[data-layout="expanded"] {
-      grid-template-columns: 1fr;
-      justify-items: center;
-    }
-
-    .team-member-info {
-      width: 100%;
-    }
-  }
 </style>

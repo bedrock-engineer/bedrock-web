@@ -325,7 +325,7 @@ const description =
 <style>
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
     gap: 24px;
   }
 
@@ -375,7 +375,7 @@ const description =
   .service-list li::before {
     content: "•";
     position: absolute;
-    left: 8px;
+    inset-inline-start: 8px;
     color: var(--green-9);
   }
 
@@ -404,23 +404,26 @@ const description =
   }
 
   .process-step {
+    /* Circle, gap, and number scale fluidly between their old narrow and wide
+       breakpoint values */
+    --process-circle: clamp(3.125rem, 2.625rem + 1.25vw, 3.75rem);
     display: grid;
-    grid-template-columns: 60px 1fr;
-    gap: 24px;
+    grid-template-columns: var(--process-circle) 1fr;
+    gap: clamp(1rem, 0.6rem + 1vw, 1.5rem);
     align-items: start;
     counter-increment: process-counter;
   }
 
   .process-step::before {
     content: counter(process-counter);
-    width: 60px;
-    height: 60px;
+    width: var(--process-circle);
+    height: var(--process-circle);
     border-radius: 50%;
     background: var(--green-9);
     color: white;
     display: grid;
     place-content: center;
-    font-size: 24px;
+    font-size: clamp(1.25rem, 1.05rem + 0.5vw, 1.5rem);
     font-weight: 600;
     align-self: center;
   }
@@ -472,20 +475,4 @@ const description =
     padding-block: 64px;
   }
 
-  @media (max-width: 768px) {
-    .services-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .process-step {
-      grid-template-columns: 50px 1fr;
-      gap: 16px;
-    }
-
-    .process-step::before {
-      width: 50px;
-      height: 50px;
-      font-size: 20px;
-    }
-  }
 </style>

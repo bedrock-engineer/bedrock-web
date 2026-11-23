@@ -33,14 +33,14 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 1rem;
+    margin-block-start: 1rem;
     padding: 0.4rem 0.9rem;
     border-radius: 999px;
     border: 1px solid var(--sl-color-gray-5);
     background: var(--sl-color-bg-nav);
     color: var(--sl-color-gray-2);
     font-size: var(--sl-text-sm);
-    transition: opacity 0.4s;
+    transition: opacity 0.4s var(--ease-out);
   }
   #marimo-boot-status[data-done],
   body:has(.marimo-island-error) #marimo-boot-status {
@@ -72,7 +72,7 @@
     flex: none;
     border-radius: 50%;
     border: 2px solid var(--sl-color-gray-5);
-    border-top-color: var(--sl-color-text-accent);
+    border-block-start-color: var(--sl-color-text-accent);
     animation: marimo-boot-spin 0.8s linear infinite;
   }
   @keyframes marimo-boot-spin {

@@ -216,10 +216,21 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
 
   .tri-btn {
     cursor: pointer;
-    outline: none;
 
-    &:hover .tri-bg {
-      fill: var(--gray-7);
+    /* The ring is drawn by .tri-focus-ring; keep the UA ring transparent,
+       never removed, so forced-colors mode can repaint it */
+    &:focus-visible {
+      outline: 2px solid transparent;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover .tri-bg {
+        fill: var(--gray-7);
+      }
+    }
+
+    &:active .tri-bg {
+      fill: var(--gray-8);
     }
 
     &:focus-visible .tri-focus-ring {

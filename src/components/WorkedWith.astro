@@ -16,7 +16,7 @@ const { t } = Astro.props;
 <section class="worked-with">
   <h2 id="worked-with">{t.heading}</h2>
 
-  <div class="client-logos pt-6">
+  <div class="client-logos pbs-6">
     <FugroLogo />
 
     <a href="https://www.zeeland.nl/">
@@ -48,7 +48,7 @@ const { t } = Astro.props;
 
 <style>
   .worked-with {
-    border-top: none;
+    border-block-start: none;
     padding-block-start: var(--space-l);
     padding-block-end: var(--space-xl);
 
@@ -57,7 +57,7 @@ const { t } = Astro.props;
       color: var(--gray-10);
       text-align: center;
       margin-inline: auto;
-      margin-bottom: var(--space-m-l);
+      margin-block-end: var(--space-m-l);
     }
   }
 

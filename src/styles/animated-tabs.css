@@ -33,21 +33,22 @@
 .tab-button {
   cursor: pointer;
   padding: 6px 12px;
-  font-size: 1rem;
-  outline: none;
+  /* Fluid between 0.8rem at narrow phones and 1rem from ~800px up */
+  font-size: clamp(0.8rem, 0.6rem + 0.8vw, 1rem);
+  /* React Aria draws the ring itself (.tab-focus-ring); keep the UA ring
+     transparent rather than removed so forced-colors mode can repaint it */
+  &:focus-visible {
+    outline: 2px solid transparent;
+  }
   /* Must allow panning: the pills fill the scrollable .tabs-header, so
      touch-action: none here would make the tab bar unswipeable on mobile. */
   touch-action: manipulation;
   white-space: nowrap;
   border-radius: var(--tab-radius);
   transition:
-    color var(--duration-instant),
-    background-color var(--duration-instant);
+    color var(--duration-instant) var(--ease-out),
+    background-color var(--duration-instant) var(--ease-out);
   text-align: center;
-
-  @media (max-width: 550px) {
-    font-size: 0.8rem;
-  }
 
   &[data-hovered] {
     background-color: var(--green-3);
@@ -74,9 +75,8 @@
 
 .tab-indicator {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
+  inset-block: 0;
+  inset-inline-start: 0;
   z-index: 10;
   background-color: var(--green-2);
   border-radius: var(--tab-radius);
@@ -102,9 +102,7 @@
   flex-shrink: 0;
   width: 100%;
   padding-inline: 0.5rem;
-  box-sizing: border-box;
   scroll-snap-align: start;
-  outline: none;
   outline-offset: -2px;
   border-radius: 0.25rem;
 }
@@ -116,7 +114,7 @@
 .tab-panel-title {
   font-size: 1.25rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-block-end: 1rem;
 }
 
 .tab-panel-content {
@@ -124,23 +122,29 @@
 }
 
 .tab-panel-content p {
-  margin-bottom: 1rem;
+  margin-block-end: 1rem;
 }
 
 .tab-panel-content p:last-child {
-  margin-bottom: 0;
+  margin-block-end: 0;
 }
 
+/* Text column with an ideal width beside media that takes the rest; wraps on
+   its own when the media would drop under ~60% of the row, so no breakpoint */
 .tab-content-grid {
-  display: grid;
-  grid-template-columns: 30% 1fr;
-  gap: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m-l);
   align-items: start;
 }
 
-@media (max-width: 768px) {
-  .tab-content-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
+.tab-content-grid > div:first-child {
+  flex-basis: 18rem;
+  flex-grow: 1;
+}
+
+.tab-content-grid > figure {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 60%;
 }

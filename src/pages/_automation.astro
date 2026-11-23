@@ -37,13 +37,13 @@ import "../styles/custom.css";
               Geotechnical engineering projects involve repetitive tasks that
               could be automated:
             </p>
-            <ul class="list-disc list-inside mt-4 space-y-1 text-base">
+            <ul class="list-disc list-inside mbs-4 space-y-1 text-base">
               <li>Manually copying data between formats</li>
               <li>Recreating similar analyses for each project</li>
               <li>Re-exporting data when requirements change</li>
               <li>Rebuilding visualizations from scratch</li>
             </ul>
-            <p class="paragraph-sm mt-4">
+            <p class="paragraph-sm mbs-4">
               The underlying issue: data trapped in proprietary formats and
               disconnected tools makes automation difficult.
             </p>
@@ -59,12 +59,12 @@ import "../styles/custom.css";
               can be represented as data flow graphs:
             </p>
             <pre
-              class="bg-gray-3 px-4 py-3 rounded mt-4 text-sm font-mono">data → process → data → process → data</pre>
-            <p class="paragraph-sm mt-4">
+              class="bg-gray-3 px-4 py-3 rounded mbs-4 text-sm font-mono">data → process → data → process → data</pre>
+            <p class="paragraph-sm mbs-4">
               The whole project can be seen as one large process:
             </p>
             <pre
-              class="bg-gray-3 px-4 py-3 rounded mt-4 text-sm font-mono">inputs → engineering process → deliverables</pre>
+              class="bg-gray-3 px-4 py-3 rounded mbs-4 text-sm font-mono">inputs → engineering process → deliverables</pre>
           </Card>
         </div>
       </section>
@@ -83,10 +83,10 @@ import "../styles/custom.css";
               clear inputs and outputs. This makes it possible to:
             </p>
 
-            <div class="mt-6 space-y-4">
+            <div class="mbs-6 space-y-4">
               <div>
                 <strong>1. Identify what's worth automating</strong>
-                <p class="text-sm mt-1">
+                <p class="text-sm mbs-1">
                   Not everything needs automation. Some parts are iterative,
                   require human judgment, or are genuinely messy. Breaking down
                   the workflow helps you identify the repetitive, rule-based parts
@@ -96,7 +96,7 @@ import "../styles/custom.css";
 
               <div>
                 <strong>2. Automate incrementally</strong>
-                <p class="text-sm mt-1">
+                <p class="text-sm mbs-1">
                   Start with one manual process. Replace it with a script. Test it
                   on a project. Refine it. Move to the next process.
                 </p>
@@ -104,7 +104,7 @@ import "../styles/custom.css";
 
               <div>
                 <strong>3. Build reusable components</strong>
-                <p class="text-sm mt-1">
+                <p class="text-sm mbs-1">
                   As scripts mature, split them into smaller, single-purpose
                   functions. Single-purpose functions are easier to maintain and
                   reusable across projects.
@@ -113,7 +113,7 @@ import "../styles/custom.css";
 
               <div>
                 <strong>4. Chain processes together</strong>
-                <p class="text-sm mt-1">
+                <p class="text-sm mbs-1">
                   For parts of your workflow with clear, unidirectional data flow,
                   mature functions can be chained into Directed Acyclic Graphs
                   (DAGs) that automatically rerun when inputs change.
@@ -131,7 +131,7 @@ import "../styles/custom.css";
               Ground investigation data needs to be:
             </p>
 
-            <ul class="list-disc list-inside mt-4 space-y-2 text-base">
+            <ul class="list-disc list-inside mbs-4 space-y-2 text-base">
               <li>
                 <strong>Structured</strong> - Following the natural hierarchy (projects
                 → boreholes → samples → tests)
@@ -145,7 +145,7 @@ import "../styles/custom.css";
               </li>
             </ul>
 
-            <p class="paragraph-sm mt-4">
+            <p class="paragraph-sm mbs-4">
               This is where geospatial databases and open standards become
               essential.
             </p>
@@ -166,7 +166,7 @@ import "../styles/custom.css";
             automated workflows:
           </p>
 
-          <ul class="list-disc list-inside mt-6 space-y-2 text-base">
+          <ul class="list-disc list-inside mbs-6 space-y-2 text-base">
             <li>
               <strong>Data conversion and structuring</strong> - Transform industry-specific
               formats (AGS, GEF, gINT, Excel) into structured geospatial databases
@@ -185,13 +185,13 @@ import "../styles/custom.css";
             </li>
           </ul>
 
-          <p class="paragraph mt-6">
+          <p class="paragraph mbs-6">
             Whether you're comfortable with Python or need us to handle the
             technical implementation, we can help you move from manual workflows
             to automated, reusable processes.
           </p>
 
-          <p class="paragraph mt-4">
+          <p class="paragraph mbs-4">
             We bring specialized expertise in geospatial visualization
             technologies, industry data formats (AGS, GEF, BRO/XML), and
             computational tools like Grasshopper, PyVista, and Speckle. <Link
@@ -199,13 +199,13 @@ import "../styles/custom.css";
             >.
           </p>
 
-          <div class="mt-8">
+          <div class="mbs-8">
             <p class="font-bold text-lg">
               Contact us at <Link variant="email" href="mailto:info@bedrock.engineer"
                 >info@bedrock.engineer</Link
               > to discuss your workflow automation needs.
             </p>
-            <p class="mt-2 text-sm">
+            <p class="mbs-2 text-sm">
               Or explore the open-source library that powers these solutions: <Link
                 href="https://github.com/bedrock-engineer/bedrock-ge"
                 >bedrock-ge on GitHub</Link
@@ -229,7 +229,7 @@ import "../styles/custom.css";
         <Link
           variant="email"
           href="mailto:info@bedrock.engineer"
-          class="mt-4 text-xl">Get in touch</Link
+          class="mbs-4 text-xl">Get in touch</Link
         >
       </section>
     </div>

@@ -292,8 +292,8 @@ const faq = [
   .feature-list li::before {
     content: "";
     position: absolute;
-    left: 0;
-    top: 0.65em;
+    inset-inline-start: 0;
+    inset-block-start: 0.65em;
     width: 8px;
     height: 8px;
     background: var(--green-9);
@@ -321,8 +321,33 @@ const faq = [
     line-height: var(--leading-relaxed);
   }
 
-  .faq-list summary:hover {
+  @media (hover: hover) and (pointer: fine) {
+    .faq-list summary:hover {
+      color: var(--green-11);
+    }
+  }
+
+  .faq-list summary:active {
     color: var(--green-11);
+  }
+
+  /* Animate the open and close. Only Chrome interpolates to `auto` height
+     (interpolate-size is enabled globally); other browsers toggle at once. */
+  .faq-list details::details-content {
+    block-size: 0;
+    overflow: clip;
+  }
+
+  .faq-list details[open]::details-content {
+    block-size: auto;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .faq-list details::details-content {
+      transition:
+        block-size var(--duration-slow) var(--ease-out),
+        content-visibility var(--duration-slow) allow-discrete;
+    }
   }
 
   .faq-list details[open] summary {

@@ -161,17 +161,22 @@ const { t } = Astro.props;
 
   .anchored-heading {
     /* offset for sticky headers when jumping to the anchor */
-    scroll-margin-top: 80px;
+    scroll-margin-block-start: 80px;
   }
 
   .anchor-link {
     margin-inline-start: 0.35em;
     opacity: 0;
     text-decoration: none;
-    transition: opacity 120ms ease;
+    transition: opacity 120ms var(--ease-out);
   }
 
-  .anchored-heading:hover .anchor-link,
+  @media (hover: hover) and (pointer: fine) {
+    .anchored-heading:hover .anchor-link {
+      opacity: 1;
+    }
+  }
+
   .anchor-link:focus-visible {
     opacity: 1;
   }

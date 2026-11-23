@@ -2,7 +2,7 @@
 import { Icon } from "@astrojs/starlight/components";
 ---
 
-<footer class="footer mt-auto">
+<footer class="footer mbs-auto">
   <div class="footer-wrapper">
     <div class="footer-content">
       <div class="footer-columns">
@@ -163,9 +163,9 @@ import { Icon } from "@astrojs/starlight/components";
 
   .footer-columns {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
     gap: var(--space-xl);
-    margin-bottom: var(--space-l);
+    margin-block-end: var(--space-l);
   }
 
   .footer-column {
@@ -191,13 +191,13 @@ import { Icon } from "@astrojs/starlight/components";
     font-weight: var(--font-semibold);
     background-color: var(--footer-bg);
     width: fit-content;
-    margin-bottom: var(--space-s);
+    margin-block-end: var(--space-s);
     color: var(--footer-text);
   }
 
   .footer-icon {
     display: inline;
-    margin-right: var(--space-2xs);
+    margin-inline-end: var(--space-2xs);
     vertical-align: middle;
   }
 
@@ -207,17 +207,23 @@ import { Icon } from "@astrojs/starlight/components";
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    transition: color var(--duration-normal) ease;
+    transition: color var(--duration-normal) var(--ease-out);
     column-gap: 0.25ch;
 
-    &:hover {
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: var(--footer-text);
+        text-decoration: none;
+      }
+    }
+
+    &:active {
       color: var(--footer-text);
-      text-decoration: none;
     }
   }
 
   .footer-bottom {
-    padding-top: 1.5rem;
+    padding-block-start: 1.5rem;
   }
 
   .footer-copyright {
