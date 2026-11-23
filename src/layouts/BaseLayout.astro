@@ -90,7 +90,9 @@ import "../styles/custom.css"; // fonts + design tokens loaded here
     <!-- Allow pages to inject additional head content -->
     <slot name="head" />
   </head>
-  <body>
+  <!-- Sticky footer: body fills the viewport (min-height: 100% in custom.css)
+       and Footer.astro pushes itself down with mbs-auto. -->
+  <body class="flex flex-col">
     <slot />
   </body>
 </html>

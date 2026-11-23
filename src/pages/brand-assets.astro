@@ -93,7 +93,7 @@ const textures = [
     <header class="section-wrapper texture-607">
       <section class="section intro-section">
         <h1 class="heading-1 font-bold tracking-tight">Brand Assets</h1>
-        <p class="mb-8 text-lg text-[var(--gray-11)]">
+        <p class="mbe-8 text-lg text-[var(--gray-11)]">
           Logos, colors, typography, and textures for working with the
           Bedrock.engineer brand
         </p>
@@ -113,9 +113,9 @@ const textures = [
           <div
             class="flex flex-col rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
           >
-            <div class="mb-4 flex-1">
+            <div class="mbe-4 flex-1">
               <div
-                class="mb-4 flex min-h-[200px] items-center justify-center rounded-sm bg-[var(--gray-3)] p-8"
+                class="mbe-4 flex min-h-[200px] items-center justify-center rounded-sm bg-[var(--gray-3)] p-8"
               >
                 <img
                   src={bedrockSvg.src}
@@ -123,8 +123,8 @@ const textures = [
                   class="max-h-32 w-auto"
                 />
               </div>
-              <h3 class="mb-2 text-lg font-semibold">Primary Logo</h3>
-              <p class="mb-4 text-sm text-[var(--gray-11)]">
+              <h3 class="mbe-2 text-lg font-semibold">Primary Logo</h3>
+              <p class="mbe-4 text-sm text-[var(--gray-11)]">
                 Vector format, scalable for any size
               </p>
             </div>
@@ -144,9 +144,9 @@ const textures = [
           <div
             class="flex flex-col rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
           >
-            <div class="mb-4 flex-1">
+            <div class="mbe-4 flex-1">
               <div
-                class="mb-4 flex min-h-[200px] items-center justify-center rounded-sm bg-[var(--gray-3)] p-8"
+                class="mbe-4 flex min-h-[200px] items-center justify-center rounded-sm bg-[var(--gray-3)] p-8"
               >
                 <Image
                   src={bedrockTextRight}
@@ -154,7 +154,7 @@ const textures = [
                   class="max-h-32 w-auto"
                 />
               </div>
-              <h3 class="mb-2 text-lg font-semibold">Logo with Text</h3>
+              <h3 class="mbe-2 text-lg font-semibold">Logo with Text</h3>
             </div>
             <div class="flex gap-2">
               <a
@@ -171,9 +171,9 @@ const textures = [
           <div
             class="flex flex-col rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
           >
-            <div class="mb-4 flex-1">
+            <div class="mbe-4 flex-1">
               <div
-                class="mb-4 flex min-h-[200px] items-center justify-center rounded-sm bg-[#1c211b] p-8"
+                class="mbe-4 flex min-h-[200px] items-center justify-center rounded-sm bg-[#1c211b] p-8"
               >
                 <img
                   src={bedrockTextWhite.src}
@@ -181,8 +181,8 @@ const textures = [
                   class="max-h-32 w-auto"
                 />
               </div>
-              <h3 class="mb-2 text-lg font-semibold">Text Light</h3>
-              <p class="mb-4 text-sm text-[var(--gray-11)]">
+              <h3 class="mbe-2 text-lg font-semibold">Text Light</h3>
+              <p class="mbe-4 text-sm text-[var(--gray-11)]">
                 Text wordmark for light on dark backgrounds
               </p>
             </div>
@@ -206,9 +206,9 @@ const textures = [
         <h2 class="heading-2 font-bold" style="margin-block-end: 32px;">
           Colors
         </h2>
-        <p class="mb-8 max-w-prose text-[var(--gray-11)]">
+        <p class="mbe-8 max-w-prose text-[var(--gray-11)]">
           The palette is built on <a
-            class="link"
+            class="inline-link"
             href="https://www.radix-ui.com/colors">Radix color scales</a
           >. These are the core values for print and design work.
         </p>
@@ -221,8 +221,8 @@ const textures = [
                   style={`background-color: ${color.hex};`}
                 />
                 <div class="p-4">
-                  <h3 class="mb-1 text-lg font-semibold">{color.name}</h3>
-                  <p class="mb-3 text-sm text-[var(--gray-11)]">{color.role}</p>
+                  <h3 class="mbe-1 text-lg font-semibold">{color.name}</h3>
+                  <p class="mbe-3 text-sm text-[var(--gray-11)]">{color.role}</p>
                   <p class="font-mono text-sm">{color.hex}</p>
                   <p class="font-mono text-sm text-[var(--gray-11)]">
                     {color.oklch}
@@ -233,21 +233,21 @@ const textures = [
           }
         </div>
 
-        <details class="mt-8">
+        <details class="mbs-8">
           <summary
             class="cursor-pointer text-sm font-medium text-[var(--green-11)] hover:underline"
           >
             Full color scales
           </summary>
-          <p class="mt-4 max-w-prose text-sm text-[var(--gray-11)]">
+          <p class="mbs-4 max-w-prose text-sm text-[var(--gray-11)]">
             Each hue runs from 1 (lightest background) to 12 (highest-contrast
             text). Light theme values.
           </p>
-          <div class="mt-6 space-y-8">
+          <div class="mbs-6 space-y-8">
             {
               scales.map((scale) => (
                 <div>
-                  <h3 class="mb-3 font-mono text-sm font-semibold capitalize">
+                  <h3 class="mbe-3 font-mono text-sm font-semibold capitalize">
                     {scale.name}
                   </h3>
                   <div class="grid grid-cols-6 gap-2 md:grid-cols-12">
@@ -257,7 +257,7 @@ const textures = [
                           class="h-10 rounded-sm border border-[var(--gray-6)]"
                           style={`background-color: ${hex};`}
                         />
-                        <p class="mt-1 text-center font-mono text-[10px] text-[var(--gray-11)]">
+                        <p class="mbs-1 text-center font-mono text-[10px] text-[var(--gray-11)]">
                           {step}
                         </p>
                         <p class="text-center font-mono text-[10px]">{hex}</p>
@@ -281,10 +281,10 @@ const textures = [
         <div
           class="rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-8"
         >
-          <div class="mb-8">
-            <h3 class="mb-4 text-xl font-semibold">Headings</h3>
+          <div class="mbe-8">
+            <h3 class="mbe-4 text-xl font-semibold">Headings</h3>
             <p
-              class="mb-2 font-condensed"
+              class="mbe-2 font-condensed"
               style="font-size: var(--heading-1);"
             >
               IBM Plex Sans Condensed
@@ -295,11 +295,11 @@ const textures = [
             </p>
           </div>
 
-          <div class="mb-8">
-            <h3 class="mb-4 text-xl font-semibold">Body</h3>
+          <div class="mbe-8">
+            <h3 class="mbe-4 text-xl font-semibold">Body</h3>
             <div class="space-y-4">
               <div>
-                <p class="mb-2 font-bold" style="font-size: var(--heading-2);">
+                <p class="mbe-2 font-bold" style="font-size: var(--heading-2);">
                   IBM Plex Sans
                 </p>
                 <p class="text-[var(--gray-11)]">
@@ -326,9 +326,9 @@ const textures = [
           </div>
 
           <div>
-            <h3 class="mb-4 text-xl font-semibold">Code</h3>
+            <h3 class="mbe-4 text-xl font-semibold">Code</h3>
             <p
-              class="mb-2 font-mono font-semibold"
+              class="mbe-2 font-mono font-semibold"
               style="font-size: var(--heading-2);"
             >
               IBM Plex Mono
@@ -338,8 +338,8 @@ const textures = [
             </p>
           </div>
         </div>
-        <p class="mt-6 max-w-prose text-sm text-[var(--gray-11)]">
-          All three are <a class="link" href="https://www.ibm.com/plex/"
+        <p class="mbs-6 max-w-prose text-sm text-[var(--gray-11)]">
+          All three are <a class="inline-link" href="https://www.ibm.com/plex/"
             >IBM Plex</a
           > families, freely available under the Open Font License.
         </p>
@@ -352,7 +352,7 @@ const textures = [
         <h2 class="heading-2 font-bold" style="margin-block-end: 32px;">
           Textures
         </h2>
-        <p class="mb-8 max-w-prose text-[var(--gray-11)]">
+        <p class="mbe-8 max-w-prose text-[var(--gray-11)]">
           Hatching patterns used as tiled section backgrounds across the site.
           Each SVG tiles seamlessly; the size listed is the tile size we use.
         </p>
@@ -396,7 +396,7 @@ const textures = [
         </h2>
 
         <h2 class="heading-3">Spelling</h2>
-        <p class="mb-8 max-w-prose">
+        <p class="mbe-8 max-w-prose">
           Prefer using “Bedrock.engineer” over “Bedrock” to avoid confusion with
           other companies named Bedrock. Also note that in “Bedrock” only the B
           should be capitalized, do not write “BedRock”.
@@ -406,7 +406,7 @@ const textures = [
           <div
             class="rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
           >
-            <h3 class="mb-3 text-xl font-semibold">Do</h3>
+            <h3 class="mbe-3 text-xl font-semibold">Do</h3>
             <ul
               class="space-y-2 text-sm text-[var(--gray-11)] list-disc list-inside"
             >
@@ -421,7 +421,7 @@ const textures = [
           <div
             class="rounded-sm border border-[var(--gray-6)] bg-[var(--gray-2)] p-6"
           >
-            <h3 class="mb-3 text-xl font-semibold">Don't</h3>
+            <h3 class="mbe-3 text-xl font-semibold">Don't</h3>
             <ul
               class="space-y-2 text-sm text-[var(--gray-11)] list-disc list-inside"
             >

@@ -7,11 +7,10 @@
 >
   <defs>
     <style>
+      /* color-scheme follows data-theme (set globally), so light-dark()
+         replaces a separate dark-mode rule */
       #zeeland-logo .text {
-        fill: #3d4853;
-      }
-      :root:not([data-theme="light"]) #zeeland-logo .text {
-        fill: white;
+        fill: light-dark(oklch(39.6% 0.0235 248.4), white);
       }
     </style>
   </defs>

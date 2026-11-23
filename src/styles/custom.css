@@ -44,6 +44,9 @@
      bg-emerald-400 don't exist; only the Bedrock scales below (plus white)
      generate color utilities. */
   --color-*: initial;
+  /* Hue 0, not `none`: stylelint-gamut's bundled colorjs.io crashes on a
+     `none` hue. Fine while nothing mixes these with color-mix(); prefer
+     `none` once that plugin updates. */
   --color-white: oklch(1 0 0);
 
   /* Remove Tailwind's type sizes beyond the Bedrock scale. text-xs…text-xl
@@ -142,14 +145,16 @@ h6 {
   text-wrap: balance;
 }
 
+/* No rubber-band bounce on desktop (macOS trackpads drag the sticky navbar
+   past the page edge); touch devices keep their native bounce */
 html {
   overscroll-behavior-y: none;
   height: 100%;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-pointer: coarse) {
   html {
-    overscroll-behavior-y: none;
+    overscroll-behavior-y: auto;
   }
 }
 
@@ -166,18 +171,16 @@ body {
   --viewport-padding: 32px;
 }
 
-/* Make marketing pages fill viewport with sticky footer */
-body:has(.page) {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100vh; /* keeps viewport height for sticky footer */
-}
-
 :root {
   accent-color: var(--color-primary);
   caret-color: var(--color-primary);
   scrollbar-color: var(--color-primary-hover);
   scrollbar-width: thin;
+
+  /* Motion tokens: the two easing curves for all UI transitions (durations
+     live in tokens.css). Never ease-in — it starts slow and reads as lag. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 :focus-visible {
@@ -188,16 +191,6 @@ body:has(.page) {
 /* Replace iOS tap highlight with custom color */
 * {
   -webkit-tap-highlight-color: var(--green-a5);
-}
-
-.landing-section {
-  padding-inline: 24px;
-  border-bottom: 1px solid var(--color-border);
-
-  h2 > a {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-  }
 }
 
 ::selection {
@@ -225,30 +218,35 @@ h4 {
 }
 
 a {
-  border-radius: 2px;
+  border-radius: var(--border-radius-xs);
 }
 
 /* Only animate if user hasn't requested reduced motion */
 @media (prefers-reduced-motion: no-preference) {
   a {
     transition:
-      text-decoration var(--duration-instant),
-      color var(--duration-fast);
+      text-decoration var(--duration-instant) var(--ease-out),
+      color var(--duration-fast) var(--ease-out);
   }
 }
 
-.link {
+/* Inline text link for plain markup. The Link component (Link.astro) owns the
+   `.link` class and its variants; this one is deliberately named differently
+   so the two can't collide in the cascade. */
+.inline-link {
   text-decoration: underline;
   text-decoration-color: var(--color-primary);
   color: var(--color-text);
-  transition: color var(--duration-fast);
+  transition: color var(--duration-fast) var(--ease-out);
 }
 
-.link:hover {
-  color: var(--color-primary-text);
+@media (hover: hover) and (pointer: fine) {
+  .inline-link:hover {
+    color: var(--color-primary-text);
+  }
 }
 
-.link:active {
+.inline-link:active {
   color: var(--color-primary-hover);
 }
 
@@ -262,15 +260,15 @@ a {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 0.25em 0.6em;
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
   white-space: nowrap;
-  background: var(--green-3);
-  color: var(--green-11);
+  background: var(--color-primary-subtle);
+  color: var(--color-primary-text);
 }
 
 .badge[data-variant="solid"] {
-  background: var(--green-9);
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-white);
 }
 
 /* Tailwind Preflight strips list markers and padding; restore them for prose
@@ -348,8 +346,8 @@ main .sl-container {
 }
 
 figcaption {
-  margin-top: 8px;
-  font-size: 0.875rem;
+  margin-block-start: 8px;
+  font-size: var(--text-sm);
 }
 
 /* ============================================ */
@@ -384,10 +382,17 @@ figcaption {
     text-decoration: none;
     margin-inline-start: 0.3em;
     opacity: 0;
-    transition: opacity var(--duration-fast);
+    transition: opacity var(--duration-fast) var(--ease-out);
   }
 
-  &:hover .anchor-link {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover .anchor-link {
+      opacity: 1;
+    }
+  }
+
+  /* Keyboard users get the anchor link without hover */
+  & .anchor-link:focus-visible {
     opacity: 1;
   }
 }
@@ -408,16 +413,18 @@ figcaption {
   margin-block-end: var(--space-xs);
 }
 
+/* Prose measure comes from --measure (the token for readable paragraph
+   width); --container-* tokens are layout region widths, not text measures */
 .paragraph {
   font-size: var(--text-lg);
   line-height: var(--leading-relaxed);
-  max-width: var(--container-narrow);
+  max-width: var(--measure);
 }
 
 .paragraph-xl {
   font-size: var(--text-xl);
   line-height: var(--leading-relaxed);
-  max-width: var(--container-narrow);
+  max-width: var(--measure);
 }
 
 .paragraph-sm {
@@ -430,7 +437,7 @@ figcaption {
 .card-surface {
   display: flex;
   flex-direction: column;
-  background: var(--gray-2);
+  background: var(--color-surface-raised);
   border: 1px solid var(--color-border-subtle);
 }
 
@@ -453,15 +460,44 @@ figcaption {
   margin-block-end: var(--space-2xs);
 }
 
-/* Subtitle below h1 */
-.subtitle {
+/* Small uppercase label above a heading (one shared eyebrow for all pages) */
+.eyebrow {
   font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--color-primary);
-  /* margin-block-start: calc(-0.5 * var(--space-xs)); */
-  margin-block-end: var(--space-m);
-  letter-spacing: var(--leading-tight);
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary-text);
+  margin-block-end: var(--space-xs);
+}
+
+/* Square-bullet feature list used on the marketing pages */
+.feature-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+}
+
+.feature-list li {
+  padding-inline-start: var(--space-m);
+  position: relative;
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+}
+
+.feature-list li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0.65em;
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+}
+
+.feature-list li strong {
+  color: var(--color-primary-text);
 }
 
 /* ========== LAYOUT PATTERNS ========== */
@@ -476,9 +512,6 @@ figcaption {
   max-width: var(--container-wide);
   margin-inline: auto;
   border-top: none;
-  @media (max-width: 1200px) {
-    border-inline: none;
-  }
 }
 
 .section {
@@ -488,7 +521,14 @@ figcaption {
   margin-inline: auto;
   border-inline: 1px solid var(--color-border);
   background: var(--color-surface);
-  @media (max-width: 1200px) {
+}
+
+/* Below the .section column width the side borders sit at the screen edge
+   and come off. Keep this value in sync with --container-md: media queries
+   cannot read custom properties. */
+@media (max-width: 1200px) {
+  .section-wrapper,
+  .section {
     border-inline: none;
   }
 }
@@ -575,15 +615,25 @@ figcaption {
   line-height: 1;
   padding: 14px 28px;
   font-size: var(--text-base);
-  border-radius: 2px;
+  border-radius: var(--border-radius-xs);
   text-decoration: none;
+  /* Color fades may run for everyone; the press scale only moves for people
+     who haven't asked for reduced motion */
   transition:
-    background var(--duration-normal) ease,
-    border-color var(--duration-normal) ease,
-    scale var(--duration-fast) ease;
+    background var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out);
 
-  &:hover {
-    text-decoration: none;
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      background var(--duration-normal) var(--ease-out),
+      border-color var(--duration-normal) var(--ease-out),
+      scale var(--duration-fast) var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   &:active {
@@ -597,9 +647,11 @@ figcaption {
   font-weight: 400;
   border: 2px solid var(--color-primary);
 
-  &:hover {
-    background: var(--color-primary-hover);
-    border-color: var(--color-primary-hover);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: var(--color-primary-hover);
+      border-color: var(--color-primary-hover);
+    }
   }
 }
 
@@ -609,9 +661,11 @@ figcaption {
   font-weight: 400;
   border: 2px solid var(--color-border-strong);
 
-  &:hover {
-    background: var(--color-surface-overlay);
-    border-color: var(--gray-8);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: var(--color-surface-overlay);
+      border-color: var(--gray-8);
+    }
   }
 }
 
@@ -625,8 +679,10 @@ figcaption {
   /* transparent border keeps metrics identical to the secondary button */
   border: 1px solid transparent;
 
-  &:hover {
-    background: var(--color-inverted-button-bg-hover);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: var(--color-inverted-button-bg-hover);
+    }
   }
 }
 
@@ -635,9 +691,11 @@ figcaption {
   color: oklch(1 0 0);
   border: 1px solid oklch(1 0 0 / 0.4);
 
-  &:hover {
-    background: oklch(1 0 0 / 0.12);
-    border-color: oklch(1 0 0 / 0.7);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: oklch(1 0 0 / 0.12);
+      border-color: oklch(1 0 0 / 0.7);
+    }
   }
 }
 
@@ -649,10 +707,21 @@ figcaption {
   font-size: var(--text-lg);
   color: var(--color-primary-text);
   text-decoration: none;
-  transition: gap var(--duration-normal) ease;
 }
 
-.section-link:hover {
-  gap: 8px;
-  text-decoration: underline;
+@media (prefers-reduced-motion: no-preference) {
+  .section-link {
+    transition: gap var(--duration-normal) var(--ease-out);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .section-link:hover {
+    gap: 8px;
+    text-decoration: underline;
+  }
+}
+
+.section-link:active {
+  color: var(--color-primary);
 }

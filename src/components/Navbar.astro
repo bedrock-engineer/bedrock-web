@@ -83,10 +83,10 @@ const isActive = (match: string) =>
 <style>
   .navbar {
     position: sticky;
-    top: 0;
+    inset-block-start: 0;
     z-index: 100;
-    background: var(--gray-1);
-    border-bottom: 1px solid var(--color-border-subtle);
+    background: var(--color-surface);
+    border-block-end: 1px solid var(--color-border-subtle);
   }
 
   .navbar-container {
@@ -97,9 +97,6 @@ const isActive = (match: string) =>
     align-items: center;
     gap: var(--space-l);
     padding-inline: var(--section-padding-inline);
-    @media (max-width: 640px) {
-      padding-inline: var(--section-padding-inline);
-    }
   }
 
   /* Logo */
@@ -109,22 +106,28 @@ const isActive = (match: string) =>
     column-gap: 8px;
     font-size: var(--text-xl);
     font-family: var(--font-condensed);
-    color: var(--gray-12);
+    color: var(--color-text);
     text-decoration: none;
     white-space: nowrap;
 
-    &:hover {
-      color: var(--green-11);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: var(--color-primary-text);
+      }
+    }
+
+    &:active {
+      color: var(--color-primary-text);
     }
 
     &:focus-visible {
-      outline: 2px solid var(--green-9);
+      outline: 2px solid var(--color-focus);
       outline-offset: 2px;
       border-radius: var(--border-radius-sm);
     }
 
     @media (prefers-reduced-motion: no-preference) {
-      transition: color var(--duration-fast) ease;
+      transition: color var(--duration-fast) var(--ease-out);
     }
   }
 
@@ -132,24 +135,30 @@ const isActive = (match: string) =>
   .nav-links a,
   .mobile-nav a {
     font-size: var(--text-base);
-    color: var(--gray-11);
+    color: var(--color-text-muted);
     text-decoration: none;
     white-space: nowrap;
     border-radius: var(--border-radius-sm);
 
-    &:hover {
-      color: var(--green-11);
-      background: var(--gray-3);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: var(--color-primary-text);
+        background: var(--color-surface-overlay);
+      }
+    }
+
+    &:active {
+      background: var(--gray-4);
     }
 
     &:focus-visible {
-      outline: 2px solid var(--green-9);
+      outline: 2px solid var(--color-focus);
       outline-offset: 2px;
     }
 
     &[aria-current="page"] {
-      color: var(--green-11);
-      background: var(--gray-3);
+      color: var(--color-primary-text);
+      background: var(--color-surface-overlay);
       font-weight: 500;
     }
   }
@@ -166,14 +175,10 @@ const isActive = (match: string) =>
     a {
       padding: var(--space-2xs) var(--space-xs);
 
-      &:active {
-        background: var(--gray-4);
-      }
-
       @media (prefers-reduced-motion: no-preference) {
         transition:
-          color var(--duration-fast) ease,
-          background var(--duration-fast) ease;
+          color var(--duration-fast) var(--ease-out),
+          background var(--duration-fast) var(--ease-out);
       }
     }
   }
@@ -199,19 +204,33 @@ const isActive = (match: string) =>
     height: 32px;
     padding: 0;
     background: transparent;
-    color: var(--gray-11);
+    color: var(--color-text-muted);
     border: 1px solid transparent;
     border-radius: var(--border-radius-sm);
     cursor: pointer;
     anchor-name: --hamburger;
+    position: relative;
 
-    &:hover {
-      color: var(--green-11);
-      background: var(--gray-3);
+    /* The visual is 32px; stretch the hit area to the 44px minimum */
+    &::after {
+      content: "";
+      position: absolute;
+      inset: min(0px, (100% - 44px) / 2);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: var(--color-primary-text);
+        background: var(--color-surface-overlay);
+      }
+    }
+
+    &:active {
+      background: var(--gray-4);
     }
 
     &:focus-visible {
-      outline: 2px solid var(--green-9);
+      outline: 2px solid var(--color-focus);
       outline-offset: 2px;
     }
 
@@ -226,21 +245,21 @@ const isActive = (match: string) =>
     padding: var(--space-xs);
     border: 1px solid var(--color-border-subtle);
     border-radius: var(--border-radius-md);
-    background: var(--gray-1);
+    background: var(--color-surface);
     box-shadow: var(--shadow-md);
     min-width: 200px;
 
     /* Static fallback positioning */
     position: fixed;
     inset: auto;
-    top: 3.5rem;
-    right: var(--section-padding-inline);
+    inset-block-start: 3.5rem;
+    inset-inline-end: var(--section-padding-inline);
 
     /* Anchor-positioned where supported */
     @supports (position-anchor: --x) {
       position-anchor: --hamburger;
-      top: calc(anchor(bottom) + 4px);
-      right: anchor(right);
+      inset-block-start: calc(anchor(bottom) + 4px);
+      inset-inline-end: anchor(right);
     }
 
     a {

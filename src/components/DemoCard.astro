@@ -131,14 +131,16 @@ const allLinks: NonNullable<Props['links']> = [
     /* Base surface (flex column, background, border) comes from the global
        .card-surface class */
     border-radius: var(--border-radius-md);
-    overflow: hidden;
+    overflow: clip;
 
     @media (prefers-reduced-motion: no-preference) {
-      transition: border-color var(--duration-normal) ease;
+      transition: border-color var(--duration-normal) var(--ease-out);
     }
 
-    &:hover {
-      border-color: var(--green-7);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        border-color: var(--green-7);
+      }
     }
   }
 
@@ -151,7 +153,7 @@ const allLinks: NonNullable<Props['links']> = [
   .demo-card-media {
     width: 100%;
     aspect-ratio: 16 / 10;
-    overflow: hidden;
+    overflow: clip;
     background: var(--gray-3);
     position: relative;
   }
@@ -159,10 +161,10 @@ const allLinks: NonNullable<Props['links']> = [
   /* Positioning only — pill styling comes from the global .badge utility. */
   .demo-card-badge {
     position: absolute;
-    top: var(--space-2xs);
-    left: var(--space-2xs);
+    inset-block-start: var(--space-2xs);
+    inset-inline-start: var(--space-2xs);
     z-index: 1;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--shadow-sm);
   }
 
   .demo-iframe {
@@ -179,11 +181,13 @@ const allLinks: NonNullable<Props['links']> = [
     display: block;
 
     @media (prefers-reduced-motion: no-preference) {
-      transition: transform var(--duration-slow) ease;
+      transition: transform var(--duration-slow) var(--ease-out);
     }
 
-    &:hover {
-      transform: scale(1.05);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }
 
@@ -195,18 +199,18 @@ const allLinks: NonNullable<Props['links']> = [
     flex-grow: 1;
   }
 
+  /* On an h3, so the condensed family comes from the global heading styles */
   .demo-card-title {
     font-size: var(--heading-4);
     font-weight: var(--font-semibold);
-    font-family: var(--font-condensed);
-    color: var(--gray-12);
+    color: var(--color-text);
     margin: 0;
   }
 
   .demo-card-description {
     font-size: var(--text-base);
     line-height: var(--leading-normal);
-    color: var(--gray-12);
+    color: var(--color-text);
     flex-grow: 1;
     margin: 0;
   }
@@ -216,7 +220,8 @@ const allLinks: NonNullable<Props['links']> = [
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
-    margin: var(--space-2xs) 0 0;
+    margin: 0;
+    margin-block-start: var(--space-2xs);
     padding: 0;
     list-style: none;
   }
@@ -228,14 +233,14 @@ const allLinks: NonNullable<Props['links']> = [
     padding: 1px 8px;
     font-size: var(--text-xs);
     line-height: 1.5;
-    color: var(--gray-11);
+    color: var(--color-text-muted);
   }
 
   .demo-card-links {
     display: flex;
     flex-direction: column;
     gap: var(--space-2xs);
-    margin-top: var(--space-2xs);
+    margin-block-start: var(--space-2xs);
 
     /* Wrap the subtitle onto its own row after the arrow; the hover rule repeats the zero row gap
        because Link widens its gap on hover */
@@ -252,6 +257,6 @@ const allLinks: NonNullable<Props['links']> = [
     font-size: var(--text-sm);
     font-weight: normal;
     line-height: var(--leading-snug);
-    color: var(--gray-11);
+    color: var(--color-text-muted);
   }
 </style>

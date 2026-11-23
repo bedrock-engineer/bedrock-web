@@ -28,36 +28,46 @@ const linkAttrs = isExternal
 
 <style>
   .link {
-    color: var(--green-9);
+    color: var(--color-primary);
     text-decoration: none;
     border-radius: var(--border-radius-sm);
 
+    /* Color fades may run for everyone; the gap change moves the arrow, so it
+       only animates for people who haven't asked for reduced motion */
+    transition: color var(--duration-fast) var(--ease-out);
+
     @media (prefers-reduced-motion: no-preference) {
-      transition: color var(--duration-fast) ease, gap var(--duration-normal) ease;
+      transition:
+        color var(--duration-fast) var(--ease-out),
+        gap var(--duration-normal) var(--ease-out);
     }
 
-    &:hover {
-      color: var(--green-10);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: var(--color-primary-hover);
+      }
     }
 
     &:active {
-      color: var(--green-11);
+      color: var(--color-primary-text);
     }
 
     &:focus-visible {
-      outline: 2px solid var(--green-9);
+      outline: 2px solid var(--color-focus);
       outline-offset: 2px;
     }
 
     /* Default variant - underline */
     &[data-variant="default"] {
       text-decoration: underline;
-      text-decoration-color: var(--green-9);
+      text-decoration-color: var(--color-primary);
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
 
-      &:hover {
-        text-decoration-color: var(--green-10);
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          text-decoration-color: var(--color-primary-hover);
+        }
       }
     }
 
@@ -68,11 +78,13 @@ const linkAttrs = isExternal
       gap: var(--space-2xs);
       font-weight: var(--font-semibold);
 
-      &:hover {
-        gap: var(--space-xs);
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          gap: var(--space-xs);
 
-        .arrow {
-          transform: translateX(2px);
+          .arrow {
+            transform: translateX(2px);
+          }
         }
       }
 
@@ -80,7 +92,7 @@ const linkAttrs = isExternal
         display: inline-block;
 
         @media (prefers-reduced-motion: no-preference) {
-          transition: transform var(--duration-normal) ease;
+          transition: transform var(--duration-normal) var(--ease-out);
         }
       }
     }
@@ -90,10 +102,12 @@ const linkAttrs = isExternal
       font-weight: var(--font-semibold);
       text-decoration: none;
 
-      &:hover {
-        text-decoration: underline;
-        text-decoration-thickness: 2px;
-        text-underline-offset: 2px;
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          text-decoration: underline;
+          text-decoration-thickness: 2px;
+          text-underline-offset: 2px;
+        }
       }
     }
   }

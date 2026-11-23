@@ -128,7 +128,7 @@ const ogVideo = new URL("/voxels-og.mp4", Astro.site);
             <Fragment slot="description">
               The Dutch
               <a
-                class="link"
+                class="inline-link"
                 href="https://www.dinoloket.nl/en/detailing-the-upper-layers-with-geotop"
               >
                 GeoTOP
@@ -146,7 +146,7 @@ const ogVideo = new URL("/voxels-og.mp4", Astro.site);
           >
             <Fragment slot="description">
               The Flemish <a
-                class="link"
+                class="inline-link"
                 href="https://www.dov.vlaanderen.be/page/ondiep-geologisch-3d-lagen-en-voxelmodel-van-regio-antwerpen-oa-v1-2021"
               >
                 DOV shallow subsurface model of the Antwerp region
@@ -165,11 +165,11 @@ const ogVideo = new URL("/voxels-og.mp4", Astro.site);
             <Fragment slot="description">
               CPT data from <a
                 href="https://basisregistratieondergrond.nl/"
-                class="link"
+                class="inline-link"
               >
                 BRO
               </a>
-              , 3D buildings from <a href="https://3dbag.nl/en" class="link"
+              , 3D buildings from <a href="https://3dbag.nl/en" class="inline-link"
                 >3D BAG</a
               >, and GeoTOP voxels combined in a single CesiumJS scene
               subsurface and above-ground context together.
@@ -199,12 +199,12 @@ const ogVideo = new URL("/voxels-og.mp4", Astro.site);
             <h3 class="heading-3">Open Standard</h3>
             <p class="card-text">
               3D Tiles is an <a
-                class="link"
+                class="inline-link"
                 href="https://www.ogc.org/standards/3dtiles/"
               >
                 OGC community standard
               </a>
-              maintained by <a class="link" href="https://cesium.com/">Cesium</a
+              maintained by <a class="inline-link" href="https://cesium.com/">Cesium</a
               >. No vendor lock-in, your data stays in an open, documented
               format.
             </p>
@@ -327,7 +327,7 @@ const ogVideo = new URL("/voxels-og.mp4", Astro.site);
 
         <p
           class="paragraph"
-          style="text-align: center; margin-block-end: 32px; color: var(--gray-11);"
+          style="text-align: center; margin-block-end: 32px; color: var(--color-text-muted);"
         >
           We convert geological block models, ore grade models, groundwater
           grids, seismic volumes into interactive 3D web maps.
@@ -516,23 +516,19 @@ const ogVideo = new URL("/voxels-og.mp4", Astro.site);
 </BaseLayout>
 
 <style>
-  .eyebrow {
-    font-size: var(--text-sm);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--green-11);
-    margin-block-end: var(--space-xs);
-  }
-
+  /* Text takes the row beside the fixed-size decoration; when the text would
+     drop under ~60% of the row, the decoration wraps and centers itself —
+     no breakpoint */
   .hero-layout {
-    display: grid;
-    grid-template-columns: 1fr auto;
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--space-xl);
     align-items: center;
 
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
+    & > .hero-text {
+      flex-basis: 0;
+      flex-grow: 999;
+      min-inline-size: 60%;
     }
   }
 
@@ -542,12 +538,18 @@ const ogVideo = new URL("/voxels-og.mp4", Astro.site);
     gap: var(--space-s);
     margin-block-start: var(--space-m);
     font-size: var(--text-sm);
-    color: var(--gray-11);
+    color: var(--color-text-muted);
     text-decoration: none;
-    transition: color var(--duration-fast);
+    transition: color var(--duration-fast) var(--ease-out);
 
-    &:hover {
-      color: var(--gray-12);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: var(--color-text);
+      }
+    }
+
+    &:active {
+      color: var(--color-text);
     }
   }
 
@@ -558,45 +560,36 @@ const ogVideo = new URL("/voxels-og.mp4", Astro.site);
   .hero-decoration {
     width: clamp(200px, 30vw, 360px);
     aspect-ratio: 1;
-
-    @media (max-width: 768px) {
-      width: min(280px, 100%);
-      margin-inline: auto;
-    }
+    flex: none;
+    /* Auto margins resolve to 0 while the text column absorbs the free space,
+       and center the decoration once it wraps onto its own row */
+    margin-inline: auto;
   }
 
+  /* Same wrapping pair as .hero-layout; `row-reverse` puts the decoration on
+     the inline-start side, in place of the old direction: rtl trick */
   .content-with-decoration {
-    display: grid;
-    grid-template-columns: 1fr auto;
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--space-xl);
     align-items: start;
 
-    &.reverse {
-      grid-template-columns: auto 1fr;
-      direction: rtl;
-      > * {
-        direction: ltr;
-      }
+    & > div:first-child {
+      flex-basis: 0;
+      flex-grow: 999;
+      min-inline-size: 60%;
     }
 
-    @media (max-width: 900px) {
-      grid-template-columns: 1fr;
-
-      &.reverse {
-        grid-template-columns: 1fr;
-        direction: ltr;
-      }
+    &.reverse {
+      flex-direction: row-reverse;
     }
   }
 
   .side-decoration {
     width: clamp(160px, 22vw, 280px);
     aspect-ratio: 1;
-
-    @media (max-width: 900px) {
-      width: min(220px, 100%);
-      margin-inline: auto;
-    }
+    flex: none;
+    margin-inline: auto;
   }
 
   .cta-decoration {
@@ -606,75 +599,13 @@ const ogVideo = new URL("/voxels-og.mp4", Astro.site);
     max-height: 200px;
   }
 
-  .process-list {
-    list-style: none;
-    margin-top: 64px;
-    padding: 0;
-    counter-reset: process;
-    gap: var(--space-m);
-  }
-
-  .process-list li {
-    counter-increment: process;
-    padding-inline-start: var(--space-l);
-    position: relative;
-    font-size: var(--text-lg);
-    line-height: var(--leading-relaxed);
-  }
-
-  .process-list li::before {
-    content: counter(process);
-    position: absolute;
-    left: 0;
-    top: 0.1em;
-    width: 1.6em;
-    height: 1.6em;
-    display: grid;
-    place-items: center;
-    background: var(--green-9);
-    color: var(--gray-1);
-    font-weight: 700;
-    font-size: var(--text-sm);
-    border-radius: 50%;
-  }
-
-  .process-list li strong {
-    color: var(--green-11);
-  }
-
-  .feature-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-s);
-  }
-
-  .feature-list li {
-    padding-inline-start: var(--space-m);
-    position: relative;
-    font-size: var(--text-lg);
-    line-height: var(--leading-relaxed);
-  }
-
-  .feature-list li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.65em;
-    width: 8px;
-    height: 8px;
-    background: var(--green-9);
-  }
-
-  .feature-list li strong {
-    color: var(--green-11);
-  }
+  /* .eyebrow and .feature-list come from the global stylesheet; the old
+     .process-list styles were dead (their markup is commented out above) */
 
   .card-text {
     font-size: var(--text-base);
     line-height: var(--leading-relaxed);
-    color: var(--gray-12);
+    color: var(--color-text);
     margin: 0;
   }
 </style>

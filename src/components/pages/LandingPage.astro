@@ -35,7 +35,7 @@ const { t } = Astro.props;
       <p class="md:text-lg">{t.hero.subhead}</p>
 
       <div
-        class="mt-12 flex max-w-full flex-col items-stretch gap-4 text-center sm:flex-row sm:flex-wrap sm:items-center sm:justify-center"
+        class="mbs-12 flex max-w-full flex-col items-stretch gap-4 text-center sm:flex-row sm:flex-wrap sm:items-center sm:justify-center"
       >
         <a
           href="https://cal.com/bedrock.engineer"
@@ -108,7 +108,7 @@ const { t } = Astro.props;
           </ul>
         </div>
 
-        <HoverLogo class="place-self-center" />
+        <HoverLogo class="place-self-center" labels={t.whatWeDo.logoLayers} />
       </div>
 
       <div class="section-link-center">
@@ -196,10 +196,6 @@ const { t } = Astro.props;
     min-width: 0;
   }
 
-  .paragraph {
-    max-width: var(--measure);
-  }
-
   .section-link-center {
     margin-block-start: var(--space-l);
     text-align: center;
@@ -215,15 +211,13 @@ const { t } = Astro.props;
   }
 
   .hero-wrapper {
-    padding-inline: var(--space-s);
-    border-bottom: 1px solid var(--color-border);
-    @media (max-width: 640px) {
-      padding-inline: var(--space-2xs);
-    }
+    /* 0.5rem on phones up to 1.25rem on desktop, in place of a breakpoint */
+    padding-inline: clamp(0.5rem, -0.1rem + 1.5vw, 1.25rem);
+    border-block-end: 1px solid var(--color-border);
   }
 
   .hero {
-    margin-top: var(--space-xs);
+    margin-block-start: var(--space-xs);
     min-height: 620px;
     max-width: var(--container-wide);
     padding-block: var(--space-s);
@@ -252,8 +246,8 @@ const { t } = Astro.props;
 
     & h1 {
       font-size: var(--heading-display);
-      margin-top: var(--space-l);
-      margin-bottom: var(--space-s);
+      margin-block-start: var(--space-l);
+      margin-block-end: var(--space-s);
       font-family: var(--font-condensed);
       text-box-trim: trim-both;
       text-wrap: balance;
@@ -267,15 +261,15 @@ const { t } = Astro.props;
 
   .header-controls {
     position: fixed;
-    top: 16px;
-    right: 24px;
+    inset-block-start: 16px;
+    inset-inline-end: 24px;
     display: flex;
     flex-direction: row;
     align-items: end;
     gap: 4px;
 
     @media (max-width: 768px) {
-      right: 12px;
+      inset-inline-end: 12px;
       flex-direction: column-reverse;
     }
   }
@@ -284,22 +278,19 @@ const { t } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
-    column-gap: 9px;
-    font-size: 36px;
+    /* Gap and logo size in em so they track the fluid font size (9px gap and
+       46px logo at 36px font; 6px and 31px at 24px) */
+    column-gap: 0.25em;
+    /* 24px on phones up to 36px from ~1024px wide */
+    font-size: clamp(1.5rem, 0.25rem + 3.125vw, 2.25rem);
     font-family: var(--font-condensed);
     position: absolute;
-    top: var(--space-s);
-    left: 20px;
+    inset-block-start: var(--space-s);
+    inset-inline-start: clamp(0.75rem, 0.2rem + 1.4vw, 1.25rem);
 
-    @media (max-width: 640px) {
-      font-size: 24px;
-      column-gap: 6px;
-      left: var(--space-xs);
-
-      & img {
-        width: 28px;
-        height: 31px;
-      }
+    & img {
+      width: auto;
+      height: 1.28em;
     }
   }
 
@@ -317,24 +308,28 @@ const { t } = Astro.props;
 
   .voxel-callout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* Two equal columns that stack on their own when each would drop under
+       ~22rem, in place of a breakpoint */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
     gap: var(--space-l);
     align-items: center;
     text-decoration: none;
     color: inherit;
     border-radius: var(--border-radius-md);
-    transition: background var(--duration-fast);
+    transition: background var(--duration-fast) var(--ease-out);
 
-    &:hover {
-      background: var(--gray-2);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background: var(--gray-2);
+      }
+
+      &:hover .section-link {
+        text-decoration: underline;
+      }
     }
 
-    &:hover .section-link {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
+    &:active {
+      background: var(--gray-3);
     }
   }
 
@@ -362,17 +357,17 @@ const { t } = Astro.props;
 
   .services-list {
     list-style: none;
-    padding-left: 0;
+    padding-inline-start: 0;
 
     li {
-      padding-left: var(--space-m);
+      padding-inline-start: var(--space-m);
       margin-block: var(--space-xs);
       position: relative;
 
       &::before {
         content: "→";
         position: absolute;
-        left: 0;
+        inset-inline-start: 0;
         color: var(--green-8);
         font-weight: bold;
       }
@@ -397,9 +392,9 @@ const { t } = Astro.props;
     }
   }
 
+  /* On an h3, so the condensed family comes from the global heading styles */
   .value-title {
-    font-family: var(--font-condensed);
-    color: var(--gray-12);
+    color: var(--color-text);
   }
 </style>
 
@@ -416,8 +411,10 @@ const { t } = Astro.props;
     padding: 0 !important;
     justify-content: center !important;
   }
-  .header-controls button[data-open-modal]:hover {
-    background: var(--gray-7) !important;
+  @media (hover: hover) and (pointer: fine) {
+    .header-controls button[data-open-modal]:hover {
+      background: var(--gray-7) !important;
+    }
   }
   /* Hide the text label and keyboard shortcut */
   .header-controls button[data-open-modal] span,
@@ -426,7 +423,7 @@ const { t } = Astro.props;
   }
   /* Remove the ThemeToggle's built-in top margin so it aligns in the flex row */
   .header-controls #triangle-toggle {
-    margin-top: 0;
+    margin-block-start: 0;
   }
   /* Center the search dialog on the landing page (Starlight defaults to top-aligned) */
   .header-controls dialog {

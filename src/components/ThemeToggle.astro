@@ -3,7 +3,7 @@
 // Drop-in replacement for a standard theme toggle.
 // Uses a rotating equilateral triangle indicator instead of a sliding pill.
 import sunIcon from "./icons/sun.svg?raw";
-import autoIcon from "./icons/auto.svg?raw";
+import autoIcon from "./icons/desktop.svg?raw";
 import moonIcon from "./icons/moon.svg?raw";
 
 const { class: className } = Astro.props;
@@ -19,13 +19,14 @@ function svgViewBox(raw: string): string {
   return raw.match(/viewBox="([^"]+)"/)?.[1] ?? "0 0 15 15";
 }
 
-const length = 40 ;
+const length = 40;
 const altitude = (Math.sqrt(3) / 2) * length; // ≈ 43.3
 const iconSize = 12;
 const iconX = length / 2 - iconSize / 2; // 17.5
 
 const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
 ---
+
 <svg
   class:list={["triangle-toggle", className]}
   role="radiogroup"
@@ -44,8 +45,9 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
     aria-label="Light"
     aria-checked="false"
   >
-    <path d={trianglePath}  class="tri-bg"></path>
-    <path d={trianglePath}  class="tri-focus-ring"></path>
+    <title>Light</title>
+    <path d={trianglePath} class="tri-bg"></path>
+    <path d={trianglePath} class="tri-focus-ring"></path>
     <svg
       x={iconX}
       y={altitude / 2}
@@ -66,6 +68,7 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
     aria-checked="false"
     transform={`translate(${length / 2}, 0)`}
   >
+    <title>Auto (match system)</title>
     <path d={trianglePath} class="tri-bg tri-inverted"></path>
     <path d={trianglePath} class="tri-focus-ring tri-inverted"></path>
     <svg
@@ -88,6 +91,7 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
     aria-checked="false"
     transform={`translate(${length}, 0)`}
   >
+    <title>Dark</title>
     <path d={trianglePath} class="tri-bg"></path>
     <path d={trianglePath} class="tri-focus-ring"></path>
     <svg
@@ -216,10 +220,21 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
 
   .tri-btn {
     cursor: pointer;
-    outline: none;
 
-    &:hover .tri-bg {
-      fill: var(--gray-7);
+    /* The ring is drawn by .tri-focus-ring; keep the UA ring transparent,
+       never removed, so forced-colors mode can repaint it */
+    &:focus-visible {
+      outline: 2px solid transparent;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover .tri-bg {
+        fill: var(--gray-7);
+      }
+    }
+
+    &:active .tri-bg {
+      fill: var(--gray-8);
     }
 
     &:focus-visible .tri-focus-ring {
@@ -229,7 +244,7 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
 
   .tri-focus-ring {
     fill: none;
-    stroke: var(--green-9);
+    stroke: var(--color-focus);
     stroke-width: 2;
     stroke-linejoin: round;
     opacity: 0;
@@ -241,7 +256,7 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
     opacity: 0.5;
     pointer-events: none;
 
-    .tri-btn.active & {
+    .tri-btn[aria-checked="true"] & {
       opacity: 1;
     }
   }
@@ -254,6 +269,8 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
     pointer-events: none;
 
     @media (prefers-reduced-motion: no-preference) {
+      /* Deliberately off the motion tokens: the indicator overshoots (back
+         ease) and runs longer than UI transitions, as a playful flourish */
       transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.1);
     }
   }

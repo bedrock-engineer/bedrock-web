@@ -50,7 +50,7 @@ const description =
             <h3 class="service-title">Data Transformation & Structuring</h3>
             <p class="service-description">
               Transform industry-specific formats (AGS3/4, GEF, <a
-                class="link"
+                class="inline-link"
                 href="/nl/bro-xml">BRO/XML</a
               >) into open, structured data that any GIS, database, or BIM tool
               can read.
@@ -100,10 +100,10 @@ const description =
               Work with CPT and borehole data in Python notebooks, and turn
               spreadsheet calculations into scripts you can rerun and audit. We
               build on our open-source libraries <a
-                class="link"
+                class="inline-link"
                 href="/docs/cpt-anywidget/">cpt-anywidget</a
               > and <a
-                class="link"
+                class="inline-link"
                 href="https://github.com/bedrock-engineer/symeval">symeval</a
               >.
             </p>
@@ -303,7 +303,7 @@ const description =
         </h2>
         <p
           class="paragraph"
-          style="text-align: center; margin-block-end: 32px; color: var(--gray-11);"
+          style="text-align: center; margin-block-end: 32px; color: var(--color-text-muted);"
         >
           Book a call to talk through your data, your current workflow, or what
           you'd like to build. Or send us an email.
@@ -325,12 +325,12 @@ const description =
 <style>
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
     gap: 24px;
   }
 
   .service-icon {
-    color: var(--green-9);
+    color: var(--color-primary);
     margin-block-end: 16px;
   }
 
@@ -338,14 +338,14 @@ const description =
     font-size: var(--text-xl);
     font-weight: 600;
     margin-block-end: 12px;
-    color: var(--gray-12);
+    color: var(--color-text);
   }
 
   .service-description {
     font-size: var(--text-base);
     line-height: var(--leading-relaxed);
     margin-block-end: 20px;
-    color: var(--gray-11);
+    color: var(--color-text-muted);
   }
 
   .service-details {
@@ -356,14 +356,14 @@ const description =
     font-size: var(--text-sm);
     font-weight: 600;
     margin-block-end: 8px;
-    color: var(--gray-12);
+    color: var(--color-text);
   }
 
   .service-list {
     list-style: none;
     padding: 0;
     font-size: var(--text-sm);
-    color: var(--gray-11);
+    color: var(--color-text-muted);
   }
 
   .service-list li {
@@ -375,20 +375,20 @@ const description =
   .service-list li::before {
     content: "•";
     position: absolute;
-    left: 8px;
-    color: var(--green-9);
+    inset-inline-start: 8px;
+    color: var(--color-primary);
   }
 
   .service-meta {
     font-size: var(--text-sm);
     padding: 12px;
-    background: var(--gray-3);
+    background: var(--color-surface-overlay);
     border-radius: var(--border-radius-sm);
-    color: var(--gray-11);
+    color: var(--color-text-muted);
   }
 
   .service-meta strong {
-    color: var(--gray-12);
+    color: var(--color-text);
   }
 
   /* Process Timeline */
@@ -404,23 +404,26 @@ const description =
   }
 
   .process-step {
+    /* Circle, gap, and number scale fluidly between their old narrow and wide
+       breakpoint values */
+    --process-circle: clamp(3.125rem, 2.625rem + 1.25vw, 3.75rem);
     display: grid;
-    grid-template-columns: 60px 1fr;
-    gap: 24px;
+    grid-template-columns: var(--process-circle) 1fr;
+    gap: clamp(1rem, 0.6rem + 1vw, 1.5rem);
     align-items: start;
     counter-increment: process-counter;
   }
 
   .process-step::before {
     content: counter(process-counter);
-    width: 60px;
-    height: 60px;
+    width: var(--process-circle);
+    height: var(--process-circle);
     border-radius: 50%;
-    background: var(--green-9);
+    background: var(--color-primary);
     color: white;
     display: grid;
     place-content: center;
-    font-size: 24px;
+    font-size: clamp(1.25rem, 1.05rem + 0.5vw, 1.5rem);
     font-weight: 600;
     align-self: center;
   }
@@ -429,20 +432,20 @@ const description =
     font-size: var(--text-xl);
     font-weight: 600;
     margin-block-end: 8px;
-    color: var(--gray-12);
+    color: var(--color-text);
   }
 
   .process-description {
     font-size: var(--text-base);
     line-height: var(--leading-relaxed);
-    color: var(--gray-11);
+    color: var(--color-text-muted);
     max-width: 60ch;
   }
 
   /* Values Grid - now using .grid-auto-fit-narrow from global CSS */
 
   .value-icon {
-    color: var(--green-9);
+    color: var(--color-primary);
     margin-block-end: 16px;
   }
 
@@ -450,17 +453,17 @@ const description =
     font-size: var(--text-xl);
     font-weight: 600;
     margin-block-end: 12px;
-    color: var(--gray-12);
+    color: var(--color-text);
   }
 
   .value-description {
     font-size: var(--text-base);
     line-height: var(--leading-relaxed);
-    color: var(--gray-11);
+    color: var(--color-text-muted);
   }
 
   .value-description code {
-    background: var(--gray-3);
+    background: var(--color-surface-overlay);
     padding: 2px 6px;
     border-radius: 3px;
     font-family: var(--font-mono);
@@ -472,20 +475,4 @@ const description =
     padding-block: 64px;
   }
 
-  @media (max-width: 768px) {
-    .services-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .process-step {
-      grid-template-columns: 50px 1fr;
-      gap: 16px;
-    }
-
-    .process-step::before {
-      width: 50px;
-      height: 50px;
-      font-size: 20px;
-    }
-  }
 </style>

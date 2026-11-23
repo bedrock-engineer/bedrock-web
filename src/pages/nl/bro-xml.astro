@@ -131,13 +131,13 @@ const faq = [
         <p class="paragraph" style="margin-block-start: var(--space-l);">
           De viewer draait op onze open-source TypeScript-library{" "}
           <a
-            class="link"
+            class="inline-link"
             href="https://bedrock.engineer/docs/bro-xml-parser/getting-started/"
           >
             <code>@bedrock-engineer/bro-xml-parser </code>
           </a>{" "}
           (<a
-            class="link"
+            class="inline-link"
             href="https://github.com/bedrock-engineer/bro-xml-parser-ts"
             >GitHub
           </a>), die de geotechnische BRO-schema's implementeert.
@@ -191,7 +191,7 @@ const faq = [
             <summary>Wat is BRO/XML?</summary>
             <p class="paragraph">
               IMBRO/XML is het uitwisselformaat van de
-              <a class="link" href="https://basisregistratieondergrond.nl/"
+              <a class="inline-link" href="https://basisregistratieondergrond.nl/"
                 >Basisregistratie Ondergrond</a
               >
               (BRO), de opvolger van GEF voor sondeer- en boordata in Nederland. De
@@ -205,7 +205,7 @@ const faq = [
             </summary>
             <p class="paragraph">
               Ja, onze
-              <a class="link" href="https://bro.bedrock.engineer">
+              <a class="inline-link" href="https://bro.bedrock.engineer">
                 BRO/XML viewer</a
               >
               — gratis, open source, en je bestanden verlaten je browser niet.
@@ -215,7 +215,7 @@ const faq = [
             <summary>Kan ik een CPT XML-bestand omzetten naar CSV?</summary>
             <p class="paragraph">
               Ja, in de
-              <a class="link" href="https://bro.bedrock.engineer">viewer</a>:
+              <a class="inline-link" href="https://bro.bedrock.engineer">viewer</a>:
               upload het bestand en download de meetdata als CSV of JSON.
               Locaties van meerdere bestanden kun je downloaden als GeoJSON.
             </p>
@@ -226,7 +226,7 @@ const faq = [
               Ja, de parser is open source onder de Apache 2.0-licentie en
               beschikbaar
               <a
-                class="link"
+                class="inline-link"
                 href="https://www.npmjs.com/package/@bedrock-engineer/bro-xml-parser"
                 >op npm</a
               > als <code>@bedrock-engineer/bro-xml-parser</code>.
@@ -246,7 +246,7 @@ const faq = [
         </h2>
         <p
           class="paragraph"
-          style="text-align: center; margin-block-end: 32px; color: var(--gray-11);"
+          style="text-align: center; margin-block-end: 32px; color: var(--color-text-muted);"
         >
           Vertel ons waar je tegenaan loopt, een rapportagestraat, een
           integratie, or gewoon "dit moet toch sneller kunnen".
@@ -265,43 +265,7 @@ const faq = [
 </BaseLayout>
 
 <style>
-  .eyebrow {
-    font-size: var(--text-sm);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--green-11);
-    margin-block-end: var(--space-xs);
-  }
-
-  .feature-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-s);
-  }
-
-  .feature-list li {
-    padding-inline-start: var(--space-m);
-    position: relative;
-    font-size: var(--text-lg);
-    line-height: var(--leading-relaxed);
-  }
-
-  .feature-list li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.65em;
-    width: 8px;
-    height: 8px;
-    background: var(--green-9);
-  }
-
-  .feature-list li strong {
-    color: var(--green-11);
-  }
+  /* .eyebrow and .feature-list come from the global stylesheet */
 
   .faq-list {
     display: flex;
@@ -321,12 +285,37 @@ const faq = [
     line-height: var(--leading-relaxed);
   }
 
-  .faq-list summary:hover {
-    color: var(--green-11);
+  @media (hover: hover) and (pointer: fine) {
+    .faq-list summary:hover {
+      color: var(--color-primary-text);
+    }
+  }
+
+  .faq-list summary:active {
+    color: var(--color-primary-text);
+  }
+
+  /* Animate the open and close. Only Chrome interpolates to `auto` height
+     (interpolate-size is enabled globally); other browsers toggle at once. */
+  .faq-list details::details-content {
+    block-size: 0;
+    overflow: clip;
+  }
+
+  .faq-list details[open]::details-content {
+    block-size: auto;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .faq-list details::details-content {
+      transition:
+        block-size var(--duration-slow) var(--ease-out),
+        content-visibility var(--duration-slow) allow-discrete;
+    }
   }
 
   .faq-list details[open] summary {
-    color: var(--green-11);
+    color: var(--color-primary-text);
     margin-block-end: var(--space-xs);
   }
 </style>

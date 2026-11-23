@@ -1,5 +1,10 @@
 ---
-const { class: className, width, height } = Astro.props;
+interface Props {
+  class?: string;
+  labels: { lower: string; middle: string; upper: string };
+}
+
+const { class: className, labels } = Astro.props;
 ---
 
 <svg
@@ -13,30 +18,30 @@ const { class: className, width, height } = Astro.props;
   overflow="visible"
 >
   <g
-    font-size="7"
+    font-size="6.5"
     font-weight="600"
     font-family="IBM Plex Sans Condensed"
     text-anchor="middle"
   >
-    <g id="lower" class="logo-layer">
+    <g class="logo-layer" data-layer="lower">
       <path
         d="M 33.607 79.515 c -2.178 -0.778 -31.865 -16.392 -32.56 -17.125 c -2.385 -2.518 -1.888 -2.911 14.62 -11.547 c 19.714 -10.315 17.742 -9.389 20.3 -9.53 c 3.263 -0.181 3.356 -0.141 20.099 8.565 c 22.428 11.664 22.407 9.528 0.214 21.163 c -18.23 9.557 -18.919 9.814 -22.673 8.474"
         fill="#868b85"></path>
 
       <text
         class="layer-label"
-        x="14"
-        y="73"
+        x="19"
+        y="67"
         fill="white"
         opacity="1"
         transform="rotate(-28) skewX(30)"
         transform-origin="center"
       >
-        GI Data
+        {labels.lower}
       </text>
     </g>
 
-    <g id="middle" class="logo-layer">
+    <g class="logo-layer" data-layer="middle">
       <path
         d="M 33.607 59.515 c -2.178 -0.778 -31.865 -16.392 -32.56 -17.125 c -2.385 -2.518 -1.888 -2.911 14.62 -11.547 c 19.714 -10.315 17.742 -9.389 20.3 -9.53 c 3.263 -0.181 3.356 -0.141 20.099 8.565 c 22.428 11.664 22.407 9.528 0.214 21.163 c -18.23 9.557 -18.919 9.814 -22.673 8.474"
         fill="#998468"
@@ -46,18 +51,18 @@ const { class: className, width, height } = Astro.props;
 
       <text
         class="layer-label"
-        x="33"
-        y="55"
+        x="38"
+        y="48"
         fill="white"
         transform="rotate(-28) skewX(30)"
         transform-origin="center"
         opacity="1"
       >
-        Structural
+        {labels.middle}
       </text>
     </g>
 
-    <g id="upper" class="logo-layer">
+    <g class="logo-layer" data-layer="upper">
       <path
         d="M 33.607 38.243 c -2.178 -0.778 -31.865 -16.392 -32.56 -17.125 c -2.385 -2.518 -1.888 -2.911 14.62 -11.547 c 19.714 -10.315 17.742 -9.389 20.3 -9.53 c 3.263 -0.181 3.356 -0.141 20.099 8.565 c 22.428 11.664 22.407 9.528 0.214 21.163 c -18.23 9.557 -18.919 9.814 -22.673 8.474"
         fill="#63805e"
@@ -68,62 +73,83 @@ const { class: className, width, height } = Astro.props;
       <text
         class="layer-label"
         x="58"
-        y="37"
+        y="31"
         fill="white"
-        font-size="7"
-        font-weight="600"
-        font-family="IBM Plex Sans Condensed"
-        text-anchor="middle"
         transform="rotate(-28) skewX(30)"
         transform-origin="center"
         opacity="1"
       >
-        BIM
+        {labels.upper}
       </text>
     </g>
   </g>
 </svg>
 
 <style>
-  .logo-animated .logo-layer {
-    transition: transform var(--duration-slow) cubic-bezier(0.165, 0.84, 0.44, 1);
-    pointer-events: none;
-    --offset-x: 20px;
-  }
-
+  /* Hover explodes the stack along its isometric depth axis: layers fan out
+     with a staggered spring, then labels follow. Exit is quicker and plain. */
   .logo-animated {
+    --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+    --explode-duration: 550ms;
+
     pointer-events: bounding-box;
 
-    .layer-icon {
-      transition: opacity var(--duration-slow) ease-out;
+    .logo-layer {
+      pointer-events: none;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: transform var(--duration-slow) var(--ease-out);
+      }
     }
 
     .layer-label {
       opacity: 0;
-      transition: opacity var(--duration-slow) ease-out;
+      transition: opacity var(--duration-fast) var(--ease-out);
     }
 
-    #lower {
-      transform: translateX(0px);
-    }
-
-    #upper {
+    [data-layer="upper"] {
       stroke-width: 5px;
-      transform: translateX(0px);
     }
   }
 
-  .logo-animated:hover {
-    .layer-label {
-      opacity: 1;
-    }
+  @media (hover: hover) and (pointer: fine) {
+    .logo-animated:hover {
+      .logo-layer {
+        @media (prefers-reduced-motion: no-preference) {
+          transition: transform var(--explode-duration) var(--ease-spring);
+        }
+      }
 
-    #lower {
-      transform: translateX(-35px);
-    }
+      .layer-label {
+        opacity: 1;
+        transition: opacity var(--duration-slow) var(--ease-out);
+      }
 
-    #upper {
-      transform: translateX(35px);
+      [data-layer="upper"] {
+        transform: translate(34px, -10px);
+
+        .layer-label {
+          transition-delay: 180ms;
+        }
+      }
+
+      [data-layer="middle"] {
+        transform: translateY(-2px);
+        transition-delay: 40ms;
+
+        .layer-label {
+          transition-delay: 240ms;
+        }
+      }
+
+      [data-layer="lower"] {
+        transform: translate(-34px, 10px);
+        transition-delay: 80ms;
+
+        .layer-label {
+          transition-delay: 300ms;
+        }
+      }
     }
   }
 </style>
