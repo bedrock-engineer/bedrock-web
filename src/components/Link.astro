@@ -28,7 +28,7 @@ const linkAttrs = isExternal
 
 <style>
   .link {
-    color: var(--green-9);
+    color: var(--color-primary);
     text-decoration: none;
     border-radius: var(--border-radius-sm);
 
@@ -44,29 +44,29 @@ const linkAttrs = isExternal
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {
-        color: var(--green-10);
+        color: var(--color-primary-hover);
       }
     }
 
     &:active {
-      color: var(--green-11);
+      color: var(--color-primary-text);
     }
 
     &:focus-visible {
-      outline: 2px solid var(--green-9);
+      outline: 2px solid var(--color-focus);
       outline-offset: 2px;
     }
 
     /* Default variant - underline */
     &[data-variant="default"] {
       text-decoration: underline;
-      text-decoration-color: var(--green-9);
+      text-decoration-color: var(--color-primary);
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
 
       @media (hover: hover) and (pointer: fine) {
         &:hover {
-          text-decoration-color: var(--green-10);
+          text-decoration-color: var(--color-primary-hover);
         }
       }
     }

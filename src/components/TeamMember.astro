@@ -138,11 +138,11 @@ const { name, image, variant = "compact", socials = [] } = Astro.props;
     }
   }
 
+  /* On an h2, so the condensed family comes from the global heading styles */
   .team-member-name {
     font-size: var(--text-xl);
     font-weight: 600;
     text-align: center;
-    font-family: var(--font-condensed);
   }
 
   .team-member-info {
@@ -162,12 +162,12 @@ const { name, image, variant = "compact", socials = [] } = Astro.props;
     align-items: center;
     gap: 8px;
     padding: 8px 16px;
-    background-color: var(--gray-2);
+    background-color: var(--color-surface-raised);
     border: 1px solid var(--color-border-subtle);
-    border-radius: 2px;
+    border-radius: var(--border-radius-xs);
     text-decoration: none;
-    color: var(--gray-12);
-    font-size: 14px;
+    color: var(--color-text);
+    font-size: var(--text-sm);
     transition: background-color var(--duration-normal) var(--ease-out);
 
     @media (hover: hover) and (pointer: fine) {
@@ -190,8 +190,8 @@ const { name, image, variant = "compact", socials = [] } = Astro.props;
   /* Bio content arrives through the slot, so it carries the parent page's
      scope — style it with :global() */
   .bio {
-    font-size: 16px;
-    max-width: 60ch;
+    font-size: var(--text-base);
+    max-width: var(--measure);
 
     & :global(p) {
       margin-block-end: 16px;

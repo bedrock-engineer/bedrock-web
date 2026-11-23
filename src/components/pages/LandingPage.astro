@@ -108,7 +108,7 @@ const { t } = Astro.props;
           </ul>
         </div>
 
-        <HoverLogo class="place-self-center" />
+        <HoverLogo class="place-self-center" labels={t.whatWeDo.logoLayers} />
       </div>
 
       <div class="section-link-center">
@@ -194,10 +194,6 @@ const { t } = Astro.props;
      horizontal overflow on phones */
   .page {
     min-width: 0;
-  }
-
-  .paragraph {
-    max-width: var(--measure);
   }
 
   .section-link-center {
@@ -396,9 +392,9 @@ const { t } = Astro.props;
     }
   }
 
+  /* On an h3, so the condensed family comes from the global heading styles */
   .value-title {
-    font-family: var(--font-condensed);
-    color: var(--gray-12);
+    color: var(--color-text);
   }
 </style>
 

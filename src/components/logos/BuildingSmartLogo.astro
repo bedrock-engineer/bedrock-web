@@ -6,11 +6,10 @@
 >
   <defs>
     <style>
+      /* color-scheme follows data-theme (set globally), so light-dark()
+         replaces a separate dark-mode rule */
       path.building {
-        fill: oklch(23% 0.0038 106.7);
-      }
-      :root:not([data-theme="light"]) path.building {
-        fill: white;
+        fill: light-dark(oklch(23% 0.0038 106.7), white);
       }
     </style>
   </defs>

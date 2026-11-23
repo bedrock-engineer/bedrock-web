@@ -9,6 +9,8 @@
   --border-radius-md: 8px;
   /* Badges, inline code. */
   --border-radius-sm: 4px;
+  /* Sharp brand corner: inline links, CTA buttons, pill-less chips. */
+  --border-radius-xs: 2px;
   --brown-1: oklch(98.8% 0.0012 73.78);
   --brown-2: oklch(97.7% 0.0036 73.78);
   --brown-3: oklch(94.8% 0.0076 73.78);

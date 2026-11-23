@@ -76,7 +76,11 @@ function buildTabs(t: DemoTabsCopy): TabData[] {
               src={`${import.meta.env.SITE}/hk-kaitak/`}
               height={400}
               title={t.interactive.iframeTitle}
-              style={{ width: "100%", maxWidth: "700px", borderRadius: "4px" }}
+              style={{
+                width: "100%",
+                maxWidth: "700px",
+                borderRadius: "var(--border-radius-sm)",
+              }}
             />
 
             <figcaption>

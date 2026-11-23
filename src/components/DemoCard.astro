@@ -164,7 +164,7 @@ const allLinks: NonNullable<Props['links']> = [
     inset-block-start: var(--space-2xs);
     inset-inline-start: var(--space-2xs);
     z-index: 1;
-    box-shadow: 0 1px 4px oklch(0 0 0 / 0.25);
+    box-shadow: var(--shadow-sm);
   }
 
   .demo-iframe {
@@ -199,18 +199,18 @@ const allLinks: NonNullable<Props['links']> = [
     flex-grow: 1;
   }
 
+  /* On an h3, so the condensed family comes from the global heading styles */
   .demo-card-title {
     font-size: var(--heading-4);
     font-weight: var(--font-semibold);
-    font-family: var(--font-condensed);
-    color: var(--gray-12);
+    color: var(--color-text);
     margin: 0;
   }
 
   .demo-card-description {
     font-size: var(--text-base);
     line-height: var(--leading-normal);
-    color: var(--gray-12);
+    color: var(--color-text);
     flex-grow: 1;
     margin: 0;
   }
@@ -233,7 +233,7 @@ const allLinks: NonNullable<Props['links']> = [
     padding: 1px 8px;
     font-size: var(--text-xs);
     line-height: 1.5;
-    color: var(--gray-11);
+    color: var(--color-text-muted);
   }
 
   .demo-card-links {
@@ -257,6 +257,6 @@ const allLinks: NonNullable<Props['links']> = [
     font-size: var(--text-sm);
     font-weight: normal;
     line-height: var(--leading-snug);
-    color: var(--gray-11);
+    color: var(--color-text-muted);
   }
 </style>

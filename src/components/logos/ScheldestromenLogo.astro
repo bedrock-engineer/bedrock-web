@@ -7,11 +7,10 @@
 >
   <defs>
     <style>
+      /* color-scheme follows data-theme (set globally), so light-dark()
+         replaces a separate dark-mode rule */
       #scheldestromen-logo .text {
-        fill: oklch(56.1% 0.0232 62.6);
-      }
-      :root:not([data-theme="light"]) #scheldestromen-logo .text {
-        fill: white;
+        fill: light-dark(oklch(56.1% 0.0232 62.6), white);
       }
     </style>
   </defs>

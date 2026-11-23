@@ -57,6 +57,14 @@
   },
   "border": {
     "radius": {
+      "xs": {
+        "$type": "dimension",
+        "$description": "Sharp brand corner: inline links, CTA buttons, pill-less chips.",
+        "$value": {
+          "value": 2,
+          "unit": "px"
+        }
+      },
       "sm": {
         "$type": "dimension",
         "$description": "Badges, inline code.",

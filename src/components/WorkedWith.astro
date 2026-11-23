@@ -77,6 +77,8 @@ const { t } = Astro.props;
 </style>
 
 <style is:global>
+  /* Raster/foreign image, so no light-dark() fill swap like the inline SVG
+     logos; inverting the supplied dark-mode asset is the only lever */
   :root:not([data-theme="dark"]) {
     #b-invented-logo {
       filter: invert(1) grayscale(1);

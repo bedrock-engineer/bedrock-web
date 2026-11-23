@@ -16,7 +16,7 @@ export const ui = {
     voxels: {
       imageAlt: "GeoTOP geological voxel model in the browser",
       heading: "3D Voxel Models in the Browser",
-      body: "Explore geological models, groundwater grids, and mining block models interactively, without specialist software or large downloads.",
+      body: "Explore geological models interactively, without specialist software or large downloads.",
       badge: "Featured by Cesium",
       link: "See 3D Tiles Voxels",
     },
@@ -32,6 +32,11 @@ export const ui = {
         "Automate the data flow between QGIS, BIM tools, and databases, so no one moves files by hand",
       ],
       link: "Our services",
+      logoLayers: {
+        lower: "CPTs",
+        middle: "Geo models",
+        upper: "BIM",
+      },
     },
     values: {
       heading: "Our Values",
@@ -113,7 +118,7 @@ export const ui = {
     voxels: {
       imageAlt: "GeoTOP geologisch voxelmodel in de browser",
       heading: "3D-voxelmodellen in de browser",
-      body: "Verken geologische modellen, grondwatermodellen en mijnbouwblokmodellen interactief, zonder specialistische software of grote downloads.",
+      body: "Verken geologische modellen interactief, zonder specialistische software of grote downloads.",
       badge: "Uitgelicht door Cesium",
       link: "Bekijk 3D Tiles-voxels",
     },
@@ -129,6 +134,11 @@ export const ui = {
         "De datastroom tussen QGIS, BIM-tools en databases automatiseren, zodat niemand handmatig bestanden verplaatst",
       ],
       link: "Onze diensten",
+      logoLayers: {
+        lower: "Sonderingen",
+        middle: "Geomodellen",
+        upper: "BIM",
+      },
     },
     values: {
       heading: "Onze waarden",

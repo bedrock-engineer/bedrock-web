@@ -1,11 +1,10 @@
 <svg width="100" viewBox="0 0 1244.58 568.53">
   <defs>
     <style>
+      /* color-scheme follows data-theme (set globally), so light-dark()
+         replaces a separate dark-mode rule */
       path#fugro {
-        fill: oklch(23.9% 0.0739 256.8);
-      }
-      :root:not([data-theme="light"]) #fugro {
-        fill: white;
+        fill: light-dark(oklch(23.9% 0.0739 256.8), white);
       }
     </style>
   </defs>

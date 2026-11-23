@@ -85,7 +85,7 @@ const isActive = (match: string) =>
     position: sticky;
     inset-block-start: 0;
     z-index: 100;
-    background: var(--gray-1);
+    background: var(--color-surface);
     border-block-end: 1px solid var(--color-border-subtle);
   }
 
@@ -106,22 +106,22 @@ const isActive = (match: string) =>
     column-gap: 8px;
     font-size: var(--text-xl);
     font-family: var(--font-condensed);
-    color: var(--gray-12);
+    color: var(--color-text);
     text-decoration: none;
     white-space: nowrap;
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {
-        color: var(--green-11);
+        color: var(--color-primary-text);
       }
     }
 
     &:active {
-      color: var(--green-11);
+      color: var(--color-primary-text);
     }
 
     &:focus-visible {
-      outline: 2px solid var(--green-9);
+      outline: 2px solid var(--color-focus);
       outline-offset: 2px;
       border-radius: var(--border-radius-sm);
     }
@@ -135,15 +135,15 @@ const isActive = (match: string) =>
   .nav-links a,
   .mobile-nav a {
     font-size: var(--text-base);
-    color: var(--gray-11);
+    color: var(--color-text-muted);
     text-decoration: none;
     white-space: nowrap;
     border-radius: var(--border-radius-sm);
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {
-        color: var(--green-11);
-        background: var(--gray-3);
+        color: var(--color-primary-text);
+        background: var(--color-surface-overlay);
       }
     }
 
@@ -152,13 +152,13 @@ const isActive = (match: string) =>
     }
 
     &:focus-visible {
-      outline: 2px solid var(--green-9);
+      outline: 2px solid var(--color-focus);
       outline-offset: 2px;
     }
 
     &[aria-current="page"] {
-      color: var(--green-11);
-      background: var(--gray-3);
+      color: var(--color-primary-text);
+      background: var(--color-surface-overlay);
       font-weight: 500;
     }
   }
@@ -204,7 +204,7 @@ const isActive = (match: string) =>
     height: 32px;
     padding: 0;
     background: transparent;
-    color: var(--gray-11);
+    color: var(--color-text-muted);
     border: 1px solid transparent;
     border-radius: var(--border-radius-sm);
     cursor: pointer;
@@ -220,8 +220,8 @@ const isActive = (match: string) =>
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {
-        color: var(--green-11);
-        background: var(--gray-3);
+        color: var(--color-primary-text);
+        background: var(--color-surface-overlay);
       }
     }
 
@@ -230,7 +230,7 @@ const isActive = (match: string) =>
     }
 
     &:focus-visible {
-      outline: 2px solid var(--green-9);
+      outline: 2px solid var(--color-focus);
       outline-offset: 2px;
     }
 
@@ -245,7 +245,7 @@ const isActive = (match: string) =>
     padding: var(--space-xs);
     border: 1px solid var(--color-border-subtle);
     border-radius: var(--border-radius-md);
-    background: var(--gray-1);
+    background: var(--color-surface);
     box-shadow: var(--shadow-md);
     min-width: 200px;
 

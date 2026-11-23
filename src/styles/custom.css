@@ -193,16 +193,6 @@ body {
   -webkit-tap-highlight-color: var(--green-a5);
 }
 
-.landing-section {
-  padding-inline: 24px;
-  border-bottom: 1px solid var(--color-border);
-
-  h2 > a {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-  }
-}
-
 ::selection {
   background-color: var(--green-a5);
 }
@@ -228,7 +218,7 @@ h4 {
 }
 
 a {
-  border-radius: 2px;
+  border-radius: var(--border-radius-xs);
 }
 
 /* Only animate if user hasn't requested reduced motion */
@@ -270,14 +260,14 @@ a {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 0.25em 0.6em;
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
   white-space: nowrap;
-  background: var(--green-3);
-  color: var(--green-11);
+  background: var(--color-primary-subtle);
+  color: var(--color-primary-text);
 }
 
 .badge[data-variant="solid"] {
-  background: var(--green-9);
+  background: var(--color-primary);
   color: var(--color-white);
 }
 
@@ -423,16 +413,18 @@ figcaption {
   margin-block-end: var(--space-xs);
 }
 
+/* Prose measure comes from --measure (the token for readable paragraph
+   width); --container-* tokens are layout region widths, not text measures */
 .paragraph {
   font-size: var(--text-lg);
   line-height: var(--leading-relaxed);
-  max-width: var(--container-narrow);
+  max-width: var(--measure);
 }
 
 .paragraph-xl {
   font-size: var(--text-xl);
   line-height: var(--leading-relaxed);
-  max-width: var(--container-narrow);
+  max-width: var(--measure);
 }
 
 .paragraph-sm {
@@ -445,7 +437,7 @@ figcaption {
 .card-surface {
   display: flex;
   flex-direction: column;
-  background: var(--gray-2);
+  background: var(--color-surface-raised);
   border: 1px solid var(--color-border-subtle);
 }
 
@@ -474,7 +466,7 @@ figcaption {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--green-11);
+  color: var(--color-primary-text);
   margin-block-end: var(--space-xs);
 }
 
@@ -501,11 +493,11 @@ figcaption {
   inset-block-start: 0.65em;
   width: 8px;
   height: 8px;
-  background: var(--green-9);
+  background: var(--color-primary);
 }
 
 .feature-list li strong {
-  color: var(--green-11);
+  color: var(--color-primary-text);
 }
 
 /* ========== LAYOUT PATTERNS ========== */
@@ -520,9 +512,6 @@ figcaption {
   max-width: var(--container-wide);
   margin-inline: auto;
   border-top: none;
-  @media (max-width: 1200px) {
-    border-inline: none;
-  }
 }
 
 .section {
@@ -532,7 +521,14 @@ figcaption {
   margin-inline: auto;
   border-inline: 1px solid var(--color-border);
   background: var(--color-surface);
-  @media (max-width: 1200px) {
+}
+
+/* Below the .section column width the side borders sit at the screen edge
+   and come off. Keep this value in sync with --container-md: media queries
+   cannot read custom properties. */
+@media (max-width: 1200px) {
+  .section-wrapper,
+  .section {
     border-inline: none;
   }
 }
@@ -619,7 +615,7 @@ figcaption {
   line-height: 1;
   padding: 14px 28px;
   font-size: var(--text-base);
-  border-radius: 2px;
+  border-radius: var(--border-radius-xs);
   text-decoration: none;
   /* Color fades may run for everyone; the press scale only moves for people
      who haven't asked for reduced motion */

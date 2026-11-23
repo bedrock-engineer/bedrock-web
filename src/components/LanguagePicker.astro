@@ -28,6 +28,38 @@ const basePath = locale === defaultLang
   })}
 </div>
 
+<script is:inline>
+  // Hide the page until the scroll position below is restored, so the top doesn't flash first.
+  // The timeout is a fallback in case the restore script never runs.
+  try {
+    if (sessionStorage.getItem("lang-switch-scroll") !== null && !location.hash) {
+      document.documentElement.style.visibility = "hidden";
+      setTimeout(() => (document.documentElement.style.visibility = ""), 1000);
+    }
+  } catch {}
+</script>
+
+<script>
+  // Switching language is a full page load, so carry the scroll position over.
+  // Stored as a fraction of the scrollable height since translations differ in length.
+  const KEY = "lang-switch-scroll";
+
+  const saved = sessionStorage.getItem(KEY);
+  if (saved !== null) {
+    sessionStorage.removeItem(KEY);
+    const max = document.documentElement.scrollHeight - innerHeight;
+    if (!location.hash) scrollTo({ top: Number(saved) * max, behavior: "instant" });
+    document.documentElement.style.visibility = "";
+  }
+
+  for (const link of document.querySelectorAll<HTMLAnchorElement>(".lang-link:not(.active)")) {
+    link.addEventListener("click", () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      sessionStorage.setItem(KEY, String(max > 0 ? scrollY / max : 0));
+    });
+  }
+</script>
+
 <style>
   .language-picker {
     display: flex;
@@ -39,14 +71,14 @@ const basePath = locale === defaultLang
     padding: var(--space-2xs) var(--space-xs);
     line-height: 1;
     text-decoration: none;
-    color: var(--gray-11);
+    color: var(--color-text-muted);
     font-size: var(--text-sm);
     border-radius: var(--border-radius-sm);
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {
-        color: var(--green-11);
-        background: var(--gray-3);
+        color: var(--color-primary-text);
+        background: var(--color-surface-overlay);
       }
     }
 
@@ -55,13 +87,13 @@ const basePath = locale === defaultLang
     }
 
     &:focus-visible {
-      outline: 2px solid var(--green-9);
+      outline: 2px solid var(--color-focus);
       outline-offset: 2px;
     }
 
     &.active {
-      color: var(--green-11);
-      background: var(--gray-3);
+      color: var(--color-primary-text);
+      background: var(--color-surface-overlay);
       font-weight: 500;
     }
 

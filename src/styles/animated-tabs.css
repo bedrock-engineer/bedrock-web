@@ -104,7 +104,7 @@
   padding-inline: 0.5rem;
   scroll-snap-align: start;
   outline-offset: -2px;
-  border-radius: 0.25rem;
+  border-radius: var(--border-radius-sm);
 }
 
 .tab-panel-animated:focus-visible {
@@ -112,13 +112,13 @@
 }
 
 .tab-panel-title {
-  font-size: 1.25rem;
+  font-size: var(--text-xl);
   font-weight: 600;
   margin-block-end: 1rem;
 }
 
 .tab-panel-content {
-  font-size: 1rem;
+  font-size: var(--text-base);
 }
 
 .tab-panel-content p {

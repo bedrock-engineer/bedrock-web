@@ -150,7 +150,7 @@ const pageUrl = new URL("/demos", Astro.site);
         </h2>
         <p
           class="paragraph"
-          style="text-align: center; margin-block-end: 32px; color: var(--gray-11);"
+          style="text-align: center; margin-block-end: 32px; color: var(--color-text-muted);"
         >
           We build custom visualizations and web applications for subsurface
           data.
@@ -303,7 +303,7 @@ const pageUrl = new URL("/demos", Astro.site);
   .filter-label {
     font-family: var(--font-condensed);
     font-weight: var(--font-semibold);
-    color: var(--gray-11);
+    color: var(--color-text-muted);
     font-size: var(--text-xs);
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -320,7 +320,7 @@ const pageUrl = new URL("/demos", Astro.site);
   .filter-chip {
     appearance: none;
     background: transparent;
-    color: var(--gray-12);
+    color: var(--color-text);
     border: 1px solid var(--color-border);
     border-radius: 9999px;
     padding: 2px 10px;
@@ -344,11 +344,11 @@ const pageUrl = new URL("/demos", Astro.site);
   }
 
   .filter-chip:active {
-    background: var(--gray-3);
+    background: var(--color-surface-overlay);
   }
 
   .filter-chip:focus-visible {
-    outline: 2px solid var(--green-9);
+    outline: 2px solid var(--color-focus);
     outline-offset: 2px;
   }
 
@@ -365,7 +365,7 @@ const pageUrl = new URL("/demos", Astro.site);
     border: none;
     padding: 0;
     margin-block-start: var(--space-3xs);
-    color: var(--green-9);
+    color: var(--color-primary);
     cursor: pointer;
     font-weight: var(--font-semibold);
     font-size: var(--text-xs);
@@ -375,16 +375,16 @@ const pageUrl = new URL("/demos", Astro.site);
 
   @media (hover: hover) and (pointer: fine) {
     .reset-filters:hover {
-      color: var(--green-10);
+      color: var(--color-primary-hover);
     }
   }
 
   .reset-filters:active {
-    color: var(--green-11);
+    color: var(--color-primary-text);
   }
 
   .reset-filters:focus-visible {
-    outline: 2px solid var(--green-9);
+    outline: 2px solid var(--color-focus);
     outline-offset: 2px;
   }
 
