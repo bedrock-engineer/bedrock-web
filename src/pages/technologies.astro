@@ -158,11 +158,11 @@ const pageUrl = new URL("/technologies", Astro.site);
         <div class="grid-auto-fit">
           <Card size="medium">
             <h3 class="heading-3">Industry GI Formats</h3>
-            <p class="tech-subtitle">AGS3, AGS4, GEF, BRO/XML</p>
+            <p class="eyebrow">AGS3, AGS4, GEF, BRO/XML</p>
             <p class="card-text">
               We can process specialized formats that ground investigation data
               comes in, like AGS3, AGS4, GEF files with CPT and borehole data,
-              or <a class="link" href="/nl/bro-xml">BRO/XML</a> from the Dutch
+              or <a class="inline-link" href="/nl/bro-xml">BRO/XML</a> from the Dutch
               subsurface registry. We parse these formats, structure the data,
               and can convert them into geospatial data.
             </p>
@@ -170,21 +170,21 @@ const pageUrl = new URL("/technologies", Astro.site);
 
           <Card size="medium">
             <h3 class="heading-3">GEF & BRO/XML TypeScript Parsers</h3>
-            <p class="tech-subtitle">TypeScript, WebAssembly, npm</p>
+            <p class="eyebrow">TypeScript, WebAssembly, npm</p>
             <p class="card-text">
               Open-source TypeScript libraries for parsing GEF and BRO/XML files
               directly in the browser or Node.js. <a
                 href="https://github.com/bedrock-engineer/gef-parser-ts"
-                class="link">gef-parser-ts</a
+                class="inline-link">gef-parser-ts</a
               > handles CPT, bore, and dissipation test files with support for
               Dutch and Belgian format extensions. <a
                 href="https://github.com/bedrock-engineer/bro-xml-parser-ts"
-                class="link">bro-xml-parser-ts</a
+                class="inline-link">bro-xml-parser-ts</a
               > parses CPT, geotechnical borehole, and geological borehole
               records from the Dutch national subsurface registry. Both power
-              the <a href="https://gef.bedrock.engineer" class="link"
+              the <a href="https://gef.bedrock.engineer" class="inline-link"
                 >GEF viewer</a
-              > and <a href="https://bro.bedrock.engineer" class="link"
+              > and <a href="https://bro.bedrock.engineer" class="inline-link"
                 >BRO/XML viewer</a
               >.
             </p>
@@ -192,7 +192,7 @@ const pageUrl = new URL("/technologies", Astro.site);
 
           <Card size="medium">
             <h3 class="heading-3">Spreadsheets & Semi-structured Data</h3>
-            <p class="tech-subtitle">Excel, CSV</p>
+            <p class="eyebrow">Excel, CSV</p>
             <p class="card-text">
               In practice, not all ground investigation data follows a standard.
               We can handle the Excel spreadsheets with custom schemas, or CSVs
@@ -213,11 +213,11 @@ const pageUrl = new URL("/technologies", Astro.site);
         <div class="grid-auto-fit">
           <Card>
             <h3 class="heading-3">Geospatial Data Pipelines</h3>
-            <p class="tech-subtitle">GeoPandas, Shapely, Pandas</p>
+            <p class="eyebrow">GeoPandas, Shapely, Pandas</p>
             <p class="card-text">
               The foundation of our <a
                 href="https://github.com/bedrock-engineer/bedrock-ge/"
-                class="link">bedrock-ge</a
+                class="inline-link">bedrock-ge</a
               >
               library is built using Python's geospatial ecosystem. We use GeoPandas
               to build data pipelines that transform AGS4, GEF, or BRO/XML files into
@@ -228,7 +228,7 @@ const pageUrl = new URL("/technologies", Astro.site);
 
           <Card size="medium">
             <h3 class="heading-3">Spatial Database</h3>
-            <p class="tech-subtitle">PostGIS, PostgreSQL</p>
+            <p class="eyebrow">PostGIS, PostgreSQL</p>
             <p class="card-text">
               Centralized database for ground investigation data instead of
               scattered files. PostgreSQL with PostGIS handles spatial queries
@@ -240,7 +240,7 @@ const pageUrl = new URL("/technologies", Astro.site);
 
           <Card size="medium">
             <h3 class="heading-3">Rhino3D & Grasshopper</h3>
-            <p class="tech-subtitle">Parametric Design, Python Scripting</p>
+            <p class="eyebrow">Parametric Design, Python Scripting</p>
             <p class="card-text">
               Bring subsurface data into Grasshopper. Custom components to read
               and visualize ground investigation data, generate ground models,
@@ -265,7 +265,7 @@ const pageUrl = new URL("/technologies", Astro.site);
         <div class="grid-auto-fit" style="margin-block-end: var(--space-xl);">
           <Card size="medium">
             <h3 class="heading-3">CesiumJS</h3>
-            <p class="tech-subtitle">3D Web Globes, Digital Twins, 3D Tiles</p>
+            <p class="eyebrow">3D Web Globes, Digital Twins, 3D Tiles</p>
             <p class="card-text">
               Browser-based 3D visualization of subsurface data on interactive
               globes. Place boreholes, CPT locations, and geological features in
@@ -279,7 +279,7 @@ const pageUrl = new URL("/technologies", Astro.site);
 
           <Card size="medium">
             <h3 class="heading-3">Volumetric Geological Models</h3>
-            <p class="tech-subtitle">3D Tiles Voxels, NetCDF</p>
+            <p class="eyebrow">3D Tiles Voxels, NetCDF</p>
             <p class="card-text">
               Volumetric visualization of geological models in the browser using
               the 3D Tiles Voxel extension. Convert netCDF, structured grids, or
@@ -288,13 +288,13 @@ const pageUrl = new URL("/technologies", Astro.site);
               models at scale in the browser.
             </p>
             <p style="margin-block-start: var(--space-xs);">
-              <a href="/voxels" class="link">Learn more about 3D Tiles Voxels →</a>
+              <a href="/voxels" class="inline-link">Learn more about 3D Tiles Voxels →</a>
             </p>
           </Card>
 
           <Card size="medium">
             <h3 class="heading-3">Interactive Web Maps</h3>
-            <p class="tech-subtitle">MapLibre GL, Deck.gl, OpenLayers</p>
+            <p class="eyebrow">MapLibre GL, Deck.gl, OpenLayers</p>
             <p class="card-text">
               Interactive 2D and 3D web maps for subsurface data. Render
               thousands of boreholes and CPT locations with interactive filters,
@@ -310,7 +310,7 @@ const pageUrl = new URL("/technologies", Astro.site);
         <div class="grid-auto-fit" style="margin-block-end: var(--space-xl);">
           <Card size="medium">
             <h3 class="heading-3">Custom 3D Visualization</h3>
-            <p class="tech-subtitle">Three.js, WebGL</p>
+            <p class="eyebrow">Three.js, WebGL</p>
             <p class="card-text">
               Custom 3D visualizations for subsurface data. Borehole renderings,
               geological cross-sections, and underground models with full
@@ -320,7 +320,7 @@ const pageUrl = new URL("/technologies", Astro.site);
 
           <Card size="medium">
             <h3 class="heading-3">Scientific Visualization</h3>
-            <p class="tech-subtitle">PyVista, ParaView</p>
+            <p class="eyebrow">PyVista, ParaView</p>
             <p class="card-text">
               Scientific visualization with PyVista and ParaView.
               Publication-quality cross-sections, volumetric renderings, and
@@ -335,7 +335,7 @@ const pageUrl = new URL("/technologies", Astro.site);
         <div class="grid-auto-fit">
           <Card size="medium">
             <h3 class="heading-3">Technical Charts & Diagrams</h3>
-            <p class="tech-subtitle">D3.js, Observable Plot</p>
+            <p class="eyebrow">D3.js, Observable Plot</p>
             <p class="card-text">
               Custom interactive charts for technical data. Borehole logs, CPT
               plots, soil classification diagrams, and domain-specific
@@ -345,7 +345,7 @@ const pageUrl = new URL("/technologies", Astro.site);
 
           <Card size="small">
             <h3 class="heading-3">Interactive Dashboards</h3>
-            <p class="tech-subtitle">Plotly, Dash</p>
+            <p class="eyebrow">Plotly, Dash</p>
             <p class="card-text">
               Interactive charts and dashboards. Plotly for technical plots,
               Dash for Python web applications. Data exploration and reporting
@@ -355,7 +355,7 @@ const pageUrl = new URL("/technologies", Astro.site);
 
           <Card size="small">
             <h3 class="heading-3">Power BI Custom Visuals</h3>
-            <p class="tech-subtitle">
+            <p class="eyebrow">
               Business Intelligence, Geotechnical Charts
             </p>
             <p class="card-text">
@@ -377,7 +377,7 @@ const pageUrl = new URL("/technologies", Astro.site);
         <div class="grid-auto-fit">
           <Card size="medium">
             <h3 class="heading-3">BIM/CAD Integration</h3>
-            <p class="tech-subtitle">Speckle, Revit, Civil3D</p>
+            <p class="eyebrow">Speckle, Revit, Civil3D</p>
             <p class="card-text">
               Connect geotechnical data with Revit, Civil3D, Rhino3D, and other
               design tools through Speckle. Custom connectors and objects for
@@ -389,7 +389,7 @@ const pageUrl = new URL("/technologies", Astro.site);
 
           <Card size="medium">
             <h3 class="heading-3">GIS Export Formats</h3>
-            <p class="tech-subtitle">GeoPackage, GeoJSON, Shapefile</p>
+            <p class="eyebrow">GeoPackage, GeoJSON, Shapefile</p>
             <p class="card-text">
               Export GI data to standard GIS formats. GeoPackage for QGIS and
               ArcGIS, GeoJSON for web applications, Shapefile for legacy
@@ -400,7 +400,7 @@ const pageUrl = new URL("/technologies", Astro.site);
 
           <Card size="medium">
             <h3 class="heading-3">Cloud-native Geospatial Formats</h3>
-            <p class="tech-subtitle">
+            <p class="eyebrow">
               PMTiles, MLT, COG, GeoParquet, FlatGeobuf, 3D Tiles
             </p>
             <p class="card-text">
@@ -414,7 +414,7 @@ const pageUrl = new URL("/technologies", Astro.site);
 
           <Card size="medium">
             <h3 class="heading-3">Scientific Data Formats</h3>
-            <p class="tech-subtitle">NetCDF, Zarr</p>
+            <p class="eyebrow">NetCDF, Zarr</p>
             <p class="card-text">
               Export 3D subsurface models to scientific data formats. NetCDF and
               Zarr for volumetric geological models, property distributions, and
@@ -425,7 +425,7 @@ const pageUrl = new URL("/technologies", Astro.site);
 
           <Card size="medium">
             <h3 class="heading-3">Custom Web Applications</h3>
-            <p class="tech-subtitle">HTML, CSS, React, Svelte, TypeScript</p>
+            <p class="eyebrow">HTML, CSS, React, Svelte, TypeScript</p>
             <p class="card-text">
               Custom web applications for geotechnical data. Interactive
               interfaces for displaying GI data in maps, borehole logs, CPT
@@ -436,7 +436,7 @@ const pageUrl = new URL("/technologies", Astro.site);
 
           <Card size="small">
             <h3 class="heading-3">IFC</h3>
-            <p class="tech-subtitle">BIM Data Exchange, geotechnical BIM</p>
+            <p class="eyebrow">BIM Data Exchange, geotechnical BIM</p>
             <p class="card-text">
               Export geotechnical data to Industry Foundation Classes (IFC)
               format for BIM workflows and integration with BIM software.
@@ -478,14 +478,12 @@ const pageUrl = new URL("/technologies", Astro.site);
 </BaseLayout>
 
 <style>
-  .tech-subtitle {
-    font-size: var(--text-sm);
-    font-weight: 500;
-    color: var(--green-8);
+  /* The shared .eyebrow sits tighter under the card titles on this page.
+     The element selector lifts specificity above the global .eyebrow, since
+     Astro's :where() scoping alone would leave the winner to source order. */
+  p.eyebrow {
     margin-block-start: calc(-1 * var(--space-2xs));
     margin-block-end: var(--space-2xs);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
   }
 
   .card-text {

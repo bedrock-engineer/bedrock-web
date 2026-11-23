@@ -82,7 +82,7 @@ function buildTabs(t: DemoTabsCopy): TabData[] {
             <figcaption>
               {t.interactive.caption}{" "}
               <a
-                className="link"
+                className="inline-link"
                 href={`${import.meta.env.SITE}/hk-kaitak`}
                 target="_blank"
               >
@@ -130,14 +130,14 @@ function buildTabs(t: DemoTabsCopy): TabData[] {
               {t.cadBim.caption}{" "}
               <a
                 target="_blank"
-                className="link"
+                className="inline-link"
                 href="https://speckle.systems"
               >
                 {t.cadBim.speckleLink}
               </a>{" "}
               <a
                 target="_blank"
-                className="link"
+                className="inline-link"
                 href="https://app.speckle.systems/projects/dea5d61543/models/721ad7b589,9962662abe,c82c54493a#savedView%3D%7B%2522id%2522%3A%2522f44961ecb8%2522%7D"
               >
                 {t.cadBim.exploreLink}

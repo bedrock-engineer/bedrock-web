@@ -240,7 +240,10 @@ a {
   }
 }
 
-.link {
+/* Inline text link for plain markup. The Link component (Link.astro) owns the
+   `.link` class and its variants; this one is deliberately named differently
+   so the two can't collide in the cascade. */
+.inline-link {
   text-decoration: underline;
   text-decoration-color: var(--color-primary);
   color: var(--color-text);
@@ -248,12 +251,12 @@ a {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .link:hover {
+  .inline-link:hover {
     color: var(--color-primary-text);
   }
 }
 
-.link:active {
+.inline-link:active {
   color: var(--color-primary-hover);
 }
 
@@ -465,15 +468,44 @@ figcaption {
   margin-block-end: var(--space-2xs);
 }
 
-/* Subtitle below h1 */
-.subtitle {
+/* Small uppercase label above a heading (one shared eyebrow for all pages) */
+.eyebrow {
   font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--color-primary);
-  /* margin-block-start: calc(-0.5 * var(--space-xs)); */
-  margin-block-end: var(--space-m);
-  letter-spacing: var(--leading-tight);
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--green-11);
+  margin-block-end: var(--space-xs);
+}
+
+/* Square-bullet feature list used on the marketing pages */
+.feature-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+}
+
+.feature-list li {
+  padding-inline-start: var(--space-m);
+  position: relative;
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+}
+
+.feature-list li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0.65em;
+  width: 8px;
+  height: 8px;
+  background: var(--green-9);
+}
+
+.feature-list li strong {
+  color: var(--green-11);
 }
 
 /* ========== LAYOUT PATTERNS ========== */

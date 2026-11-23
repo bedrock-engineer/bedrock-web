@@ -128,7 +128,7 @@ const ogVideo = new URL("/voxels-og.mp4", Astro.site);
             <Fragment slot="description">
               The Dutch
               <a
-                class="link"
+                class="inline-link"
                 href="https://www.dinoloket.nl/en/detailing-the-upper-layers-with-geotop"
               >
                 GeoTOP
@@ -146,7 +146,7 @@ const ogVideo = new URL("/voxels-og.mp4", Astro.site);
           >
             <Fragment slot="description">
               The Flemish <a
-                class="link"
+                class="inline-link"
                 href="https://www.dov.vlaanderen.be/page/ondiep-geologisch-3d-lagen-en-voxelmodel-van-regio-antwerpen-oa-v1-2021"
               >
                 DOV shallow subsurface model of the Antwerp region
@@ -165,11 +165,11 @@ const ogVideo = new URL("/voxels-og.mp4", Astro.site);
             <Fragment slot="description">
               CPT data from <a
                 href="https://basisregistratieondergrond.nl/"
-                class="link"
+                class="inline-link"
               >
                 BRO
               </a>
-              , 3D buildings from <a href="https://3dbag.nl/en" class="link"
+              , 3D buildings from <a href="https://3dbag.nl/en" class="inline-link"
                 >3D BAG</a
               >, and GeoTOP voxels combined in a single CesiumJS scene
               subsurface and above-ground context together.
@@ -199,12 +199,12 @@ const ogVideo = new URL("/voxels-og.mp4", Astro.site);
             <h3 class="heading-3">Open Standard</h3>
             <p class="card-text">
               3D Tiles is an <a
-                class="link"
+                class="inline-link"
                 href="https://www.ogc.org/standards/3dtiles/"
               >
                 OGC community standard
               </a>
-              maintained by <a class="link" href="https://cesium.com/">Cesium</a
+              maintained by <a class="inline-link" href="https://cesium.com/">Cesium</a
               >. No vendor lock-in, your data stays in an open, documented
               format.
             </p>
@@ -516,15 +516,6 @@ const ogVideo = new URL("/voxels-og.mp4", Astro.site);
 </BaseLayout>
 
 <style>
-  .eyebrow {
-    font-size: var(--text-sm);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--green-11);
-    margin-block-end: var(--space-xs);
-  }
-
   /* Text takes the row beside the fixed-size decoration; when the text would
      drop under ~60% of the row, the decoration wraps and centers itself —
      no breakpoint */
@@ -608,70 +599,8 @@ const ogVideo = new URL("/voxels-og.mp4", Astro.site);
     max-height: 200px;
   }
 
-  .process-list {
-    list-style: none;
-    margin-block-start: 64px;
-    padding: 0;
-    counter-reset: process;
-    gap: var(--space-m);
-  }
-
-  .process-list li {
-    counter-increment: process;
-    padding-inline-start: var(--space-l);
-    position: relative;
-    font-size: var(--text-lg);
-    line-height: var(--leading-relaxed);
-  }
-
-  .process-list li::before {
-    content: counter(process);
-    position: absolute;
-    inset-inline-start: 0;
-    inset-block-start: 0.1em;
-    width: 1.6em;
-    height: 1.6em;
-    display: grid;
-    place-items: center;
-    background: var(--green-9);
-    color: var(--gray-1);
-    font-weight: 700;
-    font-size: var(--text-sm);
-    border-radius: 50%;
-  }
-
-  .process-list li strong {
-    color: var(--green-11);
-  }
-
-  .feature-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-s);
-  }
-
-  .feature-list li {
-    padding-inline-start: var(--space-m);
-    position: relative;
-    font-size: var(--text-lg);
-    line-height: var(--leading-relaxed);
-  }
-
-  .feature-list li::before {
-    content: "";
-    position: absolute;
-    inset-inline-start: 0;
-    inset-block-start: 0.65em;
-    width: 8px;
-    height: 8px;
-    background: var(--green-9);
-  }
-
-  .feature-list li strong {
-    color: var(--green-11);
-  }
+  /* .eyebrow and .feature-list come from the global stylesheet; the old
+     .process-list styles were dead (their markup is commented out above) */
 
   .card-text {
     font-size: var(--text-base);
