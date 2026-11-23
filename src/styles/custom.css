@@ -281,7 +281,6 @@ a {
 /* Tailwind Preflight strips list markers and padding; restore them for prose
    lists at any nesting depth. Starlight's <Steps> (.sl-steps) draws its own
    counters and stays excluded. */
-/* stylelint-disable selector-max-class -- rendered Markdown and Starlight's own containers take no utility classes */
 .sl-markdown-content {
   & ol:not(.sl-steps) {
     list-style: decimal;
@@ -301,7 +300,6 @@ a {
 main .sl-container {
   margin-inline: auto;
 }
-/* stylelint-enable selector-max-class */
 
 /* https://starlight.astro.build/guides/css-and-tailwind/#color-theme-editor */
 /* Map Radix colors to Starlight's semantic color system */

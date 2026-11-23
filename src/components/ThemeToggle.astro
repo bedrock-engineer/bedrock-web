@@ -19,13 +19,14 @@ function svgViewBox(raw: string): string {
   return raw.match(/viewBox="([^"]+)"/)?.[1] ?? "0 0 15 15";
 }
 
-const length = 40 ;
+const length = 40;
 const altitude = (Math.sqrt(3) / 2) * length; // ≈ 43.3
 const iconSize = 12;
 const iconX = length / 2 - iconSize / 2; // 17.5
 
 const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
 ---
+
 <svg
   class:list={["triangle-toggle", className]}
   role="radiogroup"
@@ -44,8 +45,8 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
     aria-label="Light"
     aria-checked="false"
   >
-    <path d={trianglePath}  class="tri-bg"></path>
-    <path d={trianglePath}  class="tri-focus-ring"></path>
+    <path d={trianglePath} class="tri-bg"></path>
+    <path d={trianglePath} class="tri-focus-ring"></path>
     <svg
       x={iconX}
       y={altitude / 2}
@@ -252,7 +253,7 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
     opacity: 0.5;
     pointer-events: none;
 
-    .tri-btn.active & {
+    .tri-btn[aria-checked="true"] & {
       opacity: 1;
     }
   }
